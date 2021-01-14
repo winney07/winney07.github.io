@@ -79,3 +79,198 @@
    ```
 
 10. 将原来winney07.github.io-backup目录下的内容拷贝到winney07.github.io
+
+    ```
+    .git
+    README.md
+    ```
+
+11. 提交到远程仓库
+
+    ```
+    hexo clean
+    hexo g
+    hexo d
+    ```
+
+    报错：
+
+    ```
+    Validating config
+    ```
+
+    解决方案：修改_config.yml
+
+12. 修改_config.yml
+
+    ```
+    deploy:
+      type: 'git' #部署的类型
+      repository: https://github.com/winney07/winney07.github.io.git   #仓库地址
+      branch: main   #分支名称    
+      ——————hexo d的代码是部署到main分支里面的(而博客的链接就是访问main分支里面的内容),即博客的内容
+    ```
+
+    报错：
+
+    ```
+    INFO  Validating config
+    ERROR Deployer not found: git
+    ```
+
+    解决方案：
+
+    ```
+    cnpm i --save hexo-deployer-git
+    ```
+
+13. 创建博客文章
+
+    ```
+    hexo new "博客文章标题名称"
+    ```
+
+14. 再次执行：
+
+    ```
+    hexo clean
+    hexo g
+    hexo d
+    ```
+
+14. 修改hexo的主题为next（winney07.github.io\\_config.yml）,
+
+    注：下载next主题放在themes目录下
+
+    ```
+    theme: next
+    ```
+
+15. 修改站点个人信息（winney07.github.io\\_config.yml）
+
+    ```
+    # Site 站点信息配置
+    title: winney     #站点名
+    subtitle: It is never too old to learn.  #站点副标题
+    description: Doing is better than saying.     #站点信息简介
+    keywords: winneyBlog   博客
+    author: winney   #站点作者
+    language: zh-CN     #站点语言，default默认是英文，zh-Hans是中文
+    timezone: Asia/Shanghai      #时区
+    ```
+
+16. 把之前的博客仓库source目录下的内容拷贝到winney07.github.io\source
+
+17. 重新生成文件
+
+    ```
+    hexo clean
+    hexo g
+    hexo d
+    ```
+
+18. 自定义hexo文章置顶(node_modules\hexo-generator-index\lib\generator.js)
+
+    ```
+    // sort(posts.data, (a, b) => (b.sticky || 0) - (a.sticky || 0));
+    
+    posts.data = posts.data.sort(function(a, b) {
+        if(a.top && b.top) { // 两篇文章top都有定义
+            if(a.top == b.top) return b.date - a.date; // 若top值一样则按照文章日期降序排
+            else return b.top - a.top; // 否则按照top值降序排
+        }
+        else if(a.top && !b.top) { // 以下是只有一篇文章top有定义，那么将有top的排在前面（这里用异或操作居然不行233）
+            return -1;
+        }
+        else if(!a.top && b.top) {
+            return 1;
+        }
+        else return b.date - a.date; // 都没定义按照文章日期降序排
+    });
+    ```
+
+19. 再次部署(实在没有清缓存的话，将.deploy_git和public目录下的内容清空)
+
+    ```
+    hexo clean
+    hexo g
+    hexo s
+    hexo d
+    ```
+
+    如果看到页面还是的置顶排序还是没有变化
+
+    试一下将post_asset_folder修改为true，（winney07.github.io\\_config.yml）
+
+    ```
+    post_asset_folder: true
+    ```
+
+20. 修改每页显示博客数量（winney07.github.io\\_config.yml）
+
+    ```
+    per_page: 3
+    ```
+
+21. 配置搜索功能（winney07.github.io\\_config.yml）
+
+    ```
+    #Search
+    search:
+      path: search.xml
+      field: post
+      format: html
+      limit: 10000
+    ```
+
+22. 创建分支hexo（用于存放博客的源文件） [参考教程](https://www.cnblogs.com/kaerxifa/p/11045573.html)
+
+    ```
+    创建hexo分支：
+    $ git branch hexo
+    
+    查看当前所有分支：
+    $ git branch
+      hexo
+    * main
+    
+    推送到远程服务器：git push origin 分支名称
+    git push origin hexo
+    
+    Create a pull request for 'hexo' on GitHub by visiting(在github仓库中就可以看到hexo分支)
+    ```
+
+23. 在该仓库->Settings->Branches->Default branch中将默认分支设为hexo
+
+    > 将仓库克隆下来（因为已经有仓库的目录，新建一个文件夹存放clone下来的内容），将里面的.git文件夹覆盖winney07.github.io目录下的.git文件夹
+    >
+    > ---可以在创建仓库的时候就创建hexo分支，就不会因为提交了比较多的内容，clone的时间比较长
+
+24. 查看当前所在分支：
+
+    ```
+    $ git branch
+    * hexo
+    
+    可以看到已经切换到hexo分支
+    ```
+
+25. 将博客源文件提交到hexo分支
+
+    ```
+    git add .
+    git commit -m 'back up hexo files'
+    git push
+    
+    在github仓库的hexo分支可以看到备份的源文件
+    ```
+
+
+
+> hexo d 部署的代码到main分支，也就是博客网页访问的内容
+>
+> git push的内容是提交到hexo分支，用作备份博客的源文件，配置文件等
+
+
+
+终于部署完，坚持就是胜利。 在折腾的过程中，才能更好地理解git分支

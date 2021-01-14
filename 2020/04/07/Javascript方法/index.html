@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="js:判断某变量的值是否等于某数组中的一个元素12345678910示例：function IsInArray(arr,val)&amp;#123;var testStr&#x3D;&#39;,&#39;+arr.join(&quot;,&quot;)+&quot;,&quot;;return testStr.indexOf(&quot;,&quot;+val+&quot;,&quot;)!&#x3D;-">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Javascript方法">
+<meta property="og:url" content="http://example.com/2020/04/07/Javascript%E6%96%B9%E6%B3%95/index.html">
+<meta property="og:site_name" content="winney">
+<meta property="og:description" content="js:判断某变量的值是否等于某数组中的一个元素12345678910示例：function IsInArray(arr,val)&amp;#123;var testStr&#x3D;&#39;,&#39;+arr.join(&quot;,&quot;)+&quot;,&quot;;return testStr.indexOf(&quot;,&quot;+val+&quot;,&quot;)!&#x3D;-">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-04-07T06:23:17.000Z">
+<meta property="article:modified_time" content="2021-01-12T09:58:51.866Z">
+<meta property="article:author" content="winney">
+<meta property="article:tag" content="Javascript">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2020/04/07/Javascript%E6%96%B9%E6%B3%95/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Javascript方法 | winney</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">winney</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">It is never too old to learn.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/04/07/Javascript%E6%96%B9%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="winney">
+      <meta itemprop="description" content="Doing is better than saying.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="winney">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Javascript方法
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-04-07 14:23:17" itemprop="dateCreated datePublished" datetime="2020-04-07T14:23:17+08:00">2020-04-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-01-12 17:58:51" itemprop="dateModified" datetime="2021-01-12T17:58:51+08:00">2021-01-12</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/Javascript/" itemprop="url" rel="index"><span itemprop="name">Javascript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="js-判断某变量的值是否等于某数组中的一个元素"><a href="#js-判断某变量的值是否等于某数组中的一个元素" class="headerlink" title="js:判断某变量的值是否等于某数组中的一个元素"></a>js:判断某变量的值是否等于某数组中的一个元素</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">示例：</span><br><span class="line"></span><br><span class="line">function IsInArray(arr,val)&#123;</span><br><span class="line">var testStr&#x3D;&#39;,&#39;+arr.join(&quot;,&quot;)+&quot;,&quot;;</span><br><span class="line">return testStr.indexOf(&quot;,&quot;+val+&quot;,&quot;)!&#x3D;-1;</span><br><span class="line">&#125;</span><br><span class="line">var test&#x3D;[&#39;a&#39;,23,-1];</span><br><span class="line">alert(IsInArray(test,&#39;a&#39;));&#x2F;&#x2F;true</span><br><span class="line">alert(IsInArray(test,2));&#x2F;&#x2F;false</span><br><span class="line">alert(IsInArray(test,-1));&#x2F;&#x2F;true</span><br></pre></td></tr></table></figure>
+<p>需求：</p>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;当前页URL</span><br><span class="line">var page &#x3D; window.location.hash.split(&quot;?&quot;)[0];</span><br><span class="line">&#x2F;&#x2F;当前模块值</span><br><span class="line">var this_module &#x3D; page.split(&quot;&#x2F;&quot;)[2];</span><br><span class="line">（判断连接中是否是这几个模块下的链接）</span><br><span class="line">&#x2F;&#x2F;需要去掉游戏选择下拉框的模块</span><br><span class="line">var moduleArr &#x3D; [&quot;app&quot;,&quot;channel&quot;,&quot;agent&quot;,&quot;config&quot;,&quot;white_list&quot;,&quot;account&quot;];</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 判断模块值是否等于数组中的其中一个</span><br><span class="line">function IsInArray(arr,val)&#123;</span><br><span class="line">    var str&#x3D;&#39;,&#39;+arr.join(&quot;,&quot;)+&quot;,&quot;;</span><br><span class="line">    return str.indexOf(&quot;,&quot;+val+&quot;,&quot;)!&#x3D;-1;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;是否在模块组中</span><br><span class="line">var flag &#x3D; IsInArray(moduleArr, this_module);</span><br><span class="line">if(flag)&#123;</span><br><span class="line">    $(&quot;.product-select&quot;).hide();</span><br><span class="line">&#125; else &#123;</span><br><span class="line">    $(&quot;.product-select&quot;).show();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="【参考】：-js-判断某变量的值是否等于某数组中的一个元素"><a href="#【参考】：-js-判断某变量的值是否等于某数组中的一个元素" class="headerlink" title="【参考】： js:判断某变量的值是否等于某数组中的一个元素"></a>【参考】： <a target="_blank" rel="noopener" href="http://www.imooc.com/wenda/detail/476679">js:判断某变量的值是否等于某数组中的一个元素</a></h6><h2 id="js高效修改对象数组里的对象属性名"><a href="#js高效修改对象数组里的对象属性名" class="headerlink" title="js高效修改对象数组里的对象属性名"></a>js高效修改对象数组里的对象属性名</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">appList: [</span><br><span class="line">    &#123;</span><br><span class="line">        list:[</span><br><span class="line">            &#123;id: 118, name: &quot;测试1&quot;, group_id: 4, os: 2&#125;</span><br><span class="line">            &#123;id: 120, name: &quot;测试11&quot;, group_id: 4, os: 2&#125;</span><br><span class="line">            &#123;id: 123, name: &quot;测试111&quot;, group_id: 4, os: 1&#125;</span><br><span class="line">        ]</span><br><span class="line">        name: &quot;测试1111&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        list:[</span><br><span class="line">            &#123;id: 118, name: &quot;测试2&quot;, group_id: 4, os: 2&#125;</span><br><span class="line">            &#123;id: 120, name: &quot;测试22&quot;, group_id: 4, os: 2&#125;</span><br><span class="line">            &#123;id: 123, name: &quot;测试222&quot;, group_id: 4, os: 1&#125;</span><br><span class="line">        ]</span><br><span class="line">        name: &quot;测试2222&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>（因为插件的要求）改为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">productArr: [</span><br><span class="line">    &#123;</span><br><span class="line">        children:[</span><br><span class="line">            &#123;value: 118, name: &quot;测试1&quot;, group_value: 4, os: 2&#125;</span><br><span class="line">            &#123;value: 120, name: &quot;测试11&quot;, group_value: 4, os: 2&#125;</span><br><span class="line">            &#123;value: 123, name: &quot;测试111&quot;, group_value: 4, os: 1&#125;</span><br><span class="line">        ]</span><br><span class="line">        name: &quot;测试1111&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        children:[</span><br><span class="line">            &#123;value: 118, name: &quot;测试2&quot;, group_value: 4, os: 2&#125;</span><br><span class="line">            &#123;value: 120, name: &quot;测试22&quot;, group_value: 4, os: 2&#125;</span><br><span class="line">            &#123;value: 123, name: &quot;测试222&quot;, group_value: 4, os: 1&#125;</span><br><span class="line">        ]</span><br><span class="line">        name: &quot;测试2222&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var productArr &#x3D; JSON.parse(JSON.stringify(appList).replace(&#x2F;list&#x2F;g, &#39;children&#39;));</span><br><span class="line">productArr &#x3D; JSON.parse(JSON.stringify(productArr).replace(&#x2F;id&#x2F;g, &#39;value&#39;));</span><br></pre></td></tr></table></figure>
+<h6 id="【参考】：-js高效修改对象数组里的对象属性名"><a href="#【参考】：-js高效修改对象数组里的对象属性名" class="headerlink" title="【参考】： js高效修改对象数组里的对象属性名"></a>【参考】： <a target="_blank" rel="noopener" href="https://blog.csdn.net/Mr_JavaScript/article/details/85236957">js高效修改对象数组里的对象属性名</a></h6><h3 id="数组相减"><a href="#数组相减" class="headerlink" title="数组相减"></a>数组相减</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;数组相减函数</span><br><span class="line">function array_diff(a, b) &#123;</span><br><span class="line">    &#x2F;&#x2F;拷贝数组</span><br><span class="line">    var arr &#x3D; [].concat(a);</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 数组相减</span><br><span class="line">    for (var i &#x3D; 0; i &lt; b.length; i++) &#123;</span><br><span class="line">        for (var j &#x3D; 0; j &lt; arr.length; j++) &#123;</span><br><span class="line">            if (arr[j][&quot;id&quot;] &#x3D;&#x3D; b[i][&quot;id&quot;]) &#123;</span><br><span class="line">                arr.splice(j, 1);</span><br><span class="line">                j &#x3D; j - 1;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return arr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="JS-模拟浏览器-F5-自动刷新页面效果"><a href="#JS-模拟浏览器-F5-自动刷新页面效果" class="headerlink" title="JS 模拟浏览器 F5 自动刷新页面效果"></a>JS 模拟浏览器 F5 自动刷新页面效果</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">1. window.location.replace(window.location.href);</span><br><span class="line"></span><br><span class="line">2. window.location.href &#x3D; window.location.href;</span><br><span class="line"></span><br><span class="line">3. window.document.location.reload();</span><br><span class="line"> </span><br><span class="line">有iframe的使用这个：</span><br><span class="line">4. window.top.document.location.reload();</span><br><span class="line"> </span><br><span class="line">5.window.top.document.location &#x3D; “url”</span><br><span class="line"></span><br><span class="line">6.window.document.location. &#x3D; “url”</span><br></pre></td></tr></table></figure>
+<h4 id="对象格式转换"><a href="#对象格式转换" class="headerlink" title="对象格式转换"></a>对象格式转换</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">var data &#x3D; [</span><br><span class="line">    &#123;</span><br><span class="line">        id:&#39;aaaaaa&#39;,</span><br><span class="line">        title: &#39;技术团队&#39;,</span><br><span class="line">        description: &#39;这就是技术&#39;,</span><br><span class="line">        keywords: &#39;技术团队&#39;,</span><br><span class="line">        pid: &quot;0&quot;,</span><br><span class="line">        add_time: &quot;&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        id:&#39;bbbb&#39;,</span><br><span class="line">        title: &#39;技术团队&#39;,</span><br><span class="line">        description: &#39;这就是技术&#39;,</span><br><span class="line">        keywords: &#39;技术团队&#39;,</span><br><span class="line">        pid: &quot;1&quot;,</span><br><span class="line">        add_time: &quot;&quot;</span><br><span class="line">    &#125;</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line">转为这样的格式：</span><br><span class="line">var idPidArr &#x3D; &#123;</span><br><span class="line">    aaaaaa: &quot;0&quot;,</span><br><span class="line">    bbbb: &quot;1&quot;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">代码：</span><br><span class="line">var idPidArr &#x3D; &#123;&#125;;</span><br><span class="line">for(var i &#x3D; 0; i&lt; data.length; i++)&#123;</span><br><span class="line"></span><br><span class="line">    idPidArr[data[i].id] &#x3D; data[i].pid;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.log(idPidArr);</span><br></pre></td></tr></table></figure>
+<h4 id="控制滚动条滚动到某个位置"><a href="#控制滚动条滚动到某个位置" class="headerlink" title="控制滚动条滚动到某个位置"></a>控制滚动条滚动到某个位置</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">document.getElementById(&#39;scrollBox&#39;).scrollTop &#x3D; $(el).offset().top;</span><br><span class="line"></span><br><span class="line">scrollBox：滚动的盒子的id</span><br><span class="line">$(el).offset().top: 元素的位置</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Javascript/" rel="tag"># Javascript</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/03/19/%E5%9C%A8Vue%E9%A1%B9%E7%9B%AE%E4%B8%AD%E4%BD%BF%E7%94%A8sass%E7%9A%84%E9%85%8D%E7%BD%AE%E6%96%B9%E6%B3%95/" rel="prev" title="在Vue项目中使用sass的配置方法">
+      <i class="fa fa-chevron-left"></i> 在Vue项目中使用sass的配置方法
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/05/25/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" rel="next" title="常用命令">
+      常用命令 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#js-%E5%88%A4%E6%96%AD%E6%9F%90%E5%8F%98%E9%87%8F%E7%9A%84%E5%80%BC%E6%98%AF%E5%90%A6%E7%AD%89%E4%BA%8E%E6%9F%90%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E4%B8%80%E4%B8%AA%E5%85%83%E7%B4%A0"><span class="nav-number">1.</span> <span class="nav-text">js:判断某变量的值是否等于某数组中的一个元素</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E3%80%90%E5%8F%82%E8%80%83%E3%80%91%EF%BC%9A-js-%E5%88%A4%E6%96%AD%E6%9F%90%E5%8F%98%E9%87%8F%E7%9A%84%E5%80%BC%E6%98%AF%E5%90%A6%E7%AD%89%E4%BA%8E%E6%9F%90%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E4%B8%80%E4%B8%AA%E5%85%83%E7%B4%A0"><span class="nav-number">1.0.0.0.1.</span> <span class="nav-text">【参考】： js:判断某变量的值是否等于某数组中的一个元素</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#js%E9%AB%98%E6%95%88%E4%BF%AE%E6%94%B9%E5%AF%B9%E8%B1%A1%E6%95%B0%E7%BB%84%E9%87%8C%E7%9A%84%E5%AF%B9%E8%B1%A1%E5%B1%9E%E6%80%A7%E5%90%8D"><span class="nav-number">2.</span> <span class="nav-text">js高效修改对象数组里的对象属性名</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E3%80%90%E5%8F%82%E8%80%83%E3%80%91%EF%BC%9A-js%E9%AB%98%E6%95%88%E4%BF%AE%E6%94%B9%E5%AF%B9%E8%B1%A1%E6%95%B0%E7%BB%84%E9%87%8C%E7%9A%84%E5%AF%B9%E8%B1%A1%E5%B1%9E%E6%80%A7%E5%90%8D"><span class="nav-number">2.0.0.0.1.</span> <span class="nav-text">【参考】： js高效修改对象数组里的对象属性名</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%E7%9B%B8%E5%87%8F"><span class="nav-number">2.1.</span> <span class="nav-text">数组相减</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#JS-%E6%A8%A1%E6%8B%9F%E6%B5%8F%E8%A7%88%E5%99%A8-F5-%E8%87%AA%E5%8A%A8%E5%88%B7%E6%96%B0%E9%A1%B5%E9%9D%A2%E6%95%88%E6%9E%9C"><span class="nav-number">2.1.1.</span> <span class="nav-text">JS 模拟浏览器 F5 自动刷新页面效果</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AF%B9%E8%B1%A1%E6%A0%BC%E5%BC%8F%E8%BD%AC%E6%8D%A2"><span class="nav-number">2.1.2.</span> <span class="nav-text">对象格式转换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8E%A7%E5%88%B6%E6%BB%9A%E5%8A%A8%E6%9D%A1%E6%BB%9A%E5%8A%A8%E5%88%B0%E6%9F%90%E4%B8%AA%E4%BD%8D%E7%BD%AE"><span class="nav-number">2.1.3.</span> <span class="nav-text">控制滚动条滚动到某个位置</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="winney"
+      src="/images/header.jpg">
+  <p class="site-author-name" itemprop="name">winney</p>
+  <div class="site-description" itemprop="description">Doing is better than saying.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">62</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">30</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">29</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://www.xiaochao.me/" title="https:&#x2F;&#x2F;www.xiaochao.me&#x2F;" rel="noopener" target="_blank">小超</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://winney07.github.io/" title="https:&#x2F;&#x2F;winney07.github.io&#x2F;" rel="noopener" target="_blank">winney07</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">winney</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

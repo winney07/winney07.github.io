@@ -8,7 +8,49 @@ categories:
 - layui
 ---
 
-### 修改了layui表格的内容，不刷新页面，只刷新表格内容，页码不刷新解决方法
+#### 判断复选框是否选中(获取复选框的值)
+
+```
+data.elem.checked
+```
+
+#### 设置layer-alert和layer-comfirm为不可resize
+
+```
+将resize参数设置为false
+```
+
+#### 导出excel表格
+
+```
+var ins1 = table.render ({
+	elem: '#demo '
+	,id: 'test'
+	...
+})
+// 将上述表格示例导出为csv文件
+table.exportFile(ins1.config.id，data) ; // data为该实例中的任意数量的数据
+```
+
+{% asset_img note1.png %}
+
+#### 导出excel表格时，去掉页面表头显示的小图标
+
+{% asset_img note2.png %}
+
+{% asset_img note3.png %}
+
+{% asset_img note4.png %}
+
+> 点击下载时，将表格的头部图标去掉，执行了下载表格的函数之后，将表头的图标加上。
+> 注意：由于表头cols是对象，指向地址，修改了，会影响全局的（例如：点击时间间隔时会拿到去掉图标的表头）
+> 解决：（保留原来的不加以修改的表头数据）
+
+#### 修改重载表格时的加载图标
+
+
+
+#### 修改了layui表格的内容，不刷新页面，只刷新表格内容，页码不刷新解决方法
 
 ```
 function render_table(tabledata, cur) {
@@ -28,7 +70,7 @@ var curr = $(".layui-laypage-skip input").val();
 render_table(res.data, curr);
 
 ```
-### layui同时清空多个表单元素的值
+#### layui同时清空多个表单元素的值
 ```
 1、 form 加上 lay-filter属性  lay-filter="group_form"
 2、 

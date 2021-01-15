@@ -290,7 +290,11 @@
     在github仓库的hexo分支可以看到备份的源文件
     ```
 
+27. 修改博客网页添加到手机主屏幕的显示图标
 
+    themes里面的apple-touch-icon-next.png
+
+    
 
 > hexo d 部署的代码到main分支，也就是博客网页访问的内容
 >

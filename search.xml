@@ -101,21 +101,6 @@
       </tags>
   </entry>
   <entry>
-    <title>FastAdmin框架-使用笔记</title>
-    <url>/2020/07/24/FastAdmin%E6%A1%86%E6%9E%B6-%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h3 id="在FastAdmin动态追加bootstrap-select下拉列表"><a href="#在FastAdmin动态追加bootstrap-select下拉列表" class="headerlink" title="在FastAdmin动态追加bootstrap-select下拉列表"></a>在FastAdmin动态追加bootstrap-select下拉列表</h3>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;select data-rule&#x3D;&quot;required&quot; class&#x3D;&quot;form-control selectpicker&quot; data-live-search&#x3D;&quot;true&quot; name&#x3D;&quot;row[admin_role_name]&quot; data-url&#x3D;&quot;&quot; data-query-name&#x3D;&quot;&quot;&gt; &lt;&#x2F;select&gt;</span><br><span class="line"></span><br><span class="line">注：data-live-search&#x3D;&quot;true&quot;是添加可以模糊搜索功能</span><br></pre></td></tr></table></figure>
-<p>关键代码：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">define([&#39;jquery&#39;, &#39;bootstrap&#39;, &#39;backend&#39;, &#39;table&#39;, &#39;form&#39;], function ($, undefined, Backend, Table, Form) &#123;</span><br><span class="line">    var Controller &#x3D; &#123;</span><br><span class="line">      ......</span><br><span class="line">      ......</span><br><span class="line">      add: function () &#123;</span><br><span class="line">            &#x2F;&#x2F;关键代码：（要引入）</span><br><span class="line">            require([&#39;bootstrap-select&#39;, &#39;bootstrap-select-lang&#39;]);</span><br><span class="line"></span><br><span class="line">            &#x2F;&#x2F;渲染下拉框</span><br><span class="line">            var renderselect &#x3D; function (select, data, defaultOpt) &#123;</span><br><span class="line">                if(defaultOpt &amp;&amp; data.length&gt;0) &#123;</span><br><span class="line">                    var opt &#x3D; &#39;&lt;option value&#x3D;&quot;&quot;&gt;&#39; + defaultOpt + &#39;&lt;&#x2F;option&gt;&#39;;</span><br><span class="line">                &#125;</span><br><span class="line">                var html &#x3D; [opt] || [];</span><br><span class="line">                for (var i &#x3D; 0; i &lt; data.length; i++) &#123;</span><br><span class="line">                    html.push(&quot;&lt;option value&#x3D;&#39;&quot; + data[i] + &quot;&#39;&gt;&quot; + data[i] + &quot;&lt;&#x2F;option&gt;&quot;);</span><br><span class="line">                &#125;</span><br><span class="line">                $(select).html(html.join(&quot;&quot;));</span><br><span class="line">                $(&quot;.selectpicker&quot;).selectpicker(&#39;refresh&#39;);</span><br><span class="line">                return select;</span><br><span class="line">            &#125;;</span><br><span class="line"></span><br><span class="line">           $(&quot;select[name&#x3D;&#39;row[server_id]&#39;]&quot;).change(function () &#123;</span><br><span class="line">                var admin_id &#x3D; $(&quot;select[name&#x3D;&#39;row[admin_id]&#39;]&quot;).val();</span><br><span class="line">                var app_id &#x3D; $(&quot;select[name&#x3D;&#39;row[app_id]&#39;]&quot;).val();</span><br><span class="line">                var server_id &#x3D; $(&quot;select[name&#x3D;&#39;row[server_id]&#39;]&quot;).val();</span><br><span class="line"></span><br><span class="line">                $.ajax(&#123;</span><br><span class="line">                    url: &#39;&#x2F;admin&#x2F;boon&#x2F;resource&#x2F;role_name_lise&#39;,</span><br><span class="line">                    data: &#123;admin_id: admin_id, app_id: app_id, server_id: server_id&#125;,</span><br><span class="line">                    type: &#39;get&#39;,</span><br><span class="line">                    dataType: &#39;json&#39;,</span><br><span class="line">                    success: function (data, textStatus, xhr) &#123;</span><br><span class="line">                        var list &#x3D; data.data.list;</span><br><span class="line"></span><br><span class="line">                        renderselect($(&quot;select[name&#x3D;&#39;row[admin_role_name]&#39;]&quot;), list, &quot;请选择测试角色名&quot;);</span><br><span class="line">                        renderselect($(&quot;select[name&#x3D;&#39;row[player_role_name]&#39;]&quot;), list, &quot;请选择玩家角色名&quot;);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;);</span><br><span class="line">           &#125;);</span><br><span class="line">            </span><br><span class="line">           $(&quot;select[name&#x3D;&#39;row[admin_id]&#39;], select[name&#x3D;&#39;row[app_id]&#39;]&quot;).change(function () &#123;</span><br><span class="line">               console.log(&quot;dianji&quot;)</span><br><span class="line">               var list &#x3D; [];</span><br><span class="line">                renderselect($(&quot;select[name&#x3D;&#39;row[admin_role_name]&#39;]&quot;), list);</span><br><span class="line">                renderselect($(&quot;select[name&#x3D;&#39;row[player_role_name]&#39;]&quot;), list);</span><br><span class="line">           &#125;); </span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>工作笔记</category>
-        <category>FastAdmin框架</category>
-      </categories>
-      <tags>
-        <tag>FastAdmin框架</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>ES6-基础课程2</title>
     <url>/2019/07/16/ES6-%E5%9F%BA%E7%A1%80%E8%AF%BE%E7%A8%8B2/</url>
     <content><![CDATA[<h4 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">var   = variable 变量   声明全局变量</span><br><span class="line"><span class="built_in">let</span>   = 假设</span><br><span class="line">const = 常量</span><br></pre></td></tr></table></figure>
@@ -148,6 +133,21 @@
       </categories>
       <tags>
         <tag>ES6</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>FastAdmin框架-使用笔记</title>
+    <url>/2020/07/24/FastAdmin%E6%A1%86%E6%9E%B6-%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h3 id="在FastAdmin动态追加bootstrap-select下拉列表"><a href="#在FastAdmin动态追加bootstrap-select下拉列表" class="headerlink" title="在FastAdmin动态追加bootstrap-select下拉列表"></a>在FastAdmin动态追加bootstrap-select下拉列表</h3>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;select data-rule&#x3D;&quot;required&quot; class&#x3D;&quot;form-control selectpicker&quot; data-live-search&#x3D;&quot;true&quot; name&#x3D;&quot;row[admin_role_name]&quot; data-url&#x3D;&quot;&quot; data-query-name&#x3D;&quot;&quot;&gt; &lt;&#x2F;select&gt;</span><br><span class="line"></span><br><span class="line">注：data-live-search&#x3D;&quot;true&quot;是添加可以模糊搜索功能</span><br></pre></td></tr></table></figure>
+<p>关键代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">define([&#39;jquery&#39;, &#39;bootstrap&#39;, &#39;backend&#39;, &#39;table&#39;, &#39;form&#39;], function ($, undefined, Backend, Table, Form) &#123;</span><br><span class="line">    var Controller &#x3D; &#123;</span><br><span class="line">      ......</span><br><span class="line">      ......</span><br><span class="line">      add: function () &#123;</span><br><span class="line">            &#x2F;&#x2F;关键代码：（要引入）</span><br><span class="line">            require([&#39;bootstrap-select&#39;, &#39;bootstrap-select-lang&#39;]);</span><br><span class="line"></span><br><span class="line">            &#x2F;&#x2F;渲染下拉框</span><br><span class="line">            var renderselect &#x3D; function (select, data, defaultOpt) &#123;</span><br><span class="line">                if(defaultOpt &amp;&amp; data.length&gt;0) &#123;</span><br><span class="line">                    var opt &#x3D; &#39;&lt;option value&#x3D;&quot;&quot;&gt;&#39; + defaultOpt + &#39;&lt;&#x2F;option&gt;&#39;;</span><br><span class="line">                &#125;</span><br><span class="line">                var html &#x3D; [opt] || [];</span><br><span class="line">                for (var i &#x3D; 0; i &lt; data.length; i++) &#123;</span><br><span class="line">                    html.push(&quot;&lt;option value&#x3D;&#39;&quot; + data[i] + &quot;&#39;&gt;&quot; + data[i] + &quot;&lt;&#x2F;option&gt;&quot;);</span><br><span class="line">                &#125;</span><br><span class="line">                $(select).html(html.join(&quot;&quot;));</span><br><span class="line">                $(&quot;.selectpicker&quot;).selectpicker(&#39;refresh&#39;);</span><br><span class="line">                return select;</span><br><span class="line">            &#125;;</span><br><span class="line"></span><br><span class="line">           $(&quot;select[name&#x3D;&#39;row[server_id]&#39;]&quot;).change(function () &#123;</span><br><span class="line">                var admin_id &#x3D; $(&quot;select[name&#x3D;&#39;row[admin_id]&#39;]&quot;).val();</span><br><span class="line">                var app_id &#x3D; $(&quot;select[name&#x3D;&#39;row[app_id]&#39;]&quot;).val();</span><br><span class="line">                var server_id &#x3D; $(&quot;select[name&#x3D;&#39;row[server_id]&#39;]&quot;).val();</span><br><span class="line"></span><br><span class="line">                $.ajax(&#123;</span><br><span class="line">                    url: &#39;&#x2F;admin&#x2F;boon&#x2F;resource&#x2F;role_name_lise&#39;,</span><br><span class="line">                    data: &#123;admin_id: admin_id, app_id: app_id, server_id: server_id&#125;,</span><br><span class="line">                    type: &#39;get&#39;,</span><br><span class="line">                    dataType: &#39;json&#39;,</span><br><span class="line">                    success: function (data, textStatus, xhr) &#123;</span><br><span class="line">                        var list &#x3D; data.data.list;</span><br><span class="line"></span><br><span class="line">                        renderselect($(&quot;select[name&#x3D;&#39;row[admin_role_name]&#39;]&quot;), list, &quot;请选择测试角色名&quot;);</span><br><span class="line">                        renderselect($(&quot;select[name&#x3D;&#39;row[player_role_name]&#39;]&quot;), list, &quot;请选择玩家角色名&quot;);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;);</span><br><span class="line">           &#125;);</span><br><span class="line">            </span><br><span class="line">           $(&quot;select[name&#x3D;&#39;row[admin_id]&#39;], select[name&#x3D;&#39;row[app_id]&#39;]&quot;).change(function () &#123;</span><br><span class="line">               console.log(&quot;dianji&quot;)</span><br><span class="line">               var list &#x3D; [];</span><br><span class="line">                renderselect($(&quot;select[name&#x3D;&#39;row[admin_role_name]&#39;]&quot;), list);</span><br><span class="line">                renderselect($(&quot;select[name&#x3D;&#39;row[player_role_name]&#39;]&quot;), list);</span><br><span class="line">           &#125;); </span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>工作笔记</category>
+        <category>FastAdmin框架</category>
+      </categories>
+      <tags>
+        <tag>FastAdmin框架</tag>
       </tags>
   </entry>
   <entry>
@@ -416,6 +416,32 @@
       </tags>
   </entry>
   <entry>
+    <title>IE浏览器table中的TD无数据边框不显示问题</title>
+    <url>/2019/07/19/IE%E6%B5%8F%E8%A7%88%E5%99%A8table%E4%B8%AD%E7%9A%84TD%E6%97%A0%E6%95%B0%E6%8D%AE%E8%BE%B9%E6%A1%86%E4%B8%8D%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<p>在IE(目前发现是ie9,ie10)浏览器下，无数据的时候：</p>
+<img src="/2019/07/19/IE%E6%B5%8F%E8%A7%88%E5%99%A8table%E4%B8%AD%E7%9A%84TD%E6%97%A0%E6%95%B0%E6%8D%AE%E8%BE%B9%E6%A1%86%E4%B8%8D%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98/1.png" class="">
+<p>原先代码：<br>合并单元格：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;tr&gt;&lt;td colspan=<span class="string">&quot;4&quot;</span>&gt;暂无数据&lt;/td&gt;&lt;/tr&gt;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>结构代码：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;div class=<span class="string">&quot;layui-clear&quot;</span>&gt;</span><br><span class="line">    &lt;div class=<span class="string">&quot;layui-table-body&quot;</span> id=<span class="string">&quot;table-body&quot;</span>&gt;</span><br><span class="line">    //表格模板</span><br><span class="line">    &lt;include file=<span class="string">&quot;GlobalConfig/lib_table_platform_sdk&quot;</span> /&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>解决方案：<br>将合并单元格的代码改为：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;tr&gt;</span><br><span class="line">    &lt;td style=<span class="string">&quot;border:0;&quot;</span>&gt;&amp;nbsp;&lt;/td&gt;</span><br><span class="line">    &lt;td style=<span class="string">&quot;border:0;&quot;</span>&gt;&lt;p class=<span class="string">&quot;no-table-data&quot;</span>&gt;暂无数据&lt;/p&gt;&lt;/td&gt;</span><br><span class="line">    &lt;td style=<span class="string">&quot;border:0;&quot;</span>&gt;&amp;nbsp;&lt;/td&gt;</span><br><span class="line">    &lt;td style=<span class="string">&quot;border:0;&quot;</span>&gt;&amp;nbsp;&lt;/td&gt;</span><br><span class="line">&lt;/tr&gt;</span><br></pre></td></tr></table></figure>
+<p>由于无数据的情况下，“暂无数据”的显示都是相对于表头相同的位置，所以可以考虑使用定位来做。<br>同时要保证每个td里面都要有内容，所以使用空格符来代替。<br>添加样式：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">.layui-clear&#123;</span><br><span class="line">  position: relative;</span><br><span class="line">&#125;</span><br><span class="line">.no-table-data&#123;</span><br><span class="line">  position: absolute;</span><br><span class="line">  left:50%; </span><br><span class="line">  margin-left:-24px;</span><br><span class="line">  top:73px; </span><br><span class="line">  color: <span class="comment">#263248;</span></span><br><span class="line">  font-size: 12px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="第二种解决方案"><a href="#第二种解决方案" class="headerlink" title="第二种解决方案"></a>第二种解决方案</h6><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">table&#123;border-collapse: separate;&#125;</span><br><span class="line"></span><br><span class="line">这种方法，表格的边框会比较粗。还是不太能解决。</span><br></pre></td></tr></table></figure>
+<p>思路参考：<a href="https://blog.csdn.net/da_zhuang/article/details/8736662" title="" target="">IE浏览器table中的TD无数据边框不显示问题</a></p>
+<p>（使用表格的样式设置，解决不了，所以才用了定位的方法。若有更好的方法，可以给我留言。）</p>
+]]></content>
+      <categories>
+        <category>工作笔记</category>
+        <category>兼容</category>
+      </categories>
+      <tags>
+        <tag>兼容</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Javascript方法</title>
     <url>/2020/04/07/Javascript%E6%96%B9%E6%B3%95/</url>
     <content><![CDATA[<h4 id="判断某变量的值是否等于某数组中的一个元素"><a href="#判断某变量的值是否等于某数组中的一个元素" class="headerlink" title="判断某变量的值是否等于某数组中的一个元素"></a>判断某变量的值是否等于某数组中的一个元素</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">示例：</span><br><span class="line"></span><br><span class="line">function IsInArray(arr,val)&#123;</span><br><span class="line">var testStr&#x3D;&#39;,&#39;+arr.join(&quot;,&quot;)+&quot;,&quot;;</span><br><span class="line">return testStr.indexOf(&quot;,&quot;+val+&quot;,&quot;)!&#x3D;-1;</span><br><span class="line">&#125;</span><br><span class="line">var test&#x3D;[&#39;a&#39;,23,-1];</span><br><span class="line">alert(IsInArray(test,&#39;a&#39;));&#x2F;&#x2F;true</span><br><span class="line">alert(IsInArray(test,2));&#x2F;&#x2F;false</span><br><span class="line">alert(IsInArray(test,-1));&#x2F;&#x2F;true</span><br></pre></td></tr></table></figure>
@@ -510,32 +536,6 @@
       </tags>
   </entry>
   <entry>
-    <title>IE浏览器table中的TD无数据边框不显示问题</title>
-    <url>/2019/07/19/IE%E6%B5%8F%E8%A7%88%E5%99%A8table%E4%B8%AD%E7%9A%84TD%E6%97%A0%E6%95%B0%E6%8D%AE%E8%BE%B9%E6%A1%86%E4%B8%8D%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<p>在IE(目前发现是ie9,ie10)浏览器下，无数据的时候：</p>
-<img src="/2019/07/19/IE%E6%B5%8F%E8%A7%88%E5%99%A8table%E4%B8%AD%E7%9A%84TD%E6%97%A0%E6%95%B0%E6%8D%AE%E8%BE%B9%E6%A1%86%E4%B8%8D%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98/1.png" class="">
-<p>原先代码：<br>合并单元格：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;tr&gt;&lt;td colspan=<span class="string">&quot;4&quot;</span>&gt;暂无数据&lt;/td&gt;&lt;/tr&gt;</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<p>结构代码：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;div class=<span class="string">&quot;layui-clear&quot;</span>&gt;</span><br><span class="line">    &lt;div class=<span class="string">&quot;layui-table-body&quot;</span> id=<span class="string">&quot;table-body&quot;</span>&gt;</span><br><span class="line">    //表格模板</span><br><span class="line">    &lt;include file=<span class="string">&quot;GlobalConfig/lib_table_platform_sdk&quot;</span> /&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
-<p>解决方案：<br>将合并单元格的代码改为：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;tr&gt;</span><br><span class="line">    &lt;td style=<span class="string">&quot;border:0;&quot;</span>&gt;&amp;nbsp;&lt;/td&gt;</span><br><span class="line">    &lt;td style=<span class="string">&quot;border:0;&quot;</span>&gt;&lt;p class=<span class="string">&quot;no-table-data&quot;</span>&gt;暂无数据&lt;/p&gt;&lt;/td&gt;</span><br><span class="line">    &lt;td style=<span class="string">&quot;border:0;&quot;</span>&gt;&amp;nbsp;&lt;/td&gt;</span><br><span class="line">    &lt;td style=<span class="string">&quot;border:0;&quot;</span>&gt;&amp;nbsp;&lt;/td&gt;</span><br><span class="line">&lt;/tr&gt;</span><br></pre></td></tr></table></figure>
-<p>由于无数据的情况下，“暂无数据”的显示都是相对于表头相同的位置，所以可以考虑使用定位来做。<br>同时要保证每个td里面都要有内容，所以使用空格符来代替。<br>添加样式：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">.layui-clear&#123;</span><br><span class="line">  position: relative;</span><br><span class="line">&#125;</span><br><span class="line">.no-table-data&#123;</span><br><span class="line">  position: absolute;</span><br><span class="line">  left:50%; </span><br><span class="line">  margin-left:-24px;</span><br><span class="line">  top:73px; </span><br><span class="line">  color: <span class="comment">#263248;</span></span><br><span class="line">  font-size: 12px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h6 id="第二种解决方案"><a href="#第二种解决方案" class="headerlink" title="第二种解决方案"></a>第二种解决方案</h6><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">table&#123;border-collapse: separate;&#125;</span><br><span class="line"></span><br><span class="line">这种方法，表格的边框会比较粗。还是不太能解决。</span><br></pre></td></tr></table></figure>
-<p>思路参考：<a href="https://blog.csdn.net/da_zhuang/article/details/8736662" title="" target="">IE浏览器table中的TD无数据边框不显示问题</a></p>
-<p>（使用表格的样式设置，解决不了，所以才用了定位的方法。若有更好的方法，可以给我留言。）</p>
-]]></content>
-      <categories>
-        <category>工作笔记</category>
-        <category>兼容</category>
-      </categories>
-      <tags>
-        <tag>兼容</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Parcel打包TypeScript</title>
     <url>/2020/11/12/Parcel%E6%89%93%E5%8C%85TypeScript/</url>
     <content><![CDATA[<h4 id="用-Parcel-打包-TypeScript-代码"><a href="#用-Parcel-打包-TypeScript-代码" class="headerlink" title="用 Parcel 打包 TypeScript 代码"></a>用 Parcel 打包 TypeScript 代码</h4><blockquote>
@@ -604,73 +604,6 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cnpm install -g ts-node </span><br></pre></td></tr></table></figure>
 <p>即可直接输入以下语句执行：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ts-node Demo1.ts</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>工作笔记</category>
-        <category>TypeScript</category>
-      </categories>
-      <tags>
-        <tag>TypeScript</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>TypeScript函数泛型-难点</title>
-    <url>/2020/11/11/TypeScript%E6%B3%9B%E5%9E%8B-%E9%9A%BE%E7%82%B9/</url>
-    <content><![CDATA[<h4 id="TypeScript-函数泛型-难点"><a href="#TypeScript-函数泛型-难点" class="headerlink" title="TypeScript 函数泛型-难点"></a>TypeScript 函数泛型-难点</h4><blockquote>
-<h4 id="编写一个联合类型-Demo"><a href="#编写一个联合类型-Demo" class="headerlink" title="编写一个联合类型 Demo"></a>编写一个联合类型 Demo</h4></blockquote>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">join</span>(<span class="params">first: string | number, second: string | number</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;first&#125;</span><span class="subst">$&#123;second&#125;</span>`</span>;</span><br><span class="line">&#125;</span><br><span class="line">join(<span class="string">&quot;jspang&quot;</span>, <span class="string">&quot;.com&quot;</span>);</span><br></pre></td></tr></table></figure>
-<p>那现在所学的知识就完成不了啦，所以需要学习<code>泛型</code>来解决这个问题。</p>
-<blockquote>
-<h4 id="初始泛型概念-generic"><a href="#初始泛型概念-generic" class="headerlink" title="初始泛型概念-generic"></a>初始泛型概念-generic</h4></blockquote>
-<blockquote>
-<p>泛型：[generic - 通用、泛指的意思],那最简单的理解，泛型就是泛指的类型。</p>
-</blockquote>
-<p>泛型的定义使用<code>&lt;&gt;</code>（尖角号）进行定义的</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">join</span>&lt;<span class="title">JSPang</span>&gt;(<span class="params">first: JSPang, second: JSPang</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;first&#125;</span><span class="subst">$&#123;second&#125;</span>`</span>;</span><br><span class="line">&#125;</span><br><span class="line">join &lt; string &gt; (<span class="string">&quot;jspang&quot;</span>, <span class="string">&quot;.com&quot;</span>);</span><br></pre></td></tr></table></figure>
-<p>如果要是<code>number</code>类型，就直接在调用方法的时候进行更改就可以了。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">join &lt; number &gt; (<span class="number">1</span>, <span class="number">2</span>);</span><br></pre></td></tr></table></figure>
-<blockquote>
-<h4 id="泛型中数组的使用"><a href="#泛型中数组的使用" class="headerlink" title="泛型中数组的使用"></a>泛型中数组的使用</h4></blockquote>
-<p>如果传递过来的值要求是数字，如何用泛型进行定义那?两种方法，第一种是直接使用<code>[]</code>，第二种是使用<code>Array&lt;泛型&gt;</code>。形式不一样，其他的都一样。</p>
-<p>第一种写法：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFun</span>&lt;<span class="title">ANY</span>&gt;(<span class="params">params: ANY[]</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> params;</span><br><span class="line">&#125;</span><br><span class="line">myFun &lt; string &gt; [<span class="string">&quot;123&quot;</span>, <span class="string">&quot;456&quot;</span>];</span><br></pre></td></tr></table></figure>
-<p>第二种写法：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFun</span>&lt;<span class="title">ANY</span>&gt;(<span class="params">params: <span class="built_in">Array</span>&lt;ANY&gt;</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> params;</span><br><span class="line">&#125;</span><br><span class="line">myFun &lt; string &gt; [<span class="string">&quot;123&quot;</span>, <span class="string">&quot;456&quot;</span>];</span><br></pre></td></tr></table></figure>
-<p>在工作中，我们经常使用<code>&lt;T&gt;</code>来作泛型的表示</p>
-<blockquote>
-<h4 id="多个泛型的定义"><a href="#多个泛型的定义" class="headerlink" title="多个泛型的定义"></a>多个泛型的定义</h4></blockquote>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">join</span>&lt;<span class="title">T</span>, <span class="title">P</span>&gt;(<span class="params">first: T, second: P</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;first&#125;</span><span class="subst">$&#123;second&#125;</span>`</span>;</span><br><span class="line">&#125;</span><br><span class="line">join &lt; number, string &gt; (<span class="number">1</span>, <span class="string">&quot;2&quot;</span>);</span><br></pre></td></tr></table></figure>
-<blockquote>
-<h4 id="泛型的类型推断"><a href="#泛型的类型推断" class="headerlink" title="泛型的类型推断"></a>泛型的类型推断</h4></blockquote>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">join</span>&lt;<span class="title">T</span>, <span class="title">P</span>&gt;(<span class="params">first: T, second: P</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;first&#125;</span><span class="subst">$&#123;second&#125;</span>`</span>;</span><br><span class="line">&#125;</span><br><span class="line">join(<span class="number">1</span>, <span class="string">&quot;2&quot;</span>);</span><br></pre></td></tr></table></figure>
-<p>不建议大量使用类型推断，这会让你的代码易读和健壮性都会下降</p>
-<h4 id="TypeScript-类中泛型-难点"><a href="#TypeScript-类中泛型-难点" class="headerlink" title="TypeScript 类中泛型-难点"></a>TypeScript 类中泛型-难点</h4><blockquote>
-<h4 id="编写一个基本类"><a href="#编写一个基本类" class="headerlink" title="编写一个基本类"></a>编写一个基本类</h4></blockquote>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SelectGirl</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">private girls: string[]</span>)</span> &#123;&#125;</span><br><span class="line">  getGirl(index: number): string &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.girls[index];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> selectGirl = <span class="keyword">new</span> SelectGirl([<span class="string">&quot;大脚&quot;</span>, <span class="string">&quot;刘英&quot;</span>, <span class="string">&quot;晓红&quot;</span>]);</span><br><span class="line"><span class="built_in">console</span>.log(selectGirl.getGirl(<span class="number">1</span>));</span><br></pre></td></tr></table></figure>
-<p>在 TypeScript 中，编写复杂代码的时候，会经常使用泛型。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SelectGirl</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">private girls: string[] | number[]</span>)</span> &#123;&#125;</span><br><span class="line">  getGirl(index: number): string | number &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.girls[index];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<h4 id="初始类的泛型"><a href="#初始类的泛型" class="headerlink" title="初始类的泛型"></a>初始类的泛型</h4></blockquote>
-<p>用<code>&lt;&gt;</code>编写</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SelectGirl</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">private girls: T[]</span>)</span> &#123;&#125;</span><br><span class="line">  getGirl(index: number): T &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.girls[index];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> selectGirl = <span class="keyword">new</span> SelectGirl([<span class="string">&quot;大脚&quot;</span>, <span class="string">&quot;刘英&quot;</span>, <span class="string">&quot;晓红&quot;</span>]);</span><br><span class="line"><span class="built_in">console</span>.log(selectGirl.getGirl(<span class="number">1</span>));</span><br></pre></td></tr></table></figure>
-<p>这时候代码并不报错，也使用了泛型，但是在实例化对象的时候，TypeScript 是通过类型推断出来的。这种方法并不好，所以还是需要在实例化对象的时候，对泛型的值进行确定，比如是<code>string</code>类型，就这样写。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> selectGirl = <span class="keyword">new</span> SelectGirl() &lt; string &gt; [<span class="string">&quot;大脚&quot;</span>, <span class="string">&quot;刘英&quot;</span>, <span class="string">&quot;晓红&quot;</span>];</span><br></pre></td></tr></table></figure>
-<blockquote>
-<h4 id="泛型中的继承"><a href="#泛型中的继承" class="headerlink" title="泛型中的继承"></a>泛型中的继承</h4></blockquote>
-<p>现在需求又变了，要求返回是一个对象中的<code>name</code>,也就是下面的代码要改成这个样子。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">return</span> <span class="built_in">this</span>.girls[index].name;</span><br></pre></td></tr></table></figure>
-<p>现在的代码一定时报错的，但是这时候还要求我们这么做，意思就是说传递过来的值必须是一个对象类型的，里边还要有<code>name</code>属性。这时候就要用到继承了，我用接口的方式来实现。写一个<code>Girl</code>的接口，每个接口里都要有 name 属性。代码如下：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">interface Girl &#123;</span><br><span class="line">  name: string;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>有了接口后用<code>extends</code>关键字实现泛型继承，代码如下：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SelectGirl</span>&lt;<span class="title">T</span> <span class="keyword">extends</span> <span class="title">Girl</span>&gt; </span>&#123;</span><br><span class="line"> ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这句代码的意思是泛型里必须有一个<code>name</code>属性，因为它继承了<code>Girl</code>接口。</p>
-<p>现在程序还是报错的，因为我们<code>getGirl</code>方法的返回类型还不对，这时候应该是一个<code>string</code>类型才对，所以代码应该改为下面的样子：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">interface Girl &#123;</span><br><span class="line">  name: string;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SelectGirl</span>&lt;<span class="title">T</span> <span class="keyword">extends</span> <span class="title">Girl</span>&gt; </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">private girls: T[]</span>)</span> &#123;&#125;</span><br><span class="line">  getGirl(index: number): string &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.girls[index].name;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> selectGirl = <span class="keyword">new</span> SelectGirl([</span><br><span class="line">  &#123; <span class="attr">name</span>: <span class="string">&quot;大脚&quot;</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">name</span>: <span class="string">&quot;刘英&quot;</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">name</span>: <span class="string">&quot;晓红&quot;</span> &#125;,</span><br><span class="line">]);</span><br><span class="line"><span class="built_in">console</span>.log(selectGirl.getGirl(<span class="number">1</span>));</span><br></pre></td></tr></table></figure>
-<blockquote>
-<h4 id="泛型约束"><a href="#泛型约束" class="headerlink" title="泛型约束"></a>泛型约束</h4></blockquote>
-<p>现在的泛型可以是任意类型，可以是对象、字符串、布尔、数字都是可以的。但你现在要求这个泛型必须是<code>string</code>或者<code>number</code>类型。我们还是拿上面的例子，不过把代码改为最初的样子。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SelectGirl</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">private girls: T[]</span>)</span> &#123;&#125;</span><br><span class="line">  getGirl(index: number): T &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.girls[index];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> selectGirl = <span class="keyword">new</span> SelectGirl&lt;string&gt;([<span class="string">&quot;大脚&quot;</span>, <span class="string">&quot;刘英&quot;</span>, <span class="string">&quot;晓红&quot;</span>]);</span><br><span class="line"><span class="built_in">console</span>.log(selectGirl.getGirl(<span class="number">1</span>));</span><br></pre></td></tr></table></figure>
-<p>然后进行约束，这时候还是可以使用关键字<code>extends</code>来进行约束，把代码改成下面的样子。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SelectGirl</span>&lt;<span class="title">T</span> <span class="keyword">extends</span> <span class="title">number</span> | <span class="title">string</span>&gt; </span>&#123;</span><br><span class="line">  <span class="comment">//.....</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>工作笔记</category>
         <category>TypeScript</category>
@@ -755,6 +688,73 @@
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    <span class="built_in">require</span>([<span class="string">&quot;page&quot;</span>], <span class="function"><span class="keyword">function</span> (<span class="params">page</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">new</span> page.default();</span><br><span class="line">    &#125;);</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
 <p>当我们有了<code>webpack</code>和<code>Parcel</code>的时候就不会这么麻烦，这些都交给打包工具来处理就好了。</p>
 ]]></content>
+      <categories>
+        <category>工作笔记</category>
+        <category>TypeScript</category>
+      </categories>
+      <tags>
+        <tag>TypeScript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>TypeScript函数泛型-难点</title>
+    <url>/2020/11/11/TypeScript%E6%B3%9B%E5%9E%8B-%E9%9A%BE%E7%82%B9/</url>
+    <content><![CDATA[<h4 id="TypeScript-函数泛型-难点"><a href="#TypeScript-函数泛型-难点" class="headerlink" title="TypeScript 函数泛型-难点"></a>TypeScript 函数泛型-难点</h4><blockquote>
+<h4 id="编写一个联合类型-Demo"><a href="#编写一个联合类型-Demo" class="headerlink" title="编写一个联合类型 Demo"></a>编写一个联合类型 Demo</h4></blockquote>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">join</span>(<span class="params">first: string | number, second: string | number</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;first&#125;</span><span class="subst">$&#123;second&#125;</span>`</span>;</span><br><span class="line">&#125;</span><br><span class="line">join(<span class="string">&quot;jspang&quot;</span>, <span class="string">&quot;.com&quot;</span>);</span><br></pre></td></tr></table></figure>
+<p>那现在所学的知识就完成不了啦，所以需要学习<code>泛型</code>来解决这个问题。</p>
+<blockquote>
+<h4 id="初始泛型概念-generic"><a href="#初始泛型概念-generic" class="headerlink" title="初始泛型概念-generic"></a>初始泛型概念-generic</h4></blockquote>
+<blockquote>
+<p>泛型：[generic - 通用、泛指的意思],那最简单的理解，泛型就是泛指的类型。</p>
+</blockquote>
+<p>泛型的定义使用<code>&lt;&gt;</code>（尖角号）进行定义的</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">join</span>&lt;<span class="title">JSPang</span>&gt;(<span class="params">first: JSPang, second: JSPang</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;first&#125;</span><span class="subst">$&#123;second&#125;</span>`</span>;</span><br><span class="line">&#125;</span><br><span class="line">join &lt; string &gt; (<span class="string">&quot;jspang&quot;</span>, <span class="string">&quot;.com&quot;</span>);</span><br></pre></td></tr></table></figure>
+<p>如果要是<code>number</code>类型，就直接在调用方法的时候进行更改就可以了。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">join &lt; number &gt; (<span class="number">1</span>, <span class="number">2</span>);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<h4 id="泛型中数组的使用"><a href="#泛型中数组的使用" class="headerlink" title="泛型中数组的使用"></a>泛型中数组的使用</h4></blockquote>
+<p>如果传递过来的值要求是数字，如何用泛型进行定义那?两种方法，第一种是直接使用<code>[]</code>，第二种是使用<code>Array&lt;泛型&gt;</code>。形式不一样，其他的都一样。</p>
+<p>第一种写法：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFun</span>&lt;<span class="title">ANY</span>&gt;(<span class="params">params: ANY[]</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> params;</span><br><span class="line">&#125;</span><br><span class="line">myFun &lt; string &gt; [<span class="string">&quot;123&quot;</span>, <span class="string">&quot;456&quot;</span>];</span><br></pre></td></tr></table></figure>
+<p>第二种写法：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFun</span>&lt;<span class="title">ANY</span>&gt;(<span class="params">params: <span class="built_in">Array</span>&lt;ANY&gt;</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> params;</span><br><span class="line">&#125;</span><br><span class="line">myFun &lt; string &gt; [<span class="string">&quot;123&quot;</span>, <span class="string">&quot;456&quot;</span>];</span><br></pre></td></tr></table></figure>
+<p>在工作中，我们经常使用<code>&lt;T&gt;</code>来作泛型的表示</p>
+<blockquote>
+<h4 id="多个泛型的定义"><a href="#多个泛型的定义" class="headerlink" title="多个泛型的定义"></a>多个泛型的定义</h4></blockquote>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">join</span>&lt;<span class="title">T</span>, <span class="title">P</span>&gt;(<span class="params">first: T, second: P</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;first&#125;</span><span class="subst">$&#123;second&#125;</span>`</span>;</span><br><span class="line">&#125;</span><br><span class="line">join &lt; number, string &gt; (<span class="number">1</span>, <span class="string">&quot;2&quot;</span>);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<h4 id="泛型的类型推断"><a href="#泛型的类型推断" class="headerlink" title="泛型的类型推断"></a>泛型的类型推断</h4></blockquote>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">join</span>&lt;<span class="title">T</span>, <span class="title">P</span>&gt;(<span class="params">first: T, second: P</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;first&#125;</span><span class="subst">$&#123;second&#125;</span>`</span>;</span><br><span class="line">&#125;</span><br><span class="line">join(<span class="number">1</span>, <span class="string">&quot;2&quot;</span>);</span><br></pre></td></tr></table></figure>
+<p>不建议大量使用类型推断，这会让你的代码易读和健壮性都会下降</p>
+<h4 id="TypeScript-类中泛型-难点"><a href="#TypeScript-类中泛型-难点" class="headerlink" title="TypeScript 类中泛型-难点"></a>TypeScript 类中泛型-难点</h4><blockquote>
+<h4 id="编写一个基本类"><a href="#编写一个基本类" class="headerlink" title="编写一个基本类"></a>编写一个基本类</h4></blockquote>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SelectGirl</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">private girls: string[]</span>)</span> &#123;&#125;</span><br><span class="line">  getGirl(index: number): string &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.girls[index];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> selectGirl = <span class="keyword">new</span> SelectGirl([<span class="string">&quot;大脚&quot;</span>, <span class="string">&quot;刘英&quot;</span>, <span class="string">&quot;晓红&quot;</span>]);</span><br><span class="line"><span class="built_in">console</span>.log(selectGirl.getGirl(<span class="number">1</span>));</span><br></pre></td></tr></table></figure>
+<p>在 TypeScript 中，编写复杂代码的时候，会经常使用泛型。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SelectGirl</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">private girls: string[] | number[]</span>)</span> &#123;&#125;</span><br><span class="line">  getGirl(index: number): string | number &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.girls[index];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<h4 id="初始类的泛型"><a href="#初始类的泛型" class="headerlink" title="初始类的泛型"></a>初始类的泛型</h4></blockquote>
+<p>用<code>&lt;&gt;</code>编写</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SelectGirl</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">private girls: T[]</span>)</span> &#123;&#125;</span><br><span class="line">  getGirl(index: number): T &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.girls[index];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> selectGirl = <span class="keyword">new</span> SelectGirl([<span class="string">&quot;大脚&quot;</span>, <span class="string">&quot;刘英&quot;</span>, <span class="string">&quot;晓红&quot;</span>]);</span><br><span class="line"><span class="built_in">console</span>.log(selectGirl.getGirl(<span class="number">1</span>));</span><br></pre></td></tr></table></figure>
+<p>这时候代码并不报错，也使用了泛型，但是在实例化对象的时候，TypeScript 是通过类型推断出来的。这种方法并不好，所以还是需要在实例化对象的时候，对泛型的值进行确定，比如是<code>string</code>类型，就这样写。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> selectGirl = <span class="keyword">new</span> SelectGirl() &lt; string &gt; [<span class="string">&quot;大脚&quot;</span>, <span class="string">&quot;刘英&quot;</span>, <span class="string">&quot;晓红&quot;</span>];</span><br></pre></td></tr></table></figure>
+<blockquote>
+<h4 id="泛型中的继承"><a href="#泛型中的继承" class="headerlink" title="泛型中的继承"></a>泛型中的继承</h4></blockquote>
+<p>现在需求又变了，要求返回是一个对象中的<code>name</code>,也就是下面的代码要改成这个样子。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">return</span> <span class="built_in">this</span>.girls[index].name;</span><br></pre></td></tr></table></figure>
+<p>现在的代码一定时报错的，但是这时候还要求我们这么做，意思就是说传递过来的值必须是一个对象类型的，里边还要有<code>name</code>属性。这时候就要用到继承了，我用接口的方式来实现。写一个<code>Girl</code>的接口，每个接口里都要有 name 属性。代码如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">interface Girl &#123;</span><br><span class="line">  name: string;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>有了接口后用<code>extends</code>关键字实现泛型继承，代码如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SelectGirl</span>&lt;<span class="title">T</span> <span class="keyword">extends</span> <span class="title">Girl</span>&gt; </span>&#123;</span><br><span class="line"> ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这句代码的意思是泛型里必须有一个<code>name</code>属性，因为它继承了<code>Girl</code>接口。</p>
+<p>现在程序还是报错的，因为我们<code>getGirl</code>方法的返回类型还不对，这时候应该是一个<code>string</code>类型才对，所以代码应该改为下面的样子：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">interface Girl &#123;</span><br><span class="line">  name: string;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SelectGirl</span>&lt;<span class="title">T</span> <span class="keyword">extends</span> <span class="title">Girl</span>&gt; </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">private girls: T[]</span>)</span> &#123;&#125;</span><br><span class="line">  getGirl(index: number): string &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.girls[index].name;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> selectGirl = <span class="keyword">new</span> SelectGirl([</span><br><span class="line">  &#123; <span class="attr">name</span>: <span class="string">&quot;大脚&quot;</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">name</span>: <span class="string">&quot;刘英&quot;</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">name</span>: <span class="string">&quot;晓红&quot;</span> &#125;,</span><br><span class="line">]);</span><br><span class="line"><span class="built_in">console</span>.log(selectGirl.getGirl(<span class="number">1</span>));</span><br></pre></td></tr></table></figure>
+<blockquote>
+<h4 id="泛型约束"><a href="#泛型约束" class="headerlink" title="泛型约束"></a>泛型约束</h4></blockquote>
+<p>现在的泛型可以是任意类型，可以是对象、字符串、布尔、数字都是可以的。但你现在要求这个泛型必须是<code>string</code>或者<code>number</code>类型。我们还是拿上面的例子，不过把代码改为最初的样子。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SelectGirl</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">private girls: T[]</span>)</span> &#123;&#125;</span><br><span class="line">  getGirl(index: number): T &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.girls[index];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> selectGirl = <span class="keyword">new</span> SelectGirl&lt;string&gt;([<span class="string">&quot;大脚&quot;</span>, <span class="string">&quot;刘英&quot;</span>, <span class="string">&quot;晓红&quot;</span>]);</span><br><span class="line"><span class="built_in">console</span>.log(selectGirl.getGirl(<span class="number">1</span>));</span><br></pre></td></tr></table></figure>
+<p>然后进行约束，这时候还是可以使用关键字<code>extends</code>来进行约束，把代码改成下面的样子。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SelectGirl</span>&lt;<span class="title">T</span> <span class="keyword">extends</span> <span class="title">number</span> | <span class="title">string</span>&gt; </span>&#123;</span><br><span class="line">  <span class="comment">//.....</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>工作笔记</category>
         <category>TypeScript</category>
@@ -1374,45 +1374,6 @@
       </tags>
   </entry>
   <entry>
-    <title>vue.js 基本环境</title>
-    <url>/2019/06/19/vue-js-%E5%9F%BA%E6%9C%AC%E7%8E%AF%E5%A2%83/</url>
-    <content><![CDATA[<h4 id="1、安装有npm"><a href="#1、安装有npm" class="headerlink" title="1、安装有npm"></a>1、安装有npm</h4><a href="https://nodejs.org/en/" title="" target="">node.js官网</a>
-<h4 id="2、安装vue-cli"><a href="#2、安装vue-cli" class="headerlink" title="2、安装vue-cli"></a>2、安装vue-cli</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm i vue-cli -g</span><br><span class="line"></span><br><span class="line">输入vue命令查看是否安装成功</span><br><span class="line">输入vue list 查看</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<h4 id="3、建立工程"><a href="#3、建立工程" class="headerlink" title="3、建立工程"></a>3、建立工程</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vue init webpack 项目名</span><br></pre></td></tr></table></figure>
-<h4 id="4、进入-项目名-目录，安装脚手架项目的基本支持包"><a href="#4、进入-项目名-目录，安装脚手架项目的基本支持包" class="headerlink" title="4、进入 项目名 目录，安装脚手架项目的基本支持包"></a>4、进入 项目名 目录，安装脚手架项目的基本支持包</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm i</span><br></pre></td></tr></table></figure>
-<h4 id="5、运行基本Vue-js程序"><a href="#5、运行基本Vue-js程序" class="headerlink" title="5、运行基本Vue.js程序"></a>5、运行基本Vue.js程序</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
- <a href="https://www.cnblogs.com/wubaiqing/p/6726429.html" title="" target="">了解Virtual DOM(虚拟DOM)</a>
-]]></content>
-      <categories>
-        <category>工作笔记</category>
-        <category>《Vue2实践揭秘》</category>
-      </categories>
-      <tags>
-        <tag>《Vue2实践揭秘》</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>vue2.js 基础知识</title>
-    <url>/2019/06/19/vue2-js-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</url>
-    <content><![CDATA[<h4 id="vue特点"><a href="#vue特点" class="headerlink" title="vue特点"></a>vue特点</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">一个Vue实例必须与一个页面元素绑定</span><br><span class="line"></span><br><span class="line">*.vue是Vue.js特有的文件格式，表示的就是一个Vue组件，被称为单页式组件</span><br><span class="line"></span><br><span class="line">Vue2具有很高的兼容性，我们也可以用<span class="string">&quot;.js&quot;</span>文件来单纯地定义组件的逻辑，</span><br><span class="line">甚至可以使用React 的JSX格式的组件（需要babel-plugin-transform-vue-jsx支持）</span><br><span class="line"></span><br><span class="line">注： 从Vue2开始，组件模板必须且只能有一个顶层元素，如果在组件模板内设置多个顶层元素将会引发编译异常。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<h4 id="单页组件由一下三部分组成："><a href="#单页组件由一下三部分组成：" class="headerlink" title="单页组件由一下三部分组成："></a>单页组件由一下三部分组成：</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;&lt;/template&gt; ——视图模板</span><br><span class="line">&lt;style&gt;&lt;/style&gt; ——组件样式表</span><br><span class="line">&lt;script&gt;&lt;/script&gt; ——组件定义</span><br></pre></td></tr></table></figure>
-<h4 id="data使用函数返回是为了可以具有更高的灵活性"><a href="#data使用函数返回是为了可以具有更高的灵活性" class="headerlink" title="data使用函数返回是为了可以具有更高的灵活性"></a>data使用函数返回是为了可以具有更高的灵活性</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> default &#123;</span><br><span class="line">  name: <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">  <span class="function"><span class="title">data</span></span>() &#123; </span><br><span class="line">    <span class="built_in">return</span> &#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="使用less（直接使用CSS语法来编写样式表，代码量大）"><a href="#使用less（直接使用CSS语法来编写样式表，代码量大）" class="headerlink" title="使用less（直接使用CSS语法来编写样式表，代码量大）"></a>使用less（直接使用CSS语法来编写样式表，代码量大）</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm i less style-loader css-loader less-loader -D</span><br><span class="line"></span><br><span class="line">在/assets/中添加一个todos.less文件，并在App.vue的组件定义内引入less样式表</span><br><span class="line"></span><br><span class="line">import <span class="string">&#x27;./assets/todo.less&#x27;</span></span><br><span class="line"></span><br><span class="line">注：通过import将样式文件导入是一种全局性的做法，也就是说，在每一个页面内的</span><br><span class="line">&lt;head&gt;&lt;/head&gt;中都会有一个样式表，这样做的缺点是很容易导致样式冲突。如果希</span><br><span class="line">望样式表仅应用于当前组件，可以使用&lt;style scoped&gt;&lt;/style&gt;，然后用css的</span><br><span class="line">@import导入样式表：</span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line">    @import <span class="string">&#x27;./assets/todos.less&#x27;</span></span><br><span class="line">&lt;/style&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h4 id="注：如果在元素属性中不加上”-”-Vue认为是向这个属性赋上字符串值而不是Vue组件上定义的属性引用！"><a href="#注：如果在元素属性中不加上”-”-Vue认为是向这个属性赋上字符串值而不是Vue组件上定义的属性引用！" class="headerlink" title="注：如果在元素属性中不加上”:”,Vue认为是向这个属性赋上字符串值而不是Vue组件上定义的属性引用！"></a>注：如果在元素属性中不加上”:”,Vue认为是向这个属性赋上字符串值而不是Vue组件上定义的属性引用！</h4><p>注：无论是绑定的是样式类还是样式属性，:class和:style表达式内一定是一个JSON对象。<br>如： :class=”{‘btn’: true}”     :style=”{‘color’: ‘red’}”<br>:class的JSON对象的值一定是布尔型的，true表示加上样式，false表示移除样式类。<br>:style的JSON对象则像是一个样式配置项，key声明属性名，value则是样式属性的具体值。</p>
-<h4 id="时间格式化专用的包——moment-js"><a href="#时间格式化专用的包——moment-js" class="headerlink" title="时间格式化专用的包——moment.js"></a>时间格式化专用的包——moment.js</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm i moment -S</span><br><span class="line"></span><br><span class="line">引入moment,并设定moment的区域为中国</span><br><span class="line">import moment from <span class="string">&#x27;moment&#x27;</span></span><br><span class="line">import <span class="string">&#x27;moment/locale/zh-cn&#x27;</span></span><br><span class="line">moment.locale(<span class="string">&#x27;zh-cn&#x27;</span>)</span><br><span class="line"></span><br><span class="line">加入date的过滤器</span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> default &#123;</span><br><span class="line">    //省略.....</span><br><span class="line">    filters: &#123;</span><br><span class="line">        date(val) &#123;</span><br><span class="line">            <span class="built_in">return</span> moment(val).calendar()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">在模板上应用过滤器</span><br><span class="line">&lt;time&gt; &#123;&#123; todo.created | date&#125;&#125;&lt;/time&gt;</span><br><span class="line"></span><br><span class="line">注：在所有的过滤器中是没有this引用的，过滤器内的this是一个undefined的值，所以要在过滤器内尝试引用组件实例内的变量或方法，否则会引发空值引用的异常。</span><br></pre></td></tr></table></figure>
-<p>&lt;– 参考《vue2实践揭秘&gt; –&gt;</p>
-]]></content>
-      <categories>
-        <category>工作笔记</category>
-        <category>《Vue2实践揭秘》</category>
-      </categories>
-      <tags>
-        <tag>《Vue2实践揭秘》</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Vue项目处理跨域请求</title>
     <url>/2020/12/14/vue%E9%A1%B9%E7%9B%AE%E5%A4%84%E7%90%86%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82/</url>
     <content><![CDATA[<h4 id="1、设置配置文件"><a href="#1、设置配置文件" class="headerlink" title="1、设置配置文件"></a>1、设置配置文件</h4><ul>
@@ -1504,6 +1465,45 @@
       </tags>
   </entry>
   <entry>
+    <title>vue.js 基本环境</title>
+    <url>/2019/06/19/vue-js-%E5%9F%BA%E6%9C%AC%E7%8E%AF%E5%A2%83/</url>
+    <content><![CDATA[<h4 id="1、安装有npm"><a href="#1、安装有npm" class="headerlink" title="1、安装有npm"></a>1、安装有npm</h4><a href="https://nodejs.org/en/" title="" target="">node.js官网</a>
+<h4 id="2、安装vue-cli"><a href="#2、安装vue-cli" class="headerlink" title="2、安装vue-cli"></a>2、安装vue-cli</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm i vue-cli -g</span><br><span class="line"></span><br><span class="line">输入vue命令查看是否安装成功</span><br><span class="line">输入vue list 查看</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h4 id="3、建立工程"><a href="#3、建立工程" class="headerlink" title="3、建立工程"></a>3、建立工程</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vue init webpack 项目名</span><br></pre></td></tr></table></figure>
+<h4 id="4、进入-项目名-目录，安装脚手架项目的基本支持包"><a href="#4、进入-项目名-目录，安装脚手架项目的基本支持包" class="headerlink" title="4、进入 项目名 目录，安装脚手架项目的基本支持包"></a>4、进入 项目名 目录，安装脚手架项目的基本支持包</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm i</span><br></pre></td></tr></table></figure>
+<h4 id="5、运行基本Vue-js程序"><a href="#5、运行基本Vue-js程序" class="headerlink" title="5、运行基本Vue.js程序"></a>5、运行基本Vue.js程序</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
+ <a href="https://www.cnblogs.com/wubaiqing/p/6726429.html" title="" target="">了解Virtual DOM(虚拟DOM)</a>
+]]></content>
+      <categories>
+        <category>工作笔记</category>
+        <category>《Vue2实践揭秘》</category>
+      </categories>
+      <tags>
+        <tag>《Vue2实践揭秘》</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>vue2.js 基础知识</title>
+    <url>/2019/06/19/vue2-js-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</url>
+    <content><![CDATA[<h4 id="vue特点"><a href="#vue特点" class="headerlink" title="vue特点"></a>vue特点</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">一个Vue实例必须与一个页面元素绑定</span><br><span class="line"></span><br><span class="line">*.vue是Vue.js特有的文件格式，表示的就是一个Vue组件，被称为单页式组件</span><br><span class="line"></span><br><span class="line">Vue2具有很高的兼容性，我们也可以用<span class="string">&quot;.js&quot;</span>文件来单纯地定义组件的逻辑，</span><br><span class="line">甚至可以使用React 的JSX格式的组件（需要babel-plugin-transform-vue-jsx支持）</span><br><span class="line"></span><br><span class="line">注： 从Vue2开始，组件模板必须且只能有一个顶层元素，如果在组件模板内设置多个顶层元素将会引发编译异常。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h4 id="单页组件由一下三部分组成："><a href="#单页组件由一下三部分组成：" class="headerlink" title="单页组件由一下三部分组成："></a>单页组件由一下三部分组成：</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;&lt;/template&gt; ——视图模板</span><br><span class="line">&lt;style&gt;&lt;/style&gt; ——组件样式表</span><br><span class="line">&lt;script&gt;&lt;/script&gt; ——组件定义</span><br></pre></td></tr></table></figure>
+<h4 id="data使用函数返回是为了可以具有更高的灵活性"><a href="#data使用函数返回是为了可以具有更高的灵活性" class="headerlink" title="data使用函数返回是为了可以具有更高的灵活性"></a>data使用函数返回是为了可以具有更高的灵活性</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> default &#123;</span><br><span class="line">  name: <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">  <span class="function"><span class="title">data</span></span>() &#123; </span><br><span class="line">    <span class="built_in">return</span> &#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="使用less（直接使用CSS语法来编写样式表，代码量大）"><a href="#使用less（直接使用CSS语法来编写样式表，代码量大）" class="headerlink" title="使用less（直接使用CSS语法来编写样式表，代码量大）"></a>使用less（直接使用CSS语法来编写样式表，代码量大）</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm i less style-loader css-loader less-loader -D</span><br><span class="line"></span><br><span class="line">在/assets/中添加一个todos.less文件，并在App.vue的组件定义内引入less样式表</span><br><span class="line"></span><br><span class="line">import <span class="string">&#x27;./assets/todo.less&#x27;</span></span><br><span class="line"></span><br><span class="line">注：通过import将样式文件导入是一种全局性的做法，也就是说，在每一个页面内的</span><br><span class="line">&lt;head&gt;&lt;/head&gt;中都会有一个样式表，这样做的缺点是很容易导致样式冲突。如果希</span><br><span class="line">望样式表仅应用于当前组件，可以使用&lt;style scoped&gt;&lt;/style&gt;，然后用css的</span><br><span class="line">@import导入样式表：</span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line">    @import <span class="string">&#x27;./assets/todos.less&#x27;</span></span><br><span class="line">&lt;/style&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="注：如果在元素属性中不加上”-”-Vue认为是向这个属性赋上字符串值而不是Vue组件上定义的属性引用！"><a href="#注：如果在元素属性中不加上”-”-Vue认为是向这个属性赋上字符串值而不是Vue组件上定义的属性引用！" class="headerlink" title="注：如果在元素属性中不加上”:”,Vue认为是向这个属性赋上字符串值而不是Vue组件上定义的属性引用！"></a>注：如果在元素属性中不加上”:”,Vue认为是向这个属性赋上字符串值而不是Vue组件上定义的属性引用！</h4><p>注：无论是绑定的是样式类还是样式属性，:class和:style表达式内一定是一个JSON对象。<br>如： :class=”{‘btn’: true}”     :style=”{‘color’: ‘red’}”<br>:class的JSON对象的值一定是布尔型的，true表示加上样式，false表示移除样式类。<br>:style的JSON对象则像是一个样式配置项，key声明属性名，value则是样式属性的具体值。</p>
+<h4 id="时间格式化专用的包——moment-js"><a href="#时间格式化专用的包——moment-js" class="headerlink" title="时间格式化专用的包——moment.js"></a>时间格式化专用的包——moment.js</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm i moment -S</span><br><span class="line"></span><br><span class="line">引入moment,并设定moment的区域为中国</span><br><span class="line">import moment from <span class="string">&#x27;moment&#x27;</span></span><br><span class="line">import <span class="string">&#x27;moment/locale/zh-cn&#x27;</span></span><br><span class="line">moment.locale(<span class="string">&#x27;zh-cn&#x27;</span>)</span><br><span class="line"></span><br><span class="line">加入date的过滤器</span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> default &#123;</span><br><span class="line">    //省略.....</span><br><span class="line">    filters: &#123;</span><br><span class="line">        date(val) &#123;</span><br><span class="line">            <span class="built_in">return</span> moment(val).calendar()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">在模板上应用过滤器</span><br><span class="line">&lt;time&gt; &#123;&#123; todo.created | date&#125;&#125;&lt;/time&gt;</span><br><span class="line"></span><br><span class="line">注：在所有的过滤器中是没有this引用的，过滤器内的this是一个undefined的值，所以要在过滤器内尝试引用组件实例内的变量或方法，否则会引发空值引用的异常。</span><br></pre></td></tr></table></figure>
+<p>&lt;– 参考《vue2实践揭秘&gt; –&gt;</p>
+]]></content>
+      <categories>
+        <category>工作笔记</category>
+        <category>《Vue2实践揭秘》</category>
+      </categories>
+      <tags>
+        <tag>《Vue2实践揭秘》</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>vue项目记录</title>
     <url>/2020/05/26/vue%E9%A1%B9%E7%9B%AE%E8%AE%B0%E5%BD%95/</url>
     <content><![CDATA[<h3 id="在项目中引入阿里图库"><a href="#在项目中引入阿里图库" class="headerlink" title="在项目中引入阿里图库"></a>在项目中引入阿里图库</h3><ol>
@@ -1557,6 +1557,13 @@
       <tags>
         <tag>Vue.js</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>七夕情人节</title>
+    <url>/2018/08/17/%E4%B8%83%E5%A4%95%E6%83%85%E4%BA%BA%E8%8A%82/</url>
+    <content><![CDATA[<p>祝大家七夕情人节快乐！ <a href="http://cms.xiaochao.me/yanyi/transition/" title="" target="">点这里前往</a></p>
+<p>拿别人的素材，自己弄了一个玩玩，是有点简单。</p>
+]]></content>
   </entry>
   <entry>
     <title>webpack起步</title>
@@ -1694,13 +1701,6 @@
       <tags>
         <tag>Vue.js</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>七夕情人节</title>
-    <url>/2018/08/17/%E4%B8%83%E5%A4%95%E6%83%85%E4%BA%BA%E8%8A%82/</url>
-    <content><![CDATA[<p>祝大家七夕情人节快乐！ <a href="http://cms.xiaochao.me/yanyi/transition/" title="" target="">点这里前往</a></p>
-<p>拿别人的素材，自己弄了一个玩玩，是有点简单。</p>
-]]></content>
   </entry>
   <entry>
     <title>使用cmd命令删除文件夹</title>
@@ -1901,7 +1901,7 @@
 <h5 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h5><p>如有以下报错，是版本的问题影响的：</p>
 <p>Module build failed: TypeError: this.getResolve is not a function at Object.loader 安装node-sass运行报错</p>
 <p><strong>解决方法</strong>： 选择更低版本的sass-loader</p>
-<p><strong>卸载当前版本</strong>：npm uninstall sass-loader<br><strong>安装指定版本</strong>：npm install <a href="mailto:&#x73;&#97;&#x73;&#x73;&#45;&#x6c;&#111;&#97;&#x64;&#x65;&#x72;&#64;&#55;&#x2e;&#51;&#46;&#x31;">&#x73;&#97;&#x73;&#x73;&#45;&#x6c;&#111;&#97;&#x64;&#x65;&#x72;&#64;&#55;&#x2e;&#51;&#46;&#x31;</a> –save-dev</p>
+<p><strong>卸载当前版本</strong>：npm uninstall sass-loader<br><strong>安装指定版本</strong>：npm install <a href="mailto:&#115;&#x61;&#115;&#115;&#x2d;&#x6c;&#x6f;&#97;&#100;&#101;&#114;&#x40;&#x37;&#46;&#x33;&#46;&#x31;">&#115;&#x61;&#115;&#115;&#x2d;&#x6c;&#x6f;&#97;&#100;&#101;&#114;&#x40;&#x37;&#46;&#x33;&#46;&#x31;</a> –save-dev</p>
 <p>参考： <a href="https://blog.csdn.net/ze1024/article/details/100516650">安装node-sass运行报错</a></p>
 ]]></content>
       <categories>
@@ -2016,18 +2016,6 @@
       </tags>
   </entry>
   <entry>
-    <title>插件</title>
-    <url>/2019/07/22/%E6%8F%92%E4%BB%B6/</url>
-    <content><![CDATA[<h4 id="分页插件"><a href="#分页插件" class="headerlink" title="分页插件"></a>分页插件</h4><a href="https://www.npmjs.com/package/jquery.pagination" title="" target="">jquery.pagination</a>]]></content>
-      <categories>
-        <category>工作笔记</category>
-        <category>插件</category>
-      </categories>
-      <tags>
-        <tag>插件</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>常用命令</title>
     <url>/2020/05/25/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
     <content><![CDATA[<h3 id="安装淘宝镜像"><a href="#安装淘宝镜像" class="headerlink" title="安装淘宝镜像"></a>安装淘宝镜像</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install -g cnpm --registry&#x3D;https:&#x2F;&#x2F;registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
@@ -2057,6 +2045,18 @@
       </categories>
       <tags>
         <tag>常用命令</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>插件</title>
+    <url>/2019/07/22/%E6%8F%92%E4%BB%B6/</url>
+    <content><![CDATA[<h4 id="分页插件"><a href="#分页插件" class="headerlink" title="分页插件"></a>分页插件</h4><a href="https://www.npmjs.com/package/jquery.pagination" title="" target="">jquery.pagination</a>]]></content>
+      <categories>
+        <category>工作笔记</category>
+        <category>插件</category>
+      </categories>
+      <tags>
+        <tag>插件</tag>
       </tags>
   </entry>
   <entry>
@@ -2366,48 +2366,6 @@
       </tags>
   </entry>
   <entry>
-    <title>移动端调试方法汇总</title>
-    <url>/2020/07/17/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E8%B0%83%E8%AF%95%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB/</url>
-    <content><![CDATA[<h3 id="一：Android手机-chrome（真机调试）"><a href="#一：Android手机-chrome（真机调试）" class="headerlink" title="一：Android手机 + chrome（真机调试）"></a>一：Android手机 + chrome（真机调试）</h3><p><a href="https://juejin.im/post/5b15022ff265da6e163720c6">参考的博客-掘金</a></p>
-<h5 id="一台Android手机，一台电脑，一根Android数据线"><a href="#一台Android手机，一台电脑，一根Android数据线" class="headerlink" title="一台Android手机，一台电脑，一根Android数据线"></a>一台Android手机，一台电脑，一根Android数据线</h5><h4 id="操作步骤："><a href="#操作步骤：" class="headerlink" title="操作步骤："></a>操作步骤：</h4><p>1、在Android手机上安装<strong>chrome浏览器</strong><br>2、打开手机的开发者模式（开发人员选项——“USB调试”打开）</p>
-<img src="/2020/07/17/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E8%B0%83%E8%AF%95%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB/usb0.png" class="">
-<p>3、将手机与电脑通过USB线连接，弹出对话框<strong>“是否允许USB调试”</strong>，选择“确定”</p>
-<img src="/2020/07/17/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E8%B0%83%E8%AF%95%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB/usb.png" class="">
-
-<p><strong>遇到的问题：</strong><br>问题一：连接电脑显示  “无法识别的USB”<br>解决方法：<a href="https://www.yunqishi.net/video/9896.html">参考的链接</a><br>    1. 在控制面板打开设备管理器<br>    2. 展开通用串行总线控制器，右击设备选择卸载， 每个设备重复以上操作，重启计算机系统会自动安装usb控制器<br>    （这里我选择了unknown的卸载了，拔掉USB线，然后重启电脑）<br>    3.重启电脑之后，重新插上USB线，会自动安装驱动</p>
-<p>问题二：如果连不了，可以下载360手机助手连接一下手机。</p>
-<p>4、打开手机上的chrome浏览器，并进入需要调试的页面（例如：进入百度搜索内容）<br>5、打开PC端chrome浏览器，在地址栏中输入chrome://inspect/，进入调试页面，此时，我们发现，chrome检测到了我们的手机</p>
-<img src="/2020/07/17/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E8%B0%83%E8%AF%95%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB/chrome.png" class="">
-<p>6、点击<strong>inspect</strong> 会弹出chrome调试工具，然后就可以在电脑上调试真机了</p>
-<p><strong>注意事项：</strong><br>在上面第6步的时候，点击inspect后，弹出的面板可能是一片空白，这是因为，<strong>首次使用该功能时，需要连接外网（翻墙）</strong>，初始化后，成功显示了调试工具的面板后，以后就不需要翻墙了。</p>
-<h3 id="二：如果想在手机端中，查看console的内容，看有没有报错之类的。可以使用vConsole"><a href="#二：如果想在手机端中，查看console的内容，看有没有报错之类的。可以使用vConsole" class="headerlink" title="二：如果想在手机端中，查看console的内容，看有没有报错之类的。可以使用vConsole"></a>二：如果想在手机端中，查看console的内容，看有没有报错之类的。可以使用vConsole</h3><p>在页面中加入以下代码：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.bootcdn.net&#x2F;ajax&#x2F;libs&#x2F;vConsole&#x2F;3.3.3&#x2F;vconsole.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    var vConsole &#x3D; new VConsole();</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
-<p>加入之后，在移动端页面就可以看到console.log打印出来的结果了</p>
-<img src="/2020/07/17/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E8%B0%83%E8%AF%95%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB/vConsole.png" class="">
-<img src="/2020/07/17/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E8%B0%83%E8%AF%95%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB/vConsole2.png" class="">
-
-
-<h4 id="判断是否为移动端设备"><a href="#判断是否为移动端设备" class="headerlink" title="判断是否为移动端设备"></a>判断是否为移动端设备</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function isMobile()&#123;</span><br><span class="line">  if((navigator.userAgent.match(&#x2F;(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)&#x2F;i))) &#123;</span><br><span class="line">    return true;</span><br><span class="line">  &#125;else &#123;</span><br><span class="line">    return false;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="判断是否为PC端"><a href="#判断是否为PC端" class="headerlink" title="判断是否为PC端"></a>判断是否为PC端</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function IsPC() &#123;</span><br><span class="line">     var userAgentInfo &#x3D; navigator.userAgent;</span><br><span class="line">     var Agents &#x3D; [&quot;Android&quot;, &quot;iPhone&quot;,</span><br><span class="line">                 &quot;SymbianOS&quot;, &quot;Windows Phone&quot;,</span><br><span class="line">                 &quot;iPad&quot;, &quot;iPod&quot;];</span><br><span class="line">     var flag &#x3D; true;</span><br><span class="line">     for (var v &#x3D; 0; v &lt; Agents.length; v++) &#123;</span><br><span class="line">         if (userAgentInfo.indexOf(Agents[v]) &gt; 0) &#123;</span><br><span class="line">             flag &#x3D; false;</span><br><span class="line">             break;</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;</span><br><span class="line">     return flag;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-<h4 id="移动端设备旋转设备为横屏时，刷新页面"><a href="#移动端设备旋转设备为横屏时，刷新页面" class="headerlink" title="移动端设备旋转设备为横屏时，刷新页面"></a>移动端设备旋转设备为横屏时，刷新页面</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var mobile &#x3D; isMobile();</span><br><span class="line">if(mobile) &#123;</span><br><span class="line">    window.addEventListener(&quot;orientationchange&quot;, function() &#123;</span><br><span class="line">        &#x2F;&#x2F;横屏，刷新页面</span><br><span class="line">        if(window.orientation &#x3D;&#x3D; 90) &#123;</span><br><span class="line">            window.top.document.location.reload();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;, false);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">注：</span><br><span class="line">如果是刷新当前页面，直接Window.location.reload();就可以。</span><br><span class="line">如果是使用iframe嵌套页面的，要往上一层去刷新，window.top.document.location.reload();</span><br></pre></td></tr></table></figure>
-<p>使用window.top.document.location.reload();的原因，是使用iframe嵌套页面的：（蓝色区域为子页面嵌套在里面）</p>
-<img src="/2020/07/17/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E8%B0%83%E8%AF%95%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB/main.png" class="">
-
-<h4 id="判断是否移动设备是否为横屏"><a href="#判断是否移动设备是否为横屏" class="headerlink" title="判断是否移动设备是否为横屏"></a>判断是否移动设备是否为横屏</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;判断是否移动设备是否横屏状态</span><br><span class="line">function isLandscape() &#123;</span><br><span class="line">	if (window.orientation &#x3D;&#x3D;&#x3D; 180 || window.orientation &#x3D;&#x3D;&#x3D; 0) &#123; </span><br><span class="line">		return false;</span><br><span class="line">	&#125; </span><br><span class="line">	if (window.orientation &#x3D;&#x3D;&#x3D; 90 || window.orientation &#x3D;&#x3D;&#x3D; -90 )&#123; </span><br><span class="line">		return true;</span><br><span class="line">	&#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="获取iframe父子页面之间获取元素"><a href="#获取iframe父子页面之间获取元素" class="headerlink" title="获取iframe父子页面之间获取元素"></a>获取iframe父子页面之间获取元素</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">【父找子】</span><br><span class="line">&#x2F;&#x2F;从父级找到iframe，然后找contents</span><br><span class="line">var inputs &#x3D; $(&quot;.tab-pane.active iframe&quot;).contents().find(&quot;input&quot;);</span><br><span class="line">【子找父】</span><br><span class="line">&#x2F;&#x2F;从子页面找到parent.document,然后找对应元素</span><br><span class="line">$(window.parent.document).find(&quot;.content-wrapper&quot;).offset(&#123;top:0&#125;);</span><br></pre></td></tr></table></figure>
-<h4 id="处理移动端页面，软键盘弹起导致页面底部空白"><a href="#处理移动端页面，软键盘弹起导致页面底部空白" class="headerlink" title="处理移动端页面，软键盘弹起导致页面底部空白"></a>处理移动端页面，软键盘弹起导致页面底部空白</h4><img src="/2020/07/17/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E8%B0%83%E8%AF%95%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB/input.png" class="">
-<p>实际上，页面内容是在的，只是被挡住了，所以要将最外层的页面高度设置到跟设备一样高</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function setOffset() &#123;</span><br><span class="line">  &#x2F;&#x2F;是否为移动端</span><br><span class="line">  var mobile &#x3D; isMobile();</span><br><span class="line">  &#x2F;&#x2F;是否是横屏状态</span><br><span class="line">  var landscape &#x3D; isLandscape();</span><br><span class="line"></span><br><span class="line">  &#x2F;&#x2F;移动端横屏状态 监听输入框输入状态</span><br><span class="line">  if(mobile &amp;&amp; landscape) &#123;</span><br><span class="line">    var flag &#x3D; true;</span><br><span class="line">    var inputs &#x3D; $(&quot;.tab-pane.active iframe&quot;).contents().find(&quot;input&quot;);</span><br><span class="line"></span><br><span class="line">    inputs.on(&quot;compositionstart&quot;, function() &#123;</span><br><span class="line">      flag &#x3D; false;</span><br><span class="line">    &#125;);</span><br><span class="line">    inputs.on(&quot;compositionend&quot;, function() &#123;</span><br><span class="line">      flag &#x3D; true;</span><br><span class="line">    &#125;);</span><br><span class="line">    inputs.on(&quot;keyup&quot;, function() &#123;</span><br><span class="line">      if(flag) &#123;</span><br><span class="line">        &#x2F;&#x2F;设置iframe的offsetTop</span><br><span class="line">        $(window.parent.document).find(&quot;.content-wrapper&quot;).offset(&#123;top:0&#125;);</span><br><span class="line">        $(document).find(&quot;.permiss&quot;).offset(&#123;top:143&#125;);</span><br><span class="line"></span><br><span class="line">        【解决问题的主要代码】</span><br><span class="line">        &#x2F;&#x2F;将最外层的页面高度设置到跟设备一样高</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F;获取屏幕高度</span><br><span class="line">        var bodyHeight &#x3D; $(&#39;body&#39;)[0].clientHeight;</span><br><span class="line">        $(window.parent.document).find(&quot;.content-wrapper&quot;).css(&quot;height&quot;, bodyHeight + &quot;px&quot;);</span><br><span class="line">        $(window.parent.document).find(&quot;.content-wrapper&quot;).css(&quot;top&quot;, &quot;0px&quot;);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>工作笔记</category>
-        <category>移动端</category>
-      </categories>
-      <tags>
-        <tag>移动端</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>网站收集</title>
     <url>/2021/01/08/%E7%BD%91%E7%AB%99%E6%94%B6%E9%9B%86/</url>
     <content><![CDATA[<h4 id="web前端"><a href="#web前端" class="headerlink" title="web前端"></a>web前端</h4><div class="website-collect">
@@ -2450,6 +2408,48 @@
       </categories>
       <tags>
         <tag>网站收集</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>移动端调试方法汇总</title>
+    <url>/2020/07/17/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E8%B0%83%E8%AF%95%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB/</url>
+    <content><![CDATA[<h3 id="一：Android手机-chrome（真机调试）"><a href="#一：Android手机-chrome（真机调试）" class="headerlink" title="一：Android手机 + chrome（真机调试）"></a>一：Android手机 + chrome（真机调试）</h3><p><a href="https://juejin.im/post/5b15022ff265da6e163720c6">参考的博客-掘金</a></p>
+<h5 id="一台Android手机，一台电脑，一根Android数据线"><a href="#一台Android手机，一台电脑，一根Android数据线" class="headerlink" title="一台Android手机，一台电脑，一根Android数据线"></a>一台Android手机，一台电脑，一根Android数据线</h5><h4 id="操作步骤："><a href="#操作步骤：" class="headerlink" title="操作步骤："></a>操作步骤：</h4><p>1、在Android手机上安装<strong>chrome浏览器</strong><br>2、打开手机的开发者模式（开发人员选项——“USB调试”打开）</p>
+<img src="/2020/07/17/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E8%B0%83%E8%AF%95%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB/usb0.png" class="">
+<p>3、将手机与电脑通过USB线连接，弹出对话框<strong>“是否允许USB调试”</strong>，选择“确定”</p>
+<img src="/2020/07/17/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E8%B0%83%E8%AF%95%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB/usb.png" class="">
+
+<p><strong>遇到的问题：</strong><br>问题一：连接电脑显示  “无法识别的USB”<br>解决方法：<a href="https://www.yunqishi.net/video/9896.html">参考的链接</a><br>    1. 在控制面板打开设备管理器<br>    2. 展开通用串行总线控制器，右击设备选择卸载， 每个设备重复以上操作，重启计算机系统会自动安装usb控制器<br>    （这里我选择了unknown的卸载了，拔掉USB线，然后重启电脑）<br>    3.重启电脑之后，重新插上USB线，会自动安装驱动</p>
+<p>问题二：如果连不了，可以下载360手机助手连接一下手机。</p>
+<p>4、打开手机上的chrome浏览器，并进入需要调试的页面（例如：进入百度搜索内容）<br>5、打开PC端chrome浏览器，在地址栏中输入chrome://inspect/，进入调试页面，此时，我们发现，chrome检测到了我们的手机</p>
+<img src="/2020/07/17/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E8%B0%83%E8%AF%95%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB/chrome.png" class="">
+<p>6、点击<strong>inspect</strong> 会弹出chrome调试工具，然后就可以在电脑上调试真机了</p>
+<p><strong>注意事项：</strong><br>在上面第6步的时候，点击inspect后，弹出的面板可能是一片空白，这是因为，<strong>首次使用该功能时，需要连接外网（翻墙）</strong>，初始化后，成功显示了调试工具的面板后，以后就不需要翻墙了。</p>
+<h3 id="二：如果想在手机端中，查看console的内容，看有没有报错之类的。可以使用vConsole"><a href="#二：如果想在手机端中，查看console的内容，看有没有报错之类的。可以使用vConsole" class="headerlink" title="二：如果想在手机端中，查看console的内容，看有没有报错之类的。可以使用vConsole"></a>二：如果想在手机端中，查看console的内容，看有没有报错之类的。可以使用vConsole</h3><p>在页面中加入以下代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.bootcdn.net&#x2F;ajax&#x2F;libs&#x2F;vConsole&#x2F;3.3.3&#x2F;vconsole.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    var vConsole &#x3D; new VConsole();</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+<p>加入之后，在移动端页面就可以看到console.log打印出来的结果了</p>
+<img src="/2020/07/17/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E8%B0%83%E8%AF%95%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB/vConsole.png" class="">
+<img src="/2020/07/17/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E8%B0%83%E8%AF%95%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB/vConsole2.png" class="">
+
+
+<h4 id="判断是否为移动端设备"><a href="#判断是否为移动端设备" class="headerlink" title="判断是否为移动端设备"></a>判断是否为移动端设备</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function isMobile()&#123;</span><br><span class="line">  if((navigator.userAgent.match(&#x2F;(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)&#x2F;i))) &#123;</span><br><span class="line">    return true;</span><br><span class="line">  &#125;else &#123;</span><br><span class="line">    return false;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="判断是否为PC端"><a href="#判断是否为PC端" class="headerlink" title="判断是否为PC端"></a>判断是否为PC端</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function IsPC() &#123;</span><br><span class="line">     var userAgentInfo &#x3D; navigator.userAgent;</span><br><span class="line">     var Agents &#x3D; [&quot;Android&quot;, &quot;iPhone&quot;,</span><br><span class="line">                 &quot;SymbianOS&quot;, &quot;Windows Phone&quot;,</span><br><span class="line">                 &quot;iPad&quot;, &quot;iPod&quot;];</span><br><span class="line">     var flag &#x3D; true;</span><br><span class="line">     for (var v &#x3D; 0; v &lt; Agents.length; v++) &#123;</span><br><span class="line">         if (userAgentInfo.indexOf(Agents[v]) &gt; 0) &#123;</span><br><span class="line">             flag &#x3D; false;</span><br><span class="line">             break;</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;</span><br><span class="line">     return flag;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="移动端设备旋转设备为横屏时，刷新页面"><a href="#移动端设备旋转设备为横屏时，刷新页面" class="headerlink" title="移动端设备旋转设备为横屏时，刷新页面"></a>移动端设备旋转设备为横屏时，刷新页面</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var mobile &#x3D; isMobile();</span><br><span class="line">if(mobile) &#123;</span><br><span class="line">    window.addEventListener(&quot;orientationchange&quot;, function() &#123;</span><br><span class="line">        &#x2F;&#x2F;横屏，刷新页面</span><br><span class="line">        if(window.orientation &#x3D;&#x3D; 90) &#123;</span><br><span class="line">            window.top.document.location.reload();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;, false);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">注：</span><br><span class="line">如果是刷新当前页面，直接Window.location.reload();就可以。</span><br><span class="line">如果是使用iframe嵌套页面的，要往上一层去刷新，window.top.document.location.reload();</span><br></pre></td></tr></table></figure>
+<p>使用window.top.document.location.reload();的原因，是使用iframe嵌套页面的：（蓝色区域为子页面嵌套在里面）</p>
+<img src="/2020/07/17/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E8%B0%83%E8%AF%95%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB/main.png" class="">
+
+<h4 id="判断是否移动设备是否为横屏"><a href="#判断是否移动设备是否为横屏" class="headerlink" title="判断是否移动设备是否为横屏"></a>判断是否移动设备是否为横屏</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;判断是否移动设备是否横屏状态</span><br><span class="line">function isLandscape() &#123;</span><br><span class="line">	if (window.orientation &#x3D;&#x3D;&#x3D; 180 || window.orientation &#x3D;&#x3D;&#x3D; 0) &#123; </span><br><span class="line">		return false;</span><br><span class="line">	&#125; </span><br><span class="line">	if (window.orientation &#x3D;&#x3D;&#x3D; 90 || window.orientation &#x3D;&#x3D;&#x3D; -90 )&#123; </span><br><span class="line">		return true;</span><br><span class="line">	&#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="获取iframe父子页面之间获取元素"><a href="#获取iframe父子页面之间获取元素" class="headerlink" title="获取iframe父子页面之间获取元素"></a>获取iframe父子页面之间获取元素</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">【父找子】</span><br><span class="line">&#x2F;&#x2F;从父级找到iframe，然后找contents</span><br><span class="line">var inputs &#x3D; $(&quot;.tab-pane.active iframe&quot;).contents().find(&quot;input&quot;);</span><br><span class="line">【子找父】</span><br><span class="line">&#x2F;&#x2F;从子页面找到parent.document,然后找对应元素</span><br><span class="line">$(window.parent.document).find(&quot;.content-wrapper&quot;).offset(&#123;top:0&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="处理移动端页面，软键盘弹起导致页面底部空白"><a href="#处理移动端页面，软键盘弹起导致页面底部空白" class="headerlink" title="处理移动端页面，软键盘弹起导致页面底部空白"></a>处理移动端页面，软键盘弹起导致页面底部空白</h4><img src="/2020/07/17/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E8%B0%83%E8%AF%95%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB/input.png" class="">
+<p>实际上，页面内容是在的，只是被挡住了，所以要将最外层的页面高度设置到跟设备一样高</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function setOffset() &#123;</span><br><span class="line">  &#x2F;&#x2F;是否为移动端</span><br><span class="line">  var mobile &#x3D; isMobile();</span><br><span class="line">  &#x2F;&#x2F;是否是横屏状态</span><br><span class="line">  var landscape &#x3D; isLandscape();</span><br><span class="line"></span><br><span class="line">  &#x2F;&#x2F;移动端横屏状态 监听输入框输入状态</span><br><span class="line">  if(mobile &amp;&amp; landscape) &#123;</span><br><span class="line">    var flag &#x3D; true;</span><br><span class="line">    var inputs &#x3D; $(&quot;.tab-pane.active iframe&quot;).contents().find(&quot;input&quot;);</span><br><span class="line"></span><br><span class="line">    inputs.on(&quot;compositionstart&quot;, function() &#123;</span><br><span class="line">      flag &#x3D; false;</span><br><span class="line">    &#125;);</span><br><span class="line">    inputs.on(&quot;compositionend&quot;, function() &#123;</span><br><span class="line">      flag &#x3D; true;</span><br><span class="line">    &#125;);</span><br><span class="line">    inputs.on(&quot;keyup&quot;, function() &#123;</span><br><span class="line">      if(flag) &#123;</span><br><span class="line">        &#x2F;&#x2F;设置iframe的offsetTop</span><br><span class="line">        $(window.parent.document).find(&quot;.content-wrapper&quot;).offset(&#123;top:0&#125;);</span><br><span class="line">        $(document).find(&quot;.permiss&quot;).offset(&#123;top:143&#125;);</span><br><span class="line"></span><br><span class="line">        【解决问题的主要代码】</span><br><span class="line">        &#x2F;&#x2F;将最外层的页面高度设置到跟设备一样高</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F;获取屏幕高度</span><br><span class="line">        var bodyHeight &#x3D; $(&#39;body&#39;)[0].clientHeight;</span><br><span class="line">        $(window.parent.document).find(&quot;.content-wrapper&quot;).css(&quot;height&quot;, bodyHeight + &quot;px&quot;);</span><br><span class="line">        $(window.parent.document).find(&quot;.content-wrapper&quot;).css(&quot;top&quot;, &quot;0px&quot;);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>工作笔记</category>
+        <category>移动端</category>
+      </categories>
+      <tags>
+        <tag>移动端</tag>
       </tags>
   </entry>
   <entry>

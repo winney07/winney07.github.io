@@ -27,11 +27,16 @@
 <meta property="og:site_name" content="winney">
 <meta property="og:description" content="在项目中引入阿里图库 在阿里图库中，选好图标，建立好项目 将整个项目的图标下载到本地解压 在Vue.js项目的assets目录中，新建一个icon目录，将解压后文件夹里面的文件复制到这个目录下 在main.js文件里引入iconfont.css, import ‘@&#x2F;assets&#x2F;icon&#x2F;iconfont.css’ 在项目中引入图标的时候要加上iconfont类，然后再添加图标本身的类名  链接">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2020/05/26/vue%E9%A1%B9%E7%9B%AE%E8%AE%B0%E5%BD%95/vue01.png">
+<meta property="og:image" content="http://example.com/2020/05/26/vue%E9%A1%B9%E7%9B%AE%E8%AE%B0%E5%BD%95/vue02.png">
+<meta property="og:image" content="http://example.com/2020/05/26/vue%E9%A1%B9%E7%9B%AE%E8%AE%B0%E5%BD%95/vue03.png">
+<meta property="og:image" content="http://example.com/2020/05/26/vue%E9%A1%B9%E7%9B%AE%E8%AE%B0%E5%BD%95/vue04.png">
 <meta property="article:published_time" content="2020-05-26T08:35:23.000Z">
 <meta property="article:modified_time" content="2021-01-12T10:01:48.975Z">
 <meta property="article:author" content="winney">
 <meta property="article:tag" content="Vue.js">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2020/05/26/vue%E9%A1%B9%E7%9B%AE%E8%AE%B0%E5%BD%95/vue01.png">
 
 <link rel="canonical" href="http://example.com/2020/05/26/vue%E9%A1%B9%E7%9B%AE%E8%AE%B0%E5%BD%95/">
 
@@ -186,6 +191,7 @@
     <main class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          <img alt="winney" src="/images/blog-head.jpg">
           
 
           <div class="content post posts-expand">
@@ -272,10 +278,10 @@
 <p>bus.js:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import Vue from &#39;vue&#39;;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 使用 Event Bus</span><br><span class="line">const bus &#x3D; new Vue();</span><br><span class="line"></span><br><span class="line">export default bus;</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">在点击事件的组件中：</span><br><span class="line">引入：</span><br><span class="line">import bus from &#39;..&#x2F;public&#x2F;bus&#39;;</span><br><span class="line"></span><br><span class="line">页面结构中：</span><br><span class="line">@click&#x3D;&quot;collapseChage&quot;</span><br><span class="line">v-show&#x3D;&quot;!isCollapse&quot;</span><br><span class="line"></span><br><span class="line">数据，方法：</span><br><span class="line">data() &#123; </span><br><span class="line">  return &#123;</span><br><span class="line">      isCollapse: false,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br><span class="line">methods: &#123;</span><br><span class="line">  &#x2F;&#x2F; 侧边栏折叠</span><br><span class="line">  collapseChage() &#123;</span><br><span class="line">      this.isCollapse &#x3D; !this.isCollapse;</span><br><span class="line">      bus.$emit(&#39;toggleCollapse&#39;, this.isCollapse);</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">在需要用到这个状态的组件中：</span><br><span class="line">引入：</span><br><span class="line">import bus from &#39;..&#x2F;public&#x2F;bus&#39;;</span><br><span class="line">数据：</span><br><span class="line">data() &#123; </span><br><span class="line">  return &#123;</span><br><span class="line">      isCollapse: false,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br><span class="line"></span><br><span class="line">页面结构：</span><br><span class="line">:class&#x3D;&quot;&#123;&#39;content-collapse&#39;:isCollapse&#125;&quot;</span><br><span class="line"></span><br><span class="line">监听toggleCollapse事件：</span><br><span class="line">created() &#123;</span><br><span class="line">  bus.$on(&#39;toggleCollapse&#39;, msg &#x3D;&gt; &#123;</span><br><span class="line">      this.isCollapse &#x3D; msg;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="如何将element-ui中的表格和分页器连接起来"><a href="#如何将element-ui中的表格和分页器连接起来" class="headerlink" title="如何将element-ui中的表格和分页器连接起来"></a>如何将element-ui中的表格和分页器连接起来</h3>
-
-
-
+<h3 id="如何将element-ui中的表格和分页器连接起来"><a href="#如何将element-ui中的表格和分页器连接起来" class="headerlink" title="如何将element-ui中的表格和分页器连接起来"></a>如何将element-ui中的表格和分页器连接起来</h3><img src="/2020/05/26/vue%E9%A1%B9%E7%9B%AE%E8%AE%B0%E5%BD%95/vue01.png" class="">
+<img src="/2020/05/26/vue%E9%A1%B9%E7%9B%AE%E8%AE%B0%E5%BD%95/vue02.png" class="">
+<img src="/2020/05/26/vue%E9%A1%B9%E7%9B%AE%E8%AE%B0%E5%BD%95/vue03.png" class="">
+<img src="/2020/05/26/vue%E9%A1%B9%E7%9B%AE%E8%AE%B0%E5%BD%95/vue04.png" class="">
 
     </div>
 

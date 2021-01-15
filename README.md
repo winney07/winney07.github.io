@@ -1,6 +1,10 @@
 # winney07.github.io
 个人博客
 
+<span style="color:red;">备注：如果用hexo重新搭建一个博客，创建仓库后可以：1、先创建hexo分支，2、然后将hexo设置为默认分支，3、然后git clone到本地，4、然后再做其他操作</span>
+
+
+
 #### 步骤
 
 1. 在github创建winney07.github.io仓库

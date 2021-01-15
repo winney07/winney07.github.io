@@ -22,6 +22,7 @@
     <main class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          <img alt="{{ author }}" src="{{ url_for(theme.images + '/blog-head.jpg') }}">
           {% include '_partials/header/sub-menu.swig' %}
           <div class="content {% block class %}{% endblock %}">
             {% block content %}{% endblock %}

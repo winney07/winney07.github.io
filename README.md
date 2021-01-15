@@ -222,18 +222,33 @@
     per_page: 3
     ```
 
-21. 配置搜索功能（winney07.github.io\\_config.yml）
+22. hexo-next添加搜索功能
 
-    ```
-    #Search
-    search:
-      path: search.xml
-      field: post
-      format: html
-      limit: 10000
-    ```
+    - 安装插件
 
-22. 创建分支hexo（用于存放博客的源文件） [参考教程](https://www.cnblogs.com/kaerxifa/p/11045573.html)
+      ```
+      cnpm i hexo-generator-searchdb --save
+      ```
+
+    - 修改站点的配置文件（winney07.github.io\\_config.yml）
+
+      ```
+      #Search
+      search:
+        path: search.xml
+        field: post
+        format: html
+        limit: 10000
+      ```
+
+    - 修改next主题配置文件（themes\next\\\_config.yml找到 local_search 项，将它的enable修改为true）
+
+      ```
+      local_search:
+        enable: true
+      ```
+
+23. 创建分支hexo（用于存放博客的源文件） [参考教程](https://www.cnblogs.com/kaerxifa/p/11045573.html)
 
     ```
     创建hexo分支：
@@ -250,13 +265,13 @@
     Create a pull request for 'hexo' on GitHub by visiting(在github仓库中就可以看到hexo分支)
     ```
 
-23. 在该仓库->Settings->Branches->Default branch中将默认分支设为hexo
+24. 在该仓库->Settings->Branches->Default branch中将默认分支设为hexo
 
     > 将仓库克隆下来（因为已经有仓库的目录，新建一个文件夹存放clone下来的内容），将里面的.git文件夹覆盖winney07.github.io目录下的.git文件夹
     >
     > ---可以在创建仓库的时候就创建hexo分支，就不会因为提交了比较多的内容，clone的时间比较长
 
-24. 查看当前所在分支：
+25. 查看当前所在分支：
 
     ```
     $ git branch
@@ -265,7 +280,7 @@
     可以看到已经切换到hexo分支
     ```
 
-25. 将博客源文件提交到hexo分支
+26. 将博客源文件提交到hexo分支
 
     ```
     git add .

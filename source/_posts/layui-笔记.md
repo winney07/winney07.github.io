@@ -48,7 +48,38 @@ table.exportFile(ins1.config.id，data) ; // data为该实例中的任意数量�
 
 #### 修改重载表格时的加载图标
 
+{% asset_img note5.png %}
 
+- 如果只修改样式
+
+  ```
+  .layui-table-view .layui-table-init .layui-icon-loading{
+    	font-size: 60px;
+    	color: #666;
+  }
+  ```
+
+- 如果不想页面显示表格加载图标
+
+  ```
+  .layui-table-view .layui-table-init .layui-icon-loading{
+      display: none !important;
+  }
+  ```
+
+
+
+#### 表格表头标题之间边框不显示
+
+{% asset_img note6.png %}
+
+th本来是position：relative；改为position: static；
+
+```
+.layui-table td, .layui-table th{
+    position: static\9;
+}
+```
 
 #### 修改了layui表格的内容，不刷新页面，只刷新表格内容，页码不刷新解决方法
 

@@ -17,7 +17,11 @@
    fatal: Not a git repository (or any of the parent directories): .git 
    ```
 
-   解决方法：
+   原因是：没有切换到仓库目录，解决方法：切换到仓库目录
+
+   
+
+   如果在一个没有.git文件夹的目录下报上面这个错，就执行：
 
    ```
    git init
@@ -48,12 +52,14 @@
    G:\Github\winney07.github.io not empty, please run `hexo init` on an empty folder and then copy your files into it
    ```
 
+   原因：hexo init 项目名称     （项目名称不能为空）
+
    解决方案：
-   
+
    1-对原有winney07.github.io目录重命名winney07.github.io-backup
-   
+
    2-然后初始化hexo：
-   
+
    ```
    hexo init winney07.github.io
    ```
@@ -82,7 +88,7 @@
    hexo s
    ```
 
-10. 将原来winney07.github.io-backup目录下的内容拷贝到winney07.github.io
+10. 将winney07.github.io-backup目录下的内容拷贝到winney07.github.io，即.git文件夹和README.md文件
 
     ```
     .git
@@ -103,9 +109,9 @@
     Validating config
     ```
 
-    解决方案：修改_config.yml
+    解决方案：修改winney07.github.io\\_config.yml
 
-12. 修改_config.yml
+12. 修改winney07.github.io\\_config.yml
 
     ```
     deploy:
@@ -163,7 +169,7 @@
     timezone: Asia/Shanghai      #时区
     ```
 
-16. 把之前的博客仓库source目录下的内容拷贝到winney07.github.io\source
+16. 如果之前有博客，把之前的博客仓库source目录下的内容拷贝到winney07.github.io\source
 
 17. 重新生成文件
 

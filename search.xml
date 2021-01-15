@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Clipboard的使用</title>
+    <url>/2020/11/04/Clipboard%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<h4 id="如果存在clipboard-先将它销毁"><a href="#如果存在clipboard-先将它销毁" class="headerlink" title="如果存在clipboard,先将它销毁"></a>如果存在clipboard,先将它销毁</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">if(clipboard) &#123;</span><br><span class="line">    clipboard.destroy();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="Clipboard官网使用教程"><a href="#Clipboard官网使用教程" class="headerlink" title="Clipboard官网使用教程"></a><a href="http://www.clipboardjs.cn/">Clipboard官网使用教程</a></h5><h5 id="复制成功和复制失败的提示"><a href="#复制成功和复制失败的提示" class="headerlink" title="复制成功和复制失败的提示"></a>复制成功和复制失败的提示</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var u &#x3D; navigator.userAgent;</span><br><span class="line">clipboard.on(&#39;success&#39;, function(e) &#123;</span><br><span class="line">    layer.msg(&#39;复制成功&#39;, &#123;time: 1000&#125;);</span><br><span class="line">    e.clearSelection();</span><br><span class="line">&#125;);</span><br><span class="line">clipboard.on(&#39;error&#39;, function(e) &#123;</span><br><span class="line">    if(u.indexOf(&#39;UCBrowser&#39;) &gt; -1)&#123;</span><br><span class="line">        layer.msg(&#39;您的浏览器不支持，请长按内容手动复制！&#39;, &#123;time: 1000&#125;);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        layer.msg(&#39;复制失败&#39;, &#123;time: 1000&#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h5 id="如果提示信息弹两次"><a href="#如果提示信息弹两次" class="headerlink" title="如果提示信息弹两次"></a>如果提示信息弹两次</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">自己写一个copySuccessTip提示信息</span><br><span class="line">$(&quot;.copySuccessTip&quot;).addClass(&quot;mymove&quot;);</span><br><span class="line">setTimeout(function() &#123;</span><br><span class="line">    $(&quot;.copySuccessTip&quot;).removeClass(&quot;mymove&quot;);</span><br><span class="line">&#125;,1000);</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">引入图片：</span><br><span class="line">&#123;% asset_img css1.png %&#125;</span><br><span class="line">引入链接：</span><br><span class="line">[参考的博客](https:&#x2F;&#x2F;juejin.im&#x2F;post&#x2F;5b15022ff265da6e163720c6)</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>工作笔记</category>
+        <category>Clipboard</category>
+      </categories>
+      <tags>
+        <tag>Clipboard</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>ECMAScript 6简介</title>
     <url>/2019/07/04/ECMAScript-6%E7%AE%80%E4%BB%8B/</url>
     <content><![CDATA[<a href="http://es6.ruanyifeng.com/" title="" target="">阮一峰-ECMAScript 6</a> 
@@ -28,24 +46,6 @@
       </categories>
       <tags>
         <tag>阮一峰-ES6</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Clipboard的使用</title>
-    <url>/2020/11/04/Clipboard%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
-    <content><![CDATA[<h4 id="如果存在clipboard-先将它销毁"><a href="#如果存在clipboard-先将它销毁" class="headerlink" title="如果存在clipboard,先将它销毁"></a>如果存在clipboard,先将它销毁</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">if(clipboard) &#123;</span><br><span class="line">    clipboard.destroy();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="Clipboard官网使用教程"><a href="#Clipboard官网使用教程" class="headerlink" title="Clipboard官网使用教程"></a><a href="http://www.clipboardjs.cn/">Clipboard官网使用教程</a></h5><h5 id="复制成功和复制失败的提示"><a href="#复制成功和复制失败的提示" class="headerlink" title="复制成功和复制失败的提示"></a>复制成功和复制失败的提示</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var u &#x3D; navigator.userAgent;</span><br><span class="line">clipboard.on(&#39;success&#39;, function(e) &#123;</span><br><span class="line">    layer.msg(&#39;复制成功&#39;, &#123;time: 1000&#125;);</span><br><span class="line">    e.clearSelection();</span><br><span class="line">&#125;);</span><br><span class="line">clipboard.on(&#39;error&#39;, function(e) &#123;</span><br><span class="line">    if(u.indexOf(&#39;UCBrowser&#39;) &gt; -1)&#123;</span><br><span class="line">        layer.msg(&#39;您的浏览器不支持，请长按内容手动复制！&#39;, &#123;time: 1000&#125;);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        layer.msg(&#39;复制失败&#39;, &#123;time: 1000&#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h5 id="如果提示信息弹两次"><a href="#如果提示信息弹两次" class="headerlink" title="如果提示信息弹两次"></a>如果提示信息弹两次</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">自己写一个copySuccessTip提示信息</span><br><span class="line">$(&quot;.copySuccessTip&quot;).addClass(&quot;mymove&quot;);</span><br><span class="line">setTimeout(function() &#123;</span><br><span class="line">    $(&quot;.copySuccessTip&quot;).removeClass(&quot;mymove&quot;);</span><br><span class="line">&#125;,1000);</span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">引入图片：</span><br><span class="line">&#123;% asset_img css1.png %&#125;</span><br><span class="line">引入链接：</span><br><span class="line">[参考的博客](https:&#x2F;&#x2F;juejin.im&#x2F;post&#x2F;5b15022ff265da6e163720c6)</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>工作笔记</category>
-        <category>Clipboard</category>
-      </categories>
-      <tags>
-        <tag>Clipboard</tag>
       </tags>
   </entry>
   <entry>
@@ -389,6 +389,32 @@
       </tags>
   </entry>
   <entry>
+    <title>IE浏览器table中的TD无数据边框不显示问题</title>
+    <url>/2019/07/19/IE%E6%B5%8F%E8%A7%88%E5%99%A8table%E4%B8%AD%E7%9A%84TD%E6%97%A0%E6%95%B0%E6%8D%AE%E8%BE%B9%E6%A1%86%E4%B8%8D%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<p>在IE(目前发现是ie9,ie10)浏览器下，无数据的时候：</p>
+<img src="/2019/07/19/IE%E6%B5%8F%E8%A7%88%E5%99%A8table%E4%B8%AD%E7%9A%84TD%E6%97%A0%E6%95%B0%E6%8D%AE%E8%BE%B9%E6%A1%86%E4%B8%8D%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98/1.png" class="">
+<p>原先代码：<br>合并单元格：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;tr&gt;&lt;td colspan=<span class="string">&quot;4&quot;</span>&gt;暂无数据&lt;/td&gt;&lt;/tr&gt;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>结构代码：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;div class=<span class="string">&quot;layui-clear&quot;</span>&gt;</span><br><span class="line">    &lt;div class=<span class="string">&quot;layui-table-body&quot;</span> id=<span class="string">&quot;table-body&quot;</span>&gt;</span><br><span class="line">    //表格模板</span><br><span class="line">    &lt;include file=<span class="string">&quot;GlobalConfig/lib_table_platform_sdk&quot;</span> /&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>解决方案：<br>将合并单元格的代码改为：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;tr&gt;</span><br><span class="line">    &lt;td style=<span class="string">&quot;border:0;&quot;</span>&gt;&amp;nbsp;&lt;/td&gt;</span><br><span class="line">    &lt;td style=<span class="string">&quot;border:0;&quot;</span>&gt;&lt;p class=<span class="string">&quot;no-table-data&quot;</span>&gt;暂无数据&lt;/p&gt;&lt;/td&gt;</span><br><span class="line">    &lt;td style=<span class="string">&quot;border:0;&quot;</span>&gt;&amp;nbsp;&lt;/td&gt;</span><br><span class="line">    &lt;td style=<span class="string">&quot;border:0;&quot;</span>&gt;&amp;nbsp;&lt;/td&gt;</span><br><span class="line">&lt;/tr&gt;</span><br></pre></td></tr></table></figure>
+<p>由于无数据的情况下，“暂无数据”的显示都是相对于表头相同的位置，所以可以考虑使用定位来做。<br>同时要保证每个td里面都要有内容，所以使用空格符来代替。<br>添加样式：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">.layui-clear&#123;</span><br><span class="line">  position: relative;</span><br><span class="line">&#125;</span><br><span class="line">.no-table-data&#123;</span><br><span class="line">  position: absolute;</span><br><span class="line">  left:50%; </span><br><span class="line">  margin-left:-24px;</span><br><span class="line">  top:73px; </span><br><span class="line">  color: <span class="comment">#263248;</span></span><br><span class="line">  font-size: 12px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="第二种解决方案"><a href="#第二种解决方案" class="headerlink" title="第二种解决方案"></a>第二种解决方案</h6><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">table&#123;border-collapse: separate;&#125;</span><br><span class="line"></span><br><span class="line">这种方法，表格的边框会比较粗。还是不太能解决。</span><br></pre></td></tr></table></figure>
+<p>思路参考：<a href="https://blog.csdn.net/da_zhuang/article/details/8736662" title="" target="">IE浏览器table中的TD无数据边框不显示问题</a></p>
+<p>（使用表格的样式设置，解决不了，所以才用了定位的方法。若有更好的方法，可以给我留言。）</p>
+]]></content>
+      <categories>
+        <category>工作笔记</category>
+        <category>兼容</category>
+      </categories>
+      <tags>
+        <tag>兼容</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>IE兼容性处理</title>
     <url>/2021/01/15/IE%E5%85%BC%E5%AE%B9%E6%80%A7%E5%A4%84%E7%90%86/</url>
     <content><![CDATA[<h4 id="js判断浏览器是否为IE浏览器"><a href="#js判断浏览器是否为IE浏览器" class="headerlink" title="js判断浏览器是否为IE浏览器"></a>js判断浏览器是否为IE浏览器</h4><p>IE6-8和IE11都适用：</p>
@@ -413,32 +439,6 @@
       </categories>
       <tags>
         <tag>IE兼容</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>IE浏览器table中的TD无数据边框不显示问题</title>
-    <url>/2019/07/19/IE%E6%B5%8F%E8%A7%88%E5%99%A8table%E4%B8%AD%E7%9A%84TD%E6%97%A0%E6%95%B0%E6%8D%AE%E8%BE%B9%E6%A1%86%E4%B8%8D%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<p>在IE(目前发现是ie9,ie10)浏览器下，无数据的时候：</p>
-<img src="/2019/07/19/IE%E6%B5%8F%E8%A7%88%E5%99%A8table%E4%B8%AD%E7%9A%84TD%E6%97%A0%E6%95%B0%E6%8D%AE%E8%BE%B9%E6%A1%86%E4%B8%8D%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98/1.png" class="">
-<p>原先代码：<br>合并单元格：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;tr&gt;&lt;td colspan=<span class="string">&quot;4&quot;</span>&gt;暂无数据&lt;/td&gt;&lt;/tr&gt;</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<p>结构代码：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;div class=<span class="string">&quot;layui-clear&quot;</span>&gt;</span><br><span class="line">    &lt;div class=<span class="string">&quot;layui-table-body&quot;</span> id=<span class="string">&quot;table-body&quot;</span>&gt;</span><br><span class="line">    //表格模板</span><br><span class="line">    &lt;include file=<span class="string">&quot;GlobalConfig/lib_table_platform_sdk&quot;</span> /&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
-<p>解决方案：<br>将合并单元格的代码改为：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;tr&gt;</span><br><span class="line">    &lt;td style=<span class="string">&quot;border:0;&quot;</span>&gt;&amp;nbsp;&lt;/td&gt;</span><br><span class="line">    &lt;td style=<span class="string">&quot;border:0;&quot;</span>&gt;&lt;p class=<span class="string">&quot;no-table-data&quot;</span>&gt;暂无数据&lt;/p&gt;&lt;/td&gt;</span><br><span class="line">    &lt;td style=<span class="string">&quot;border:0;&quot;</span>&gt;&amp;nbsp;&lt;/td&gt;</span><br><span class="line">    &lt;td style=<span class="string">&quot;border:0;&quot;</span>&gt;&amp;nbsp;&lt;/td&gt;</span><br><span class="line">&lt;/tr&gt;</span><br></pre></td></tr></table></figure>
-<p>由于无数据的情况下，“暂无数据”的显示都是相对于表头相同的位置，所以可以考虑使用定位来做。<br>同时要保证每个td里面都要有内容，所以使用空格符来代替。<br>添加样式：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">.layui-clear&#123;</span><br><span class="line">  position: relative;</span><br><span class="line">&#125;</span><br><span class="line">.no-table-data&#123;</span><br><span class="line">  position: absolute;</span><br><span class="line">  left:50%; </span><br><span class="line">  margin-left:-24px;</span><br><span class="line">  top:73px; </span><br><span class="line">  color: <span class="comment">#263248;</span></span><br><span class="line">  font-size: 12px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h6 id="第二种解决方案"><a href="#第二种解决方案" class="headerlink" title="第二种解决方案"></a>第二种解决方案</h6><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">table&#123;border-collapse: separate;&#125;</span><br><span class="line"></span><br><span class="line">这种方法，表格的边框会比较粗。还是不太能解决。</span><br></pre></td></tr></table></figure>
-<p>思路参考：<a href="https://blog.csdn.net/da_zhuang/article/details/8736662" title="" target="">IE浏览器table中的TD无数据边框不显示问题</a></p>
-<p>（使用表格的样式设置，解决不了，所以才用了定位的方法。若有更好的方法，可以给我留言。）</p>
-]]></content>
-      <categories>
-        <category>工作笔记</category>
-        <category>兼容</category>
-      </categories>
-      <tags>
-        <tag>兼容</tag>
       </tags>
   </entry>
   <entry>
@@ -613,73 +613,6 @@
       </tags>
   </entry>
   <entry>
-    <title>TypeScript函数泛型-难点</title>
-    <url>/2020/11/11/TypeScript%E6%B3%9B%E5%9E%8B-%E9%9A%BE%E7%82%B9/</url>
-    <content><![CDATA[<h4 id="TypeScript-函数泛型-难点"><a href="#TypeScript-函数泛型-难点" class="headerlink" title="TypeScript 函数泛型-难点"></a>TypeScript 函数泛型-难点</h4><blockquote>
-<h4 id="编写一个联合类型-Demo"><a href="#编写一个联合类型-Demo" class="headerlink" title="编写一个联合类型 Demo"></a>编写一个联合类型 Demo</h4></blockquote>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">join</span>(<span class="params">first: string | number, second: string | number</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;first&#125;</span><span class="subst">$&#123;second&#125;</span>`</span>;</span><br><span class="line">&#125;</span><br><span class="line">join(<span class="string">&quot;jspang&quot;</span>, <span class="string">&quot;.com&quot;</span>);</span><br></pre></td></tr></table></figure>
-<p>那现在所学的知识就完成不了啦，所以需要学习<code>泛型</code>来解决这个问题。</p>
-<blockquote>
-<h4 id="初始泛型概念-generic"><a href="#初始泛型概念-generic" class="headerlink" title="初始泛型概念-generic"></a>初始泛型概念-generic</h4></blockquote>
-<blockquote>
-<p>泛型：[generic - 通用、泛指的意思],那最简单的理解，泛型就是泛指的类型。</p>
-</blockquote>
-<p>泛型的定义使用<code>&lt;&gt;</code>（尖角号）进行定义的</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">join</span>&lt;<span class="title">JSPang</span>&gt;(<span class="params">first: JSPang, second: JSPang</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;first&#125;</span><span class="subst">$&#123;second&#125;</span>`</span>;</span><br><span class="line">&#125;</span><br><span class="line">join &lt; string &gt; (<span class="string">&quot;jspang&quot;</span>, <span class="string">&quot;.com&quot;</span>);</span><br></pre></td></tr></table></figure>
-<p>如果要是<code>number</code>类型，就直接在调用方法的时候进行更改就可以了。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">join &lt; number &gt; (<span class="number">1</span>, <span class="number">2</span>);</span><br></pre></td></tr></table></figure>
-<blockquote>
-<h4 id="泛型中数组的使用"><a href="#泛型中数组的使用" class="headerlink" title="泛型中数组的使用"></a>泛型中数组的使用</h4></blockquote>
-<p>如果传递过来的值要求是数字，如何用泛型进行定义那?两种方法，第一种是直接使用<code>[]</code>，第二种是使用<code>Array&lt;泛型&gt;</code>。形式不一样，其他的都一样。</p>
-<p>第一种写法：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFun</span>&lt;<span class="title">ANY</span>&gt;(<span class="params">params: ANY[]</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> params;</span><br><span class="line">&#125;</span><br><span class="line">myFun &lt; string &gt; [<span class="string">&quot;123&quot;</span>, <span class="string">&quot;456&quot;</span>];</span><br></pre></td></tr></table></figure>
-<p>第二种写法：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFun</span>&lt;<span class="title">ANY</span>&gt;(<span class="params">params: <span class="built_in">Array</span>&lt;ANY&gt;</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> params;</span><br><span class="line">&#125;</span><br><span class="line">myFun &lt; string &gt; [<span class="string">&quot;123&quot;</span>, <span class="string">&quot;456&quot;</span>];</span><br></pre></td></tr></table></figure>
-<p>在工作中，我们经常使用<code>&lt;T&gt;</code>来作泛型的表示</p>
-<blockquote>
-<h4 id="多个泛型的定义"><a href="#多个泛型的定义" class="headerlink" title="多个泛型的定义"></a>多个泛型的定义</h4></blockquote>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">join</span>&lt;<span class="title">T</span>, <span class="title">P</span>&gt;(<span class="params">first: T, second: P</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;first&#125;</span><span class="subst">$&#123;second&#125;</span>`</span>;</span><br><span class="line">&#125;</span><br><span class="line">join &lt; number, string &gt; (<span class="number">1</span>, <span class="string">&quot;2&quot;</span>);</span><br></pre></td></tr></table></figure>
-<blockquote>
-<h4 id="泛型的类型推断"><a href="#泛型的类型推断" class="headerlink" title="泛型的类型推断"></a>泛型的类型推断</h4></blockquote>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">join</span>&lt;<span class="title">T</span>, <span class="title">P</span>&gt;(<span class="params">first: T, second: P</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;first&#125;</span><span class="subst">$&#123;second&#125;</span>`</span>;</span><br><span class="line">&#125;</span><br><span class="line">join(<span class="number">1</span>, <span class="string">&quot;2&quot;</span>);</span><br></pre></td></tr></table></figure>
-<p>不建议大量使用类型推断，这会让你的代码易读和健壮性都会下降</p>
-<h4 id="TypeScript-类中泛型-难点"><a href="#TypeScript-类中泛型-难点" class="headerlink" title="TypeScript 类中泛型-难点"></a>TypeScript 类中泛型-难点</h4><blockquote>
-<h4 id="编写一个基本类"><a href="#编写一个基本类" class="headerlink" title="编写一个基本类"></a>编写一个基本类</h4></blockquote>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SelectGirl</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">private girls: string[]</span>)</span> &#123;&#125;</span><br><span class="line">  getGirl(index: number): string &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.girls[index];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> selectGirl = <span class="keyword">new</span> SelectGirl([<span class="string">&quot;大脚&quot;</span>, <span class="string">&quot;刘英&quot;</span>, <span class="string">&quot;晓红&quot;</span>]);</span><br><span class="line"><span class="built_in">console</span>.log(selectGirl.getGirl(<span class="number">1</span>));</span><br></pre></td></tr></table></figure>
-<p>在 TypeScript 中，编写复杂代码的时候，会经常使用泛型。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SelectGirl</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">private girls: string[] | number[]</span>)</span> &#123;&#125;</span><br><span class="line">  getGirl(index: number): string | number &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.girls[index];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<h4 id="初始类的泛型"><a href="#初始类的泛型" class="headerlink" title="初始类的泛型"></a>初始类的泛型</h4></blockquote>
-<p>用<code>&lt;&gt;</code>编写</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SelectGirl</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">private girls: T[]</span>)</span> &#123;&#125;</span><br><span class="line">  getGirl(index: number): T &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.girls[index];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> selectGirl = <span class="keyword">new</span> SelectGirl([<span class="string">&quot;大脚&quot;</span>, <span class="string">&quot;刘英&quot;</span>, <span class="string">&quot;晓红&quot;</span>]);</span><br><span class="line"><span class="built_in">console</span>.log(selectGirl.getGirl(<span class="number">1</span>));</span><br></pre></td></tr></table></figure>
-<p>这时候代码并不报错，也使用了泛型，但是在实例化对象的时候，TypeScript 是通过类型推断出来的。这种方法并不好，所以还是需要在实例化对象的时候，对泛型的值进行确定，比如是<code>string</code>类型，就这样写。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> selectGirl = <span class="keyword">new</span> SelectGirl() &lt; string &gt; [<span class="string">&quot;大脚&quot;</span>, <span class="string">&quot;刘英&quot;</span>, <span class="string">&quot;晓红&quot;</span>];</span><br></pre></td></tr></table></figure>
-<blockquote>
-<h4 id="泛型中的继承"><a href="#泛型中的继承" class="headerlink" title="泛型中的继承"></a>泛型中的继承</h4></blockquote>
-<p>现在需求又变了，要求返回是一个对象中的<code>name</code>,也就是下面的代码要改成这个样子。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">return</span> <span class="built_in">this</span>.girls[index].name;</span><br></pre></td></tr></table></figure>
-<p>现在的代码一定时报错的，但是这时候还要求我们这么做，意思就是说传递过来的值必须是一个对象类型的，里边还要有<code>name</code>属性。这时候就要用到继承了，我用接口的方式来实现。写一个<code>Girl</code>的接口，每个接口里都要有 name 属性。代码如下：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">interface Girl &#123;</span><br><span class="line">  name: string;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>有了接口后用<code>extends</code>关键字实现泛型继承，代码如下：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SelectGirl</span>&lt;<span class="title">T</span> <span class="keyword">extends</span> <span class="title">Girl</span>&gt; </span>&#123;</span><br><span class="line"> ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这句代码的意思是泛型里必须有一个<code>name</code>属性，因为它继承了<code>Girl</code>接口。</p>
-<p>现在程序还是报错的，因为我们<code>getGirl</code>方法的返回类型还不对，这时候应该是一个<code>string</code>类型才对，所以代码应该改为下面的样子：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">interface Girl &#123;</span><br><span class="line">  name: string;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SelectGirl</span>&lt;<span class="title">T</span> <span class="keyword">extends</span> <span class="title">Girl</span>&gt; </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">private girls: T[]</span>)</span> &#123;&#125;</span><br><span class="line">  getGirl(index: number): string &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.girls[index].name;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> selectGirl = <span class="keyword">new</span> SelectGirl([</span><br><span class="line">  &#123; <span class="attr">name</span>: <span class="string">&quot;大脚&quot;</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">name</span>: <span class="string">&quot;刘英&quot;</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">name</span>: <span class="string">&quot;晓红&quot;</span> &#125;,</span><br><span class="line">]);</span><br><span class="line"><span class="built_in">console</span>.log(selectGirl.getGirl(<span class="number">1</span>));</span><br></pre></td></tr></table></figure>
-<blockquote>
-<h4 id="泛型约束"><a href="#泛型约束" class="headerlink" title="泛型约束"></a>泛型约束</h4></blockquote>
-<p>现在的泛型可以是任意类型，可以是对象、字符串、布尔、数字都是可以的。但你现在要求这个泛型必须是<code>string</code>或者<code>number</code>类型。我们还是拿上面的例子，不过把代码改为最初的样子。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SelectGirl</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">private girls: T[]</span>)</span> &#123;&#125;</span><br><span class="line">  getGirl(index: number): T &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.girls[index];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> selectGirl = <span class="keyword">new</span> SelectGirl&lt;string&gt;([<span class="string">&quot;大脚&quot;</span>, <span class="string">&quot;刘英&quot;</span>, <span class="string">&quot;晓红&quot;</span>]);</span><br><span class="line"><span class="built_in">console</span>.log(selectGirl.getGirl(<span class="number">1</span>));</span><br></pre></td></tr></table></figure>
-<p>然后进行约束，这时候还是可以使用关键字<code>extends</code>来进行约束，把代码改成下面的样子。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SelectGirl</span>&lt;<span class="title">T</span> <span class="keyword">extends</span> <span class="title">number</span> | <span class="title">string</span>&gt; </span>&#123;</span><br><span class="line">  <span class="comment">//.....</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>工作笔记</category>
-        <category>TypeScript</category>
-      </categories>
-      <tags>
-        <tag>TypeScript</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>TypeScript命名空间-Namespace</title>
     <url>/2020/11/12/TypeScript%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4-Namespace/</url>
     <content><![CDATA[<h4 id="初识命名空间-Namespace"><a href="#初识命名空间-Namespace" class="headerlink" title="初识命名空间-Namespace"></a>初识命名空间-Namespace</h4><p>以前的课程都是通过<code>Node</code>来运行代码的，这节课为了有更好的演示效果，我们要在浏览器中运行代码。这就要求我们重新创建一个项目，直接在桌面上建立一个文件夹<code>TSWeb</code>。</p>
@@ -776,6 +709,129 @@
 <h5 id="添加方法："><a href="#添加方法：" class="headerlink" title="添加方法："></a>添加方法：</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">interface Girl &#123;</span><br><span class="line">	name: string;</span><br><span class="line">	age : number;</span><br><span class="line">	bust: number;</span><br><span class="line">	waistline ?: number;</span><br><span class="line">	[propname:string]: any;</span><br><span class="line">	say(): string;</span><br><span class="line">&#125;</span><br><span class="line">const girl&#x3D;&#123;</span><br><span class="line">	name:&#39;大脚&quot;，</span><br><span class="line">	age: 18,</span><br><span class="line">	bust:94,</span><br><span class="line">	waistline: 21,</span><br><span class="line">	sex: &#39;女&#39;，</span><br><span class="line">	say()&#123;</span><br><span class="line">		return &quot;欢迎光临，红浪漫洗浴!!”</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <h5 id="接口和类的约束"><a href="#接口和类的约束" class="headerlink" title="接口和类的约束"></a>接口和类的约束</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class xiaojieJie implements Girl&#123;</span><br><span class="line">	name&#x3D;&quot;刘英&quot;</span><br><span class="line">	age&#x3D;18</span><br><span class="line">	bust&#x3D;90</span><br><span class="line">	say()&#123;</span><br><span class="line">		return &quot;欢迎光临,红浪漫洗浴!!&quot;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;	</span><br></pre></td></tr></table></figure>
 <h5 id="接口间的继承"><a href="#接口间的继承" class="headerlink" title="接口间的继承"></a>接口间的继承</h5>]]></content>
+      <categories>
+        <category>工作笔记</category>
+        <category>TypeScript</category>
+      </categories>
+      <tags>
+        <tag>TypeScript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>TypeScript的联合类型</title>
+    <url>/2020/11/11/TypeScript%E7%9A%84%E8%81%94%E5%90%88%E7%B1%BB%E5%9E%8B/</url>
+    <content><![CDATA[<h4 id="联合类型和类型保护"><a href="#联合类型和类型保护" class="headerlink" title="联合类型和类型保护"></a>联合类型和类型保护</h4><blockquote>
+<h4 id="联合类型展示"><a href="#联合类型展示" class="headerlink" title="联合类型展示"></a>联合类型展示</h4></blockquote>
+<p>所谓联合类型，可以认为一个变量可能有两种或两种以上的类型。所以我们使用了联合类型，关键符号是<code>|</code>(竖线)。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">interface Waiter &#123;</span><br><span class="line">  anjiao: boolean;</span><br><span class="line">  say: () &#x3D;&gt; &#123;&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">interface Teacher &#123;</span><br><span class="line">  anjiao: boolean;</span><br><span class="line">  skill: () &#x3D;&gt; &#123;&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function judgeWho(animal: Waiter | Teacher) &#123;&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function judgeWho(animal: Waiter | Teacher) &#123;</span><br><span class="line">  animal.say();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>但这时候问题来了，如果我直接写一个这样的方法，就会报错，因为<code>judgeWho</code>不能准确的判断联合类型具体的实例是什么。</p>
+<p>这时候就需要再引出一个概念叫做<code>类型保护</code></p>
+<blockquote>
+<h4 id="类型保护-类型断言"><a href="#类型保护-类型断言" class="headerlink" title="类型保护-类型断言"></a>类型保护-类型断言</h4></blockquote>
+<p>类型断言就是通过断言的方式确定传递过来的准确值</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">interface Waiter &#123;</span><br><span class="line">  anjiao: boolean;</span><br><span class="line">  say: () &#x3D;&gt; &#123;&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">interface Teacher &#123;</span><br><span class="line">  anjiao: boolean;</span><br><span class="line">  skill: () &#x3D;&gt; &#123;&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function judgeWho(animal: Waiter | Teacher) &#123;</span><br><span class="line">  if (animal.anjiao) &#123;</span><br><span class="line">    (animal as Teacher).skill();</span><br><span class="line">  &#125;else&#123;</span><br><span class="line">    (animal as Waiter).say();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<h4 id="类型保护-in语法"><a href="#类型保护-in语法" class="headerlink" title="类型保护-in语法"></a>类型保护-in语法</h4></blockquote>
+<p>经常使用<code>in</code>语法来作类型保护，比如用<code>if</code>来判断<code>animal</code>里有没有<code>skill()</code>方法。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function judgeWhoTwo(animal: Waiter | Teacher) &#123;</span><br><span class="line">  if (&quot;skill&quot; in animal) &#123;</span><br><span class="line">    animal.skill();</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    animal.say();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里的<code>else</code>部分能够自动判断，得益于<code>TypeScript</code>的自动判断。</p>
+<blockquote>
+<h4 id="类型保护-typeof-语法"><a href="#类型保护-typeof-语法" class="headerlink" title="类型保护-typeof 语法"></a>类型保护-typeof 语法</h4></blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function add(first: string | number, second: string | number) &#123;</span><br><span class="line">  return first + second;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这时候会报错，解决这个问题，就可以直接用type of来进行解决</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function add(first: string | number, second: string | number) &#123;</span><br><span class="line">  if (typeof first &#x3D;&#x3D;&#x3D; &quot;string&quot; || typeof second &#x3D;&#x3D;&#x3D; &quot;string&quot;) &#123;</span><br><span class="line">    return &#96;$&#123;first&#125;$&#123;second&#125;&#96;;</span><br><span class="line">  &#125;</span><br><span class="line">  return first + second;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<h4 id="类型保护-instanceof-语法"><a href="#类型保护-instanceof-语法" class="headerlink" title="类型保护-instanceof 语法"></a>类型保护-instanceof 语法</h4></blockquote>
+<p>比如现在要作类型保护的是一个对象，这时候就可以使用<code>instanceof</code>语法来作</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class NumberObj &#123;</span><br><span class="line">  count: number;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function addObj(first: object | NumberObj, second: object | NumberObj) &#123;</span><br><span class="line">  return first.count + second.count;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>报错不要紧，直接使用<code>instanceof</code>语法进行判断一下，就可以解决问题。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function addObj(first: object | NumberObj, second: object | NumberObj) &#123;</span><br><span class="line">  if (first instanceof NumberObj &amp;&amp; second instanceof NumberObj) &#123;</span><br><span class="line">    return first.count + second.count;</span><br><span class="line">  &#125;</span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Enum-枚举类型讲解"><a href="#Enum-枚举类型讲解" class="headerlink" title="Enum 枚举类型讲解"></a>Enum 枚举类型讲解</h4><p>初级程序员写法：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getServe</span>(<span class="params">status: number</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (status === <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;massage&quot;</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (status === <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;SPA&quot;</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (status === <span class="number">2</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;dabaojian&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> result = getServe(<span class="number">0</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">`我要去<span class="subst">$&#123;result&#125;</span>`</span>);</span><br></pre></td></tr></table></figure>
+<p>中级程序员写法：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> Status = &#123;</span><br><span class="line">  MASSAGE: <span class="number">0</span>,</span><br><span class="line">  SPA: <span class="number">1</span>,</span><br><span class="line">  DABAOJIAN: <span class="number">2</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getServe</span>(<span class="params">status: any</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (status === Status.MASSAGE) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;massage&quot;</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (status === Status.SPA) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;spa&quot;</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (status === Status.DABAOJIAN) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;dabaojian&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> result = getServe(Status.SPA);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">`我要去<span class="subst">$&#123;result&#125;</span>`</span>);</span><br></pre></td></tr></table></figure>
+<p>高级程序员写法：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">enum Status &#123;</span><br><span class="line">  MASSAGE,</span><br><span class="line">  SPA,</span><br><span class="line">  DABAOJIAN,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getServe</span>(<span class="params">status: any</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (status === Status.MASSAGE) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;massage&quot;</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (status === Status.SPA) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;spa&quot;</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (status === Status.DABAOJIAN) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;dabaojian&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> result = getServe(Status.SPA);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">`我要去<span class="subst">$&#123;result&#125;</span>`</span>);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<h4 id="枚举类型的对应值"><a href="#枚举类型的对应值" class="headerlink" title="枚举类型的对应值"></a>枚举类型的对应值</h4></blockquote>
+<p>你调用时传一个<code>1</code>,也会输出<code>我要去spa</code>。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> result = getServe(<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+<p>因为枚举类型是有对应的数字值的，默认是从 0 开始的</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(Status.MASSAGE);</span><br><span class="line"><span class="built_in">console</span>.log(Status.SPA);</span><br><span class="line"><span class="built_in">console</span>.log(Status.DABAOJIAN);</span><br></pre></td></tr></table></figure>
+<p>可以看出结果就是<code>0,1,2</code>。那这时候不想默认从 0 开始，而是想从 1 开始。可以这样写。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">enum Status &#123;</span><br><span class="line">  MASSAGE = <span class="number">1</span>,</span><br><span class="line">  SPA,</span><br><span class="line">  DABAOJIAN,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<h4 id="枚举通过下标反查"><a href="#枚举通过下标反查" class="headerlink" title="枚举通过下标反查"></a>枚举通过下标反查</h4></blockquote>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(Status.MASSAGE, Status[<span class="number">1</span>]);</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>工作笔记</category>
+        <category>TypeScript</category>
+      </categories>
+      <tags>
+        <tag>TypeScript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>TypeScript函数泛型-难点</title>
+    <url>/2020/11/11/TypeScript%E6%B3%9B%E5%9E%8B-%E9%9A%BE%E7%82%B9/</url>
+    <content><![CDATA[<h4 id="TypeScript-函数泛型-难点"><a href="#TypeScript-函数泛型-难点" class="headerlink" title="TypeScript 函数泛型-难点"></a>TypeScript 函数泛型-难点</h4><blockquote>
+<h4 id="编写一个联合类型-Demo"><a href="#编写一个联合类型-Demo" class="headerlink" title="编写一个联合类型 Demo"></a>编写一个联合类型 Demo</h4></blockquote>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">join</span>(<span class="params">first: string | number, second: string | number</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;first&#125;</span><span class="subst">$&#123;second&#125;</span>`</span>;</span><br><span class="line">&#125;</span><br><span class="line">join(<span class="string">&quot;jspang&quot;</span>, <span class="string">&quot;.com&quot;</span>);</span><br></pre></td></tr></table></figure>
+<p>那现在所学的知识就完成不了啦，所以需要学习<code>泛型</code>来解决这个问题。</p>
+<blockquote>
+<h4 id="初始泛型概念-generic"><a href="#初始泛型概念-generic" class="headerlink" title="初始泛型概念-generic"></a>初始泛型概念-generic</h4></blockquote>
+<blockquote>
+<p>泛型：[generic - 通用、泛指的意思],那最简单的理解，泛型就是泛指的类型。</p>
+</blockquote>
+<p>泛型的定义使用<code>&lt;&gt;</code>（尖角号）进行定义的</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">join</span>&lt;<span class="title">JSPang</span>&gt;(<span class="params">first: JSPang, second: JSPang</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;first&#125;</span><span class="subst">$&#123;second&#125;</span>`</span>;</span><br><span class="line">&#125;</span><br><span class="line">join &lt; string &gt; (<span class="string">&quot;jspang&quot;</span>, <span class="string">&quot;.com&quot;</span>);</span><br></pre></td></tr></table></figure>
+<p>如果要是<code>number</code>类型，就直接在调用方法的时候进行更改就可以了。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">join &lt; number &gt; (<span class="number">1</span>, <span class="number">2</span>);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<h4 id="泛型中数组的使用"><a href="#泛型中数组的使用" class="headerlink" title="泛型中数组的使用"></a>泛型中数组的使用</h4></blockquote>
+<p>如果传递过来的值要求是数字，如何用泛型进行定义那?两种方法，第一种是直接使用<code>[]</code>，第二种是使用<code>Array&lt;泛型&gt;</code>。形式不一样，其他的都一样。</p>
+<p>第一种写法：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFun</span>&lt;<span class="title">ANY</span>&gt;(<span class="params">params: ANY[]</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> params;</span><br><span class="line">&#125;</span><br><span class="line">myFun &lt; string &gt; [<span class="string">&quot;123&quot;</span>, <span class="string">&quot;456&quot;</span>];</span><br></pre></td></tr></table></figure>
+<p>第二种写法：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFun</span>&lt;<span class="title">ANY</span>&gt;(<span class="params">params: <span class="built_in">Array</span>&lt;ANY&gt;</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> params;</span><br><span class="line">&#125;</span><br><span class="line">myFun &lt; string &gt; [<span class="string">&quot;123&quot;</span>, <span class="string">&quot;456&quot;</span>];</span><br></pre></td></tr></table></figure>
+<p>在工作中，我们经常使用<code>&lt;T&gt;</code>来作泛型的表示</p>
+<blockquote>
+<h4 id="多个泛型的定义"><a href="#多个泛型的定义" class="headerlink" title="多个泛型的定义"></a>多个泛型的定义</h4></blockquote>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">join</span>&lt;<span class="title">T</span>, <span class="title">P</span>&gt;(<span class="params">first: T, second: P</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;first&#125;</span><span class="subst">$&#123;second&#125;</span>`</span>;</span><br><span class="line">&#125;</span><br><span class="line">join &lt; number, string &gt; (<span class="number">1</span>, <span class="string">&quot;2&quot;</span>);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<h4 id="泛型的类型推断"><a href="#泛型的类型推断" class="headerlink" title="泛型的类型推断"></a>泛型的类型推断</h4></blockquote>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">join</span>&lt;<span class="title">T</span>, <span class="title">P</span>&gt;(<span class="params">first: T, second: P</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;first&#125;</span><span class="subst">$&#123;second&#125;</span>`</span>;</span><br><span class="line">&#125;</span><br><span class="line">join(<span class="number">1</span>, <span class="string">&quot;2&quot;</span>);</span><br></pre></td></tr></table></figure>
+<p>不建议大量使用类型推断，这会让你的代码易读和健壮性都会下降</p>
+<h4 id="TypeScript-类中泛型-难点"><a href="#TypeScript-类中泛型-难点" class="headerlink" title="TypeScript 类中泛型-难点"></a>TypeScript 类中泛型-难点</h4><blockquote>
+<h4 id="编写一个基本类"><a href="#编写一个基本类" class="headerlink" title="编写一个基本类"></a>编写一个基本类</h4></blockquote>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SelectGirl</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">private girls: string[]</span>)</span> &#123;&#125;</span><br><span class="line">  getGirl(index: number): string &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.girls[index];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> selectGirl = <span class="keyword">new</span> SelectGirl([<span class="string">&quot;大脚&quot;</span>, <span class="string">&quot;刘英&quot;</span>, <span class="string">&quot;晓红&quot;</span>]);</span><br><span class="line"><span class="built_in">console</span>.log(selectGirl.getGirl(<span class="number">1</span>));</span><br></pre></td></tr></table></figure>
+<p>在 TypeScript 中，编写复杂代码的时候，会经常使用泛型。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SelectGirl</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">private girls: string[] | number[]</span>)</span> &#123;&#125;</span><br><span class="line">  getGirl(index: number): string | number &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.girls[index];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<h4 id="初始类的泛型"><a href="#初始类的泛型" class="headerlink" title="初始类的泛型"></a>初始类的泛型</h4></blockquote>
+<p>用<code>&lt;&gt;</code>编写</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SelectGirl</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">private girls: T[]</span>)</span> &#123;&#125;</span><br><span class="line">  getGirl(index: number): T &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.girls[index];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> selectGirl = <span class="keyword">new</span> SelectGirl([<span class="string">&quot;大脚&quot;</span>, <span class="string">&quot;刘英&quot;</span>, <span class="string">&quot;晓红&quot;</span>]);</span><br><span class="line"><span class="built_in">console</span>.log(selectGirl.getGirl(<span class="number">1</span>));</span><br></pre></td></tr></table></figure>
+<p>这时候代码并不报错，也使用了泛型，但是在实例化对象的时候，TypeScript 是通过类型推断出来的。这种方法并不好，所以还是需要在实例化对象的时候，对泛型的值进行确定，比如是<code>string</code>类型，就这样写。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> selectGirl = <span class="keyword">new</span> SelectGirl() &lt; string &gt; [<span class="string">&quot;大脚&quot;</span>, <span class="string">&quot;刘英&quot;</span>, <span class="string">&quot;晓红&quot;</span>];</span><br></pre></td></tr></table></figure>
+<blockquote>
+<h4 id="泛型中的继承"><a href="#泛型中的继承" class="headerlink" title="泛型中的继承"></a>泛型中的继承</h4></blockquote>
+<p>现在需求又变了，要求返回是一个对象中的<code>name</code>,也就是下面的代码要改成这个样子。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">return</span> <span class="built_in">this</span>.girls[index].name;</span><br></pre></td></tr></table></figure>
+<p>现在的代码一定时报错的，但是这时候还要求我们这么做，意思就是说传递过来的值必须是一个对象类型的，里边还要有<code>name</code>属性。这时候就要用到继承了，我用接口的方式来实现。写一个<code>Girl</code>的接口，每个接口里都要有 name 属性。代码如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">interface Girl &#123;</span><br><span class="line">  name: string;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>有了接口后用<code>extends</code>关键字实现泛型继承，代码如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SelectGirl</span>&lt;<span class="title">T</span> <span class="keyword">extends</span> <span class="title">Girl</span>&gt; </span>&#123;</span><br><span class="line"> ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这句代码的意思是泛型里必须有一个<code>name</code>属性，因为它继承了<code>Girl</code>接口。</p>
+<p>现在程序还是报错的，因为我们<code>getGirl</code>方法的返回类型还不对，这时候应该是一个<code>string</code>类型才对，所以代码应该改为下面的样子：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">interface Girl &#123;</span><br><span class="line">  name: string;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SelectGirl</span>&lt;<span class="title">T</span> <span class="keyword">extends</span> <span class="title">Girl</span>&gt; </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">private girls: T[]</span>)</span> &#123;&#125;</span><br><span class="line">  getGirl(index: number): string &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.girls[index].name;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> selectGirl = <span class="keyword">new</span> SelectGirl([</span><br><span class="line">  &#123; <span class="attr">name</span>: <span class="string">&quot;大脚&quot;</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">name</span>: <span class="string">&quot;刘英&quot;</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">name</span>: <span class="string">&quot;晓红&quot;</span> &#125;,</span><br><span class="line">]);</span><br><span class="line"><span class="built_in">console</span>.log(selectGirl.getGirl(<span class="number">1</span>));</span><br></pre></td></tr></table></figure>
+<blockquote>
+<h4 id="泛型约束"><a href="#泛型约束" class="headerlink" title="泛型约束"></a>泛型约束</h4></blockquote>
+<p>现在的泛型可以是任意类型，可以是对象、字符串、布尔、数字都是可以的。但你现在要求这个泛型必须是<code>string</code>或者<code>number</code>类型。我们还是拿上面的例子，不过把代码改为最初的样子。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SelectGirl</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">private girls: T[]</span>)</span> &#123;&#125;</span><br><span class="line">  getGirl(index: number): T &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.girls[index];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> selectGirl = <span class="keyword">new</span> SelectGirl&lt;string&gt;([<span class="string">&quot;大脚&quot;</span>, <span class="string">&quot;刘英&quot;</span>, <span class="string">&quot;晓红&quot;</span>]);</span><br><span class="line"><span class="built_in">console</span>.log(selectGirl.getGirl(<span class="number">1</span>));</span><br></pre></td></tr></table></figure>
+<p>然后进行约束，这时候还是可以使用关键字<code>extends</code>来进行约束，把代码改成下面的样子。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SelectGirl</span>&lt;<span class="title">T</span> <span class="keyword">extends</span> <span class="title">number</span> | <span class="title">string</span>&gt; </span>&#123;</span><br><span class="line">  <span class="comment">//.....</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>工作笔记</category>
         <category>TypeScript</category>
@@ -949,53 +1005,36 @@
       </tags>
   </entry>
   <entry>
-    <title>TypeScript的联合类型</title>
-    <url>/2020/11/11/TypeScript%E7%9A%84%E8%81%94%E5%90%88%E7%B1%BB%E5%9E%8B/</url>
-    <content><![CDATA[<h4 id="联合类型和类型保护"><a href="#联合类型和类型保护" class="headerlink" title="联合类型和类型保护"></a>联合类型和类型保护</h4><blockquote>
-<h4 id="联合类型展示"><a href="#联合类型展示" class="headerlink" title="联合类型展示"></a>联合类型展示</h4></blockquote>
-<p>所谓联合类型，可以认为一个变量可能有两种或两种以上的类型。所以我们使用了联合类型，关键符号是<code>|</code>(竖线)。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">interface Waiter &#123;</span><br><span class="line">  anjiao: boolean;</span><br><span class="line">  say: () &#x3D;&gt; &#123;&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">interface Teacher &#123;</span><br><span class="line">  anjiao: boolean;</span><br><span class="line">  skill: () &#x3D;&gt; &#123;&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function judgeWho(animal: Waiter | Teacher) &#123;&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function judgeWho(animal: Waiter | Teacher) &#123;</span><br><span class="line">  animal.say();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>但这时候问题来了，如果我直接写一个这样的方法，就会报错，因为<code>judgeWho</code>不能准确的判断联合类型具体的实例是什么。</p>
-<p>这时候就需要再引出一个概念叫做<code>类型保护</code></p>
-<blockquote>
-<h4 id="类型保护-类型断言"><a href="#类型保护-类型断言" class="headerlink" title="类型保护-类型断言"></a>类型保护-类型断言</h4></blockquote>
-<p>类型断言就是通过断言的方式确定传递过来的准确值</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">interface Waiter &#123;</span><br><span class="line">  anjiao: boolean;</span><br><span class="line">  say: () &#x3D;&gt; &#123;&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">interface Teacher &#123;</span><br><span class="line">  anjiao: boolean;</span><br><span class="line">  skill: () &#x3D;&gt; &#123;&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function judgeWho(animal: Waiter | Teacher) &#123;</span><br><span class="line">  if (animal.anjiao) &#123;</span><br><span class="line">    (animal as Teacher).skill();</span><br><span class="line">  &#125;else&#123;</span><br><span class="line">    (animal as Waiter).say();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<h4 id="类型保护-in语法"><a href="#类型保护-in语法" class="headerlink" title="类型保护-in语法"></a>类型保护-in语法</h4></blockquote>
-<p>经常使用<code>in</code>语法来作类型保护，比如用<code>if</code>来判断<code>animal</code>里有没有<code>skill()</code>方法。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function judgeWhoTwo(animal: Waiter | Teacher) &#123;</span><br><span class="line">  if (&quot;skill&quot; in animal) &#123;</span><br><span class="line">    animal.skill();</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    animal.say();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这里的<code>else</code>部分能够自动判断，得益于<code>TypeScript</code>的自动判断。</p>
-<blockquote>
-<h4 id="类型保护-typeof-语法"><a href="#类型保护-typeof-语法" class="headerlink" title="类型保护-typeof 语法"></a>类型保护-typeof 语法</h4></blockquote>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function add(first: string | number, second: string | number) &#123;</span><br><span class="line">  return first + second;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这时候会报错，解决这个问题，就可以直接用type of来进行解决</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function add(first: string | number, second: string | number) &#123;</span><br><span class="line">  if (typeof first &#x3D;&#x3D;&#x3D; &quot;string&quot; || typeof second &#x3D;&#x3D;&#x3D; &quot;string&quot;) &#123;</span><br><span class="line">    return &#96;$&#123;first&#125;$&#123;second&#125;&#96;;</span><br><span class="line">  &#125;</span><br><span class="line">  return first + second;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<h4 id="类型保护-instanceof-语法"><a href="#类型保护-instanceof-语法" class="headerlink" title="类型保护-instanceof 语法"></a>类型保护-instanceof 语法</h4></blockquote>
-<p>比如现在要作类型保护的是一个对象，这时候就可以使用<code>instanceof</code>语法来作</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class NumberObj &#123;</span><br><span class="line">  count: number;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function addObj(first: object | NumberObj, second: object | NumberObj) &#123;</span><br><span class="line">  return first.count + second.count;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>报错不要紧，直接使用<code>instanceof</code>语法进行判断一下，就可以解决问题。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function addObj(first: object | NumberObj, second: object | NumberObj) &#123;</span><br><span class="line">  if (first instanceof NumberObj &amp;&amp; second instanceof NumberObj) &#123;</span><br><span class="line">    return first.count + second.count;</span><br><span class="line">  &#125;</span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="Enum-枚举类型讲解"><a href="#Enum-枚举类型讲解" class="headerlink" title="Enum 枚举类型讲解"></a>Enum 枚举类型讲解</h4><p>初级程序员写法：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getServe</span>(<span class="params">status: number</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (status === <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;massage&quot;</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (status === <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;SPA&quot;</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (status === <span class="number">2</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;dabaojian&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> result = getServe(<span class="number">0</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">`我要去<span class="subst">$&#123;result&#125;</span>`</span>);</span><br></pre></td></tr></table></figure>
-<p>中级程序员写法：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> Status = &#123;</span><br><span class="line">  MASSAGE: <span class="number">0</span>,</span><br><span class="line">  SPA: <span class="number">1</span>,</span><br><span class="line">  DABAOJIAN: <span class="number">2</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getServe</span>(<span class="params">status: any</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (status === Status.MASSAGE) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;massage&quot;</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (status === Status.SPA) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;spa&quot;</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (status === Status.DABAOJIAN) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;dabaojian&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> result = getServe(Status.SPA);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">`我要去<span class="subst">$&#123;result&#125;</span>`</span>);</span><br></pre></td></tr></table></figure>
-<p>高级程序员写法：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">enum Status &#123;</span><br><span class="line">  MASSAGE,</span><br><span class="line">  SPA,</span><br><span class="line">  DABAOJIAN,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getServe</span>(<span class="params">status: any</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (status === Status.MASSAGE) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;massage&quot;</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (status === Status.SPA) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;spa&quot;</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (status === Status.DABAOJIAN) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;dabaojian&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> result = getServe(Status.SPA);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">`我要去<span class="subst">$&#123;result&#125;</span>`</span>);</span><br></pre></td></tr></table></figure>
-<blockquote>
-<h4 id="枚举类型的对应值"><a href="#枚举类型的对应值" class="headerlink" title="枚举类型的对应值"></a>枚举类型的对应值</h4></blockquote>
-<p>你调用时传一个<code>1</code>,也会输出<code>我要去spa</code>。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> result = getServe(<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
-<p>因为枚举类型是有对应的数字值的，默认是从 0 开始的</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(Status.MASSAGE);</span><br><span class="line"><span class="built_in">console</span>.log(Status.SPA);</span><br><span class="line"><span class="built_in">console</span>.log(Status.DABAOJIAN);</span><br></pre></td></tr></table></figure>
-<p>可以看出结果就是<code>0,1,2</code>。那这时候不想默认从 0 开始，而是想从 1 开始。可以这样写。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">enum Status &#123;</span><br><span class="line">  MASSAGE = <span class="number">1</span>,</span><br><span class="line">  SPA,</span><br><span class="line">  DABAOJIAN,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<h4 id="枚举通过下标反查"><a href="#枚举通过下标反查" class="headerlink" title="枚举通过下标反查"></a>枚举通过下标反查</h4></blockquote>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(Status.MASSAGE, Status[<span class="number">1</span>]);</span><br></pre></td></tr></table></figure>]]></content>
+    <title>TypeScript静态类型</title>
+    <url>/2020/11/06/TypeScript%E9%9D%99%E6%80%81%E7%B1%BB%E5%9E%8B/</url>
+    <content><![CDATA[<h4 id="TypeScript-静态类型"><a href="#TypeScript-静态类型" class="headerlink" title="TypeScript 静态类型"></a>TypeScript 静态类型</h4><h5 id="TypeScript-最主要的特点就是可以定义静态类型"><a href="#TypeScript-最主要的特点就是可以定义静态类型" class="headerlink" title="TypeScript 最主要的特点就是可以定义静态类型"></a>TypeScript 最主要的特点就是可以定义静态类型</h5><p>Static Typing  (一旦定义了就不可以再改变了)</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">let count : number &#x3D; 1;   (一旦定义了是number，就是number，不能改变类型。)</span><br><span class="line">count.后面可以跟number的所有方法</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">interface XiaojieJie &#123;</span><br><span class="line">    uname: string, </span><br><span class="line">    age: number</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const xiaohong : XiaojieJie &#x3D; &#123;</span><br><span class="line">    uname: &#39;小红&#39;, </span><br><span class="line">    age: 18</span><br><span class="line">&#125;</span><br><span class="line">console.log(xiaohong.age) </span><br></pre></td></tr></table></figure>
+<h4 id="基础静态类型和对象静态类型"><a href="#基础静态类型和对象静态类型" class="headerlink" title="基础静态类型和对象静态类型"></a>基础静态类型和对象静态类型</h4><h5 id="基础静态类型"><a href="#基础静态类型" class="headerlink" title="基础静态类型"></a>基础静态类型</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const count0 : number &#x3D; 918;</span><br><span class="line">const myName : string &#x3D; &#39;jspang&#39;;</span><br><span class="line">&#x2F;&#x2F; null , undefinde , booLean, void, symboL</span><br></pre></td></tr></table></figure>
+<h5 id="对象静态类型"><a href="#对象静态类型" class="headerlink" title="对象静态类型"></a>对象静态类型</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const xiaojieJie: &#123;</span><br><span class="line">    name : string,</span><br><span class="line">    age : number </span><br><span class="line">&#125; &#x3D; &#123;</span><br><span class="line">    name : &#39;大脚&#39;,</span><br><span class="line">    age:18</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const xiaojiejie : string [] &#x3D; [&quot;小红&quot;, &quot;小林&quot;, &quot;小星星&quot;]</span><br><span class="line"></span><br><span class="line">class Person&#123;&#125;</span><br><span class="line">const dajiao : Person &#x3D; new Person();</span><br></pre></td></tr></table></figure>
+<p>定义一个函数，返回值必须是字符串：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const jianXiaoJieJie :()&#x3D;&gt;string &#x3D;()&#x3D;&gt;&#123;return &#39;大脚&#39;&#125;</span><br><span class="line">&#x2F;&#x2F;对象类型，数组类型，类类型，函数类型</span><br></pre></td></tr></table></figure>
+<h4 id="类型注解和类型推断"><a href="#类型注解和类型推断" class="headerlink" title="类型注解和类型推断"></a>类型注解和类型推断</h4><h5 id="类型注解-type-annotation"><a href="#类型注解-type-annotation" class="headerlink" title="类型注解 - type annotation"></a>类型注解 - type annotation</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">let count : number ;</span><br><span class="line"></span><br><span class="line">function getTotal(one : number , two : number)&#123;</span><br><span class="line">	return one + two</span><br><span class="line">&#125;</span><br><span class="line">const total &#x3D; getTotal(1,2);</span><br></pre></td></tr></table></figure>
+
+
+<h5 id="类型推断-type-inference"><a href="#类型推断-type-inference" class="headerlink" title="类型推断 - type inference"></a>类型推断 - type inference</h5><h4 id="函数参数和返回类型的注解"><a href="#函数参数和返回类型的注解" class="headerlink" title="函数参数和返回类型的注解"></a>函数参数和返回类型的注解</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function getTotal(one : number , two : number)&#123;</span><br><span class="line">	return one + two +&#39;&#39;</span><br><span class="line">&#125;</span><br><span class="line">const total &#x3D; getTotal(1,2);  (会有错误提示) （定义的是number类型，返回的是string类型）</span><br><span class="line"></span><br><span class="line">解决方法：对返回做注解</span><br><span class="line">function getTotal(one : number , two : number): number&#123;</span><br><span class="line">	return one + two +&#39;&#39;  (这样写，编辑器就会有错误的提示)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">改正：</span><br><span class="line">function getTotal(one : number , two : number): number&#123;</span><br><span class="line">	return one + two </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="void："><a href="#void：" class="headerlink" title="void："></a>void：</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function sayHe1lo(): void&#123;</span><br><span class="line">	console.log(&#39;Hello worid&#39;)</span><br><span class="line">	return &quot;&quot;;(如果在函数中，任何地方有return就会报错，就会很直观的知道);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="never："><a href="#never：" class="headerlink" title="never："></a>never：</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">抛出异常：</span><br><span class="line">function errorFuntion() : never&#123;</span><br><span class="line">	throw new Error()</span><br><span class="line">	console.log(&quot;Hello world&quot;)</span><br><span class="line">&#125;</span><br><span class="line">或者死循环：</span><br><span class="line">function forNever() : never&#123;</span><br><span class="line">	while(true)&#123;&#125;</span><br><span class="line">	console.log( &#39;Hello world &#39;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function add(&#123;one ,two&#125; : &#123;one : number ,two : number&#125; )&#123;</span><br><span class="line">	return one + two</span><br><span class="line">&#125;</span><br><span class="line">const total &#x3D; add(fone: 1,two:2&#125;); </span><br><span class="line"></span><br><span class="line">function getNumber(&#123;one&#125; : &#123;one : number&#125;)&#123;</span><br><span class="line">	return one</span><br><span class="line">&#125;</span><br><span class="line">const one &#x3D; getNumber(&#123;one: 1&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="数组类型注解的方法"><a href="#数组类型注解的方法" class="headerlink" title="数组类型注解的方法"></a>数组类型注解的方法</h4><h5 id="类型推断"><a href="#类型推断" class="headerlink" title="类型推断"></a>类型推断</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const numberArr &#x3D; [1,2,3]</span><br><span class="line">(鼠标放上去，能够看到推断出是number类型)</span><br></pre></td></tr></table></figure>
+<h5 id="类型注释"><a href="#类型注释" class="headerlink" title="类型注释"></a>类型注释</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const numberArr : number[] &#x3D; [1,2,3];</span><br><span class="line">const stringArr : string[] &#x3D; [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;];</span><br><span class="line">const undefinedArr : undefined[] &#x3D; [undefined, undefined];</span><br><span class="line">const arr : (number | string)[] &#x3D; [1, &#39;string&#39;, 2];</span><br></pre></td></tr></table></figure>
+<h5 id="对象数组"><a href="#对象数组" class="headerlink" title="对象数组"></a>对象数组</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const xiaojiejies :&#123;name : string, age:number&#125;[] &#x3D;[</span><br><span class="line">	&#123;name: &#39;刘英&#39;, age: 18&#125;,</span><br><span class="line">	&#123;name : &#39;谢大脚&quot;, age: 28&#125;,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<h6 id="其他形式写法："><a href="#其他形式写法：" class="headerlink" title="其他形式写法："></a>其他形式写法：</h6><ol>
+<li><h6 id="type-alias-类型别名"><a href="#type-alias-类型别名" class="headerlink" title="type alias 类型别名"></a>type alias 类型别名</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">type Lady &#x3D; &#123;name: string,age: number&#125;</span><br><span class="line">const xiaojiejies : Lady[] [</span><br><span class="line">	&#123;name:&#39;刘英&#39;, age: 18&#125;,</span><br><span class="line">	&#123;name : &#39;谢大脚&quot; , age:28&#125;,</span><br><span class="line">]</span><br></pre></td></tr></table></figure></li>
+<li><h6 id="类"><a href="#类" class="headerlink" title="类"></a>类</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Madam &#123;</span><br><span class="line">	name: string ;</span><br><span class="line">	age : number;</span><br><span class="line">&#125;</span><br><span class="line">const xiaojiejies : Madam[] &#x3D; [</span><br><span class="line">	&#123;name: &#39;刘英&#39;, age: 18&#125;,</span><br><span class="line">	&#123;name: &#39;谢大脚&quot;, age: 28&#125;,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ol>
+<h4 id="元组的使用和类型约束"><a href="#元组的使用和类型约束" class="headerlink" title="元组的使用和类型约束"></a>元组的使用和类型约束</h4><h5 id="类型约束"><a href="#类型约束" class="headerlink" title="类型约束"></a>类型约束</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; const xiaojiejie : (string | number)[] &#x3D; [ &#39;dajiao &#39; , &#39;teacher &#39;, 28]</span><br></pre></td></tr></table></figure>
+<h5 id="元组的写法"><a href="#元组的写法" class="headerlink" title="元组的写法"></a>元组的写法</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const xiaojiejie : [string,string,number] &#x3D; [ &#39;dajiao&#39; , &#39;teacher&#39;,28]</span><br></pre></td></tr></table></figure>
+<h5 id="CSV（现在很少用）"><a href="#CSV（现在很少用）" class="headerlink" title="CSV（现在很少用）"></a>CSV（现在很少用）</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const xiaojiejies : [string, string, number][] &#x3D;[</span><br><span class="line">	[ &#39;dajiao &#39; , &#39;teacher&quot; ,28],</span><br><span class="line">	[ &#39;liuying&quot; , &#39;teacher&#39; ,18],</span><br><span class="line">	[ &quot; cuihua &#39; , &#39;teacher&quot; ,22]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>工作笔记</category>
         <category>TypeScript</category>
@@ -1044,45 +1083,6 @@
       </tags>
   </entry>
   <entry>
-    <title>TypeScript静态类型</title>
-    <url>/2020/11/06/TypeScript%E9%9D%99%E6%80%81%E7%B1%BB%E5%9E%8B/</url>
-    <content><![CDATA[<h4 id="TypeScript-静态类型"><a href="#TypeScript-静态类型" class="headerlink" title="TypeScript 静态类型"></a>TypeScript 静态类型</h4><h5 id="TypeScript-最主要的特点就是可以定义静态类型"><a href="#TypeScript-最主要的特点就是可以定义静态类型" class="headerlink" title="TypeScript 最主要的特点就是可以定义静态类型"></a>TypeScript 最主要的特点就是可以定义静态类型</h5><p>Static Typing  (一旦定义了就不可以再改变了)</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">let count : number &#x3D; 1;   (一旦定义了是number，就是number，不能改变类型。)</span><br><span class="line">count.后面可以跟number的所有方法</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">interface XiaojieJie &#123;</span><br><span class="line">    uname: string, </span><br><span class="line">    age: number</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const xiaohong : XiaojieJie &#x3D; &#123;</span><br><span class="line">    uname: &#39;小红&#39;, </span><br><span class="line">    age: 18</span><br><span class="line">&#125;</span><br><span class="line">console.log(xiaohong.age) </span><br></pre></td></tr></table></figure>
-<h4 id="基础静态类型和对象静态类型"><a href="#基础静态类型和对象静态类型" class="headerlink" title="基础静态类型和对象静态类型"></a>基础静态类型和对象静态类型</h4><h5 id="基础静态类型"><a href="#基础静态类型" class="headerlink" title="基础静态类型"></a>基础静态类型</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const count0 : number &#x3D; 918;</span><br><span class="line">const myName : string &#x3D; &#39;jspang&#39;;</span><br><span class="line">&#x2F;&#x2F; null , undefinde , booLean, void, symboL</span><br></pre></td></tr></table></figure>
-<h5 id="对象静态类型"><a href="#对象静态类型" class="headerlink" title="对象静态类型"></a>对象静态类型</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const xiaojieJie: &#123;</span><br><span class="line">    name : string,</span><br><span class="line">    age : number </span><br><span class="line">&#125; &#x3D; &#123;</span><br><span class="line">    name : &#39;大脚&#39;,</span><br><span class="line">    age:18</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const xiaojiejie : string [] &#x3D; [&quot;小红&quot;, &quot;小林&quot;, &quot;小星星&quot;]</span><br><span class="line"></span><br><span class="line">class Person&#123;&#125;</span><br><span class="line">const dajiao : Person &#x3D; new Person();</span><br></pre></td></tr></table></figure>
-<p>定义一个函数，返回值必须是字符串：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const jianXiaoJieJie :()&#x3D;&gt;string &#x3D;()&#x3D;&gt;&#123;return &#39;大脚&#39;&#125;</span><br><span class="line">&#x2F;&#x2F;对象类型，数组类型，类类型，函数类型</span><br></pre></td></tr></table></figure>
-<h4 id="类型注解和类型推断"><a href="#类型注解和类型推断" class="headerlink" title="类型注解和类型推断"></a>类型注解和类型推断</h4><h5 id="类型注解-type-annotation"><a href="#类型注解-type-annotation" class="headerlink" title="类型注解 - type annotation"></a>类型注解 - type annotation</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">let count : number ;</span><br><span class="line"></span><br><span class="line">function getTotal(one : number , two : number)&#123;</span><br><span class="line">	return one + two</span><br><span class="line">&#125;</span><br><span class="line">const total &#x3D; getTotal(1,2);</span><br></pre></td></tr></table></figure>
-
-
-<h5 id="类型推断-type-inference"><a href="#类型推断-type-inference" class="headerlink" title="类型推断 - type inference"></a>类型推断 - type inference</h5><h4 id="函数参数和返回类型的注解"><a href="#函数参数和返回类型的注解" class="headerlink" title="函数参数和返回类型的注解"></a>函数参数和返回类型的注解</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function getTotal(one : number , two : number)&#123;</span><br><span class="line">	return one + two +&#39;&#39;</span><br><span class="line">&#125;</span><br><span class="line">const total &#x3D; getTotal(1,2);  (会有错误提示) （定义的是number类型，返回的是string类型）</span><br><span class="line"></span><br><span class="line">解决方法：对返回做注解</span><br><span class="line">function getTotal(one : number , two : number): number&#123;</span><br><span class="line">	return one + two +&#39;&#39;  (这样写，编辑器就会有错误的提示)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">改正：</span><br><span class="line">function getTotal(one : number , two : number): number&#123;</span><br><span class="line">	return one + two </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h6 id="void："><a href="#void：" class="headerlink" title="void："></a>void：</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function sayHe1lo(): void&#123;</span><br><span class="line">	console.log(&#39;Hello worid&#39;)</span><br><span class="line">	return &quot;&quot;;(如果在函数中，任何地方有return就会报错，就会很直观的知道);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h6 id="never："><a href="#never：" class="headerlink" title="never："></a>never：</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">抛出异常：</span><br><span class="line">function errorFuntion() : never&#123;</span><br><span class="line">	throw new Error()</span><br><span class="line">	console.log(&quot;Hello world&quot;)</span><br><span class="line">&#125;</span><br><span class="line">或者死循环：</span><br><span class="line">function forNever() : never&#123;</span><br><span class="line">	while(true)&#123;&#125;</span><br><span class="line">	console.log( &#39;Hello world &#39;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function add(&#123;one ,two&#125; : &#123;one : number ,two : number&#125; )&#123;</span><br><span class="line">	return one + two</span><br><span class="line">&#125;</span><br><span class="line">const total &#x3D; add(fone: 1,two:2&#125;); </span><br><span class="line"></span><br><span class="line">function getNumber(&#123;one&#125; : &#123;one : number&#125;)&#123;</span><br><span class="line">	return one</span><br><span class="line">&#125;</span><br><span class="line">const one &#x3D; getNumber(&#123;one: 1&#125;)</span><br></pre></td></tr></table></figure>
-<h4 id="数组类型注解的方法"><a href="#数组类型注解的方法" class="headerlink" title="数组类型注解的方法"></a>数组类型注解的方法</h4><h5 id="类型推断"><a href="#类型推断" class="headerlink" title="类型推断"></a>类型推断</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const numberArr &#x3D; [1,2,3]</span><br><span class="line">(鼠标放上去，能够看到推断出是number类型)</span><br></pre></td></tr></table></figure>
-<h5 id="类型注释"><a href="#类型注释" class="headerlink" title="类型注释"></a>类型注释</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const numberArr : number[] &#x3D; [1,2,3];</span><br><span class="line">const stringArr : string[] &#x3D; [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;];</span><br><span class="line">const undefinedArr : undefined[] &#x3D; [undefined, undefined];</span><br><span class="line">const arr : (number | string)[] &#x3D; [1, &#39;string&#39;, 2];</span><br></pre></td></tr></table></figure>
-<h5 id="对象数组"><a href="#对象数组" class="headerlink" title="对象数组"></a>对象数组</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const xiaojiejies :&#123;name : string, age:number&#125;[] &#x3D;[</span><br><span class="line">	&#123;name: &#39;刘英&#39;, age: 18&#125;,</span><br><span class="line">	&#123;name : &#39;谢大脚&quot;, age: 28&#125;,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-<h6 id="其他形式写法："><a href="#其他形式写法：" class="headerlink" title="其他形式写法："></a>其他形式写法：</h6><ol>
-<li><h6 id="type-alias-类型别名"><a href="#type-alias-类型别名" class="headerlink" title="type alias 类型别名"></a>type alias 类型别名</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">type Lady &#x3D; &#123;name: string,age: number&#125;</span><br><span class="line">const xiaojiejies : Lady[] [</span><br><span class="line">	&#123;name:&#39;刘英&#39;, age: 18&#125;,</span><br><span class="line">	&#123;name : &#39;谢大脚&quot; , age:28&#125;,</span><br><span class="line">]</span><br></pre></td></tr></table></figure></li>
-<li><h6 id="类"><a href="#类" class="headerlink" title="类"></a>类</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Madam &#123;</span><br><span class="line">	name: string ;</span><br><span class="line">	age : number;</span><br><span class="line">&#125;</span><br><span class="line">const xiaojiejies : Madam[] &#x3D; [</span><br><span class="line">	&#123;name: &#39;刘英&#39;, age: 18&#125;,</span><br><span class="line">	&#123;name: &#39;谢大脚&quot;, age: 28&#125;,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ol>
-<h4 id="元组的使用和类型约束"><a href="#元组的使用和类型约束" class="headerlink" title="元组的使用和类型约束"></a>元组的使用和类型约束</h4><h5 id="类型约束"><a href="#类型约束" class="headerlink" title="类型约束"></a>类型约束</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; const xiaojiejie : (string | number)[] &#x3D; [ &#39;dajiao &#39; , &#39;teacher &#39;, 28]</span><br></pre></td></tr></table></figure>
-<h5 id="元组的写法"><a href="#元组的写法" class="headerlink" title="元组的写法"></a>元组的写法</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const xiaojiejie : [string,string,number] &#x3D; [ &#39;dajiao&#39; , &#39;teacher&#39;,28]</span><br></pre></td></tr></table></figure>
-<h5 id="CSV（现在很少用）"><a href="#CSV（现在很少用）" class="headerlink" title="CSV（现在很少用）"></a>CSV（现在很少用）</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const xiaojiejies : [string, string, number][] &#x3D;[</span><br><span class="line">	[ &#39;dajiao &#39; , &#39;teacher&quot; ,28],</span><br><span class="line">	[ &#39;liuying&quot; , &#39;teacher&#39; ,18],</span><br><span class="line">	[ &quot; cuihua &#39; , &#39;teacher&quot; ,22]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>工作笔记</category>
-        <category>TypeScript</category>
-      </categories>
-      <tags>
-        <tag>TypeScript</tag>
-      </tags>
-  </entry>
-  <entry>
     <title></title>
     <url>/2021/01/14/Vue3/</url>
     <content><![CDATA[<p>Vetur   代码高亮</p>
@@ -1119,70 +1119,6 @@
       </categories>
       <tags>
         <tag>常用命令</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>git管理分支</title>
-    <url>/2021/01/14/git%E7%AE%A1%E7%90%86%E5%88%86%E6%94%AF/</url>
-    <content><![CDATA[<h1 id="管理分支"><a href="#管理分支" class="headerlink" title="管理分支"></a>管理分支</h1><h2 id="1、查看分支"><a href="#1、查看分支" class="headerlink" title="1、查看分支"></a>1、查看分支</h2><h3 id="1、查看本地分支"><a href="#1、查看本地分支" class="headerlink" title="1、查看本地分支"></a>1、查看本地分支</h3><p>使用 git branch命令，如下：</p>
-<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="variable">$ </span>git branch</span><br><span class="line">* master</span><br></pre></td></tr></table></figure>
-<p>*<strong>标识的是你当前所在的分支。</strong></p>
-<h3 id="2、查看远程分支"><a href="#2、查看远程分支" class="headerlink" title="2、查看远程分支"></a>2、查看远程分支</h3><p>命令如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git branch -r</span><br></pre></td></tr></table></figure>
-<h3 id="3、查看所有分支"><a href="#3、查看所有分支" class="headerlink" title="3、查看所有分支"></a>3、查看所有分支</h3><p>命令如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git branch -a</span><br></pre></td></tr></table></figure>
-<h2 id="2、本地创建新的分支"><a href="#2、本地创建新的分支" class="headerlink" title="2、本地创建新的分支"></a>2、本地创建新的分支</h2><p>命令如下：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">git</span> <span class="selector-tag">branch</span> <span class="selector-attr">[branch name]</span></span><br></pre></td></tr></table></figure>
-<p>例如：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git branch save</span><br></pre></td></tr></table></figure>
-<h2 id="3、切换到新的分支"><a href="#3、切换到新的分支" class="headerlink" title="3、切换到新的分支"></a>3、切换到新的分支</h2><p>命令如下：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">git</span> <span class="selector-tag">checkout</span> <span class="selector-attr">[branch name]</span></span><br></pre></td></tr></table></figure>
-<p>例如：</p>
-<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="variable">$ </span>git checkout save</span><br></pre></td></tr></table></figure>
-<h2 id="4、创建-切换分支"><a href="#4、创建-切换分支" class="headerlink" title="4、创建+切换分支"></a>4、创建+切换分支</h2><p>创建分支的同时切换到该分支上，命令如下：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">git</span> <span class="selector-tag">checkout</span> <span class="selector-tag">-b</span> <span class="selector-attr">[branch name]</span></span><br></pre></td></tr></table></figure>
-<p>git checkout -b [branch name] 的效果相当于以下两步操作：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">git</span> <span class="selector-tag">branch</span> <span class="selector-attr">[branch name]</span></span><br><span class="line"><span class="selector-tag">git</span> <span class="selector-tag">checkout</span> <span class="selector-attr">[branch name]</span></span><br></pre></td></tr></table></figure>
-<h2 id="5、将新分支推送到github"><a href="#5、将新分支推送到github" class="headerlink" title="5、将新分支推送到github"></a>5、将新分支推送到github</h2><p>命令如下：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">git</span> <span class="selector-tag">push</span> <span class="selector-tag">origin</span> <span class="selector-attr">[branch name]</span></span><br></pre></td></tr></table></figure>
-<p>例如：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git push origin save</span><br></pre></td></tr></table></figure>
-<h2 id="6、删除本地分支"><a href="#6、删除本地分支" class="headerlink" title="6、删除本地分支"></a>6、删除本地分支</h2><p>命令如下：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">git</span> <span class="selector-tag">branch</span> <span class="selector-tag">-d</span> <span class="selector-attr">[branch name]</span></span><br></pre></td></tr></table></figure>
-<p>例如：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git branch -d save</span><br></pre></td></tr></table></figure>
-<h2 id="7、删除github远程分支"><a href="#7、删除github远程分支" class="headerlink" title="7、删除github远程分支"></a>7、删除github远程分支</h2><p>命令如下：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">git</span> <span class="selector-tag">push</span> <span class="selector-tag">origin</span> :<span class="selector-attr">[branch name]</span></span><br></pre></td></tr></table></figure>
-<p>分支名前的冒号代表删除。<br> 例如：</p>
-<p>git push origin :save</p>
-]]></content>
-      <categories>
-        <category>工作笔记</category>
-        <category>Git</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/2021/01/14/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html">Deployment</a></p>
-]]></content>
-      <categories>
-        <category>工作笔记</category>
-        <category>博客</category>
-      </categories>
-      <tags>
-        <tag>博客</tag>
       </tags>
   </entry>
   <entry>
@@ -1293,6 +1229,49 @@
       </tags>
   </entry>
   <entry>
+    <title>git管理分支</title>
+    <url>/2021/01/14/git%E7%AE%A1%E7%90%86%E5%88%86%E6%94%AF/</url>
+    <content><![CDATA[<h1 id="管理分支"><a href="#管理分支" class="headerlink" title="管理分支"></a>管理分支</h1><h2 id="1、查看分支"><a href="#1、查看分支" class="headerlink" title="1、查看分支"></a>1、查看分支</h2><h3 id="1、查看本地分支"><a href="#1、查看本地分支" class="headerlink" title="1、查看本地分支"></a>1、查看本地分支</h3><p>使用 git branch命令，如下：</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="variable">$ </span>git branch</span><br><span class="line">* master</span><br></pre></td></tr></table></figure>
+<p>*<strong>标识的是你当前所在的分支。</strong></p>
+<h3 id="2、查看远程分支"><a href="#2、查看远程分支" class="headerlink" title="2、查看远程分支"></a>2、查看远程分支</h3><p>命令如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git branch -r</span><br></pre></td></tr></table></figure>
+<h3 id="3、查看所有分支"><a href="#3、查看所有分支" class="headerlink" title="3、查看所有分支"></a>3、查看所有分支</h3><p>命令如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git branch -a</span><br></pre></td></tr></table></figure>
+<h2 id="2、本地创建新的分支"><a href="#2、本地创建新的分支" class="headerlink" title="2、本地创建新的分支"></a>2、本地创建新的分支</h2><p>命令如下：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">git</span> <span class="selector-tag">branch</span> <span class="selector-attr">[branch name]</span></span><br></pre></td></tr></table></figure>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git branch save</span><br></pre></td></tr></table></figure>
+<h2 id="3、切换到新的分支"><a href="#3、切换到新的分支" class="headerlink" title="3、切换到新的分支"></a>3、切换到新的分支</h2><p>命令如下：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">git</span> <span class="selector-tag">checkout</span> <span class="selector-attr">[branch name]</span></span><br></pre></td></tr></table></figure>
+<p>例如：</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="variable">$ </span>git checkout save</span><br></pre></td></tr></table></figure>
+<h2 id="4、创建-切换分支"><a href="#4、创建-切换分支" class="headerlink" title="4、创建+切换分支"></a>4、创建+切换分支</h2><p>创建分支的同时切换到该分支上，命令如下：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">git</span> <span class="selector-tag">checkout</span> <span class="selector-tag">-b</span> <span class="selector-attr">[branch name]</span></span><br></pre></td></tr></table></figure>
+<p>git checkout -b [branch name] 的效果相当于以下两步操作：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">git</span> <span class="selector-tag">branch</span> <span class="selector-attr">[branch name]</span></span><br><span class="line"><span class="selector-tag">git</span> <span class="selector-tag">checkout</span> <span class="selector-attr">[branch name]</span></span><br></pre></td></tr></table></figure>
+<h2 id="5、将新分支推送到github"><a href="#5、将新分支推送到github" class="headerlink" title="5、将新分支推送到github"></a>5、将新分支推送到github</h2><p>命令如下：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">git</span> <span class="selector-tag">push</span> <span class="selector-tag">origin</span> <span class="selector-attr">[branch name]</span></span><br></pre></td></tr></table></figure>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git push origin save</span><br></pre></td></tr></table></figure>
+<h2 id="6、删除本地分支"><a href="#6、删除本地分支" class="headerlink" title="6、删除本地分支"></a>6、删除本地分支</h2><p>命令如下：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">git</span> <span class="selector-tag">branch</span> <span class="selector-tag">-d</span> <span class="selector-attr">[branch name]</span></span><br></pre></td></tr></table></figure>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git branch -d save</span><br></pre></td></tr></table></figure>
+<h2 id="7、删除github远程分支"><a href="#7、删除github远程分支" class="headerlink" title="7、删除github远程分支"></a>7、删除github远程分支</h2><p>命令如下：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">git</span> <span class="selector-tag">push</span> <span class="selector-tag">origin</span> :<span class="selector-attr">[branch name]</span></span><br></pre></td></tr></table></figure>
+<p>分支名前的冒号代表删除。<br> 例如：</p>
+<p>git push origin :save</p>
+]]></content>
+      <categories>
+        <category>工作笔记</category>
+        <category>Git</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>hexo实现文章置顶功能</title>
     <url>/2020/05/25/hexo%E5%AE%9E%E7%8E%B0%E6%96%87%E7%AB%A0%E7%BD%AE%E9%A1%B6%E5%8A%9F%E8%83%BD/</url>
     <content><![CDATA[<h3 id="修改generator-js"><a href="#修改generator-js" class="headerlink" title="修改generator.js"></a>修改generator.js</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">找到node_modules&#x2F;hexo-generator-index&#x2F;lib&#x2F;generator.js这个文件。</span><br></pre></td></tr></table></figure>
@@ -1308,6 +1287,27 @@
       </categories>
       <tags>
         <tag>常用命令</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2021/01/14/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html">Deployment</a></p>
+]]></content>
+      <categories>
+        <category>工作笔记</category>
+        <category>博客</category>
+      </categories>
+      <tags>
+        <tag>博客</tag>
       </tags>
   </entry>
   <entry>
@@ -1504,6 +1504,68 @@
       </tags>
   </entry>
   <entry>
+    <title>vue项目配置模块化路由</title>
+    <url>/2020/05/25/vue%E9%A1%B9%E7%9B%AE%E9%85%8D%E7%BD%AE%E6%A8%A1%E5%9D%97%E5%8C%96%E8%B7%AF%E7%94%B1/</url>
+    <content><![CDATA[<h3 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">├── src</span><br><span class="line">|    ├── assets         &#x2F;&#x2F; 静态资源img、css、js</span><br><span class="line">|    ├── components     &#x2F;&#x2F; 小组件</span><br><span class="line">|    ├── views          &#x2F;&#x2F; 页面(视图)组件</span><br><span class="line">|    ├── App.vue        &#x2F;&#x2F; 根组件</span><br><span class="line">|    ├── main.js        &#x2F;&#x2F; 全局脚本文件（项目的入口）</span><br><span class="line">|    ├── router</span><br><span class="line">|    |    ├── index.js       &#x2F;&#x2F; 路由脚本文件</span><br><span class="line">|    |    ├── modules       &#x2F;&#x2F; 模块</span><br><span class="line">|    |    |    ├── user.js         &#x2F;&#x2F; 用户模块</span><br><span class="line">|    |    |    ├── other.js        &#x2F;&#x2F; 其他模块</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="模块文件的配置-以用户模块为例，其他模块也是一样的"><a href="#模块文件的配置-以用户模块为例，其他模块也是一样的" class="headerlink" title="模块文件的配置 (以用户模块为例，其他模块也是一样的)"></a>模块文件的配置 (以用户模块为例，其他模块也是一样的)</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export default [</span><br><span class="line">    &#123;</span><br><span class="line">        name: &#39;login&#39;,</span><br><span class="line">        path: &#39;&#x2F;login&#39;,</span><br><span class="line">        meta: &#123;</span><br><span class="line">            title: &#39;登录页面&#39;</span><br><span class="line">        &#125;,</span><br><span class="line">        component: () &#x3D;&gt; import(&#39;@&#x2F;views&#x2F;account&#x2F;login&#x2F;index.vue&#39;) </span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        name: &#39;register&#39;,</span><br><span class="line">        path: &#39;&#x2F;register&#39;,</span><br><span class="line">        meta: &#123;</span><br><span class="line">            title: &#39;注册页面&#39;</span><br><span class="line">        &#125;,</span><br><span class="line">        component: () &#x3D;&gt; import(&#39;@&#x2F;views&#x2F;account&#x2F;register&#x2F;index.vue&#39;)</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        name: &#39;result&#39;,</span><br><span class="line">        path: &#39;&#x2F;result&#39;,</span><br><span class="line">        meta: &#123;</span><br><span class="line">            title: &#39;注册结果&#39;</span><br><span class="line">        &#125;,</span><br><span class="line">        component: () &#x3D;&gt; import(&#39;@&#x2F;views&#x2F;account&#x2F;register&#x2F;result&#x2F;index.vue&#39;)</span><br><span class="line">    &#125;</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;因为这里配置了页面title，所以加meta属性，如果不需要配置，可以不加</span><br></pre></td></tr></table></figure>
+<h3 id="index-js-router目录下的index-js"><a href="#index-js-router目录下的index-js" class="headerlink" title="index.js (router目录下的index.js)"></a>index.js (router目录下的index.js)</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import Vue from &#39;vue&#39;</span><br><span class="line">import VueRouter from &#39;vue-router&#39;</span><br><span class="line"></span><br><span class="line">import accoutRouter from &#39;.&#x2F;modules&#x2F;user&#39;</span><br><span class="line">import otherRouter from &#39;.&#x2F;modules&#x2F;other&#39;</span><br><span class="line"></span><br><span class="line">Vue.use(VueRouter)</span><br><span class="line"></span><br><span class="line">export default new VueRouter(&#123;</span><br><span class="line">  routes: [</span><br><span class="line">    ...accoutRouter,</span><br><span class="line">    ...otherRouter,</span><br><span class="line">  ]</span><br><span class="line">&#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="main-js"><a href="#main-js" class="headerlink" title="main.js"></a>main.js</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import Vue from &#39;vue&#39;</span><br><span class="line">import App from &#39;.&#x2F;App.vue&#39;</span><br><span class="line">import router from &#39;.&#x2F;router&#39;</span><br><span class="line">import store from &#39;.&#x2F;store&#39;</span><br><span class="line"></span><br><span class="line">Vue.config.productionTip &#x3D; false</span><br><span class="line"></span><br><span class="line">new Vue(&#123;</span><br><span class="line">  router,</span><br><span class="line">  store,</span><br><span class="line">  render: h &#x3D;&gt; h(App)</span><br><span class="line">&#125;).$mount(&#39;#app&#39;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="根据路由动态修改title"><a href="#根据路由动态修改title" class="headerlink" title="根据路由动态修改title"></a>根据路由动态修改title</h3><p>在main中加入以下代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;* 路由发生变化修改页面title *&#x2F;</span><br><span class="line">router.beforeEach((to, from, next) &#x3D;&gt; &#123;</span><br><span class="line">  if (to.meta.title) &#123;</span><br><span class="line">      document.title &#x3D; to.meta.title || &#39;首页&#39;</span><br><span class="line">  &#125;</span><br><span class="line">  next()</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>main.js最终代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import Vue from &#39;vue&#39;</span><br><span class="line">import App from &#39;.&#x2F;App.vue&#39;</span><br><span class="line">import router from &#39;.&#x2F;router&#39;</span><br><span class="line">import store from &#39;.&#x2F;store&#39;</span><br><span class="line"></span><br><span class="line">Vue.config.productionTip &#x3D; false</span><br><span class="line"></span><br><span class="line">&#x2F;* 路由发生变化修改页面title *&#x2F;</span><br><span class="line">router.beforeEach((to, from, next) &#x3D;&gt; &#123;</span><br><span class="line">  if (to.meta.title) &#123;</span><br><span class="line">      document.title &#x3D; to.meta.title || &#39;首页&#39;</span><br><span class="line">  &#125;</span><br><span class="line">  next()</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">new Vue(&#123;</span><br><span class="line">  router,</span><br><span class="line">  store,</span><br><span class="line">  render: h &#x3D;&gt; h(App)</span><br><span class="line">&#125;).$mount(&#39;#app&#39;)</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>工作笔记</category>
+        <category>Vue.js</category>
+      </categories>
+      <tags>
+        <tag>Vue.js</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>webpack起步</title>
+    <url>/2019/11/20/webpack%E8%B5%B7%E6%AD%A5/</url>
+    <content><![CDATA[<h2 id="基本安装"><a href="#基本安装" class="headerlink" title="基本安装"></a>基本安装</h2><h4 id="一、"><a href="#一、" class="headerlink" title="一、"></a>一、</h4><p>首先我们创建一个目录，初始化 npm(生成package.json文件），然后 在本地安装 webpack，接着安装 webpack-cli（此工具用于在命令行中运行 webpack）：</p>
+<p>注意：webpack为4+版本以上，需要安装webpack-cli ,安装本地webpack-cli之前，要安装全局</p>
+<p>安装淘宝镜像 <em>如果网速不太好的情况下，可以选择安装淘宝镜像</em></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install -g cnpm --registry=https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mkdir webpack-demo &amp;&amp; <span class="built_in">cd</span> webpack-demo</span><br><span class="line">npm init -y</span><br><span class="line">npm install webpack webpack-cli --save-dev</span><br></pre></td></tr></table></figure>
+<p><em><div style="background:#DCF2FD;color:#618ca0;padding:6px;">贯穿整个指南的是，我们将使用 diff 块，来显示我们对目录、文件和代码所做的更改。</div></em></p>
+<h4 id="二、"><a href="#二、" class="headerlink" title="二、"></a>二、</h4><p>现在我们将创建以下目录结构、文件和内容：</p>
+<h6 id="project"><a href="#project" class="headerlink" title="project"></a>project</h6><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">  webpack-demo</span><br><span class="line">  |- package.json</span><br><span class="line">+ |- index.html</span><br><span class="line">+ |- /src</span><br><span class="line">+   |- index.js</span><br></pre></td></tr></table></figure>
+<h6 id="src-index-js"><a href="#src-index-js" class="headerlink" title="src/index.js"></a>src/index.js</h6><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">component</span></span>() &#123;</span><br><span class="line">  var element = document.createElement(<span class="string">&#x27;div&#x27;</span>);</span><br><span class="line"></span><br><span class="line">  // Lodash（目前通过一个 script 脚本引入）对于执行这一行是必需的</span><br><span class="line">  element.innerHTML = _.join([<span class="string">&#x27;Hello&#x27;</span>, <span class="string">&#x27;webpack&#x27;</span>], <span class="string">&#x27; &#x27;</span>);</span><br><span class="line"></span><br><span class="line">  <span class="built_in">return</span> element;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">document.body.appendChild(component());</span><br></pre></td></tr></table></figure>
+<h6 id="index-html"><a href="#index-html" class="headerlink" title="index.html"></a>index.html</h6><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;!doctype html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;title&gt;起步&lt;/title&gt;</span><br><span class="line">    &lt;script src=<span class="string">&quot;https://unpkg.com/lodash@4.16.6&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line">    &lt;script src=<span class="string">&quot;./src/index.js&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line">  &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>我们还需要调整 package.json 文件，以便确保我们安装包是私有的(private)，并且移除 main 入口。这可以防止意外发布你的代码。</p>
+</blockquote>
+<p><em><div style="background:#DCF2FD;color:#618ca0;padding:6px;">如果你想要了解 package.json 内在机制的更多信息，我们推荐阅读 <a href="https://docs.npmjs.com/files/package.json" title="" target="">npm 文档</a>。</div></em></p>
+<h6 id="package-json"><a href="#package-json" class="headerlink" title="package.json"></a>package.json</h6><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"> &#123;</span><br><span class="line">    <span class="string">&quot;name&quot;</span>: <span class="string">&quot;webpack-demo&quot;</span>,</span><br><span class="line">    <span class="string">&quot;version&quot;</span>: <span class="string">&quot;1.0.0&quot;</span>,</span><br><span class="line">    <span class="string">&quot;description&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">+   <span class="string">&quot;private&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">-   <span class="string">&quot;main&quot;</span>: <span class="string">&quot;index.js&quot;</span>,</span><br><span class="line">    <span class="string">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">      <span class="string">&quot;test&quot;</span>: <span class="string">&quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;keywords&quot;</span>: [],</span><br><span class="line">    <span class="string">&quot;author&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">    <span class="string">&quot;license&quot;</span>: <span class="string">&quot;ISC&quot;</span>,</span><br><span class="line">    <span class="string">&quot;devDependencies&quot;</span>: &#123;</span><br><span class="line">      <span class="string">&quot;webpack&quot;</span>: <span class="string">&quot;^4.0.1&quot;</span>,</span><br><span class="line">      <span class="string">&quot;webpack-cli&quot;</span>: <span class="string">&quot;^2.0.9&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;dependencies&quot;</span>: &#123;&#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>在此示例中，<code>&lt;script&gt;</code> 标签之间存在隐式依赖关系。<code>index.js</code> 文件执行之前，还依赖于页面中引入的 <code>lodash</code>。之所以说是隐式的是因为 <code>index.js</code> 并未显式声明需要引入 <code>lodash</code>，只是假定推测已经存在一个全局变量 <code>_</code>。</p>
+</blockquote>
+<p>使用这种方式去管理 JavaScript 项目会有一些问题：</p>
+<blockquote>
+<ul>
+<li>无法立即体现，脚本的执行依赖于外部扩展库(external library)。</li>
+<li>如果依赖不存在，或者引入顺序错误，应用程序将无法正常运行。</li>
+<li>如果依赖被引入但是并没有使用，浏览器将被迫下载无用代码。</li>
+</ul>
+</blockquote>
+<p>让我们使用 webpack 来管理这些脚本。</p>
+<h4 id="关于webpack使用CleanWebpackPlugin插件时报错"><a href="#关于webpack使用CleanWebpackPlugin插件时报错" class="headerlink" title="关于webpack使用CleanWebpackPlugin插件时报错"></a>关于webpack使用CleanWebpackPlugin插件时报错</h4><div style="color:red;">CleanWebpackPlugin is not a constructor</div>
+错误写法：
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">const CleanWebpackPlugin = require(<span class="string">&quot;clean-webpack-plugin&quot;</span>);</span><br><span class="line"> </span><br><span class="line">...</span><br><span class="line"> </span><br><span class="line">plugins: [</span><br><span class="line">    new CleanWebpackPlugin([<span class="string">&#x27;dist&#x27;</span>])</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+正确写法：
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">const &#123; CleanWebpackPlugin &#125; = require(<span class="string">&quot;clean-webpack-plugin&quot;</span>);</span><br><span class="line"> </span><br><span class="line">...</span><br><span class="line"> </span><br><span class="line">plugins: [</span><br><span class="line">    new CleanWebpackPlugin()</span><br><span class="line">]</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>工作笔记</category>
+        <category>webpack</category>
+      </categories>
+      <tags>
+        <tag>webpack</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>vue项目记录</title>
     <url>/2020/05/26/vue%E9%A1%B9%E7%9B%AE%E8%AE%B0%E5%BD%95/</url>
     <content><![CDATA[<h3 id="在项目中引入阿里图库"><a href="#在项目中引入阿里图库" class="headerlink" title="在项目中引入阿里图库"></a>在项目中引入阿里图库</h3><ol>
@@ -1531,25 +1593,6 @@
 <img src="/2020/05/26/vue%E9%A1%B9%E7%9B%AE%E8%AE%B0%E5%BD%95/vue03.png" class="">
 <img src="/2020/05/26/vue%E9%A1%B9%E7%9B%AE%E8%AE%B0%E5%BD%95/vue04.png" class="">
 ]]></content>
-      <categories>
-        <category>工作笔记</category>
-        <category>Vue.js</category>
-      </categories>
-      <tags>
-        <tag>Vue.js</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>vue项目配置模块化路由</title>
-    <url>/2020/05/25/vue%E9%A1%B9%E7%9B%AE%E9%85%8D%E7%BD%AE%E6%A8%A1%E5%9D%97%E5%8C%96%E8%B7%AF%E7%94%B1/</url>
-    <content><![CDATA[<h3 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">├── src</span><br><span class="line">|    ├── assets         &#x2F;&#x2F; 静态资源img、css、js</span><br><span class="line">|    ├── components     &#x2F;&#x2F; 小组件</span><br><span class="line">|    ├── views          &#x2F;&#x2F; 页面(视图)组件</span><br><span class="line">|    ├── App.vue        &#x2F;&#x2F; 根组件</span><br><span class="line">|    ├── main.js        &#x2F;&#x2F; 全局脚本文件（项目的入口）</span><br><span class="line">|    ├── router</span><br><span class="line">|    |    ├── index.js       &#x2F;&#x2F; 路由脚本文件</span><br><span class="line">|    |    ├── modules       &#x2F;&#x2F; 模块</span><br><span class="line">|    |    |    ├── user.js         &#x2F;&#x2F; 用户模块</span><br><span class="line">|    |    |    ├── other.js        &#x2F;&#x2F; 其他模块</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="模块文件的配置-以用户模块为例，其他模块也是一样的"><a href="#模块文件的配置-以用户模块为例，其他模块也是一样的" class="headerlink" title="模块文件的配置 (以用户模块为例，其他模块也是一样的)"></a>模块文件的配置 (以用户模块为例，其他模块也是一样的)</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export default [</span><br><span class="line">    &#123;</span><br><span class="line">        name: &#39;login&#39;,</span><br><span class="line">        path: &#39;&#x2F;login&#39;,</span><br><span class="line">        meta: &#123;</span><br><span class="line">            title: &#39;登录页面&#39;</span><br><span class="line">        &#125;,</span><br><span class="line">        component: () &#x3D;&gt; import(&#39;@&#x2F;views&#x2F;account&#x2F;login&#x2F;index.vue&#39;) </span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        name: &#39;register&#39;,</span><br><span class="line">        path: &#39;&#x2F;register&#39;,</span><br><span class="line">        meta: &#123;</span><br><span class="line">            title: &#39;注册页面&#39;</span><br><span class="line">        &#125;,</span><br><span class="line">        component: () &#x3D;&gt; import(&#39;@&#x2F;views&#x2F;account&#x2F;register&#x2F;index.vue&#39;)</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        name: &#39;result&#39;,</span><br><span class="line">        path: &#39;&#x2F;result&#39;,</span><br><span class="line">        meta: &#123;</span><br><span class="line">            title: &#39;注册结果&#39;</span><br><span class="line">        &#125;,</span><br><span class="line">        component: () &#x3D;&gt; import(&#39;@&#x2F;views&#x2F;account&#x2F;register&#x2F;result&#x2F;index.vue&#39;)</span><br><span class="line">    &#125;</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;因为这里配置了页面title，所以加meta属性，如果不需要配置，可以不加</span><br></pre></td></tr></table></figure>
-<h3 id="index-js-router目录下的index-js"><a href="#index-js-router目录下的index-js" class="headerlink" title="index.js (router目录下的index.js)"></a>index.js (router目录下的index.js)</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import Vue from &#39;vue&#39;</span><br><span class="line">import VueRouter from &#39;vue-router&#39;</span><br><span class="line"></span><br><span class="line">import accoutRouter from &#39;.&#x2F;modules&#x2F;user&#39;</span><br><span class="line">import otherRouter from &#39;.&#x2F;modules&#x2F;other&#39;</span><br><span class="line"></span><br><span class="line">Vue.use(VueRouter)</span><br><span class="line"></span><br><span class="line">export default new VueRouter(&#123;</span><br><span class="line">  routes: [</span><br><span class="line">    ...accoutRouter,</span><br><span class="line">    ...otherRouter,</span><br><span class="line">  ]</span><br><span class="line">&#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="main-js"><a href="#main-js" class="headerlink" title="main.js"></a>main.js</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import Vue from &#39;vue&#39;</span><br><span class="line">import App from &#39;.&#x2F;App.vue&#39;</span><br><span class="line">import router from &#39;.&#x2F;router&#39;</span><br><span class="line">import store from &#39;.&#x2F;store&#39;</span><br><span class="line"></span><br><span class="line">Vue.config.productionTip &#x3D; false</span><br><span class="line"></span><br><span class="line">new Vue(&#123;</span><br><span class="line">  router,</span><br><span class="line">  store,</span><br><span class="line">  render: h &#x3D;&gt; h(App)</span><br><span class="line">&#125;).$mount(&#39;#app&#39;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="根据路由动态修改title"><a href="#根据路由动态修改title" class="headerlink" title="根据路由动态修改title"></a>根据路由动态修改title</h3><p>在main中加入以下代码：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;* 路由发生变化修改页面title *&#x2F;</span><br><span class="line">router.beforeEach((to, from, next) &#x3D;&gt; &#123;</span><br><span class="line">  if (to.meta.title) &#123;</span><br><span class="line">      document.title &#x3D; to.meta.title || &#39;首页&#39;</span><br><span class="line">  &#125;</span><br><span class="line">  next()</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>main.js最终代码：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import Vue from &#39;vue&#39;</span><br><span class="line">import App from &#39;.&#x2F;App.vue&#39;</span><br><span class="line">import router from &#39;.&#x2F;router&#39;</span><br><span class="line">import store from &#39;.&#x2F;store&#39;</span><br><span class="line"></span><br><span class="line">Vue.config.productionTip &#x3D; false</span><br><span class="line"></span><br><span class="line">&#x2F;* 路由发生变化修改页面title *&#x2F;</span><br><span class="line">router.beforeEach((to, from, next) &#x3D;&gt; &#123;</span><br><span class="line">  if (to.meta.title) &#123;</span><br><span class="line">      document.title &#x3D; to.meta.title || &#39;首页&#39;</span><br><span class="line">  &#125;</span><br><span class="line">  next()</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">new Vue(&#123;</span><br><span class="line">  router,</span><br><span class="line">  store,</span><br><span class="line">  render: h &#x3D;&gt; h(App)</span><br><span class="line">&#125;).$mount(&#39;#app&#39;)</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>工作笔记</category>
         <category>Vue.js</category>
@@ -1650,49 +1693,6 @@
       </categories>
       <tags>
         <tag>Vue.js</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>webpack起步</title>
-    <url>/2019/11/20/webpack%E8%B5%B7%E6%AD%A5/</url>
-    <content><![CDATA[<h2 id="基本安装"><a href="#基本安装" class="headerlink" title="基本安装"></a>基本安装</h2><h4 id="一、"><a href="#一、" class="headerlink" title="一、"></a>一、</h4><p>首先我们创建一个目录，初始化 npm(生成package.json文件），然后 在本地安装 webpack，接着安装 webpack-cli（此工具用于在命令行中运行 webpack）：</p>
-<p>注意：webpack为4+版本以上，需要安装webpack-cli ,安装本地webpack-cli之前，要安装全局</p>
-<p>安装淘宝镜像 <em>如果网速不太好的情况下，可以选择安装淘宝镜像</em></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install -g cnpm --registry=https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mkdir webpack-demo &amp;&amp; <span class="built_in">cd</span> webpack-demo</span><br><span class="line">npm init -y</span><br><span class="line">npm install webpack webpack-cli --save-dev</span><br></pre></td></tr></table></figure>
-<p><em><div style="background:#DCF2FD;color:#618ca0;padding:6px;">贯穿整个指南的是，我们将使用 diff 块，来显示我们对目录、文件和代码所做的更改。</div></em></p>
-<h4 id="二、"><a href="#二、" class="headerlink" title="二、"></a>二、</h4><p>现在我们将创建以下目录结构、文件和内容：</p>
-<h6 id="project"><a href="#project" class="headerlink" title="project"></a>project</h6><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">  webpack-demo</span><br><span class="line">  |- package.json</span><br><span class="line">+ |- index.html</span><br><span class="line">+ |- /src</span><br><span class="line">+   |- index.js</span><br></pre></td></tr></table></figure>
-<h6 id="src-index-js"><a href="#src-index-js" class="headerlink" title="src/index.js"></a>src/index.js</h6><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">component</span></span>() &#123;</span><br><span class="line">  var element = document.createElement(<span class="string">&#x27;div&#x27;</span>);</span><br><span class="line"></span><br><span class="line">  // Lodash（目前通过一个 script 脚本引入）对于执行这一行是必需的</span><br><span class="line">  element.innerHTML = _.join([<span class="string">&#x27;Hello&#x27;</span>, <span class="string">&#x27;webpack&#x27;</span>], <span class="string">&#x27; &#x27;</span>);</span><br><span class="line"></span><br><span class="line">  <span class="built_in">return</span> element;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">document.body.appendChild(component());</span><br></pre></td></tr></table></figure>
-<h6 id="index-html"><a href="#index-html" class="headerlink" title="index.html"></a>index.html</h6><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;!doctype html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;title&gt;起步&lt;/title&gt;</span><br><span class="line">    &lt;script src=<span class="string">&quot;https://unpkg.com/lodash@4.16.6&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line">    &lt;script src=<span class="string">&quot;./src/index.js&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line">  &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>我们还需要调整 package.json 文件，以便确保我们安装包是私有的(private)，并且移除 main 入口。这可以防止意外发布你的代码。</p>
-</blockquote>
-<p><em><div style="background:#DCF2FD;color:#618ca0;padding:6px;">如果你想要了解 package.json 内在机制的更多信息，我们推荐阅读 <a href="https://docs.npmjs.com/files/package.json" title="" target="">npm 文档</a>。</div></em></p>
-<h6 id="package-json"><a href="#package-json" class="headerlink" title="package.json"></a>package.json</h6><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"> &#123;</span><br><span class="line">    <span class="string">&quot;name&quot;</span>: <span class="string">&quot;webpack-demo&quot;</span>,</span><br><span class="line">    <span class="string">&quot;version&quot;</span>: <span class="string">&quot;1.0.0&quot;</span>,</span><br><span class="line">    <span class="string">&quot;description&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">+   <span class="string">&quot;private&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">-   <span class="string">&quot;main&quot;</span>: <span class="string">&quot;index.js&quot;</span>,</span><br><span class="line">    <span class="string">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">      <span class="string">&quot;test&quot;</span>: <span class="string">&quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;keywords&quot;</span>: [],</span><br><span class="line">    <span class="string">&quot;author&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">    <span class="string">&quot;license&quot;</span>: <span class="string">&quot;ISC&quot;</span>,</span><br><span class="line">    <span class="string">&quot;devDependencies&quot;</span>: &#123;</span><br><span class="line">      <span class="string">&quot;webpack&quot;</span>: <span class="string">&quot;^4.0.1&quot;</span>,</span><br><span class="line">      <span class="string">&quot;webpack-cli&quot;</span>: <span class="string">&quot;^2.0.9&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;dependencies&quot;</span>: &#123;&#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>在此示例中，<code>&lt;script&gt;</code> 标签之间存在隐式依赖关系。<code>index.js</code> 文件执行之前，还依赖于页面中引入的 <code>lodash</code>。之所以说是隐式的是因为 <code>index.js</code> 并未显式声明需要引入 <code>lodash</code>，只是假定推测已经存在一个全局变量 <code>_</code>。</p>
-</blockquote>
-<p>使用这种方式去管理 JavaScript 项目会有一些问题：</p>
-<blockquote>
-<ul>
-<li>无法立即体现，脚本的执行依赖于外部扩展库(external library)。</li>
-<li>如果依赖不存在，或者引入顺序错误，应用程序将无法正常运行。</li>
-<li>如果依赖被引入但是并没有使用，浏览器将被迫下载无用代码。</li>
-</ul>
-</blockquote>
-<p>让我们使用 webpack 来管理这些脚本。</p>
-<h4 id="关于webpack使用CleanWebpackPlugin插件时报错"><a href="#关于webpack使用CleanWebpackPlugin插件时报错" class="headerlink" title="关于webpack使用CleanWebpackPlugin插件时报错"></a>关于webpack使用CleanWebpackPlugin插件时报错</h4><div style="color:red;">CleanWebpackPlugin is not a constructor</div>
-错误写法：
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">const CleanWebpackPlugin = require(<span class="string">&quot;clean-webpack-plugin&quot;</span>);</span><br><span class="line"> </span><br><span class="line">...</span><br><span class="line"> </span><br><span class="line">plugins: [</span><br><span class="line">    new CleanWebpackPlugin([<span class="string">&#x27;dist&#x27;</span>])</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-正确写法：
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">const &#123; CleanWebpackPlugin &#125; = require(<span class="string">&quot;clean-webpack-plugin&quot;</span>);</span><br><span class="line"> </span><br><span class="line">...</span><br><span class="line"> </span><br><span class="line">plugins: [</span><br><span class="line">    new CleanWebpackPlugin()</span><br><span class="line">]</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>工作笔记</category>
-        <category>webpack</category>
-      </categories>
-      <tags>
-        <tag>webpack</tag>
       </tags>
   </entry>
   <entry>
@@ -1901,7 +1901,7 @@
 <h5 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h5><p>如有以下报错，是版本的问题影响的：</p>
 <p>Module build failed: TypeError: this.getResolve is not a function at Object.loader 安装node-sass运行报错</p>
 <p><strong>解决方法</strong>： 选择更低版本的sass-loader</p>
-<p><strong>卸载当前版本</strong>：npm uninstall sass-loader<br><strong>安装指定版本</strong>：npm install <a href="mailto:&#x73;&#97;&#115;&#115;&#45;&#108;&#x6f;&#x61;&#100;&#x65;&#x72;&#64;&#55;&#x2e;&#51;&#x2e;&#x31;">&#x73;&#97;&#115;&#115;&#45;&#108;&#x6f;&#x61;&#100;&#x65;&#x72;&#64;&#55;&#x2e;&#51;&#x2e;&#x31;</a> –save-dev</p>
+<p><strong>卸载当前版本</strong>：npm uninstall sass-loader<br><strong>安装指定版本</strong>：npm install <a href="mailto:&#115;&#97;&#x73;&#x73;&#x2d;&#108;&#x6f;&#x61;&#100;&#101;&#x72;&#64;&#x37;&#x2e;&#x33;&#x2e;&#x31;">&#115;&#97;&#x73;&#x73;&#x2d;&#108;&#x6f;&#x61;&#100;&#101;&#x72;&#64;&#x37;&#x2e;&#x33;&#x2e;&#x31;</a> –save-dev</p>
 <p>参考： <a href="https://blog.csdn.net/ze1024/article/details/100516650">安装node-sass运行报错</a></p>
 ]]></content>
       <categories>
@@ -1926,6 +1926,48 @@
       </categories>
       <tags>
         <tag>博客</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>工程化的Vue.js开发</title>
+    <url>/2019/06/24/%E5%B7%A5%E7%A8%8B%E5%8C%96%E7%9A%84Vue-js%E5%BC%80%E5%8F%91/</url>
+    <content><![CDATA[<h5 id="Vue-提供一套简化开发、测试与部署的方案，不再需要花大量的时间去学习理解框架的使用概念，以及耗费大量的精力去建立复杂的自动化环境。"><a href="#Vue-提供一套简化开发、测试与部署的方案，不再需要花大量的时间去学习理解框架的使用概念，以及耗费大量的精力去建立复杂的自动化环境。" class="headerlink" title="Vue 提供一套简化开发、测试与部署的方案，不再需要花大量的时间去学习理解框架的使用概念，以及耗费大量的精力去建立复杂的自动化环境。"></a>Vue 提供一套简化开发、测试与部署的方案，不再需要花大量的时间去学习理解框架的使用概念，以及耗费大量的精力去建立复杂的自动化环境。</h5><h3 id="脚手架-vue-cli"><a href="#脚手架-vue-cli" class="headerlink" title="脚手架 vue-cli"></a>脚手架 vue-cli</h3><p>这个工具可以让一个简单的命令行工具快速地构建一个足以支撑实际项目开发的Vue环境。 vue-cli的存在将项目环境的初始化工作与复杂度降到最低。</p>
+<a id="more"></a>
+<h5 id="1、安装vue-cli"><a href="#1、安装vue-cli" class="headerlink" title="1、安装vue-cli"></a>1、安装vue-cli</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm i vue-cli -g</span><br><span class="line"></span><br><span class="line">(希望能在本机的任意目录下创建项目，那就得将它安装到node.js的全局运行目录下)</span><br></pre></td></tr></table></figure>
+<h5 id="2、使用vue-cli初始化项目"><a href="#2、使用vue-cli初始化项目" class="headerlink" title="2、使用vue-cli初始化项目"></a>2、使用vue-cli初始化项目</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vue   ——   查看帮助文件</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vue list  ——   查看有哪些官方模板可用</span><br><span class="line"></span><br><span class="line">（这些官方模板存在的意义在于提供强大的项目构建能力，用户可以尽可能快地进行开发。）</span><br></pre></td></tr></table></figure>
+<img src="/2019/06/24/%E5%B7%A5%E7%A8%8B%E5%8C%96%E7%9A%84Vue-js%E5%BC%80%E5%8F%91/vue-list.png" class="">
+<h5 id="3、创建项目"><a href="#3、创建项目" class="headerlink" title="3、创建项目"></a>3、创建项目</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vue init webpack my-project</span><br></pre></td></tr></table></figure>
+<p>查看项目</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> my-project   </span><br><span class="line">npm install</span><br><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
+<h3 id="深入vue-cli的工程模板"><a href="#深入vue-cli的工程模板" class="headerlink" title="深入vue-cli的工程模板"></a>深入vue-cli的工程模板</h3><img src="/2019/06/24/%E5%B7%A5%E7%A8%8B%E5%8C%96%E7%9A%84Vue-js%E5%BC%80%E5%8F%91/webpack.png" class="">
+
+<h4 id="webpack-simple-模板"><a href="#webpack-simple-模板" class="headerlink" title="webpack-simple 模板"></a>webpack-simple 模板</h4><img src="/2019/06/24/%E5%B7%A5%E7%A8%8B%E5%8C%96%E7%9A%84Vue-js%E5%BC%80%E5%8F%91/webpack-simple.png" class="">
+
+<h4 id="webpack模板"><a href="#webpack模板" class="headerlink" title="webpack模板"></a>webpack模板</h4><p>bulid——存放用于编译用的webpack配置与相关的辅助工具代码；<br>config——存放三大环境配置文件，用于设定环境变量和必要的路径信息；<br>test——存放E2E测试与单元测试文件以及相关的配置文件；<br>static——存放项目所需要的其他静态资源文件；<br>dist——存放运行npm run build 指令的生产环境输出文件，可直接部署到服务器对应的静态资源文件夹内，该文件夹只有在运行build之后才会生成。</p>
+<h4 id="构建工具"><a href="#构建工具" class="headerlink" title="构建工具"></a>构建工具</h4><h5 id="1、编译开发环境"><a href="#1、编译开发环境" class="headerlink" title="1、编译开发环境"></a>1、编译开发环境</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
+<img src="/2019/06/24/%E5%B7%A5%E7%A8%8B%E5%8C%96%E7%9A%84Vue-js%E5%BC%80%E5%8F%91/npmrundev1.png" class="">
+<img src="/2019/06/24/%E5%B7%A5%E7%A8%8B%E5%8C%96%E7%9A%84Vue-js%E5%BC%80%E5%8F%91/npmrundev2.png" class="">
+<h5 id="2、编译生产环境"><a href="#2、编译生产环境" class="headerlink" title="2、编译生产环境"></a>2、编译生产环境</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm run build</span><br></pre></td></tr></table></figure>
+<h3 id="Vue工程化的webpack配置与基本用法"><a href="#Vue工程化的webpack配置与基本用法" class="headerlink" title="Vue工程化的webpack配置与基本用法"></a>Vue工程化的webpack配置与基本用法</h3><img src="/2019/06/24/%E5%B7%A5%E7%A8%8B%E5%8C%96%E7%9A%84Vue-js%E5%BC%80%E5%8F%91/webpack2.png" class="">
+<h3 id="webpack的特点"><a href="#webpack的特点" class="headerlink" title="webpack的特点"></a>webpack的特点</h3><img src="/2019/06/24/%E5%B7%A5%E7%A8%8B%E5%8C%96%E7%9A%84Vue-js%E5%BC%80%E5%8F%91/webpack3.png" class="">
+<img src="/2019/06/24/%E5%B7%A5%E7%A8%8B%E5%8C%96%E7%9A%84Vue-js%E5%BC%80%E5%8F%91/webpack4.png" class="">
+
+<h3 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h3><p>（webpack的打包依赖于它的一个重要配置文件webpack.config.js）</p>
+<h5 id="样式表引用"><a href="#样式表引用" class="headerlink" title="样式表引用"></a>样式表引用</h5><p>某些页面或者组件可能具有特定的样式定义，这些样式对于其他页面说是冗余的，我们只希望这些组件在应用时才自动加载这些特定的样式、</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">import Vue form <span class="string">&#x27;vue&#x27;</span></span><br><span class="line">//...省略</span><br><span class="line">//引用指定的样式源文件</span><br><span class="line">import <span class="string">&#x27;./app/assets/less/dark.less&#x27;</span></span><br><span class="line"><span class="built_in">export</span> default &#123;</span><br><span class="line">    // ...省略</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>(需要在webpack的配置中加入less-loader)</p>
+<h5 id="字体的引用"><a href="#字体的引用" class="headerlink" title="字体的引用"></a>字体的引用</h5><h4 id="用别名取代路径引用"><a href="#用别名取代路径引用" class="headerlink" title="用别名取代路径引用"></a>用别名取代路径引用</h4><img src="/2019/06/24/%E5%B7%A5%E7%A8%8B%E5%8C%96%E7%9A%84Vue-js%E5%BC%80%E5%8F%91/bieming.png" class="">
+<h4 id="配置多入口程序"><a href="#配置多入口程序" class="headerlink" title="配置多入口程序"></a>配置多入口程序</h4><p>不单只有一个入口，例如：前台提供最终用户使用（<a href="http://domain.com/index),%E5%90%8E%E5%8F%B0%E6%8F%90%E4%BE%9B%E7%BB%99%E7%99%BB%E5%BD%95%E7%94%A8%E6%88%B7%E4%BD%BF%E7%94%A8%EF%BC%88http://domain.com/admin/)%EF%BC%8C%E9%82%A3%E4%B9%88%E8%87%AA%E7%84%B6%E9%9C%80%E8%A6%81%E5%A4%9A%E4%B8%AA%E4%B8%8Emain.js%E7%B1%BB%E4%BC%BC%E7%9A%84%E7%A8%8B%E5%BA%8F%E5%85%A5%E5%8F%A3%E3%80%82">http://domain.com/index),后台提供给登录用户使用（http://domain.com/admin/)，那么自然需要多个与main.js类似的程序入口。</a></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">首先在build/webpack.base.conf.js配置文件中的entry配置属性上加上新的入口文件：</span><br><span class="line">module.exports = &#123;</span><br><span class="line">    entry: &#123;</span><br><span class="line">        app: <span class="string">&#x27;./src/main.js&#x27;</span>,</span><br><span class="line">        admin: <span class="string">&#x27;./src/admin-main.js&#x27;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    // ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>（其他相关设置，需要用到时参考书上内容)</p>
+<h4 id="基于Karma-Phantom-Mocha-Sinon-Chai的单元测试环境"><a href="#基于Karma-Phantom-Mocha-Sinon-Chai的单元测试环境" class="headerlink" title="基于Karma + Phantom + Mocha + Sinon + Chai的单元测试环境"></a>基于Karma + Phantom + Mocha + Sinon + Chai的单元测试环境</h4><h4 id="基于Nightwatch的端到端测试环境"><a href="#基于Nightwatch的端到端测试环境" class="headerlink" title="基于Nightwatch的端到端测试环境"></a>基于Nightwatch的端到端测试环境</h4>]]></content>
+      <categories>
+        <category>工作笔记</category>
+        <category>Vue2.js</category>
+      </categories>
+      <tags>
+        <tag>《Vue2实践揭秘》</tag>
       </tags>
   </entry>
   <entry>
@@ -1971,48 +2013,6 @@
       </categories>
       <tags>
         <tag>Hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>工程化的Vue.js开发</title>
-    <url>/2019/06/24/%E5%B7%A5%E7%A8%8B%E5%8C%96%E7%9A%84Vue-js%E5%BC%80%E5%8F%91/</url>
-    <content><![CDATA[<h5 id="Vue-提供一套简化开发、测试与部署的方案，不再需要花大量的时间去学习理解框架的使用概念，以及耗费大量的精力去建立复杂的自动化环境。"><a href="#Vue-提供一套简化开发、测试与部署的方案，不再需要花大量的时间去学习理解框架的使用概念，以及耗费大量的精力去建立复杂的自动化环境。" class="headerlink" title="Vue 提供一套简化开发、测试与部署的方案，不再需要花大量的时间去学习理解框架的使用概念，以及耗费大量的精力去建立复杂的自动化环境。"></a>Vue 提供一套简化开发、测试与部署的方案，不再需要花大量的时间去学习理解框架的使用概念，以及耗费大量的精力去建立复杂的自动化环境。</h5><h3 id="脚手架-vue-cli"><a href="#脚手架-vue-cli" class="headerlink" title="脚手架 vue-cli"></a>脚手架 vue-cli</h3><p>这个工具可以让一个简单的命令行工具快速地构建一个足以支撑实际项目开发的Vue环境。 vue-cli的存在将项目环境的初始化工作与复杂度降到最低。</p>
-<a id="more"></a>
-<h5 id="1、安装vue-cli"><a href="#1、安装vue-cli" class="headerlink" title="1、安装vue-cli"></a>1、安装vue-cli</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm i vue-cli -g</span><br><span class="line"></span><br><span class="line">(希望能在本机的任意目录下创建项目，那就得将它安装到node.js的全局运行目录下)</span><br></pre></td></tr></table></figure>
-<h5 id="2、使用vue-cli初始化项目"><a href="#2、使用vue-cli初始化项目" class="headerlink" title="2、使用vue-cli初始化项目"></a>2、使用vue-cli初始化项目</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vue   ——   查看帮助文件</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vue list  ——   查看有哪些官方模板可用</span><br><span class="line"></span><br><span class="line">（这些官方模板存在的意义在于提供强大的项目构建能力，用户可以尽可能快地进行开发。）</span><br></pre></td></tr></table></figure>
-<img src="/2019/06/24/%E5%B7%A5%E7%A8%8B%E5%8C%96%E7%9A%84Vue-js%E5%BC%80%E5%8F%91/vue-list.png" class="">
-<h5 id="3、创建项目"><a href="#3、创建项目" class="headerlink" title="3、创建项目"></a>3、创建项目</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vue init webpack my-project</span><br></pre></td></tr></table></figure>
-<p>查看项目</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> my-project   </span><br><span class="line">npm install</span><br><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
-<h3 id="深入vue-cli的工程模板"><a href="#深入vue-cli的工程模板" class="headerlink" title="深入vue-cli的工程模板"></a>深入vue-cli的工程模板</h3><img src="/2019/06/24/%E5%B7%A5%E7%A8%8B%E5%8C%96%E7%9A%84Vue-js%E5%BC%80%E5%8F%91/webpack.png" class="">
-
-<h4 id="webpack-simple-模板"><a href="#webpack-simple-模板" class="headerlink" title="webpack-simple 模板"></a>webpack-simple 模板</h4><img src="/2019/06/24/%E5%B7%A5%E7%A8%8B%E5%8C%96%E7%9A%84Vue-js%E5%BC%80%E5%8F%91/webpack-simple.png" class="">
-
-<h4 id="webpack模板"><a href="#webpack模板" class="headerlink" title="webpack模板"></a>webpack模板</h4><p>bulid——存放用于编译用的webpack配置与相关的辅助工具代码；<br>config——存放三大环境配置文件，用于设定环境变量和必要的路径信息；<br>test——存放E2E测试与单元测试文件以及相关的配置文件；<br>static——存放项目所需要的其他静态资源文件；<br>dist——存放运行npm run build 指令的生产环境输出文件，可直接部署到服务器对应的静态资源文件夹内，该文件夹只有在运行build之后才会生成。</p>
-<h4 id="构建工具"><a href="#构建工具" class="headerlink" title="构建工具"></a>构建工具</h4><h5 id="1、编译开发环境"><a href="#1、编译开发环境" class="headerlink" title="1、编译开发环境"></a>1、编译开发环境</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
-<img src="/2019/06/24/%E5%B7%A5%E7%A8%8B%E5%8C%96%E7%9A%84Vue-js%E5%BC%80%E5%8F%91/npmrundev1.png" class="">
-<img src="/2019/06/24/%E5%B7%A5%E7%A8%8B%E5%8C%96%E7%9A%84Vue-js%E5%BC%80%E5%8F%91/npmrundev2.png" class="">
-<h5 id="2、编译生产环境"><a href="#2、编译生产环境" class="headerlink" title="2、编译生产环境"></a>2、编译生产环境</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm run build</span><br></pre></td></tr></table></figure>
-<h3 id="Vue工程化的webpack配置与基本用法"><a href="#Vue工程化的webpack配置与基本用法" class="headerlink" title="Vue工程化的webpack配置与基本用法"></a>Vue工程化的webpack配置与基本用法</h3><img src="/2019/06/24/%E5%B7%A5%E7%A8%8B%E5%8C%96%E7%9A%84Vue-js%E5%BC%80%E5%8F%91/webpack2.png" class="">
-<h3 id="webpack的特点"><a href="#webpack的特点" class="headerlink" title="webpack的特点"></a>webpack的特点</h3><img src="/2019/06/24/%E5%B7%A5%E7%A8%8B%E5%8C%96%E7%9A%84Vue-js%E5%BC%80%E5%8F%91/webpack3.png" class="">
-<img src="/2019/06/24/%E5%B7%A5%E7%A8%8B%E5%8C%96%E7%9A%84Vue-js%E5%BC%80%E5%8F%91/webpack4.png" class="">
-
-<h3 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h3><p>（webpack的打包依赖于它的一个重要配置文件webpack.config.js）</p>
-<h5 id="样式表引用"><a href="#样式表引用" class="headerlink" title="样式表引用"></a>样式表引用</h5><p>某些页面或者组件可能具有特定的样式定义，这些样式对于其他页面说是冗余的，我们只希望这些组件在应用时才自动加载这些特定的样式、</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">import Vue form <span class="string">&#x27;vue&#x27;</span></span><br><span class="line">//...省略</span><br><span class="line">//引用指定的样式源文件</span><br><span class="line">import <span class="string">&#x27;./app/assets/less/dark.less&#x27;</span></span><br><span class="line"><span class="built_in">export</span> default &#123;</span><br><span class="line">    // ...省略</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>(需要在webpack的配置中加入less-loader)</p>
-<h5 id="字体的引用"><a href="#字体的引用" class="headerlink" title="字体的引用"></a>字体的引用</h5><h4 id="用别名取代路径引用"><a href="#用别名取代路径引用" class="headerlink" title="用别名取代路径引用"></a>用别名取代路径引用</h4><img src="/2019/06/24/%E5%B7%A5%E7%A8%8B%E5%8C%96%E7%9A%84Vue-js%E5%BC%80%E5%8F%91/bieming.png" class="">
-<h4 id="配置多入口程序"><a href="#配置多入口程序" class="headerlink" title="配置多入口程序"></a>配置多入口程序</h4><p>不单只有一个入口，例如：前台提供最终用户使用（<a href="http://domain.com/index),%E5%90%8E%E5%8F%B0%E6%8F%90%E4%BE%9B%E7%BB%99%E7%99%BB%E5%BD%95%E7%94%A8%E6%88%B7%E4%BD%BF%E7%94%A8%EF%BC%88http://domain.com/admin/)%EF%BC%8C%E9%82%A3%E4%B9%88%E8%87%AA%E7%84%B6%E9%9C%80%E8%A6%81%E5%A4%9A%E4%B8%AA%E4%B8%8Emain.js%E7%B1%BB%E4%BC%BC%E7%9A%84%E7%A8%8B%E5%BA%8F%E5%85%A5%E5%8F%A3%E3%80%82">http://domain.com/index),后台提供给登录用户使用（http://domain.com/admin/)，那么自然需要多个与main.js类似的程序入口。</a></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">首先在build/webpack.base.conf.js配置文件中的entry配置属性上加上新的入口文件：</span><br><span class="line">module.exports = &#123;</span><br><span class="line">    entry: &#123;</span><br><span class="line">        app: <span class="string">&#x27;./src/main.js&#x27;</span>,</span><br><span class="line">        admin: <span class="string">&#x27;./src/admin-main.js&#x27;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    // ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>（其他相关设置，需要用到时参考书上内容)</p>
-<h4 id="基于Karma-Phantom-Mocha-Sinon-Chai的单元测试环境"><a href="#基于Karma-Phantom-Mocha-Sinon-Chai的单元测试环境" class="headerlink" title="基于Karma + Phantom + Mocha + Sinon + Chai的单元测试环境"></a>基于Karma + Phantom + Mocha + Sinon + Chai的单元测试环境</h4><h4 id="基于Nightwatch的端到端测试环境"><a href="#基于Nightwatch的端到端测试环境" class="headerlink" title="基于Nightwatch的端到端测试环境"></a>基于Nightwatch的端到端测试环境</h4>]]></content>
-      <categories>
-        <category>工作笔记</category>
-        <category>Vue2.js</category>
-      </categories>
-      <tags>
-        <tag>《Vue2实践揭秘》</tag>
       </tags>
   </entry>
   <entry>

@@ -42,11 +42,19 @@ setTimeout(function() {
 ```
 
 
-
-
 ```
 引入图片：
 {% asset_img css1.png %}
 引入链接：
 [参考的博客](https://juejin.im/post/5b15022ff265da6e163720c6)
 ```
+
+#### 解决clipboard复制弹多次提示的问题
+
+1、使用destroy（在单页面里面，回来页面，如果存在这个对象，就删除。）
+
+{% asset_img note1.png %}
+
+2、换成setTimeout，不用layer.msg（copySuccessTip的样式模拟layer.msg的样式即可）
+
+{% asset_img note2.png %}

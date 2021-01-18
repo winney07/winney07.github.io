@@ -447,3 +447,255 @@ $(本来存在的父元素).on("input propertychange","监听的元素", functio
 
 
 模拟下拉框获取不了角度，可以让它附近的文字获取焦点。   【文字是可以获取焦点的，不是文字，一般的元素获取不了焦点】
+
+#### 防止事件冒泡
+
+```
+window.event? window.event.cancelBubble = true : e.stopPropagation();
+```
+
+#### 返回上一页
+
+```
+javascript:window.history.go(-1);
+```
+
+#### 刷新页面
+
+```
+window.location.reload(); 
+```
+
+[参考教程](https://www.jb51.net/article/124389.htm)
+
+#### 获取单选框选中的值
+
+```
+$('input[name="plan"]:checked').val();
+```
+
+#### 监听单选按钮事件改变
+
+```
+$('input[type=radio][name=type]').change(function() {
+    if (this.value == 3) {
+        $(".license_tr").hide();
+        $(".license_code_tr").hide();
+    }
+    else {
+        $(".license_tr").show();
+        $(".license_code_tr").show();
+    }
+});
+```
+
+#### JS中对象赋值只传值不传对象（地址）的方法，改变新值不影响旧值
+
+[参考教程](https://blog.csdn.net/tg928600774/article/details/83651608)
+
+```
+var newModel = $.extend(true,{},oldModel)
+```
+
+```
+var newModel = $.extend(true,[],oldModel)
+```
+
+#### 只赋值不改变原来对象
+
+```
+var data={a:1,b:2,c:3,d:4};
+var newData= $.extend(true,{},data);;
+```
+
+#### 判断是否为移动端
+
+```
+var isMobile = /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent);
+```
+
+#### 判断输入框是否获取焦点
+
+```
+var isFocus=$("#tRow").is(":focus");  
+```
+
+#### 单页面应用判断页面是不是刷新（谷歌浏览器）
+
+在刷新页面的时候使用window.onbeforeunload向sessionstorage或localstorage存入一个标记譬如reloadFlag作为判断是否是刷新的依据，页面刷新后从sessionstorage或localstorage中获取存储的标记，然后执行相应的回调向后端发起请求，完成之后将sessionstorage或localstorage中获取存储的标记删除即可。
+
+```
+// reLoadFlag.js
+;(function(){
+   	window.onbeforeunload = function(){
+   		sessionStorage.setItem('reLoadFlag', 'true');
+   	}
+})();
+
+// 需要判断的地方进行判断操作
+if (sessionStorage.getItem('reLoadFlag') === 'true') {
+   // 执行其他的逻辑
+   // ...............
+   sessionStorage.removeItem('reLoadFlag');
+}
+```
+
+> 第一次向后端发起请求得到数据后存储到sessionstorage或localstorage之中，之后的逻辑是每次需要数据时从sessionstorage或localstorage中去取，取不到的时候（比如关闭页面重新打开或者手动清除缓存）再重新向后端发起请求获取数据。但是这样会存在一个问题，即希望通过刷新页面向后端重新发起请求的时候因为sessionstorage或localstorage的数据仍然存在，所以不会向后端发起请求。
+
+#### filter函数做数据匹配
+
+只有一个筛选条件的时候
+
+```
+var res = datas.filter(function (data) {
+     return data[type] === val;
+});
+```
+
+多个筛选条件的时候（注意：要加上  > -1，不然返回有问题）
+
+```
+var searchList = [];
+searchList = list.filter(function(item) {
+  var flag = (item.name.indexOf(txt) > -1) || (item.key.indexOf(txt)  >-1) || 		 (item.account_id.indexOf(txt)  >-1) || (item.user_name.indexOf(txt)  >-1) || (item.user_id.indexOf(txt)  >-1);					
+   return flag;
+});
+```
+
+{% asset_img filter.png %}
+
+#### 处理textarea换行数据
+
+先使用换行符“\n"截取，然后用"~"获取
+
+{% asset_img br.png %}
+
+#### 火狐浏览器，报ev is undefined
+
+获取当前操作对象时，要记得传参
+
+封装函数加上参数e
+
+{% asset_img ev1.png %}
+
+调用时加上参数e
+
+{% asset_img ev2.png %}
+
+#### 搜索框——实时匹配
+
+（输入完文字就直接匹配，包括中文输入）实现中文输入法下，仅在选词后触发input事件。[参考教程](https://www.jianshu.com/p/e9c837eba083)
+
+```
+描述
+在使用oninput监控输入框内容变化时，我们期望仅在value值变化时，才触发oninput事件，而在中文输入下，未选词时的按键也会触发oninput事件。
+input事件触发效果
+
+关键
+compositionstart事件
+compositionend事件
+
+方法
+使用一个变量表示拼写状态，在oninput事件中判断是否在拼写状态，当拼写状态结束，继续执行下一步操作。
+var typing = false;
+$('#ipt').on('compositionstart',function(){
+    typing = true;
+})
+$('#ipt').on('compositionend',function(){
+    typing = false;
+})
+//oninput在oncompositionend之前执行，需加定时器
+$('#ipt').on('input',function(){
+    setTimeout(function() {
+        if(!typing) {
+            //To do something...
+        }
+    },0);
+})
+
+//或用keyup代替input
+$('#ipt').on('input',function(){
+    if(!typing) {
+        //To do something...
+    }
+})
+```
+
+#### 获取横向滚动条位置
+
+```
+var left = $(".layui-table-body").scrollLeft();
+```
+
+#### 设置横向滚动条位置
+
+```
+$(".layui-table-body").scrollLeft(left);
+```
+
+#### 利用js打开新页面（在另外新建窗口中打开窗口）
+
+```
+window.open("http://doc.trackingio.com/qu-dao-pei-zhi-shuo-ming/guang-dian-tong.html","_blank");  
+```
+
+#### jQuery--复制克隆（复制节点）
+
+```
+ //文档准备就绪函数
+$(function () {
+    //获取li标签及点击事件
+    $("ul li").click(function () {
+        //对这个li标签使用clone克隆（clone(true)添加true使复制过的还能继续复制）
+        //，然后添加到ul标签里面
+        $(this).clone(true).appendTo("ul");
+    });
+});
+```
+
+#### js获取日期（例如：昨天、今天和明天）
+
+```
+function GetDateStr(AddDayCount, nowDay) { 
+var dd = new Date(nowDay); 
+
+console.log("dd");
+console.log(dd);
+dd.setDate(dd.getDate()+AddDayCount);//获取AddDayCount天后的日期 
+var y = dd.getFullYear(); 
+var m = dd.getMonth()+1;//获取当前月份的日期 
+var d = dd.getDate(); 
+
+if(m < 10) {
+	m = "0" + m;
+}
+				
+if(d < 10) {
+	d = "0" + d;
+}
+
+return y+"-"+m+"-"+d; 
+}
+
+GetDateStr(-1, 2019-04-02);
+
+new Date(curDate);
+var preDate = new Date(curDate.getTime() - 24*60*60*1000); //前一天
+```
+
+#### 给对象添加变量属性（空数组）
+
+使用[]
+
+```
+selectChannel[selectList[i]] = [];
+使用selectChannel.push({selectList[i]]:[]})是错的。
+```
+
+#### 改变checkbox选中状态
+
+[参考教程](https://blog.csdn.net/brucecheng22/article/details/50408199)
+
+使用prop方法    [动态改变checkbox的选中状态](https://www.jianshu.com/p/d544167bd715)
+
+> 使用1.6.1 以上版本（测试使用1.10.1版本可以）

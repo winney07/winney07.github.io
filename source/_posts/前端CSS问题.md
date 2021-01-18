@@ -122,3 +122,154 @@ autocomplete="off"
 密码：<input type='password' autocomplete="new-password" style="background-color: #fff!important;" readonly onfocus="this.removeAttribute('readonly');" onblur="this.setAttribute('readonly',true);">
 
 ```
+
+#### 解决html页面英文和数字不自动换行，但中文就可以自动换行
+
+{% asset_img huanhang.png %}
+
+###### 解决方法：添加css属性word-break: break-all;
+
+{% asset_img huanhang2.png %}
+
+#### 溢出的文字隐藏
+
+```
+white-space: nowrap;
+text-overflow: ellipsis;
+overflow: hidden;
+```
+
+#### 文本域(textarea)的提示文字(placeholder)换行显示
+
+```
+加上&#13;&#10;
+
+placeholder="请输入微信APP支付参数，便于技术查看，涉及字段如下：&#13;&#10;微信支付商户号：&#13;&#10;商户Key：&#13;&#10;微信AppID：&#13;&#10;AppSecret:"
+```
+
+#### 修改placeholder样式
+
+```
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */ 
+	color: #ccc;
+}
+::-moz-placeholder { /* Firefox 19+ */  
+	color: #ccc;
+}
+:-ms-input-placeholder { /* IE 10+ */ 
+ color: #ccc;
+}
+:-moz-placeholder { /* Firefox 18- */ 
+ color: #ccc;
+}
+```
+
+#### textarea元素的placeholder属性不显示
+
+> textarea的placeholder属性值不显示的原因可能是<textarea>与</textarea>之间存在空格或者换行
+
+#### 修改input type="file"按钮样式
+
+html结构：
+
+```
+<div class="iconBtn">
+	<span>上传子活动文件</span>
+	<input class="inputFile" type="file" name="semfile">
+</div>
+```
+
+css样式：
+
+```
+.iconBtn {
+    position: relative;
+    border: 1px solid #c9c9c9;
+    border-radius: 3px;
+    font-size: 12px;
+    padding: 6px 10px 7px;
+    color: #666;
+    display: inline-block;
+    cursor: pointer;
+    background-color: #fbfbfb;
+}
+.inputFile {
+    position: absolute;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    width: 100%;
+    left: 0;
+    top: 0;
+    height: 100%;
+    cursor: pointer;
+}
+```
+
+
+
+#### IE样式的兼容写法
+
+```
+.example{
+    color:#fff;//FF,OP,IE8
+    *color:#ff0;//IE7
+    _color:#f00;//IE6
+}
+```
+
+[参考教程](https://blog.csdn.net/namechenfl/article/details/83029189)
+
+但如果想要对IE8单独定义样式，可以这样：
+html*~body .example{这里是针对IE8识别的样式}
+
+针对IE9的CSS只需在相应CSS代码加入只有IE9识别的 \9\0。具体代码如下：
+
+```
+.div{ background-color:#0f0\9\0;/* ie9 */ }
+```
+
+其他浏览器写法：
+
+```
+background-color:#f00;/*all*/
+background-color:#0ff\0;/* ie 8/9 */
+background-color:#0f0\9\0;/* ie9 */
+*background-color:#00f;/*ie7*/
+_background-color:#ff0;/*ie6*/
+background-color//:#090;/*非IE*/
+background-color:#900\9;/*所有ie*/
+```
+
+怎么规定CSS的属性仅在IE下生效？在非IE浏览器下不生效
+
+```
+<!--[if IE]>
+<style>
+.test{color:red;}
+</style>
+<![endif]-->
+```
+
+css中判断[IE](https://www.baidu.com/s?wd=IE&tn=SE_PcZhidaonwhc_ngpagmjz&rsv_dl=gh_pc_zhidao)版本的语句
+
+> 1. <!--[if !IE]> 除IE外都可识别 <!--<![endif]-->
+>
+> 2. <!--[if IE]> 所有的IE可识别 <![endif]-->
+>
+> 3. <!--[if IE 5.0]> 只有IE5.0可以识别 <![endif]-->
+>
+> 4. <!--[if IE 5]> 仅IE5.0与IE5.5可以识别 <![endif]-->
+>
+> 5. <!--[if gt IE 5.0]> IE5.0以及IE5.0以上版本都可以识别 <![endif]-->
+>
+> 6. <!--[if IE 6]> 仅IE6可识别 <![endif]-->
+>
+> 7. <!--[if lt IE 6]> IE6以及IE6以下版本可识别 <![endif]-->
+>
+> 8. <!--[if gte IE 6]> IE6以及IE6以上版本可识别 <![endif]-->
+>
+> 9. <!--[if IE 7]> 仅IE7可识别 <![endif]-->
+>
+> 10. <!--[if lt IE 7]> IE7以及IE7以下版本可识别 <![endif]-->
+>
+> 11. <!--[if gte IE 7]> IE7以及IE7以上版本可识别 <![endif]-->

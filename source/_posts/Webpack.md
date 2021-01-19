@@ -9,21 +9,60 @@ categories:
 ---
 ## 基本安装
 #### 一、
-首先我们创建一个目录，初始化 npm(生成package.json文件），然后 在本地安装 webpack，接着安装 webpack-cli（此工具用于在命令行中运行 webpack）：
 
-注意：webpack为4+版本以上，需要安装webpack-cli ,安装本地webpack-cli之前，要安装全局
+1. 新建目录文件夹
 
-安装淘宝镜像 *如果网速不太好的情况下，可以选择安装淘宝镜像*
+   ```
+   mkdir webpack-demo
+   ```
+
+2. 切换到目录
+
+   ```
+   cd webpack-demo
+   ```
+
+3. 生成package.json文件
+
+   ```
+   npm init
+   ```
+
+4. 安装webpack
+
+   ```
+   npm install --save-dev webpack
+   ```
+
+   > 执行webpack命令，如果可以执行，则安装成功
+   >
+   > 注意：webpack为4+版本以上，需要安装webpack-cli ,安装本地webpack-cli之前，要安装全局
+
+5. 安装全局webpack-cli
+
+   ```
+   npm install webpack-cli –g
+   ```
+
+6. 安装本地webpack-cli
+
+   ```
+   npm install webpack-cli --save-dev
+   ```
+
+安装淘宝镜像（ 如果网速不太好的情况下，可以选择安装淘宝镜像）
 ```bash
 npm install -g cnpm --registry=https://registry.npm.taobao.org
 ```
+
+快速安装：
 ```bash
 mkdir webpack-demo && cd webpack-demo
 npm init -y
 npm install webpack webpack-cli --save-dev
 ```
 
-*<div style="background:#DCF2FD;color:#618ca0;padding:6px;">贯穿整个指南的是，我们将使用 diff 块，来显示我们对目录、文件和代码所做的更改。</div>*
+> 贯穿整个指南的是，我们将使用 diff 块，来显示我们对目录、文件和代码所做的更改。
 
 #### 二、
 现在我们将创建以下目录结构、文件和内容：

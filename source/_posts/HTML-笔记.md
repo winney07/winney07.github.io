@@ -30,5 +30,5 @@ categories:
 <link rel="shortcut icon" href=" /favicon.ico" />
 ```
 
-#### IE样式的兼容写法
+#### 
 

@@ -156,7 +156,16 @@
     theme: next
     ```
 
-15. 修改站点个人信息（winney07.github.io\\_config.yml）
+15. 修改主题样式，选择Pisces（winney07.github.io\themes\next\\_config.yml）
+
+    ```
+    # scheme: Muse  ——默认是Muse
+    #scheme: Mist
+    scheme: Pisces
+    #scheme: Gemini
+    ```
+    
+17. 修改站点个人信息（winney07.github.io\\_config.yml）
 
     ```
     # Site 站点信息配置
@@ -169,9 +178,9 @@
     timezone: Asia/Shanghai      #时区
     ```
 
-16. 如果之前有博客，把之前的博客仓库source目录下的内容拷贝到winney07.github.io\source
+18. 如果之前有博客，把之前的博客仓库source目录下的内容拷贝到winney07.github.io\source
 
-17. 重新生成文件
+19. 重新生成文件
 
     ```
     hexo clean
@@ -179,7 +188,7 @@
     hexo d
     ```
 
-18. 自定义hexo文章置顶(node_modules\hexo-generator-index\lib\generator.js)
+20. 自定义hexo文章置顶(node_modules\hexo-generator-index\lib\generator.js)
 
     ```
     // sort(posts.data, (a, b) => (b.sticky || 0) - (a.sticky || 0));
@@ -199,7 +208,7 @@
     });
     ```
 
-19. 再次部署(实在没有清缓存的话，将.deploy_git和public目录下的内容清空)
+21. 再次部署(实在没有清缓存的话，将.deploy_git和public目录下的内容清空)
 
     ```
     hexo clean
@@ -216,13 +225,13 @@
     post_asset_folder: true
     ```
 
-20. 修改每页显示博客数量（winney07.github.io\\_config.yml）
+22. 修改每页显示博客数量（winney07.github.io\\_config.yml）
 
     ```
     per_page: 3
     ```
 
-22. hexo-next添加搜索功能
+23. hexo-next添加搜索功能
 
     - 安装插件
 
@@ -248,7 +257,7 @@
         enable: true
       ```
 
-23. 创建分支hexo（用于存放博客的源文件） [参考教程](https://www.cnblogs.com/kaerxifa/p/11045573.html)
+24. 创建分支hexo（用于存放博客的源文件） [参考教程](https://www.cnblogs.com/kaerxifa/p/11045573.html)
 
     ```
     创建hexo分支：
@@ -265,13 +274,13 @@
     Create a pull request for 'hexo' on GitHub by visiting(在github仓库中就可以看到hexo分支)
     ```
 
-24. 在该仓库->Settings->Branches->Default branch中将默认分支设为hexo
+25. 在该仓库->Settings->Branches->Default branch中将默认分支设为hexo
 
     > 将仓库克隆下来（因为已经有仓库的目录，新建一个文件夹存放clone下来的内容），将里面的.git文件夹覆盖winney07.github.io目录下的.git文件夹
     >
     > ---可以在创建仓库的时候就创建hexo分支，就不会因为提交了比较多的内容，clone的时间比较长
 
-25. 查看当前所在分支：
+26. 查看当前所在分支：
 
     ```
     $ git branch
@@ -280,7 +289,7 @@
     可以看到已经切换到hexo分支
     ```
 
-26. 将博客源文件提交到hexo分支
+27. 将博客源文件提交到hexo分支
 
     ```
     git add .
@@ -290,7 +299,7 @@
     在github仓库的hexo分支可以看到备份的源文件
     ```
 
-27. 修改博客网页添加到手机主屏幕的显示图标
+28. 修改博客网页添加到手机主屏幕的显示图标
 
     themes里面的apple-touch-icon-next.png
 

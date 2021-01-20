@@ -24,6 +24,7 @@ alert(IsInArray(test,-1));//true
 ```
 需求：
 {% asset_img inarr.png %}
+
 ```
 //当前页URL
 var page = window.location.hash.split("?")[0];
@@ -699,3 +700,28 @@ selectChannel[selectList[i]] = [];
 使用prop方法    [动态改变checkbox的选中状态](https://www.jianshu.com/p/d544167bd715)
 
 > 使用1.6.1 以上版本（测试使用1.10.1版本可以）
+
+
+
+#### 捕获错误信息
+
+```
+<body> 
+    <input type="button" value="获取页面错误信息" onclick="adlert('函数函数')" />
+</body> 
+
+<script type="text/javascript"> 
+ var errorTxt = "";
+ window.onerror = function(errorMessage, scriptURI, lineNumber,columnNumber,errorObj) { 
+    errorTxt = "接收到的错误信息如下：\n\n";
+    errorTxt += "错误信息：" + errorMessage + "\n";
+    errorTxt += "出错文件：" + scriptURI + "\n";
+    errorTxt += "出错行号：" + lineNumber + "\n";
+    errorTxt += "出错列号：" + columnNumber + "\n";
+    errorTxt += "错误详情：" + errorObj + "\n";
+
+    alert(errorTxt);
+  } 
+</script> 
+```
+

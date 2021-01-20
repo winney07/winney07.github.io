@@ -193,6 +193,214 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/04/07/Javascript%E6%96%B9%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="winney">
+      <meta itemprop="description" content="Doing is better than saying.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="winney">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/07/Javascript%E6%96%B9%E6%B3%95/" class="post-title-link" itemprop="url">Javascript方法</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-04-07 14:23:17" itemprop="dateCreated datePublished" datetime="2020-04-07T14:23:17+08:00">2020-04-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-01-20 10:41:15" itemprop="dateModified" datetime="2021-01-20T10:41:15+08:00">2021-01-20</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/Javascript/" itemprop="url" rel="index"><span itemprop="name">Javascript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="判断某变量的值是否等于某数组中的一个元素"><a href="#判断某变量的值是否等于某数组中的一个元素" class="headerlink" title="判断某变量的值是否等于某数组中的一个元素"></a>判断某变量的值是否等于某数组中的一个元素</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">示例：</span><br><span class="line"></span><br><span class="line">function IsInArray(arr,val)&#123;</span><br><span class="line">var testStr&#x3D;&#39;,&#39;+arr.join(&quot;,&quot;)+&quot;,&quot;;</span><br><span class="line">return testStr.indexOf(&quot;,&quot;+val+&quot;,&quot;)!&#x3D;-1;</span><br><span class="line">&#125;</span><br><span class="line">var test&#x3D;[&#39;a&#39;,23,-1];</span><br><span class="line">alert(IsInArray(test,&#39;a&#39;));&#x2F;&#x2F;true</span><br><span class="line">alert(IsInArray(test,2));&#x2F;&#x2F;false</span><br><span class="line">alert(IsInArray(test,-1));&#x2F;&#x2F;true</span><br></pre></td></tr></table></figure>
+<p>需求：</p>
+<img src="/2020/04/07/Javascript%E6%96%B9%E6%B3%95/inarr.png" class="">
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;当前页URL</span><br><span class="line">var page &#x3D; window.location.hash.split(&quot;?&quot;)[0];</span><br><span class="line">&#x2F;&#x2F;当前模块值</span><br><span class="line">var this_module &#x3D; page.split(&quot;&#x2F;&quot;)[2];</span><br><span class="line">（判断连接中是否是这几个模块下的链接）</span><br><span class="line">&#x2F;&#x2F;需要去掉游戏选择下拉框的模块</span><br><span class="line">var moduleArr &#x3D; [&quot;app&quot;,&quot;channel&quot;,&quot;agent&quot;,&quot;config&quot;,&quot;white_list&quot;,&quot;account&quot;];</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 判断模块值是否等于数组中的其中一个</span><br><span class="line">function IsInArray(arr,val)&#123;</span><br><span class="line">    var str&#x3D;&#39;,&#39;+arr.join(&quot;,&quot;)+&quot;,&quot;;</span><br><span class="line">    return str.indexOf(&quot;,&quot;+val+&quot;,&quot;)!&#x3D;-1;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;是否在模块组中</span><br><span class="line">var flag &#x3D; IsInArray(moduleArr, this_module);</span><br><span class="line">if(flag)&#123;</span><br><span class="line">    $(&quot;.product-select&quot;).hide();</span><br><span class="line">&#125; else &#123;</span><br><span class="line">    $(&quot;.product-select&quot;).show();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="【参考】：-js-判断某变量的值是否等于某数组中的一个元素"><a href="#【参考】：-js-判断某变量的值是否等于某数组中的一个元素" class="headerlink" title="【参考】： js:判断某变量的值是否等于某数组中的一个元素"></a>【参考】： <a target="_blank" rel="noopener" href="http://www.imooc.com/wenda/detail/476679">js:判断某变量的值是否等于某数组中的一个元素</a></h6><h4 id="js高效修改对象数组里的对象属性名"><a href="#js高效修改对象数组里的对象属性名" class="headerlink" title="js高效修改对象数组里的对象属性名"></a>js高效修改对象数组里的对象属性名</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">appList: [</span><br><span class="line">    &#123;</span><br><span class="line">        list:[</span><br><span class="line">            &#123;id: 118, name: &quot;测试1&quot;, group_id: 4, os: 2&#125;</span><br><span class="line">            &#123;id: 120, name: &quot;测试11&quot;, group_id: 4, os: 2&#125;</span><br><span class="line">            &#123;id: 123, name: &quot;测试111&quot;, group_id: 4, os: 1&#125;</span><br><span class="line">        ]</span><br><span class="line">        name: &quot;测试1111&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        list:[</span><br><span class="line">            &#123;id: 118, name: &quot;测试2&quot;, group_id: 4, os: 2&#125;</span><br><span class="line">            &#123;id: 120, name: &quot;测试22&quot;, group_id: 4, os: 2&#125;</span><br><span class="line">            &#123;id: 123, name: &quot;测试222&quot;, group_id: 4, os: 1&#125;</span><br><span class="line">        ]</span><br><span class="line">        name: &quot;测试2222&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>（因为插件的要求）改为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">productArr: [</span><br><span class="line">    &#123;</span><br><span class="line">        children:[</span><br><span class="line">            &#123;value: 118, name: &quot;测试1&quot;, group_value: 4, os: 2&#125;</span><br><span class="line">            &#123;value: 120, name: &quot;测试11&quot;, group_value: 4, os: 2&#125;</span><br><span class="line">            &#123;value: 123, name: &quot;测试111&quot;, group_value: 4, os: 1&#125;</span><br><span class="line">        ]</span><br><span class="line">        name: &quot;测试1111&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        children:[</span><br><span class="line">            &#123;value: 118, name: &quot;测试2&quot;, group_value: 4, os: 2&#125;</span><br><span class="line">            &#123;value: 120, name: &quot;测试22&quot;, group_value: 4, os: 2&#125;</span><br><span class="line">            &#123;value: 123, name: &quot;测试222&quot;, group_value: 4, os: 1&#125;</span><br><span class="line">        ]</span><br><span class="line">        name: &quot;测试2222&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var productArr &#x3D; JSON.parse(JSON.stringify(appList).replace(&#x2F;list&#x2F;g, &#39;children&#39;));</span><br><span class="line">productArr &#x3D; JSON.parse(JSON.stringify(productArr).replace(&#x2F;id&#x2F;g, &#39;value&#39;));</span><br></pre></td></tr></table></figure>
+<h6 id="【参考】：-js高效修改对象数组里的对象属性名"><a href="#【参考】：-js高效修改对象数组里的对象属性名" class="headerlink" title="【参考】： js高效修改对象数组里的对象属性名"></a>【参考】： <a target="_blank" rel="noopener" href="https://blog.csdn.net/Mr_JavaScript/article/details/85236957">js高效修改对象数组里的对象属性名</a></h6><h4 id="数组相减"><a href="#数组相减" class="headerlink" title="数组相减"></a>数组相减</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;数组相减函数</span><br><span class="line">function array_diff(a, b) &#123;</span><br><span class="line">    &#x2F;&#x2F;拷贝数组</span><br><span class="line">    var arr &#x3D; [].concat(a);</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 数组相减</span><br><span class="line">    for (var i &#x3D; 0; i &lt; b.length; i++) &#123;</span><br><span class="line">        for (var j &#x3D; 0; j &lt; arr.length; j++) &#123;</span><br><span class="line">            if (arr[j][&quot;id&quot;] &#x3D;&#x3D; b[i][&quot;id&quot;]) &#123;</span><br><span class="line">                arr.splice(j, 1);</span><br><span class="line">                j &#x3D; j - 1;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return arr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="JS-模拟浏览器-F5-自动刷新页面效果"><a href="#JS-模拟浏览器-F5-自动刷新页面效果" class="headerlink" title="JS 模拟浏览器 F5 自动刷新页面效果"></a>JS 模拟浏览器 F5 自动刷新页面效果</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">1. window.location.replace(window.location.href);</span><br><span class="line"></span><br><span class="line">2. window.location.href &#x3D; window.location.href;</span><br><span class="line"></span><br><span class="line">3. window.document.location.reload();</span><br><span class="line"> </span><br><span class="line">有iframe的使用这个：</span><br><span class="line">4. window.top.document.location.reload();</span><br><span class="line"> </span><br><span class="line">5.window.top.document.location &#x3D; “url”</span><br><span class="line"></span><br><span class="line">6.window.document.location. &#x3D; “url”</span><br></pre></td></tr></table></figure>
+<h4 id="对象格式转换"><a href="#对象格式转换" class="headerlink" title="对象格式转换"></a>对象格式转换</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">var data &#x3D; [</span><br><span class="line">    &#123;</span><br><span class="line">        id:&#39;aaaaaa&#39;,</span><br><span class="line">        title: &#39;技术团队&#39;,</span><br><span class="line">        description: &#39;这就是技术&#39;,</span><br><span class="line">        keywords: &#39;技术团队&#39;,</span><br><span class="line">        pid: &quot;0&quot;,</span><br><span class="line">        add_time: &quot;&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        id:&#39;bbbb&#39;,</span><br><span class="line">        title: &#39;技术团队&#39;,</span><br><span class="line">        description: &#39;这就是技术&#39;,</span><br><span class="line">        keywords: &#39;技术团队&#39;,</span><br><span class="line">        pid: &quot;1&quot;,</span><br><span class="line">        add_time: &quot;&quot;</span><br><span class="line">    &#125;</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line">转为这样的格式：</span><br><span class="line">var idPidArr &#x3D; &#123;</span><br><span class="line">    aaaaaa: &quot;0&quot;,</span><br><span class="line">    bbbb: &quot;1&quot;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">代码：</span><br><span class="line">var idPidArr &#x3D; &#123;&#125;;</span><br><span class="line">for(var i &#x3D; 0; i&lt; data.length; i++)&#123;</span><br><span class="line"></span><br><span class="line">    idPidArr[data[i].id] &#x3D; data[i].pid;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.log(idPidArr);</span><br></pre></td></tr></table></figure>
+<h4 id="控制滚动条滚动到某个位置"><a href="#控制滚动条滚动到某个位置" class="headerlink" title="控制滚动条滚动到某个位置"></a>控制滚动条滚动到某个位置</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">document.getElementById(&#39;scrollBox&#39;).scrollTop &#x3D; $(el).offset().top;</span><br><span class="line"></span><br><span class="line">scrollBox：滚动的盒子的id</span><br><span class="line">$(el).offset().top: 元素的位置</span><br></pre></td></tr></table></figure>
+<h4 id="js字符串连接换行符没有效果解决办法"><a href="#js字符串连接换行符没有效果解决办法" class="headerlink" title="js字符串连接换行符没有效果解决办法"></a>js字符串连接换行符没有效果解决办法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var a &#x3D; &#39;aaaaa&#39;, b &#x3D; &#39;bbbbb&#39;, c &#x3D; &#39;ccccc&#39;;</span><br><span class="line">var arr &#x3D; [a,b,c];</span><br><span class="line">var str &#x3D; arr.join(&quot;\n&quot;);</span><br><span class="line">console.log(str);  </span><br></pre></td></tr></table></figure>
+<h4 id="js-去掉字符串前后空格"><a href="#js-去掉字符串前后空格" class="headerlink" title="js 去掉字符串前后空格"></a>js 去掉字符串前后空格</h4><h6 id="js去掉字符串前后空格的五种方法"><a href="#js去掉字符串前后空格的五种方法" class="headerlink" title="js去掉字符串前后空格的五种方法"></a><a target="_blank" rel="noopener" href="https://www.cnblogs.com/yingjie13/p/3534615.html">js去掉字符串前后空格的五种方法</a></h6><h6 id="js-去掉字符串前后空格-1"><a href="#js-去掉字符串前后空格-1" class="headerlink" title="js 去掉字符串前后空格"></a><a target="_blank" rel="noopener" href="https://www.cnblogs.com/mingforyou/p/3930638.html">js 去掉字符串前后空格</a></h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">使用jquery</span><br><span class="line"></span><br><span class="line">$.trim(str) </span><br><span class="line"></span><br><span class="line">jquery内部实现为：</span><br><span class="line"></span><br><span class="line">function trim(str)&#123;   </span><br><span class="line">    return str.replace(&#x2F;^(\s|\u00A0)+&#x2F;,&#39;&#39;).replace(&#x2F;(\s|\u00A0)+$&#x2F;,&#39;&#39;);   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">　　 function trim(str)&#123; &#x2F;&#x2F;删除左右两端的空格</span><br><span class="line">　　   return str.replace(&#x2F;(^s*)|(s*$)&#x2F;g, &quot;&quot;);</span><br><span class="line">　　 &#125;</span><br><span class="line">　　 function ltrim(str)&#123; &#x2F;&#x2F;删除左边的空格</span><br><span class="line">　　   return str.replace(&#x2F;(^s*)&#x2F;g,&quot;&quot;);</span><br><span class="line">　　 &#125;</span><br><span class="line">　　 function rtrim(str)&#123; &#x2F;&#x2F;删除右边的空格</span><br><span class="line">　　   return str.replace(&#x2F;(s*$)&#x2F;g,&quot;&quot;);</span><br><span class="line">　　 &#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">JS 去字符串空格 总结</span><br><span class="line"></span><br><span class="line">str为要去除空格的字符串:</span><br><span class="line">去除所有空格: </span><br><span class="line">str &#x3D; str.replace(&#x2F;\s+&#x2F;g,&quot;&quot;); </span><br><span class="line">去除两头空格: </span><br><span class="line">str &#x3D; str.replace(&#x2F;^\s+|\s+$&#x2F;g,&quot;&quot;);</span><br><span class="line">去除左空格：</span><br><span class="line">str&#x3D;str.replace( &#x2F;^\s*&#x2F;, &#39;&#39;);</span><br><span class="line">去除右空格：</span><br><span class="line">str&#x3D;str.replace(&#x2F;(\s*$)&#x2F;g, &quot;&quot;);</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="用js实现模糊查询的几种方法"><a href="#用js实现模糊查询的几种方法" class="headerlink" title="用js实现模糊查询的几种方法"></a><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/4cd4f74a0b20">用js实现模糊查询的几种方法</a></h4><h5 id="1-indexof-方法"><a href="#1-indexof-方法" class="headerlink" title="1. indexof 方法"></a>1. indexof 方法</h5><blockquote>
+<p>语法：stringObject.indexOf(searchvalue, fromindex)</p>
+</blockquote>
+<blockquote>
+<p>参数：searchvalue 必需。规定需检索的字符串值。 fromindex<br>可选的整数参数。规定在字符串中开始检索的位置。它的合法取值是 0 到 stringObject.length - 1。如省略该参数，则将从字符串的首字符开始检索。</p>
+</blockquote>
+<blockquote>
+<p>说明：该方法将从头到尾地检索字符串 stringObject，看它是否含有子串 searchvalue。开始检索的位置在字符串的 fromindex 处或字符串的开头（没有指定 fromindex 时）。如果找到一个 searchvalue，则返回 searchvalue 的第一次出现的位置。stringObject 中的字符位置是从 0 开始的。如果没有找到，将返回 -1。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * 使用indexof方法实现模糊查询</span><br><span class="line"> * @param  &#123;Array&#125;  list     进行查询的数组</span><br><span class="line"> * @param  &#123;String&#125; keyWord  查询的关键词</span><br><span class="line"> * @return &#123;Array&#125;           查询的结果</span><br><span class="line"> *&#x2F;</span><br><span class="line">function fuzzyQuery(list, keyWord) &#123;</span><br><span class="line">  var arr &#x3D; [];</span><br><span class="line">  for (var i &#x3D; 0; i &lt; list.length; i++) &#123;</span><br><span class="line">    if (list[i].indexOf(keyWord) &gt;&#x3D; 0) &#123;</span><br><span class="line">      arr.push(list[i]);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return arr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="2-split-方法"><a href="#2-split-方法" class="headerlink" title="2. split 方法"></a>2. split 方法</h5><blockquote>
+<p>语法：stringObject.split(separator, howmany)</p>
+</blockquote>
+<blockquote>
+<p>参数：separator 必需。字符串或正则表达式，从该参数指定的地方分割 stringObject。howmany 可选。该参数可指定返回的数组的最大长度。如果设置了该参数，返回的子串不会多于这个参数指定的数组。如果没有设置该参数，整个字符串都会被分割，不考虑它的长度。</p>
+</blockquote>
+<blockquote>
+<p>说明：该方法通过在 separator 指定的边界处将字符串 stringObject 分割成子串并返回子串数组。返回的数组中的字串不包括 separator 自身。如果 stringObject 中不存在 separator，将返回一个只包含stringObject的数组。故可以根据返回数组的长度来判断是否存在子字符串 separator 。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * 使用spilt方法实现模糊查询</span><br><span class="line"> * @param  &#123;Array&#125;  list     进行查询的数组</span><br><span class="line"> * @param  &#123;String&#125; keyWord  查询的关键词</span><br><span class="line"> * @return &#123;Array&#125;           查询的结果</span><br><span class="line"> *&#x2F;</span><br><span class="line">function fuzzyQuery(list, keyWord) &#123;</span><br><span class="line">  var arr &#x3D; [];</span><br><span class="line">  for (var i &#x3D; 0; i &lt; list.length; i++) &#123;</span><br><span class="line">    if (list[i].split(keyWord).length &gt; 1) &#123;</span><br><span class="line">      arr.push(list[i]);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return arr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="3-match-方法"><a href="#3-match-方法" class="headerlink" title="3. match 方法"></a>3. match 方法</h5><blockquote>
+<p>语法：stringObject.match(searchvalue) 或 stringObject.match(regexp)</p>
+</blockquote>
+<blockquote>
+<p>参数：searchvalue 必需。规定要检索的字符串值。regexp 必需。规定要匹配的模式的 RegExp 对象。如果该参数不是 RegExp 对象，则需要首先把它传递给 RegExp 构造函数，将其转换为 RegExp 对象。</p>
+</blockquote>
+<blockquote>
+<p>说明：该方法将在字符串 stringObject 内检索指定的值，或找到一个或多个正则表达式的匹配。如果没有找到任何匹配的文本，将返回 null 。否则，它将返回一个数组，其中存放了与它找到的匹配文本有关的信息。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * 使用match方法实现模糊查询</span><br><span class="line"> * @param  &#123;Array&#125;  list     进行查询的数组</span><br><span class="line"> * @param  &#123;String&#125; keyWord  查询的关键词</span><br><span class="line"> * @return &#123;Array&#125;           查询的结果</span><br><span class="line"> *&#x2F;</span><br><span class="line">function fuzzyQuery(list, keyWord) &#123;</span><br><span class="line">  var arr &#x3D; [];</span><br><span class="line">  for (var i &#x3D; 0; i &lt; list.length; i++) &#123;</span><br><span class="line">    if (list[i].match(keyWord) !&#x3D; null) &#123;</span><br><span class="line">      arr.push(list[i]);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return arr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="4-test方法（正则匹配）"><a href="#4-test方法（正则匹配）" class="headerlink" title="4. test方法（正则匹配）"></a>4. test方法（正则匹配）</h5><blockquote>
+<p>语法：RegExpObject.test(string)</p>
+</blockquote>
+<blockquote>
+<p>参数：string 必需。要检测的字符串。</p>
+</blockquote>
+<blockquote>
+<p>说明：该方法用于检测一个字符串是否匹配某个模式。如果字符串 string 中含有与 RegExpObject 匹配的文本，则返回 true，否则返回 false。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line">   * 使用test方法实现模糊查询</span><br><span class="line">   * @param  &#123;Array&#125;  list     原数组</span><br><span class="line">   * @param  &#123;String&#125; keyWord  查询的关键词</span><br><span class="line">   * @return &#123;Array&#125;           查询的结果</span><br><span class="line">   *&#x2F;</span><br><span class="line">  function fuzzyQuery(list, keyWord) &#123;</span><br><span class="line">    var reg &#x3D;  new RegExp(keyWord);</span><br><span class="line">    var arr &#x3D; [];</span><br><span class="line">    for (var i &#x3D; 0; i &lt; list.length; i++) &#123;</span><br><span class="line">      if (reg.test(list[i])) &#123;</span><br><span class="line">        arr.push(list[i]);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return arr;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="性能测试"><a href="#性能测试" class="headerlink" title="性能测试"></a>性能测试</h4><blockquote>
+<p>测试条件：一个长度为100的数组，每个方法测试50次，取平均值。<br>indexof 方法耗费时间： 0.048ms<br>split 方法耗费时间： 0.037ms<br>match 方法耗费时间： 0.178ms<br>test 方法耗费时间： 0.039ms</p>
+</blockquote>
+<h4 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h4><ol>
+<li><p>从上面测试结果可以看出在几百几千甚至几万条数据量的情况下，前端去处理都是没问题的，相比发送一个 ajax 请求去后台来说，前端还是具有很大优势的，能节省不少时间。</p>
+</li>
+<li><p>相比其他方法，match 方法性能最差，消耗的时间差不多是其他方法的3-4倍，虽说这一点点时间相比发送ajax来说，也算提高了很多既然我们在一开始就是为了提高用户体验，那么我们也应该追求极致啦，所以 match 选手落败。</p>
+</li>
+<li><p>除了 match 方法，其他三个方法在性能上差不多。不过在这里有一点需要提出的就是， test 方法因为使用到了正则表达式，所以能够实现的功能会比较强大，写出来的代码也更加简洁。打个比方，在不区分大小写的模糊搜索条件下， test 方法只需在正则表达式中添加修饰符 i 即可实现不区分大小写，而 indexof 方法和 split 方法则要通过多次的方法调用和逻辑运算符才能实现效果。</p>
+</li>
+</ol>
+<h4 id="屏蔽Backspace键返回上个页面"><a href="#屏蔽Backspace键返回上个页面" class="headerlink" title="屏蔽Backspace键返回上个页面"></a>屏蔽Backspace键返回上个页面</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;屏蔽Backspace键返回上个页面</span><br><span class="line">function banBackSpace(e) &#123;</span><br><span class="line">    var ev &#x3D; e || window.event;&#x2F;&#x2F;获取event对象  </span><br><span class="line">    var flag&#x3D;(ev.keyCode &#x3D;&#x3D; 8) ? true:false;</span><br><span class="line">    if(flag) &#123;</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">window.onload&#x3D;function()&#123;</span><br><span class="line">     &#x2F;&#x2F;禁止后退键 作用于Firefox、Opera</span><br><span class="line">     document.onkeypress&#x3D;banBackSpace;</span><br><span class="line">     &#x2F;&#x2F;禁止后退键  作用于IE、Chrome</span><br><span class="line">     document.onkeydown&#x3D;banBackSpace;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="阻止浏览器默认行为触发的通用方法"><a href="#阻止浏览器默认行为触发的通用方法" class="headerlink" title="阻止浏览器默认行为触发的通用方法"></a>阻止浏览器默认行为触发的通用方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> &#x2F;&#x2F;阻止浏览器默认行为触发的通用方法 </span><br><span class="line"> function stopDefault(e) &#123;</span><br><span class="line">    if (e &amp;&amp; e.preventDefault) &#123;</span><br><span class="line">        e.preventDefault();&#x2F;&#x2F;防止浏览器默认行为(W3C) </span><br><span class="line">    &#125; else &#123;</span><br><span class="line">       window.event.returnValue &#x3D; false;&#x2F;&#x2F;IE中阻止浏览器行为 </span><br><span class="line">    &#125;</span><br><span class="line">    return false;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="H5本地缓存"><a href="#H5本地缓存" class="headerlink" title="H5本地缓存"></a>H5本地缓存</h4><h4 id="jquery实时监听input输入框值的变化事件"><a href="#jquery实时监听input输入框值的变化事件" class="headerlink" title="jquery实时监听input输入框值的变化事件"></a>jquery实时监听input输入框值的变化事件</h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41756580/article/details/81287095">参考</a></p>
+<p>1.只需要同时绑定 oninput 和 onpropertychange 两个事件，获取input元素,并实时监听用户输入。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$(&#39;input&#39;).bind(&#39;input propertychange&#39;, function()&#123;</span><br><span class="line">	if($(this).val())&#123;</span><br><span class="line">		console.log(&quot;hhhhhhhh&quot;);</span><br><span class="line">	&#125;else&#123;</span><br><span class="line">		console.log(&quot;xxxxxxxx&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>但这并不完美，因为用的bind，所以当遇到追加的新input标签时，则不能监听了。</p>
+<p>2.为了解决上面的问题，可以使用live替代</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$(&#39;input&#39;).live(&#39;input propertychange&#39;, function()</span><br><span class="line">&#123;</span><br><span class="line">  &#x2F;&#x2F;获取input 元素,并实时监听用户输入</span><br><span class="line">  &#x2F;&#x2F;逻辑</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">后期生成的元素，用:</span><br><span class="line">$(本来存在的父元素).on(&quot;input propertychange&quot;,&quot;监听的元素&quot;, function() &#123;</span><br><span class="line">    </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="表单input中disabled提交后得不到值的解决办法"><a href="#表单input中disabled提交后得不到值的解决办法" class="headerlink" title="表单input中disabled提交后得不到值的解决办法"></a>表单input中disabled提交后得不到值的解决办法</h4><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/yuanwenha/p/7390326.html">参考</a></p>
+<p>使用readonly</p>
+<p>模拟下拉框获取不了角度，可以让它附近的文字获取焦点。   【文字是可以获取焦点的，不是文字，一般的元素获取不了焦点】</p>
+<h4 id="防止事件冒泡"><a href="#防止事件冒泡" class="headerlink" title="防止事件冒泡"></a>防止事件冒泡</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">window.event? window.event.cancelBubble &#x3D; true : e.stopPropagation();</span><br></pre></td></tr></table></figure>
+<h4 id="返回上一页"><a href="#返回上一页" class="headerlink" title="返回上一页"></a>返回上一页</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">javascript:window.history.go(-1);</span><br></pre></td></tr></table></figure>
+<h4 id="刷新页面"><a href="#刷新页面" class="headerlink" title="刷新页面"></a>刷新页面</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">window.location.reload(); </span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://www.jb51.net/article/124389.htm">参考教程</a></p>
+<h4 id="获取单选框选中的值"><a href="#获取单选框选中的值" class="headerlink" title="获取单选框选中的值"></a>获取单选框选中的值</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(&#39;input[name&#x3D;&quot;plan&quot;]:checked&#39;).val();</span><br></pre></td></tr></table></figure>
+<h4 id="监听单选按钮事件改变"><a href="#监听单选按钮事件改变" class="headerlink" title="监听单选按钮事件改变"></a>监听单选按钮事件改变</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$(&#39;input[type&#x3D;radio][name&#x3D;type]&#39;).change(function() &#123;</span><br><span class="line">    if (this.value &#x3D;&#x3D; 3) &#123;</span><br><span class="line">        $(&quot;.license_tr&quot;).hide();</span><br><span class="line">        $(&quot;.license_code_tr&quot;).hide();</span><br><span class="line">    &#125;</span><br><span class="line">    else &#123;</span><br><span class="line">        $(&quot;.license_tr&quot;).show();</span><br><span class="line">        $(&quot;.license_code_tr&quot;).show();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="JS中对象赋值只传值不传对象（地址）的方法，改变新值不影响旧值"><a href="#JS中对象赋值只传值不传对象（地址）的方法，改变新值不影响旧值" class="headerlink" title="JS中对象赋值只传值不传对象（地址）的方法，改变新值不影响旧值"></a>JS中对象赋值只传值不传对象（地址）的方法，改变新值不影响旧值</h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/tg928600774/article/details/83651608">参考教程</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var newModel &#x3D; $.extend(true,&#123;&#125;,oldModel)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var newModel &#x3D; $.extend(true,[],oldModel)</span><br></pre></td></tr></table></figure>
+<h4 id="只赋值不改变原来对象"><a href="#只赋值不改变原来对象" class="headerlink" title="只赋值不改变原来对象"></a>只赋值不改变原来对象</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var data&#x3D;&#123;a:1,b:2,c:3,d:4&#125;;</span><br><span class="line">var newData&#x3D; $.extend(true,&#123;&#125;,data);;</span><br></pre></td></tr></table></figure>
+<h4 id="判断是否为移动端"><a href="#判断是否为移动端" class="headerlink" title="判断是否为移动端"></a>判断是否为移动端</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var isMobile &#x3D; &#x2F;Android|webOS|iPhone|iPod|BlackBerry&#x2F;i.test(navigator.userAgent);</span><br></pre></td></tr></table></figure>
+<h4 id="判断输入框是否获取焦点"><a href="#判断输入框是否获取焦点" class="headerlink" title="判断输入框是否获取焦点"></a>判断输入框是否获取焦点</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var isFocus&#x3D;$(&quot;#tRow&quot;).is(&quot;:focus&quot;);  </span><br></pre></td></tr></table></figure>
+<h4 id="单页面应用判断页面是不是刷新（谷歌浏览器）"><a href="#单页面应用判断页面是不是刷新（谷歌浏览器）" class="headerlink" title="单页面应用判断页面是不是刷新（谷歌浏览器）"></a>单页面应用判断页面是不是刷新（谷歌浏览器）</h4><p>在刷新页面的时候使用window.onbeforeunload向sessionstorage或localstorage存入一个标记譬如reloadFlag作为判断是否是刷新的依据，页面刷新后从sessionstorage或localstorage中获取存储的标记，然后执行相应的回调向后端发起请求，完成之后将sessionstorage或localstorage中获取存储的标记删除即可。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; reLoadFlag.js</span><br><span class="line">;(function()&#123;</span><br><span class="line">   	window.onbeforeunload &#x3D; function()&#123;</span><br><span class="line">   		sessionStorage.setItem(&#39;reLoadFlag&#39;, &#39;true&#39;);</span><br><span class="line">   	&#125;</span><br><span class="line">&#125;)();</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 需要判断的地方进行判断操作</span><br><span class="line">if (sessionStorage.getItem(&#39;reLoadFlag&#39;) &#x3D;&#x3D;&#x3D; &#39;true&#39;) &#123;</span><br><span class="line">   &#x2F;&#x2F; 执行其他的逻辑</span><br><span class="line">   &#x2F;&#x2F; ...............</span><br><span class="line">   sessionStorage.removeItem(&#39;reLoadFlag&#39;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>第一次向后端发起请求得到数据后存储到sessionstorage或localstorage之中，之后的逻辑是每次需要数据时从sessionstorage或localstorage中去取，取不到的时候（比如关闭页面重新打开或者手动清除缓存）再重新向后端发起请求获取数据。但是这样会存在一个问题，即希望通过刷新页面向后端重新发起请求的时候因为sessionstorage或localstorage的数据仍然存在，所以不会向后端发起请求。</p>
+</blockquote>
+<h4 id="filter函数做数据匹配"><a href="#filter函数做数据匹配" class="headerlink" title="filter函数做数据匹配"></a>filter函数做数据匹配</h4><p>只有一个筛选条件的时候</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var res &#x3D; datas.filter(function (data) &#123;</span><br><span class="line">     return data[type] &#x3D;&#x3D;&#x3D; val;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>多个筛选条件的时候（注意：要加上  &gt; -1，不然返回有问题）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var searchList &#x3D; [];</span><br><span class="line">searchList &#x3D; list.filter(function(item) &#123;</span><br><span class="line">  var flag &#x3D; (item.name.indexOf(txt) &gt; -1) || (item.key.indexOf(txt)  &gt;-1) || 		 (item.account_id.indexOf(txt)  &gt;-1) || (item.user_name.indexOf(txt)  &gt;-1) || (item.user_id.indexOf(txt)  &gt;-1);					</span><br><span class="line">   return flag;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<img src="/2020/04/07/Javascript%E6%96%B9%E6%B3%95/filter.png" class="">
+
+<h4 id="处理textarea换行数据"><a href="#处理textarea换行数据" class="headerlink" title="处理textarea换行数据"></a>处理textarea换行数据</h4><p>先使用换行符“\n”截取，然后用”~”获取</p>
+<img src="/2020/04/07/Javascript%E6%96%B9%E6%B3%95/br.png" class="">
+
+<h4 id="火狐浏览器，报ev-is-undefined"><a href="#火狐浏览器，报ev-is-undefined" class="headerlink" title="火狐浏览器，报ev is undefined"></a>火狐浏览器，报ev is undefined</h4><p>获取当前操作对象时，要记得传参</p>
+<p>封装函数加上参数e</p>
+<img src="/2020/04/07/Javascript%E6%96%B9%E6%B3%95/ev1.png" class="">
+
+<p>调用时加上参数e</p>
+<img src="/2020/04/07/Javascript%E6%96%B9%E6%B3%95/ev2.png" class="">
+
+<h4 id="搜索框——实时匹配"><a href="#搜索框——实时匹配" class="headerlink" title="搜索框——实时匹配"></a>搜索框——实时匹配</h4><p>（输入完文字就直接匹配，包括中文输入）实现中文输入法下，仅在选词后触发input事件。<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/e9c837eba083">参考教程</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">描述</span><br><span class="line">在使用oninput监控输入框内容变化时，我们期望仅在value值变化时，才触发oninput事件，而在中文输入下，未选词时的按键也会触发oninput事件。</span><br><span class="line">input事件触发效果</span><br><span class="line"></span><br><span class="line">关键</span><br><span class="line">compositionstart事件</span><br><span class="line">compositionend事件</span><br><span class="line"></span><br><span class="line">方法</span><br><span class="line">使用一个变量表示拼写状态，在oninput事件中判断是否在拼写状态，当拼写状态结束，继续执行下一步操作。</span><br><span class="line">var typing &#x3D; false;</span><br><span class="line">$(&#39;#ipt&#39;).on(&#39;compositionstart&#39;,function()&#123;</span><br><span class="line">    typing &#x3D; true;</span><br><span class="line">&#125;)</span><br><span class="line">$(&#39;#ipt&#39;).on(&#39;compositionend&#39;,function()&#123;</span><br><span class="line">    typing &#x3D; false;</span><br><span class="line">&#125;)</span><br><span class="line">&#x2F;&#x2F;oninput在oncompositionend之前执行，需加定时器</span><br><span class="line">$(&#39;#ipt&#39;).on(&#39;input&#39;,function()&#123;</span><br><span class="line">    setTimeout(function() &#123;</span><br><span class="line">        if(!typing) &#123;</span><br><span class="line">            &#x2F;&#x2F;To do something...</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,0);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;或用keyup代替input</span><br><span class="line">$(&#39;#ipt&#39;).on(&#39;input&#39;,function()&#123;</span><br><span class="line">    if(!typing) &#123;</span><br><span class="line">        &#x2F;&#x2F;To do something...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="获取横向滚动条位置"><a href="#获取横向滚动条位置" class="headerlink" title="获取横向滚动条位置"></a>获取横向滚动条位置</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var left &#x3D; $(&quot;.layui-table-body&quot;).scrollLeft();</span><br></pre></td></tr></table></figure>
+<h4 id="设置横向滚动条位置"><a href="#设置横向滚动条位置" class="headerlink" title="设置横向滚动条位置"></a>设置横向滚动条位置</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(&quot;.layui-table-body&quot;).scrollLeft(left);</span><br></pre></td></tr></table></figure>
+<h4 id="利用js打开新页面（在另外新建窗口中打开窗口）"><a href="#利用js打开新页面（在另外新建窗口中打开窗口）" class="headerlink" title="利用js打开新页面（在另外新建窗口中打开窗口）"></a>利用js打开新页面（在另外新建窗口中打开窗口）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">window.open(&quot;http:&#x2F;&#x2F;doc.trackingio.com&#x2F;qu-dao-pei-zhi-shuo-ming&#x2F;guang-dian-tong.html&quot;,&quot;_blank&quot;);  </span><br></pre></td></tr></table></figure>
+<h4 id="jQuery–复制克隆（复制节点）"><a href="#jQuery–复制克隆（复制节点）" class="headerlink" title="jQuery–复制克隆（复制节点）"></a>jQuery–复制克隆（复制节点）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> &#x2F;&#x2F;文档准备就绪函数</span><br><span class="line">$(function () &#123;</span><br><span class="line">    &#x2F;&#x2F;获取li标签及点击事件</span><br><span class="line">    $(&quot;ul li&quot;).click(function () &#123;</span><br><span class="line">        &#x2F;&#x2F;对这个li标签使用clone克隆（clone(true)添加true使复制过的还能继续复制）</span><br><span class="line">        &#x2F;&#x2F;，然后添加到ul标签里面</span><br><span class="line">        $(this).clone(true).appendTo(&quot;ul&quot;);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="js获取日期（例如：昨天、今天和明天）"><a href="#js获取日期（例如：昨天、今天和明天）" class="headerlink" title="js获取日期（例如：昨天、今天和明天）"></a>js获取日期（例如：昨天、今天和明天）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">function GetDateStr(AddDayCount, nowDay) &#123; </span><br><span class="line">var dd &#x3D; new Date(nowDay); </span><br><span class="line"></span><br><span class="line">console.log(&quot;dd&quot;);</span><br><span class="line">console.log(dd);</span><br><span class="line">dd.setDate(dd.getDate()+AddDayCount);&#x2F;&#x2F;获取AddDayCount天后的日期 </span><br><span class="line">var y &#x3D; dd.getFullYear(); </span><br><span class="line">var m &#x3D; dd.getMonth()+1;&#x2F;&#x2F;获取当前月份的日期 </span><br><span class="line">var d &#x3D; dd.getDate(); </span><br><span class="line"></span><br><span class="line">if(m &lt; 10) &#123;</span><br><span class="line">	m &#x3D; &quot;0&quot; + m;</span><br><span class="line">&#125;</span><br><span class="line">				</span><br><span class="line">if(d &lt; 10) &#123;</span><br><span class="line">	d &#x3D; &quot;0&quot; + d;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">return y+&quot;-&quot;+m+&quot;-&quot;+d; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">GetDateStr(-1, 2019-04-02);</span><br><span class="line"></span><br><span class="line">new Date(curDate);</span><br><span class="line">var preDate &#x3D; new Date(curDate.getTime() - 24*60*60*1000); &#x2F;&#x2F;前一天</span><br></pre></td></tr></table></figure>
+<h4 id="给对象添加变量属性（空数组）"><a href="#给对象添加变量属性（空数组）" class="headerlink" title="给对象添加变量属性（空数组）"></a>给对象添加变量属性（空数组）</h4><p>使用[]</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">selectChannel[selectList[i]] &#x3D; [];</span><br><span class="line">使用selectChannel.push(&#123;selectList[i]]:[]&#125;)是错的。</span><br></pre></td></tr></table></figure>
+<h4 id="改变checkbox选中状态"><a href="#改变checkbox选中状态" class="headerlink" title="改变checkbox选中状态"></a>改变checkbox选中状态</h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/brucecheng22/article/details/50408199">参考教程</a></p>
+<p>使用prop方法    <a target="_blank" rel="noopener" href="https://www.jianshu.com/p/d544167bd715">动态改变checkbox的选中状态</a></p>
+<blockquote>
+<p>使用1.6.1 以上版本（测试使用1.10.1版本可以）</p>
+</blockquote>
+<h4 id="捕获错误信息"><a href="#捕获错误信息" class="headerlink" title="捕获错误信息"></a>捕获错误信息</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt; </span><br><span class="line">    &lt;input type&#x3D;&quot;button&quot; value&#x3D;&quot;获取页面错误信息&quot; onclick&#x3D;&quot;adlert(&#39;函数函数&#39;)&quot; &#x2F;&gt;</span><br><span class="line">&lt;&#x2F;body&gt; </span><br><span class="line"></span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt; </span><br><span class="line"> var errorTxt &#x3D; &quot;&quot;;</span><br><span class="line"> window.onerror &#x3D; function(errorMessage, scriptURI, lineNumber,columnNumber,errorObj) &#123; </span><br><span class="line">    errorTxt &#x3D; &quot;接收到的错误信息如下：\n\n&quot;;</span><br><span class="line">    errorTxt +&#x3D; &quot;错误信息：&quot; + errorMessage + &quot;\n&quot;;</span><br><span class="line">    errorTxt +&#x3D; &quot;出错文件：&quot; + scriptURI + &quot;\n&quot;;</span><br><span class="line">    errorTxt +&#x3D; &quot;出错行号：&quot; + lineNumber + &quot;\n&quot;;</span><br><span class="line">    errorTxt +&#x3D; &quot;出错列号：&quot; + columnNumber + &quot;\n&quot;;</span><br><span class="line">    errorTxt +&#x3D; &quot;错误详情：&quot; + errorObj + &quot;\n&quot;;</span><br><span class="line"></span><br><span class="line">    alert(errorTxt);</span><br><span class="line">  &#125; </span><br><span class="line">&lt;&#x2F;script&gt; </span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2020/03/19/%E5%9C%A8Vue%E9%A1%B9%E7%9B%AE%E4%B8%AD%E4%BD%BF%E7%94%A8sass%E7%9A%84%E9%85%8D%E7%BD%AE%E6%96%B9%E6%B3%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -358,100 +566,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/03/19/Vue-js-Element-UI%E5%AF%BC%E8%88%AA%E5%86%99%E6%B3%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="winney">
-      <meta itemprop="description" content="Doing is better than saying.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="winney">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/03/19/Vue-js-Element-UI%E5%AF%BC%E8%88%AA%E5%86%99%E6%B3%95/" class="post-title-link" itemprop="url">Vue.js + Element-UI导航写法</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-03-19 17:28:29" itemprop="dateCreated datePublished" datetime="2020-03-19T17:28:29+08:00">2020-03-19</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-01-12 18:01:14" itemprop="dateModified" datetime="2021-01-12T18:01:14+08:00">2021-01-12</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/Vue-js/" itemprop="url" rel="index"><span itemprop="name">Vue.js</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="方法一（基本的）："><a href="#方法一（基本的）：" class="headerlink" title="方法一（基本的）："></a>方法一（基本的）：</h4><blockquote>
-<p>elementUi导航通常会和vue-router一起使用，所以与官网的示例的写法不太一样。具体写法如下:</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;el-menu :default-active&#x3D;&quot;$route.path&quot; class&#x3D;&quot;el-menu-vertical-demo&quot; router&gt;</span><br><span class="line">   &lt;el-menu-item v-for&#x3D;&quot;item in items&quot; :index&#x3D;&quot;item.src&quot;&gt;&#123;&#123;item.name&#125;&#125;            </span><br><span class="line">   &lt;&#x2F;el-menu-item&gt;</span><br><span class="line"> &lt;&#x2F;el-menu&gt;</span><br></pre></td></tr></table></figure>
-<p><strong>data里则是正常的数据即可：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">data()&#123;</span><br><span class="line">      return&#123;</span><br><span class="line">        items:[</span><br><span class="line">          &#123;src:&#39;&#x2F;gameinfo&#x2F;index&#39;,name:&#39;基本信息&#39;&#125;,</span><br><span class="line">          &#123;src:&#39;&#x2F;gameversion&#x2F;index&#39;,name:&#39;版本管理&#39;&#125;,</span><br><span class="line">          &#123;src:&#39;&#x2F;gameplatform&#x2F;index&#39;,name:&#39;渠道管理&#39;&#125;,</span><br><span class="line">          &#123;src:&#39;&#x2F;gameproduct&#x2F;index&#39;,name:&#39;充值产品&#39;&#125;,</span><br><span class="line">          &#123;src:&#39;&#x2F;gameplugin&#x2F;index&#39;,name:&#39;插件管理&#39;&#125;</span><br><span class="line">        ]</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/03/19/Vue-js-Element-UI%E5%AF%BC%E8%88%AA%E5%86%99%E6%B3%95/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/15/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><span class="page-number current">16</span><a class="page-number" href="/page/17/">17</a><span class="space">&hellip;</span><a class="page-number" href="/page/24/">24</a><a class="extend next" rel="next" href="/page/17/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/15/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><span class="page-number current">16</span><a class="page-number" href="/page/17/">17</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><a class="extend next" rel="next" href="/page/17/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -519,20 +637,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">72</span>
+          <span class="site-state-item-count">73</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">41</span>
+        <span class="site-state-item-count">42</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">41</span>
+        <span class="site-state-item-count">42</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

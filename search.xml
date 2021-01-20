@@ -15,6 +15,27 @@
       </tags>
   </entry>
   <entry>
+    <title>Clipboard的使用</title>
+    <url>/2020/11/04/Clipboard%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<h4 id="如果存在clipboard-先将它销毁"><a href="#如果存在clipboard-先将它销毁" class="headerlink" title="如果存在clipboard,先将它销毁"></a>如果存在clipboard,先将它销毁</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">if(clipboard) &#123;</span><br><span class="line">    clipboard.destroy();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="Clipboard官网使用教程"><a href="#Clipboard官网使用教程" class="headerlink" title="Clipboard官网使用教程"></a><a href="http://www.clipboardjs.cn/">Clipboard官网使用教程</a></h5><h5 id="复制成功和复制失败的提示"><a href="#复制成功和复制失败的提示" class="headerlink" title="复制成功和复制失败的提示"></a>复制成功和复制失败的提示</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var u &#x3D; navigator.userAgent;</span><br><span class="line">clipboard.on(&#39;success&#39;, function(e) &#123;</span><br><span class="line">    layer.msg(&#39;复制成功&#39;, &#123;time: 1000&#125;);</span><br><span class="line">    e.clearSelection();</span><br><span class="line">&#125;);</span><br><span class="line">clipboard.on(&#39;error&#39;, function(e) &#123;</span><br><span class="line">    if(u.indexOf(&#39;UCBrowser&#39;) &gt; -1)&#123;</span><br><span class="line">        layer.msg(&#39;您的浏览器不支持，请长按内容手动复制！&#39;, &#123;time: 1000&#125;);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        layer.msg(&#39;复制失败&#39;, &#123;time: 1000&#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h5 id="如果提示信息弹两次"><a href="#如果提示信息弹两次" class="headerlink" title="如果提示信息弹两次"></a>如果提示信息弹两次</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">自己写一个copySuccessTip提示信息</span><br><span class="line">$(&quot;.copySuccessTip&quot;).addClass(&quot;mymove&quot;);</span><br><span class="line">setTimeout(function() &#123;</span><br><span class="line">    $(&quot;.copySuccessTip&quot;).removeClass(&quot;mymove&quot;);</span><br><span class="line">&#125;,1000);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">引入图片：</span><br><span class="line">&#123;% asset_img css1.png %&#125;</span><br><span class="line">引入链接：</span><br><span class="line">[参考的博客](https:&#x2F;&#x2F;juejin.im&#x2F;post&#x2F;5b15022ff265da6e163720c6)</span><br></pre></td></tr></table></figure>
+<h4 id="解决clipboard复制弹多次提示的问题"><a href="#解决clipboard复制弹多次提示的问题" class="headerlink" title="解决clipboard复制弹多次提示的问题"></a>解决clipboard复制弹多次提示的问题</h4><p>1、使用destroy（在单页面里面，回来页面，如果存在这个对象，就删除。）</p>
+<img src="/2020/11/04/Clipboard%E7%9A%84%E4%BD%BF%E7%94%A8/note1.png" class="">
+
+<p>2、换成setTimeout，不用layer.msg（copySuccessTip的样式模拟layer.msg的样式即可）</p>
+<img src="/2020/11/04/Clipboard%E7%9A%84%E4%BD%BF%E7%94%A8/note2.png" class="">]]></content>
+      <categories>
+        <category>工作笔记</category>
+        <category>Clipboard</category>
+      </categories>
+      <tags>
+        <tag>Clipboard</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>ECMAScript 6简介</title>
     <url>/2019/07/04/ECMAScript-6%E7%AE%80%E4%BB%8B/</url>
     <content><![CDATA[<a href="http://es6.ruanyifeng.com/" title="" target="">阮一峰-ECMAScript 6</a> 
@@ -42,27 +63,6 @@
       </categories>
       <tags>
         <tag>阮一峰-ES6</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Clipboard的使用</title>
-    <url>/2020/11/04/Clipboard%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
-    <content><![CDATA[<h4 id="如果存在clipboard-先将它销毁"><a href="#如果存在clipboard-先将它销毁" class="headerlink" title="如果存在clipboard,先将它销毁"></a>如果存在clipboard,先将它销毁</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">if(clipboard) &#123;</span><br><span class="line">    clipboard.destroy();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="Clipboard官网使用教程"><a href="#Clipboard官网使用教程" class="headerlink" title="Clipboard官网使用教程"></a><a href="http://www.clipboardjs.cn/">Clipboard官网使用教程</a></h5><h5 id="复制成功和复制失败的提示"><a href="#复制成功和复制失败的提示" class="headerlink" title="复制成功和复制失败的提示"></a>复制成功和复制失败的提示</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var u &#x3D; navigator.userAgent;</span><br><span class="line">clipboard.on(&#39;success&#39;, function(e) &#123;</span><br><span class="line">    layer.msg(&#39;复制成功&#39;, &#123;time: 1000&#125;);</span><br><span class="line">    e.clearSelection();</span><br><span class="line">&#125;);</span><br><span class="line">clipboard.on(&#39;error&#39;, function(e) &#123;</span><br><span class="line">    if(u.indexOf(&#39;UCBrowser&#39;) &gt; -1)&#123;</span><br><span class="line">        layer.msg(&#39;您的浏览器不支持，请长按内容手动复制！&#39;, &#123;time: 1000&#125;);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        layer.msg(&#39;复制失败&#39;, &#123;time: 1000&#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h5 id="如果提示信息弹两次"><a href="#如果提示信息弹两次" class="headerlink" title="如果提示信息弹两次"></a>如果提示信息弹两次</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">自己写一个copySuccessTip提示信息</span><br><span class="line">$(&quot;.copySuccessTip&quot;).addClass(&quot;mymove&quot;);</span><br><span class="line">setTimeout(function() &#123;</span><br><span class="line">    $(&quot;.copySuccessTip&quot;).removeClass(&quot;mymove&quot;);</span><br><span class="line">&#125;,1000);</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">引入图片：</span><br><span class="line">&#123;% asset_img css1.png %&#125;</span><br><span class="line">引入链接：</span><br><span class="line">[参考的博客](https:&#x2F;&#x2F;juejin.im&#x2F;post&#x2F;5b15022ff265da6e163720c6)</span><br></pre></td></tr></table></figure>
-<h4 id="解决clipboard复制弹多次提示的问题"><a href="#解决clipboard复制弹多次提示的问题" class="headerlink" title="解决clipboard复制弹多次提示的问题"></a>解决clipboard复制弹多次提示的问题</h4><p>1、使用destroy（在单页面里面，回来页面，如果存在这个对象，就删除。）</p>
-<img src="/2020/11/04/Clipboard%E7%9A%84%E4%BD%BF%E7%94%A8/note1.png" class="">
-
-<p>2、换成setTimeout，不用layer.msg（copySuccessTip的样式模拟layer.msg的样式即可）</p>
-<img src="/2020/11/04/Clipboard%E7%9A%84%E4%BD%BF%E7%94%A8/note2.png" class="">]]></content>
-      <categories>
-        <category>工作笔记</category>
-        <category>Clipboard</category>
-      </categories>
-      <tags>
-        <tag>Clipboard</tag>
       </tags>
   </entry>
   <entry>
@@ -677,55 +677,64 @@
       </tags>
   </entry>
   <entry>
-    <title>Parcel打包TypeScript</title>
-    <url>/2020/11/12/Parcel%E6%89%93%E5%8C%85TypeScript/</url>
-    <content><![CDATA[<h4 id="用-Parcel-打包-TypeScript-代码"><a href="#用-Parcel-打包-TypeScript-代码" class="headerlink" title="用 Parcel 打包 TypeScript 代码"></a>用 Parcel 打包 TypeScript 代码</h4><blockquote>
-<h4 id="建立一个新项目"><a href="#建立一个新项目" class="headerlink" title="建立一个新项目"></a>建立一个新项目</h4></blockquote>
-<ol>
-<li>教学需要，这里我们重新建立一个项目<code>TSTest</code>,在桌面新建立一个文件夹，然后在<code>VSCode</code>中打开。</li>
-<li>打开终端，输入<code>npm init -y</code>,创建<code>package.json</code>文件</li>
-<li>在终端中输入<code>tsc --init</code>,创建<code>tsconfig.json</code>文件</li>
-<li>修改<code>tsconfig.json</code>配置<code>rootDir</code>和<code>outDir</code>.</li>
-<li>新建<code>src</code>文件夹，在里边建立<code>index.html</code>,<code>page.ts</code>文件</li>
-<li>编写<code>index.html</code>文件，并引入<code>page.ts</code>文件</li>
-<li>编写<code>page.ts</code>文件</li>
-</ol>
-<p>index.html</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=<span class="string">&quot;en&quot;</span>&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;meta charset=<span class="string">&quot;UTF-8&quot;</span> /&gt;</span><br><span class="line">    &lt;meta name=<span class="string">&quot;viewport&quot;</span> content=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span> /&gt;</span><br><span class="line">    &lt;script src=<span class="string">&quot;./page.ts&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">  &lt;body&gt;&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-<p>page.ts</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> teacher: string = <span class="string">&quot;jspang&quot;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(teacher);</span><br></pre></td></tr></table></figure>
+    <title>Koa-笔记</title>
+    <url>/2021/01/20/Koa-%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p><a href="https://www.bilibili.com/video/BV1Pt41127sj?from=search&seid=17378531192218366513">技术胖-koa2教程</a>    <a href="http://www.jspang.com/detailed?id=34">技术胖博客笔记</a></p>
+<h4 id="第01节：Koa开发环境搭建"><a href="#第01节：Koa开发环境搭建" class="headerlink" title="第01节：Koa开发环境搭建"></a>第01节：Koa开发环境搭建</h4><p>1、npminit -y (-y可选)  ————生成package.json文件</p>
+<p>2、npm install –save koa ————在开发环境安装koa</p>
+<p>3、编写测试程序：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const Koa &#x3D; require(&#39;koa&#39;);</span><br><span class="line">const app &#x3D; new Koa();</span><br><span class="line"></span><br><span class="line">app.use(async (ctx) &#x3D;&gt; &#123;</span><br><span class="line">  ctx.body &#x3D; &#39;Hello Winney&#39;  </span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.listen(3000)</span><br></pre></td></tr></table></figure>
+<p>4、运行node index.js  （因为是基于node的，所以直接node **.js）</p>
+<p>5、然后在浏览器中输入：<a href="http://127.0.0.1:3000/">http://127.0.0.1:3000</a></p>
+<h4 id="第02节：async-await的使用方法"><a href="#第02节：async-await的使用方法" class="headerlink" title="第02节：async/await的使用方法"></a>第02节：async/await的使用方法</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">async function testAsync() &#123;</span><br><span class="line">	return &#39;Hello async&#39;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
-<h4 id="Parcel-的安装和使用"><a href="#Parcel-的安装和使用" class="headerlink" title="Parcel 的安装和使用"></a>Parcel 的安装和使用</h4></blockquote>
-<p><code>npm</code>或者<code>yarn</code>来进行安装</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">yarn add --dev parcel@next</span><br></pre></td></tr></table></figure>
-<p>修改package.json</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;test&quot;</span>: <span class="string">&quot;parcel ./src/index.html&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>然后打开终端输入<code>yarn test</code>,这时候终端会给出一个地址<code>http://localhost:1234</code>,把地址放到浏览器上，可以看到浏览器的控制台会输出<code>jspang</code>。</p>
-<p>这说明<code>Parcel</code>会自动对<code>index.html</code>中引入的<code>TypeScript</code>文件进行编译，然后打包好后，就可以直接使用了。</p>
-<h4 id="在-TypeScript-中使用-JQuery"><a href="#在-TypeScript-中使用-JQuery" class="headerlink" title="在 TypeScript 中使用 JQuery"></a>在 TypeScript 中使用 JQuery</h4><blockquote>
-<h4 id="引入-JQuery-框架库"><a href="#引入-JQuery-框架库" class="headerlink" title="引入 JQuery 框架库"></a>引入 JQuery 框架库</h4></blockquote>
-<p>直接在<code>index.html</code>加入<code>&lt;script&gt;</code>标签</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;script src=<span class="string">&quot;https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js&quot;</span>&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<p>有了 jquery 框架，就可以在<code>TypeScript</code>文件中进行使用<code>JQuery</code>的语法</p>
-<p>然后在<code>page.ts</code>文件中编写如下代码</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> teacher: string = <span class="string">&quot;jspang&quot;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(teacher);</span><br><span class="line"></span><br><span class="line">$(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  alert(<span class="string">&quot;jspang&quot;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>写完后到终端中输入<code>yarn test</code>进行编译和启动服务。然后在地址栏输入了<code>http://localhost:1234</code>,可以看到程序可以正常输出，也没有任何的报错。</p>
+<p>加上async，就把这个方法变成了异步的</p>
+<p>启用了async，返回的不是一个普通字符串，而是一个promise</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function getSomething() &#123;</span><br><span class="line">    return &#39;something&#39;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">async function testAsync() &#123;</span><br><span class="line">    return &#39;Helllo Async&#39;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const result &#x3D; testAsync();</span><br><span class="line">console.log(result);</span><br><span class="line">getSomething();</span><br></pre></td></tr></table></figure>
+<h4 id="await：async-wait"><a href="#await：async-wait" class="headerlink" title="await：async wait"></a>await：async wait</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function getSomething() &#123;</span><br><span class="line">    return &#39;something&#39;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">async function testAsync() &#123;</span><br><span class="line">    return &#39;Helllo Async&#39;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">async function test() &#123;</span><br><span class="line">    const v1 &#x3D; await getSomething();</span><br><span class="line">    const v2 &#x3D; await testAsync();</span><br><span class="line">    console.log(v1, v2);</span><br><span class="line">    console.log(&#96;$&#123;v1&#125; $&#123;v2&#125;&#96;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test();</span><br></pre></td></tr></table></figure>
 <blockquote>
-<h4 id="安装-types-jquery-解决方法"><a href="#安装-types-jquery-解决方法" class="headerlink" title="安装 types/jquery(解决方法)"></a>安装 types/jquery(解决方法)</h4></blockquote>
-<p>第一种：就是安装别人写好的文件</p>
-<p>但是在<code>vscode</code>中是会报错的，这时候就需要我们安装类型文件<code>type file</code>,直接可以用 npm 进行安装。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">npm i @types/jquery</span><br></pre></td></tr></table></figure>
-<p>第二种:简单粗暴</p>
-<p>还有一种简单粗暴的方法的方式就是直接在<code>page.ts</code>文件的头部加入这句代码：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">declare <span class="keyword">var</span> $: any;</span><br></pre></td></tr></table></figure>
-<p>第三种：自己写一个<code>.d.ts</code>声明文件的类库，如果你用的类库很少见，就需要自己写了。这个写起来还是很麻烦的。 比如 JQuery 就有几十个接口，如果你要写，这个文件会写很长，所以原则就是有别人写好的就直接用，实在没有就用粗暴的方法，如果实在不行，再考虑写<code>.d.ts</code>声明文件。</p>
-]]></content>
+<p>await不仅可以接收promise对象也可以接收普通返回值。</p>
+</blockquote>
+<h4 id="setTimeout延迟处理"><a href="#setTimeout延迟处理" class="headerlink" title="setTimeout延迟处理"></a>setTimeout延迟处理</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function takeLongTime() &#123;</span><br><span class="line">    return new Promise(resolve &#x3D;&gt; &#123;</span><br><span class="line">        setTimeout(() &#x3D;&gt; resolve(&#39;long_time_value&#39;), 1000)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">async function test() &#123;</span><br><span class="line">    const v &#x3D; await takeLongTime();</span><br><span class="line">    console.log(v);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test();</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>node demo.js     输入命令后，3秒后出现结果</p>
+</blockquote>
+<h4 id="第03节：Get请求的接收"><a href="#第03节：Get请求的接收" class="headerlink" title="第03节：Get请求的接收"></a>第03节：Get请求的接收</h4><p>监听端口</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">app.listen();</span><br></pre></td></tr></table></figure>
+<p>query和querystring区别</p>
+<ul>
+<li><p>query：返回的是格式化好的参数对象。</p>
+</li>
+<li><p>querystring：返回的是请求字符串</p>
+</li>
+</ul>
+<blockquote>
+<p>在koa2中GET请求通过request接收，但是接受的方法有两种：query和querystring。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const Koa &#x3D; require(&#39;koa&#39;);</span><br><span class="line">const app &#x3D; new Koa();</span><br><span class="line"></span><br><span class="line">app.use(async(ctx) &#x3D;&gt; &#123;</span><br><span class="line">    let url &#x3D; ctx.url;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;从request中获取GET请求</span><br><span class="line">    let request &#x3D; ctx.request;</span><br><span class="line">    let req_query &#x3D; request.query;</span><br><span class="line">    let req_querystring &#x3D; request.querystring;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;从上下文中直接获取</span><br><span class="line">    let ctx_query &#x3D; ctx.query;</span><br><span class="line">    let ctx_querystring &#x3D; ctx.querystring;</span><br><span class="line"></span><br><span class="line">    ctx.body &#x3D; &#123;</span><br><span class="line">        url,</span><br><span class="line">        req_query,</span><br><span class="line">        req_querystring,</span><br><span class="line">        ctx_query,</span><br><span class="line">        ctx_querystring</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.listen(3000, ()&#x3D;&gt;&#123;</span><br><span class="line">    console.log(&#39;demo server is starting at port 3000&#39;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>访问<a href="http://localhost:3000/%E5%9C%A8%E9%A1%B5%E9%9D%A2%E4%B8%AD%E6%98%BE%E7%A4%BA%EF%BC%9A">http://localhost:3000/在页面中显示：</a></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&quot;url&quot;: &quot;&#x2F;&quot; , &quot;req_query&quot;: &#123;&#125;, &quot;reg_querystring&quot;:&quot;&quot;&#125;</span><br></pre></td></tr></table></figure>
+<p>访问<a href="http://localhost:3000/?user=winney&amp;age=26%E5%9C%A8%E9%A1%B5%E9%9D%A2%E4%B8%AD%E6%98%BE%E7%A4%BA%EF%BC%9A">http://localhost:3000/?user=winney&amp;age=26在页面中显示：</a></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&quot;url&quot; :&quot;&#x2F;?user&#x3D;winney&amp;age&#x3D;26&quot; , &quot;req_query&quot;: &#123;&quot;user&quot;:&quot;winney, &quot;age&quot;: &quot;26&quot;&#125;,&#39;req_querystring &quot;: &quot;user&#x3D;winney&amp;age&#x3D;26&quot;&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>我们可以使用浏览器插件-iFormatTool，让内容更清晰。图片中我们可以清楚看到query是一个对象，而querystring就是一个普通的字符串。</p>
+</blockquote>
+<p>下载地址：<a href="http://www.pc6.com/soft/FireFox_579049.html">http://www.pc6.com/soft/FireFox_579049.html</a></p>
+<blockquote>
+<p>将解压后里面的.crx文件拖拽到谷歌浏览器的扩展程序中，选择”添加”</p>
+</blockquote>
+<h4 id="添加扩展程序成功后，在页面中可以看到json格式的数据"><a href="#添加扩展程序成功后，在页面中可以看到json格式的数据" class="headerlink" title="添加扩展程序成功后，在页面中可以看到json格式的数据"></a>添加扩展程序成功后，在页面中可以看到json格式的数据</h4><img src="/2021/01/20/Koa-%E7%AC%94%E8%AE%B0/note1.png" class="">
+
+
+
+<h4 id="网站大部分特效展示问题"><a href="#网站大部分特效展示问题" class="headerlink" title="网站大部分特效展示问题"></a>网站大部分特效展示问题</h4>]]></content>
       <categories>
         <category>工作笔记</category>
-        <category>TypeScript</category>
+        <category>Koa</category>
       </categories>
       <tags>
-        <tag>TypeScript</tag>
+        <tag>Koa</tag>
       </tags>
   </entry>
   <entry>
@@ -742,8 +751,6 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mongodump -h 127.0.0.1 -d company -o D:\software\MangoDB\backup\123</span><br></pre></td></tr></table></figure>
 <p>恢复：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mongorestore -h 127.0.0.1 -d testDemo D:\software\MangoDB\backup\123\company</span><br></pre></td></tr></table></figure>
-
-
 
 
 <p>  <a href="https://www.bilibili.com/video/av21989676?from=search&seid=13644841351714946278">【尚硅谷】前端视频_MongoDB夯实基础视频</a></p>
@@ -895,6 +902,58 @@
       </tags>
   </entry>
   <entry>
+    <title>Parcel打包TypeScript</title>
+    <url>/2020/11/12/Parcel%E6%89%93%E5%8C%85TypeScript/</url>
+    <content><![CDATA[<h4 id="用-Parcel-打包-TypeScript-代码"><a href="#用-Parcel-打包-TypeScript-代码" class="headerlink" title="用 Parcel 打包 TypeScript 代码"></a>用 Parcel 打包 TypeScript 代码</h4><blockquote>
+<h4 id="建立一个新项目"><a href="#建立一个新项目" class="headerlink" title="建立一个新项目"></a>建立一个新项目</h4></blockquote>
+<ol>
+<li>教学需要，这里我们重新建立一个项目<code>TSTest</code>,在桌面新建立一个文件夹，然后在<code>VSCode</code>中打开。</li>
+<li>打开终端，输入<code>npm init -y</code>,创建<code>package.json</code>文件</li>
+<li>在终端中输入<code>tsc --init</code>,创建<code>tsconfig.json</code>文件</li>
+<li>修改<code>tsconfig.json</code>配置<code>rootDir</code>和<code>outDir</code>.</li>
+<li>新建<code>src</code>文件夹，在里边建立<code>index.html</code>,<code>page.ts</code>文件</li>
+<li>编写<code>index.html</code>文件，并引入<code>page.ts</code>文件</li>
+<li>编写<code>page.ts</code>文件</li>
+</ol>
+<p>index.html</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=<span class="string">&quot;en&quot;</span>&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;meta charset=<span class="string">&quot;UTF-8&quot;</span> /&gt;</span><br><span class="line">    &lt;meta name=<span class="string">&quot;viewport&quot;</span> content=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span> /&gt;</span><br><span class="line">    &lt;script src=<span class="string">&quot;./page.ts&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">  &lt;body&gt;&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p>page.ts</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> teacher: string = <span class="string">&quot;jspang&quot;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(teacher);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<h4 id="Parcel-的安装和使用"><a href="#Parcel-的安装和使用" class="headerlink" title="Parcel 的安装和使用"></a>Parcel 的安装和使用</h4></blockquote>
+<p><code>npm</code>或者<code>yarn</code>来进行安装</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">yarn add --dev parcel@next</span><br></pre></td></tr></table></figure>
+<p>修改package.json</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;test&quot;</span>: <span class="string">&quot;parcel ./src/index.html&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后打开终端输入<code>yarn test</code>,这时候终端会给出一个地址<code>http://localhost:1234</code>,把地址放到浏览器上，可以看到浏览器的控制台会输出<code>jspang</code>。</p>
+<p>这说明<code>Parcel</code>会自动对<code>index.html</code>中引入的<code>TypeScript</code>文件进行编译，然后打包好后，就可以直接使用了。</p>
+<h4 id="在-TypeScript-中使用-JQuery"><a href="#在-TypeScript-中使用-JQuery" class="headerlink" title="在 TypeScript 中使用 JQuery"></a>在 TypeScript 中使用 JQuery</h4><blockquote>
+<h4 id="引入-JQuery-框架库"><a href="#引入-JQuery-框架库" class="headerlink" title="引入 JQuery 框架库"></a>引入 JQuery 框架库</h4></blockquote>
+<p>直接在<code>index.html</code>加入<code>&lt;script&gt;</code>标签</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;script src=<span class="string">&quot;https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js&quot;</span>&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>有了 jquery 框架，就可以在<code>TypeScript</code>文件中进行使用<code>JQuery</code>的语法</p>
+<p>然后在<code>page.ts</code>文件中编写如下代码</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> teacher: string = <span class="string">&quot;jspang&quot;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(teacher);</span><br><span class="line"></span><br><span class="line">$(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  alert(<span class="string">&quot;jspang&quot;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>写完后到终端中输入<code>yarn test</code>进行编译和启动服务。然后在地址栏输入了<code>http://localhost:1234</code>,可以看到程序可以正常输出，也没有任何的报错。</p>
+<blockquote>
+<h4 id="安装-types-jquery-解决方法"><a href="#安装-types-jquery-解决方法" class="headerlink" title="安装 types/jquery(解决方法)"></a>安装 types/jquery(解决方法)</h4></blockquote>
+<p>第一种：就是安装别人写好的文件</p>
+<p>但是在<code>vscode</code>中是会报错的，这时候就需要我们安装类型文件<code>type file</code>,直接可以用 npm 进行安装。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">npm i @types/jquery</span><br></pre></td></tr></table></figure>
+<p>第二种:简单粗暴</p>
+<p>还有一种简单粗暴的方法的方式就是直接在<code>page.ts</code>文件的头部加入这句代码：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">declare <span class="keyword">var</span> $: any;</span><br></pre></td></tr></table></figure>
+<p>第三种：自己写一个<code>.d.ts</code>声明文件的类库，如果你用的类库很少见，就需要自己写了。这个写起来还是很麻烦的。 比如 JQuery 就有几十个接口，如果你要写，这个文件会写很长，所以原则就是有别人写好的就直接用，实在没有就用粗暴的方法，如果实在不行，再考虑写<code>.d.ts</code>声明文件。</p>
+]]></content>
+      <categories>
+        <category>工作笔记</category>
+        <category>TypeScript</category>
+      </categories>
+      <tags>
+        <tag>TypeScript</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>SVN-笔记</title>
     <url>/2021/01/18/SVN-%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<h4 id="显示日志（查看更新内容）"><a href="#显示日志（查看更新内容）" class="headerlink" title="显示日志（查看更新内容）"></a>显示日志（查看更新内容）</h4><p>右键—&gt;TortoiseSVN—&gt;显示日志—&gt;查看更新下来的内容，或者对之前的代码进行比较</p>
@@ -924,73 +983,6 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cnpm install -g ts-node </span><br></pre></td></tr></table></figure>
 <p>即可直接输入以下语句执行：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ts-node Demo1.ts</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>工作笔记</category>
-        <category>TypeScript</category>
-      </categories>
-      <tags>
-        <tag>TypeScript</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>TypeScript函数泛型-难点</title>
-    <url>/2020/11/11/TypeScript%E6%B3%9B%E5%9E%8B-%E9%9A%BE%E7%82%B9/</url>
-    <content><![CDATA[<h4 id="TypeScript-函数泛型-难点"><a href="#TypeScript-函数泛型-难点" class="headerlink" title="TypeScript 函数泛型-难点"></a>TypeScript 函数泛型-难点</h4><blockquote>
-<h4 id="编写一个联合类型-Demo"><a href="#编写一个联合类型-Demo" class="headerlink" title="编写一个联合类型 Demo"></a>编写一个联合类型 Demo</h4></blockquote>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">join</span>(<span class="params">first: string | number, second: string | number</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;first&#125;</span><span class="subst">$&#123;second&#125;</span>`</span>;</span><br><span class="line">&#125;</span><br><span class="line">join(<span class="string">&quot;jspang&quot;</span>, <span class="string">&quot;.com&quot;</span>);</span><br></pre></td></tr></table></figure>
-<p>那现在所学的知识就完成不了啦，所以需要学习<code>泛型</code>来解决这个问题。</p>
-<blockquote>
-<h4 id="初始泛型概念-generic"><a href="#初始泛型概念-generic" class="headerlink" title="初始泛型概念-generic"></a>初始泛型概念-generic</h4></blockquote>
-<blockquote>
-<p>泛型：[generic - 通用、泛指的意思],那最简单的理解，泛型就是泛指的类型。</p>
-</blockquote>
-<p>泛型的定义使用<code>&lt;&gt;</code>（尖角号）进行定义的</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">join</span>&lt;<span class="title">JSPang</span>&gt;(<span class="params">first: JSPang, second: JSPang</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;first&#125;</span><span class="subst">$&#123;second&#125;</span>`</span>;</span><br><span class="line">&#125;</span><br><span class="line">join &lt; string &gt; (<span class="string">&quot;jspang&quot;</span>, <span class="string">&quot;.com&quot;</span>);</span><br></pre></td></tr></table></figure>
-<p>如果要是<code>number</code>类型，就直接在调用方法的时候进行更改就可以了。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">join &lt; number &gt; (<span class="number">1</span>, <span class="number">2</span>);</span><br></pre></td></tr></table></figure>
-<blockquote>
-<h4 id="泛型中数组的使用"><a href="#泛型中数组的使用" class="headerlink" title="泛型中数组的使用"></a>泛型中数组的使用</h4></blockquote>
-<p>如果传递过来的值要求是数字，如何用泛型进行定义那?两种方法，第一种是直接使用<code>[]</code>，第二种是使用<code>Array&lt;泛型&gt;</code>。形式不一样，其他的都一样。</p>
-<p>第一种写法：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFun</span>&lt;<span class="title">ANY</span>&gt;(<span class="params">params: ANY[]</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> params;</span><br><span class="line">&#125;</span><br><span class="line">myFun &lt; string &gt; [<span class="string">&quot;123&quot;</span>, <span class="string">&quot;456&quot;</span>];</span><br></pre></td></tr></table></figure>
-<p>第二种写法：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFun</span>&lt;<span class="title">ANY</span>&gt;(<span class="params">params: <span class="built_in">Array</span>&lt;ANY&gt;</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> params;</span><br><span class="line">&#125;</span><br><span class="line">myFun &lt; string &gt; [<span class="string">&quot;123&quot;</span>, <span class="string">&quot;456&quot;</span>];</span><br></pre></td></tr></table></figure>
-<p>在工作中，我们经常使用<code>&lt;T&gt;</code>来作泛型的表示</p>
-<blockquote>
-<h4 id="多个泛型的定义"><a href="#多个泛型的定义" class="headerlink" title="多个泛型的定义"></a>多个泛型的定义</h4></blockquote>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">join</span>&lt;<span class="title">T</span>, <span class="title">P</span>&gt;(<span class="params">first: T, second: P</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;first&#125;</span><span class="subst">$&#123;second&#125;</span>`</span>;</span><br><span class="line">&#125;</span><br><span class="line">join &lt; number, string &gt; (<span class="number">1</span>, <span class="string">&quot;2&quot;</span>);</span><br></pre></td></tr></table></figure>
-<blockquote>
-<h4 id="泛型的类型推断"><a href="#泛型的类型推断" class="headerlink" title="泛型的类型推断"></a>泛型的类型推断</h4></blockquote>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">join</span>&lt;<span class="title">T</span>, <span class="title">P</span>&gt;(<span class="params">first: T, second: P</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;first&#125;</span><span class="subst">$&#123;second&#125;</span>`</span>;</span><br><span class="line">&#125;</span><br><span class="line">join(<span class="number">1</span>, <span class="string">&quot;2&quot;</span>);</span><br></pre></td></tr></table></figure>
-<p>不建议大量使用类型推断，这会让你的代码易读和健壮性都会下降</p>
-<h4 id="TypeScript-类中泛型-难点"><a href="#TypeScript-类中泛型-难点" class="headerlink" title="TypeScript 类中泛型-难点"></a>TypeScript 类中泛型-难点</h4><blockquote>
-<h4 id="编写一个基本类"><a href="#编写一个基本类" class="headerlink" title="编写一个基本类"></a>编写一个基本类</h4></blockquote>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SelectGirl</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">private girls: string[]</span>)</span> &#123;&#125;</span><br><span class="line">  getGirl(index: number): string &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.girls[index];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> selectGirl = <span class="keyword">new</span> SelectGirl([<span class="string">&quot;大脚&quot;</span>, <span class="string">&quot;刘英&quot;</span>, <span class="string">&quot;晓红&quot;</span>]);</span><br><span class="line"><span class="built_in">console</span>.log(selectGirl.getGirl(<span class="number">1</span>));</span><br></pre></td></tr></table></figure>
-<p>在 TypeScript 中，编写复杂代码的时候，会经常使用泛型。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SelectGirl</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">private girls: string[] | number[]</span>)</span> &#123;&#125;</span><br><span class="line">  getGirl(index: number): string | number &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.girls[index];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<h4 id="初始类的泛型"><a href="#初始类的泛型" class="headerlink" title="初始类的泛型"></a>初始类的泛型</h4></blockquote>
-<p>用<code>&lt;&gt;</code>编写</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SelectGirl</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">private girls: T[]</span>)</span> &#123;&#125;</span><br><span class="line">  getGirl(index: number): T &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.girls[index];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> selectGirl = <span class="keyword">new</span> SelectGirl([<span class="string">&quot;大脚&quot;</span>, <span class="string">&quot;刘英&quot;</span>, <span class="string">&quot;晓红&quot;</span>]);</span><br><span class="line"><span class="built_in">console</span>.log(selectGirl.getGirl(<span class="number">1</span>));</span><br></pre></td></tr></table></figure>
-<p>这时候代码并不报错，也使用了泛型，但是在实例化对象的时候，TypeScript 是通过类型推断出来的。这种方法并不好，所以还是需要在实例化对象的时候，对泛型的值进行确定，比如是<code>string</code>类型，就这样写。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> selectGirl = <span class="keyword">new</span> SelectGirl() &lt; string &gt; [<span class="string">&quot;大脚&quot;</span>, <span class="string">&quot;刘英&quot;</span>, <span class="string">&quot;晓红&quot;</span>];</span><br></pre></td></tr></table></figure>
-<blockquote>
-<h4 id="泛型中的继承"><a href="#泛型中的继承" class="headerlink" title="泛型中的继承"></a>泛型中的继承</h4></blockquote>
-<p>现在需求又变了，要求返回是一个对象中的<code>name</code>,也就是下面的代码要改成这个样子。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">return</span> <span class="built_in">this</span>.girls[index].name;</span><br></pre></td></tr></table></figure>
-<p>现在的代码一定时报错的，但是这时候还要求我们这么做，意思就是说传递过来的值必须是一个对象类型的，里边还要有<code>name</code>属性。这时候就要用到继承了，我用接口的方式来实现。写一个<code>Girl</code>的接口，每个接口里都要有 name 属性。代码如下：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">interface Girl &#123;</span><br><span class="line">  name: string;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>有了接口后用<code>extends</code>关键字实现泛型继承，代码如下：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SelectGirl</span>&lt;<span class="title">T</span> <span class="keyword">extends</span> <span class="title">Girl</span>&gt; </span>&#123;</span><br><span class="line"> ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这句代码的意思是泛型里必须有一个<code>name</code>属性，因为它继承了<code>Girl</code>接口。</p>
-<p>现在程序还是报错的，因为我们<code>getGirl</code>方法的返回类型还不对，这时候应该是一个<code>string</code>类型才对，所以代码应该改为下面的样子：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">interface Girl &#123;</span><br><span class="line">  name: string;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SelectGirl</span>&lt;<span class="title">T</span> <span class="keyword">extends</span> <span class="title">Girl</span>&gt; </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">private girls: T[]</span>)</span> &#123;&#125;</span><br><span class="line">  getGirl(index: number): string &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.girls[index].name;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> selectGirl = <span class="keyword">new</span> SelectGirl([</span><br><span class="line">  &#123; <span class="attr">name</span>: <span class="string">&quot;大脚&quot;</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">name</span>: <span class="string">&quot;刘英&quot;</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">name</span>: <span class="string">&quot;晓红&quot;</span> &#125;,</span><br><span class="line">]);</span><br><span class="line"><span class="built_in">console</span>.log(selectGirl.getGirl(<span class="number">1</span>));</span><br></pre></td></tr></table></figure>
-<blockquote>
-<h4 id="泛型约束"><a href="#泛型约束" class="headerlink" title="泛型约束"></a>泛型约束</h4></blockquote>
-<p>现在的泛型可以是任意类型，可以是对象、字符串、布尔、数字都是可以的。但你现在要求这个泛型必须是<code>string</code>或者<code>number</code>类型。我们还是拿上面的例子，不过把代码改为最初的样子。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SelectGirl</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">private girls: T[]</span>)</span> &#123;&#125;</span><br><span class="line">  getGirl(index: number): T &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.girls[index];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> selectGirl = <span class="keyword">new</span> SelectGirl&lt;string&gt;([<span class="string">&quot;大脚&quot;</span>, <span class="string">&quot;刘英&quot;</span>, <span class="string">&quot;晓红&quot;</span>]);</span><br><span class="line"><span class="built_in">console</span>.log(selectGirl.getGirl(<span class="number">1</span>));</span><br></pre></td></tr></table></figure>
-<p>然后进行约束，这时候还是可以使用关键字<code>extends</code>来进行约束，把代码改成下面的样子。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SelectGirl</span>&lt;<span class="title">T</span> <span class="keyword">extends</span> <span class="title">number</span> | <span class="title">string</span>&gt; </span>&#123;</span><br><span class="line">  <span class="comment">//.....</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>工作笔记</category>
         <category>TypeScript</category>
@@ -1075,6 +1067,73 @@
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    <span class="built_in">require</span>([<span class="string">&quot;page&quot;</span>], <span class="function"><span class="keyword">function</span> (<span class="params">page</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">new</span> page.default();</span><br><span class="line">    &#125;);</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
 <p>当我们有了<code>webpack</code>和<code>Parcel</code>的时候就不会这么麻烦，这些都交给打包工具来处理就好了。</p>
 ]]></content>
+      <categories>
+        <category>工作笔记</category>
+        <category>TypeScript</category>
+      </categories>
+      <tags>
+        <tag>TypeScript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>TypeScript函数泛型-难点</title>
+    <url>/2020/11/11/TypeScript%E6%B3%9B%E5%9E%8B-%E9%9A%BE%E7%82%B9/</url>
+    <content><![CDATA[<h4 id="TypeScript-函数泛型-难点"><a href="#TypeScript-函数泛型-难点" class="headerlink" title="TypeScript 函数泛型-难点"></a>TypeScript 函数泛型-难点</h4><blockquote>
+<h4 id="编写一个联合类型-Demo"><a href="#编写一个联合类型-Demo" class="headerlink" title="编写一个联合类型 Demo"></a>编写一个联合类型 Demo</h4></blockquote>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">join</span>(<span class="params">first: string | number, second: string | number</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;first&#125;</span><span class="subst">$&#123;second&#125;</span>`</span>;</span><br><span class="line">&#125;</span><br><span class="line">join(<span class="string">&quot;jspang&quot;</span>, <span class="string">&quot;.com&quot;</span>);</span><br></pre></td></tr></table></figure>
+<p>那现在所学的知识就完成不了啦，所以需要学习<code>泛型</code>来解决这个问题。</p>
+<blockquote>
+<h4 id="初始泛型概念-generic"><a href="#初始泛型概念-generic" class="headerlink" title="初始泛型概念-generic"></a>初始泛型概念-generic</h4></blockquote>
+<blockquote>
+<p>泛型：[generic - 通用、泛指的意思],那最简单的理解，泛型就是泛指的类型。</p>
+</blockquote>
+<p>泛型的定义使用<code>&lt;&gt;</code>（尖角号）进行定义的</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">join</span>&lt;<span class="title">JSPang</span>&gt;(<span class="params">first: JSPang, second: JSPang</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;first&#125;</span><span class="subst">$&#123;second&#125;</span>`</span>;</span><br><span class="line">&#125;</span><br><span class="line">join &lt; string &gt; (<span class="string">&quot;jspang&quot;</span>, <span class="string">&quot;.com&quot;</span>);</span><br></pre></td></tr></table></figure>
+<p>如果要是<code>number</code>类型，就直接在调用方法的时候进行更改就可以了。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">join &lt; number &gt; (<span class="number">1</span>, <span class="number">2</span>);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<h4 id="泛型中数组的使用"><a href="#泛型中数组的使用" class="headerlink" title="泛型中数组的使用"></a>泛型中数组的使用</h4></blockquote>
+<p>如果传递过来的值要求是数字，如何用泛型进行定义那?两种方法，第一种是直接使用<code>[]</code>，第二种是使用<code>Array&lt;泛型&gt;</code>。形式不一样，其他的都一样。</p>
+<p>第一种写法：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFun</span>&lt;<span class="title">ANY</span>&gt;(<span class="params">params: ANY[]</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> params;</span><br><span class="line">&#125;</span><br><span class="line">myFun &lt; string &gt; [<span class="string">&quot;123&quot;</span>, <span class="string">&quot;456&quot;</span>];</span><br></pre></td></tr></table></figure>
+<p>第二种写法：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFun</span>&lt;<span class="title">ANY</span>&gt;(<span class="params">params: <span class="built_in">Array</span>&lt;ANY&gt;</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> params;</span><br><span class="line">&#125;</span><br><span class="line">myFun &lt; string &gt; [<span class="string">&quot;123&quot;</span>, <span class="string">&quot;456&quot;</span>];</span><br></pre></td></tr></table></figure>
+<p>在工作中，我们经常使用<code>&lt;T&gt;</code>来作泛型的表示</p>
+<blockquote>
+<h4 id="多个泛型的定义"><a href="#多个泛型的定义" class="headerlink" title="多个泛型的定义"></a>多个泛型的定义</h4></blockquote>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">join</span>&lt;<span class="title">T</span>, <span class="title">P</span>&gt;(<span class="params">first: T, second: P</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;first&#125;</span><span class="subst">$&#123;second&#125;</span>`</span>;</span><br><span class="line">&#125;</span><br><span class="line">join &lt; number, string &gt; (<span class="number">1</span>, <span class="string">&quot;2&quot;</span>);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<h4 id="泛型的类型推断"><a href="#泛型的类型推断" class="headerlink" title="泛型的类型推断"></a>泛型的类型推断</h4></blockquote>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">join</span>&lt;<span class="title">T</span>, <span class="title">P</span>&gt;(<span class="params">first: T, second: P</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;first&#125;</span><span class="subst">$&#123;second&#125;</span>`</span>;</span><br><span class="line">&#125;</span><br><span class="line">join(<span class="number">1</span>, <span class="string">&quot;2&quot;</span>);</span><br></pre></td></tr></table></figure>
+<p>不建议大量使用类型推断，这会让你的代码易读和健壮性都会下降</p>
+<h4 id="TypeScript-类中泛型-难点"><a href="#TypeScript-类中泛型-难点" class="headerlink" title="TypeScript 类中泛型-难点"></a>TypeScript 类中泛型-难点</h4><blockquote>
+<h4 id="编写一个基本类"><a href="#编写一个基本类" class="headerlink" title="编写一个基本类"></a>编写一个基本类</h4></blockquote>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SelectGirl</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">private girls: string[]</span>)</span> &#123;&#125;</span><br><span class="line">  getGirl(index: number): string &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.girls[index];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> selectGirl = <span class="keyword">new</span> SelectGirl([<span class="string">&quot;大脚&quot;</span>, <span class="string">&quot;刘英&quot;</span>, <span class="string">&quot;晓红&quot;</span>]);</span><br><span class="line"><span class="built_in">console</span>.log(selectGirl.getGirl(<span class="number">1</span>));</span><br></pre></td></tr></table></figure>
+<p>在 TypeScript 中，编写复杂代码的时候，会经常使用泛型。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SelectGirl</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">private girls: string[] | number[]</span>)</span> &#123;&#125;</span><br><span class="line">  getGirl(index: number): string | number &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.girls[index];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<h4 id="初始类的泛型"><a href="#初始类的泛型" class="headerlink" title="初始类的泛型"></a>初始类的泛型</h4></blockquote>
+<p>用<code>&lt;&gt;</code>编写</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SelectGirl</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">private girls: T[]</span>)</span> &#123;&#125;</span><br><span class="line">  getGirl(index: number): T &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.girls[index];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> selectGirl = <span class="keyword">new</span> SelectGirl([<span class="string">&quot;大脚&quot;</span>, <span class="string">&quot;刘英&quot;</span>, <span class="string">&quot;晓红&quot;</span>]);</span><br><span class="line"><span class="built_in">console</span>.log(selectGirl.getGirl(<span class="number">1</span>));</span><br></pre></td></tr></table></figure>
+<p>这时候代码并不报错，也使用了泛型，但是在实例化对象的时候，TypeScript 是通过类型推断出来的。这种方法并不好，所以还是需要在实例化对象的时候，对泛型的值进行确定，比如是<code>string</code>类型，就这样写。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> selectGirl = <span class="keyword">new</span> SelectGirl() &lt; string &gt; [<span class="string">&quot;大脚&quot;</span>, <span class="string">&quot;刘英&quot;</span>, <span class="string">&quot;晓红&quot;</span>];</span><br></pre></td></tr></table></figure>
+<blockquote>
+<h4 id="泛型中的继承"><a href="#泛型中的继承" class="headerlink" title="泛型中的继承"></a>泛型中的继承</h4></blockquote>
+<p>现在需求又变了，要求返回是一个对象中的<code>name</code>,也就是下面的代码要改成这个样子。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">return</span> <span class="built_in">this</span>.girls[index].name;</span><br></pre></td></tr></table></figure>
+<p>现在的代码一定时报错的，但是这时候还要求我们这么做，意思就是说传递过来的值必须是一个对象类型的，里边还要有<code>name</code>属性。这时候就要用到继承了，我用接口的方式来实现。写一个<code>Girl</code>的接口，每个接口里都要有 name 属性。代码如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">interface Girl &#123;</span><br><span class="line">  name: string;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>有了接口后用<code>extends</code>关键字实现泛型继承，代码如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SelectGirl</span>&lt;<span class="title">T</span> <span class="keyword">extends</span> <span class="title">Girl</span>&gt; </span>&#123;</span><br><span class="line"> ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这句代码的意思是泛型里必须有一个<code>name</code>属性，因为它继承了<code>Girl</code>接口。</p>
+<p>现在程序还是报错的，因为我们<code>getGirl</code>方法的返回类型还不对，这时候应该是一个<code>string</code>类型才对，所以代码应该改为下面的样子：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">interface Girl &#123;</span><br><span class="line">  name: string;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SelectGirl</span>&lt;<span class="title">T</span> <span class="keyword">extends</span> <span class="title">Girl</span>&gt; </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">private girls: T[]</span>)</span> &#123;&#125;</span><br><span class="line">  getGirl(index: number): string &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.girls[index].name;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> selectGirl = <span class="keyword">new</span> SelectGirl([</span><br><span class="line">  &#123; <span class="attr">name</span>: <span class="string">&quot;大脚&quot;</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">name</span>: <span class="string">&quot;刘英&quot;</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">name</span>: <span class="string">&quot;晓红&quot;</span> &#125;,</span><br><span class="line">]);</span><br><span class="line"><span class="built_in">console</span>.log(selectGirl.getGirl(<span class="number">1</span>));</span><br></pre></td></tr></table></figure>
+<blockquote>
+<h4 id="泛型约束"><a href="#泛型约束" class="headerlink" title="泛型约束"></a>泛型约束</h4></blockquote>
+<p>现在的泛型可以是任意类型，可以是对象、字符串、布尔、数字都是可以的。但你现在要求这个泛型必须是<code>string</code>或者<code>number</code>类型。我们还是拿上面的例子，不过把代码改为最初的样子。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SelectGirl</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">private girls: T[]</span>)</span> &#123;&#125;</span><br><span class="line">  getGirl(index: number): T &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.girls[index];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> selectGirl = <span class="keyword">new</span> SelectGirl&lt;string&gt;([<span class="string">&quot;大脚&quot;</span>, <span class="string">&quot;刘英&quot;</span>, <span class="string">&quot;晓红&quot;</span>]);</span><br><span class="line"><span class="built_in">console</span>.log(selectGirl.getGirl(<span class="number">1</span>));</span><br></pre></td></tr></table></figure>
+<p>然后进行约束，这时候还是可以使用关键字<code>extends</code>来进行约束，把代码改成下面的样子。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SelectGirl</span>&lt;<span class="title">T</span> <span class="keyword">extends</span> <span class="title">number</span> | <span class="title">string</span>&gt; </span>&#123;</span><br><span class="line">  <span class="comment">//.....</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>工作笔记</category>
         <category>TypeScript</category>
@@ -1394,12 +1453,6 @@
       </tags>
   </entry>
   <entry>
-    <title></title>
-    <url>/2021/01/14/Vue3/</url>
-    <content><![CDATA[<p>Vetur   代码高亮</p>
-]]></content>
-  </entry>
-  <entry>
     <title>Vue.js + Element-UI导航写法</title>
     <url>/2020/03/19/Vue-js-Element-UI%E5%AF%BC%E8%88%AA%E5%86%99%E6%B3%95/</url>
     <content><![CDATA[<h4 id="方法一（基本的）："><a href="#方法一（基本的）：" class="headerlink" title="方法一（基本的）："></a>方法一（基本的）：</h4><blockquote>
@@ -1439,6 +1492,12 @@
       </tags>
   </entry>
   <entry>
+    <title></title>
+    <url>/2021/01/14/Vue3/</url>
+    <content><![CDATA[<p>Vetur   代码高亮</p>
+]]></content>
+  </entry>
+  <entry>
     <title>Vue项目设置每个页面的title</title>
     <url>/2020/03/19/Vue%E9%A1%B9%E7%9B%AE%E8%AE%BE%E7%BD%AE%E6%AF%8F%E4%B8%AA%E9%A1%B5%E9%9D%A2%E7%9A%84title/</url>
     <content><![CDATA[<h5 id="1、在项目目录下安装vue-wechat-title"><a href="#1、在项目目录下安装vue-wechat-title" class="headerlink" title="1、在项目目录下安装vue-wechat-title"></a>1、在项目目录下安装vue-wechat-title</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cnpm i vue-wechat-title --save-dev</span><br></pre></td></tr></table></figure>
@@ -1453,50 +1512,6 @@
       </categories>
       <tags>
         <tag>Vue.js</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Wampserver-笔记</title>
-    <url>/2021/01/18/Wampserver-%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<p>注：如果重新有问题，启动服务一直是黄色，可以卸载了wamp，然后重启电脑，再重装</p>
-<h4 id="phpmyadmin默认SQL账号密码"><a href="#phpmyadmin默认SQL账号密码" class="headerlink" title="phpmyadmin默认SQL账号密码:"></a>phpmyadmin默认SQL账号密码:</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">账号：root，密码为空</span><br></pre></td></tr></table></figure>
-<img src="/2021/01/18/Wampserver-%E7%AC%94%E8%AE%B0/note1.png" class="">
-
-<h4 id="虚拟目录的配置"><a href="#虚拟目录的配置" class="headerlink" title="虚拟目录的配置"></a>虚拟目录的配置</h4><p>修改默认网站目录</p>
-<p>第一步：修改d:\wamp\bin\apache\Apache2.4.9\conf\httpd.conf</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">查找： DocumentRoot &quot;c:&#x2F;wamp&#x2F;www&#x2F;&quot;</span><br><span class="line">修改： DocumentRoot &quot;d:&#x2F;www&#x2F;&quot;</span><br><span class="line">查找： &lt;Directory &quot;c:&#x2F;wamp&#x2F;www&#x2F;&quot;&gt;</span><br><span class="line">修改： &lt;Directory &quot;d:&#x2F;www&#x2F;&quot;&gt;</span><br></pre></td></tr></table></figure>
-<p>第二步：修改wampmanager.ini和wampmanager.tpl</p>
-<p>1、修改c:\wamp\wampmanager.ini:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">(1)打开：c:\wamp\wampmanager.ini</span><br><span class="line">(2)查找：Type: item; Caption: &quot;www 目录&quot;; Action: shellexecute; FileName: &quot;c:&#x2F;wamp&#x2F;www&quot;; Glyph: 2</span><br><span class="line">(3)修改：Type: item; Caption: &quot;www 目录&quot;; Action: shellexecute; FileName: &quot;d:&#x2F;www&quot;; Glyph: 2</span><br></pre></td></tr></table></figure>
-<p>2、修改c:\wamp\wampmanager.tpl：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">(1)打开：c:\wamp\wampmanager.tpl</span><br><span class="line">(2)查找：Type: item; Caption: &quot;$&#123;w_wwwDirectory&#125;&quot;; Action: shellexecute; FileName: &quot;$&#123;wwwdir&#125;&quot;; Glyph: 2</span><br><span class="line">(3)修改：Type: item; Caption: &quot;$&#123;w_wwwDirectory&#125;&quot;; Action: shellexecute; FileName: &quot;d:&#x2F;www&quot;; Glyph: 2</span><br></pre></td></tr></table></figure>
-<h4 id="修改默认项目目录"><a href="#修改默认项目目录" class="headerlink" title="修改默认项目目录"></a>修改默认项目目录</h4><p>1、修改httpd.conf:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">DocumentRoot &quot;D:&#x2F;Work&#x2F;&quot;</span><br><span class="line">&lt;Directory &quot;D:&#x2F;Work&#x2F;&quot;&gt;</span><br></pre></td></tr></table></figure>
-<p>2、修改httpd-vhost.conf:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;VirtualHost *:80&gt;</span><br><span class="line">	ServerName localhost</span><br><span class="line">	ServerAlias localhost</span><br><span class="line">	DocumentRoot D:&#x2F;Work&#x2F;</span><br><span class="line">	&lt;Directory  &quot;D:&#x2F;Work&#x2F;&quot;&gt;</span><br><span class="line">		Options +Indexes +Includes +FollowSymLinks +MultiViews</span><br><span class="line">		AllowOverride All</span><br><span class="line">		Require local</span><br><span class="line">	&lt;&#x2F;Directory&gt;</span><br><span class="line">&lt;&#x2F;VirtualHost&gt;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>工作笔记</category>
-        <category>Wampserver</category>
-      </categories>
-      <tags>
-        <tag>Wampserver</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Windows环境下利用CMD命令批量修改文件名</title>
-    <url>/2020/01/06/Windows%E7%8E%AF%E5%A2%83%E4%B8%8B%E5%88%A9%E7%94%A8CMD%E5%91%BD%E4%BB%A4%E6%89%B9%E9%87%8F%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%E5%90%8D/</url>
-    <content><![CDATA[<h3 id="Windows环境下利用CMD命令批量修改文件名"><a href="#Windows环境下利用CMD命令批量修改文件名" class="headerlink" title="Windows环境下利用CMD命令批量修改文件名"></a>Windows环境下利用CMD命令批量修改文件名</h3><h4 id="核心命令"><a href="#核心命令" class="headerlink" title="核心命令"></a>核心命令</h4><h5 id="·文件重命名-ren"><a href="#·文件重命名-ren" class="headerlink" title="·文件重命名 ren"></a>·文件重命名 <span style="color:#c7254e;">ren</span></h5><p>1、ren即rename的缩写，使用ren或者rename命令均可实现文件重命名的操作；命令的使用方法很简单，格式为 <span style="color:#c7254e;">ren old_name new_name</span> ；例如，想要将D盘根目录下的文件 a.txt 重命名为 b.doc ，只需要在CMD中进入D盘根目录，执行 <span style="color:#c7254e;">ren a.txt b.doc </span>；或者使用绝对路径，执行 <span style="color:#c7254e;">ren D:\a.txt b.doc  </span>，也可以达到同样的效果</p>
-<p>2、需要注意的是，旧文件名 <span style="color:#c7254e;">old_name </span>可以使用相对路径，也可以包含绝对路径，但新文件名 <span style="color:#c7254e;">new_name</span>不能包含任何文件路径，只能是纯文件名；所以，要想批量修改包含子文件夹的多个路径下的大量文件名，还需要用到一款支持通配符匹配查询替换的文本编辑器，以便从路径+文件名的文件目录系统中提取出文件名的部分</p>
-<p>3、另外， <span style="color:#c7254e;">ren</span> 也支持使用通配符；例如，想要将扩展名为 <span style="color:#c7254e;">.docx </span>的文件扩展名批量修改为 <span style="color:#c7254e;">.doc</span> ，执行 <span style="color:#c7254e;">ren *.docx  *.doc</span> 即可；但通配符的使用规则十分复杂，若无法完全理解其中的匹配规则，建议只使用通配符来修改文件扩展名</p>
-<p>摘抄自：<a href="https://blog.csdn.net/hitomitoi/article/details/81566494">https://blog.csdn.net/hitomitoi/article/details/81566494</a></p>
-]]></content>
-      <categories>
-        <category>工作笔记</category>
-        <category>常用命令</category>
-      </categories>
-      <tags>
-        <tag>常用命令</tag>
       </tags>
   </entry>
   <entry>
@@ -1561,6 +1576,50 @@
       </categories>
       <tags>
         <tag>webpack</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Wampserver-笔记</title>
+    <url>/2021/01/18/Wampserver-%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p>注：如果重新有问题，启动服务一直是黄色，可以卸载了wamp，然后重启电脑，再重装</p>
+<h4 id="phpmyadmin默认SQL账号密码"><a href="#phpmyadmin默认SQL账号密码" class="headerlink" title="phpmyadmin默认SQL账号密码:"></a>phpmyadmin默认SQL账号密码:</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">账号：root，密码为空</span><br></pre></td></tr></table></figure>
+<img src="/2021/01/18/Wampserver-%E7%AC%94%E8%AE%B0/note1.png" class="">
+
+<h4 id="虚拟目录的配置"><a href="#虚拟目录的配置" class="headerlink" title="虚拟目录的配置"></a>虚拟目录的配置</h4><p>修改默认网站目录</p>
+<p>第一步：修改d:\wamp\bin\apache\Apache2.4.9\conf\httpd.conf</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">查找： DocumentRoot &quot;c:&#x2F;wamp&#x2F;www&#x2F;&quot;</span><br><span class="line">修改： DocumentRoot &quot;d:&#x2F;www&#x2F;&quot;</span><br><span class="line">查找： &lt;Directory &quot;c:&#x2F;wamp&#x2F;www&#x2F;&quot;&gt;</span><br><span class="line">修改： &lt;Directory &quot;d:&#x2F;www&#x2F;&quot;&gt;</span><br></pre></td></tr></table></figure>
+<p>第二步：修改wampmanager.ini和wampmanager.tpl</p>
+<p>1、修改c:\wamp\wampmanager.ini:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">(1)打开：c:\wamp\wampmanager.ini</span><br><span class="line">(2)查找：Type: item; Caption: &quot;www 目录&quot;; Action: shellexecute; FileName: &quot;c:&#x2F;wamp&#x2F;www&quot;; Glyph: 2</span><br><span class="line">(3)修改：Type: item; Caption: &quot;www 目录&quot;; Action: shellexecute; FileName: &quot;d:&#x2F;www&quot;; Glyph: 2</span><br></pre></td></tr></table></figure>
+<p>2、修改c:\wamp\wampmanager.tpl：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">(1)打开：c:\wamp\wampmanager.tpl</span><br><span class="line">(2)查找：Type: item; Caption: &quot;$&#123;w_wwwDirectory&#125;&quot;; Action: shellexecute; FileName: &quot;$&#123;wwwdir&#125;&quot;; Glyph: 2</span><br><span class="line">(3)修改：Type: item; Caption: &quot;$&#123;w_wwwDirectory&#125;&quot;; Action: shellexecute; FileName: &quot;d:&#x2F;www&quot;; Glyph: 2</span><br></pre></td></tr></table></figure>
+<h4 id="修改默认项目目录"><a href="#修改默认项目目录" class="headerlink" title="修改默认项目目录"></a>修改默认项目目录</h4><p>1、修改httpd.conf:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">DocumentRoot &quot;D:&#x2F;Work&#x2F;&quot;</span><br><span class="line">&lt;Directory &quot;D:&#x2F;Work&#x2F;&quot;&gt;</span><br></pre></td></tr></table></figure>
+<p>2、修改httpd-vhost.conf:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;VirtualHost *:80&gt;</span><br><span class="line">	ServerName localhost</span><br><span class="line">	ServerAlias localhost</span><br><span class="line">	DocumentRoot D:&#x2F;Work&#x2F;</span><br><span class="line">	&lt;Directory  &quot;D:&#x2F;Work&#x2F;&quot;&gt;</span><br><span class="line">		Options +Indexes +Includes +FollowSymLinks +MultiViews</span><br><span class="line">		AllowOverride All</span><br><span class="line">		Require local</span><br><span class="line">	&lt;&#x2F;Directory&gt;</span><br><span class="line">&lt;&#x2F;VirtualHost&gt;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>工作笔记</category>
+        <category>Wampserver</category>
+      </categories>
+      <tags>
+        <tag>Wampserver</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Windows环境下利用CMD命令批量修改文件名</title>
+    <url>/2020/01/06/Windows%E7%8E%AF%E5%A2%83%E4%B8%8B%E5%88%A9%E7%94%A8CMD%E5%91%BD%E4%BB%A4%E6%89%B9%E9%87%8F%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%E5%90%8D/</url>
+    <content><![CDATA[<h3 id="Windows环境下利用CMD命令批量修改文件名"><a href="#Windows环境下利用CMD命令批量修改文件名" class="headerlink" title="Windows环境下利用CMD命令批量修改文件名"></a>Windows环境下利用CMD命令批量修改文件名</h3><h4 id="核心命令"><a href="#核心命令" class="headerlink" title="核心命令"></a>核心命令</h4><h5 id="·文件重命名-ren"><a href="#·文件重命名-ren" class="headerlink" title="·文件重命名 ren"></a>·文件重命名 <span style="color:#c7254e;">ren</span></h5><p>1、ren即rename的缩写，使用ren或者rename命令均可实现文件重命名的操作；命令的使用方法很简单，格式为 <span style="color:#c7254e;">ren old_name new_name</span> ；例如，想要将D盘根目录下的文件 a.txt 重命名为 b.doc ，只需要在CMD中进入D盘根目录，执行 <span style="color:#c7254e;">ren a.txt b.doc </span>；或者使用绝对路径，执行 <span style="color:#c7254e;">ren D:\a.txt b.doc  </span>，也可以达到同样的效果</p>
+<p>2、需要注意的是，旧文件名 <span style="color:#c7254e;">old_name </span>可以使用相对路径，也可以包含绝对路径，但新文件名 <span style="color:#c7254e;">new_name</span>不能包含任何文件路径，只能是纯文件名；所以，要想批量修改包含子文件夹的多个路径下的大量文件名，还需要用到一款支持通配符匹配查询替换的文本编辑器，以便从路径+文件名的文件目录系统中提取出文件名的部分</p>
+<p>3、另外， <span style="color:#c7254e;">ren</span> 也支持使用通配符；例如，想要将扩展名为 <span style="color:#c7254e;">.docx </span>的文件扩展名批量修改为 <span style="color:#c7254e;">.doc</span> ，执行 <span style="color:#c7254e;">ren *.docx  *.doc</span> 即可；但通配符的使用规则十分复杂，若无法完全理解其中的匹配规则，建议只使用通配符来修改文件扩展名</p>
+<p>摘抄自：<a href="https://blog.csdn.net/hitomitoi/article/details/81566494">https://blog.csdn.net/hitomitoi/article/details/81566494</a></p>
+]]></content>
+      <categories>
+        <category>工作笔记</category>
+        <category>常用命令</category>
+      </categories>
+      <tags>
+        <tag>常用命令</tag>
       </tags>
   </entry>
   <entry>
@@ -1881,42 +1940,6 @@
       </tags>
   </entry>
   <entry>
-    <title>vue项目记录</title>
-    <url>/2020/05/26/vue%E9%A1%B9%E7%9B%AE%E8%AE%B0%E5%BD%95/</url>
-    <content><![CDATA[<h3 id="在项目中引入阿里图库"><a href="#在项目中引入阿里图库" class="headerlink" title="在项目中引入阿里图库"></a>在项目中引入阿里图库</h3><ol>
-<li>在阿里图库中，选好图标，建立好项目</li>
-<li>将整个项目的图标下载到本地解压</li>
-<li>在Vue.js项目的assets目录中，新建一个icon目录，将解压后文件夹里面的文件复制到这个目录下</li>
-<li>在main.js文件里引入iconfont.css, import ‘@/assets/icon/iconfont.css’</li>
-<li>在项目中引入图标的时候要加上iconfont类，然后再添加图标本身的类名</li>
-</ol>
-<h3 id="链接文字的写法-路由跳转"><a href="#链接文字的写法-路由跳转" class="headerlink" title="链接文字的写法(路由跳转)"></a>链接文字的写法(路由跳转)</h3><h5 id="不传参"><a href="#不传参" class="headerlink" title="不传参"></a>不传参</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">声明式：&lt;router-link :to&#x3D;&quot;&#123;name:&#39;index&#39;&#125;&#125;&quot;&gt;    或者    &lt;router-link to&#x3D;&#39;&#x2F;index&#39;&gt;</span><br><span class="line"></span><br><span class="line">编程式：router.push(...)</span><br><span class="line">方法一: this.$router.push(&#123;path:&#39;路径&#39;)&#125;;</span><br><span class="line">方法二：this.$router.push(&#123;name:&#39;组件名&#39;)&#125;;</span><br></pre></td></tr></table></figure>
-<h5 id="传参"><a href="#传参" class="headerlink" title="传参"></a>传参</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">声明式：&lt;router-link :to&#x3D;&quot;&#123;name:&#39;index&#39;,query:&#123;id:&#39;xxx&#39;,name:&#39;xxx&#39;&#125;&#125;&quot;&gt;</span><br><span class="line">编程式：router.push(...)</span><br><span class="line"></span><br><span class="line">方法一：this.$router.push(&#123;path:&#39;xxx&#39;,query:&#123;aa:xx, bb: xx&#125;&#125;);   &#x2F;&#x2F;带查询参数，类似于 “？” 的形式传值</span><br><span class="line"></span><br><span class="line">方法二：this.$router.push(&#123;path:&#39;xxx&#39;,params:&#123;aa:xx, bb: xx&#125;&#125;); </span><br><span class="line"></span><br><span class="line">注：以上两种方法的query跳转路径也可以写成name:&#39;组件名&#39;的形式</span><br><span class="line"></span><br><span class="line">在query中放入需要传递的参数即可，多个参数之间用逗号隔开；</span><br><span class="line"></span><br><span class="line">取值：this.$route.query.xx   (可在跳转的页面取得所传递的值)；</span><br></pre></td></tr></table></figure>
-<h3 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">component: () &#x3D;&gt; import(&#39;@&#x2F;views&#x2F;dashboard&#x2F;console&#x2F;index.vue&#39;),</span><br><span class="line">可以简写为：</span><br><span class="line">component: () &#x3D;&gt; import(&#39;@&#x2F;views&#x2F;dashboard&#x2F;console&#39;),</span><br></pre></td></tr></table></figure>
-<h3 id="Vue-js-组件中绑定点击事件不生效的解决方法"><a href="#Vue-js-组件中绑定点击事件不生效的解决方法" class="headerlink" title="Vue.js 组件中绑定点击事件不生效的解决方法"></a>Vue.js 组件中绑定点击事件不生效的解决方法</h3><p>在使用组件（比如 element UI）的过程中，会发现无法通过 @click 绑定标签的点击事件。</p>
-<p>因为 Vue.js 使用的是一套自己的事件传递机制，所以我们需要添加 @click.native 来绑定 DOM 原生事件。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;el-dropdown-item icon&#x3D;&quot;el-icon-unlock&quot; @click.native&#x3D;&quot;resetPass&quot;&gt;&lt;&#x2F;el-dropdown-item&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="Vuex的store的使用"><a href="#Vuex的store的使用" class="headerlink" title="Vuex的store的使用"></a>Vuex的store的使用</h3><p>注意：改变store值，要使用mutations，不要直接改变<br>store.js文件：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export default new Vuex.Store(&#123;</span><br><span class="line">  state: &#123;</span><br><span class="line">    isCollapse: false,</span><br><span class="line">    isMobile: false</span><br><span class="line">  &#125;,</span><br><span class="line">  mutations: &#123;</span><br><span class="line">    toggleCollapse(state) &#123;</span><br><span class="line">      state.isCollapse &#x3D;  !state.isCollapse;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<h4 id="在页面中的使用："><a href="#在页面中的使用：" class="headerlink" title="在页面中的使用："></a>在页面中的使用：</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">在页面中引入：</span><br><span class="line">import &#123; mapState , mapMutations &#125; from &#39;vuex&#39;;</span><br><span class="line"></span><br><span class="line">引入state：</span><br><span class="line">computed: &#123;</span><br><span class="line">  ...mapState([&#39;isCollapse&#39;,&#39;isMobile&#39;])</span><br><span class="line">&#125;,</span><br><span class="line"></span><br><span class="line">引入方法：</span><br><span class="line">methods: &#123;</span><br><span class="line">  ...mapMutations([&#39;toggleCollapse&#39;])</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">页面结构中，直接使用：</span><br><span class="line">:class&#x3D;&quot;&#123;&#39;sider-collapse&#39;:isCollapse&#125;&quot;</span><br><span class="line"></span><br><span class="line">在事件中直接使用：</span><br><span class="line">this.toggleCollapse();</span><br><span class="line"></span><br><span class="line">如果要传参：</span><br><span class="line">this.toggleCollapse(&#123;</span><br><span class="line">  param: this.isCollapse</span><br><span class="line">&#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="emit的使用"><a href="#emit的使用" class="headerlink" title="$emit的使用"></a>$emit的使用</h3><p>通过 Event Bus 进行组件间通信，来折叠侧边栏</p>
-<p>bus.js:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import Vue from &#39;vue&#39;;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 使用 Event Bus</span><br><span class="line">const bus &#x3D; new Vue();</span><br><span class="line"></span><br><span class="line">export default bus;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">在点击事件的组件中：</span><br><span class="line">引入：</span><br><span class="line">import bus from &#39;..&#x2F;public&#x2F;bus&#39;;</span><br><span class="line"></span><br><span class="line">页面结构中：</span><br><span class="line">@click&#x3D;&quot;collapseChage&quot;</span><br><span class="line">v-show&#x3D;&quot;!isCollapse&quot;</span><br><span class="line"></span><br><span class="line">数据，方法：</span><br><span class="line">data() &#123; </span><br><span class="line">  return &#123;</span><br><span class="line">      isCollapse: false,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br><span class="line">methods: &#123;</span><br><span class="line">  &#x2F;&#x2F; 侧边栏折叠</span><br><span class="line">  collapseChage() &#123;</span><br><span class="line">      this.isCollapse &#x3D; !this.isCollapse;</span><br><span class="line">      bus.$emit(&#39;toggleCollapse&#39;, this.isCollapse);</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">在需要用到这个状态的组件中：</span><br><span class="line">引入：</span><br><span class="line">import bus from &#39;..&#x2F;public&#x2F;bus&#39;;</span><br><span class="line">数据：</span><br><span class="line">data() &#123; </span><br><span class="line">  return &#123;</span><br><span class="line">      isCollapse: false,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br><span class="line"></span><br><span class="line">页面结构：</span><br><span class="line">:class&#x3D;&quot;&#123;&#39;content-collapse&#39;:isCollapse&#125;&quot;</span><br><span class="line"></span><br><span class="line">监听toggleCollapse事件：</span><br><span class="line">created() &#123;</span><br><span class="line">  bus.$on(&#39;toggleCollapse&#39;, msg &#x3D;&gt; &#123;</span><br><span class="line">      this.isCollapse &#x3D; msg;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="如何将element-ui中的表格和分页器连接起来"><a href="#如何将element-ui中的表格和分页器连接起来" class="headerlink" title="如何将element-ui中的表格和分页器连接起来"></a>如何将element-ui中的表格和分页器连接起来</h3><img src="/2020/05/26/vue%E9%A1%B9%E7%9B%AE%E8%AE%B0%E5%BD%95/vue01.png" class="">
-<img src="/2020/05/26/vue%E9%A1%B9%E7%9B%AE%E8%AE%B0%E5%BD%95/vue02.png" class="">
-<img src="/2020/05/26/vue%E9%A1%B9%E7%9B%AE%E8%AE%B0%E5%BD%95/vue03.png" class="">
-<img src="/2020/05/26/vue%E9%A1%B9%E7%9B%AE%E8%AE%B0%E5%BD%95/vue04.png" class="">
-]]></content>
-      <categories>
-        <category>工作笔记</category>
-        <category>Vue.js</category>
-      </categories>
-      <tags>
-        <tag>Vue.js</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Vue项目处理跨域请求</title>
     <url>/2020/12/14/vue%E9%A1%B9%E7%9B%AE%E5%A4%84%E7%90%86%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82/</url>
     <content><![CDATA[<h4 id="1、设置配置文件"><a href="#1、设置配置文件" class="headerlink" title="1、设置配置文件"></a>1、设置配置文件</h4><ul>
@@ -1998,6 +2021,42 @@
 <li>5、获取裁切结果，getCroppedCanvas()</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"> data () &#123;</span><br><span class="line">  return &#123;</span><br><span class="line">      image: window.URL.createObjectURL(this.file),</span><br><span class="line">      cropper: null</span><br><span class="line">  &#125;</span><br><span class="line"> &#125;,</span><br><span class="line"></span><br><span class="line">使用Promise返回一个裁切对象，用于async</span><br><span class="line"> getCroppedCanvas() &#123;</span><br><span class="line">     return new Promise(resolve &#x3D;&gt; &#123;</span><br><span class="line">     &#x2F;&#x2F; 因为cropper定义在mounted中，在这里无法使用，</span><br><span class="line">     	为了能够在这里能调用cropper，将cropper放在data中</span><br><span class="line">          this.cropper.getCroppedCanvas().toBlob((file) &#x3D;&gt; &#123;</span><br><span class="line">            resolve(file)</span><br><span class="line">        &#125;)</span><br><span class="line">     &#125;)</span><br><span class="line"> &#125;,</span><br><span class="line"> </span><br><span class="line">getCroppedCanvas返回的Promise对象，在这里面使用：</span><br><span class="line">async onConfirm() &#123;</span><br><span class="line">     .....</span><br><span class="line">     const file &#x3D; await this.getCroppedCanvas()</span><br><span class="line">     const img &#x3D; window.URL.createObjectURL(file)</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 文件格式处理</span><br><span class="line">     const fd &#x3D; new FormData()</span><br><span class="line">     fd.append(&#39;photo&#39;, file)</span><br><span class="line">     </span><br><span class="line">     await updateUserPhoto(fd)</span><br><span class="line"></span><br><span class="line">     this.$emit(&#39;close&#39;)</span><br><span class="line">     this.$emit(&#39;update-photo&#39;, img)</span><br><span class="line"></span><br><span class="line">     this.$toast.success(&#39;保存成功&#39;)</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>工作笔记</category>
+        <category>Vue.js</category>
+      </categories>
+      <tags>
+        <tag>Vue.js</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>vue项目记录</title>
+    <url>/2020/05/26/vue%E9%A1%B9%E7%9B%AE%E8%AE%B0%E5%BD%95/</url>
+    <content><![CDATA[<h3 id="在项目中引入阿里图库"><a href="#在项目中引入阿里图库" class="headerlink" title="在项目中引入阿里图库"></a>在项目中引入阿里图库</h3><ol>
+<li>在阿里图库中，选好图标，建立好项目</li>
+<li>将整个项目的图标下载到本地解压</li>
+<li>在Vue.js项目的assets目录中，新建一个icon目录，将解压后文件夹里面的文件复制到这个目录下</li>
+<li>在main.js文件里引入iconfont.css, import ‘@/assets/icon/iconfont.css’</li>
+<li>在项目中引入图标的时候要加上iconfont类，然后再添加图标本身的类名</li>
+</ol>
+<h3 id="链接文字的写法-路由跳转"><a href="#链接文字的写法-路由跳转" class="headerlink" title="链接文字的写法(路由跳转)"></a>链接文字的写法(路由跳转)</h3><h5 id="不传参"><a href="#不传参" class="headerlink" title="不传参"></a>不传参</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">声明式：&lt;router-link :to&#x3D;&quot;&#123;name:&#39;index&#39;&#125;&#125;&quot;&gt;    或者    &lt;router-link to&#x3D;&#39;&#x2F;index&#39;&gt;</span><br><span class="line"></span><br><span class="line">编程式：router.push(...)</span><br><span class="line">方法一: this.$router.push(&#123;path:&#39;路径&#39;)&#125;;</span><br><span class="line">方法二：this.$router.push(&#123;name:&#39;组件名&#39;)&#125;;</span><br></pre></td></tr></table></figure>
+<h5 id="传参"><a href="#传参" class="headerlink" title="传参"></a>传参</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">声明式：&lt;router-link :to&#x3D;&quot;&#123;name:&#39;index&#39;,query:&#123;id:&#39;xxx&#39;,name:&#39;xxx&#39;&#125;&#125;&quot;&gt;</span><br><span class="line">编程式：router.push(...)</span><br><span class="line"></span><br><span class="line">方法一：this.$router.push(&#123;path:&#39;xxx&#39;,query:&#123;aa:xx, bb: xx&#125;&#125;);   &#x2F;&#x2F;带查询参数，类似于 “？” 的形式传值</span><br><span class="line"></span><br><span class="line">方法二：this.$router.push(&#123;path:&#39;xxx&#39;,params:&#123;aa:xx, bb: xx&#125;&#125;); </span><br><span class="line"></span><br><span class="line">注：以上两种方法的query跳转路径也可以写成name:&#39;组件名&#39;的形式</span><br><span class="line"></span><br><span class="line">在query中放入需要传递的参数即可，多个参数之间用逗号隔开；</span><br><span class="line"></span><br><span class="line">取值：this.$route.query.xx   (可在跳转的页面取得所传递的值)；</span><br></pre></td></tr></table></figure>
+<h3 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">component: () &#x3D;&gt; import(&#39;@&#x2F;views&#x2F;dashboard&#x2F;console&#x2F;index.vue&#39;),</span><br><span class="line">可以简写为：</span><br><span class="line">component: () &#x3D;&gt; import(&#39;@&#x2F;views&#x2F;dashboard&#x2F;console&#39;),</span><br></pre></td></tr></table></figure>
+<h3 id="Vue-js-组件中绑定点击事件不生效的解决方法"><a href="#Vue-js-组件中绑定点击事件不生效的解决方法" class="headerlink" title="Vue.js 组件中绑定点击事件不生效的解决方法"></a>Vue.js 组件中绑定点击事件不生效的解决方法</h3><p>在使用组件（比如 element UI）的过程中，会发现无法通过 @click 绑定标签的点击事件。</p>
+<p>因为 Vue.js 使用的是一套自己的事件传递机制，所以我们需要添加 @click.native 来绑定 DOM 原生事件。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;el-dropdown-item icon&#x3D;&quot;el-icon-unlock&quot; @click.native&#x3D;&quot;resetPass&quot;&gt;&lt;&#x2F;el-dropdown-item&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="Vuex的store的使用"><a href="#Vuex的store的使用" class="headerlink" title="Vuex的store的使用"></a>Vuex的store的使用</h3><p>注意：改变store值，要使用mutations，不要直接改变<br>store.js文件：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export default new Vuex.Store(&#123;</span><br><span class="line">  state: &#123;</span><br><span class="line">    isCollapse: false,</span><br><span class="line">    isMobile: false</span><br><span class="line">  &#125;,</span><br><span class="line">  mutations: &#123;</span><br><span class="line">    toggleCollapse(state) &#123;</span><br><span class="line">      state.isCollapse &#x3D;  !state.isCollapse;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="在页面中的使用："><a href="#在页面中的使用：" class="headerlink" title="在页面中的使用："></a>在页面中的使用：</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">在页面中引入：</span><br><span class="line">import &#123; mapState , mapMutations &#125; from &#39;vuex&#39;;</span><br><span class="line"></span><br><span class="line">引入state：</span><br><span class="line">computed: &#123;</span><br><span class="line">  ...mapState([&#39;isCollapse&#39;,&#39;isMobile&#39;])</span><br><span class="line">&#125;,</span><br><span class="line"></span><br><span class="line">引入方法：</span><br><span class="line">methods: &#123;</span><br><span class="line">  ...mapMutations([&#39;toggleCollapse&#39;])</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">页面结构中，直接使用：</span><br><span class="line">:class&#x3D;&quot;&#123;&#39;sider-collapse&#39;:isCollapse&#125;&quot;</span><br><span class="line"></span><br><span class="line">在事件中直接使用：</span><br><span class="line">this.toggleCollapse();</span><br><span class="line"></span><br><span class="line">如果要传参：</span><br><span class="line">this.toggleCollapse(&#123;</span><br><span class="line">  param: this.isCollapse</span><br><span class="line">&#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="emit的使用"><a href="#emit的使用" class="headerlink" title="$emit的使用"></a>$emit的使用</h3><p>通过 Event Bus 进行组件间通信，来折叠侧边栏</p>
+<p>bus.js:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import Vue from &#39;vue&#39;;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 使用 Event Bus</span><br><span class="line">const bus &#x3D; new Vue();</span><br><span class="line"></span><br><span class="line">export default bus;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">在点击事件的组件中：</span><br><span class="line">引入：</span><br><span class="line">import bus from &#39;..&#x2F;public&#x2F;bus&#39;;</span><br><span class="line"></span><br><span class="line">页面结构中：</span><br><span class="line">@click&#x3D;&quot;collapseChage&quot;</span><br><span class="line">v-show&#x3D;&quot;!isCollapse&quot;</span><br><span class="line"></span><br><span class="line">数据，方法：</span><br><span class="line">data() &#123; </span><br><span class="line">  return &#123;</span><br><span class="line">      isCollapse: false,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br><span class="line">methods: &#123;</span><br><span class="line">  &#x2F;&#x2F; 侧边栏折叠</span><br><span class="line">  collapseChage() &#123;</span><br><span class="line">      this.isCollapse &#x3D; !this.isCollapse;</span><br><span class="line">      bus.$emit(&#39;toggleCollapse&#39;, this.isCollapse);</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">在需要用到这个状态的组件中：</span><br><span class="line">引入：</span><br><span class="line">import bus from &#39;..&#x2F;public&#x2F;bus&#39;;</span><br><span class="line">数据：</span><br><span class="line">data() &#123; </span><br><span class="line">  return &#123;</span><br><span class="line">      isCollapse: false,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br><span class="line"></span><br><span class="line">页面结构：</span><br><span class="line">:class&#x3D;&quot;&#123;&#39;content-collapse&#39;:isCollapse&#125;&quot;</span><br><span class="line"></span><br><span class="line">监听toggleCollapse事件：</span><br><span class="line">created() &#123;</span><br><span class="line">  bus.$on(&#39;toggleCollapse&#39;, msg &#x3D;&gt; &#123;</span><br><span class="line">      this.isCollapse &#x3D; msg;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="如何将element-ui中的表格和分页器连接起来"><a href="#如何将element-ui中的表格和分页器连接起来" class="headerlink" title="如何将element-ui中的表格和分页器连接起来"></a>如何将element-ui中的表格和分页器连接起来</h3><img src="/2020/05/26/vue%E9%A1%B9%E7%9B%AE%E8%AE%B0%E5%BD%95/vue01.png" class="">
+<img src="/2020/05/26/vue%E9%A1%B9%E7%9B%AE%E8%AE%B0%E5%BD%95/vue02.png" class="">
+<img src="/2020/05/26/vue%E9%A1%B9%E7%9B%AE%E8%AE%B0%E5%BD%95/vue03.png" class="">
+<img src="/2020/05/26/vue%E9%A1%B9%E7%9B%AE%E8%AE%B0%E5%BD%95/vue04.png" class="">
 ]]></content>
       <categories>
         <category>工作笔记</category>
@@ -2210,6 +2269,21 @@
       </tags>
   </entry>
   <entry>
+    <title>在Github上使用仓库存放.md笔记</title>
+    <url>/2020/07/08/%E5%9C%A8Github%E4%B8%8A%E4%BD%BF%E7%94%A8%E4%BB%93%E5%BA%93%E5%AD%98%E6%94%BE-md%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h3 id="一、在GitHub上创建一个仓库，例如：GaoShu"><a href="#一、在GitHub上创建一个仓库，例如：GaoShu" class="headerlink" title="一、在GitHub上创建一个仓库，例如：GaoShu"></a>一、在GitHub上创建一个仓库，例如：GaoShu</h3><h3 id="二、在本地新建一个存放-md笔记的文件夹GaoShu"><a href="#二、在本地新建一个存放-md笔记的文件夹GaoShu" class="headerlink" title="二、在本地新建一个存放.md笔记的文件夹GaoShu"></a>二、在本地新建一个存放.md笔记的文件夹GaoShu</h3><h3 id="三、执行git命令"><a href="#三、执行git命令" class="headerlink" title="三、执行git命令"></a>三、执行git命令</h3><p><strong>…or create a new repository on the command line</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">echo &quot;# GaoShu&quot; &gt;&gt; README.md</span><br><span class="line">git init</span><br><span class="line">git add README.md</span><br><span class="line">git commit -m &quot;first commit&quot;</span><br><span class="line">git remote add origin https:&#x2F;&#x2F;github.com&#x2F;AAAAAA&#x2F;GaoShu.git</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
+<p><strong>…or push an existing repository from the command line</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git remote add origin https:&#x2F;&#x2F;github.com&#x2F;AAAAAA&#x2F;GaoShu.git</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>工作笔记</category>
+        <category>md笔记</category>
+      </categories>
+      <tags>
+        <tag>md笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>前端CSS问题</title>
     <url>/2020/06/30/%E5%89%8D%E7%AB%AFCSS%E9%97%AE%E9%A2%98/</url>
     <content><![CDATA[<h3 id="iPhone-Safari浏览器字体放大-——解决方法"><a href="#iPhone-Safari浏览器字体放大-——解决方法" class="headerlink" title="iPhone Safari浏览器字体放大 ——解决方法"></a>iPhone Safari浏览器字体放大 ——解决方法</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">text-size-adjust: 100%;</span><br><span class="line">-webkit-text-size-adjust: 100%;</span><br></pre></td></tr></table></figure>
@@ -2288,47 +2362,6 @@
       </tags>
   </entry>
   <entry>
-    <title>在Github上使用仓库存放.md笔记</title>
-    <url>/2020/07/08/%E5%9C%A8Github%E4%B8%8A%E4%BD%BF%E7%94%A8%E4%BB%93%E5%BA%93%E5%AD%98%E6%94%BE-md%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h3 id="一、在GitHub上创建一个仓库，例如：GaoShu"><a href="#一、在GitHub上创建一个仓库，例如：GaoShu" class="headerlink" title="一、在GitHub上创建一个仓库，例如：GaoShu"></a>一、在GitHub上创建一个仓库，例如：GaoShu</h3><h3 id="二、在本地新建一个存放-md笔记的文件夹GaoShu"><a href="#二、在本地新建一个存放-md笔记的文件夹GaoShu" class="headerlink" title="二、在本地新建一个存放.md笔记的文件夹GaoShu"></a>二、在本地新建一个存放.md笔记的文件夹GaoShu</h3><h3 id="三、执行git命令"><a href="#三、执行git命令" class="headerlink" title="三、执行git命令"></a>三、执行git命令</h3><p><strong>…or create a new repository on the command line</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">echo &quot;# GaoShu&quot; &gt;&gt; README.md</span><br><span class="line">git init</span><br><span class="line">git add README.md</span><br><span class="line">git commit -m &quot;first commit&quot;</span><br><span class="line">git remote add origin https:&#x2F;&#x2F;github.com&#x2F;AAAAAA&#x2F;GaoShu.git</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
-<p><strong>…or push an existing repository from the command line</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git remote add origin https:&#x2F;&#x2F;github.com&#x2F;AAAAAA&#x2F;GaoShu.git</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>工作笔记</category>
-        <category>md笔记</category>
-      </categories>
-      <tags>
-        <tag>md笔记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>在Vue项目中使用sass的配置方法</title>
-    <url>/2020/03/19/%E5%9C%A8Vue%E9%A1%B9%E7%9B%AE%E4%B8%AD%E4%BD%BF%E7%94%A8sass%E7%9A%84%E9%85%8D%E7%BD%AE%E6%96%B9%E6%B3%95/</url>
-    <content><![CDATA[<h4 id="1、安装sass的依赖包"><a href="#1、安装sass的依赖包" class="headerlink" title="1、安装sass的依赖包"></a>1、安装sass的依赖包</h4><p>sass-loader依赖于node-sass</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install sass-loader node-sass --save-dev </span><br></pre></td></tr></table></figure>
-<h4 id="2、在build文件夹下的webpack-base-conf-js的rules里面添加配置"><a href="#2、在build文件夹下的webpack-base-conf-js的rules里面添加配置" class="headerlink" title="2、在build文件夹下的webpack.base.conf.js的rules里面添加配置"></a>2、在build文件夹下的webpack.base.conf.js的rules里面添加配置</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line"> test: &#x2F;\.sass$&#x2F;,</span><br><span class="line"> loaders: [&#39;style&#39;, &#39;css&#39;, &#39;scss&#39;]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<p>如下图所示：</p>
-<img src="/2020/03/19/%E5%9C%A8Vue%E9%A1%B9%E7%9B%AE%E4%B8%AD%E4%BD%BF%E7%94%A8sass%E7%9A%84%E9%85%8D%E7%BD%AE%E6%96%B9%E6%B3%95/rules.jpg" class="">
-
-<h4 id="3、在APP-vue中修改style标签"><a href="#3、在APP-vue中修改style标签" class="headerlink" title="3、在APP.vue中修改style标签"></a>3、在APP.vue中修改style标签</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;style lang&#x3D;&quot;scss&quot;&gt;</span><br><span class="line">   $blue:red;</span><br><span class="line">    .common-header&#123;</span><br><span class="line">        color: $blue;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h4 id="4、运行项目"><a href="#4、运行项目" class="headerlink" title="4、运行项目"></a>4、运行项目</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
-<h5 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h5><p>如有以下报错，是版本的问题影响的：</p>
-<p>Module build failed: TypeError: this.getResolve is not a function at Object.loader 安装node-sass运行报错</p>
-<p><strong>解决方法</strong>： 选择更低版本的sass-loader</p>
-<p><strong>卸载当前版本</strong>：npm uninstall sass-loader<br><strong>安装指定版本</strong>：npm install <a href="mailto:&#115;&#x61;&#x73;&#x73;&#x2d;&#x6c;&#x6f;&#97;&#x64;&#x65;&#x72;&#x40;&#55;&#46;&#51;&#x2e;&#x31;">&#115;&#x61;&#x73;&#x73;&#x2d;&#x6c;&#x6f;&#97;&#x64;&#x65;&#x72;&#x40;&#55;&#46;&#51;&#x2e;&#x31;</a> –save-dev</p>
-<p>参考： <a href="https://blog.csdn.net/ze1024/article/details/100516650">安装node-sass运行报错</a></p>
-]]></content>
-      <categories>
-        <category>工作笔记</category>
-        <category>Vue.js</category>
-      </categories>
-      <tags>
-        <tag>Vue.js</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>在Hexo博客中发布文章</title>
     <url>/2018/08/02/%E5%9C%A8Hexo%E5%8D%9A%E5%AE%A2%E4%B8%AD%E5%8F%91%E5%B8%83%E6%96%87%E7%AB%A0/</url>
     <content><![CDATA[<h4 id="1、新建一篇文章"><a href="#1、新建一篇文章" class="headerlink" title="1、新建一篇文章"></a>1、新建一篇文章</h4><p>（1）在hexo博客目录下，进入Git Bash命令窗口中，输入以下命令：</p>
@@ -2371,6 +2404,32 @@
       </categories>
       <tags>
         <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>在Vue项目中使用sass的配置方法</title>
+    <url>/2020/03/19/%E5%9C%A8Vue%E9%A1%B9%E7%9B%AE%E4%B8%AD%E4%BD%BF%E7%94%A8sass%E7%9A%84%E9%85%8D%E7%BD%AE%E6%96%B9%E6%B3%95/</url>
+    <content><![CDATA[<h4 id="1、安装sass的依赖包"><a href="#1、安装sass的依赖包" class="headerlink" title="1、安装sass的依赖包"></a>1、安装sass的依赖包</h4><p>sass-loader依赖于node-sass</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install sass-loader node-sass --save-dev </span><br></pre></td></tr></table></figure>
+<h4 id="2、在build文件夹下的webpack-base-conf-js的rules里面添加配置"><a href="#2、在build文件夹下的webpack-base-conf-js的rules里面添加配置" class="headerlink" title="2、在build文件夹下的webpack.base.conf.js的rules里面添加配置"></a>2、在build文件夹下的webpack.base.conf.js的rules里面添加配置</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line"> test: &#x2F;\.sass$&#x2F;,</span><br><span class="line"> loaders: [&#39;style&#39;, &#39;css&#39;, &#39;scss&#39;]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>如下图所示：</p>
+<img src="/2020/03/19/%E5%9C%A8Vue%E9%A1%B9%E7%9B%AE%E4%B8%AD%E4%BD%BF%E7%94%A8sass%E7%9A%84%E9%85%8D%E7%BD%AE%E6%96%B9%E6%B3%95/rules.jpg" class="">
+
+<h4 id="3、在APP-vue中修改style标签"><a href="#3、在APP-vue中修改style标签" class="headerlink" title="3、在APP.vue中修改style标签"></a>3、在APP.vue中修改style标签</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;style lang&#x3D;&quot;scss&quot;&gt;</span><br><span class="line">   $blue:red;</span><br><span class="line">    .common-header&#123;</span><br><span class="line">        color: $blue;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="4、运行项目"><a href="#4、运行项目" class="headerlink" title="4、运行项目"></a>4、运行项目</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
+<h5 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h5><p>如有以下报错，是版本的问题影响的：</p>
+<p>Module build failed: TypeError: this.getResolve is not a function at Object.loader 安装node-sass运行报错</p>
+<p><strong>解决方法</strong>： 选择更低版本的sass-loader</p>
+<p><strong>卸载当前版本</strong>：npm uninstall sass-loader<br><strong>安装指定版本</strong>：npm install <a href="mailto:&#115;&#x61;&#115;&#115;&#45;&#x6c;&#x6f;&#x61;&#x64;&#101;&#114;&#x40;&#55;&#46;&#51;&#x2e;&#49;">&#115;&#x61;&#115;&#115;&#45;&#x6c;&#x6f;&#x61;&#x64;&#101;&#114;&#x40;&#55;&#46;&#51;&#x2e;&#49;</a> –save-dev</p>
+<p>参考： <a href="https://blog.csdn.net/ze1024/article/details/100516650">安装node-sass运行报错</a></p>
+]]></content>
+      <categories>
+        <category>工作笔记</category>
+        <category>Vue.js</category>
+      </categories>
+      <tags>
+        <tag>Vue.js</tag>
       </tags>
   </entry>
   <entry>
@@ -2477,18 +2536,6 @@
       </tags>
   </entry>
   <entry>
-    <title>插件</title>
-    <url>/2019/07/22/%E6%8F%92%E4%BB%B6/</url>
-    <content><![CDATA[<h4 id="分页插件"><a href="#分页插件" class="headerlink" title="分页插件"></a>分页插件</h4><a href="https://www.npmjs.com/package/jquery.pagination" title="" target="">jquery.pagination</a>]]></content>
-      <categories>
-        <category>工作笔记</category>
-        <category>插件</category>
-      </categories>
-      <tags>
-        <tag>插件</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>常用命令</title>
     <url>/2020/05/25/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
     <content><![CDATA[<h3 id="安装淘宝镜像"><a href="#安装淘宝镜像" class="headerlink" title="安装淘宝镜像"></a>安装淘宝镜像</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install -g cnpm --registry&#x3D;https:&#x2F;&#x2F;registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
@@ -2536,6 +2583,18 @@
       </categories>
       <tags>
         <tag>常用命令</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>插件</title>
+    <url>/2019/07/22/%E6%8F%92%E4%BB%B6/</url>
+    <content><![CDATA[<h4 id="分页插件"><a href="#分页插件" class="headerlink" title="分页插件"></a>分页插件</h4><a href="https://www.npmjs.com/package/jquery.pagination" title="" target="">jquery.pagination</a>]]></content>
+      <categories>
+        <category>工作笔记</category>
+        <category>插件</category>
+      </categories>
+      <tags>
+        <tag>插件</tag>
       </tags>
   </entry>
   <entry>
@@ -2934,7 +2993,8 @@
   <entry>
     <title>网页特效</title>
     <url>/2021/01/19/%E7%BD%91%E9%A1%B5%E7%89%B9%E6%95%88/</url>
-    <content><![CDATA[<h4 id="鼠标点击网页出现爱心特效"><a href="#鼠标点击网页出现爱心特效" class="headerlink" title="鼠标点击网页出现爱心特效"></a>鼠标点击网页出现爱心特效</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">(function(window,document,undefined)&#123;</span><br><span class="line">    var hearts &#x3D; [];</span><br><span class="line">    window.requestAnimationFrame &#x3D; (function()&#123;</span><br><span class="line">        return window.requestAnimationFrame ||</span><br><span class="line">        window.webkitRequestAnimationFrame ||</span><br><span class="line">        window.mozRequestAnimationFrame ||</span><br><span class="line">        window.oRequestAnimationFrame ||</span><br><span class="line">        window.msRequestAnimationFrame ||</span><br><span class="line">        function (callback)&#123;</span><br><span class="line">            setTimeout(callback,1000&#x2F;60);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)();</span><br><span class="line">    init();</span><br><span class="line">    function init()&#123;</span><br><span class="line">        css(&quot;.heart&#123;width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);&#125;.heart:after,.heart:before&#123;content: &#39;&#39;;width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: absolute;&#125;.heart:after&#123;top: -5px;&#125;.heart:before&#123;left: -5px;&#125;&quot;);</span><br><span class="line">        attachEvent();</span><br><span class="line">        gameloop();</span><br><span class="line">    &#125;</span><br><span class="line">    function gameloop()&#123;</span><br><span class="line">        for(var i&#x3D;0;i&lt;hearts.length;i++)&#123;</span><br><span class="line">            if(hearts[i].alpha &lt;&#x3D;0)&#123;</span><br><span class="line">                document.body.removeChild(hearts[i].el);</span><br><span class="line">                hearts.splice(i,1);</span><br><span class="line">                continue;</span><br><span class="line">            &#125;</span><br><span class="line">            hearts[i].y--;</span><br><span class="line">            hearts[i].scale +&#x3D; 0.004;</span><br><span class="line">            hearts[i].alpha -&#x3D; 0.013;</span><br><span class="line">            hearts[i].el.style.cssText &#x3D; &quot;left:&quot;+hearts[i].x+&quot;px;top:&quot;+hearts[i].y+&quot;px;opacity:&quot;+hearts[i].alpha+&quot;;transform:scale(&quot;+hearts[i].scale+&quot;,&quot;+hearts[i].scale+&quot;) rotate(45deg);background:&quot;+hearts[i].color;</span><br><span class="line">        &#125;</span><br><span class="line">        requestAnimationFrame(gameloop);</span><br><span class="line">    &#125;</span><br><span class="line">    function attachEvent()&#123;</span><br><span class="line">        var old &#x3D; typeof window.onclick&#x3D;&#x3D;&#x3D;&quot;function&quot; &amp;&amp; window.onclick;</span><br><span class="line">        window.onclick &#x3D; function(event)&#123;</span><br><span class="line">            old &amp;&amp; old();</span><br><span class="line">            createHeart(event);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    function createHeart(event)&#123;</span><br><span class="line">        var d &#x3D; document.createElement(&quot;div&quot;);</span><br><span class="line">        d.className &#x3D; &quot;heart&quot;;</span><br><span class="line">        hearts.push(&#123;</span><br><span class="line">            el : d,</span><br><span class="line">            x : event.clientX - 5,</span><br><span class="line">            y : event.clientY - 5,</span><br><span class="line">            scale : 1,</span><br><span class="line">            alpha : 1,</span><br><span class="line">            color : randomColor()</span><br><span class="line">        &#125;);</span><br><span class="line">        document.body.appendChild(d);</span><br><span class="line">    &#125;</span><br><span class="line">    function css(css)&#123;</span><br><span class="line">        var style &#x3D; document.createElement(&quot;style&quot;);</span><br><span class="line">        style.type&#x3D;&quot;text&#x2F;css&quot;;</span><br><span class="line">        try&#123;</span><br><span class="line">            style.appendChild(document.createTextNode(css));</span><br><span class="line">        &#125;catch(ex)&#123;</span><br><span class="line">            style.styleSheet.cssText &#x3D; css;</span><br><span class="line">        &#125;</span><br><span class="line">        document.getElementsByTagName(&#39;head&#39;)[0].appendChild(style);</span><br><span class="line">    &#125;</span><br><span class="line">    function randomColor()&#123;</span><br><span class="line">        return &quot;rgb(&quot;+(~~(Math.random()*255))+&quot;,&quot;+(~~(Math.random()*255))+&quot;,&quot;+(~~(Math.random()*255))+&quot;)&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)(window,document);</span><br></pre></td></tr></table></figure>
+    <content><![CDATA[<h4 id="轻松解决网站大部分特效展示问题"><a href="#轻松解决网站大部分特效展示问题" class="headerlink" title="轻松解决网站大部分特效展示问题"></a>轻松解决网站大部分特效展示问题</h4><p><a href="http://www.superslide2.com/index.html">SuperSlide</a></p>
+<h4 id="鼠标点击网页出现爱心特效"><a href="#鼠标点击网页出现爱心特效" class="headerlink" title="鼠标点击网页出现爱心特效"></a>鼠标点击网页出现爱心特效</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">(function(window,document,undefined)&#123;</span><br><span class="line">    var hearts &#x3D; [];</span><br><span class="line">    window.requestAnimationFrame &#x3D; (function()&#123;</span><br><span class="line">        return window.requestAnimationFrame ||</span><br><span class="line">        window.webkitRequestAnimationFrame ||</span><br><span class="line">        window.mozRequestAnimationFrame ||</span><br><span class="line">        window.oRequestAnimationFrame ||</span><br><span class="line">        window.msRequestAnimationFrame ||</span><br><span class="line">        function (callback)&#123;</span><br><span class="line">            setTimeout(callback,1000&#x2F;60);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)();</span><br><span class="line">    init();</span><br><span class="line">    function init()&#123;</span><br><span class="line">        css(&quot;.heart&#123;width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);&#125;.heart:after,.heart:before&#123;content: &#39;&#39;;width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: absolute;&#125;.heart:after&#123;top: -5px;&#125;.heart:before&#123;left: -5px;&#125;&quot;);</span><br><span class="line">        attachEvent();</span><br><span class="line">        gameloop();</span><br><span class="line">    &#125;</span><br><span class="line">    function gameloop()&#123;</span><br><span class="line">        for(var i&#x3D;0;i&lt;hearts.length;i++)&#123;</span><br><span class="line">            if(hearts[i].alpha &lt;&#x3D;0)&#123;</span><br><span class="line">                document.body.removeChild(hearts[i].el);</span><br><span class="line">                hearts.splice(i,1);</span><br><span class="line">                continue;</span><br><span class="line">            &#125;</span><br><span class="line">            hearts[i].y--;</span><br><span class="line">            hearts[i].scale +&#x3D; 0.004;</span><br><span class="line">            hearts[i].alpha -&#x3D; 0.013;</span><br><span class="line">            hearts[i].el.style.cssText &#x3D; &quot;left:&quot;+hearts[i].x+&quot;px;top:&quot;+hearts[i].y+&quot;px;opacity:&quot;+hearts[i].alpha+&quot;;transform:scale(&quot;+hearts[i].scale+&quot;,&quot;+hearts[i].scale+&quot;) rotate(45deg);background:&quot;+hearts[i].color;</span><br><span class="line">        &#125;</span><br><span class="line">        requestAnimationFrame(gameloop);</span><br><span class="line">    &#125;</span><br><span class="line">    function attachEvent()&#123;</span><br><span class="line">        var old &#x3D; typeof window.onclick&#x3D;&#x3D;&#x3D;&quot;function&quot; &amp;&amp; window.onclick;</span><br><span class="line">        window.onclick &#x3D; function(event)&#123;</span><br><span class="line">            old &amp;&amp; old();</span><br><span class="line">            createHeart(event);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    function createHeart(event)&#123;</span><br><span class="line">        var d &#x3D; document.createElement(&quot;div&quot;);</span><br><span class="line">        d.className &#x3D; &quot;heart&quot;;</span><br><span class="line">        hearts.push(&#123;</span><br><span class="line">            el : d,</span><br><span class="line">            x : event.clientX - 5,</span><br><span class="line">            y : event.clientY - 5,</span><br><span class="line">            scale : 1,</span><br><span class="line">            alpha : 1,</span><br><span class="line">            color : randomColor()</span><br><span class="line">        &#125;);</span><br><span class="line">        document.body.appendChild(d);</span><br><span class="line">    &#125;</span><br><span class="line">    function css(css)&#123;</span><br><span class="line">        var style &#x3D; document.createElement(&quot;style&quot;);</span><br><span class="line">        style.type&#x3D;&quot;text&#x2F;css&quot;;</span><br><span class="line">        try&#123;</span><br><span class="line">            style.appendChild(document.createTextNode(css));</span><br><span class="line">        &#125;catch(ex)&#123;</span><br><span class="line">            style.styleSheet.cssText &#x3D; css;</span><br><span class="line">        &#125;</span><br><span class="line">        document.getElementsByTagName(&#39;head&#39;)[0].appendChild(style);</span><br><span class="line">    &#125;</span><br><span class="line">    function randomColor()&#123;</span><br><span class="line">        return &quot;rgb(&quot;+(~~(Math.random()*255))+&quot;,&quot;+(~~(Math.random()*255))+&quot;,&quot;+(~~(Math.random()*255))+&quot;)&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)(window,document);</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>工作笔记</category>
@@ -3394,8 +3454,8 @@
 </tr>
 </thead>
 <tbody><tr>
-<td></td>
-<td></td>
+<td><a href="https://dev.dcloud.net.cn/mui/">MUI</a></td>
+<td><a href="https://cba.github.io/layuiAdmin-doc/">layuiAdmin pro-文档</a></td>
 <td></td>
 <td></td>
 <td></td>
@@ -3403,7 +3463,7 @@
 <tr>
 <td><a href="https://www.vue-js.com/">Vue.js社区</a></td>
 <td><a href="https://www.kancloud.cn/chenmk/web-knowledges/1077402">H5·前端小册</a></td>
-<td></td>
+<td><a href="https://www.highcharts.com.cn/">Highcharts</a></td>
 <td><a href="https://www.canvasapi.cn/CanvasRenderingContext2D/canvas">Canvas API</a></td>
 <td><a href="https://github.com/Tencent/weui">WeUI</a></td>
 </tr>
@@ -3977,6 +4037,27 @@
 <td></td>
 </tr>
 </tbody></table>
+<ul>
+<li>QRcode.js-二维码生成器</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><a href="https://github.com/davidshimjs/qrcodejs">qrcode-github</a></th>
+<th><a href="http://code.ciaoca.com/javascript/qrcode/">qrcode-文档</a></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="https://www.runoob.com/w3cnote/javascript-qrcodejs-library.html">qrcode-菜鸟教程</a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
 <h3 id="设计"><a href="#设计" class="headerlink" title="设计"></a>设计</h3><ul>
 <li>资源网站</li>
 </ul>
@@ -4000,7 +4081,7 @@
 <tr>
 <td><a href="https://v.paixin.com/">拍信创意</a></td>
 <td><a href="https://showroom.littleworkshop.fr/">室内设计稿</a></td>
-<td></td>
+<td><a href="https://www.taptap.com/">TapTap-发现好游戏</a></td>
 <td></td>
 <td></td>
 </tr>
@@ -4124,6 +4205,7 @@
 <td></td>
 </tr>
 </tbody></table>
+<p><a href="https://ad.oceanengine.com/pages/login/index.html">广告投放平台</a></p>
 <h3 id="教师资格证"><a href="#教师资格证" class="headerlink" title="教师资格证"></a>教师资格证</h3><table>
 <thead>
 <tr>

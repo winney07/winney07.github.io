@@ -40,8 +40,6 @@ mongorestore -h 127.0.0.1 -d testDemo D:\software\MangoDB\backup\123\company
 
 
 
-
-
   [【尚硅谷】前端视频_MongoDB夯实基础视频](https://www.bilibili.com/video/av21989676?from=search&seid=13644841351714946278)
 
 - 基本概念

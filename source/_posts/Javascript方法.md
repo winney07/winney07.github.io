@@ -8,6 +8,43 @@ categories:
 - Javascript
 ---
 
+#### 一、作用域
+
+1、当看到script标签的时候就会进入到js作用
+
+2、调用一个function的时候
+
+#### 二、进入到作用域之后，发生了什么事情??
+
+1、js预解析
+
+​		开辟一个空间，找有没有var，有没有方法参数，有没有function，如果有var，有方法参数，就把var和方法参数定义的变量设置成undefined，如果有function，那么就储存function里面的所有内容。
+
+2、js逐行执行
+
+​	 从上往下执行，找有没有表达式，+  - * 、==   ++   -- ，如果有表达式，就修改js作用域里面的变量的值。
+
+```
+window.onload = function () {
+	console.log(a);
+	var a = 1;
+	console.log(a);
+    function a() {
+        console.log(2); 
+    }
+	console.log(a);
+    var a = 3;
+    console.log(a);
+    function a() { 
+        console.log(4);
+    }
+    console.log(a);
+	a();
+)
+```
+
+
+
 #### 判断某变量的值是否等于某数组中的一个元素
 
 ```
@@ -723,5 +760,78 @@ selectChannel[selectList[i]] = [];
     alert(errorTxt);
   } 
 </script> 
+```
+
+#### 返回文档的根节点（html）
+
+```
+document.documentElement
+```
+
+#### 返回DOM对象中的body节点
+
+```
+document.body
+```
+
+> 在标准模式下，document.body.scrollTop恒为0；
+>
+> 但在怪异模式下，document.documentElement.scrollTop；
+>
+> 但是document.documentElement.scrollTop和document.body.scrollTop在标准模式或者是奇怪模式下都只有一个会返回有效的值，所以获取scrollTop时两个都加上
+
+#### 获取滚动条当前位置高度
+
+```
+function getScrollTop(){
+	var scrollTop = 0;
+	if(document.documentElement && document.documentElement.scrollTop){
+
+		scrollTop = document.documentElement.scrollTop;
+
+	}else if(document.body){
+
+		scrollTop = document.body.scrollTop;
+
+	}
+	return scrollTop;
+}
+```
+
+#### 获取当前页面可视高度(注意，此处得到的是当前页面的可视高度，而不是浏览器的可视高度)
+
+```
+function getClientHeight(){
+
+	var clientHeight = 0;
+	if(document.body.clientHeight && document.documentElement.clientHeight){
+
+		clientHeight = Math.min(document.body.clientHeight,document.documentElement.clientHeight);
+
+	}else{
+
+		clientHeight = Math.max(document.body.clientHeight,document.documentElement.clientHeight);
+
+	}
+
+	return clientHeight;
+}
+```
+
+#### 获取文档完整高度
+
+```
+function getScrollHeight(){
+
+	return Math.max(document.body.scrollHeight,document.documentElement.scrollHeight);
+
+}
+```
+
+#### 判断是否到达页面底部
+
+```
+// 当滚动条高度加上页面可视高度等于整个文档完整高度，则页面已达到底部
+getScrollTop() + getClientHeight() == getScrollHeight() 
 ```
 

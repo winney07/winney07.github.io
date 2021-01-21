@@ -193,7 +193,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2019/12/06/%E4%BD%BF%E7%94%A8cmd%E5%91%BD%E4%BB%A4%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6%E5%A4%B9/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/03/19/Vue%E9%A1%B9%E7%9B%AE%E8%AE%BE%E7%BD%AE%E6%AF%8F%E4%B8%AA%E9%A1%B5%E9%9D%A2%E7%9A%84title/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -207,7 +207,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2019/12/06/%E4%BD%BF%E7%94%A8cmd%E5%91%BD%E4%BB%A4%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6%E5%A4%B9/" class="post-title-link" itemprop="url">使用cmd命令删除文件夹</a>
+            <a href="/2020/03/19/Vue%E9%A1%B9%E7%9B%AE%E8%AE%BE%E7%BD%AE%E6%AF%8F%E4%B8%AA%E9%A1%B5%E9%9D%A2%E7%9A%84title/" class="post-title-link" itemprop="url">Vue项目设置每个页面的title</a>
         </h2>
 
         <div class="post-meta">
@@ -217,14 +217,186 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2019-12-06 11:48:43" itemprop="dateCreated datePublished" datetime="2019-12-06T11:48:43+08:00">2019-12-06</time>
+              <time title="创建时间：2020-03-19 17:59:33" itemprop="dateCreated datePublished" datetime="2020-03-19T17:59:33+08:00">2020-03-19</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-01-12 17:53:31" itemprop="dateModified" datetime="2021-01-12T17:53:31+08:00">2021-01-12</time>
+                <time title="修改时间：2021-01-12 18:01:57" itemprop="dateModified" datetime="2021-01-12T18:01:57+08:00">2021-01-12</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/Vue-js/" itemprop="url" rel="index"><span itemprop="name">Vue.js</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h5 id="1、在项目目录下安装vue-wechat-title"><a href="#1、在项目目录下安装vue-wechat-title" class="headerlink" title="1、在项目目录下安装vue-wechat-title"></a>1、在项目目录下安装vue-wechat-title</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm i vue-wechat-title --save-dev</span><br></pre></td></tr></table></figure>
+<h5 id="2、在main-js中-使用vue-wechat-title"><a href="#2、在main-js中-使用vue-wechat-title" class="headerlink" title="2、在main.js中 使用vue-wechat-title"></a>2、在main.js中 使用vue-wechat-title</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Vue.use(require(&#39;vue-wechat-title&#39;))     &#x2F;&#x2F;实例化参数</span><br></pre></td></tr></table></figure>
+<h5 id="3、在router的配置中设置"><a href="#3、在router的配置中设置" class="headerlink" title="3、在router的配置中设置"></a>3、在router的配置中设置</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">      path: &#39;&#x2F;home&#39;,</span><br><span class="line">      name: &#39;Home&#39;,</span><br><span class="line">      component: Home,</span><br><span class="line">      meta: &#123;</span><br><span class="line">        title: &#39;主页&#39;       &#x2F;&#x2F;页面标题</span><br><span class="line">      &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<h5 id="4、在每个vue页面中加入"><a href="#4、在每个vue页面中加入" class="headerlink" title="4、在每个vue页面中加入 "></a>4、在每个vue页面中加入 <div v-wechat-title="$route.meta.title"></div></h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> &lt;div class&#x3D;&quot;content content-box&quot;&gt;</span><br><span class="line">      &lt;div v-wechat-title&#x3D;&quot;$route.meta.title&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+
+<h6 id="【参考】：-vue项目设置每个页面的title"><a href="#【参考】：-vue项目设置每个页面的title" class="headerlink" title="【参考】： vue项目设置每个页面的title"></a>【参考】： <a target="_blank" rel="noopener" href="https://www.cnblogs.com/itgezhu/p/10817502.html">vue项目设置每个页面的title</a></h6>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/03/19/Vue-js-Element-UI%E5%AF%BC%E8%88%AA%E5%86%99%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="winney">
+      <meta itemprop="description" content="Doing is better than saying.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="winney">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/19/Vue-js-Element-UI%E5%AF%BC%E8%88%AA%E5%86%99%E6%B3%95/" class="post-title-link" itemprop="url">Vue.js + Element-UI导航写法</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-03-19 17:28:29" itemprop="dateCreated datePublished" datetime="2020-03-19T17:28:29+08:00">2020-03-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-01-12 18:01:14" itemprop="dateModified" datetime="2021-01-12T18:01:14+08:00">2021-01-12</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/Vue-js/" itemprop="url" rel="index"><span itemprop="name">Vue.js</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="方法一（基本的）："><a href="#方法一（基本的）：" class="headerlink" title="方法一（基本的）："></a>方法一（基本的）：</h4><blockquote>
+<p>elementUi导航通常会和vue-router一起使用，所以与官网的示例的写法不太一样。具体写法如下:</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;el-menu :default-active&#x3D;&quot;$route.path&quot; class&#x3D;&quot;el-menu-vertical-demo&quot; router&gt;</span><br><span class="line">   &lt;el-menu-item v-for&#x3D;&quot;item in items&quot; :index&#x3D;&quot;item.src&quot;&gt;&#123;&#123;item.name&#125;&#125;            </span><br><span class="line">   &lt;&#x2F;el-menu-item&gt;</span><br><span class="line"> &lt;&#x2F;el-menu&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>data里则是正常的数据即可：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">data()&#123;</span><br><span class="line">      return&#123;</span><br><span class="line">        items:[</span><br><span class="line">          &#123;src:&#39;&#x2F;gameinfo&#x2F;index&#39;,name:&#39;基本信息&#39;&#125;,</span><br><span class="line">          &#123;src:&#39;&#x2F;gameversion&#x2F;index&#39;,name:&#39;版本管理&#39;&#125;,</span><br><span class="line">          &#123;src:&#39;&#x2F;gameplatform&#x2F;index&#39;,name:&#39;渠道管理&#39;&#125;,</span><br><span class="line">          &#123;src:&#39;&#x2F;gameproduct&#x2F;index&#39;,name:&#39;充值产品&#39;&#125;,</span><br><span class="line">          &#123;src:&#39;&#x2F;gameplugin&#x2F;index&#39;,name:&#39;插件管理&#39;&#125;</span><br><span class="line">        ]</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/03/19/Vue-js-Element-UI%E5%AF%BC%E8%88%AA%E5%86%99%E6%B3%95/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/01/06/Windows%E7%8E%AF%E5%A2%83%E4%B8%8B%E5%88%A9%E7%94%A8CMD%E5%91%BD%E4%BB%A4%E6%89%B9%E9%87%8F%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%E5%90%8D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="winney">
+      <meta itemprop="description" content="Doing is better than saying.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="winney">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/01/06/Windows%E7%8E%AF%E5%A2%83%E4%B8%8B%E5%88%A9%E7%94%A8CMD%E5%91%BD%E4%BB%A4%E6%89%B9%E9%87%8F%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%E5%90%8D/" class="post-title-link" itemprop="url">Windows环境下利用CMD命令批量修改文件名</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-01-06 15:54:28" itemprop="dateCreated datePublished" datetime="2020-01-06T15:54:28+08:00">2020-01-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-01-13 11:22:58" itemprop="dateModified" datetime="2021-01-13T11:22:58+08:00">2021-01-13</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -251,215 +423,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h6 id="1、删除空文件夹"><a href="#1、删除空文件夹" class="headerlink" title="1、删除空文件夹"></a>1、删除空文件夹</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rmdir 空文件夹名</span><br></pre></td></tr></table></figure>
-<h6 id="2、删除文件夹以及文件夹内所有内容（-s是删除所有子目录以及其中的内容；-q是在删除时，不提示yes-or-no）"><a href="#2、删除文件夹以及文件夹内所有内容（-s是删除所有子目录以及其中的内容；-q是在删除时，不提示yes-or-no）" class="headerlink" title="2、删除文件夹以及文件夹内所有内容（/s是删除所有子目录以及其中的内容；/q是在删除时，不提示yes or no）"></a>2、删除文件夹以及文件夹内所有内容（/s是删除所有子目录以及其中的内容；/q是在删除时，不提示yes or no）</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rmdir /s/q 文件夹名</span><br></pre></td></tr></table></figure>
-<h6 id="3、删除指定盘符的文件夹-删除D盘multify文件夹下的my-multify文件夹以及子内容，并且不提示"><a href="#3、删除指定盘符的文件夹-删除D盘multify文件夹下的my-multify文件夹以及子内容，并且不提示" class="headerlink" title="3、删除指定盘符的文件夹(删除D盘multify文件夹下的my-multify文件夹以及子内容，并且不提示)"></a>3、删除指定盘符的文件夹(删除D盘multify文件夹下的my-multify文件夹以及子内容，并且不提示)</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rmdir /s/q d:\multify\my-multify</span><br></pre></td></tr></table></figure>
-      
-    </div>
+          <h3 id="Windows环境下利用CMD命令批量修改文件名"><a href="#Windows环境下利用CMD命令批量修改文件名" class="headerlink" title="Windows环境下利用CMD命令批量修改文件名"></a>Windows环境下利用CMD命令批量修改文件名</h3><h4 id="核心命令"><a href="#核心命令" class="headerlink" title="核心命令"></a>核心命令</h4><h5 id="·文件重命名-ren"><a href="#·文件重命名-ren" class="headerlink" title="·文件重命名 ren"></a>·文件重命名 <span style="color:#c7254e;">ren</span></h5><p>1、ren即rename的缩写，使用ren或者rename命令均可实现文件重命名的操作；命令的使用方法很简单，格式为 <span style="color:#c7254e;">ren old_name new_name</span> ；例如，想要将D盘根目录下的文件 a.txt 重命名为 b.doc ，只需要在CMD中进入D盘根目录，执行 <span style="color:#c7254e;">ren a.txt b.doc </span>；或者使用绝对路径，执行 <span style="color:#c7254e;">ren D:\a.txt b.doc  </span>，也可以达到同样的效果</p>
+<p>2、需要注意的是，旧文件名 <span style="color:#c7254e;">old_name </span>可以使用相对路径，也可以包含绝对路径，但新文件名 <span style="color:#c7254e;">new_name</span>不能包含任何文件路径，只能是纯文件名；所以，要想批量修改包含子文件夹的多个路径下的大量文件名，还需要用到一款支持通配符匹配查询替换的文本编辑器，以便从路径+文件名的文件目录系统中提取出文件名的部分</p>
+<p>3、另外， <span style="color:#c7254e;">ren</span> 也支持使用通配符；例如，想要将扩展名为 <span style="color:#c7254e;">.docx </span>的文件扩展名批量修改为 <span style="color:#c7254e;">.doc</span> ，执行 <span style="color:#c7254e;">ren *.docx  *.doc</span> 即可；但通配符的使用规则十分复杂，若无法完全理解其中的匹配规则，建议只使用通配符来修改文件扩展名</p>
+<p>摘抄自：<a target="_blank" rel="noopener" href="https://blog.csdn.net/hitomitoi/article/details/81566494">https://blog.csdn.net/hitomitoi/article/details/81566494</a></p>
 
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2019/11/20/Webpack/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="winney">
-      <meta itemprop="description" content="Doing is better than saying.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="winney">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/11/20/Webpack/" class="post-title-link" itemprop="url">webpack起步</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-11-20 11:14:04" itemprop="dateCreated datePublished" datetime="2019-11-20T11:14:04+08:00">2019-11-20</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-01-19 11:38:32" itemprop="dateModified" datetime="2021-01-19T11:38:32+08:00">2021-01-19</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/webpack/" itemprop="url" rel="index"><span itemprop="name">webpack</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="基本安装"><a href="#基本安装" class="headerlink" title="基本安装"></a>基本安装</h2><h4 id="一、"><a href="#一、" class="headerlink" title="一、"></a>一、</h4><ol>
-<li><p>新建目录文件夹</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir webpack-demo</span><br></pre></td></tr></table></figure></li>
-<li><p>切换到目录</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd webpack-demo</span><br></pre></td></tr></table></figure></li>
-<li><p>生成package.json文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm init</span><br></pre></td></tr></table></figure></li>
-<li><p>安装webpack</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev webpack</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>执行webpack命令，如果可以执行，则安装成功</p>
-<p>注意：webpack为4+版本以上，需要安装webpack-cli ,安装本地webpack-cli之前，要安装全局</p>
-</blockquote>
-</li>
-<li><p>安装全局webpack-cli</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install webpack-cli –g</span><br></pre></td></tr></table></figure></li>
-<li><p>安装本地webpack-cli</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install webpack-cli --save-dev</span><br></pre></td></tr></table></figure>
-<p>安装淘宝镜像（ 如果网速不太好的情况下，可以选择安装淘宝镜像）</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g cnpm --registry=https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
-<p>快速安装：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir webpack-demo &amp;&amp; <span class="built_in">cd</span> webpack-demo</span><br><span class="line">npm init -y</span><br><span class="line">npm install webpack webpack-cli --save-dev</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>贯穿整个指南的是，我们将使用 diff 块，来显示我们对目录、文件和代码所做的更改。</p>
-</blockquote>
-</li>
-</ol>
-<h4 id="二、"><a href="#二、" class="headerlink" title="二、"></a>二、</h4><p>现在我们将创建以下目录结构、文件和内容：</p>
-<h6 id="project"><a href="#project" class="headerlink" title="project"></a>project</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">  webpack-demo</span><br><span class="line">  |- package.json</span><br><span class="line">+ |- index.html</span><br><span class="line">+ |- /src</span><br><span class="line">+   |- index.js</span><br></pre></td></tr></table></figure>
-<h6 id="src-index-js"><a href="#src-index-js" class="headerlink" title="src/index.js"></a>src/index.js</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">component</span></span>() &#123;</span><br><span class="line">  var element = document.createElement(<span class="string">&#x27;div&#x27;</span>);</span><br><span class="line"></span><br><span class="line">  // Lodash（目前通过一个 script 脚本引入）对于执行这一行是必需的</span><br><span class="line">  element.innerHTML = _.join([<span class="string">&#x27;Hello&#x27;</span>, <span class="string">&#x27;webpack&#x27;</span>], <span class="string">&#x27; &#x27;</span>);</span><br><span class="line"></span><br><span class="line">  <span class="built_in">return</span> element;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">document.body.appendChild(component());</span><br></pre></td></tr></table></figure>
-<h6 id="index-html"><a href="#index-html" class="headerlink" title="index.html"></a>index.html</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;!doctype html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;title&gt;起步&lt;/title&gt;</span><br><span class="line">    &lt;script src=<span class="string">&quot;https://unpkg.com/lodash@4.16.6&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line">    &lt;script src=<span class="string">&quot;./src/index.js&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line">  &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>我们还需要调整 package.json 文件，以便确保我们安装包是私有的(private)，并且移除 main 入口。这可以防止意外发布你的代码。</p>
-</blockquote>
-<p><em><div style="background:#DCF2FD;color:#618ca0;padding:6px;">如果你想要了解 package.json 内在机制的更多信息，我们推荐阅读 <a href="https://docs.npmjs.com/files/package.json" title="" target="">npm 文档</a>。</div></em></p>
-<h6 id="package-json"><a href="#package-json" class="headerlink" title="package.json"></a>package.json</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"> &#123;</span><br><span class="line">    <span class="string">&quot;name&quot;</span>: <span class="string">&quot;webpack-demo&quot;</span>,</span><br><span class="line">    <span class="string">&quot;version&quot;</span>: <span class="string">&quot;1.0.0&quot;</span>,</span><br><span class="line">    <span class="string">&quot;description&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">+   <span class="string">&quot;private&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">-   <span class="string">&quot;main&quot;</span>: <span class="string">&quot;index.js&quot;</span>,</span><br><span class="line">    <span class="string">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">      <span class="string">&quot;test&quot;</span>: <span class="string">&quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;keywords&quot;</span>: [],</span><br><span class="line">    <span class="string">&quot;author&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">    <span class="string">&quot;license&quot;</span>: <span class="string">&quot;ISC&quot;</span>,</span><br><span class="line">    <span class="string">&quot;devDependencies&quot;</span>: &#123;</span><br><span class="line">      <span class="string">&quot;webpack&quot;</span>: <span class="string">&quot;^4.0.1&quot;</span>,</span><br><span class="line">      <span class="string">&quot;webpack-cli&quot;</span>: <span class="string">&quot;^2.0.9&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;dependencies&quot;</span>: &#123;&#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>在此示例中，<code>&lt;script&gt;</code> 标签之间存在隐式依赖关系。<code>index.js</code> 文件执行之前，还依赖于页面中引入的 <code>lodash</code>。之所以说是隐式的是因为 <code>index.js</code> 并未显式声明需要引入 <code>lodash</code>，只是假定推测已经存在一个全局变量 <code>_</code>。</p>
-</blockquote>
-<p>使用这种方式去管理 JavaScript 项目会有一些问题：</p>
-<blockquote>
-<ul>
-<li>无法立即体现，脚本的执行依赖于外部扩展库(external library)。</li>
-<li>如果依赖不存在，或者引入顺序错误，应用程序将无法正常运行。</li>
-<li>如果依赖被引入但是并没有使用，浏览器将被迫下载无用代码。</li>
-</ul>
-</blockquote>
-<p>让我们使用 webpack 来管理这些脚本。</p>
-<h4 id="关于webpack使用CleanWebpackPlugin插件时报错"><a href="#关于webpack使用CleanWebpackPlugin插件时报错" class="headerlink" title="关于webpack使用CleanWebpackPlugin插件时报错"></a>关于webpack使用CleanWebpackPlugin插件时报错</h4><div style="color:red;">CleanWebpackPlugin is not a constructor</div>
-错误写法：
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const CleanWebpackPlugin = require(<span class="string">&quot;clean-webpack-plugin&quot;</span>);</span><br><span class="line"> </span><br><span class="line">...</span><br><span class="line"> </span><br><span class="line">plugins: [</span><br><span class="line">    new CleanWebpackPlugin([<span class="string">&#x27;dist&#x27;</span>])</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-正确写法：
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const &#123; CleanWebpackPlugin &#125; = require(<span class="string">&quot;clean-webpack-plugin&quot;</span>);</span><br><span class="line"> </span><br><span class="line">...</span><br><span class="line"> </span><br><span class="line">plugins: [</span><br><span class="line">    new CleanWebpackPlugin()</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2019/07/22/%E6%8F%92%E4%BB%B6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="winney">
-      <meta itemprop="description" content="Doing is better than saying.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="winney">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/07/22/%E6%8F%92%E4%BB%B6/" class="post-title-link" itemprop="url">插件</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-07-22 11:42:08" itemprop="dateCreated datePublished" datetime="2019-07-22T11:42:08+08:00">2019-07-22</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-01-12 17:49:40" itemprop="dateModified" datetime="2021-01-12T17:49:40+08:00">2021-01-12</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/%E6%8F%92%E4%BB%B6/" itemprop="url" rel="index"><span itemprop="name">插件</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="分页插件"><a href="#分页插件" class="headerlink" title="分页插件"></a>分页插件</h4><a href="https://www.npmjs.com/package/jquery.pagination" title="" target="">jquery.pagination</a>
       
     </div>
 
@@ -477,7 +445,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/17/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><span class="page-number current">18</span><a class="page-number" href="/page/19/">19</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><a class="extend next" rel="next" href="/page/19/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/17/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><span class="page-number current">18</span><a class="page-number" href="/page/19/">19</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/">26</a><a class="extend next" rel="next" href="/page/19/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -545,20 +513,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">73</span>
+          <span class="site-state-item-count">77</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">42</span>
+        <span class="site-state-item-count">44</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">42</span>
+        <span class="site-state-item-count">45</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

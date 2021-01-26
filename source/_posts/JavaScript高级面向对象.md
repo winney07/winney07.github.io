@@ -172,12 +172,89 @@ console.log(zxy);
 ```
 class Person {
 	constructor (name, age){     // constructor构造器或者构造函数
-		this .name = name;
+		this.name = name;
 		this.age = age;
 	}
 	say(){
-		console.log (this. name + "你好");
+		console.log (this.name + "你好");
+	}
+	sing(song){
+		console.log ("我唱歌");
+		console.log (this.name + song);
+	}
+}
+var ldh = new Star('刘德华', 18);
+var zxy = new star(张学友"，20);
+// 1)我们类里面所有的函数不需要写function
+// 2)多个函数方法之间不需要添加逗号分隔
+ldh.sing("冰雨");
+zxy.sing("李香兰");
+```
+
+### 3.类的继承
+
+#### 3.1继承
+
+现实中的继承：子承父业，比如我们都继承了父亲的姓。
+
+程序中的继承：子类可以继承父类的一些属性和方法。
+
+语法︰
+
+```
+// 父类
+class Father{
+	money() {
+		console.log(100);
+	}
+}
+// 子类继承父类
+class Son extends Father{ 
+}
+var son = new Son();
+son.money();
+```
+
+这样写，会报错：
+
+```
+// 父类
+class Father{
+	constructor(x, y){
+		this.x = x;
+		this.y = y;
+	}
+	sum() {
+		console.log(this.x + this.y);
+	}
+}
+// 子类继承父类
+class Son extends Father{ 
+	constructor(x, y){
+		this.x = x;
+		this.y = y;
+	}
+}
+var son2 = new Son(1, 2);
+son2.sum();
+```
+
+```
+Uncaught ReferenceError:Must call super constructor in derived class before accessing 'this ' or returningfrom derived constructor
+```
+
+解决方法：
+
+```
+// 子类继承父类
+class Son extends Father{ 
+	constructor(x, y){
+		super(x, y);   // 调用了父类中的构造函数
 	}
 }
 ```
+
+#### 3.2 super关键字
+
+`super关键字`用于访问和调用对象父类上的函数。`可以调用父类的构造函数`，也可以调用父类的普通函数
 

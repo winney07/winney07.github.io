@@ -506,6 +506,30 @@ window.location.reload();
 
 [参考教程](https://www.jb51.net/article/124389.htm)
 
+#### 设置复选框选中
+
+```
+$("input").attr("checked", true);
+或
+$("input").attr("checked", "true");
+```
+
+#### 判断复选框是否被选中
+
+```
+var isChecked = $("input").is(":checked");
+```
+
+#### 设置复选框不选中
+
+```
+$("input").attr("checked", false); 
+或
+$("input").prop("checked", false); 
+```
+
+
+
 #### 获取单选框选中的值
 
 ```
@@ -835,3 +859,153 @@ function getScrollHeight(){
 getScrollTop() + getClientHeight() == getScrollHeight() 
 ```
 
+#### 清空尚未执行完的动画队列
+
+```
+$(".mobie_show").stop().animate({"top":"70px","opacity":"1"});
+```
+
+> 把当前元素接下来尚未执行完的动画队列清空    （例如：当用户鼠标经过某元素的时候，执行某个动画，用户不断地让鼠标经过元素，但上一个动画还没有执行完毕。  加上stop是为了避免用户不停地操作）
+
+#### swobject的使用
+
+```
+var params = {wmode:"transparent"};
+swfobject.embedSWF("http://images.vxinyou.com/gd/images1510/hh.swf", "hh", "1920", "450", "9.0.0","http://images.vxinyou.com/jsCommon/expressinstall.swf", {}, params);  
+```
+
+#### JS禁止查看网页源代码的实现方法
+
+查看源代码的方法：
+
+1、直接按F12
+
+2、Ctrl+Shift+I查看
+
+3、鼠标点击右键查看
+
+> 把以上三种状态都屏蔽掉就可以了，document有onkeydown(键盘按键事件)，该事件里面找到对应的keycode并处理就可以，document也有oncontextmenu鼠标右键事件，屏蔽即可。
+
+```
+window.onload = function(){
+    document.onkeydown = function(){
+        var e = window.event || arguments[0];
+        console.log(e);
+        if(e.keyCode == 123){
+            // alert("小样你想干嘛？");
+            return false;
+        }else if((e.ctrlKey)&&(e.shiftKey)&&(e.keyCode == 73)){
+            // alert("还是不给你看。。");
+            return false;
+        }
+    };
+    document.oncontextmenu = function(){
+        // alert("小样不给你看");
+        return false;
+    }
+}
+```
+
+#### 网站个性化设置-换肤
+
+结构：
+
+```
+<body class="green">
+<div>
+    <div class="theme">
+        <button class="btn btn-default">默认</button>
+        <button class="btn btn-green”>绿色</button>
+        <button class="btn btn-blue">蓝色</button>
+        <button class="btn btn-orange">橙色</button>
+    </div>
+    <div class="main-nav">
+        <ul>
+            <li><a href="#”>首页<span>Home</span></a></li>
+            <li><a href="#">公司概况<span>Company</span></a></li>
+            <li><a href="#">新闻中心<span>News</span></a></li>
+        </ul>
+    </div>
+    <div id="content">
+        <p>网站个性化设置-换肤!</p>
+    </div>
+</div>
+</body>
+```
+
+样式：
+
+```
+#content p {
+	padding: 10px;
+}
+/*默认主题*/
+body.default {
+	background:url(../images/bg1.jpg) no-repeat;
+}
+.default .main-nav {
+	background: #c5000;
+}
+.default #content {
+	background: #c5000;
+}
+/*绿色主题*/
+body.green {
+	background:ur1(../images/bg2-jpg) no-repeat;
+}
+.green .main-nav {
+	background: #5cb85c;
+}
+.green #content {
+	background: #5cb85c;
+}
+/*蓝色主题*/
+body.blue {
+	background:url(../images/bg3.jpg) no-repeat;
+}
+```
+
+方法：
+
+- 方法一：点击按钮改变body的样式
+
+  用replace替换，拿到后面的值（default、green）用replace把（btn btn-）替换为空
+
+  ```
+  $(function() {
+  	// 单击不同的按纽,加载不同的样式
+  	$(".theme button").click(function(){
+  	// replace()用于替换字符串
+  	// attr()获取属性
+  	var theme = $(this).attr('class').replace('btn btn-','');
+  	alert(theme);
+  	$("body").attr('class', theme);  // body添加属性
+  }
+  ```
+
+  > 弊端（如果button 后面还有别的类名，就不好使了）
+
+- 方法二：自定义属性
+
+  ```
+  <div class="theme">
+      <button class="btn btn-default" btn-name="default">默认</button>
+      <button class="btn btn-green” btn-name="green">绿色</button>
+      <button class="btn btn-blue" btn-name="blue">蓝色</button>
+      <button class="btn btn-orange" btn-name="orange">橙色</button>
+  </div>
+  ```
+
+  ```
+  $(function() {
+  	// 单击不同的按纽,加载不同的样式
+  	$(".theme button").click(function(){
+  	// replace()用于替换字符串
+  	// attr()获取属性
+  	var theme = $(this).attr('btn-name');
+  	alert(theme);
+  	$("body").attr('class', theme);  // body添加属性
+  }
+  ```
+
+  

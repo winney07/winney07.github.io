@@ -7,6 +7,10 @@ categories:
 - 工作笔记
 - Gulp
 ---
+[前端自动化构建工具 Gulp 视频教程](https://www.bilibili.com/video/av64407974?from=search&seid=17812780048673997573)
+
+[旧版官网](https://v3.gulpjs.com.cn)   |  [旧版API](https://v3.gulpjs.com.cn/docs/api/)   |  [新版官网](https://www.gulpjs.com.cn/docs/getting-started/quick-start/)     |    [新版API](https://www.gulpjs.com.cn/docs/api/concepts/)
+
 {% link Gulp中文网 https://www.gulpjs.com.cn/%}
 
 {% link Gulp https://gulpjs.com/%}
@@ -34,7 +38,42 @@ gulp更高效（异步多任务）、更易于使用，插件高质量
 ```bash
 npm install -g cnpm --registry=https://registry.npm.taobao.org
 ```
+- 脚手架工具：套用代码（模板代码）
+
+- 依赖管理工具：依赖代码（库、依赖）
+
+- 构建工具：预处理代码（自己写的JavaScript，CSS，HTML）  检查代码、编译、打包
+
+- 构建工具的配置一般保存在构建配置文件（build file）里
+
+用脚手架工具yemoman搭建项目，用依赖管理工具bower来搜索、安装依赖，用构建工具gulp来处理文件。Yemoman作为一个脚手架工具，可以初始化gulp(构建配置文件)和bower（项目基本的依赖）。Gulp还可以使用bower所提供的信息把依赖添加到项目的主要文件中。
+
+- JavaScript引擎，提供了编译和运行JavaScript的环境
+
+脚手架工具的作用是搭建项目，让项目顺利跑起来。脚手架工具可以创建一个项目必需的目录，并且初始文件（比如构建代码）、模板代码复制过去，最后安装依赖。在整个开发过程中，脚手架工具的定位是创建项目的基础架构。
+
+Generator是可以被命令行工具yo执行的JavaScript应用，它所做的事情只不过是创建新目录和复制文件。不过，它也没有那么简单。它还可监听参数来修改文件。
+
+- Yeoman的唯一任务就是运行generator。
+
+依赖是独立完整的模块，它是一个应用的一部分或者扩展。依赖可以是像jQuery或angular这样的库，可以是一些UI组件，也可以是像bootstrap这样完整的UI框架。依赖的另一种叫法是包。使用依赖或者包的好处在于：你不用花时间去开发那些已经有的功能，只要用现成的就行了。
+
+依赖管理工具的主要功能是在社区和公司的仓库中搜索依赖，并且下载到本地的项目中。
+
+只要一个模块是由Git托管的，并且拥有bower.json文件，就可以用bower来安装。
+
+有了bower，你就可以用工具来管理所有的第三方模块和组件了。
+
+- Gulp流式构建系统
+
+构建系统是整个工具链的核心。它会处理所有的源文件，把它们变成可部署的代码。它还可以 检查代码质量，自动执行重复的操作。
+
+构建工具首先会读取一个构建配置（或者构建文件），然后定义三个东西：源文件、处理流程和输出文件的目录。源代码经过处理的流程后，最后会被输出到目录中。
+
+用脚手架工具创建应用，用依赖管理工具下载需要的依赖，然后使用构建工具来执行代码编译工具。这三个工具都是基于Node.js的版本。Gulp是整个项目的核心，也是最主要的工具。
+
 #### 全局安装gulp
+
 ```bash
 cnpm i gulp -g
 ```
@@ -133,7 +172,7 @@ gulp js
  ##### 下载插件
  ```bash
  cnpm install gulp-less gulp-clean-css --save-dev
- ``` 
+ ```
  ##### 配置编码
  var less = require('gulp-less');
  var cleanCSS = require('gulp-clean-css');
@@ -478,3 +517,27 @@ gulp.task('server', ['default'],function() {
 gulp.task('default', ['js', 'less', 'css', 'html']);
 
 ```
+
+[JsLint 的安装和使用](https://www.cnblogs.com/CyLee/p/6368629.html)
+
+ JSLint 是一款Javascript验证工具，在定位错误并确保基本指南得以遵循时，非常有用。如果你正在编写专业级的javascript，应该使用 JSLint 或者类似的验证工具（JSHint）。它帮助我们避免了许多种bug，极大缩短了开发时间。如果你安装了Node.js，像这样即可安装：
+
+安装：
+
+```
+npm install -g jslint
+```
+
+使用 JSlint：
+
+```
+jslint spa.js
+```
+
+如果出现以下效果，说明安装并且验证成功
+
+```
+spa.js is OK.
+```
+
+[JSCS：验证JavaScript代码](https://www.w3cschool.cn/intellij_idea_doc/intellij_idea_doc-cpvt2z2y.html)

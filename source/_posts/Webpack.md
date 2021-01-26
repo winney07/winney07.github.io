@@ -7,7 +7,10 @@ categories:
 - 工作笔记
 - webpack
 ---
-## 基本安装
+[webpack中文官网](https://www.webpackjs.com/)
+
+#### 基本安装
+
 #### 一、
 
 1. 新建目录文件夹
@@ -156,3 +159,201 @@ plugins: [
     new CleanWebpackPlugin()
 ]
 ```
+
+
+
+------
+
+#### 自动化构建工具webpack-学习笔记
+
+##### 1、了解webpack相关
+
+- 什么是webpack
+
+  - webpack是一个核块打包器(bundLer)
+
+  - 在webpack看来，前端的所有资源文件(js/json/css/img/Less/ ...)都会作为模块处理它将根据模块的依赖关系进行静态分析，生成对应的静态资源
+
+- 理解Loader
+
+  - webpack本身只能加载JS/JSON模块，如果要加载其他类型的文件(模块)，就需要使用对应的Loader进行转换/加载
+
+  - Loader本身也是运行在node.js 环境中的Javascript模块
+
+  - 它本身是一个函数，接受源文件作为参数，返回转换的结果
+
+  - loader一般以xxx-Loader的方式命名，xxx代表了这个Loader要做的转换功能，比如json-Loader
+
+- 配置文件(默认)
+
+  - webpack.config.js ：是一个node模块，返回一个 json格式的配置信息对象
+
+- 插件
+
+  - 插件件可以完成一些Loader不能完成的功能。
+
+  - 插件的使用一股是在webpack的配置信息plLugins 选项中指定。
+
+  - cLeanlebpackPLugin：自动清除指定文件夹资源
+
+  - HtmLlwebpackPLugin：自动生HTML文件并
+
+  - uglifyJSPLugin ：压的s文件
+
+> Webpack叫模块打包器，它认为所有文件都是模块，一个除外（html）
+>
+> 它本身只加载js和json，所以需要loader（js库）
+>
+> MODULES WITH DEPENDENCIES：模块之间的依赖关系
+>
+> Css要依赖图片，因为要引入它，也就是说，截图中，箭头指向的东西是它依赖的东西。
+>
+> STATIC ASSETS：静态资源
+
+从webpack v4.0.0开始，可以不用引入一个配置文件。然而，webpack仍然还是`高度可配置的`。在开始前你需要先理解四个`核心概念`︰
+
+- 入口(entry)
+- 输出(output) 
+- loader
+- 插件(plugins)
+
+##### 2、学习文档
+
+- webpack官网: http: / /webpack.github.io/
+- webpack3文档(英文): https : //webpack.js.org/
+- webpack3文档(中文): https: //doc.webpack-china.org/
+
+##### 3、开启项目
+
+初始化项目：
+
+- 新建目录文件夹（webpack_test）
+
+- 生成package.json文件
+
+- 安装webpack
+
+  ```
+  npm install webpack -g       // 全局安装
+  npm install webpack --save-dev     // 局部安装
+  ```
+
+##### 4、编译打包应用
+
+- 创建入口src/js/：entry.js
+
+```
+document.write("entry.js is work");
+```
+
+- 创建主页面: dist/index.html
+
+```
+<script type="text/javascript" src="bundle.js"></script>
+```
+
+- 编译js
+
+  webpack src/js/entry.js dist/bundle.js
+
+- 查看页面效果
+
+
+
+##### webpack.config.js
+
+```
+const path = require('path');    // node内置的模块用来去设置路径的;
+
+module.exports = {
+	entry: "./src/index.js',
+	output: {
+		filename: "bundle.js ',
+		path: path.resolve(_dirname,'dist')
+	}
+};
+```
+
+#### 5、打包应用
+
+```
+npm run build
+```
+
+#### 6、打包css和图片文件
+
+- 安装样式的loader
+
+  ```
+  npm i css-loader style-loader --save-dev
+  npm i file-loader url-loader --save-dev
+  ```
+
+  > 补充：url-loader是对象file-loader的上层封装，使用时需配合file-loader使用
+
+- 配置loader
+
+  ```
+  module.exports = {
+  	module: {
+  		rules: [
+  			{
+  				test: /\.css$/,      // $是指以.css结尾的文件
+  				use: ['style-loader" , "css-loader']
+  			}
+  		]
+  	}
+  }
+  
+  ```
+
+#### 7、自动编译打包
+
+- 利用webpack开发服务器工具： webpack-dev-server
+
+- 下载
+
+  ```
+  npm install --save-dev webpack-dev-server
+  ```
+
+- webpack配置
+
+  ```
+  devserver: {
+  	contentBase: './ dist'
+  }
+  ```
+
+- package配置
+
+  ```
+  "start" : "webpack-dev-server --open"
+  ```
+
+- 编译打包应用并运行
+
+#### 8、使用webpack插件
+
+- 常见的插件
+
+  - 使用html-webpack-plugin根据模板html生成引入script的页面
+
+  - 使用clean-webpack-plugin清除dist文件夹
+
+- 下载
+
+  ```
+  npm install --save-dev html-webpack-plugin clean-webpack-plugin
+  ```
+
+- webpack配置
+
+  ```
+  const HtmLwebpackPlugin = require('html-webpack-plugin'); // 自动生成htmL文件
+  ```
+
+#### 9、热加载
+
+------
+

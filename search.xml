@@ -46,27 +46,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Clipboard的使用</title>
-    <url>/2020/11/04/Clipboard%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
-    <content><![CDATA[<h4 id="如果存在clipboard-先将它销毁"><a href="#如果存在clipboard-先将它销毁" class="headerlink" title="如果存在clipboard,先将它销毁"></a>如果存在clipboard,先将它销毁</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">if(clipboard) &#123;</span><br><span class="line">    clipboard.destroy();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="Clipboard官网使用教程"><a href="#Clipboard官网使用教程" class="headerlink" title="Clipboard官网使用教程"></a><a href="http://www.clipboardjs.cn/">Clipboard官网使用教程</a></h5><h5 id="复制成功和复制失败的提示"><a href="#复制成功和复制失败的提示" class="headerlink" title="复制成功和复制失败的提示"></a>复制成功和复制失败的提示</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var u &#x3D; navigator.userAgent;</span><br><span class="line">clipboard.on(&#39;success&#39;, function(e) &#123;</span><br><span class="line">    layer.msg(&#39;复制成功&#39;, &#123;time: 1000&#125;);</span><br><span class="line">    e.clearSelection();</span><br><span class="line">&#125;);</span><br><span class="line">clipboard.on(&#39;error&#39;, function(e) &#123;</span><br><span class="line">    if(u.indexOf(&#39;UCBrowser&#39;) &gt; -1)&#123;</span><br><span class="line">        layer.msg(&#39;您的浏览器不支持，请长按内容手动复制！&#39;, &#123;time: 1000&#125;);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        layer.msg(&#39;复制失败&#39;, &#123;time: 1000&#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h5 id="如果提示信息弹两次"><a href="#如果提示信息弹两次" class="headerlink" title="如果提示信息弹两次"></a>如果提示信息弹两次</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">自己写一个copySuccessTip提示信息</span><br><span class="line">$(&quot;.copySuccessTip&quot;).addClass(&quot;mymove&quot;);</span><br><span class="line">setTimeout(function() &#123;</span><br><span class="line">    $(&quot;.copySuccessTip&quot;).removeClass(&quot;mymove&quot;);</span><br><span class="line">&#125;,1000);</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">引入图片：</span><br><span class="line">&#123;% asset_img css1.png %&#125;</span><br><span class="line">引入链接：</span><br><span class="line">[参考的博客](https:&#x2F;&#x2F;juejin.im&#x2F;post&#x2F;5b15022ff265da6e163720c6)</span><br></pre></td></tr></table></figure>
-<h4 id="解决clipboard复制弹多次提示的问题"><a href="#解决clipboard复制弹多次提示的问题" class="headerlink" title="解决clipboard复制弹多次提示的问题"></a>解决clipboard复制弹多次提示的问题</h4><p>1、使用destroy（在单页面里面，回来页面，如果存在这个对象，就删除。）</p>
-<img src="/2020/11/04/Clipboard%E7%9A%84%E4%BD%BF%E7%94%A8/note1.png" class="">
-
-<p>2、换成setTimeout，不用layer.msg（copySuccessTip的样式模拟layer.msg的样式即可）</p>
-<img src="/2020/11/04/Clipboard%E7%9A%84%E4%BD%BF%E7%94%A8/note2.png" class="">]]></content>
-      <categories>
-        <category>工作笔记</category>
-        <category>Clipboard</category>
-      </categories>
-      <tags>
-        <tag>Clipboard</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>ECMAScript 6简介</title>
     <url>/2019/07/04/ECMAScript-6%E7%AE%80%E4%BB%8B/</url>
     <content><![CDATA[<a href="http://es6.ruanyifeng.com/" title="" target="">阮一峰-ECMAScript 6</a> 
@@ -94,6 +73,27 @@
       </categories>
       <tags>
         <tag>阮一峰-ES6</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Clipboard的使用</title>
+    <url>/2020/11/04/Clipboard%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<h4 id="如果存在clipboard-先将它销毁"><a href="#如果存在clipboard-先将它销毁" class="headerlink" title="如果存在clipboard,先将它销毁"></a>如果存在clipboard,先将它销毁</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">if(clipboard) &#123;</span><br><span class="line">    clipboard.destroy();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="Clipboard官网使用教程"><a href="#Clipboard官网使用教程" class="headerlink" title="Clipboard官网使用教程"></a><a href="http://www.clipboardjs.cn/">Clipboard官网使用教程</a></h5><h5 id="复制成功和复制失败的提示"><a href="#复制成功和复制失败的提示" class="headerlink" title="复制成功和复制失败的提示"></a>复制成功和复制失败的提示</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var u &#x3D; navigator.userAgent;</span><br><span class="line">clipboard.on(&#39;success&#39;, function(e) &#123;</span><br><span class="line">    layer.msg(&#39;复制成功&#39;, &#123;time: 1000&#125;);</span><br><span class="line">    e.clearSelection();</span><br><span class="line">&#125;);</span><br><span class="line">clipboard.on(&#39;error&#39;, function(e) &#123;</span><br><span class="line">    if(u.indexOf(&#39;UCBrowser&#39;) &gt; -1)&#123;</span><br><span class="line">        layer.msg(&#39;您的浏览器不支持，请长按内容手动复制！&#39;, &#123;time: 1000&#125;);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        layer.msg(&#39;复制失败&#39;, &#123;time: 1000&#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h5 id="如果提示信息弹两次"><a href="#如果提示信息弹两次" class="headerlink" title="如果提示信息弹两次"></a>如果提示信息弹两次</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">自己写一个copySuccessTip提示信息</span><br><span class="line">$(&quot;.copySuccessTip&quot;).addClass(&quot;mymove&quot;);</span><br><span class="line">setTimeout(function() &#123;</span><br><span class="line">    $(&quot;.copySuccessTip&quot;).removeClass(&quot;mymove&quot;);</span><br><span class="line">&#125;,1000);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">引入图片：</span><br><span class="line">&#123;% asset_img css1.png %&#125;</span><br><span class="line">引入链接：</span><br><span class="line">[参考的博客](https:&#x2F;&#x2F;juejin.im&#x2F;post&#x2F;5b15022ff265da6e163720c6)</span><br></pre></td></tr></table></figure>
+<h4 id="解决clipboard复制弹多次提示的问题"><a href="#解决clipboard复制弹多次提示的问题" class="headerlink" title="解决clipboard复制弹多次提示的问题"></a>解决clipboard复制弹多次提示的问题</h4><p>1、使用destroy（在单页面里面，回来页面，如果存在这个对象，就删除。）</p>
+<img src="/2020/11/04/Clipboard%E7%9A%84%E4%BD%BF%E7%94%A8/note1.png" class="">
+
+<p>2、换成setTimeout，不用layer.msg（copySuccessTip的样式模拟layer.msg的样式即可）</p>
+<img src="/2020/11/04/Clipboard%E7%9A%84%E4%BD%BF%E7%94%A8/note2.png" class="">]]></content>
+      <categories>
+        <category>工作笔记</category>
+        <category>Clipboard</category>
+      </categories>
+      <tags>
+        <tag>Clipboard</tag>
       </tags>
   </entry>
   <entry>
@@ -413,9 +413,22 @@
   <entry>
     <title>HTML-笔记</title>
     <url>/2021/01/18/HTML-%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h4 id="select下拉框，添加分组-optgroup"><a href="#select下拉框，添加分组-optgroup" class="headerlink" title="select下拉框，添加分组(optgroup)"></a>select下拉框，添加分组(optgroup)</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;select&gt;</span><br><span class="line">  &lt;optgroup label&#x3D;&quot;蔬菜&quot;&gt;</span><br><span class="line">    &lt;option value &#x3D;&quot;娃娃菜&quot;&gt;娃娃菜&lt;&#x2F;option&gt;</span><br><span class="line">    &lt;option value &#x3D;&quot;西红柿&quot;&gt;西红柿&lt;&#x2F;option&gt;</span><br><span class="line">  &lt;&#x2F;optgroup&gt;</span><br><span class="line"></span><br><span class="line">  &lt;optgroup label&#x3D;&quot;水果&quot;&gt;</span><br><span class="line">    &lt;option value &#x3D;&quot;苹果&quot;&gt;苹果&lt;&#x2F;option&gt;</span><br><span class="line">    &lt;option value &#x3D;&quot;蓝莓&quot;&gt;蓝莓&lt;&#x2F;option&gt;</span><br><span class="line">  &lt;&#x2F;optgroup&gt;</span><br><span class="line">&lt;&#x2F;select&gt;</span><br></pre></td></tr></table></figure>
+    <content><![CDATA[<p>1、html</p>
+<p>HTML：hyperText markup language (超文本标记语言）</p>
+<p>2、是由标签组成的，解释标签是怎样的</p>
+<p>根标签：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+<p>3、头标签，身体标签，类似人，头部是装思想的，身体是衣服样子</p>
+<p>写一个简单的英文，然后写中文乱码，因为是国外人创造的，不认识中文，需要告诉浏览器，要以中文的形式显示，然后要加meta标签，单加标签没有用。要加属性，解释属性</p>
+<p>Lang属性是告诉搜索引擎爬虫，我们的网站是关于什么内容的</p>
+<p>Lang = ‘en’ 英文的</p>
+<p>Lang = ‘zh’ 中文的</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;html lang&#x3D;&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">	&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">	&lt;!-- gb2312 gbk unicode--&gt;</span><br><span class="line">	&lt;!-- Utf-8是unicode的升级版 --&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">	Life is shit!!!美好的生活!!!</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="select下拉框，添加分组-optgroup"><a href="#select下拉框，添加分组-optgroup" class="headerlink" title="select下拉框，添加分组(optgroup)"></a>select下拉框，添加分组(optgroup)</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;select&gt;</span><br><span class="line">  &lt;optgroup label&#x3D;&quot;蔬菜&quot;&gt;</span><br><span class="line">    &lt;option value &#x3D;&quot;娃娃菜&quot;&gt;娃娃菜&lt;&#x2F;option&gt;</span><br><span class="line">    &lt;option value &#x3D;&quot;西红柿&quot;&gt;西红柿&lt;&#x2F;option&gt;</span><br><span class="line">  &lt;&#x2F;optgroup&gt;</span><br><span class="line"></span><br><span class="line">  &lt;optgroup label&#x3D;&quot;水果&quot;&gt;</span><br><span class="line">    &lt;option value &#x3D;&quot;苹果&quot;&gt;苹果&lt;&#x2F;option&gt;</span><br><span class="line">    &lt;option value &#x3D;&quot;蓝莓&quot;&gt;蓝莓&lt;&#x2F;option&gt;</span><br><span class="line">  &lt;&#x2F;optgroup&gt;</span><br><span class="line">&lt;&#x2F;select&gt;</span><br></pre></td></tr></table></figure>
 <h4 id="添加网页图标（favicon"><a href="#添加网页图标（favicon" class="headerlink" title="添加网页图标（favicon)"></a>添加网页图标（favicon)</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;link rel&#x3D;&quot;shortcut icon&quot; href&#x3D;&quot; &#x2F;favicon.ico&quot; &#x2F;&gt;</span><br></pre></td></tr></table></figure>
-<h4 id=""><a href="#" class="headerlink" title=""></a></h4>]]></content>
+
+
+]]></content>
       <categories>
         <category>工作笔记</category>
         <category>HTML</category>
@@ -802,7 +815,17 @@
 <li>(5）最后注意语法规范，创建类类名后面不要加小括号,生成实例类名后面加小括号，构造函数不需要加function</li>
 </ul>
 <h4 id="2-5类添加方法"><a href="#2-5类添加方法" class="headerlink" title="2.5类添加方法"></a>2.5类添加方法</h4><p>语法：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Person &#123;</span><br><span class="line">	constructor (name, age)&#123;     &#x2F;&#x2F; constructor构造器或者构造函数</span><br><span class="line">		this .name &#x3D; name;</span><br><span class="line">		this.age &#x3D; age;</span><br><span class="line">	&#125;</span><br><span class="line">	say()&#123;</span><br><span class="line">		console.log (this. name + &quot;你好&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Person &#123;</span><br><span class="line">	constructor (name, age)&#123;     &#x2F;&#x2F; constructor构造器或者构造函数</span><br><span class="line">		this.name &#x3D; name;</span><br><span class="line">		this.age &#x3D; age;</span><br><span class="line">	&#125;</span><br><span class="line">	say()&#123;</span><br><span class="line">		console.log (this.name + &quot;你好&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">	sing(song)&#123;</span><br><span class="line">		console.log (&quot;我唱歌&quot;);</span><br><span class="line">		console.log (this.name + song);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">var ldh &#x3D; new Star(&#39;刘德华&#39;, 18);</span><br><span class="line">var zxy &#x3D; new star(张学友&quot;，20);</span><br><span class="line">&#x2F;&#x2F; 1)我们类里面所有的函数不需要写function</span><br><span class="line">&#x2F;&#x2F; 2)多个函数方法之间不需要添加逗号分隔</span><br><span class="line">ldh.sing(&quot;冰雨&quot;);</span><br><span class="line">zxy.sing(&quot;李香兰&quot;);</span><br></pre></td></tr></table></figure>
+<h3 id="3-类的继承"><a href="#3-类的继承" class="headerlink" title="3.类的继承"></a>3.类的继承</h3><h4 id="3-1继承"><a href="#3-1继承" class="headerlink" title="3.1继承"></a>3.1继承</h4><p>现实中的继承：子承父业，比如我们都继承了父亲的姓。</p>
+<p>程序中的继承：子类可以继承父类的一些属性和方法。</p>
+<p>语法︰</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 父类</span><br><span class="line">class Father&#123;</span><br><span class="line">	money() &#123;</span><br><span class="line">		console.log(100);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F; 子类继承父类</span><br><span class="line">class Son extends Father&#123; </span><br><span class="line">&#125;</span><br><span class="line">var son &#x3D; new Son();</span><br><span class="line">son.money();</span><br></pre></td></tr></table></figure>
+<p>这样写，会报错：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 父类</span><br><span class="line">class Father&#123;</span><br><span class="line">	constructor(x, y)&#123;</span><br><span class="line">		this.x &#x3D; x;</span><br><span class="line">		this.y &#x3D; y;</span><br><span class="line">	&#125;</span><br><span class="line">	sum() &#123;</span><br><span class="line">		console.log(this.x + this.y);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F; 子类继承父类</span><br><span class="line">class Son extends Father&#123; </span><br><span class="line">	constructor(x, y)&#123;</span><br><span class="line">		this.x &#x3D; x;</span><br><span class="line">		this.y &#x3D; y;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">var son2 &#x3D; new Son(1, 2);</span><br><span class="line">son2.sum();</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Uncaught ReferenceError:Must call super constructor in derived class before accessing &#39;this &#39; or returningfrom derived constructor</span><br></pre></td></tr></table></figure>
+<p>解决方法：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 子类继承父类</span><br><span class="line">class Son extends Father&#123; </span><br><span class="line">	constructor(x, y)&#123;</span><br><span class="line">		super(x, y);   &#x2F;&#x2F; 调用了父类中的构造函数</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="3-2-super关键字"><a href="#3-2-super关键字" class="headerlink" title="3.2 super关键字"></a>3.2 super关键字</h4><p><code>super关键字</code>用于访问和调用对象父类上的函数。<code>可以调用父类的构造函数</code>，也可以调用父类的普通函数</p>
 ]]></content>
       <categories>
         <category>工作笔记</category>
@@ -810,58 +833,6 @@
       </categories>
       <tags>
         <tag>听课笔记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Parcel打包TypeScript</title>
-    <url>/2020/11/12/Parcel%E6%89%93%E5%8C%85TypeScript/</url>
-    <content><![CDATA[<h4 id="用-Parcel-打包-TypeScript-代码"><a href="#用-Parcel-打包-TypeScript-代码" class="headerlink" title="用 Parcel 打包 TypeScript 代码"></a>用 Parcel 打包 TypeScript 代码</h4><blockquote>
-<h4 id="建立一个新项目"><a href="#建立一个新项目" class="headerlink" title="建立一个新项目"></a>建立一个新项目</h4></blockquote>
-<ol>
-<li>教学需要，这里我们重新建立一个项目<code>TSTest</code>,在桌面新建立一个文件夹，然后在<code>VSCode</code>中打开。</li>
-<li>打开终端，输入<code>npm init -y</code>,创建<code>package.json</code>文件</li>
-<li>在终端中输入<code>tsc --init</code>,创建<code>tsconfig.json</code>文件</li>
-<li>修改<code>tsconfig.json</code>配置<code>rootDir</code>和<code>outDir</code>.</li>
-<li>新建<code>src</code>文件夹，在里边建立<code>index.html</code>,<code>page.ts</code>文件</li>
-<li>编写<code>index.html</code>文件，并引入<code>page.ts</code>文件</li>
-<li>编写<code>page.ts</code>文件</li>
-</ol>
-<p>index.html</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=<span class="string">&quot;en&quot;</span>&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;meta charset=<span class="string">&quot;UTF-8&quot;</span> /&gt;</span><br><span class="line">    &lt;meta name=<span class="string">&quot;viewport&quot;</span> content=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span> /&gt;</span><br><span class="line">    &lt;script src=<span class="string">&quot;./page.ts&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">  &lt;body&gt;&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-<p>page.ts</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> teacher: string = <span class="string">&quot;jspang&quot;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(teacher);</span><br></pre></td></tr></table></figure>
-<blockquote>
-<h4 id="Parcel-的安装和使用"><a href="#Parcel-的安装和使用" class="headerlink" title="Parcel 的安装和使用"></a>Parcel 的安装和使用</h4></blockquote>
-<p><code>npm</code>或者<code>yarn</code>来进行安装</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">yarn add --dev parcel@next</span><br></pre></td></tr></table></figure>
-<p>修改package.json</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;test&quot;</span>: <span class="string">&quot;parcel ./src/index.html&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>然后打开终端输入<code>yarn test</code>,这时候终端会给出一个地址<code>http://localhost:1234</code>,把地址放到浏览器上，可以看到浏览器的控制台会输出<code>jspang</code>。</p>
-<p>这说明<code>Parcel</code>会自动对<code>index.html</code>中引入的<code>TypeScript</code>文件进行编译，然后打包好后，就可以直接使用了。</p>
-<h4 id="在-TypeScript-中使用-JQuery"><a href="#在-TypeScript-中使用-JQuery" class="headerlink" title="在 TypeScript 中使用 JQuery"></a>在 TypeScript 中使用 JQuery</h4><blockquote>
-<h4 id="引入-JQuery-框架库"><a href="#引入-JQuery-框架库" class="headerlink" title="引入 JQuery 框架库"></a>引入 JQuery 框架库</h4></blockquote>
-<p>直接在<code>index.html</code>加入<code>&lt;script&gt;</code>标签</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;script src=<span class="string">&quot;https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js&quot;</span>&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<p>有了 jquery 框架，就可以在<code>TypeScript</code>文件中进行使用<code>JQuery</code>的语法</p>
-<p>然后在<code>page.ts</code>文件中编写如下代码</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> teacher: string = <span class="string">&quot;jspang&quot;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(teacher);</span><br><span class="line"></span><br><span class="line">$(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  alert(<span class="string">&quot;jspang&quot;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>写完后到终端中输入<code>yarn test</code>进行编译和启动服务。然后在地址栏输入了<code>http://localhost:1234</code>,可以看到程序可以正常输出，也没有任何的报错。</p>
-<blockquote>
-<h4 id="安装-types-jquery-解决方法"><a href="#安装-types-jquery-解决方法" class="headerlink" title="安装 types/jquery(解决方法)"></a>安装 types/jquery(解决方法)</h4></blockquote>
-<p>第一种：就是安装别人写好的文件</p>
-<p>但是在<code>vscode</code>中是会报错的，这时候就需要我们安装类型文件<code>type file</code>,直接可以用 npm 进行安装。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">npm i @types/jquery</span><br></pre></td></tr></table></figure>
-<p>第二种:简单粗暴</p>
-<p>还有一种简单粗暴的方法的方式就是直接在<code>page.ts</code>文件的头部加入这句代码：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">declare <span class="keyword">var</span> $: any;</span><br></pre></td></tr></table></figure>
-<p>第三种：自己写一个<code>.d.ts</code>声明文件的类库，如果你用的类库很少见，就需要自己写了。这个写起来还是很麻烦的。 比如 JQuery 就有几十个接口，如果你要写，这个文件会写很长，所以原则就是有别人写好的就直接用，实在没有就用粗暴的方法，如果实在不行，再考虑写<code>.d.ts</code>声明文件。</p>
-]]></content>
-      <categories>
-        <category>工作笔记</category>
-        <category>TypeScript</category>
-      </categories>
-      <tags>
-        <tag>TypeScript</tag>
       </tags>
   </entry>
   <entry>
@@ -923,19 +894,6 @@
       </categories>
       <tags>
         <tag>Koa</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>SVN-笔记</title>
-    <url>/2021/01/18/SVN-%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h4 id="显示日志（查看更新内容）"><a href="#显示日志（查看更新内容）" class="headerlink" title="显示日志（查看更新内容）"></a>显示日志（查看更新内容）</h4><p>右键—&gt;TortoiseSVN—&gt;显示日志—&gt;查看更新下来的内容，或者对之前的代码进行比较</p>
-]]></content>
-      <categories>
-        <category>工作笔记</category>
-        <category>SVN</category>
-      </categories>
-      <tags>
-        <tag>SVN</tag>
       </tags>
   </entry>
   <entry>
@@ -1103,22 +1061,75 @@
       </tags>
   </entry>
   <entry>
-    <title>TypeScript 简介</title>
-    <url>/2020/11/04/TypeScript-%E7%AE%80%E4%BB%8B/</url>
-    <content><![CDATA[<p><a href="https://jspang.com/detailed?id=63">【技术胖博客】</a></p>
-<h6 id="Demo1-ts"><a href="#Demo1-ts" class="headerlink" title="Demo1.ts"></a>Demo1.ts</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function jspang() </span><br><span class="line">&#123; </span><br><span class="line">    let web: string &#x3D; &quot;Hello world&quot; </span><br><span class="line">    console.log (web)</span><br><span class="line">&#125;</span><br><span class="line">jspang()</span><br></pre></td></tr></table></figure>
-
-
-<h5 id="初步运行"><a href="#初步运行" class="headerlink" title="初步运行"></a>初步运行</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">node Demo.ts</span><br><span class="line"></span><br><span class="line">会出现报错：</span><br><span class="line">SyntaxError: Unexpected token &#39;:&#39;</span><br><span class="line">表示异常，不支持这个东西。</span><br></pre></td></tr></table></figure>
-<p>输入以下语句来转ts为js：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">tsc Demo1.ts</span><br></pre></td></tr></table></figure>
-<p>如果出现：<br> 无法将“tsc”项识别为 cmdlet、函数、脚本文件或可运行程序的名称。请检查名称的拼写，如果包括路径，请确保路径正确，然后再试一次。</p>
-<p><a href="https://www.cnblogs.com/vickylinj/p/12228773.html">参考</a>  则：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install typescript -g</span><br><span class="line">cnpm install typescript -g</span><br><span class="line"></span><br><span class="line">再次运行即可：</span><br><span class="line">tsc Demo1.ts</span><br><span class="line">node Demo1.js</span><br></pre></td></tr></table></figure>
-<p>每次都这样的操作比较麻烦，可以全局安装ts-node</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cnpm install -g ts-node </span><br></pre></td></tr></table></figure>
-<p>即可直接输入以下语句执行：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ts-node Demo1.ts</span><br></pre></td></tr></table></figure>]]></content>
+    <title>PHP-笔记</title>
+    <url>/2021/01/25/PHP-%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h4 id="输出json数据"><a href="#输出json数据" class="headerlink" title="输出json数据"></a>输出json数据</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">echo &#39;&#123;&quot;code&quot;:0,&quot;msg&quot;:&quot;&quot;,&quot;count&quot;:1000,&quot;data&quot;:[&#123;&quot;id&quot;:10000,&quot;username&quot;:&quot;user-0&quot;,&quot;sex&quot;:&quot;女&quot;,&quot;city&quot;:&quot;城市-0&quot;,&quot;sign&quot;:&quot;签名-0&quot;,&quot;experience&quot;:255,&quot;logins&quot;:24,&quot;wealth&quot;:82830700,&quot;classify&quot;:&quot;作家&quot;,&quot;score&quot;:57&#125;,&#123;&quot;id&quot;:10029,&quot;username&quot;:&quot;user-29&quot;,&quot;sex&quot;:&quot;男&quot;,&quot;city&quot;:&quot;城市-29&quot;,&quot;sign&quot;:&quot;签名-29&quot;,&quot;experience&quot;:647,&quot;logins&quot;:107,&quot;wealth&quot;:97450636,&quot;classify&quot;:&quot;酱油&quot;,&quot;score&quot;:27&#125;]&#125;&#39;;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>工作笔记</category>
+        <category>PHP</category>
+      </categories>
+      <tags>
+        <tag>PHP</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SVN-笔记</title>
+    <url>/2021/01/18/SVN-%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h4 id="显示日志（查看更新内容）"><a href="#显示日志（查看更新内容）" class="headerlink" title="显示日志（查看更新内容）"></a>显示日志（查看更新内容）</h4><p>右键—&gt;TortoiseSVN—&gt;显示日志—&gt;查看更新下来的内容，或者对之前的代码进行比较</p>
+]]></content>
+      <categories>
+        <category>工作笔记</category>
+        <category>SVN</category>
+      </categories>
+      <tags>
+        <tag>SVN</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Parcel打包TypeScript</title>
+    <url>/2020/11/12/Parcel%E6%89%93%E5%8C%85TypeScript/</url>
+    <content><![CDATA[<h4 id="用-Parcel-打包-TypeScript-代码"><a href="#用-Parcel-打包-TypeScript-代码" class="headerlink" title="用 Parcel 打包 TypeScript 代码"></a>用 Parcel 打包 TypeScript 代码</h4><blockquote>
+<h4 id="建立一个新项目"><a href="#建立一个新项目" class="headerlink" title="建立一个新项目"></a>建立一个新项目</h4></blockquote>
+<ol>
+<li>教学需要，这里我们重新建立一个项目<code>TSTest</code>,在桌面新建立一个文件夹，然后在<code>VSCode</code>中打开。</li>
+<li>打开终端，输入<code>npm init -y</code>,创建<code>package.json</code>文件</li>
+<li>在终端中输入<code>tsc --init</code>,创建<code>tsconfig.json</code>文件</li>
+<li>修改<code>tsconfig.json</code>配置<code>rootDir</code>和<code>outDir</code>.</li>
+<li>新建<code>src</code>文件夹，在里边建立<code>index.html</code>,<code>page.ts</code>文件</li>
+<li>编写<code>index.html</code>文件，并引入<code>page.ts</code>文件</li>
+<li>编写<code>page.ts</code>文件</li>
+</ol>
+<p>index.html</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=<span class="string">&quot;en&quot;</span>&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;meta charset=<span class="string">&quot;UTF-8&quot;</span> /&gt;</span><br><span class="line">    &lt;meta name=<span class="string">&quot;viewport&quot;</span> content=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span> /&gt;</span><br><span class="line">    &lt;script src=<span class="string">&quot;./page.ts&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">  &lt;body&gt;&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p>page.ts</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> teacher: string = <span class="string">&quot;jspang&quot;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(teacher);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<h4 id="Parcel-的安装和使用"><a href="#Parcel-的安装和使用" class="headerlink" title="Parcel 的安装和使用"></a>Parcel 的安装和使用</h4></blockquote>
+<p><code>npm</code>或者<code>yarn</code>来进行安装</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">yarn add --dev parcel@next</span><br></pre></td></tr></table></figure>
+<p>修改package.json</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;test&quot;</span>: <span class="string">&quot;parcel ./src/index.html&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后打开终端输入<code>yarn test</code>,这时候终端会给出一个地址<code>http://localhost:1234</code>,把地址放到浏览器上，可以看到浏览器的控制台会输出<code>jspang</code>。</p>
+<p>这说明<code>Parcel</code>会自动对<code>index.html</code>中引入的<code>TypeScript</code>文件进行编译，然后打包好后，就可以直接使用了。</p>
+<h4 id="在-TypeScript-中使用-JQuery"><a href="#在-TypeScript-中使用-JQuery" class="headerlink" title="在 TypeScript 中使用 JQuery"></a>在 TypeScript 中使用 JQuery</h4><blockquote>
+<h4 id="引入-JQuery-框架库"><a href="#引入-JQuery-框架库" class="headerlink" title="引入 JQuery 框架库"></a>引入 JQuery 框架库</h4></blockquote>
+<p>直接在<code>index.html</code>加入<code>&lt;script&gt;</code>标签</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;script src=<span class="string">&quot;https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js&quot;</span>&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>有了 jquery 框架，就可以在<code>TypeScript</code>文件中进行使用<code>JQuery</code>的语法</p>
+<p>然后在<code>page.ts</code>文件中编写如下代码</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> teacher: string = <span class="string">&quot;jspang&quot;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(teacher);</span><br><span class="line"></span><br><span class="line">$(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  alert(<span class="string">&quot;jspang&quot;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>写完后到终端中输入<code>yarn test</code>进行编译和启动服务。然后在地址栏输入了<code>http://localhost:1234</code>,可以看到程序可以正常输出，也没有任何的报错。</p>
+<blockquote>
+<h4 id="安装-types-jquery-解决方法"><a href="#安装-types-jquery-解决方法" class="headerlink" title="安装 types/jquery(解决方法)"></a>安装 types/jquery(解决方法)</h4></blockquote>
+<p>第一种：就是安装别人写好的文件</p>
+<p>但是在<code>vscode</code>中是会报错的，这时候就需要我们安装类型文件<code>type file</code>,直接可以用 npm 进行安装。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">npm i @types/jquery</span><br></pre></td></tr></table></figure>
+<p>第二种:简单粗暴</p>
+<p>还有一种简单粗暴的方法的方式就是直接在<code>page.ts</code>文件的头部加入这句代码：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">declare <span class="keyword">var</span> $: any;</span><br></pre></td></tr></table></figure>
+<p>第三种：自己写一个<code>.d.ts</code>声明文件的类库，如果你用的类库很少见，就需要自己写了。这个写起来还是很麻烦的。 比如 JQuery 就有几十个接口，如果你要写，这个文件会写很长，所以原则就是有别人写好的就直接用，实在没有就用粗暴的方法，如果实在不行，再考虑写<code>.d.ts</code>声明文件。</p>
+]]></content>
       <categories>
         <category>工作笔记</category>
         <category>TypeScript</category>
@@ -1203,6 +1214,31 @@
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    <span class="built_in">require</span>([<span class="string">&quot;page&quot;</span>], <span class="function"><span class="keyword">function</span> (<span class="params">page</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">new</span> page.default();</span><br><span class="line">    &#125;);</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
 <p>当我们有了<code>webpack</code>和<code>Parcel</code>的时候就不会这么麻烦，这些都交给打包工具来处理就好了。</p>
 ]]></content>
+      <categories>
+        <category>工作笔记</category>
+        <category>TypeScript</category>
+      </categories>
+      <tags>
+        <tag>TypeScript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>TypeScript 简介</title>
+    <url>/2020/11/04/TypeScript-%E7%AE%80%E4%BB%8B/</url>
+    <content><![CDATA[<p><a href="https://jspang.com/detailed?id=63">【技术胖博客】</a></p>
+<h6 id="Demo1-ts"><a href="#Demo1-ts" class="headerlink" title="Demo1.ts"></a>Demo1.ts</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function jspang() </span><br><span class="line">&#123; </span><br><span class="line">    let web: string &#x3D; &quot;Hello world&quot; </span><br><span class="line">    console.log (web)</span><br><span class="line">&#125;</span><br><span class="line">jspang()</span><br></pre></td></tr></table></figure>
+
+
+<h5 id="初步运行"><a href="#初步运行" class="headerlink" title="初步运行"></a>初步运行</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">node Demo.ts</span><br><span class="line"></span><br><span class="line">会出现报错：</span><br><span class="line">SyntaxError: Unexpected token &#39;:&#39;</span><br><span class="line">表示异常，不支持这个东西。</span><br></pre></td></tr></table></figure>
+<p>输入以下语句来转ts为js：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">tsc Demo1.ts</span><br></pre></td></tr></table></figure>
+<p>如果出现：<br> 无法将“tsc”项识别为 cmdlet、函数、脚本文件或可运行程序的名称。请检查名称的拼写，如果包括路径，请确保路径正确，然后再试一次。</p>
+<p><a href="https://www.cnblogs.com/vickylinj/p/12228773.html">参考</a>  则：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install typescript -g</span><br><span class="line">cnpm install typescript -g</span><br><span class="line"></span><br><span class="line">再次运行即可：</span><br><span class="line">tsc Demo1.ts</span><br><span class="line">node Demo1.js</span><br></pre></td></tr></table></figure>
+<p>每次都这样的操作比较麻烦，可以全局安装ts-node</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cnpm install -g ts-node </span><br></pre></td></tr></table></figure>
+<p>即可直接输入以下语句执行：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ts-node Demo1.ts</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>工作笔记</category>
         <category>TypeScript</category>
@@ -1681,7 +1717,8 @@
   <entry>
     <title>webpack起步</title>
     <url>/2019/11/20/Webpack/</url>
-    <content><![CDATA[<h2 id="基本安装"><a href="#基本安装" class="headerlink" title="基本安装"></a>基本安装</h2><h4 id="一、"><a href="#一、" class="headerlink" title="一、"></a>一、</h4><ol>
+    <content><![CDATA[<p><a href="https://www.webpackjs.com/">webpack中文官网</a></p>
+<h4 id="基本安装"><a href="#基本安装" class="headerlink" title="基本安装"></a>基本安装</h4><h4 id="一、"><a href="#一、" class="headerlink" title="一、"></a>一、</h4><ol>
 <li><p>新建目录文件夹</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mkdir webpack-demo</span><br></pre></td></tr></table></figure></li>
 <li><p>切换到目录</p>
@@ -1733,7 +1770,134 @@
 错误写法：
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">const CleanWebpackPlugin = require(<span class="string">&quot;clean-webpack-plugin&quot;</span>);</span><br><span class="line"> </span><br><span class="line">...</span><br><span class="line"> </span><br><span class="line">plugins: [</span><br><span class="line">    new CleanWebpackPlugin([<span class="string">&#x27;dist&#x27;</span>])</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
 正确写法：
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">const &#123; CleanWebpackPlugin &#125; = require(<span class="string">&quot;clean-webpack-plugin&quot;</span>);</span><br><span class="line"> </span><br><span class="line">...</span><br><span class="line"> </span><br><span class="line">plugins: [</span><br><span class="line">    new CleanWebpackPlugin()</span><br><span class="line">]</span><br></pre></td></tr></table></figure>]]></content>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">const &#123; CleanWebpackPlugin &#125; = require(<span class="string">&quot;clean-webpack-plugin&quot;</span>);</span><br><span class="line"> </span><br><span class="line">...</span><br><span class="line"> </span><br><span class="line">plugins: [</span><br><span class="line">    new CleanWebpackPlugin()</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+
+<hr>
+<h4 id="自动化构建工具webpack-学习笔记"><a href="#自动化构建工具webpack-学习笔记" class="headerlink" title="自动化构建工具webpack-学习笔记"></a>自动化构建工具webpack-学习笔记</h4><h5 id="1、了解webpack相关"><a href="#1、了解webpack相关" class="headerlink" title="1、了解webpack相关"></a>1、了解webpack相关</h5><ul>
+<li><p>什么是webpack</p>
+<ul>
+<li><p>webpack是一个核块打包器(bundLer)</p>
+</li>
+<li><p>在webpack看来，前端的所有资源文件(js/json/css/img/Less/ …)都会作为模块处理它将根据模块的依赖关系进行静态分析，生成对应的静态资源</p>
+</li>
+</ul>
+</li>
+<li><p>理解Loader</p>
+<ul>
+<li><p>webpack本身只能加载JS/JSON模块，如果要加载其他类型的文件(模块)，就需要使用对应的Loader进行转换/加载</p>
+</li>
+<li><p>Loader本身也是运行在node.js 环境中的Javascript模块</p>
+</li>
+<li><p>它本身是一个函数，接受源文件作为参数，返回转换的结果</p>
+</li>
+<li><p>loader一般以xxx-Loader的方式命名，xxx代表了这个Loader要做的转换功能，比如json-Loader</p>
+</li>
+</ul>
+</li>
+<li><p>配置文件(默认)</p>
+<ul>
+<li>webpack.config.js ：是一个node模块，返回一个 json格式的配置信息对象</li>
+</ul>
+</li>
+<li><p>插件</p>
+<ul>
+<li><p>插件件可以完成一些Loader不能完成的功能。</p>
+</li>
+<li><p>插件的使用一股是在webpack的配置信息plLugins 选项中指定。</p>
+</li>
+<li><p>cLeanlebpackPLugin：自动清除指定文件夹资源</p>
+</li>
+<li><p>HtmLlwebpackPLugin：自动生HTML文件并</p>
+</li>
+<li><p>uglifyJSPLugin ：压的s文件</p>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>Webpack叫模块打包器，它认为所有文件都是模块，一个除外（html）</p>
+<p>它本身只加载js和json，所以需要loader（js库）</p>
+<p>MODULES WITH DEPENDENCIES：模块之间的依赖关系</p>
+<p>Css要依赖图片，因为要引入它，也就是说，截图中，箭头指向的东西是它依赖的东西。</p>
+<p>STATIC ASSETS：静态资源</p>
+</blockquote>
+<p>从webpack v4.0.0开始，可以不用引入一个配置文件。然而，webpack仍然还是<code>高度可配置的</code>。在开始前你需要先理解四个<code>核心概念</code>︰</p>
+<ul>
+<li>入口(entry)</li>
+<li>输出(output) </li>
+<li>loader</li>
+<li>插件(plugins)</li>
+</ul>
+<h5 id="2、学习文档"><a href="#2、学习文档" class="headerlink" title="2、学习文档"></a>2、学习文档</h5><ul>
+<li>webpack官网: http: / /webpack.github.io/</li>
+<li>webpack3文档(英文): https : //webpack.js.org/</li>
+<li>webpack3文档(中文): https: //doc.webpack-china.org/</li>
+</ul>
+<h5 id="3、开启项目"><a href="#3、开启项目" class="headerlink" title="3、开启项目"></a>3、开启项目</h5><p>初始化项目：</p>
+<ul>
+<li><p>新建目录文件夹（webpack_test）</p>
+</li>
+<li><p>生成package.json文件</p>
+</li>
+<li><p>安装webpack</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install webpack -g       &#x2F;&#x2F; 全局安装</span><br><span class="line">npm install webpack --save-dev     &#x2F;&#x2F; 局部安装</span><br></pre></td></tr></table></figure>
+<h5 id="4、编译打包应用"><a href="#4、编译打包应用" class="headerlink" title="4、编译打包应用"></a>4、编译打包应用</h5></li>
+<li><p>创建入口src/js/：entry.js</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">document.write(&quot;entry.js is work&quot;);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>创建主页面: dist/index.html</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;bundle.js&quot;&gt;&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>编译js</p>
+<p>webpack src/js/entry.js dist/bundle.js</p>
+</li>
+<li><p>查看页面效果</p>
+</li>
+</ul>
+<h5 id="webpack-config-js"><a href="#webpack-config-js" class="headerlink" title="webpack.config.js"></a>webpack.config.js</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const path &#x3D; require(&#39;path&#39;);    &#x2F;&#x2F; node内置的模块用来去设置路径的;</span><br><span class="line"></span><br><span class="line">module.exports &#x3D; &#123;</span><br><span class="line">	entry: &quot;.&#x2F;src&#x2F;index.js&#39;,</span><br><span class="line">	output: &#123;</span><br><span class="line">		filename: &quot;bundle.js &#39;,</span><br><span class="line">		path: path.resolve(_dirname,&#39;dist&#39;)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h4 id="5、打包应用"><a href="#5、打包应用" class="headerlink" title="5、打包应用"></a>5、打包应用</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm run build</span><br></pre></td></tr></table></figure>
+<h4 id="6、打包css和图片文件"><a href="#6、打包css和图片文件" class="headerlink" title="6、打包css和图片文件"></a>6、打包css和图片文件</h4><ul>
+<li><p>安装样式的loader</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm i css-loader style-loader --save-dev</span><br><span class="line">npm i file-loader url-loader --save-dev</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>补充：url-loader是对象file-loader的上层封装，使用时需配合file-loader使用</p>
+</blockquote>
+</li>
+<li><p>配置loader</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">module.exports &#x3D; &#123;</span><br><span class="line">	module: &#123;</span><br><span class="line">		rules: [</span><br><span class="line">			&#123;</span><br><span class="line">				test: &#x2F;\.css$&#x2F;,      &#x2F;&#x2F; $是指以.css结尾的文件</span><br><span class="line">				use: [&#39;style-loader&quot; , &quot;css-loader&#39;]</span><br><span class="line">			&#125;</span><br><span class="line">		]</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="7、自动编译打包"><a href="#7、自动编译打包" class="headerlink" title="7、自动编译打包"></a>7、自动编译打包</h4></li>
+<li><p>利用webpack开发服务器工具： webpack-dev-server</p>
+</li>
+<li><p>下载</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install --save-dev webpack-dev-server</span><br></pre></td></tr></table></figure></li>
+<li><p>webpack配置</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">devserver: &#123;</span><br><span class="line">	contentBase: &#39;.&#x2F; dist&#39;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>package配置</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&quot;start&quot; : &quot;webpack-dev-server --open&quot;</span><br></pre></td></tr></table></figure></li>
+<li><p>编译打包应用并运行</p>
+</li>
+</ul>
+<h4 id="8、使用webpack插件"><a href="#8、使用webpack插件" class="headerlink" title="8、使用webpack插件"></a>8、使用webpack插件</h4><ul>
+<li><p>常见的插件</p>
+<ul>
+<li><p>使用html-webpack-plugin根据模板html生成引入script的页面</p>
+</li>
+<li><p>使用clean-webpack-plugin清除dist文件夹</p>
+</li>
+</ul>
+</li>
+<li><p>下载</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install --save-dev html-webpack-plugin clean-webpack-plugin</span><br></pre></td></tr></table></figure></li>
+<li><p>webpack配置</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const HtmLwebpackPlugin &#x3D; require(&#39;html-webpack-plugin&#39;); &#x2F;&#x2F; 自动生成htmL文件</span><br></pre></td></tr></table></figure>
+<h4 id="9、热加载"><a href="#9、热加载" class="headerlink" title="9、热加载"></a>9、热加载</h4></li>
+</ul>
+<hr>
+]]></content>
       <categories>
         <category>工作笔记</category>
         <category>webpack</category>
@@ -1753,113 +1917,6 @@
       </categories>
       <tags>
         <tag>JavaScript</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>gulp学习笔记</title>
-    <url>/2019/07/11/gulp%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<a href="https://www.gulpjs.com.cn/" title="" target="">Gulp中文网</a>
-
-<a href="https://gulpjs.com/" title="" target="">Gulp</a>
-<a href="https://gulpjs.com/plugins/" title="" target="">Gulp插件</a>
-<p>gulp是与grunt功能类似的<b><strong>前端项目构建</strong></b>，工具，也是基于nodejs的自动<b>任务运行器</b><br>能自动化地完成JavaScript/coffee/sass/less/html/image/css等文件的合并、压缩、检查、监听文件变化、浏览器自动刷新、测试等任务。<br>gulp更高效（异步多任务）、更易于使用，插件高质量<br>特点：<br>1、任务化<br>2、基于流（数据流，输入流I 输出流O）</p>
-<a id="more"></a>
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">|- dist </span><br><span class="line">|- src</span><br><span class="line">    |- js</span><br><span class="line">    |- css</span><br><span class="line">    |- less</span><br><span class="line">|- index.html</span><br><span class="line">|- gulpfile.js</span><br><span class="line">|- package.json</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>使用淘宝镜像</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install -g cnpm --registry=https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
-<h4 id="全局安装gulp"><a href="#全局安装gulp" class="headerlink" title="全局安装gulp"></a>全局安装gulp</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cnpm i gulp -g</span><br></pre></td></tr></table></figure>
-<h4 id="局部安装gulp"><a href="#局部安装gulp" class="headerlink" title="局部安装gulp"></a>局部安装gulp</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cnpm i gulp --save-dev</span><br></pre></td></tr></table></figure>
-<h4 id="配置gulpfile-js"><a href="#配置gulpfile-js" class="headerlink" title="配置gulpfile.js"></a>配置gulpfile.js</h4><h4 id="使用gulp插件"><a href="#使用gulp插件" class="headerlink" title="使用gulp插件"></a>使用gulp插件</h4><h5 id="相关插件："><a href="#相关插件：" class="headerlink" title="相关插件："></a>相关插件：</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gulp-concat: 合并文件（js/css）</span><br><span class="line">gulp-uglify：压缩js文件</span><br><span class="line">gulp-rename：文件重命名</span><br><span class="line">gulp-less：编译less</span><br><span class="line">gulp-clean-css：压缩css</span><br><span class="line">gulp-livereload：实时自动编译刷新</span><br></pre></td></tr></table></figure>
-<p>###重要API</p>
-<h5 id="gulp-src-filePath-pathArr"><a href="#gulp-src-filePath-pathArr" class="headerlink" title="gulp.src(filePath/pathArr)"></a>gulp.src(filePath/pathArr)</h5><p>指向指定路径的所有文件，返回文件流对象<br>用于读取文件</p>
-<h5 id="gulp-dest-dirPath-pathArr"><a href="#gulp-dest-dirPath-pathArr" class="headerlink" title="gulp.dest(dirPath/pathArr)"></a>gulp.dest(dirPath/pathArr)</h5><p>指向指定的所有文件夹</p>
-<h5 id="gulp-task-name-deps-fn"><a href="#gulp-task-name-deps-fn" class="headerlink" title="gulp.task(name, [deps], fn)"></a>gulp.task(name, [deps], fn)</h5><p>定义一个任务</p>
-<h5 id="gulp-watch"><a href="#gulp-watch" class="headerlink" title="gulp.watch()"></a>gulp.watch()</h5><p>监视文件的变化</p>
-<h3 id="处理js-合并-压缩js文件"><a href="#处理js-合并-压缩js文件" class="headerlink" title="处理js(合并/压缩js文件)"></a>处理js(合并/压缩js文件)</h3><p> 创建js文件<br>   src/js/test1.js<br>   src/js/test2.js</p>
-<h5 id="下载插件："><a href="#下载插件：" class="headerlink" title="下载插件："></a>下载插件：</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cnpm install gulp-concat gulp-uglify gulp-rename --save-dev</span><br></pre></td></tr></table></figure>
-<h5 id="配置编码"><a href="#配置编码" class="headerlink" title="配置编码"></a>配置编码</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">var concat = require(<span class="string">&#x27;gulp-concat&#x27;</span>);</span><br><span class="line">var uglify = require(<span class="string">&#x27;gulp-uglify&#x27;</span>);</span><br><span class="line">var rename = require(<span class="string">&#x27;gulp-rename&#x27;</span>);</span><br></pre></td></tr></table></figure>
-<h5 id="gulpfile-js"><a href="#gulpfile-js" class="headerlink" title="gulpfile.js"></a>gulpfile.js</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">var gulp = require(<span class="string">&#x27;gulp&#x27;</span>);</span><br><span class="line">var concat = require(<span class="string">&#x27;gulp-concat&#x27;</span>);</span><br><span class="line">var uglify = require(<span class="string">&#x27;gulp-uglify&#x27;</span>);</span><br><span class="line">var rename = require(<span class="string">&#x27;gulp-rename&#x27;</span>);</span><br><span class="line"></span><br><span class="line">//注册任务</span><br><span class="line">// gulp.task(<span class="string">&#x27;任务名&#x27;</span>, <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">//     //配置任务的操作</span><br><span class="line">// &#125;)</span><br><span class="line"></span><br><span class="line">//注册合并压缩js的任务</span><br><span class="line">gulp.task(<span class="string">&#x27;js&#x27;</span>, <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">    //如果js目录（包括子目录）的所有js文件，需要加上/**/，</span><br><span class="line">    //不加，只代表js目录下的所有js文件</span><br><span class="line">    // gulp.src(<span class="string">&quot;src/js/**/*.js&quot;</span>) </span><br><span class="line">    </span><br><span class="line">    <span class="built_in">return</span> gulp.src(<span class="string">&quot;src/js/*.js&quot;</span>)             //找到目标原文件，将数据读取到gulp的内存中</span><br><span class="line">               .pipe(concat(<span class="string">&#x27;build.js&#x27;</span>))       //临时合并文件</span><br><span class="line">               .pipe(gulp.dest(<span class="string">&#x27;dist/js/&#x27;</span>))    // 临时输出文件到本地</span><br><span class="line">               .pipe(uglify())                 //压缩文件</span><br><span class="line">               .pipe(rename(&#123;suffix: <span class="string">&#x27;.min&#x27;</span>&#125;))  //重命名</span><br><span class="line">               .pipe(gulp.dest(<span class="string">&#x27;dist/js/&#x27;</span>))     //输出压缩文件</span><br><span class="line">&#125;);</span><br><span class="line">// 如果执行每个人物都要gulp ***敲一次命令行，是不方便的，所以把任务放到默认任务里面</span><br><span class="line">//注册默认任务</span><br><span class="line">// gulp.task(<span class="string">&#x27;default&#x27;</span>, [<span class="string">&#x27;js&#x27;</span>])</span><br></pre></td></tr></table></figure>
-<img src="/2019/07/11/gulp%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/1.png" class="">
-<p>gulp4中创建的任务是一个异步的javascript函数——一个接受错误第一次回调或返回stream, promise, event emitter, child process, 或 observable观察的函数。</p>
-<a href="http://www.xinran001.com/frontend/47.html" title="" target="">gulp运行报错：Task function must be specified必须指定任务函数</a>
-
-
-<h5 id="执行任务"><a href="#执行任务" class="headerlink" title="执行任务"></a>执行任务</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gulp js</span><br></pre></td></tr></table></figure>
-<p>在dist目录下生成  js文件夹和build.js和build.min.js</p>
-<h3 id="处理css"><a href="#处理css" class="headerlink" title="处理css"></a>处理css</h3><p> 创建css文件<br>   src/css/test1.css<br>   src/css/test2.css<br>   src/less/test3.less</p>
-<h5 id="下载插件"><a href="#下载插件" class="headerlink" title="下载插件"></a>下载插件</h5> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cnpm install gulp-less gulp-clean-css --save-dev</span><br></pre></td></tr></table></figure>
-<h5 id="配置编码-1"><a href="#配置编码-1" class="headerlink" title="配置编码"></a>配置编码</h5><p> var less = require(‘gulp-less’);<br> var cleanCSS = require(‘gulp-clean-css’);</p>
-<h5 id="less处理任务"><a href="#less处理任务" class="headerlink" title="less处理任务"></a>less处理任务</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gulp.task(<span class="string">&#x27;less&#x27;</span>, <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">    <span class="built_in">return</span> gulp.src(<span class="string">&quot;src/less/*.less&quot;</span>)</span><br><span class="line">               .pipe(less())            //编译less文件为css文件</span><br><span class="line">               .pipe(gulp.dest(<span class="string">&#x27;src/css/&#x27;</span>))</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h5 id="执行命令"><a href="#执行命令" class="headerlink" title="执行命令"></a>执行命令</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gulp less</span><br></pre></td></tr></table></figure>
-<p>在src/css目录下生成test3.css文件（先将less编译为css文件，<br>放到src/css目录下，然后再跟其他css文件一起压缩处理等）</p>
-<h5 id="合并压缩css文件"><a href="#合并压缩css文件" class="headerlink" title="合并压缩css文件"></a>合并压缩css文件</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gulp.task(<span class="string">&#x27;css&#x27;</span>, <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">    <span class="built_in">return</span> gulp.src(<span class="string">&quot;src/css/*.css&quot;</span>)</span><br><span class="line">               .pipe(concat(<span class="string">&#x27;build.css&#x27;</span>))</span><br><span class="line">               .pipe(rename(&#123;suffix: <span class="string">&#x27;.min&#x27;</span>&#125;))</span><br><span class="line">               .pipe(cssClean(&#123;compatibility: <span class="string">&#x27;ie8&#x27;</span>&#125;))</span><br><span class="line">               .pipe(gulp.dest(<span class="string">&#x27;dist/css/&#x27;</span>))</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h5 id="执行命令-1"><a href="#执行命令-1" class="headerlink" title="执行命令"></a>执行命令</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gulp css</span><br></pre></td></tr></table></figure>
-<p>在dist目录下生成css目录，css目录里面有文件build.min.css</p>
-<h5 id="执行任务异步，任务之间解决依赖关系"><a href="#执行任务异步，任务之间解决依赖关系" class="headerlink" title="执行任务异步，任务之间解决依赖关系"></a>执行任务异步，任务之间解决依赖关系</h5><p>使用gulp.task(‘default’, [‘js’, ‘less’, ‘css’]);<br>报错：</p>
-<img src="/2019/07/11/gulp%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/2.png" class="">
-<p>原因：<br>gulp.task 移除了三参数语法，现在不能使用数组来指定一个任务的依赖。gulp 4.0 加入了 gulp.series 和 gulp.parallel 来实现任务的串行化和并行化。<br>不要用Gulp3的方式指定依赖任务，你需要使用gulp.series和gulp.parallel，因为gulp任务现在只有两个参数。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gulp.series：按照顺序执行</span><br><span class="line">gulp.paralle：可以并行计算</span><br></pre></td></tr></table></figure>
-<a href="https://www.jianshu.com/p/c30ff8592421" title="" target="">参考博客</a>
-<p>存在异步问题：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gulp.task(<span class="string">&#x27;default&#x27;</span>, gulp.parallel(<span class="string">&#x27;js&#x27;</span>, <span class="string">&#x27;less&#x27;</span>, <span class="string">&#x27;css&#x27;</span>, <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">    // Build the website.</span><br><span class="line">&#125;));</span><br></pre></td></tr></table></figure>
-<p>报错：</p>
-<img src="/2019/07/11/gulp%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/3.png" class="">
-<a href="https://www.npmjs.com/package/gulp4" title="" target="">参考gulp4 Sample gulpfile.js</a>
-<p>最终将任务改为：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">var build = gulp.series(gulp.parallel(<span class="string">&#x27;js&#x27;</span>, <span class="string">&#x27;less&#x27;</span>, <span class="string">&#x27;css&#x27;</span>));</span><br><span class="line">gulp.task(<span class="string">&#x27;default&#x27;</span>, build);</span><br></pre></td></tr></table></figure>
-<p>将已生成的dist目录删除，执行任务</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gulp </span><br></pre></td></tr></table></figure>
-<img src="/2019/07/11/gulp%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/4.png" class="">
-<p>在目录中生成dist目录，里面有这3个任务生成的文件。<br>注：如果gulp任务中，去掉return，也可以完成任务，但是任务变成同步执行。<br>return能保证任务是异步执行的，在任务执行完成后，会在gulp中释放掉。效率高</p>
-<p>less执行的任务比较多，也许less还没执行完，就执行到css任务了。</p>
-<img src="/2019/07/11/gulp%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/5.png" class="">
-<p>所以要保证执行css任务时，less任务已经执行完了。（添加一个任务数组参数）<br>3.0**这样写：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gulp.task(<span class="string">&#x27;css&#x27;</span>, [<span class="string">&#x27;less&#x27;</span>], <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">    <span class="built_in">return</span> gulp.src(<span class="string">&quot;src/css/*.css&quot;</span>)</span><br><span class="line">               .pipe(concat(<span class="string">&#x27;build.css&#x27;</span>))</span><br><span class="line">               .pipe(rename(&#123;suffix: <span class="string">&#x27;.min&#x27;</span>&#125;))</span><br><span class="line">               .pipe(cssClean(&#123;compatibility: <span class="string">&#x27;ie8&#x27;</span>&#125;))</span><br><span class="line">               .pipe(gulp.dest(<span class="string">&#x27;dist/css/&#x27;</span>))</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>4.0**这样写：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">var build = gulp.series(<span class="string">&#x27;less&#x27;</span>, gulp.parallel(<span class="string">&#x27;js&#x27;</span>, <span class="string">&#x27;css&#x27;</span>, <span class="string">&#x27;html&#x27;</span>));</span><br><span class="line">gulp.task(<span class="string">&#x27;default&#x27;</span>, build);</span><br></pre></td></tr></table></figure>
-<p>结果：（css任务在less任务完成之后再执行）</p>
-<img src="/2019/07/11/gulp%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/6.png" class="">
-<h3 id="压缩html"><a href="#压缩html" class="headerlink" title="压缩html"></a>压缩html</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cnpm install gulp-htmlmin --save-dev</span><br></pre></td></tr></table></figure>
-<h5 id="配置编码-2"><a href="#配置编码-2" class="headerlink" title="配置编码"></a>配置编码</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">var htmlMin = require(<span class="string">&#x27;gulp-htmlmin&#x27;</span>);</span><br></pre></td></tr></table></figure>
-<h5 id="压缩html任务"><a href="#压缩html任务" class="headerlink" title="压缩html任务"></a>压缩html任务</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gulp.task(<span class="string">&#x27;html&#x27;</span>, <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">    <span class="built_in">return</span> gulp.src(<span class="string">&#x27;index.html&#x27;</span>)</span><br><span class="line">               .pipe(htmlMin(&#123;collapseWhitespace: <span class="literal">true</span>&#125;))</span><br><span class="line">               .pipe(gulp.dest(<span class="string">&#x27;dist/&#x27;</span>))</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>src/index.html:</p>
-<img src="/2019/07/11/gulp%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/7.png" class="">
-<p>压缩之后dist/index.html:</p>
-<img src="/2019/07/11/gulp%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/8.png" class="">
-<p>原因：<br>原html文件引入的css文件路径不对：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;link rel=<span class="string">&quot;stylesheet&quot;</span> href=<span class="string">&quot;dist/css/build.min.css&quot;</span>&gt;</span><br></pre></td></tr></table></figure>
-<p>改为：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;link rel=<span class="string">&quot;stylesheet&quot;</span> href=<span class="string">&quot;css/build.min.css&quot;</span>&gt;</span><br></pre></td></tr></table></figure>
-<h4 id="半自动进行项目构建（把gulp的版本换为3-9-1，4-0以上版本处理起来不熟练）"><a href="#半自动进行项目构建（把gulp的版本换为3-9-1，4-0以上版本处理起来不熟练）" class="headerlink" title="半自动进行项目构建（把gulp的版本换为3.9.1，4.0以上版本处理起来不熟练）"></a>半自动进行项目构建（把gulp的版本换为3.9.1，4.0以上版本处理起来不熟练）</h4><h5 id="下载插件-1"><a href="#下载插件-1" class="headerlink" title="下载插件"></a>下载插件</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cnpm install gulp-livereload --save-dev</span><br></pre></td></tr></table></figure>
-<h5 id="配置编码-3"><a href="#配置编码-3" class="headerlink" title="配置编码"></a>配置编码</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">var livereload = require(<span class="string">&#x27;gulp-livereload&#x27;</span>);</span><br><span class="line"></span><br><span class="line">//所有需要实时监听的任务，后面加上：</span><br><span class="line">.pipe(livereload())  </span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gulp.task(<span class="string">&#x27;watch&#x27;</span>,[<span class="string">&#x27;default&#x27;</span>], <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">    //开启监听</span><br><span class="line">    livereload.listen();</span><br><span class="line"></span><br><span class="line">    //确认监听的目标以及绑定相应的任务</span><br><span class="line">    gulp.watch(<span class="string">&#x27;src/js/*.js&#x27;</span>, [<span class="string">&#x27;js&#x27;</span>]);</span><br><span class="line">    gulp.watch([<span class="string">&#x27;src/css/*.css&#x27;</span>, <span class="string">&#x27;src/less/*.less&#x27;</span>], [<span class="string">&#x27;css&#x27;</span>]);</span><br><span class="line">    gulp.watch(<span class="string">&#x27;*.html&#x27;</span>,  [<span class="string">&#x27;html&#x27;</span>]);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>执行任务</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gulp watch </span><br></pre></td></tr></table></figure>
-<p>当src里面的文件有修改时，直接手动刷新浏览器，则可以看到变化，不需要再输入一次执行任务的命令</p>
-<h3 id="全自动进行项目构建"><a href="#全自动进行项目构建" class="headerlink" title="全自动进行项目构建"></a>全自动进行项目构建</h3><h4 id="热加载（实时加载）"><a href="#热加载（实时加载）" class="headerlink" title="热加载（实时加载）"></a>热加载（实时加载）</h4><h5 id="下载插件：gulp-connect"><a href="#下载插件：gulp-connect" class="headerlink" title="下载插件：gulp-connect"></a>下载插件：gulp-connect</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cnpm install gulp-connect --save-dev</span><br></pre></td></tr></table></figure>
-<h5 id="配置编码-4"><a href="#配置编码-4" class="headerlink" title="配置编码"></a>配置编码</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">var connect = require(<span class="string">&#x27;gulp-connect&#x27;</span>);</span><br><span class="line"></span><br><span class="line">gulp.task(<span class="string">&#x27;server&#x27;</span>, [<span class="string">&#x27;default&#x27;</span>],<span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">    //配置服务器的选项</span><br><span class="line">    connect.server(&#123;</span><br><span class="line">        root: <span class="string">&#x27;dist/&#x27;</span>,</span><br><span class="line">        livereload: <span class="literal">true</span>,     //实时刷新</span><br><span class="line">        port: 5000</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    //确认监听的目标以及绑定相应的任务</span><br><span class="line">    gulp.watch(<span class="string">&#x27;src/js/*.js&#x27;</span>, [<span class="string">&#x27;js&#x27;</span>]);</span><br><span class="line">    gulp.watch([<span class="string">&#x27;src/css/*.css&#x27;</span>, <span class="string">&#x27;src/less/*.less&#x27;</span>], [<span class="string">&#x27;css&#x27;</span>]);</span><br><span class="line">    gulp.watch(<span class="string">&#x27;*.html&#x27;</span>,  [<span class="string">&#x27;html&#x27;</span>]);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">//所有需要实时监听的任务，后面加上：</span><br><span class="line"> .pipe(connect.reload())</span><br></pre></td></tr></table></figure>
-<h5 id="执行任务-1"><a href="#执行任务-1" class="headerlink" title="执行任务"></a>执行任务</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gulp server</span><br></pre></td></tr></table></figure>
-<h3 id="自动开启链接"><a href="#自动开启链接" class="headerlink" title="自动开启链接"></a>自动开启链接</h3><h5 id="下载插件-2"><a href="#下载插件-2" class="headerlink" title="下载插件"></a>下载插件</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cnpm install open --save-dev</span><br></pre></td></tr></table></figure>
-<h5 id="配置编码-5"><a href="#配置编码-5" class="headerlink" title="配置编码"></a>配置编码</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">var open = require(<span class="string">&#x27;open&#x27;</span>);</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">在server任务中，加入：</span><br><span class="line">//open可以自动打开指定的链接</span><br><span class="line">open(<span class="string">&#x27;http://localhost:5000/&#x27;</span>);</span><br></pre></td></tr></table></figure>
-<h3 id="–扩展–"><a href="#–扩展–" class="headerlink" title="–扩展–"></a>–扩展–</h3><p>打包加载gulp插件<br><b>前提：将插件下载好</b><br>下载打包插件：gulp-load-plugins</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cnpm install gulp-load-plugins --save-dev</span><br><span class="line"></span><br><span class="line">引入： var $ = require(<span class="string">&#x27;gulp-load-plugins&#x27;</span>)();</span><br></pre></td></tr></table></figure>
-<p>($就是函数执行后返回的对象，其他插件的方法都在$这个对象里面。)<br>神来之笔：其他的插件不用再引入了<br>使用方法：<br>所有的插件用$引出，其他插件的方法名统一为插件的名字(即插件)<br>使用：<br>在每个方法前面加上$.来调用该方法。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gulp.task(<span class="string">&#x27;css&#x27;</span>, [<span class="string">&#x27;less&#x27;</span>],<span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">    <span class="built_in">return</span> gulp.src(<span class="string">&quot;src/css/*.css&quot;</span>)</span><br><span class="line">               .pipe($.concat(<span class="string">&#x27;build.css&#x27;</span>))</span><br><span class="line">               .pipe($.rename(&#123;suffix: <span class="string">&#x27;.min&#x27;</span>&#125;))</span><br><span class="line">               .pipe($.cssClean(&#123;compatibility: <span class="string">&#x27;ie8&#x27;</span>&#125;))</span><br><span class="line">               .pipe(gulp.dest(<span class="string">&#x27;dist/css/&#x27;</span>))</span><br><span class="line">               .pipe($.livereload())              //实时刷新</span><br><span class="line">               .pipe($.connect.reload())</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">gulp.task(<span class="string">&#x27;html&#x27;</span>, <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">    <span class="built_in">return</span> gulp.src(<span class="string">&#x27;index.html&#x27;</span>)</span><br><span class="line">               .pipe($.htmlMin(&#123;collapseWhitespace: <span class="literal">true</span>&#125;))</span><br><span class="line">               .pipe(gulp.dest(<span class="string">&#x27;dist/&#x27;</span>))</span><br><span class="line">               .pipe($.livereload())              //实时刷新</span><br><span class="line">               .pipe($.connect.reload())</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h6 id="后面跟的是gulp插件，gulp-后面的名称。"><a href="#后面跟的是gulp插件，gulp-后面的名称。" class="headerlink" title="$.后面跟的是gulp插件，gulp-后面的名称。"></a>$.后面跟的是gulp插件，gulp-后面的名称。</h6><p>报错：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$.htmlMin is not a <span class="keyword">function</span></span><br></pre></td></tr></table></figure>
-<p>因为一开始是：var htmlMin = require(‘gulp-htmlmin’);<br>将htmlMin改为htmlmin即可<br>报错：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$.cssClean is not a <span class="keyword">function</span></span><br></pre></td></tr></table></figure>
-<p>因为一开始是：var cssClean = require(‘gulp-clean-css’);<br>将cssClean改为cleanCss即可(驼峰命名法)</p>
-<p>注：如果使用gulp-load-plugins这个插件，就不用每个插件一个一个引入。<br>gulpfile.js：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">var gulp = require(<span class="string">&#x27;gulp&#x27;</span>);</span><br><span class="line">var $ = require(<span class="string">&#x27;gulp-load-plugins&#x27;</span>)();</span><br><span class="line"></span><br><span class="line">// var concat = require(<span class="string">&#x27;gulp-concat&#x27;</span>);</span><br><span class="line">// var uglify = require(<span class="string">&#x27;gulp-uglify&#x27;</span>);</span><br><span class="line">// var rename = require(<span class="string">&#x27;gulp-rename&#x27;</span>);</span><br><span class="line">// var less = require(<span class="string">&#x27;gulp-less&#x27;</span>);</span><br><span class="line">// var cssClean = require(<span class="string">&#x27;gulp-clean-css&#x27;</span>);</span><br><span class="line">// var htmlMin = require(<span class="string">&#x27;gulp-htmlmin&#x27;</span>);</span><br><span class="line">// var livereload = require(<span class="string">&#x27;gulp-livereload&#x27;</span>);</span><br><span class="line">// var connect = require(<span class="string">&#x27;gulp-connect&#x27;</span>);</span><br><span class="line"></span><br><span class="line">var open = require(<span class="string">&#x27;open&#x27;</span>);</span><br><span class="line">//注册任务</span><br><span class="line">// gulp.task(<span class="string">&#x27;任务名&#x27;</span>, <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">//     //配置任务的操作</span><br><span class="line">// &#125;)</span><br><span class="line"></span><br><span class="line">//注册合并压缩js的任务</span><br><span class="line">gulp.task(<span class="string">&#x27;js&#x27;</span>, <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">    //如果js目录（包括子目录）的所有js文件，需要加上/**/，</span><br><span class="line">    //不加，只代表js目录下的所有js文件</span><br><span class="line">    // gulp.src(<span class="string">&quot;src/js/**/*.js&quot;</span>) </span><br><span class="line">    </span><br><span class="line">    <span class="built_in">return</span> gulp.src(<span class="string">&quot;src/js/*.js&quot;</span>) //找到目标原文件，将数据读取到gulp的内存中</span><br><span class="line">               .pipe($.concat(<span class="string">&#x27;build.js&#x27;</span>))       //临时合并文件</span><br><span class="line">               .pipe(gulp.dest(<span class="string">&#x27;dist/js/&#x27;</span>))    // 临时输出文件到本地</span><br><span class="line">               .pipe($.uglify())                 //压缩文件</span><br><span class="line">               .pipe($.rename(&#123;suffix: <span class="string">&#x27;.min&#x27;</span>&#125;))  //重命名</span><br><span class="line">               .pipe(gulp.dest(<span class="string">&#x27;dist/js/&#x27;</span>))     //输出压缩文件</span><br><span class="line">               .pipe($.livereload())              //实时刷新</span><br><span class="line">               .pipe($.connect.reload())</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">//注册转换less的任务</span><br><span class="line">gulp.task(<span class="string">&#x27;less&#x27;</span>, <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">    <span class="built_in">return</span> gulp.src(<span class="string">&quot;src/less/*.less&quot;</span>)</span><br><span class="line">               .pipe($.less())            //编译less文件为css文件</span><br><span class="line">               .pipe(gulp.dest(<span class="string">&#x27;src/css/&#x27;</span>))</span><br><span class="line">               .pipe($.livereload())              //实时刷新</span><br><span class="line">               .pipe($.connect.reload())</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">//注册合并压缩css文件</span><br><span class="line">gulp.task(<span class="string">&#x27;css&#x27;</span>, [<span class="string">&#x27;less&#x27;</span>],<span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">    <span class="built_in">return</span> gulp.src(<span class="string">&quot;src/css/*.css&quot;</span>)</span><br><span class="line">               .pipe($.concat(<span class="string">&#x27;build.css&#x27;</span>))</span><br><span class="line">               .pipe($.rename(&#123;suffix: <span class="string">&#x27;.min&#x27;</span>&#125;))</span><br><span class="line">               .pipe($.cleanCss(&#123;compatibility: <span class="string">&#x27;ie8&#x27;</span>&#125;))</span><br><span class="line">               .pipe(gulp.dest(<span class="string">&#x27;dist/css/&#x27;</span>))</span><br><span class="line">               .pipe($.livereload())              //实时刷新</span><br><span class="line">               .pipe($.connect.reload())</span><br><span class="line">&#125;);</span><br><span class="line">//注册压缩html任务</span><br><span class="line">gulp.task(<span class="string">&#x27;html&#x27;</span>, <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">    <span class="built_in">return</span> gulp.src(<span class="string">&#x27;index.html&#x27;</span>)</span><br><span class="line">               .pipe($.htmlmin(&#123;collapseWhitespace: <span class="literal">true</span>&#125;))</span><br><span class="line">               .pipe(gulp.dest(<span class="string">&#x27;dist/&#x27;</span>))</span><br><span class="line">               .pipe($.livereload())              //实时刷新</span><br><span class="line">               .pipe($.connect.reload())</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">//注册监视任务(半自动)</span><br><span class="line">gulp.task(<span class="string">&#x27;watch&#x27;</span>, [<span class="string">&#x27;default&#x27;</span>], <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">    //开启监听</span><br><span class="line">    livereload.listen();</span><br><span class="line"></span><br><span class="line">    //确认监听的目标以及绑定相应的任务</span><br><span class="line">    gulp.watch(<span class="string">&#x27;src/js/*.js&#x27;</span>, [<span class="string">&#x27;js&#x27;</span>]);</span><br><span class="line">    gulp.watch([<span class="string">&#x27;src/css/*.css&#x27;</span>, <span class="string">&#x27;src/less/*.less&#x27;</span>], [<span class="string">&#x27;css&#x27;</span>]);</span><br><span class="line">    gulp.watch(<span class="string">&#x27;*.html&#x27;</span>,  [<span class="string">&#x27;html&#x27;</span>]);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">//注册监视任务（全自动）</span><br><span class="line">gulp.task(<span class="string">&#x27;server&#x27;</span>, [<span class="string">&#x27;default&#x27;</span>],<span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">    //配置服务器的选项</span><br><span class="line">    $.connect.server(&#123;</span><br><span class="line">        root: <span class="string">&#x27;dist/&#x27;</span>,</span><br><span class="line">        livereload: <span class="literal">true</span>,     //实时刷新</span><br><span class="line">        port: 5000</span><br><span class="line">    &#125;)</span><br><span class="line">    </span><br><span class="line">    //open可以自动打开指定的链接</span><br><span class="line">    open(<span class="string">&#x27;http://localhost:5000/&#x27;</span>);</span><br><span class="line"></span><br><span class="line">    //确认监听的目标以及绑定相应的任务</span><br><span class="line">    gulp.watch(<span class="string">&#x27;src/js/*.js&#x27;</span>, [<span class="string">&#x27;js&#x27;</span>]);</span><br><span class="line">    gulp.watch([<span class="string">&#x27;src/css/*.css&#x27;</span>, <span class="string">&#x27;src/less/*.less&#x27;</span>], [<span class="string">&#x27;css&#x27;</span>]);</span><br><span class="line">    gulp.watch(<span class="string">&#x27;*.html&#x27;</span>,  [<span class="string">&#x27;html&#x27;</span>]);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">// 如果执行每个任务都要gulp *敲一次命令行，是不方便的，所以把任务放到默认任务里面</span><br><span class="line">//注册默认任务</span><br><span class="line">// gulp 4.0.2不能这样写：</span><br><span class="line">// gulp.task(<span class="string">&#x27;default&#x27;</span>, [<span class="string">&#x27;js&#x27;</span>, <span class="string">&#x27;less&#x27;</span>, <span class="string">&#x27;css&#x27;</span>]);</span><br><span class="line"></span><br><span class="line">// gulp4可以这样写：</span><br><span class="line">// var build = gulp.series(<span class="string">&#x27;less&#x27;</span>, gulp.parallel(<span class="string">&#x27;js&#x27;</span>, <span class="string">&#x27;css&#x27;</span>, <span class="string">&#x27;html&#x27;</span>));</span><br><span class="line">// gulp.task(<span class="string">&#x27;default&#x27;</span>, build);</span><br><span class="line"></span><br><span class="line">gulp.task(<span class="string">&#x27;default&#x27;</span>, [<span class="string">&#x27;js&#x27;</span>, <span class="string">&#x27;less&#x27;</span>, <span class="string">&#x27;css&#x27;</span>, <span class="string">&#x27;html&#x27;</span>]);</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>工作笔记</category>
-        <category>Gulp</category>
-      </categories>
-      <tags>
-        <tag>Gulp</tag>
       </tags>
   </entry>
   <entry>
@@ -1955,48 +2012,6 @@
       </categories>
       <tags>
         <tag>jsTree</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>layui 笔记</title>
-    <url>/2020/06/24/layui-%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h4 id="判断复选框是否选中-获取复选框的值"><a href="#判断复选框是否选中-获取复选框的值" class="headerlink" title="判断复选框是否选中(获取复选框的值)"></a>判断复选框是否选中(获取复选框的值)</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">data.elem.checked</span><br></pre></td></tr></table></figure>
-<h4 id="设置layer-alert和layer-comfirm为不可resize"><a href="#设置layer-alert和layer-comfirm为不可resize" class="headerlink" title="设置layer-alert和layer-comfirm为不可resize"></a>设置layer-alert和layer-comfirm为不可resize</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">将resize参数设置为false</span><br></pre></td></tr></table></figure>
-<h4 id="导出excel表格"><a href="#导出excel表格" class="headerlink" title="导出excel表格"></a>导出excel表格</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var ins1 &#x3D; table.render (&#123;</span><br><span class="line">	elem: &#39;#demo &#39;</span><br><span class="line">	,id: &#39;test&#39;</span><br><span class="line">	...</span><br><span class="line">&#125;)</span><br><span class="line">&#x2F;&#x2F; 将上述表格示例导出为csv文件</span><br><span class="line">table.exportFile(ins1.config.id，data) ; &#x2F;&#x2F; data为该实例中的任意数量的数据</span><br></pre></td></tr></table></figure>
-<img src="/2020/06/24/layui-%E7%AC%94%E8%AE%B0/note1.png" class="">
-
-<h4 id="导出excel表格时，去掉页面表头显示的小图标"><a href="#导出excel表格时，去掉页面表头显示的小图标" class="headerlink" title="导出excel表格时，去掉页面表头显示的小图标"></a>导出excel表格时，去掉页面表头显示的小图标</h4><img src="/2020/06/24/layui-%E7%AC%94%E8%AE%B0/note2.png" class="">
-
-<img src="/2020/06/24/layui-%E7%AC%94%E8%AE%B0/note3.png" class="">
-
-<img src="/2020/06/24/layui-%E7%AC%94%E8%AE%B0/note4.png" class="">
-
-<blockquote>
-<p>点击下载时，将表格的头部图标去掉，执行了下载表格的函数之后，将表头的图标加上。<br>注意：由于表头cols是对象，指向地址，修改了，会影响全局的（例如：点击时间间隔时会拿到去掉图标的表头）<br>解决：（保留原来的不加以修改的表头数据）</p>
-</blockquote>
-<h4 id="修改重载表格时的加载图标"><a href="#修改重载表格时的加载图标" class="headerlink" title="修改重载表格时的加载图标"></a>修改重载表格时的加载图标</h4><img src="/2020/06/24/layui-%E7%AC%94%E8%AE%B0/note5.png" class="">
-
-<ul>
-<li><p>如果只修改样式</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.layui-table-view .layui-table-init .layui-icon-loading&#123;</span><br><span class="line">  	font-size: 60px;</span><br><span class="line">  	color: #666;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>如果不想页面显示表格加载图标</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.layui-table-view .layui-table-init .layui-icon-loading&#123;</span><br><span class="line">    display: none !important;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ul>
-<h4 id="表格表头标题之间边框不显示"><a href="#表格表头标题之间边框不显示" class="headerlink" title="表格表头标题之间边框不显示"></a>表格表头标题之间边框不显示</h4><img src="/2020/06/24/layui-%E7%AC%94%E8%AE%B0/note6.png" class="">
-
-<p>th本来是position：relative；改为position: static；</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.layui-table td, .layui-table th&#123;</span><br><span class="line">    position: static\9;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="修改了layui表格的内容，不刷新页面，只刷新表格内容，页码不刷新解决方法"><a href="#修改了layui表格的内容，不刷新页面，只刷新表格内容，页码不刷新解决方法" class="headerlink" title="修改了layui表格的内容，不刷新页面，只刷新表格内容，页码不刷新解决方法"></a>修改了layui表格的内容，不刷新页面，只刷新表格内容，页码不刷新解决方法</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function render_table(tabledata, cur) &#123;</span><br><span class="line">  ·········</span><br><span class="line">  , page: &#123;</span><br><span class="line">    curr: cur</span><br><span class="line">  &#125;</span><br><span class="line">  , data: tabledata</span><br><span class="line">   ·········</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;获取当前页</span><br><span class="line">var curr &#x3D; $(&quot;.layui-laypage-skip input&quot;).val();</span><br><span class="line">&#x2F;&#x2F;重新渲染表格</span><br><span class="line">&lt;!-- res.data：修改数据后，重新返回渲染表格的数据 --&gt;</span><br><span class="line">&lt;!-- 从curr页开始渲染表格 --&gt;</span><br><span class="line">render_table(res.data, curr);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h4 id="layui同时清空多个表单元素的值"><a href="#layui同时清空多个表单元素的值" class="headerlink" title="layui同时清空多个表单元素的值"></a>layui同时清空多个表单元素的值</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1、 form 加上 lay-filter属性  lay-filter&#x3D;&quot;group_form&quot;</span><br><span class="line">2、 </span><br><span class="line">$(&quot;#cancel&quot;).click(function() &#123;</span><br><span class="line">    form.val(&quot;group_form&quot;, &#123;</span><br><span class="line">      &quot;sdk&quot;: &quot;&quot;,     &#x2F;&#x2F;单选框清空不了</span><br><span class="line">      &quot;name&quot;: &quot;&quot;,    &#x2F;&#x2F;输入框可以清空</span><br><span class="line">      &quot;sort&quot;: &quot;&quot;,    &#x2F;&#x2F;复选框清空不了</span><br><span class="line">      &quot;ddddd&quot;: &quot;&quot;,   &#x2F;&#x2F;下拉框可以清空</span><br><span class="line">      &quot;password&quot;: &quot;&quot; &#x2F;&#x2F;密码框可以清空</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>工作笔记</category>
-        <category>layui</category>
-      </categories>
-      <tags>
-        <tag>layui</tag>
       </tags>
   </entry>
   <entry>
@@ -2566,6 +2581,32 @@
       </tags>
   </entry>
   <entry>
+    <title>在Vue项目中使用sass的配置方法</title>
+    <url>/2020/03/19/%E5%9C%A8Vue%E9%A1%B9%E7%9B%AE%E4%B8%AD%E4%BD%BF%E7%94%A8sass%E7%9A%84%E9%85%8D%E7%BD%AE%E6%96%B9%E6%B3%95/</url>
+    <content><![CDATA[<h4 id="1、安装sass的依赖包"><a href="#1、安装sass的依赖包" class="headerlink" title="1、安装sass的依赖包"></a>1、安装sass的依赖包</h4><p>sass-loader依赖于node-sass</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install sass-loader node-sass --save-dev </span><br></pre></td></tr></table></figure>
+<h4 id="2、在build文件夹下的webpack-base-conf-js的rules里面添加配置"><a href="#2、在build文件夹下的webpack-base-conf-js的rules里面添加配置" class="headerlink" title="2、在build文件夹下的webpack.base.conf.js的rules里面添加配置"></a>2、在build文件夹下的webpack.base.conf.js的rules里面添加配置</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line"> test: &#x2F;\.sass$&#x2F;,</span><br><span class="line"> loaders: [&#39;style&#39;, &#39;css&#39;, &#39;scss&#39;]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>如下图所示：</p>
+<img src="/2020/03/19/%E5%9C%A8Vue%E9%A1%B9%E7%9B%AE%E4%B8%AD%E4%BD%BF%E7%94%A8sass%E7%9A%84%E9%85%8D%E7%BD%AE%E6%96%B9%E6%B3%95/rules.jpg" class="">
+
+<h4 id="3、在APP-vue中修改style标签"><a href="#3、在APP-vue中修改style标签" class="headerlink" title="3、在APP.vue中修改style标签"></a>3、在APP.vue中修改style标签</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;style lang&#x3D;&quot;scss&quot;&gt;</span><br><span class="line">   $blue:red;</span><br><span class="line">    .common-header&#123;</span><br><span class="line">        color: $blue;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="4、运行项目"><a href="#4、运行项目" class="headerlink" title="4、运行项目"></a>4、运行项目</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
+<h5 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h5><p>如有以下报错，是版本的问题影响的：</p>
+<p>Module build failed: TypeError: this.getResolve is not a function at Object.loader 安装node-sass运行报错</p>
+<p><strong>解决方法</strong>： 选择更低版本的sass-loader</p>
+<p><strong>卸载当前版本</strong>：npm uninstall sass-loader<br><strong>安装指定版本</strong>：npm install <a href="mailto:&#x73;&#97;&#115;&#x73;&#45;&#108;&#x6f;&#x61;&#x64;&#x65;&#114;&#x40;&#55;&#46;&#x33;&#x2e;&#49;">&#x73;&#97;&#115;&#x73;&#45;&#108;&#x6f;&#x61;&#x64;&#x65;&#114;&#x40;&#55;&#46;&#x33;&#x2e;&#49;</a> –save-dev</p>
+<p>参考： <a href="https://blog.csdn.net/ze1024/article/details/100516650">安装node-sass运行报错</a></p>
+]]></content>
+      <categories>
+        <category>工作笔记</category>
+        <category>Vue.js</category>
+      </categories>
+      <tags>
+        <tag>Vue.js</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>在Hexo博客中发布文章</title>
     <url>/2018/08/02/%E5%9C%A8Hexo%E5%8D%9A%E5%AE%A2%E4%B8%AD%E5%8F%91%E5%B8%83%E6%96%87%E7%AB%A0/</url>
     <content><![CDATA[<h4 id="1、新建一篇文章"><a href="#1、新建一篇文章" class="headerlink" title="1、新建一篇文章"></a>1、新建一篇文章</h4><p>（1）在hexo博客目录下，进入Git Bash命令窗口中，输入以下命令：</p>
@@ -2624,32 +2665,6 @@
       </categories>
       <tags>
         <tag>博客</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>在Vue项目中使用sass的配置方法</title>
-    <url>/2020/03/19/%E5%9C%A8Vue%E9%A1%B9%E7%9B%AE%E4%B8%AD%E4%BD%BF%E7%94%A8sass%E7%9A%84%E9%85%8D%E7%BD%AE%E6%96%B9%E6%B3%95/</url>
-    <content><![CDATA[<h4 id="1、安装sass的依赖包"><a href="#1、安装sass的依赖包" class="headerlink" title="1、安装sass的依赖包"></a>1、安装sass的依赖包</h4><p>sass-loader依赖于node-sass</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install sass-loader node-sass --save-dev </span><br></pre></td></tr></table></figure>
-<h4 id="2、在build文件夹下的webpack-base-conf-js的rules里面添加配置"><a href="#2、在build文件夹下的webpack-base-conf-js的rules里面添加配置" class="headerlink" title="2、在build文件夹下的webpack.base.conf.js的rules里面添加配置"></a>2、在build文件夹下的webpack.base.conf.js的rules里面添加配置</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line"> test: &#x2F;\.sass$&#x2F;,</span><br><span class="line"> loaders: [&#39;style&#39;, &#39;css&#39;, &#39;scss&#39;]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<p>如下图所示：</p>
-<img src="/2020/03/19/%E5%9C%A8Vue%E9%A1%B9%E7%9B%AE%E4%B8%AD%E4%BD%BF%E7%94%A8sass%E7%9A%84%E9%85%8D%E7%BD%AE%E6%96%B9%E6%B3%95/rules.jpg" class="">
-
-<h4 id="3、在APP-vue中修改style标签"><a href="#3、在APP-vue中修改style标签" class="headerlink" title="3、在APP.vue中修改style标签"></a>3、在APP.vue中修改style标签</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;style lang&#x3D;&quot;scss&quot;&gt;</span><br><span class="line">   $blue:red;</span><br><span class="line">    .common-header&#123;</span><br><span class="line">        color: $blue;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h4 id="4、运行项目"><a href="#4、运行项目" class="headerlink" title="4、运行项目"></a>4、运行项目</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
-<h5 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h5><p>如有以下报错，是版本的问题影响的：</p>
-<p>Module build failed: TypeError: this.getResolve is not a function at Object.loader 安装node-sass运行报错</p>
-<p><strong>解决方法</strong>： 选择更低版本的sass-loader</p>
-<p><strong>卸载当前版本</strong>：npm uninstall sass-loader<br><strong>安装指定版本</strong>：npm install <a href="mailto:&#x73;&#x61;&#x73;&#x73;&#x2d;&#x6c;&#111;&#x61;&#100;&#x65;&#x72;&#64;&#x37;&#46;&#x33;&#x2e;&#x31;">&#x73;&#x61;&#x73;&#x73;&#x2d;&#x6c;&#111;&#x61;&#100;&#x65;&#x72;&#64;&#x37;&#46;&#x33;&#x2e;&#x31;</a> –save-dev</p>
-<p>参考： <a href="https://blog.csdn.net/ze1024/article/details/100516650">安装node-sass运行报错</a></p>
-]]></content>
-      <categories>
-        <category>工作笔记</category>
-        <category>Vue.js</category>
-      </categories>
-      <tags>
-        <tag>Vue.js</tag>
       </tags>
   </entry>
   <entry>
@@ -2823,6 +2838,32 @@
       </categories>
       <tags>
         <tag>正则表达式</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>火狐兼容</title>
+    <url>/2019/07/11/%E7%81%AB%E7%8B%90%E5%85%BC%E5%AE%B9/</url>
+    <content><![CDATA[<h3 id="文本溢出省略号显示-火狐不兼容"><a href="#文本溢出省略号显示-火狐不兼容" class="headerlink" title="文本溢出省略号显示-火狐不兼容"></a>文本溢出省略号显示-火狐不兼容</h3><h4 id="第一种解决方案："><a href="#第一种解决方案：" class="headerlink" title="第一种解决方案："></a>第一种解决方案：</h4><p>layui框架对文本溢出隐藏省略号显示</p>
+<img src="/2019/07/11/%E7%81%AB%E7%8B%90%E5%85%BC%E5%AE%B9/1.png" class="">
+<h5 id="解决：将溢出文字修剪，而不用省略号显示"><a href="#解决：将溢出文字修剪，而不用省略号显示" class="headerlink" title="解决：将溢出文字修剪，而不用省略号显示"></a>解决：将溢出文字修剪，而不用省略号显示</h5><a id="more"></a>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">.activity-table .layui-table-cell&#123;</span><br><span class="line">    text-overflow: clip;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<img src="/2019/07/11/%E7%81%AB%E7%8B%90%E5%85%BC%E5%AE%B9/2.png" class="">
+
+<h4 id="第二种解决方案："><a href="#第二种解决方案：" class="headerlink" title="第二种解决方案："></a>第二种解决方案：</h4><img src="/2019/07/11/%E7%81%AB%E7%8B%90%E5%85%BC%E5%AE%B9/3.png" class="">
+
+<p>使用：<br>overflow: hidden;<br>text-overflow: ellipsis;<br>white-space: nowrap;<br>在谷歌浏览器没有问题。火狐浏览器不兼容，IE对文本溢出本来是没有兼容问题的，<br>因为这个文本是在表格（table）里面的，所以IE也会有兼容问题。</p>
+<p>要解决IE的兼容问题，要将td改为display:inline-block;</p>
+<p>由于改为这样，样式需要改变的地方比较多，而且还是不兼容火狐，所以<b>使用JQ截取字符串来解决.</b></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//页面结构</span><br><span class="line">&lt;td class=<span class="string">&quot;link word_cont&quot;</span>&gt;</span><br><span class="line">Android：&lt;a href=<span class="string">&quot;&quot;</span> target=<span class="string">&quot;_blank&quot;</span>&gt;&lt;/a&gt;</span><br><span class="line">&lt;br&gt;</span><br><span class="line">ios：&lt;a href=<span class="string">&quot;&quot;</span> target=<span class="string">&quot;_blank&quot;</span>&gt;&lt;/a&gt;</span><br><span class="line">&lt;/td&gt;</span><br><span class="line">//处理溢出隐藏省略号显示 兼容性问题</span><br><span class="line">$(<span class="string">&#x27;.word_cont a&#x27;</span>).each(<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">    //获取td宽度</span><br><span class="line">    var tdWidth = $(<span class="string">&quot;.word_cont&quot;</span>).width();</span><br><span class="line">    //一个字符宽度</span><br><span class="line">    var internal = 5; </span><br><span class="line">    //显示个数</span><br><span class="line">    var maxwidth = Math.floor((tdWidth- 160)/internal) ;   </span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>($(this).text().length&gt;maxwidth)&#123;</span><br><span class="line">        //截取字符串</span><br><span class="line">        $(this).text($(this).text().substring(0,maxwidth));</span><br><span class="line">        //多余的用省略号显示</span><br><span class="line">        $(this).html($(this).html()+<span class="string">&#x27;...&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    //先隐藏，截取之后，再显示</span><br><span class="line">    $(this).css(<span class="string">&quot;display&quot;</span>, <span class="string">&quot;inline-block&quot;</span>);   </span><br><span class="line">&#125;);</span><br><span class="line">    </span><br></pre></td></tr></table></figure>
+<p>但是有个问题，由于字母，数字，分号(.)，空格(&nbsp;)的字符大小不太一样，<br>所以以一个字符5px来算，不是特别精准。但大致可以解决这个问题。<br>（若有更好的方法，可以留言给我，感谢！）</p>
+]]></content>
+      <categories>
+        <category>工作笔记</category>
+        <category>火狐兼容</category>
+      </categories>
+      <tags>
+        <tag>火狐兼容</tag>
       </tags>
   </entry>
   <entry>
@@ -3082,32 +3123,6 @@
       </tags>
   </entry>
   <entry>
-    <title>火狐兼容</title>
-    <url>/2019/07/11/%E7%81%AB%E7%8B%90%E5%85%BC%E5%AE%B9/</url>
-    <content><![CDATA[<h3 id="文本溢出省略号显示-火狐不兼容"><a href="#文本溢出省略号显示-火狐不兼容" class="headerlink" title="文本溢出省略号显示-火狐不兼容"></a>文本溢出省略号显示-火狐不兼容</h3><h4 id="第一种解决方案："><a href="#第一种解决方案：" class="headerlink" title="第一种解决方案："></a>第一种解决方案：</h4><p>layui框架对文本溢出隐藏省略号显示</p>
-<img src="/2019/07/11/%E7%81%AB%E7%8B%90%E5%85%BC%E5%AE%B9/1.png" class="">
-<h5 id="解决：将溢出文字修剪，而不用省略号显示"><a href="#解决：将溢出文字修剪，而不用省略号显示" class="headerlink" title="解决：将溢出文字修剪，而不用省略号显示"></a>解决：将溢出文字修剪，而不用省略号显示</h5><a id="more"></a>
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">.activity-table .layui-table-cell&#123;</span><br><span class="line">    text-overflow: clip;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<img src="/2019/07/11/%E7%81%AB%E7%8B%90%E5%85%BC%E5%AE%B9/2.png" class="">
-
-<h4 id="第二种解决方案："><a href="#第二种解决方案：" class="headerlink" title="第二种解决方案："></a>第二种解决方案：</h4><img src="/2019/07/11/%E7%81%AB%E7%8B%90%E5%85%BC%E5%AE%B9/3.png" class="">
-
-<p>使用：<br>overflow: hidden;<br>text-overflow: ellipsis;<br>white-space: nowrap;<br>在谷歌浏览器没有问题。火狐浏览器不兼容，IE对文本溢出本来是没有兼容问题的，<br>因为这个文本是在表格（table）里面的，所以IE也会有兼容问题。</p>
-<p>要解决IE的兼容问题，要将td改为display:inline-block;</p>
-<p>由于改为这样，样式需要改变的地方比较多，而且还是不兼容火狐，所以<b>使用JQ截取字符串来解决.</b></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//页面结构</span><br><span class="line">&lt;td class=<span class="string">&quot;link word_cont&quot;</span>&gt;</span><br><span class="line">Android：&lt;a href=<span class="string">&quot;&quot;</span> target=<span class="string">&quot;_blank&quot;</span>&gt;&lt;/a&gt;</span><br><span class="line">&lt;br&gt;</span><br><span class="line">ios：&lt;a href=<span class="string">&quot;&quot;</span> target=<span class="string">&quot;_blank&quot;</span>&gt;&lt;/a&gt;</span><br><span class="line">&lt;/td&gt;</span><br><span class="line">//处理溢出隐藏省略号显示 兼容性问题</span><br><span class="line">$(<span class="string">&#x27;.word_cont a&#x27;</span>).each(<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">    //获取td宽度</span><br><span class="line">    var tdWidth = $(<span class="string">&quot;.word_cont&quot;</span>).width();</span><br><span class="line">    //一个字符宽度</span><br><span class="line">    var internal = 5; </span><br><span class="line">    //显示个数</span><br><span class="line">    var maxwidth = Math.floor((tdWidth- 160)/internal) ;   </span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>($(this).text().length&gt;maxwidth)&#123;</span><br><span class="line">        //截取字符串</span><br><span class="line">        $(this).text($(this).text().substring(0,maxwidth));</span><br><span class="line">        //多余的用省略号显示</span><br><span class="line">        $(this).html($(this).html()+<span class="string">&#x27;...&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    //先隐藏，截取之后，再显示</span><br><span class="line">    $(this).css(<span class="string">&quot;display&quot;</span>, <span class="string">&quot;inline-block&quot;</span>);   </span><br><span class="line">&#125;);</span><br><span class="line">    </span><br></pre></td></tr></table></figure>
-<p>但是有个问题，由于字母，数字，分号(.)，空格(&nbsp;)的字符大小不太一样，<br>所以以一个字符5px来算，不是特别精准。但大致可以解决这个问题。<br>（若有更好的方法，可以留言给我，感谢！）</p>
-]]></content>
-      <categories>
-        <category>工作笔记</category>
-        <category>火狐兼容</category>
-      </categories>
-      <tags>
-        <tag>火狐兼容</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>移动端调试方法汇总</title>
     <url>/2020/07/17/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E8%B0%83%E8%AF%95%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB/</url>
     <content><![CDATA[<h3 id="一：Android手机-chrome（真机调试）"><a href="#一：Android手机-chrome（真机调试）" class="headerlink" title="一：Android手机 + chrome（真机调试）"></a>一：Android手机 + chrome（真机调试）</h3><p><a href="https://juejin.im/post/5b15022ff265da6e163720c6">参考的博客-掘金</a></p>
@@ -3195,19 +3210,45 @@
       </tags>
   </entry>
   <entry>
-    <title>网页特效</title>
-    <url>/2021/01/19/%E7%BD%91%E9%A1%B5%E7%89%B9%E6%95%88/</url>
-    <content><![CDATA[<h4 id="轻松解决网站大部分特效展示问题"><a href="#轻松解决网站大部分特效展示问题" class="headerlink" title="轻松解决网站大部分特效展示问题"></a>轻松解决网站大部分特效展示问题</h4><p><a href="http://www.superslide2.com/index.html">SuperSlide</a></p>
-<h4 id="鼠标点击网页出现爱心特效"><a href="#鼠标点击网页出现爱心特效" class="headerlink" title="鼠标点击网页出现爱心特效"></a>鼠标点击网页出现爱心特效</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">(function(window,document,undefined)&#123;</span><br><span class="line">    var hearts &#x3D; [];</span><br><span class="line">    window.requestAnimationFrame &#x3D; (function()&#123;</span><br><span class="line">        return window.requestAnimationFrame ||</span><br><span class="line">        window.webkitRequestAnimationFrame ||</span><br><span class="line">        window.mozRequestAnimationFrame ||</span><br><span class="line">        window.oRequestAnimationFrame ||</span><br><span class="line">        window.msRequestAnimationFrame ||</span><br><span class="line">        function (callback)&#123;</span><br><span class="line">            setTimeout(callback,1000&#x2F;60);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)();</span><br><span class="line">    init();</span><br><span class="line">    function init()&#123;</span><br><span class="line">        css(&quot;.heart&#123;width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);&#125;.heart:after,.heart:before&#123;content: &#39;&#39;;width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: absolute;&#125;.heart:after&#123;top: -5px;&#125;.heart:before&#123;left: -5px;&#125;&quot;);</span><br><span class="line">        attachEvent();</span><br><span class="line">        gameloop();</span><br><span class="line">    &#125;</span><br><span class="line">    function gameloop()&#123;</span><br><span class="line">        for(var i&#x3D;0;i&lt;hearts.length;i++)&#123;</span><br><span class="line">            if(hearts[i].alpha &lt;&#x3D;0)&#123;</span><br><span class="line">                document.body.removeChild(hearts[i].el);</span><br><span class="line">                hearts.splice(i,1);</span><br><span class="line">                continue;</span><br><span class="line">            &#125;</span><br><span class="line">            hearts[i].y--;</span><br><span class="line">            hearts[i].scale +&#x3D; 0.004;</span><br><span class="line">            hearts[i].alpha -&#x3D; 0.013;</span><br><span class="line">            hearts[i].el.style.cssText &#x3D; &quot;left:&quot;+hearts[i].x+&quot;px;top:&quot;+hearts[i].y+&quot;px;opacity:&quot;+hearts[i].alpha+&quot;;transform:scale(&quot;+hearts[i].scale+&quot;,&quot;+hearts[i].scale+&quot;) rotate(45deg);background:&quot;+hearts[i].color;</span><br><span class="line">        &#125;</span><br><span class="line">        requestAnimationFrame(gameloop);</span><br><span class="line">    &#125;</span><br><span class="line">    function attachEvent()&#123;</span><br><span class="line">        var old &#x3D; typeof window.onclick&#x3D;&#x3D;&#x3D;&quot;function&quot; &amp;&amp; window.onclick;</span><br><span class="line">        window.onclick &#x3D; function(event)&#123;</span><br><span class="line">            old &amp;&amp; old();</span><br><span class="line">            createHeart(event);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    function createHeart(event)&#123;</span><br><span class="line">        var d &#x3D; document.createElement(&quot;div&quot;);</span><br><span class="line">        d.className &#x3D; &quot;heart&quot;;</span><br><span class="line">        hearts.push(&#123;</span><br><span class="line">            el : d,</span><br><span class="line">            x : event.clientX - 5,</span><br><span class="line">            y : event.clientY - 5,</span><br><span class="line">            scale : 1,</span><br><span class="line">            alpha : 1,</span><br><span class="line">            color : randomColor()</span><br><span class="line">        &#125;);</span><br><span class="line">        document.body.appendChild(d);</span><br><span class="line">    &#125;</span><br><span class="line">    function css(css)&#123;</span><br><span class="line">        var style &#x3D; document.createElement(&quot;style&quot;);</span><br><span class="line">        style.type&#x3D;&quot;text&#x2F;css&quot;;</span><br><span class="line">        try&#123;</span><br><span class="line">            style.appendChild(document.createTextNode(css));</span><br><span class="line">        &#125;catch(ex)&#123;</span><br><span class="line">            style.styleSheet.cssText &#x3D; css;</span><br><span class="line">        &#125;</span><br><span class="line">        document.getElementsByTagName(&#39;head&#39;)[0].appendChild(style);</span><br><span class="line">    &#125;</span><br><span class="line">    function randomColor()&#123;</span><br><span class="line">        return &quot;rgb(&quot;+(~~(Math.random()*255))+&quot;,&quot;+(~~(Math.random()*255))+&quot;,&quot;+(~~(Math.random()*255))+&quot;)&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)(window,document);</span><br></pre></td></tr></table></figure>
-<h4 id="TouchSlide"><a href="#TouchSlide" class="headerlink" title="TouchSlide"></a>TouchSlide</h4><p><a href="http://www.superslide2.com/TouchSlide/">TouchSlide</a></p>
-<p>触屏滑动特效插件，移动端滑动特效，触屏焦点图，触屏Tab切换，触屏多图切换等</p>
-]]></content>
+    <title>layui 笔记</title>
+    <url>/2020/06/24/layui-%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h4 id="判断复选框是否选中-获取复选框的值"><a href="#判断复选框是否选中-获取复选框的值" class="headerlink" title="判断复选框是否选中(获取复选框的值)"></a>判断复选框是否选中(获取复选框的值)</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">data.elem.checked</span><br></pre></td></tr></table></figure>
+<h4 id="设置layer-alert和layer-comfirm为不可resize"><a href="#设置layer-alert和layer-comfirm为不可resize" class="headerlink" title="设置layer-alert和layer-comfirm为不可resize"></a>设置layer-alert和layer-comfirm为不可resize</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">将resize参数设置为false</span><br></pre></td></tr></table></figure>
+<h4 id="导出excel表格"><a href="#导出excel表格" class="headerlink" title="导出excel表格"></a>导出excel表格</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var ins1 &#x3D; table.render (&#123;</span><br><span class="line">	elem: &#39;#demo &#39;</span><br><span class="line">	,id: &#39;test&#39;</span><br><span class="line">	...</span><br><span class="line">&#125;)</span><br><span class="line">&#x2F;&#x2F; 将上述表格示例导出为csv文件</span><br><span class="line">table.exportFile(ins1.config.id，data) ; &#x2F;&#x2F; data为该实例中的任意数量的数据</span><br></pre></td></tr></table></figure>
+<img src="/2020/06/24/layui-%E7%AC%94%E8%AE%B0/note1.png" class="">
+
+<h4 id="导出excel表格时，去掉页面表头显示的小图标"><a href="#导出excel表格时，去掉页面表头显示的小图标" class="headerlink" title="导出excel表格时，去掉页面表头显示的小图标"></a>导出excel表格时，去掉页面表头显示的小图标</h4><img src="/2020/06/24/layui-%E7%AC%94%E8%AE%B0/note2.png" class="">
+
+<img src="/2020/06/24/layui-%E7%AC%94%E8%AE%B0/note3.png" class="">
+
+<img src="/2020/06/24/layui-%E7%AC%94%E8%AE%B0/note4.png" class="">
+
+<blockquote>
+<p>点击下载时，将表格的头部图标去掉，执行了下载表格的函数之后，将表头的图标加上。<br>注意：由于表头cols是对象，指向地址，修改了，会影响全局的（例如：点击时间间隔时会拿到去掉图标的表头）<br>解决：（保留原来的不加以修改的表头数据）</p>
+</blockquote>
+<h4 id="修改重载表格时的加载图标"><a href="#修改重载表格时的加载图标" class="headerlink" title="修改重载表格时的加载图标"></a>修改重载表格时的加载图标</h4><img src="/2020/06/24/layui-%E7%AC%94%E8%AE%B0/note5.png" class="">
+
+<ul>
+<li><p>如果只修改样式</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.layui-table-view .layui-table-init .layui-icon-loading&#123;</span><br><span class="line">  	font-size: 60px;</span><br><span class="line">  	color: #666;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>如果不想页面显示表格加载图标</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.layui-table-view .layui-table-init .layui-icon-loading&#123;</span><br><span class="line">    display: none !important;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+<h4 id="表格表头标题之间边框不显示"><a href="#表格表头标题之间边框不显示" class="headerlink" title="表格表头标题之间边框不显示"></a>表格表头标题之间边框不显示</h4><img src="/2020/06/24/layui-%E7%AC%94%E8%AE%B0/note6.png" class="">
+
+<p>th本来是position：relative；改为position: static；</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.layui-table td, .layui-table th&#123;</span><br><span class="line">    position: static\9;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="修改了layui表格的内容，不刷新页面，只刷新表格内容，页码不刷新解决方法"><a href="#修改了layui表格的内容，不刷新页面，只刷新表格内容，页码不刷新解决方法" class="headerlink" title="修改了layui表格的内容，不刷新页面，只刷新表格内容，页码不刷新解决方法"></a>修改了layui表格的内容，不刷新页面，只刷新表格内容，页码不刷新解决方法</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function render_table(tabledata, cur) &#123;</span><br><span class="line">  ·········</span><br><span class="line">  , page: &#123;</span><br><span class="line">    curr: cur</span><br><span class="line">  &#125;</span><br><span class="line">  , data: tabledata</span><br><span class="line">   ·········</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;获取当前页</span><br><span class="line">var curr &#x3D; $(&quot;.layui-laypage-skip input&quot;).val();</span><br><span class="line">&#x2F;&#x2F;重新渲染表格</span><br><span class="line">&lt;!-- res.data：修改数据后，重新返回渲染表格的数据 --&gt;</span><br><span class="line">&lt;!-- 从curr页开始渲染表格 --&gt;</span><br><span class="line">render_table(res.data, curr);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="layui同时清空多个表单元素的值"><a href="#layui同时清空多个表单元素的值" class="headerlink" title="layui同时清空多个表单元素的值"></a>layui同时清空多个表单元素的值</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1、 form 加上 lay-filter属性  lay-filter&#x3D;&quot;group_form&quot;</span><br><span class="line">2、 </span><br><span class="line">$(&quot;#cancel&quot;).click(function() &#123;</span><br><span class="line">    form.val(&quot;group_form&quot;, &#123;</span><br><span class="line">      &quot;sdk&quot;: &quot;&quot;,     &#x2F;&#x2F;单选框清空不了</span><br><span class="line">      &quot;name&quot;: &quot;&quot;,    &#x2F;&#x2F;输入框可以清空</span><br><span class="line">      &quot;sort&quot;: &quot;&quot;,    &#x2F;&#x2F;复选框清空不了</span><br><span class="line">      &quot;ddddd&quot;: &quot;&quot;,   &#x2F;&#x2F;下拉框可以清空</span><br><span class="line">      &quot;password&quot;: &quot;&quot; &#x2F;&#x2F;密码框可以清空</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>工作笔记</category>
-        <category>前端</category>
+        <category>layui</category>
       </categories>
       <tags>
-        <tag>前端</tag>
+        <tag>layui</tag>
       </tags>
   </entry>
   <entry>
@@ -3228,6 +3269,22 @@
       </categories>
       <tags>
         <tag>兼容性处理</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>网页特效</title>
+    <url>/2021/01/19/%E7%BD%91%E9%A1%B5%E7%89%B9%E6%95%88/</url>
+    <content><![CDATA[<h4 id="轻松解决网站大部分特效展示问题"><a href="#轻松解决网站大部分特效展示问题" class="headerlink" title="轻松解决网站大部分特效展示问题"></a>轻松解决网站大部分特效展示问题</h4><p><a href="http://www.superslide2.com/index.html">SuperSlide</a></p>
+<h4 id="鼠标点击网页出现爱心特效"><a href="#鼠标点击网页出现爱心特效" class="headerlink" title="鼠标点击网页出现爱心特效"></a>鼠标点击网页出现爱心特效</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">(function(window,document,undefined)&#123;</span><br><span class="line">    var hearts &#x3D; [];</span><br><span class="line">    window.requestAnimationFrame &#x3D; (function()&#123;</span><br><span class="line">        return window.requestAnimationFrame ||</span><br><span class="line">        window.webkitRequestAnimationFrame ||</span><br><span class="line">        window.mozRequestAnimationFrame ||</span><br><span class="line">        window.oRequestAnimationFrame ||</span><br><span class="line">        window.msRequestAnimationFrame ||</span><br><span class="line">        function (callback)&#123;</span><br><span class="line">            setTimeout(callback,1000&#x2F;60);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)();</span><br><span class="line">    init();</span><br><span class="line">    function init()&#123;</span><br><span class="line">        css(&quot;.heart&#123;width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);&#125;.heart:after,.heart:before&#123;content: &#39;&#39;;width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: absolute;&#125;.heart:after&#123;top: -5px;&#125;.heart:before&#123;left: -5px;&#125;&quot;);</span><br><span class="line">        attachEvent();</span><br><span class="line">        gameloop();</span><br><span class="line">    &#125;</span><br><span class="line">    function gameloop()&#123;</span><br><span class="line">        for(var i&#x3D;0;i&lt;hearts.length;i++)&#123;</span><br><span class="line">            if(hearts[i].alpha &lt;&#x3D;0)&#123;</span><br><span class="line">                document.body.removeChild(hearts[i].el);</span><br><span class="line">                hearts.splice(i,1);</span><br><span class="line">                continue;</span><br><span class="line">            &#125;</span><br><span class="line">            hearts[i].y--;</span><br><span class="line">            hearts[i].scale +&#x3D; 0.004;</span><br><span class="line">            hearts[i].alpha -&#x3D; 0.013;</span><br><span class="line">            hearts[i].el.style.cssText &#x3D; &quot;left:&quot;+hearts[i].x+&quot;px;top:&quot;+hearts[i].y+&quot;px;opacity:&quot;+hearts[i].alpha+&quot;;transform:scale(&quot;+hearts[i].scale+&quot;,&quot;+hearts[i].scale+&quot;) rotate(45deg);background:&quot;+hearts[i].color;</span><br><span class="line">        &#125;</span><br><span class="line">        requestAnimationFrame(gameloop);</span><br><span class="line">    &#125;</span><br><span class="line">    function attachEvent()&#123;</span><br><span class="line">        var old &#x3D; typeof window.onclick&#x3D;&#x3D;&#x3D;&quot;function&quot; &amp;&amp; window.onclick;</span><br><span class="line">        window.onclick &#x3D; function(event)&#123;</span><br><span class="line">            old &amp;&amp; old();</span><br><span class="line">            createHeart(event);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    function createHeart(event)&#123;</span><br><span class="line">        var d &#x3D; document.createElement(&quot;div&quot;);</span><br><span class="line">        d.className &#x3D; &quot;heart&quot;;</span><br><span class="line">        hearts.push(&#123;</span><br><span class="line">            el : d,</span><br><span class="line">            x : event.clientX - 5,</span><br><span class="line">            y : event.clientY - 5,</span><br><span class="line">            scale : 1,</span><br><span class="line">            alpha : 1,</span><br><span class="line">            color : randomColor()</span><br><span class="line">        &#125;);</span><br><span class="line">        document.body.appendChild(d);</span><br><span class="line">    &#125;</span><br><span class="line">    function css(css)&#123;</span><br><span class="line">        var style &#x3D; document.createElement(&quot;style&quot;);</span><br><span class="line">        style.type&#x3D;&quot;text&#x2F;css&quot;;</span><br><span class="line">        try&#123;</span><br><span class="line">            style.appendChild(document.createTextNode(css));</span><br><span class="line">        &#125;catch(ex)&#123;</span><br><span class="line">            style.styleSheet.cssText &#x3D; css;</span><br><span class="line">        &#125;</span><br><span class="line">        document.getElementsByTagName(&#39;head&#39;)[0].appendChild(style);</span><br><span class="line">    &#125;</span><br><span class="line">    function randomColor()&#123;</span><br><span class="line">        return &quot;rgb(&quot;+(~~(Math.random()*255))+&quot;,&quot;+(~~(Math.random()*255))+&quot;,&quot;+(~~(Math.random()*255))+&quot;)&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)(window,document);</span><br></pre></td></tr></table></figure>
+<h4 id="TouchSlide"><a href="#TouchSlide" class="headerlink" title="TouchSlide"></a>TouchSlide</h4><p><a href="http://www.superslide2.com/TouchSlide/">TouchSlide</a></p>
+<p>触屏滑动特效插件，移动端滑动特效，触屏焦点图，触屏Tab切换，触屏多图切换等</p>
+]]></content>
+      <categories>
+        <category>工作笔记</category>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
       </tags>
   </entry>
   <entry>
@@ -3492,6 +3549,11 @@
 <h4 id="返回上一页"><a href="#返回上一页" class="headerlink" title="返回上一页"></a>返回上一页</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">javascript:window.history.go(-1);</span><br></pre></td></tr></table></figure>
 <h4 id="刷新页面"><a href="#刷新页面" class="headerlink" title="刷新页面"></a>刷新页面</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">window.location.reload(); </span><br></pre></td></tr></table></figure>
 <p><a href="https://www.jb51.net/article/124389.htm">参考教程</a></p>
+<h4 id="设置复选框选中"><a href="#设置复选框选中" class="headerlink" title="设置复选框选中"></a>设置复选框选中</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$(&quot;input&quot;).attr(&quot;checked&quot;, true);</span><br><span class="line">或</span><br><span class="line">$(&quot;input&quot;).attr(&quot;checked&quot;, &quot;true&quot;);</span><br></pre></td></tr></table></figure>
+<h4 id="判断复选框是否被选中"><a href="#判断复选框是否被选中" class="headerlink" title="判断复选框是否被选中"></a>判断复选框是否被选中</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var isChecked &#x3D; $(&quot;input&quot;).is(&quot;:checked&quot;);</span><br></pre></td></tr></table></figure>
+<h4 id="设置复选框不选中"><a href="#设置复选框不选中" class="headerlink" title="设置复选框不选中"></a>设置复选框不选中</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$(&quot;input&quot;).attr(&quot;checked&quot;, false); </span><br><span class="line">或</span><br><span class="line">$(&quot;input&quot;).prop(&quot;checked&quot;, false); </span><br></pre></td></tr></table></figure>
+
+
 <h4 id="获取单选框选中的值"><a href="#获取单选框选中的值" class="headerlink" title="获取单选框选中的值"></a>获取单选框选中的值</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$(&#39;input[name&#x3D;&quot;plan&quot;]:checked&#39;).val();</span><br></pre></td></tr></table></figure>
 <h4 id="监听单选按钮事件改变"><a href="#监听单选按钮事件改变" class="headerlink" title="监听单选按钮事件改变"></a>监听单选按钮事件改变</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$(&#39;input[type&#x3D;radio][name&#x3D;type]&#39;).change(function() &#123;</span><br><span class="line">    if (this.value &#x3D;&#x3D; 3) &#123;</span><br><span class="line">        $(&quot;.license_tr&quot;).hide();</span><br><span class="line">        $(&quot;.license_code_tr&quot;).hide();</span><br><span class="line">    &#125;</span><br><span class="line">    else &#123;</span><br><span class="line">        $(&quot;.license_tr&quot;).show();</span><br><span class="line">        $(&quot;.license_code_tr&quot;).show();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <h4 id="JS中对象赋值只传值不传对象（地址）的方法，改变新值不影响旧值"><a href="#JS中对象赋值只传值不传对象（地址）的方法，改变新值不影响旧值" class="headerlink" title="JS中对象赋值只传值不传对象（地址）的方法，改变新值不影响旧值"></a>JS中对象赋值只传值不传对象（地址）的方法，改变新值不影响旧值</h4><p><a href="https://blog.csdn.net/tg928600774/article/details/83651608">参考教程</a></p>
@@ -3547,6 +3609,37 @@
 <h4 id="获取当前页面可视高度-注意，此处得到的是当前页面的可视高度，而不是浏览器的可视高度"><a href="#获取当前页面可视高度-注意，此处得到的是当前页面的可视高度，而不是浏览器的可视高度" class="headerlink" title="获取当前页面可视高度(注意，此处得到的是当前页面的可视高度，而不是浏览器的可视高度)"></a>获取当前页面可视高度(注意，此处得到的是当前页面的可视高度，而不是浏览器的可视高度)</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function getClientHeight()&#123;</span><br><span class="line"></span><br><span class="line">	var clientHeight &#x3D; 0;</span><br><span class="line">	if(document.body.clientHeight &amp;&amp; document.documentElement.clientHeight)&#123;</span><br><span class="line"></span><br><span class="line">		clientHeight &#x3D; Math.min(document.body.clientHeight,document.documentElement.clientHeight);</span><br><span class="line"></span><br><span class="line">	&#125;else&#123;</span><br><span class="line"></span><br><span class="line">		clientHeight &#x3D; Math.max(document.body.clientHeight,document.documentElement.clientHeight);</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	return clientHeight;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="获取文档完整高度"><a href="#获取文档完整高度" class="headerlink" title="获取文档完整高度"></a>获取文档完整高度</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function getScrollHeight()&#123;</span><br><span class="line"></span><br><span class="line">	return Math.max(document.body.scrollHeight,document.documentElement.scrollHeight);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="判断是否到达页面底部"><a href="#判断是否到达页面底部" class="headerlink" title="判断是否到达页面底部"></a>判断是否到达页面底部</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 当滚动条高度加上页面可视高度等于整个文档完整高度，则页面已达到底部</span><br><span class="line">getScrollTop() + getClientHeight() &#x3D;&#x3D; getScrollHeight() </span><br></pre></td></tr></table></figure>
+<h4 id="清空尚未执行完的动画队列"><a href="#清空尚未执行完的动画队列" class="headerlink" title="清空尚未执行完的动画队列"></a>清空尚未执行完的动画队列</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$(&quot;.mobie_show&quot;).stop().animate(&#123;&quot;top&quot;:&quot;70px&quot;,&quot;opacity&quot;:&quot;1&quot;&#125;);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>把当前元素接下来尚未执行完的动画队列清空    （例如：当用户鼠标经过某元素的时候，执行某个动画，用户不断地让鼠标经过元素，但上一个动画还没有执行完毕。  加上stop是为了避免用户不停地操作）</p>
+</blockquote>
+<h4 id="swobject的使用"><a href="#swobject的使用" class="headerlink" title="swobject的使用"></a>swobject的使用</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var params &#x3D; &#123;wmode:&quot;transparent&quot;&#125;;</span><br><span class="line">swfobject.embedSWF(&quot;http:&#x2F;&#x2F;images.vxinyou.com&#x2F;gd&#x2F;images1510&#x2F;hh.swf&quot;, &quot;hh&quot;, &quot;1920&quot;, &quot;450&quot;, &quot;9.0.0&quot;,&quot;http:&#x2F;&#x2F;images.vxinyou.com&#x2F;jsCommon&#x2F;expressinstall.swf&quot;, &#123;&#125;, params);  </span><br></pre></td></tr></table></figure>
+<h4 id="JS禁止查看网页源代码的实现方法"><a href="#JS禁止查看网页源代码的实现方法" class="headerlink" title="JS禁止查看网页源代码的实现方法"></a>JS禁止查看网页源代码的实现方法</h4><p>查看源代码的方法：</p>
+<p>1、直接按F12</p>
+<p>2、Ctrl+Shift+I查看</p>
+<p>3、鼠标点击右键查看</p>
+<blockquote>
+<p>把以上三种状态都屏蔽掉就可以了，document有onkeydown(键盘按键事件)，该事件里面找到对应的keycode并处理就可以，document也有oncontextmenu鼠标右键事件，屏蔽即可。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">window.onload &#x3D; function()&#123;</span><br><span class="line">    document.onkeydown &#x3D; function()&#123;</span><br><span class="line">        var e &#x3D; window.event || arguments[0];</span><br><span class="line">        console.log(e);</span><br><span class="line">        if(e.keyCode &#x3D;&#x3D; 123)&#123;</span><br><span class="line">            &#x2F;&#x2F; alert(&quot;小样你想干嘛？&quot;);</span><br><span class="line">            return false;</span><br><span class="line">        &#125;else if((e.ctrlKey)&amp;&amp;(e.shiftKey)&amp;&amp;(e.keyCode &#x3D;&#x3D; 73))&#123;</span><br><span class="line">            &#x2F;&#x2F; alert(&quot;还是不给你看。。&quot;);</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    document.oncontextmenu &#x3D; function()&#123;</span><br><span class="line">        &#x2F;&#x2F; alert(&quot;小样不给你看&quot;);</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="网站个性化设置-换肤"><a href="#网站个性化设置-换肤" class="headerlink" title="网站个性化设置-换肤"></a>网站个性化设置-换肤</h4><p>结构：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;body class&#x3D;&quot;green&quot;&gt;</span><br><span class="line">&lt;div&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;theme&quot;&gt;</span><br><span class="line">        &lt;button class&#x3D;&quot;btn btn-default&quot;&gt;默认&lt;&#x2F;button&gt;</span><br><span class="line">        &lt;button class&#x3D;&quot;btn btn-green”&gt;绿色&lt;&#x2F;button&gt;</span><br><span class="line">        &lt;button class&#x3D;&quot;btn btn-blue&quot;&gt;蓝色&lt;&#x2F;button&gt;</span><br><span class="line">        &lt;button class&#x3D;&quot;btn btn-orange&quot;&gt;橙色&lt;&#x2F;button&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;main-nav&quot;&gt;</span><br><span class="line">        &lt;ul&gt;</span><br><span class="line">            &lt;li&gt;&lt;a href&#x3D;&quot;#”&gt;首页&lt;span&gt;Home&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;</span><br><span class="line">            &lt;li&gt;&lt;a href&#x3D;&quot;#&quot;&gt;公司概况&lt;span&gt;Company&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;</span><br><span class="line">            &lt;li&gt;&lt;a href&#x3D;&quot;#&quot;&gt;新闻中心&lt;span&gt;News&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;</span><br><span class="line">        &lt;&#x2F;ul&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">    &lt;div id&#x3D;&quot;content&quot;&gt;</span><br><span class="line">        &lt;p&gt;网站个性化设置-换肤!&lt;&#x2F;p&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br></pre></td></tr></table></figure>
+<p>样式：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#content p &#123;</span><br><span class="line">	padding: 10px;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;*默认主题*&#x2F;</span><br><span class="line">body.default &#123;</span><br><span class="line">	background:url(..&#x2F;images&#x2F;bg1.jpg) no-repeat;</span><br><span class="line">&#125;</span><br><span class="line">.default .main-nav &#123;</span><br><span class="line">	background: #c5000;</span><br><span class="line">&#125;</span><br><span class="line">.default #content &#123;</span><br><span class="line">	background: #c5000;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;*绿色主题*&#x2F;</span><br><span class="line">body.green &#123;</span><br><span class="line">	background:ur1(..&#x2F;images&#x2F;bg2-jpg) no-repeat;</span><br><span class="line">&#125;</span><br><span class="line">.green .main-nav &#123;</span><br><span class="line">	background: #5cb85c;</span><br><span class="line">&#125;</span><br><span class="line">.green #content &#123;</span><br><span class="line">	background: #5cb85c;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;*蓝色主题*&#x2F;</span><br><span class="line">body.blue &#123;</span><br><span class="line">	background:url(..&#x2F;images&#x2F;bg3.jpg) no-repeat;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>方法：</p>
+<ul>
+<li><p>方法一：点击按钮改变body的样式</p>
+<p>用replace替换，拿到后面的值（default、green）用replace把（btn btn-）替换为空</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$(function() &#123;</span><br><span class="line">	&#x2F;&#x2F; 单击不同的按纽,加载不同的样式</span><br><span class="line">	$(&quot;.theme button&quot;).click(function()&#123;</span><br><span class="line">	&#x2F;&#x2F; replace()用于替换字符串</span><br><span class="line">	&#x2F;&#x2F; attr()获取属性</span><br><span class="line">	var theme &#x3D; $(this).attr(&#39;class&#39;).replace(&#39;btn btn-&#39;,&#39;&#39;);</span><br><span class="line">	alert(theme);</span><br><span class="line">	$(&quot;body&quot;).attr(&#39;class&#39;, theme);  &#x2F;&#x2F; body添加属性</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>弊端（如果button 后面还有别的类名，就不好使了）</p>
+</blockquote>
+</li>
+<li><p>方法二：自定义属性</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;div class&#x3D;&quot;theme&quot;&gt;</span><br><span class="line">    &lt;button class&#x3D;&quot;btn btn-default&quot; btn-name&#x3D;&quot;default&quot;&gt;默认&lt;&#x2F;button&gt;</span><br><span class="line">    &lt;button class&#x3D;&quot;btn btn-green” btn-name&#x3D;&quot;green&quot;&gt;绿色&lt;&#x2F;button&gt;</span><br><span class="line">    &lt;button class&#x3D;&quot;btn btn-blue&quot; btn-name&#x3D;&quot;blue&quot;&gt;蓝色&lt;&#x2F;button&gt;</span><br><span class="line">    &lt;button class&#x3D;&quot;btn btn-orange&quot; btn-name&#x3D;&quot;orange&quot;&gt;橙色&lt;&#x2F;button&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$(function() &#123;</span><br><span class="line">	&#x2F;&#x2F; 单击不同的按纽,加载不同的样式</span><br><span class="line">	$(&quot;.theme button&quot;).click(function()&#123;</span><br><span class="line">	&#x2F;&#x2F; replace()用于替换字符串</span><br><span class="line">	&#x2F;&#x2F; attr()获取属性</span><br><span class="line">	var theme &#x3D; $(this).attr(&#39;btn-name&#39;);</span><br><span class="line">	alert(theme);</span><br><span class="line">	$(&quot;body&quot;).attr(&#39;class&#39;, theme);  &#x2F;&#x2F; body添加属性</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
 ]]></content>
       <categories>
         <category>工作笔记</category>
@@ -3554,6 +3647,154 @@
       </categories>
       <tags>
         <tag>Javascript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>gulp学习笔记</title>
+    <url>/2019/07/11/gulp%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p><a href="https://www.bilibili.com/video/av64407974?from=search&seid=17812780048673997573">前端自动化构建工具 Gulp 视频教程</a></p>
+<p><a href="https://v3.gulpjs.com.cn/">旧版官网</a>   |  <a href="https://v3.gulpjs.com.cn/docs/api/">旧版API</a>   |  <a href="https://www.gulpjs.com.cn/docs/getting-started/quick-start/">新版官网</a>     |    <a href="https://www.gulpjs.com.cn/docs/api/concepts/">新版API</a></p>
+<a href="https://www.gulpjs.com.cn/" title="" target="">Gulp中文网</a>
+
+<a href="https://gulpjs.com/" title="" target="">Gulp</a>
+<a href="https://gulpjs.com/plugins/" title="" target="">Gulp插件</a>
+<p>gulp是与grunt功能类似的<b><strong>前端项目构建</strong></b>，工具，也是基于nodejs的自动<b>任务运行器</b><br>能自动化地完成JavaScript/coffee/sass/less/html/image/css等文件的合并、压缩、检查、监听文件变化、浏览器自动刷新、测试等任务。<br>gulp更高效（异步多任务）、更易于使用，插件高质量<br>特点：<br>1、任务化<br>2、基于流（数据流，输入流I 输出流O）</p>
+<a id="more"></a>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">|- dist </span><br><span class="line">|- src</span><br><span class="line">    |- js</span><br><span class="line">    |- css</span><br><span class="line">    |- less</span><br><span class="line">|- index.html</span><br><span class="line">|- gulpfile.js</span><br><span class="line">|- package.json</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>使用淘宝镜像</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install -g cnpm --registry=https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>脚手架工具：套用代码（模板代码）</p>
+</li>
+<li><p>依赖管理工具：依赖代码（库、依赖）</p>
+</li>
+<li><p>构建工具：预处理代码（自己写的JavaScript，CSS，HTML）  检查代码、编译、打包</p>
+</li>
+<li><p>构建工具的配置一般保存在构建配置文件（build file）里</p>
+</li>
+</ul>
+<p>用脚手架工具yemoman搭建项目，用依赖管理工具bower来搜索、安装依赖，用构建工具gulp来处理文件。Yemoman作为一个脚手架工具，可以初始化gulp(构建配置文件)和bower（项目基本的依赖）。Gulp还可以使用bower所提供的信息把依赖添加到项目的主要文件中。</p>
+<ul>
+<li>JavaScript引擎，提供了编译和运行JavaScript的环境</li>
+</ul>
+<p>脚手架工具的作用是搭建项目，让项目顺利跑起来。脚手架工具可以创建一个项目必需的目录，并且初始文件（比如构建代码）、模板代码复制过去，最后安装依赖。在整个开发过程中，脚手架工具的定位是创建项目的基础架构。</p>
+<p>Generator是可以被命令行工具yo执行的JavaScript应用，它所做的事情只不过是创建新目录和复制文件。不过，它也没有那么简单。它还可监听参数来修改文件。</p>
+<ul>
+<li>Yeoman的唯一任务就是运行generator。</li>
+</ul>
+<p>依赖是独立完整的模块，它是一个应用的一部分或者扩展。依赖可以是像jQuery或angular这样的库，可以是一些UI组件，也可以是像bootstrap这样完整的UI框架。依赖的另一种叫法是包。使用依赖或者包的好处在于：你不用花时间去开发那些已经有的功能，只要用现成的就行了。</p>
+<p>依赖管理工具的主要功能是在社区和公司的仓库中搜索依赖，并且下载到本地的项目中。</p>
+<p>只要一个模块是由Git托管的，并且拥有bower.json文件，就可以用bower来安装。</p>
+<p>有了bower，你就可以用工具来管理所有的第三方模块和组件了。</p>
+<ul>
+<li>Gulp流式构建系统</li>
+</ul>
+<p>构建系统是整个工具链的核心。它会处理所有的源文件，把它们变成可部署的代码。它还可以 检查代码质量，自动执行重复的操作。</p>
+<p>构建工具首先会读取一个构建配置（或者构建文件），然后定义三个东西：源文件、处理流程和输出文件的目录。源代码经过处理的流程后，最后会被输出到目录中。</p>
+<p>用脚手架工具创建应用，用依赖管理工具下载需要的依赖，然后使用构建工具来执行代码编译工具。这三个工具都是基于Node.js的版本。Gulp是整个项目的核心，也是最主要的工具。</p>
+<h4 id="全局安装gulp"><a href="#全局安装gulp" class="headerlink" title="全局安装gulp"></a>全局安装gulp</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cnpm i gulp -g</span><br></pre></td></tr></table></figure>
+<h4 id="局部安装gulp"><a href="#局部安装gulp" class="headerlink" title="局部安装gulp"></a>局部安装gulp</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cnpm i gulp --save-dev</span><br></pre></td></tr></table></figure>
+<h4 id="配置gulpfile-js"><a href="#配置gulpfile-js" class="headerlink" title="配置gulpfile.js"></a>配置gulpfile.js</h4><h4 id="使用gulp插件"><a href="#使用gulp插件" class="headerlink" title="使用gulp插件"></a>使用gulp插件</h4><h5 id="相关插件："><a href="#相关插件：" class="headerlink" title="相关插件："></a>相关插件：</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gulp-concat: 合并文件（js/css）</span><br><span class="line">gulp-uglify：压缩js文件</span><br><span class="line">gulp-rename：文件重命名</span><br><span class="line">gulp-less：编译less</span><br><span class="line">gulp-clean-css：压缩css</span><br><span class="line">gulp-livereload：实时自动编译刷新</span><br></pre></td></tr></table></figure>
+<p>###重要API</p>
+<h5 id="gulp-src-filePath-pathArr"><a href="#gulp-src-filePath-pathArr" class="headerlink" title="gulp.src(filePath/pathArr)"></a>gulp.src(filePath/pathArr)</h5><p>指向指定路径的所有文件，返回文件流对象<br>用于读取文件</p>
+<h5 id="gulp-dest-dirPath-pathArr"><a href="#gulp-dest-dirPath-pathArr" class="headerlink" title="gulp.dest(dirPath/pathArr)"></a>gulp.dest(dirPath/pathArr)</h5><p>指向指定的所有文件夹</p>
+<h5 id="gulp-task-name-deps-fn"><a href="#gulp-task-name-deps-fn" class="headerlink" title="gulp.task(name, [deps], fn)"></a>gulp.task(name, [deps], fn)</h5><p>定义一个任务</p>
+<h5 id="gulp-watch"><a href="#gulp-watch" class="headerlink" title="gulp.watch()"></a>gulp.watch()</h5><p>监视文件的变化</p>
+<h3 id="处理js-合并-压缩js文件"><a href="#处理js-合并-压缩js文件" class="headerlink" title="处理js(合并/压缩js文件)"></a>处理js(合并/压缩js文件)</h3><p> 创建js文件<br>   src/js/test1.js<br>   src/js/test2.js</p>
+<h5 id="下载插件："><a href="#下载插件：" class="headerlink" title="下载插件："></a>下载插件：</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cnpm install gulp-concat gulp-uglify gulp-rename --save-dev</span><br></pre></td></tr></table></figure>
+<h5 id="配置编码"><a href="#配置编码" class="headerlink" title="配置编码"></a>配置编码</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">var concat = require(<span class="string">&#x27;gulp-concat&#x27;</span>);</span><br><span class="line">var uglify = require(<span class="string">&#x27;gulp-uglify&#x27;</span>);</span><br><span class="line">var rename = require(<span class="string">&#x27;gulp-rename&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<h5 id="gulpfile-js"><a href="#gulpfile-js" class="headerlink" title="gulpfile.js"></a>gulpfile.js</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">var gulp = require(<span class="string">&#x27;gulp&#x27;</span>);</span><br><span class="line">var concat = require(<span class="string">&#x27;gulp-concat&#x27;</span>);</span><br><span class="line">var uglify = require(<span class="string">&#x27;gulp-uglify&#x27;</span>);</span><br><span class="line">var rename = require(<span class="string">&#x27;gulp-rename&#x27;</span>);</span><br><span class="line"></span><br><span class="line">//注册任务</span><br><span class="line">// gulp.task(<span class="string">&#x27;任务名&#x27;</span>, <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">//     //配置任务的操作</span><br><span class="line">// &#125;)</span><br><span class="line"></span><br><span class="line">//注册合并压缩js的任务</span><br><span class="line">gulp.task(<span class="string">&#x27;js&#x27;</span>, <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">    //如果js目录（包括子目录）的所有js文件，需要加上/**/，</span><br><span class="line">    //不加，只代表js目录下的所有js文件</span><br><span class="line">    // gulp.src(<span class="string">&quot;src/js/**/*.js&quot;</span>) </span><br><span class="line">    </span><br><span class="line">    <span class="built_in">return</span> gulp.src(<span class="string">&quot;src/js/*.js&quot;</span>)             //找到目标原文件，将数据读取到gulp的内存中</span><br><span class="line">               .pipe(concat(<span class="string">&#x27;build.js&#x27;</span>))       //临时合并文件</span><br><span class="line">               .pipe(gulp.dest(<span class="string">&#x27;dist/js/&#x27;</span>))    // 临时输出文件到本地</span><br><span class="line">               .pipe(uglify())                 //压缩文件</span><br><span class="line">               .pipe(rename(&#123;suffix: <span class="string">&#x27;.min&#x27;</span>&#125;))  //重命名</span><br><span class="line">               .pipe(gulp.dest(<span class="string">&#x27;dist/js/&#x27;</span>))     //输出压缩文件</span><br><span class="line">&#125;);</span><br><span class="line">// 如果执行每个人物都要gulp ***敲一次命令行，是不方便的，所以把任务放到默认任务里面</span><br><span class="line">//注册默认任务</span><br><span class="line">// gulp.task(<span class="string">&#x27;default&#x27;</span>, [<span class="string">&#x27;js&#x27;</span>])</span><br></pre></td></tr></table></figure>
+<img src="/2019/07/11/gulp%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/1.png" class="">
+<p>gulp4中创建的任务是一个异步的javascript函数——一个接受错误第一次回调或返回stream, promise, event emitter, child process, 或 observable观察的函数。</p>
+<a href="http://www.xinran001.com/frontend/47.html" title="" target="">gulp运行报错：Task function must be specified必须指定任务函数</a>
+
+
+<h5 id="执行任务"><a href="#执行任务" class="headerlink" title="执行任务"></a>执行任务</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gulp js</span><br></pre></td></tr></table></figure>
+<p>在dist目录下生成  js文件夹和build.js和build.min.js</p>
+<h3 id="处理css"><a href="#处理css" class="headerlink" title="处理css"></a>处理css</h3><p> 创建css文件<br>   src/css/test1.css<br>   src/css/test2.css<br>   src/less/test3.less</p>
+<h5 id="下载插件"><a href="#下载插件" class="headerlink" title="下载插件"></a>下载插件</h5> <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cnpm install gulp-less gulp-clean-css --save-dev</span><br></pre></td></tr></table></figure>
+<h5 id="配置编码-1"><a href="#配置编码-1" class="headerlink" title="配置编码"></a>配置编码</h5><p> var less = require(‘gulp-less’);<br> var cleanCSS = require(‘gulp-clean-css’);</p>
+<h5 id="less处理任务"><a href="#less处理任务" class="headerlink" title="less处理任务"></a>less处理任务</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gulp.task(<span class="string">&#x27;less&#x27;</span>, <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">    <span class="built_in">return</span> gulp.src(<span class="string">&quot;src/less/*.less&quot;</span>)</span><br><span class="line">               .pipe(less())            //编译less文件为css文件</span><br><span class="line">               .pipe(gulp.dest(<span class="string">&#x27;src/css/&#x27;</span>))</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h5 id="执行命令"><a href="#执行命令" class="headerlink" title="执行命令"></a>执行命令</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gulp less</span><br></pre></td></tr></table></figure>
+<p>在src/css目录下生成test3.css文件（先将less编译为css文件，<br>放到src/css目录下，然后再跟其他css文件一起压缩处理等）</p>
+<h5 id="合并压缩css文件"><a href="#合并压缩css文件" class="headerlink" title="合并压缩css文件"></a>合并压缩css文件</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gulp.task(<span class="string">&#x27;css&#x27;</span>, <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">    <span class="built_in">return</span> gulp.src(<span class="string">&quot;src/css/*.css&quot;</span>)</span><br><span class="line">               .pipe(concat(<span class="string">&#x27;build.css&#x27;</span>))</span><br><span class="line">               .pipe(rename(&#123;suffix: <span class="string">&#x27;.min&#x27;</span>&#125;))</span><br><span class="line">               .pipe(cssClean(&#123;compatibility: <span class="string">&#x27;ie8&#x27;</span>&#125;))</span><br><span class="line">               .pipe(gulp.dest(<span class="string">&#x27;dist/css/&#x27;</span>))</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h5 id="执行命令-1"><a href="#执行命令-1" class="headerlink" title="执行命令"></a>执行命令</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gulp css</span><br></pre></td></tr></table></figure>
+<p>在dist目录下生成css目录，css目录里面有文件build.min.css</p>
+<h5 id="执行任务异步，任务之间解决依赖关系"><a href="#执行任务异步，任务之间解决依赖关系" class="headerlink" title="执行任务异步，任务之间解决依赖关系"></a>执行任务异步，任务之间解决依赖关系</h5><p>使用gulp.task(‘default’, [‘js’, ‘less’, ‘css’]);<br>报错：</p>
+<img src="/2019/07/11/gulp%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/2.png" class="">
+<p>原因：<br>gulp.task 移除了三参数语法，现在不能使用数组来指定一个任务的依赖。gulp 4.0 加入了 gulp.series 和 gulp.parallel 来实现任务的串行化和并行化。<br>不要用Gulp3的方式指定依赖任务，你需要使用gulp.series和gulp.parallel，因为gulp任务现在只有两个参数。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gulp.series：按照顺序执行</span><br><span class="line">gulp.paralle：可以并行计算</span><br></pre></td></tr></table></figure>
+<a href="https://www.jianshu.com/p/c30ff8592421" title="" target="">参考博客</a>
+<p>存在异步问题：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gulp.task(<span class="string">&#x27;default&#x27;</span>, gulp.parallel(<span class="string">&#x27;js&#x27;</span>, <span class="string">&#x27;less&#x27;</span>, <span class="string">&#x27;css&#x27;</span>, <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">    // Build the website.</span><br><span class="line">&#125;));</span><br></pre></td></tr></table></figure>
+<p>报错：</p>
+<img src="/2019/07/11/gulp%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/3.png" class="">
+<a href="https://www.npmjs.com/package/gulp4" title="" target="">参考gulp4 Sample gulpfile.js</a>
+<p>最终将任务改为：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">var build = gulp.series(gulp.parallel(<span class="string">&#x27;js&#x27;</span>, <span class="string">&#x27;less&#x27;</span>, <span class="string">&#x27;css&#x27;</span>));</span><br><span class="line">gulp.task(<span class="string">&#x27;default&#x27;</span>, build);</span><br></pre></td></tr></table></figure>
+<p>将已生成的dist目录删除，执行任务</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gulp </span><br></pre></td></tr></table></figure>
+<img src="/2019/07/11/gulp%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/4.png" class="">
+<p>在目录中生成dist目录，里面有这3个任务生成的文件。<br>注：如果gulp任务中，去掉return，也可以完成任务，但是任务变成同步执行。<br>return能保证任务是异步执行的，在任务执行完成后，会在gulp中释放掉。效率高</p>
+<p>less执行的任务比较多，也许less还没执行完，就执行到css任务了。</p>
+<img src="/2019/07/11/gulp%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/5.png" class="">
+<p>所以要保证执行css任务时，less任务已经执行完了。（添加一个任务数组参数）<br>3.0**这样写：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gulp.task(<span class="string">&#x27;css&#x27;</span>, [<span class="string">&#x27;less&#x27;</span>], <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">    <span class="built_in">return</span> gulp.src(<span class="string">&quot;src/css/*.css&quot;</span>)</span><br><span class="line">               .pipe(concat(<span class="string">&#x27;build.css&#x27;</span>))</span><br><span class="line">               .pipe(rename(&#123;suffix: <span class="string">&#x27;.min&#x27;</span>&#125;))</span><br><span class="line">               .pipe(cssClean(&#123;compatibility: <span class="string">&#x27;ie8&#x27;</span>&#125;))</span><br><span class="line">               .pipe(gulp.dest(<span class="string">&#x27;dist/css/&#x27;</span>))</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>4.0**这样写：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">var build = gulp.series(<span class="string">&#x27;less&#x27;</span>, gulp.parallel(<span class="string">&#x27;js&#x27;</span>, <span class="string">&#x27;css&#x27;</span>, <span class="string">&#x27;html&#x27;</span>));</span><br><span class="line">gulp.task(<span class="string">&#x27;default&#x27;</span>, build);</span><br></pre></td></tr></table></figure>
+<p>结果：（css任务在less任务完成之后再执行）</p>
+<img src="/2019/07/11/gulp%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/6.png" class="">
+<h3 id="压缩html"><a href="#压缩html" class="headerlink" title="压缩html"></a>压缩html</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cnpm install gulp-htmlmin --save-dev</span><br></pre></td></tr></table></figure>
+<h5 id="配置编码-2"><a href="#配置编码-2" class="headerlink" title="配置编码"></a>配置编码</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">var htmlMin = require(<span class="string">&#x27;gulp-htmlmin&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<h5 id="压缩html任务"><a href="#压缩html任务" class="headerlink" title="压缩html任务"></a>压缩html任务</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gulp.task(<span class="string">&#x27;html&#x27;</span>, <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">    <span class="built_in">return</span> gulp.src(<span class="string">&#x27;index.html&#x27;</span>)</span><br><span class="line">               .pipe(htmlMin(&#123;collapseWhitespace: <span class="literal">true</span>&#125;))</span><br><span class="line">               .pipe(gulp.dest(<span class="string">&#x27;dist/&#x27;</span>))</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>src/index.html:</p>
+<img src="/2019/07/11/gulp%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/7.png" class="">
+<p>压缩之后dist/index.html:</p>
+<img src="/2019/07/11/gulp%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/8.png" class="">
+<p>原因：<br>原html文件引入的css文件路径不对：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;link rel=<span class="string">&quot;stylesheet&quot;</span> href=<span class="string">&quot;dist/css/build.min.css&quot;</span>&gt;</span><br></pre></td></tr></table></figure>
+<p>改为：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;link rel=<span class="string">&quot;stylesheet&quot;</span> href=<span class="string">&quot;css/build.min.css&quot;</span>&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="半自动进行项目构建（把gulp的版本换为3-9-1，4-0以上版本处理起来不熟练）"><a href="#半自动进行项目构建（把gulp的版本换为3-9-1，4-0以上版本处理起来不熟练）" class="headerlink" title="半自动进行项目构建（把gulp的版本换为3.9.1，4.0以上版本处理起来不熟练）"></a>半自动进行项目构建（把gulp的版本换为3.9.1，4.0以上版本处理起来不熟练）</h4><h5 id="下载插件-1"><a href="#下载插件-1" class="headerlink" title="下载插件"></a>下载插件</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cnpm install gulp-livereload --save-dev</span><br></pre></td></tr></table></figure>
+<h5 id="配置编码-3"><a href="#配置编码-3" class="headerlink" title="配置编码"></a>配置编码</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">var livereload = require(<span class="string">&#x27;gulp-livereload&#x27;</span>);</span><br><span class="line"></span><br><span class="line">//所有需要实时监听的任务，后面加上：</span><br><span class="line">.pipe(livereload())  </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gulp.task(<span class="string">&#x27;watch&#x27;</span>,[<span class="string">&#x27;default&#x27;</span>], <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">    //开启监听</span><br><span class="line">    livereload.listen();</span><br><span class="line"></span><br><span class="line">    //确认监听的目标以及绑定相应的任务</span><br><span class="line">    gulp.watch(<span class="string">&#x27;src/js/*.js&#x27;</span>, [<span class="string">&#x27;js&#x27;</span>]);</span><br><span class="line">    gulp.watch([<span class="string">&#x27;src/css/*.css&#x27;</span>, <span class="string">&#x27;src/less/*.less&#x27;</span>], [<span class="string">&#x27;css&#x27;</span>]);</span><br><span class="line">    gulp.watch(<span class="string">&#x27;*.html&#x27;</span>,  [<span class="string">&#x27;html&#x27;</span>]);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>执行任务</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gulp watch </span><br></pre></td></tr></table></figure>
+<p>当src里面的文件有修改时，直接手动刷新浏览器，则可以看到变化，不需要再输入一次执行任务的命令</p>
+<h3 id="全自动进行项目构建"><a href="#全自动进行项目构建" class="headerlink" title="全自动进行项目构建"></a>全自动进行项目构建</h3><h4 id="热加载（实时加载）"><a href="#热加载（实时加载）" class="headerlink" title="热加载（实时加载）"></a>热加载（实时加载）</h4><h5 id="下载插件：gulp-connect"><a href="#下载插件：gulp-connect" class="headerlink" title="下载插件：gulp-connect"></a>下载插件：gulp-connect</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cnpm install gulp-connect --save-dev</span><br></pre></td></tr></table></figure>
+<h5 id="配置编码-4"><a href="#配置编码-4" class="headerlink" title="配置编码"></a>配置编码</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">var connect = require(<span class="string">&#x27;gulp-connect&#x27;</span>);</span><br><span class="line"></span><br><span class="line">gulp.task(<span class="string">&#x27;server&#x27;</span>, [<span class="string">&#x27;default&#x27;</span>],<span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">    //配置服务器的选项</span><br><span class="line">    connect.server(&#123;</span><br><span class="line">        root: <span class="string">&#x27;dist/&#x27;</span>,</span><br><span class="line">        livereload: <span class="literal">true</span>,     //实时刷新</span><br><span class="line">        port: 5000</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    //确认监听的目标以及绑定相应的任务</span><br><span class="line">    gulp.watch(<span class="string">&#x27;src/js/*.js&#x27;</span>, [<span class="string">&#x27;js&#x27;</span>]);</span><br><span class="line">    gulp.watch([<span class="string">&#x27;src/css/*.css&#x27;</span>, <span class="string">&#x27;src/less/*.less&#x27;</span>], [<span class="string">&#x27;css&#x27;</span>]);</span><br><span class="line">    gulp.watch(<span class="string">&#x27;*.html&#x27;</span>,  [<span class="string">&#x27;html&#x27;</span>]);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">//所有需要实时监听的任务，后面加上：</span><br><span class="line"> .pipe(connect.reload())</span><br></pre></td></tr></table></figure>
+<h5 id="执行任务-1"><a href="#执行任务-1" class="headerlink" title="执行任务"></a>执行任务</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gulp server</span><br></pre></td></tr></table></figure>
+<h3 id="自动开启链接"><a href="#自动开启链接" class="headerlink" title="自动开启链接"></a>自动开启链接</h3><h5 id="下载插件-2"><a href="#下载插件-2" class="headerlink" title="下载插件"></a>下载插件</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cnpm install open --save-dev</span><br></pre></td></tr></table></figure>
+<h5 id="配置编码-5"><a href="#配置编码-5" class="headerlink" title="配置编码"></a>配置编码</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">var open = require(<span class="string">&#x27;open&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">在server任务中，加入：</span><br><span class="line">//open可以自动打开指定的链接</span><br><span class="line">open(<span class="string">&#x27;http://localhost:5000/&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="–扩展–"><a href="#–扩展–" class="headerlink" title="–扩展–"></a>–扩展–</h3><p>打包加载gulp插件<br><b>前提：将插件下载好</b><br>下载打包插件：gulp-load-plugins</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cnpm install gulp-load-plugins --save-dev</span><br><span class="line"></span><br><span class="line">引入： var $ = require(<span class="string">&#x27;gulp-load-plugins&#x27;</span>)();</span><br></pre></td></tr></table></figure>
+<p>($就是函数执行后返回的对象，其他插件的方法都在$这个对象里面。)<br>神来之笔：其他的插件不用再引入了<br>使用方法：<br>所有的插件用$引出，其他插件的方法名统一为插件的名字(即插件)<br>使用：<br>在每个方法前面加上$.来调用该方法。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gulp.task(<span class="string">&#x27;css&#x27;</span>, [<span class="string">&#x27;less&#x27;</span>],<span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">    <span class="built_in">return</span> gulp.src(<span class="string">&quot;src/css/*.css&quot;</span>)</span><br><span class="line">               .pipe($.concat(<span class="string">&#x27;build.css&#x27;</span>))</span><br><span class="line">               .pipe($.rename(&#123;suffix: <span class="string">&#x27;.min&#x27;</span>&#125;))</span><br><span class="line">               .pipe($.cssClean(&#123;compatibility: <span class="string">&#x27;ie8&#x27;</span>&#125;))</span><br><span class="line">               .pipe(gulp.dest(<span class="string">&#x27;dist/css/&#x27;</span>))</span><br><span class="line">               .pipe($.livereload())              //实时刷新</span><br><span class="line">               .pipe($.connect.reload())</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">gulp.task(<span class="string">&#x27;html&#x27;</span>, <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">    <span class="built_in">return</span> gulp.src(<span class="string">&#x27;index.html&#x27;</span>)</span><br><span class="line">               .pipe($.htmlMin(&#123;collapseWhitespace: <span class="literal">true</span>&#125;))</span><br><span class="line">               .pipe(gulp.dest(<span class="string">&#x27;dist/&#x27;</span>))</span><br><span class="line">               .pipe($.livereload())              //实时刷新</span><br><span class="line">               .pipe($.connect.reload())</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h6 id="后面跟的是gulp插件，gulp-后面的名称。"><a href="#后面跟的是gulp插件，gulp-后面的名称。" class="headerlink" title="$.后面跟的是gulp插件，gulp-后面的名称。"></a>$.后面跟的是gulp插件，gulp-后面的名称。</h6><p>报错：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$.htmlMin is not a <span class="keyword">function</span></span><br></pre></td></tr></table></figure>
+<p>因为一开始是：var htmlMin = require(‘gulp-htmlmin’);<br>将htmlMin改为htmlmin即可<br>报错：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$.cssClean is not a <span class="keyword">function</span></span><br></pre></td></tr></table></figure>
+<p>因为一开始是：var cssClean = require(‘gulp-clean-css’);<br>将cssClean改为cleanCss即可(驼峰命名法)</p>
+<p>注：如果使用gulp-load-plugins这个插件，就不用每个插件一个一个引入。<br>gulpfile.js：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">var gulp = require(<span class="string">&#x27;gulp&#x27;</span>);</span><br><span class="line">var $ = require(<span class="string">&#x27;gulp-load-plugins&#x27;</span>)();</span><br><span class="line"></span><br><span class="line">// var concat = require(<span class="string">&#x27;gulp-concat&#x27;</span>);</span><br><span class="line">// var uglify = require(<span class="string">&#x27;gulp-uglify&#x27;</span>);</span><br><span class="line">// var rename = require(<span class="string">&#x27;gulp-rename&#x27;</span>);</span><br><span class="line">// var less = require(<span class="string">&#x27;gulp-less&#x27;</span>);</span><br><span class="line">// var cssClean = require(<span class="string">&#x27;gulp-clean-css&#x27;</span>);</span><br><span class="line">// var htmlMin = require(<span class="string">&#x27;gulp-htmlmin&#x27;</span>);</span><br><span class="line">// var livereload = require(<span class="string">&#x27;gulp-livereload&#x27;</span>);</span><br><span class="line">// var connect = require(<span class="string">&#x27;gulp-connect&#x27;</span>);</span><br><span class="line"></span><br><span class="line">var open = require(<span class="string">&#x27;open&#x27;</span>);</span><br><span class="line">//注册任务</span><br><span class="line">// gulp.task(<span class="string">&#x27;任务名&#x27;</span>, <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">//     //配置任务的操作</span><br><span class="line">// &#125;)</span><br><span class="line"></span><br><span class="line">//注册合并压缩js的任务</span><br><span class="line">gulp.task(<span class="string">&#x27;js&#x27;</span>, <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">    //如果js目录（包括子目录）的所有js文件，需要加上/**/，</span><br><span class="line">    //不加，只代表js目录下的所有js文件</span><br><span class="line">    // gulp.src(<span class="string">&quot;src/js/**/*.js&quot;</span>) </span><br><span class="line">    </span><br><span class="line">    <span class="built_in">return</span> gulp.src(<span class="string">&quot;src/js/*.js&quot;</span>) //找到目标原文件，将数据读取到gulp的内存中</span><br><span class="line">               .pipe($.concat(<span class="string">&#x27;build.js&#x27;</span>))       //临时合并文件</span><br><span class="line">               .pipe(gulp.dest(<span class="string">&#x27;dist/js/&#x27;</span>))    // 临时输出文件到本地</span><br><span class="line">               .pipe($.uglify())                 //压缩文件</span><br><span class="line">               .pipe($.rename(&#123;suffix: <span class="string">&#x27;.min&#x27;</span>&#125;))  //重命名</span><br><span class="line">               .pipe(gulp.dest(<span class="string">&#x27;dist/js/&#x27;</span>))     //输出压缩文件</span><br><span class="line">               .pipe($.livereload())              //实时刷新</span><br><span class="line">               .pipe($.connect.reload())</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">//注册转换less的任务</span><br><span class="line">gulp.task(<span class="string">&#x27;less&#x27;</span>, <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">    <span class="built_in">return</span> gulp.src(<span class="string">&quot;src/less/*.less&quot;</span>)</span><br><span class="line">               .pipe($.less())            //编译less文件为css文件</span><br><span class="line">               .pipe(gulp.dest(<span class="string">&#x27;src/css/&#x27;</span>))</span><br><span class="line">               .pipe($.livereload())              //实时刷新</span><br><span class="line">               .pipe($.connect.reload())</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">//注册合并压缩css文件</span><br><span class="line">gulp.task(<span class="string">&#x27;css&#x27;</span>, [<span class="string">&#x27;less&#x27;</span>],<span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">    <span class="built_in">return</span> gulp.src(<span class="string">&quot;src/css/*.css&quot;</span>)</span><br><span class="line">               .pipe($.concat(<span class="string">&#x27;build.css&#x27;</span>))</span><br><span class="line">               .pipe($.rename(&#123;suffix: <span class="string">&#x27;.min&#x27;</span>&#125;))</span><br><span class="line">               .pipe($.cleanCss(&#123;compatibility: <span class="string">&#x27;ie8&#x27;</span>&#125;))</span><br><span class="line">               .pipe(gulp.dest(<span class="string">&#x27;dist/css/&#x27;</span>))</span><br><span class="line">               .pipe($.livereload())              //实时刷新</span><br><span class="line">               .pipe($.connect.reload())</span><br><span class="line">&#125;);</span><br><span class="line">//注册压缩html任务</span><br><span class="line">gulp.task(<span class="string">&#x27;html&#x27;</span>, <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">    <span class="built_in">return</span> gulp.src(<span class="string">&#x27;index.html&#x27;</span>)</span><br><span class="line">               .pipe($.htmlmin(&#123;collapseWhitespace: <span class="literal">true</span>&#125;))</span><br><span class="line">               .pipe(gulp.dest(<span class="string">&#x27;dist/&#x27;</span>))</span><br><span class="line">               .pipe($.livereload())              //实时刷新</span><br><span class="line">               .pipe($.connect.reload())</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">//注册监视任务(半自动)</span><br><span class="line">gulp.task(<span class="string">&#x27;watch&#x27;</span>, [<span class="string">&#x27;default&#x27;</span>], <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">    //开启监听</span><br><span class="line">    livereload.listen();</span><br><span class="line"></span><br><span class="line">    //确认监听的目标以及绑定相应的任务</span><br><span class="line">    gulp.watch(<span class="string">&#x27;src/js/*.js&#x27;</span>, [<span class="string">&#x27;js&#x27;</span>]);</span><br><span class="line">    gulp.watch([<span class="string">&#x27;src/css/*.css&#x27;</span>, <span class="string">&#x27;src/less/*.less&#x27;</span>], [<span class="string">&#x27;css&#x27;</span>]);</span><br><span class="line">    gulp.watch(<span class="string">&#x27;*.html&#x27;</span>,  [<span class="string">&#x27;html&#x27;</span>]);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">//注册监视任务（全自动）</span><br><span class="line">gulp.task(<span class="string">&#x27;server&#x27;</span>, [<span class="string">&#x27;default&#x27;</span>],<span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">    //配置服务器的选项</span><br><span class="line">    $.connect.server(&#123;</span><br><span class="line">        root: <span class="string">&#x27;dist/&#x27;</span>,</span><br><span class="line">        livereload: <span class="literal">true</span>,     //实时刷新</span><br><span class="line">        port: 5000</span><br><span class="line">    &#125;)</span><br><span class="line">    </span><br><span class="line">    //open可以自动打开指定的链接</span><br><span class="line">    open(<span class="string">&#x27;http://localhost:5000/&#x27;</span>);</span><br><span class="line"></span><br><span class="line">    //确认监听的目标以及绑定相应的任务</span><br><span class="line">    gulp.watch(<span class="string">&#x27;src/js/*.js&#x27;</span>, [<span class="string">&#x27;js&#x27;</span>]);</span><br><span class="line">    gulp.watch([<span class="string">&#x27;src/css/*.css&#x27;</span>, <span class="string">&#x27;src/less/*.less&#x27;</span>], [<span class="string">&#x27;css&#x27;</span>]);</span><br><span class="line">    gulp.watch(<span class="string">&#x27;*.html&#x27;</span>,  [<span class="string">&#x27;html&#x27;</span>]);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">// 如果执行每个任务都要gulp *敲一次命令行，是不方便的，所以把任务放到默认任务里面</span><br><span class="line">//注册默认任务</span><br><span class="line">// gulp 4.0.2不能这样写：</span><br><span class="line">// gulp.task(<span class="string">&#x27;default&#x27;</span>, [<span class="string">&#x27;js&#x27;</span>, <span class="string">&#x27;less&#x27;</span>, <span class="string">&#x27;css&#x27;</span>]);</span><br><span class="line"></span><br><span class="line">// gulp4可以这样写：</span><br><span class="line">// var build = gulp.series(<span class="string">&#x27;less&#x27;</span>, gulp.parallel(<span class="string">&#x27;js&#x27;</span>, <span class="string">&#x27;css&#x27;</span>, <span class="string">&#x27;html&#x27;</span>));</span><br><span class="line">// gulp.task(<span class="string">&#x27;default&#x27;</span>, build);</span><br><span class="line"></span><br><span class="line">gulp.task(<span class="string">&#x27;default&#x27;</span>, [<span class="string">&#x27;js&#x27;</span>, <span class="string">&#x27;less&#x27;</span>, <span class="string">&#x27;css&#x27;</span>, <span class="string">&#x27;html&#x27;</span>]);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><a href="https://www.cnblogs.com/CyLee/p/6368629.html">JsLint 的安装和使用</a></p>
+<p> JSLint 是一款Javascript验证工具，在定位错误并确保基本指南得以遵循时，非常有用。如果你正在编写专业级的javascript，应该使用 JSLint 或者类似的验证工具（JSHint）。它帮助我们避免了许多种bug，极大缩短了开发时间。如果你安装了Node.js，像这样即可安装：</p>
+<p>安装：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install -g jslint</span><br></pre></td></tr></table></figure>
+<p>使用 JSlint：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">jslint spa.js</span><br></pre></td></tr></table></figure>
+<p>如果出现以下效果，说明安装并且验证成功</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">spa.js is OK.</span><br></pre></td></tr></table></figure>
+<p><a href="https://www.w3cschool.cn/intellij_idea_doc/intellij_idea_doc-cpvt2z2y.html">JSCS：验证JavaScript代码</a></p>
+]]></content>
+      <categories>
+        <category>工作笔记</category>
+        <category>Gulp</category>
+      </categories>
+      <tags>
+        <tag>Gulp</tag>
       </tags>
   </entry>
   <entry>
@@ -3653,7 +3894,7 @@
 </thead>
 <tbody><tr>
 <td><a href="https://www.icourse163.org/">中国大学</a></td>
-<td></td>
+<td><a href="https://www.w3cschool.cn/">W3Cschool</a></td>
 <td></td>
 <td></td>
 <td></td>
@@ -3750,8 +3991,8 @@
 <thead>
 <tr>
 <th><a href="https://tool.oschina.net/">在线工具</a></th>
-<th></th>
-<th></th>
+<th><a href="http://lisperator.net/uglifyjs/">UglifyJS</a></th>
+<th><a href="http://www.minifycss.com/">Minify CSS</a></th>
 <th></th>
 <th></th>
 </tr>
@@ -3801,15 +4042,22 @@
 <th><a href="https://www.javascriptcn.com/read-35553.html">jquery.fileDownload</a></th>
 <th><a href="http://www.clipboardjs.cn/">clipboard.js-复制功能</a></th>
 <th><a href="https://www.jstree.com.cn/">jsTree中文网</a></th>
-<th></th>
-<th></th>
+<th><a href="https://www.jq22.com/">jQuery插件库</a></th>
+<th><a href="https://jqueryui.com/datepicker/">Datepicker</a></th>
 </tr>
 </thead>
 <tbody><tr>
 <td><a href="https://www.cnblogs.com/ghfjj/p/6732855.html">Foundation datepicker</a></td>
 <td><a href="http://foundation-datepicker.peterbeno.com/">Foundation-datepicker.js</a></td>
 <td><a href="https://www.jstree.com/">jsTree-树</a></td>
-<td></td>
+<td><a href="https://ant.design/components/date-picker-cn/">Datepicker日期插件</a></td>
+<td><a href="https://cloud.tencent.com/developer/section/1489878">DatePicker</a></td>
+</tr>
+<tr>
+<td><a href="http://www.my97.net/demo/resource/main.asp#m1">My97 DatePicker</a></td>
+<td><a href="http://foundation-datepicker.peterbeno.com/">Foundation-datepicker.js</a></td>
+<td><a href="http://code.ciaoca.com/javascript/qrcode/demo/">QRCode.js 生成二维码</a></td>
+<td><a href="https://github.com/davidshimjs/qrcodejs">qrcodejs-github</a></td>
 <td></td>
 </tr>
 </tbody></table>
@@ -4432,7 +4680,7 @@
 <tr>
 <th><a href="http://pandownload.com/">PanDownload-下载</a></th>
 <th><a href="https://duplicatefilefinder4pc.com/duplicate-file-finder-plus.htm?selectedTab=updates">Duplicate-重复文件查找器</a></th>
-<th></th>
+<th><a href="http://www.navicat.com.cn/products/navicat-for-mysql/">Navicat</a></th>
 <th></th>
 <th></th>
 </tr>

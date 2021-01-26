@@ -193,6 +193,86 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/07/24/FastAdmin%E6%A1%86%E6%9E%B6-%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="winney">
+      <meta itemprop="description" content="Doing is better than saying.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="winney">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/24/FastAdmin%E6%A1%86%E6%9E%B6-%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">FastAdmin框架-使用笔记</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-07-24 19:25:00" itemprop="dateCreated datePublished" datetime="2020-07-24T19:25:00+08:00">2020-07-24</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-01-12 17:57:01" itemprop="dateModified" datetime="2021-01-12T17:57:01+08:00">2021-01-12</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/FastAdmin%E6%A1%86%E6%9E%B6/" itemprop="url" rel="index"><span itemprop="name">FastAdmin框架</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="在FastAdmin动态追加bootstrap-select下拉列表"><a href="#在FastAdmin动态追加bootstrap-select下拉列表" class="headerlink" title="在FastAdmin动态追加bootstrap-select下拉列表"></a>在FastAdmin动态追加bootstrap-select下拉列表</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;select data-rule&#x3D;&quot;required&quot; class&#x3D;&quot;form-control selectpicker&quot; data-live-search&#x3D;&quot;true&quot; name&#x3D;&quot;row[admin_role_name]&quot; data-url&#x3D;&quot;&quot; data-query-name&#x3D;&quot;&quot;&gt; &lt;&#x2F;select&gt;</span><br><span class="line"></span><br><span class="line">注：data-live-search&#x3D;&quot;true&quot;是添加可以模糊搜索功能</span><br></pre></td></tr></table></figure>
+<p>关键代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">define([&#39;jquery&#39;, &#39;bootstrap&#39;, &#39;backend&#39;, &#39;table&#39;, &#39;form&#39;], function ($, undefined, Backend, Table, Form) &#123;</span><br><span class="line">    var Controller &#x3D; &#123;</span><br><span class="line">      ......</span><br><span class="line">      ......</span><br><span class="line">      add: function () &#123;</span><br><span class="line">            &#x2F;&#x2F;关键代码：（要引入）</span><br><span class="line">            require([&#39;bootstrap-select&#39;, &#39;bootstrap-select-lang&#39;]);</span><br><span class="line"></span><br><span class="line">            &#x2F;&#x2F;渲染下拉框</span><br><span class="line">            var renderselect &#x3D; function (select, data, defaultOpt) &#123;</span><br><span class="line">                if(defaultOpt &amp;&amp; data.length&gt;0) &#123;</span><br><span class="line">                    var opt &#x3D; &#39;&lt;option value&#x3D;&quot;&quot;&gt;&#39; + defaultOpt + &#39;&lt;&#x2F;option&gt;&#39;;</span><br><span class="line">                &#125;</span><br><span class="line">                var html &#x3D; [opt] || [];</span><br><span class="line">                for (var i &#x3D; 0; i &lt; data.length; i++) &#123;</span><br><span class="line">                    html.push(&quot;&lt;option value&#x3D;&#39;&quot; + data[i] + &quot;&#39;&gt;&quot; + data[i] + &quot;&lt;&#x2F;option&gt;&quot;);</span><br><span class="line">                &#125;</span><br><span class="line">                $(select).html(html.join(&quot;&quot;));</span><br><span class="line">                $(&quot;.selectpicker&quot;).selectpicker(&#39;refresh&#39;);</span><br><span class="line">                return select;</span><br><span class="line">            &#125;;</span><br><span class="line"></span><br><span class="line">           $(&quot;select[name&#x3D;&#39;row[server_id]&#39;]&quot;).change(function () &#123;</span><br><span class="line">                var admin_id &#x3D; $(&quot;select[name&#x3D;&#39;row[admin_id]&#39;]&quot;).val();</span><br><span class="line">                var app_id &#x3D; $(&quot;select[name&#x3D;&#39;row[app_id]&#39;]&quot;).val();</span><br><span class="line">                var server_id &#x3D; $(&quot;select[name&#x3D;&#39;row[server_id]&#39;]&quot;).val();</span><br><span class="line"></span><br><span class="line">                $.ajax(&#123;</span><br><span class="line">                    url: &#39;&#x2F;admin&#x2F;boon&#x2F;resource&#x2F;role_name_lise&#39;,</span><br><span class="line">                    data: &#123;admin_id: admin_id, app_id: app_id, server_id: server_id&#125;,</span><br><span class="line">                    type: &#39;get&#39;,</span><br><span class="line">                    dataType: &#39;json&#39;,</span><br><span class="line">                    success: function (data, textStatus, xhr) &#123;</span><br><span class="line">                        var list &#x3D; data.data.list;</span><br><span class="line"></span><br><span class="line">                        renderselect($(&quot;select[name&#x3D;&#39;row[admin_role_name]&#39;]&quot;), list, &quot;请选择测试角色名&quot;);</span><br><span class="line">                        renderselect($(&quot;select[name&#x3D;&#39;row[player_role_name]&#39;]&quot;), list, &quot;请选择玩家角色名&quot;);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;);</span><br><span class="line">           &#125;);</span><br><span class="line">            </span><br><span class="line">           $(&quot;select[name&#x3D;&#39;row[admin_id]&#39;], select[name&#x3D;&#39;row[app_id]&#39;]&quot;).change(function () &#123;</span><br><span class="line">               console.log(&quot;dianji&quot;)</span><br><span class="line">               var list &#x3D; [];</span><br><span class="line">                renderselect($(&quot;select[name&#x3D;&#39;row[admin_role_name]&#39;]&quot;), list);</span><br><span class="line">                renderselect($(&quot;select[name&#x3D;&#39;row[player_role_name]&#39;]&quot;), list);</span><br><span class="line">           &#125;); </span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2020/07/17/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E8%B0%83%E8%AF%95%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1014,86 +1094,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/07/08/%E5%9C%A8Github%E4%B8%8A%E4%BD%BF%E7%94%A8%E4%BB%93%E5%BA%93%E5%AD%98%E6%94%BE-md%E7%AC%94%E8%AE%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="winney">
-      <meta itemprop="description" content="Doing is better than saying.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="winney">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/07/08/%E5%9C%A8Github%E4%B8%8A%E4%BD%BF%E7%94%A8%E4%BB%93%E5%BA%93%E5%AD%98%E6%94%BE-md%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">在Github上使用仓库存放.md笔记</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-07-08 11:59:41" itemprop="dateCreated datePublished" datetime="2020-07-08T11:59:41+08:00">2020-07-08</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-01-12 17:55:07" itemprop="dateModified" datetime="2021-01-12T17:55:07+08:00">2021-01-12</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/md%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">md笔记</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="一、在GitHub上创建一个仓库，例如：GaoShu"><a href="#一、在GitHub上创建一个仓库，例如：GaoShu" class="headerlink" title="一、在GitHub上创建一个仓库，例如：GaoShu"></a>一、在GitHub上创建一个仓库，例如：GaoShu</h3><h3 id="二、在本地新建一个存放-md笔记的文件夹GaoShu"><a href="#二、在本地新建一个存放-md笔记的文件夹GaoShu" class="headerlink" title="二、在本地新建一个存放.md笔记的文件夹GaoShu"></a>二、在本地新建一个存放.md笔记的文件夹GaoShu</h3><h3 id="三、执行git命令"><a href="#三、执行git命令" class="headerlink" title="三、执行git命令"></a>三、执行git命令</h3><p><strong>…or create a new repository on the command line</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;# GaoShu&quot; &gt;&gt; README.md</span><br><span class="line">git init</span><br><span class="line">git add README.md</span><br><span class="line">git commit -m &quot;first commit&quot;</span><br><span class="line">git remote add origin https:&#x2F;&#x2F;github.com&#x2F;AAAAAA&#x2F;GaoShu.git</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
-<p><strong>…or push an existing repository from the command line</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin https:&#x2F;&#x2F;github.com&#x2F;AAAAAA&#x2F;GaoShu.git</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1165,20 +1165,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">77</span>
+          <span class="site-state-item-count">78</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">44</span>
+        <span class="site-state-item-count">45</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">45</span>
+        <span class="site-state-item-count">46</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

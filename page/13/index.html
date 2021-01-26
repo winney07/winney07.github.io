@@ -193,6 +193,110 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/06/TypeScript%E9%9D%99%E6%80%81%E7%B1%BB%E5%9E%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="winney">
+      <meta itemprop="description" content="Doing is better than saying.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="winney">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/11/06/TypeScript%E9%9D%99%E6%80%81%E7%B1%BB%E5%9E%8B/" class="post-title-link" itemprop="url">TypeScript静态类型</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-11-06 11:22:40" itemprop="dateCreated datePublished" datetime="2020-11-06T11:22:40+08:00">2020-11-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-01-12 18:00:01" itemprop="dateModified" datetime="2021-01-12T18:00:01+08:00">2021-01-12</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/TypeScript/" itemprop="url" rel="index"><span itemprop="name">TypeScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="TypeScript-静态类型"><a href="#TypeScript-静态类型" class="headerlink" title="TypeScript 静态类型"></a>TypeScript 静态类型</h4><h5 id="TypeScript-最主要的特点就是可以定义静态类型"><a href="#TypeScript-最主要的特点就是可以定义静态类型" class="headerlink" title="TypeScript 最主要的特点就是可以定义静态类型"></a>TypeScript 最主要的特点就是可以定义静态类型</h5><p>Static Typing  (一旦定义了就不可以再改变了)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let count : number &#x3D; 1;   (一旦定义了是number，就是number，不能改变类型。)</span><br><span class="line">count.后面可以跟number的所有方法</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">interface XiaojieJie &#123;</span><br><span class="line">    uname: string, </span><br><span class="line">    age: number</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const xiaohong : XiaojieJie &#x3D; &#123;</span><br><span class="line">    uname: &#39;小红&#39;, </span><br><span class="line">    age: 18</span><br><span class="line">&#125;</span><br><span class="line">console.log(xiaohong.age) </span><br></pre></td></tr></table></figure>
+<h4 id="基础静态类型和对象静态类型"><a href="#基础静态类型和对象静态类型" class="headerlink" title="基础静态类型和对象静态类型"></a>基础静态类型和对象静态类型</h4><h5 id="基础静态类型"><a href="#基础静态类型" class="headerlink" title="基础静态类型"></a>基础静态类型</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const count0 : number &#x3D; 918;</span><br><span class="line">const myName : string &#x3D; &#39;jspang&#39;;</span><br><span class="line">&#x2F;&#x2F; null , undefinde , booLean, void, symboL</span><br></pre></td></tr></table></figure>
+<h5 id="对象静态类型"><a href="#对象静态类型" class="headerlink" title="对象静态类型"></a>对象静态类型</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const xiaojieJie: &#123;</span><br><span class="line">    name : string,</span><br><span class="line">    age : number </span><br><span class="line">&#125; &#x3D; &#123;</span><br><span class="line">    name : &#39;大脚&#39;,</span><br><span class="line">    age:18</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const xiaojiejie : string [] &#x3D; [&quot;小红&quot;, &quot;小林&quot;, &quot;小星星&quot;]</span><br><span class="line"></span><br><span class="line">class Person&#123;&#125;</span><br><span class="line">const dajiao : Person &#x3D; new Person();</span><br></pre></td></tr></table></figure>
+<p>定义一个函数，返回值必须是字符串：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const jianXiaoJieJie :()&#x3D;&gt;string &#x3D;()&#x3D;&gt;&#123;return &#39;大脚&#39;&#125;</span><br><span class="line">&#x2F;&#x2F;对象类型，数组类型，类类型，函数类型</span><br></pre></td></tr></table></figure>
+<h4 id="类型注解和类型推断"><a href="#类型注解和类型推断" class="headerlink" title="类型注解和类型推断"></a>类型注解和类型推断</h4><h5 id="类型注解-type-annotation"><a href="#类型注解-type-annotation" class="headerlink" title="类型注解 - type annotation"></a>类型注解 - type annotation</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">let count : number ;</span><br><span class="line"></span><br><span class="line">function getTotal(one : number , two : number)&#123;</span><br><span class="line">	return one + two</span><br><span class="line">&#125;</span><br><span class="line">const total &#x3D; getTotal(1,2);</span><br></pre></td></tr></table></figure>
+
+
+<h5 id="类型推断-type-inference"><a href="#类型推断-type-inference" class="headerlink" title="类型推断 - type inference"></a>类型推断 - type inference</h5><h4 id="函数参数和返回类型的注解"><a href="#函数参数和返回类型的注解" class="headerlink" title="函数参数和返回类型的注解"></a>函数参数和返回类型的注解</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function getTotal(one : number , two : number)&#123;</span><br><span class="line">	return one + two +&#39;&#39;</span><br><span class="line">&#125;</span><br><span class="line">const total &#x3D; getTotal(1,2);  (会有错误提示) （定义的是number类型，返回的是string类型）</span><br><span class="line"></span><br><span class="line">解决方法：对返回做注解</span><br><span class="line">function getTotal(one : number , two : number): number&#123;</span><br><span class="line">	return one + two +&#39;&#39;  (这样写，编辑器就会有错误的提示)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">改正：</span><br><span class="line">function getTotal(one : number , two : number): number&#123;</span><br><span class="line">	return one + two </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="void："><a href="#void：" class="headerlink" title="void："></a>void：</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function sayHe1lo(): void&#123;</span><br><span class="line">	console.log(&#39;Hello worid&#39;)</span><br><span class="line">	return &quot;&quot;;(如果在函数中，任何地方有return就会报错，就会很直观的知道);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="never："><a href="#never：" class="headerlink" title="never："></a>never：</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">抛出异常：</span><br><span class="line">function errorFuntion() : never&#123;</span><br><span class="line">	throw new Error()</span><br><span class="line">	console.log(&quot;Hello world&quot;)</span><br><span class="line">&#125;</span><br><span class="line">或者死循环：</span><br><span class="line">function forNever() : never&#123;</span><br><span class="line">	while(true)&#123;&#125;</span><br><span class="line">	console.log( &#39;Hello world &#39;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function add(&#123;one ,two&#125; : &#123;one : number ,two : number&#125; )&#123;</span><br><span class="line">	return one + two</span><br><span class="line">&#125;</span><br><span class="line">const total &#x3D; add(fone: 1,two:2&#125;); </span><br><span class="line"></span><br><span class="line">function getNumber(&#123;one&#125; : &#123;one : number&#125;)&#123;</span><br><span class="line">	return one</span><br><span class="line">&#125;</span><br><span class="line">const one &#x3D; getNumber(&#123;one: 1&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="数组类型注解的方法"><a href="#数组类型注解的方法" class="headerlink" title="数组类型注解的方法"></a>数组类型注解的方法</h4><h5 id="类型推断"><a href="#类型推断" class="headerlink" title="类型推断"></a>类型推断</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const numberArr &#x3D; [1,2,3]</span><br><span class="line">(鼠标放上去，能够看到推断出是number类型)</span><br></pre></td></tr></table></figure>
+<h5 id="类型注释"><a href="#类型注释" class="headerlink" title="类型注释"></a>类型注释</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const numberArr : number[] &#x3D; [1,2,3];</span><br><span class="line">const stringArr : string[] &#x3D; [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;];</span><br><span class="line">const undefinedArr : undefined[] &#x3D; [undefined, undefined];</span><br><span class="line">const arr : (number | string)[] &#x3D; [1, &#39;string&#39;, 2];</span><br></pre></td></tr></table></figure>
+<h5 id="对象数组"><a href="#对象数组" class="headerlink" title="对象数组"></a>对象数组</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const xiaojiejies :&#123;name : string, age:number&#125;[] &#x3D;[</span><br><span class="line">	&#123;name: &#39;刘英&#39;, age: 18&#125;,</span><br><span class="line">	&#123;name : &#39;谢大脚&quot;, age: 28&#125;,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<h6 id="其他形式写法："><a href="#其他形式写法：" class="headerlink" title="其他形式写法："></a>其他形式写法：</h6><ol>
+<li><h6 id="type-alias-类型别名"><a href="#type-alias-类型别名" class="headerlink" title="type alias 类型别名"></a>type alias 类型别名</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">type Lady &#x3D; &#123;name: string,age: number&#125;</span><br><span class="line">const xiaojiejies : Lady[] [</span><br><span class="line">	&#123;name:&#39;刘英&#39;, age: 18&#125;,</span><br><span class="line">	&#123;name : &#39;谢大脚&quot; , age:28&#125;,</span><br><span class="line">]</span><br></pre></td></tr></table></figure></li>
+<li><h6 id="类"><a href="#类" class="headerlink" title="类"></a>类</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">class Madam &#123;</span><br><span class="line">	name: string ;</span><br><span class="line">	age : number;</span><br><span class="line">&#125;</span><br><span class="line">const xiaojiejies : Madam[] &#x3D; [</span><br><span class="line">	&#123;name: &#39;刘英&#39;, age: 18&#125;,</span><br><span class="line">	&#123;name: &#39;谢大脚&quot;, age: 28&#125;,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ol>
+<h4 id="元组的使用和类型约束"><a href="#元组的使用和类型约束" class="headerlink" title="元组的使用和类型约束"></a>元组的使用和类型约束</h4><h5 id="类型约束"><a href="#类型约束" class="headerlink" title="类型约束"></a>类型约束</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; const xiaojiejie : (string | number)[] &#x3D; [ &#39;dajiao &#39; , &#39;teacher &#39;, 28]</span><br></pre></td></tr></table></figure>
+<h5 id="元组的写法"><a href="#元组的写法" class="headerlink" title="元组的写法"></a>元组的写法</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const xiaojiejie : [string,string,number] &#x3D; [ &#39;dajiao&#39; , &#39;teacher&#39;,28]</span><br></pre></td></tr></table></figure>
+<h5 id="CSV（现在很少用）"><a href="#CSV（现在很少用）" class="headerlink" title="CSV（现在很少用）"></a>CSV（现在很少用）</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const xiaojiejies : [string, string, number][] &#x3D;[</span><br><span class="line">	[ &#39;dajiao &#39; , &#39;teacher&quot; ,28],</span><br><span class="line">	[ &#39;liuying&quot; , &#39;teacher&#39; ,18],</span><br><span class="line">	[ &quot; cuihua &#39; , &#39;teacher&quot; ,22]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/04/TypeScript-%E7%AE%80%E4%BB%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -365,86 +469,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/07/24/FastAdmin%E6%A1%86%E6%9E%B6-%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="winney">
-      <meta itemprop="description" content="Doing is better than saying.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="winney">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/07/24/FastAdmin%E6%A1%86%E6%9E%B6-%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">FastAdmin框架-使用笔记</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-07-24 19:25:00" itemprop="dateCreated datePublished" datetime="2020-07-24T19:25:00+08:00">2020-07-24</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-01-12 17:57:01" itemprop="dateModified" datetime="2021-01-12T17:57:01+08:00">2021-01-12</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/FastAdmin%E6%A1%86%E6%9E%B6/" itemprop="url" rel="index"><span itemprop="name">FastAdmin框架</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="在FastAdmin动态追加bootstrap-select下拉列表"><a href="#在FastAdmin动态追加bootstrap-select下拉列表" class="headerlink" title="在FastAdmin动态追加bootstrap-select下拉列表"></a>在FastAdmin动态追加bootstrap-select下拉列表</h3>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;select data-rule&#x3D;&quot;required&quot; class&#x3D;&quot;form-control selectpicker&quot; data-live-search&#x3D;&quot;true&quot; name&#x3D;&quot;row[admin_role_name]&quot; data-url&#x3D;&quot;&quot; data-query-name&#x3D;&quot;&quot;&gt; &lt;&#x2F;select&gt;</span><br><span class="line"></span><br><span class="line">注：data-live-search&#x3D;&quot;true&quot;是添加可以模糊搜索功能</span><br></pre></td></tr></table></figure>
-<p>关键代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">define([&#39;jquery&#39;, &#39;bootstrap&#39;, &#39;backend&#39;, &#39;table&#39;, &#39;form&#39;], function ($, undefined, Backend, Table, Form) &#123;</span><br><span class="line">    var Controller &#x3D; &#123;</span><br><span class="line">      ......</span><br><span class="line">      ......</span><br><span class="line">      add: function () &#123;</span><br><span class="line">            &#x2F;&#x2F;关键代码：（要引入）</span><br><span class="line">            require([&#39;bootstrap-select&#39;, &#39;bootstrap-select-lang&#39;]);</span><br><span class="line"></span><br><span class="line">            &#x2F;&#x2F;渲染下拉框</span><br><span class="line">            var renderselect &#x3D; function (select, data, defaultOpt) &#123;</span><br><span class="line">                if(defaultOpt &amp;&amp; data.length&gt;0) &#123;</span><br><span class="line">                    var opt &#x3D; &#39;&lt;option value&#x3D;&quot;&quot;&gt;&#39; + defaultOpt + &#39;&lt;&#x2F;option&gt;&#39;;</span><br><span class="line">                &#125;</span><br><span class="line">                var html &#x3D; [opt] || [];</span><br><span class="line">                for (var i &#x3D; 0; i &lt; data.length; i++) &#123;</span><br><span class="line">                    html.push(&quot;&lt;option value&#x3D;&#39;&quot; + data[i] + &quot;&#39;&gt;&quot; + data[i] + &quot;&lt;&#x2F;option&gt;&quot;);</span><br><span class="line">                &#125;</span><br><span class="line">                $(select).html(html.join(&quot;&quot;));</span><br><span class="line">                $(&quot;.selectpicker&quot;).selectpicker(&#39;refresh&#39;);</span><br><span class="line">                return select;</span><br><span class="line">            &#125;;</span><br><span class="line"></span><br><span class="line">           $(&quot;select[name&#x3D;&#39;row[server_id]&#39;]&quot;).change(function () &#123;</span><br><span class="line">                var admin_id &#x3D; $(&quot;select[name&#x3D;&#39;row[admin_id]&#39;]&quot;).val();</span><br><span class="line">                var app_id &#x3D; $(&quot;select[name&#x3D;&#39;row[app_id]&#39;]&quot;).val();</span><br><span class="line">                var server_id &#x3D; $(&quot;select[name&#x3D;&#39;row[server_id]&#39;]&quot;).val();</span><br><span class="line"></span><br><span class="line">                $.ajax(&#123;</span><br><span class="line">                    url: &#39;&#x2F;admin&#x2F;boon&#x2F;resource&#x2F;role_name_lise&#39;,</span><br><span class="line">                    data: &#123;admin_id: admin_id, app_id: app_id, server_id: server_id&#125;,</span><br><span class="line">                    type: &#39;get&#39;,</span><br><span class="line">                    dataType: &#39;json&#39;,</span><br><span class="line">                    success: function (data, textStatus, xhr) &#123;</span><br><span class="line">                        var list &#x3D; data.data.list;</span><br><span class="line"></span><br><span class="line">                        renderselect($(&quot;select[name&#x3D;&#39;row[admin_role_name]&#39;]&quot;), list, &quot;请选择测试角色名&quot;);</span><br><span class="line">                        renderselect($(&quot;select[name&#x3D;&#39;row[player_role_name]&#39;]&quot;), list, &quot;请选择玩家角色名&quot;);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;);</span><br><span class="line">           &#125;);</span><br><span class="line">            </span><br><span class="line">           $(&quot;select[name&#x3D;&#39;row[admin_id]&#39;], select[name&#x3D;&#39;row[app_id]&#39;]&quot;).change(function () &#123;</span><br><span class="line">               console.log(&quot;dianji&quot;)</span><br><span class="line">               var list &#x3D; [];</span><br><span class="line">                renderselect($(&quot;select[name&#x3D;&#39;row[admin_role_name]&#39;]&quot;), list);</span><br><span class="line">                renderselect($(&quot;select[name&#x3D;&#39;row[player_role_name]&#39;]&quot;), list);</span><br><span class="line">           &#125;); </span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -516,20 +540,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">77</span>
+          <span class="site-state-item-count">78</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">44</span>
+        <span class="site-state-item-count">45</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">45</span>
+        <span class="site-state-item-count">46</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

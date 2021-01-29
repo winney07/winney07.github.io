@@ -193,7 +193,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/07/24/FastAdmin%E6%A1%86%E6%9E%B6-%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/10/TypeScript%E7%9A%84%E6%8E%A5%E5%8F%A3Interface/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -207,7 +207,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/07/24/FastAdmin%E6%A1%86%E6%9E%B6-%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">FastAdmin框架-使用笔记</a>
+            <a href="/2020/11/10/TypeScript%E7%9A%84%E6%8E%A5%E5%8F%A3Interface/" class="post-title-link" itemprop="url">初识接口Interface</a>
         </h2>
 
         <div class="post-meta">
@@ -217,14 +217,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-07-24 19:25:00" itemprop="dateCreated datePublished" datetime="2020-07-24T19:25:00+08:00">2020-07-24</time>
+              <time title="创建时间：2020-11-10 10:44:44" itemprop="dateCreated datePublished" datetime="2020-11-10T10:44:44+08:00">2020-11-10</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-01-12 17:57:01" itemprop="dateModified" datetime="2021-01-12T17:57:01+08:00">2021-01-12</time>
+                <time title="修改时间：2021-01-12 17:59:47" itemprop="dateModified" datetime="2021-01-12T17:59:47+08:00">2021-01-12</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -236,7 +236,7 @@
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/FastAdmin%E6%A1%86%E6%9E%B6/" itemprop="url" rel="index"><span itemprop="name">FastAdmin框架</span></a>
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/TypeScript/" itemprop="url" rel="index"><span itemprop="name">TypeScript</span></a>
                 </span>
             </span>
 
@@ -251,10 +251,16 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="在FastAdmin动态追加bootstrap-select下拉列表"><a href="#在FastAdmin动态追加bootstrap-select下拉列表" class="headerlink" title="在FastAdmin动态追加bootstrap-select下拉列表"></a>在FastAdmin动态追加bootstrap-select下拉列表</h3>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;select data-rule&#x3D;&quot;required&quot; class&#x3D;&quot;form-control selectpicker&quot; data-live-search&#x3D;&quot;true&quot; name&#x3D;&quot;row[admin_role_name]&quot; data-url&#x3D;&quot;&quot; data-query-name&#x3D;&quot;&quot;&gt; &lt;&#x2F;select&gt;</span><br><span class="line"></span><br><span class="line">注：data-live-search&#x3D;&quot;true&quot;是添加可以模糊搜索功能</span><br></pre></td></tr></table></figure>
-<p>关键代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">define([&#39;jquery&#39;, &#39;bootstrap&#39;, &#39;backend&#39;, &#39;table&#39;, &#39;form&#39;], function ($, undefined, Backend, Table, Form) &#123;</span><br><span class="line">    var Controller &#x3D; &#123;</span><br><span class="line">      ......</span><br><span class="line">      ......</span><br><span class="line">      add: function () &#123;</span><br><span class="line">            &#x2F;&#x2F;关键代码：（要引入）</span><br><span class="line">            require([&#39;bootstrap-select&#39;, &#39;bootstrap-select-lang&#39;]);</span><br><span class="line"></span><br><span class="line">            &#x2F;&#x2F;渲染下拉框</span><br><span class="line">            var renderselect &#x3D; function (select, data, defaultOpt) &#123;</span><br><span class="line">                if(defaultOpt &amp;&amp; data.length&gt;0) &#123;</span><br><span class="line">                    var opt &#x3D; &#39;&lt;option value&#x3D;&quot;&quot;&gt;&#39; + defaultOpt + &#39;&lt;&#x2F;option&gt;&#39;;</span><br><span class="line">                &#125;</span><br><span class="line">                var html &#x3D; [opt] || [];</span><br><span class="line">                for (var i &#x3D; 0; i &lt; data.length; i++) &#123;</span><br><span class="line">                    html.push(&quot;&lt;option value&#x3D;&#39;&quot; + data[i] + &quot;&#39;&gt;&quot; + data[i] + &quot;&lt;&#x2F;option&gt;&quot;);</span><br><span class="line">                &#125;</span><br><span class="line">                $(select).html(html.join(&quot;&quot;));</span><br><span class="line">                $(&quot;.selectpicker&quot;).selectpicker(&#39;refresh&#39;);</span><br><span class="line">                return select;</span><br><span class="line">            &#125;;</span><br><span class="line"></span><br><span class="line">           $(&quot;select[name&#x3D;&#39;row[server_id]&#39;]&quot;).change(function () &#123;</span><br><span class="line">                var admin_id &#x3D; $(&quot;select[name&#x3D;&#39;row[admin_id]&#39;]&quot;).val();</span><br><span class="line">                var app_id &#x3D; $(&quot;select[name&#x3D;&#39;row[app_id]&#39;]&quot;).val();</span><br><span class="line">                var server_id &#x3D; $(&quot;select[name&#x3D;&#39;row[server_id]&#39;]&quot;).val();</span><br><span class="line"></span><br><span class="line">                $.ajax(&#123;</span><br><span class="line">                    url: &#39;&#x2F;admin&#x2F;boon&#x2F;resource&#x2F;role_name_lise&#39;,</span><br><span class="line">                    data: &#123;admin_id: admin_id, app_id: app_id, server_id: server_id&#125;,</span><br><span class="line">                    type: &#39;get&#39;,</span><br><span class="line">                    dataType: &#39;json&#39;,</span><br><span class="line">                    success: function (data, textStatus, xhr) &#123;</span><br><span class="line">                        var list &#x3D; data.data.list;</span><br><span class="line"></span><br><span class="line">                        renderselect($(&quot;select[name&#x3D;&#39;row[admin_role_name]&#39;]&quot;), list, &quot;请选择测试角色名&quot;);</span><br><span class="line">                        renderselect($(&quot;select[name&#x3D;&#39;row[player_role_name]&#39;]&quot;), list, &quot;请选择玩家角色名&quot;);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;);</span><br><span class="line">           &#125;);</span><br><span class="line">            </span><br><span class="line">           $(&quot;select[name&#x3D;&#39;row[admin_id]&#39;], select[name&#x3D;&#39;row[app_id]&#39;]&quot;).change(function () &#123;</span><br><span class="line">               console.log(&quot;dianji&quot;)</span><br><span class="line">               var list &#x3D; [];</span><br><span class="line">                renderselect($(&quot;select[name&#x3D;&#39;row[admin_role_name]&#39;]&quot;), list);</span><br><span class="line">                renderselect($(&quot;select[name&#x3D;&#39;row[player_role_name]&#39;]&quot;), list);</span><br><span class="line">           &#125;); </span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+          <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">const screenResume&#x3D; (name: string,age: number,bust:number)&#x3D;&gt;&#123;</span><br><span class="line">	age &lt; 24 &amp;&amp; bust &gt;&#x3D;90 &amp;&amp; console.log(name+&#39;进入面试&#39;)</span><br><span class="line">	age &gt;&#x3D; 24 || bust &lt;90 &amp;&amp; console.log(name+&#39;你被淘汰&#39;)</span><br><span class="line">&#125;</span><br><span class="line">const getResume &#x3D; (name : string, age : number, bust: number)&#x3D;&gt;&#123;</span><br><span class="line">	console.log(name+&#39;年龄是&#39;+age)</span><br><span class="line">	console.log(name+&#39;胸围是&#39;+bust)</span><br><span class="line">&#125;</span><br><span class="line">screenResume(&#39;大脚&#39;,18,94)</span><br><span class="line">getResume(&#39;大脚&quot;,18,94)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="定义接口"><a href="#定义接口" class="headerlink" title="定义接口"></a>定义接口</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">interface Girl &#123;</span><br><span class="line">	name: string;</span><br><span class="line">	age : number;</span><br><span class="line">	bust: number;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">const girl&#x3D;&#123;</span><br><span class="line">	name:&#39;大脚&quot;,</span><br><span class="line">	age: 18,</span><br><span class="line">	bust: 94</span><br><span class="line">&#125;</span><br><span class="line">const screenResume&#x3D; (girl : Girl)&#x3D;&gt;&#123;</span><br><span class="line">	girl.age &lt; 24 &amp;&amp; girl.bust &gt;&#x3D;90 &amp;&amp; console.log( girl.name+&#39;进入面试&#39;)</span><br><span class="line">	girl.age &gt;&#x3D; 24 || girl.bust &lt;90 &amp;&amp; console.log( girl.name+&#39;你被淘汰&quot;)</span><br><span class="line">&#125;</span><br><span class="line">const getResume &#x3D; (girl:Girl)&#x3D;&gt;&#123;</span><br><span class="line">	console.log(girl.name+&#39;年龄是&#39;+girl.age)</span><br><span class="line">	console.log(girl.name+ &#39;胸围是&#39;+girl.bust)</span><br><span class="line">&#125;</span><br><span class="line">screenResume(girl)</span><br><span class="line">getResume(girl)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h5 id="可选值的定义："><a href="#可选值的定义：" class="headerlink" title="可选值的定义："></a>可选值的定义：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">age ?: number (age可有可没有)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">interface Girl &#123;</span><br><span class="line">	name: string;</span><br><span class="line">	age : number;</span><br><span class="line">	bust: number;</span><br><span class="line">	waistline ?: number;</span><br><span class="line">&#125;</span><br><span class="line">这样写不会报错：</span><br><span class="line">const getResume &#x3D; (girl:Girl)&#x3D;&gt;&#123;</span><br><span class="line">	console.log(girl.name+&#39;年龄是&#39;+girl.age)</span><br><span class="line">	console.log(girl.name+&#39;胸围是&#39;+girl.bust)</span><br><span class="line">	girl.waistline &amp;&amp; console.log(girl.name+&#39;腰围是:&#39;+girl.waistline )</span><br><span class="line">&#125;</span><br><span class="line">输出的内容还是跟原来一样</span><br><span class="line"></span><br><span class="line">如果将girl改为：</span><br><span class="line">const girl&#x3D;&#123;</span><br><span class="line">	name:&#39;大脚&quot;,</span><br><span class="line">	age: 18,</span><br><span class="line">	bust: 94,</span><br><span class="line">	waistline: 21</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">再输出打印，就会将waistline打印出来</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h5 id="定义一个可以加任何属性"><a href="#定义一个可以加任何属性" class="headerlink" title="定义一个可以加任何属性"></a>定义一个可以加任何属性</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[propname:string]: any;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">interface Girl &#123;</span><br><span class="line">	name: string;</span><br><span class="line">	age : number;</span><br><span class="line">	bust: number;</span><br><span class="line">	waistline ?: number;</span><br><span class="line">	[propname:string]: any;</span><br><span class="line">&#125;</span><br><span class="line">const girl&#x3D;&#123;</span><br><span class="line">	name: &quot;大脚&quot;,</span><br><span class="line">	age: 18,</span><br><span class="line">	bust:94,</span><br><span class="line">	waistline: 21,</span><br><span class="line">	sex:&#39;女’</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h5 id="添加方法："><a href="#添加方法：" class="headerlink" title="添加方法："></a>添加方法：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">interface Girl &#123;</span><br><span class="line">	name: string;</span><br><span class="line">	age : number;</span><br><span class="line">	bust: number;</span><br><span class="line">	waistline ?: number;</span><br><span class="line">	[propname:string]: any;</span><br><span class="line">	say(): string;</span><br><span class="line">&#125;</span><br><span class="line">const girl&#x3D;&#123;</span><br><span class="line">	name:&#39;大脚&quot;，</span><br><span class="line">	age: 18,</span><br><span class="line">	bust:94,</span><br><span class="line">	waistline: 21,</span><br><span class="line">	sex: &#39;女&#39;，</span><br><span class="line">	say()&#123;</span><br><span class="line">		return &quot;欢迎光临，红浪漫洗浴!!”</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h5 id="接口和类的约束"><a href="#接口和类的约束" class="headerlink" title="接口和类的约束"></a>接口和类的约束</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">class xiaojieJie implements Girl&#123;</span><br><span class="line">	name&#x3D;&quot;刘英&quot;</span><br><span class="line">	age&#x3D;18</span><br><span class="line">	bust&#x3D;90</span><br><span class="line">	say()&#123;</span><br><span class="line">		return &quot;欢迎光临,红浪漫洗浴!!&quot;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;	</span><br></pre></td></tr></table></figure>
+<h5 id="接口间的继承"><a href="#接口间的继承" class="headerlink" title="接口间的继承"></a>接口间的继承</h5>
       
     </div>
 
@@ -273,7 +279,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/07/17/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E8%B0%83%E8%AF%95%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/09/%E5%85%83%E7%BB%84%E7%9A%84%E4%BD%BF%E7%94%A8%E5%92%8C%E7%B1%BB%E5%9E%8B%E7%BA%A6%E6%9D%9F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -287,7 +293,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/07/17/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E8%B0%83%E8%AF%95%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB/" class="post-title-link" itemprop="url">移动端调试方法汇总</a>
+            <a href="/2020/11/09/%E5%85%83%E7%BB%84%E7%9A%84%E4%BD%BF%E7%94%A8%E5%92%8C%E7%B1%BB%E5%9E%8B%E7%BA%A6%E6%9D%9F/" class="post-title-link" itemprop="url">元组的使用和类型约束</a>
         </h2>
 
         <div class="post-meta">
@@ -297,14 +303,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-07-17 15:59:37" itemprop="dateCreated datePublished" datetime="2020-07-17T15:59:37+08:00">2020-07-17</time>
+              <time title="创建时间：2020-11-09 11:35:27" itemprop="dateCreated datePublished" datetime="2020-11-09T11:35:27+08:00">2020-11-09</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-01-12 17:54:21" itemprop="dateModified" datetime="2021-01-12T17:54:21+08:00">2021-01-12</time>
+                <time title="修改时间：2021-01-12 17:54:37" itemprop="dateModified" datetime="2021-01-12T17:54:37+08:00">2021-01-12</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -316,7 +322,7 @@
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/%E7%A7%BB%E5%8A%A8%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">移动端</span></a>
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/TypeScript/" itemprop="url" rel="index"><span itemprop="name">TypeScript</span></a>
                 </span>
             </span>
 
@@ -331,36 +337,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="一：Android手机-chrome（真机调试）"><a href="#一：Android手机-chrome（真机调试）" class="headerlink" title="一：Android手机 + chrome（真机调试）"></a>一：Android手机 + chrome（真机调试）</h3><p><a target="_blank" rel="noopener" href="https://juejin.im/post/5b15022ff265da6e163720c6">参考的博客-掘金</a></p>
-<h5 id="一台Android手机，一台电脑，一根Android数据线"><a href="#一台Android手机，一台电脑，一根Android数据线" class="headerlink" title="一台Android手机，一台电脑，一根Android数据线"></a>一台Android手机，一台电脑，一根Android数据线</h5><h4 id="操作步骤："><a href="#操作步骤：" class="headerlink" title="操作步骤："></a>操作步骤：</h4><p>1、在Android手机上安装<strong>chrome浏览器</strong><br>2、打开手机的开发者模式（开发人员选项——“USB调试”打开）</p>
-<img src="/2020/07/17/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E8%B0%83%E8%AF%95%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB/usb0.png" class="">
-<p>3、将手机与电脑通过USB线连接，弹出对话框<strong>“是否允许USB调试”</strong>，选择“确定”</p>
-<img src="/2020/07/17/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E8%B0%83%E8%AF%95%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB/usb.png" class="">
+          <h6 id="类型约束"><a href="#类型约束" class="headerlink" title="类型约束"></a>类型约束</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; const xiaojiejie : (string | number)[] &#x3D; [ &#39;dajiao &#39; , &#39;teacher &#39;, 28]</span><br></pre></td></tr></table></figure>
+<h5 id="元组的写法"><a href="#元组的写法" class="headerlink" title="元组的写法"></a>元组的写法</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const xiaojiejie : [string,string,number] &#x3D; [ &#39;dajiao&#39; , &#39;teacher&#39;,28]</span><br></pre></td></tr></table></figure>
+<h5 id="CSV（现在很少用）"><a href="#CSV（现在很少用）" class="headerlink" title="CSV（现在很少用）"></a>CSV（现在很少用）</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const xiaojiejies : [string, string, number][] &#x3D;[</span><br><span class="line">	[ &#39;dajiao &#39; , &#39;teacher&quot; ,28],</span><br><span class="line">	[ &#39;liuying&quot; , &#39;teacher&#39; ,18],</span><br><span class="line">	[ &quot; cuihua &#39; , &#39;teacher&quot; ,22]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
 
-<p><strong>遇到的问题：</strong><br>问题一：连接电脑显示  “无法识别的USB”<br>解决方法：<a target="_blank" rel="noopener" href="https://www.yunqishi.net/video/9896.html">参考的链接</a><br>    1. 在控制面板打开设备管理器<br>    2. 展开通用串行总线控制器，右击设备选择卸载， 每个设备重复以上操作，重启计算机系统会自动安装usb控制器<br>    （这里我选择了unknown的卸载了，拔掉USB线，然后重启电脑）<br>    3.重启电脑之后，重新插上USB线，会自动安装驱动</p>
-<p>问题二：如果连不了，可以下载360手机助手连接一下手机。</p>
-<p>4、打开手机上的chrome浏览器，并进入需要调试的页面（例如：进入百度搜索内容）<br>5、打开PC端chrome浏览器，在地址栏中输入chrome://inspect/，进入调试页面，此时，我们发现，chrome检测到了我们的手机</p>
-<img src="/2020/07/17/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E8%B0%83%E8%AF%95%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB/chrome.png" class="">
-<p>6、点击<strong>inspect</strong> 会弹出chrome调试工具，然后就可以在电脑上调试真机了</p>
-<p><strong>注意事项：</strong><br>在上面第6步的时候，点击inspect后，弹出的面板可能是一片空白，这是因为，<strong>首次使用该功能时，需要连接外网（翻墙）</strong>，初始化后，成功显示了调试工具的面板后，以后就不需要翻墙了。</p>
-<h3 id="二：如果想在手机端中，查看console的内容，看有没有报错之类的。可以使用vConsole"><a href="#二：如果想在手机端中，查看console的内容，看有没有报错之类的。可以使用vConsole" class="headerlink" title="二：如果想在手机端中，查看console的内容，看有没有报错之类的。可以使用vConsole"></a>二：如果想在手机端中，查看console的内容，看有没有报错之类的。可以使用vConsole</h3><p>在页面中加入以下代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.bootcdn.net&#x2F;ajax&#x2F;libs&#x2F;vConsole&#x2F;3.3.3&#x2F;vconsole.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    var vConsole &#x3D; new VConsole();</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
-<p>加入之后，在移动端页面就可以看到console.log打印出来的结果了</p>
-<img src="/2020/07/17/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E8%B0%83%E8%AF%95%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB/vConsole.png" class="">
-<img src="/2020/07/17/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E8%B0%83%E8%AF%95%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB/vConsole2.png" class="">
-
-
-<h4 id="判断是否为移动端设备"><a href="#判断是否为移动端设备" class="headerlink" title="判断是否为移动端设备"></a>判断是否为移动端设备</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function isMobile()&#123;</span><br><span class="line">  if((navigator.userAgent.match(&#x2F;(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)&#x2F;i))) &#123;</span><br><span class="line">    return true;</span><br><span class="line">  &#125;else &#123;</span><br><span class="line">    return false;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="判断是否为PC端"><a href="#判断是否为PC端" class="headerlink" title="判断是否为PC端"></a>判断是否为PC端</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function IsPC() &#123;</span><br><span class="line">     var userAgentInfo &#x3D; navigator.userAgent;</span><br><span class="line">     var Agents &#x3D; [&quot;Android&quot;, &quot;iPhone&quot;,</span><br><span class="line">                 &quot;SymbianOS&quot;, &quot;Windows Phone&quot;,</span><br><span class="line">                 &quot;iPad&quot;, &quot;iPod&quot;];</span><br><span class="line">     var flag &#x3D; true;</span><br><span class="line">     for (var v &#x3D; 0; v &lt; Agents.length; v++) &#123;</span><br><span class="line">         if (userAgentInfo.indexOf(Agents[v]) &gt; 0) &#123;</span><br><span class="line">             flag &#x3D; false;</span><br><span class="line">             break;</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;</span><br><span class="line">     return flag;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-<h4 id="移动端设备旋转设备为横屏时，刷新页面"><a href="#移动端设备旋转设备为横屏时，刷新页面" class="headerlink" title="移动端设备旋转设备为横屏时，刷新页面"></a>移动端设备旋转设备为横屏时，刷新页面</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">var mobile &#x3D; isMobile();</span><br><span class="line">if(mobile) &#123;</span><br><span class="line">    window.addEventListener(&quot;orientationchange&quot;, function() &#123;</span><br><span class="line">        &#x2F;&#x2F;横屏，刷新页面</span><br><span class="line">        if(window.orientation &#x3D;&#x3D; 90) &#123;</span><br><span class="line">            window.top.document.location.reload();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;, false);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">注：</span><br><span class="line">如果是刷新当前页面，直接Window.location.reload();就可以。</span><br><span class="line">如果是使用iframe嵌套页面的，要往上一层去刷新，window.top.document.location.reload();</span><br></pre></td></tr></table></figure>
-<p>使用window.top.document.location.reload();的原因，是使用iframe嵌套页面的：（蓝色区域为子页面嵌套在里面）</p>
-<img src="/2020/07/17/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E8%B0%83%E8%AF%95%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB/main.png" class="">
-
-<h4 id="判断是否移动设备是否为横屏"><a href="#判断是否移动设备是否为横屏" class="headerlink" title="判断是否移动设备是否为横屏"></a>判断是否移动设备是否为横屏</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;判断是否移动设备是否横屏状态</span><br><span class="line">function isLandscape() &#123;</span><br><span class="line">	if (window.orientation &#x3D;&#x3D;&#x3D; 180 || window.orientation &#x3D;&#x3D;&#x3D; 0) &#123; </span><br><span class="line">		return false;</span><br><span class="line">	&#125; </span><br><span class="line">	if (window.orientation &#x3D;&#x3D;&#x3D; 90 || window.orientation &#x3D;&#x3D;&#x3D; -90 )&#123; </span><br><span class="line">		return true;</span><br><span class="line">	&#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="获取iframe父子页面之间获取元素"><a href="#获取iframe父子页面之间获取元素" class="headerlink" title="获取iframe父子页面之间获取元素"></a>获取iframe父子页面之间获取元素</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">【父找子】</span><br><span class="line">&#x2F;&#x2F;从父级找到iframe，然后找contents</span><br><span class="line">var inputs &#x3D; $(&quot;.tab-pane.active iframe&quot;).contents().find(&quot;input&quot;);</span><br><span class="line">【子找父】</span><br><span class="line">&#x2F;&#x2F;从子页面找到parent.document,然后找对应元素</span><br><span class="line">$(window.parent.document).find(&quot;.content-wrapper&quot;).offset(&#123;top:0&#125;);</span><br></pre></td></tr></table></figure>
-<h4 id="处理移动端页面，软键盘弹起导致页面底部空白"><a href="#处理移动端页面，软键盘弹起导致页面底部空白" class="headerlink" title="处理移动端页面，软键盘弹起导致页面底部空白"></a>处理移动端页面，软键盘弹起导致页面底部空白</h4><img src="/2020/07/17/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E8%B0%83%E8%AF%95%E6%96%B9%E6%B3%95%E6%B1%87%E6%80%BB/input.png" class="">
-<p>实际上，页面内容是在的，只是被挡住了，所以要将最外层的页面高度设置到跟设备一样高</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">function setOffset() &#123;</span><br><span class="line">  &#x2F;&#x2F;是否为移动端</span><br><span class="line">  var mobile &#x3D; isMobile();</span><br><span class="line">  &#x2F;&#x2F;是否是横屏状态</span><br><span class="line">  var landscape &#x3D; isLandscape();</span><br><span class="line"></span><br><span class="line">  &#x2F;&#x2F;移动端横屏状态 监听输入框输入状态</span><br><span class="line">  if(mobile &amp;&amp; landscape) &#123;</span><br><span class="line">    var flag &#x3D; true;</span><br><span class="line">    var inputs &#x3D; $(&quot;.tab-pane.active iframe&quot;).contents().find(&quot;input&quot;);</span><br><span class="line"></span><br><span class="line">    inputs.on(&quot;compositionstart&quot;, function() &#123;</span><br><span class="line">      flag &#x3D; false;</span><br><span class="line">    &#125;);</span><br><span class="line">    inputs.on(&quot;compositionend&quot;, function() &#123;</span><br><span class="line">      flag &#x3D; true;</span><br><span class="line">    &#125;);</span><br><span class="line">    inputs.on(&quot;keyup&quot;, function() &#123;</span><br><span class="line">      if(flag) &#123;</span><br><span class="line">        &#x2F;&#x2F;设置iframe的offsetTop</span><br><span class="line">        $(window.parent.document).find(&quot;.content-wrapper&quot;).offset(&#123;top:0&#125;);</span><br><span class="line">        $(document).find(&quot;.permiss&quot;).offset(&#123;top:143&#125;);</span><br><span class="line"></span><br><span class="line">        【解决问题的主要代码】</span><br><span class="line">        &#x2F;&#x2F;将最外层的页面高度设置到跟设备一样高</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F;获取屏幕高度</span><br><span class="line">        var bodyHeight &#x3D; $(&#39;body&#39;)[0].clientHeight;</span><br><span class="line">        $(window.parent.document).find(&quot;.content-wrapper&quot;).css(&quot;height&quot;, bodyHeight + &quot;px&quot;);</span><br><span class="line">        $(window.parent.document).find(&quot;.content-wrapper&quot;).css(&quot;top&quot;, &quot;0px&quot;);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -380,7 +360,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/07/09/HTML%E4%B8%AD%E7%9A%84%E7%89%B9%E6%AE%8A%E7%AC%A6%E5%8F%B7/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/06/TypeScript%E9%9D%99%E6%80%81%E7%B1%BB%E5%9E%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -394,7 +374,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/07/09/HTML%E4%B8%AD%E7%9A%84%E7%89%B9%E6%AE%8A%E7%AC%A6%E5%8F%B7/" class="post-title-link" itemprop="url">HTML中的特殊符号</a>
+            <a href="/2020/11/06/TypeScript%E9%9D%99%E6%80%81%E7%B1%BB%E5%9E%8B/" class="post-title-link" itemprop="url">TypeScript静态类型</a>
         </h2>
 
         <div class="post-meta">
@@ -404,14 +384,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-07-09 14:50:35" itemprop="dateCreated datePublished" datetime="2020-07-09T14:50:35+08:00">2020-07-09</time>
+              <time title="创建时间：2020-11-06 11:22:40" itemprop="dateCreated datePublished" datetime="2020-11-06T11:22:40+08:00">2020-11-06</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-01-12 17:58:37" itemprop="dateModified" datetime="2021-01-12T17:58:37+08:00">2021-01-12</time>
+                <time title="修改时间：2021-01-12 18:00:01" itemprop="dateModified" datetime="2021-01-12T18:00:01+08:00">2021-01-12</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -423,7 +403,7 @@
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/HTML%E4%B8%AD%E7%9A%84%E7%89%B9%E6%AE%8A%E7%AC%A6%E5%8F%B7/" itemprop="url" rel="index"><span itemprop="name">HTML中的特殊符号</span></a>
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/TypeScript/" itemprop="url" rel="index"><span itemprop="name">TypeScript</span></a>
                 </span>
             </span>
 
@@ -438,648 +418,34 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>&infin;</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">无穷的符号 ： &amp;infin;</span><br></pre></td></tr></table></figure>
-<table cellpadding="0" border="1" width="708" style="border:1pt solid;"><tbody><tr><td width="29" style="border:1pt solid #000000;width:21.75pt;">
-<p align="center" style="text-align:center;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">符号</span></strong></span></p>
-</td>
-<td width="63" style="border:1pt solid #000000;width:47.25pt;">
-<p align="center" style="text-align:center;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">说明</span></strong></span></p>
-</td>
-<td width="72" style="border:1pt solid #000000;width:54pt;">
-<p align="center" style="text-align:center;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">编码</span></strong></span></p>
-</td>
-<td rowspan="25" width="17" style="border:1pt solid #000000;width:12.75pt;">
-<p align="center" style="text-align:center;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&nbsp;</span></strong></span></p>
-</td>
-<td width="36" style="border:1pt solid #000000;width:27pt;">
-<p align="center" style="text-align:center;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">符号</span></strong></span></p>
-</td>
-<td width="94" style="border:1pt solid #000000;width:70.5pt;">
-<p align="center" style="text-align:center;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">说明</span></strong></span></p>
-</td>
-<td width="72" style="border:1pt solid #000000;width:54pt;">
-<p align="center" style="text-align:center;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">编码</span></strong></span></p>
-</td>
-<td rowspan="25" width="17" style="border:1pt solid #000000;width:12.75pt;">
-<p align="center" style="text-align:center;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&nbsp;</span></strong></span></p>
-</td>
-<td width="36" style="border:1pt solid #000000;width:27pt;">
-<p align="center" style="text-align:center;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">符号</span></strong></span></p>
-</td>
-<td width="96" style="border:1pt solid #000000;width:72pt;">
-<p align="center" style="text-align:center;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">说明</span></strong></span></p>
-</td>
-<td width="73" style="border:1pt solid #000000;width:54.75pt;">
-<p align="center" style="text-align:center;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">编码</span></strong></span></p>
-</td>
-</tr><tr><td width="29" style="border:1pt solid #000000;width:21.75pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">"</span></strong></span></p>
-</td>
-<td width="63" style="border:1pt solid #000000;width:47.25pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">双引号</span></strong></span></p>
-</td>
-<td width="72" style="border:1pt solid #000000;width:54pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;quot;</span></strong></span></p>
-</td>
-<td width="36" style="border:1pt solid #000000;width:27pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">×</span></strong></span></p>
-</td>
-<td width="94" style="border:1pt solid #000000;width:70.5pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">乘号</span></strong></span></p>
-</td>
-<td width="72" style="border:1pt solid #000000;width:54pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;times;</span></strong></span></p>
-</td>
-<td width="36" style="border:1pt solid #000000;width:27pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">←</span></strong></span></p>
-</td>
-<td width="96" style="border:1pt solid #000000;width:72pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">向左箭头</span></strong></span></p>
-</td>
-<td width="73" style="border:1pt solid #000000;width:54.75pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;larr;</span></strong></span></p>
-</td>
-</tr><tr><td width="29" style="border:1pt solid #000000;width:21.75pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;</span></strong></span></p>
-</td>
-<td width="63" style="border:1pt solid #000000;width:47.25pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">AND</span><span style="font-family:'宋体';font-size:10pt;">符号</span></strong></span></p>
-</td>
-<td width="72" style="border:1pt solid #000000;width:54pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;amp;</span></strong></span></p>
-</td>
-<td width="36" style="border:1pt solid #000000;width:27pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">÷</span></strong></span></p>
-</td>
-<td width="94" style="border:1pt solid #000000;width:70.5pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">除号</span></strong></span></p>
-</td>
-<td width="72" style="border:1pt solid #000000;width:54pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;divide;</span></strong></span></p>
-</td>
-<td width="36" style="border:1pt solid #000000;width:27pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">↑</span></strong></span></p>
-</td>
-<td width="96" style="border:1pt solid #000000;width:72pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">向上箭头</span></strong></span></p>
-</td>
-<td width="73" style="border:1pt solid #000000;width:54.75pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;uarr;</span></strong></span></p>
-</td>
-</tr><tr><td width="29" style="border:1pt solid #000000;width:21.75pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&lt;&nbsp;</span></strong></span></p>
-</td>
-<td width="63" style="border:1pt solid #000000;width:47.25pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">小于符号</span></strong></span></p>
-</td>
-<td width="72" style="border:1pt solid #000000;width:54pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;lt;</span></strong></span></p>
-</td>
-<td width="36" style="border:1pt solid #000000;width:27pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">±</span></strong></span></p>
-</td>
-<td width="94" style="border:1pt solid #000000;width:70.5pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">正负符号</span></strong></span></p>
-</td>
-<td width="72" style="border:1pt solid #000000;width:54pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;plusmn;</span></strong></span></p>
-</td>
-<td width="36" style="border:1pt solid #000000;width:27pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">→</span></strong></span></p>
-</td>
-<td width="96" style="border:1pt solid #000000;width:72pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">向右箭头</span></strong></span></p>
-</td>
-<td width="73" style="border:1pt solid #000000;width:54.75pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;rarr;</span></strong></span></p>
-</td>
-</tr><tr><td width="29" style="border:1pt solid #000000;width:21.75pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&gt;&nbsp;</span></strong></span></p>
-</td>
-<td width="63" style="border:1pt solid #000000;width:47.25pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">大于符号</span></strong></span></p>
-</td>
-<td width="72" style="border:1pt solid #000000;width:54pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;gt;</span></strong></span></p>
-</td>
-<td width="36" style="border:1pt solid #000000;width:27pt;">
-<p align="left" style="text-align:left;"><span style="font-size:14px;">ƒ</span><br></p>
-</td>
-<td width="94" style="border:1pt solid #000000;width:70.5pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">function</span><span style="font-family:'宋体';font-size:10pt;">符号</span></strong></span></p>
-</td>
-<td width="72" style="border:1pt solid #000000;width:54pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;fnof;</span></strong></span></p>
-</td>
-<td width="36" style="border:1pt solid #000000;width:27pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">↓</span></strong></span></p>
-</td>
-<td width="96" style="border:1pt solid #000000;width:72pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">向下箭头</span></strong></span></p>
-</td>
-<td width="73" style="border:1pt solid #000000;width:54.75pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;darr;</span></strong></span></p>
-</td>
-</tr><tr><td width="29" style="border:1pt solid #000000;width:21.75pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&nbsp;</span></strong></span></p>
-</td>
-<td width="63" style="border:1pt solid #000000;width:47.25pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">空格</span></strong></span></p>
-</td>
-<td width="72" style="border:1pt solid #000000;width:54pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;nbsp;</span></strong></span></p>
-</td>
-<td width="36" style="border:1pt solid #000000;width:27pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">√</span></strong></span></p>
-</td>
-<td width="94" style="border:1pt solid #000000;width:70.5pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">根号</span></strong></span></p>
-</td>
-<td width="72" style="border:1pt solid #000000;width:54pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;radic;</span></strong></span></p>
-</td>
-<td width="36" style="border:1pt solid #000000;width:27pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">↑</span></strong></span></p>
-</td>
-<td width="96" style="border:1pt solid #000000;width:72pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">双向箭头</span></strong></span></p>
-</td>
-<td width="73" style="border:1pt solid #000000;width:54.75pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;harr;</span></strong></span></p>
-</td>
-</tr><tr><td width="29" style="border:1pt solid #000000;width:21.75pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">?</span></strong></span></p>
-</td>
-<td width="63" style="border:1pt solid #000000;width:47.25pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">倒问号</span></strong></span></p>
-</td>
-<td width="72" style="border:1pt solid #000000;width:54pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;iquest;</span></strong></span></p>
-</td>
-<td width="36" style="border:1pt solid #000000;width:27pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">∞</span></strong></span></p>
-</td>
-<td width="94" style="border:1pt solid #000000;width:70.5pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">无限大符号</span></strong></span></p>
-</td>
-<td width="72" style="border:1pt solid #000000;width:54pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;infin;</span></strong></span></p>
-</td>
-<td width="36" style="border:1pt solid #000000;width:27pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us"><span style="font-size:18px;">⇐</span></span></strong></span></p>
-</td>
-<td width="96" style="border:1pt solid #000000;width:72pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">双线向左箭头</span></strong></span></p>
-</td>
-<td width="73" style="border:1pt solid #000000;width:54.75pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;lArr;</span></strong></span></p>
-</td>
-</tr><tr><td width="29" style="border:1pt solid #000000;width:21.75pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">?</span></strong></span></p>
-</td>
-<td width="63" style="border:1pt solid #000000;width:47.25pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">双左箭头</span></strong></span></p>
-</td>
-<td width="72" style="border:1pt solid #000000;width:54pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;laquo;</span></strong></span></p>
-</td>
-<td width="36" style="border:1pt solid #000000;width:27pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">∠</span></strong></span></p>
-</td>
-<td width="94" style="border:1pt solid #000000;width:70.5pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">角度符号</span></strong></span></p>
-</td>
-<td width="72" style="border:1pt solid #000000;width:54pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;ang;</span></strong></span></p>
-</td>
-<td width="36" style="border:1pt solid #000000;width:27pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us"><span style="font-size:18px;">⇑</span></span></strong></span></p>
-</td>
-<td width="96" style="border:1pt solid #000000;width:72pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">双线向上箭头</span></strong></span></p>
-</td>
-<td width="73" style="border:1pt solid #000000;width:54.75pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;uArr;</span></strong></span></p>
-</td>
-</tr><tr><td width="29" style="border:1pt solid #000000;width:21.75pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">?</span></strong></span></p>
-</td>
-<td width="63" style="border:1pt solid #000000;width:47.25pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">双右箭头</span></strong></span></p>
-</td>
-<td width="72" style="border:1pt solid #000000;width:54pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;raquo;</span></strong></span></p>
-</td>
-<td width="36" style="border:1pt solid #000000;width:27pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">∫</span></strong></span></p>
-</td>
-<td width="94" style="border:1pt solid #000000;width:70.5pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">微积分符号</span></strong></span></p>
-</td>
-<td width="72" style="border:1pt solid #000000;width:54pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;int;</span></strong></span></p>
-</td>
-<td width="36" style="border:1pt solid #000000;width:27pt;">
-<p align="left" style="text-align:left;"><span style="font-size:18px;">⇒</span><br></p>
-</td>
-<td width="96" style="border:1pt solid #000000;width:72pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">双线向右箭头</span></strong></span></p>
-</td>
-<td width="73" style="border:1pt solid #000000;width:54.75pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;rArr;</span></strong></span></p>
-</td>
-</tr><tr><td width="29" style="border:1pt solid #000000;width:21.75pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">‘</span></strong></span></p>
-</td>
-<td width="63" style="border:1pt solid #000000;width:47.25pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">左单引号</span></strong></span></p>
-</td>
-<td width="72" style="border:1pt solid #000000;width:54pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;lsquo;</span></strong></span></p>
-</td>
-<td width="36" style="border:1pt solid #000000;width:27pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">°</span></strong></span></p>
-</td>
-<td width="94" style="border:1pt solid #000000;width:70.5pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">度数符号</span></strong></span></p>
-</td>
-<td width="72" style="border:1pt solid #000000;width:54pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;deg;</span></strong></span></p>
-</td>
-<td width="36" style="border:1pt solid #000000;width:27pt;">
-<p align="left" style="text-align:left;"><span style="font-size:18px;">⇓</span><br></p>
-</td>
-<td width="96" style="border:1pt solid #000000;width:72pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">双线向下箭头</span></strong></span></p>
-</td>
-<td width="73" style="border:1pt solid #000000;width:54.75pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;dArr;</span></strong></span></p>
-</td>
-</tr><tr><td width="29" style="border:1pt solid #000000;width:21.75pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">’</span></strong></span></p>
-</td>
-<td width="63" style="border:1pt solid #000000;width:47.25pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">右单引号</span></strong></span></p>
-</td>
-<td width="72" style="border:1pt solid #000000;width:54pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;rsquo;</span></strong></span></p>
-</td>
-<td width="36" style="border:1pt solid #000000;width:27pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">≠</span></strong></span></p>
-</td>
-<td width="94" style="border:1pt solid #000000;width:70.5pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">不等于符号</span></strong></span></p>
-</td>
-<td width="72" style="border:1pt solid #000000;width:54pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;ne;</span></strong></span></p>
-</td>
-<td width="36" style="border:1pt solid #000000;width:27pt;">
-<p align="left" style="text-align:left;"><span style="font-size:18px;">⇔</span><br></p>
-</td>
-<td width="96" style="border:1pt solid #000000;width:72pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">双线双向箭头</span></strong></span></p>
-</td>
-<td width="73" style="border:1pt solid #000000;width:54.75pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;hArr;</span></strong></span></p>
-</td>
-</tr><tr><td width="29" style="border:1pt solid #000000;width:21.75pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">“</span></strong></span></p>
-</td>
-<td width="63" style="border:1pt solid #000000;width:47.25pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">左双引号</span></strong></span></p>
-</td>
-<td width="72" style="border:1pt solid #000000;width:54pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;ldquo;</span></strong></span></p>
-</td>
-<td width="36" style="border:1pt solid #000000;width:27pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">≡</span></strong></span></p>
-</td>
-<td width="94" style="border:1pt solid #000000;width:70.5pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">相等符号</span></strong></span></p>
-</td>
-<td width="72" style="border:1pt solid #000000;width:54pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;equiv;</span></strong></span></p>
-</td>
-<td width="36" style="border:1pt solid #000000;width:27pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">♠</span></strong></span></p>
-</td>
-<td width="96" style="border:1pt solid #000000;width:72pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">黑桃符号</span></strong></span></p>
-</td>
-<td width="73" style="border:1pt solid #000000;width:54.75pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;spades;</span></strong></span></p>
-</td>
-</tr><tr><td width="29" style="border:1pt solid #000000;width:21.75pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">”</span></strong></span></p>
-</td>
-<td width="63" style="border:1pt solid #000000;width:47.25pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">右双引号</span></strong></span></p>
-</td>
-<td width="72" style="border:1pt solid #000000;width:54pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;rdquo;</span></strong></span></p>
-</td>
-<td width="36" style="border:1pt solid #000000;width:27pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">≤</span></strong></span></p>
-</td>
-<td width="94" style="border:1pt solid #000000;width:70.5pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">小于等于符号</span></strong></span></p>
-</td>
-<td width="72" style="border:1pt solid #000000;width:54pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;le;</span></strong></span></p>
-</td>
-<td width="36" style="border:1pt solid #000000;width:27pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">♣</span></strong></span></p>
-</td>
-<td width="96" style="border:1pt solid #000000;width:72pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">梅花符号</span></strong></span></p>
-</td>
-<td width="73" style="border:1pt solid #000000;width:54.75pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;clubs;</span></strong></span></p>
-</td>
-</tr><tr><td width="29" style="border:1pt solid #000000;width:21.75pt;">
-<p align="left" style="text-align:left;"><span style="font-size:14px;">¶</span><br></p>
-</td>
-<td width="63" style="border:1pt solid #000000;width:47.25pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">段落符号</span></strong></span></p>
-</td>
-<td width="72" style="border:1pt solid #000000;width:54pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;para;</span></strong></span></p>
-</td>
-<td width="36" style="border:1pt solid #000000;width:27pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">≥</span></strong></span></p>
-</td>
-<td width="94" style="border:1pt solid #000000;width:70.5pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">大于等于符号</span></strong></span></p>
-</td>
-<td width="72" style="border:1pt solid #000000;width:54pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;ge;</span></strong></span></p>
-</td>
-<td width="36" style="border:1pt solid #000000;width:27pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">♥</span></strong></span></p>
-</td>
-<td width="96" style="border:1pt solid #000000;width:72pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">红心符号</span></strong></span></p>
-</td>
-<td width="73" style="border:1pt solid #000000;width:54.75pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;hearts;</span></strong></span></p>
-</td>
-</tr><tr><td width="29" style="border:1pt solid #000000;width:21.75pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">§</span></strong></span></p>
-</td>
-<td width="63" style="border:1pt solid #000000;width:47.25pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">章节符号</span></strong></span></p>
-</td>
-<td width="72" style="border:1pt solid #000000;width:54pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;sect;</span></strong></span></p>
-</td>
-<td width="36" style="border:1pt solid #000000;width:27pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">⊥</span></strong></span></p>
-</td>
-<td width="94" style="border:1pt solid #000000;width:70.5pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">垂直符号</span></strong></span></p>
-</td>
-<td width="72" style="border:1pt solid #000000;width:54pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;perp;</span></strong></span></p>
-</td>
-<td width="36" style="border:1pt solid #000000;width:27pt;">
-<p align="left" style="text-align:left;"><span style="font-size:18px;">♦</span><br></p>
-</td>
-<td width="96" style="border:1pt solid #000000;width:72pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">方块符号</span></strong></span></p>
-</td>
-<td width="73" style="border:1pt solid #000000;width:54.75pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;diams;</span></strong></span></p>
-</td>
-</tr><tr><td width="29" style="border:1pt solid #000000;width:21.75pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us"><span style="font-size:18px;">©</span></span></strong></span></p>
-</td>
-<td width="63" style="border:1pt solid #000000;width:47.25pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">版权所有符号</span></strong></span></p>
-</td>
-<td width="72" style="border:1pt solid #000000;width:54pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;copy;</span></strong></span></p>
-</td>
-<td width="36" style="border:1pt solid #000000;width:27pt;">
-<p align="left" style="text-align:left;">&nbsp;<span style="font-size:14px;">½</span><br></p>
-</td>
-<td width="94" style="border:1pt solid #000000;width:70.5pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">二分之一符号</span></strong></span></p>
-</td>
-<td width="72" style="border:1pt solid #000000;width:54pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;frac12;</span></strong></span></p>
-</td>
-<td width="36" style="border:1pt solid #000000;width:27pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">α</span></strong></span></p>
-</td>
-<td width="96" style="border:1pt solid #000000;width:72pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">Alpha</span><span style="font-family:'宋体';font-size:10pt;">符号</span></strong></span></p>
-</td>
-<td width="73" style="border:1pt solid #000000;width:54.75pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;alpha;</span></strong></span></p>
-</td>
-</tr><tr><td width="29" style="border:1pt solid #000000;width:21.75pt;">
-<p align="left" style="text-align:left;"><span style="font-size:18px;">®</span><br></p>
-</td>
-<td width="63" style="border:1pt solid #000000;width:47.25pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">注册商标符号</span></strong></span></p>
-</td>
-<td width="72" style="border:1pt solid #000000;width:54pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;reg;</span></strong></span></p>
-</td>
-<td width="36" style="border:1pt solid #000000;width:27pt;">
-<p align="left" style="text-align:left;"><span style="font-size:14px;">¼</span><br></p>
-</td>
-<td width="94" style="border:1pt solid #000000;width:70.5pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">四分之一符号</span></strong></span></p>
-</td>
-<td width="72" style="border:1pt solid #000000;width:54pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;frac14;</span></strong></span></p>
-</td>
-<td width="36" style="border:1pt solid #000000;width:27pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">β</span></strong></span></p>
-</td>
-<td width="96" style="border:1pt solid #000000;width:72pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">Bata</span><span style="font-family:'宋体';font-size:10pt;">符号</span></strong></span></p>
-</td>
-<td width="73" style="border:1pt solid #000000;width:54.75pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;beta;</span></strong></span></p>
-</td>
-</tr><tr><td width="29" style="border:1pt solid #000000;width:21.75pt;">
-<p align="left" style="text-align:left;"><span style="font-size:18px;">™</span><br></p>
-</td>
-<td width="63" style="border:1pt solid #000000;width:47.25pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">商标符号</span></strong></span></p>
-</td>
-<td width="72" style="border:1pt solid #000000;width:54pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;trade;</span></strong></span></p>
-</td>
-<td width="36" style="border:1pt solid #000000;width:27pt;">
-<p align="left" style="text-align:left;"><span style="font-size:14px;">¾</span><br></p>
-</td>
-<td width="94" style="border:1pt solid #000000;width:70.5pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">四分之三符号</span></strong></span></p>
-</td>
-<td width="72" style="border:1pt solid #000000;width:54pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;frac34;</span></strong></span></p>
-</td>
-<td width="36" style="border:1pt solid #000000;width:27pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">γ</span></strong></span></p>
-</td>
-<td width="96" style="border:1pt solid #000000;width:72pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">Gamma</span><span style="font-family:'宋体';font-size:10pt;">符号</span></strong></span></p>
-</td>
-<td width="73" style="border:1pt solid #000000;width:54.75pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;gamma;</span></strong></span></p>
-</td>
-</tr><tr><td width="29" style="border:1pt solid #000000;width:21.75pt;">
-<p align="left" style="text-align:left;"><span style="font-size:18px;">€</span><br></p>
-</td>
-<td width="63" style="border:1pt solid #000000;width:47.25pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">欧元符号</span></strong></span></p>
-</td>
-<td width="72" style="border:1pt solid #000000;width:54pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;euro;</span></strong></span></p>
-</td>
-<td width="36" style="border:1pt solid #000000;width:27pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">‰</span></strong></span></p>
-</td>
-<td width="94" style="border:1pt solid #000000;width:70.5pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">百分符号</span></strong></span></p>
-</td>
-<td width="72" style="border:1pt solid #000000;width:54pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;permil;</span></strong></span></p>
-</td>
-<td width="36" style="border:1pt solid #000000;width:27pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">Δ</span></strong></span></p>
-</td>
-<td width="96" style="border:1pt solid #000000;width:72pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">Delta</span><span style="font-family:'宋体';font-size:10pt;">符号</span></strong></span></p>
-</td>
-<td width="73" style="border:1pt solid #000000;width:54.75pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;Delta;</span></strong></span></p>
-</td>
-</tr><tr><td width="29" style="border:1pt solid #000000;width:21.75pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">￠</span></strong></span></p>
-</td>
-<td width="63" style="border:1pt solid #000000;width:47.25pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">美分符号</span></strong></span></p>
-</td>
-<td width="72" style="border:1pt solid #000000;width:54pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;cent;</span></strong></span></p>
-</td>
-<td width="36" style="border:1pt solid #000000;width:27pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">∴</span></strong></span></p>
-</td>
-<td width="94" style="border:1pt solid #000000;width:70.5pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">所以符号</span></strong></span></p>
-</td>
-<td width="72" style="border:1pt solid #000000;width:54pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;there4;</span></strong></span></p>
-</td>
-<td width="36" style="border:1pt solid #000000;width:27pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">θ</span></strong></span></p>
-</td>
-<td width="96" style="border:1pt solid #000000;width:72pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">Theta</span><span style="font-family:'宋体';font-size:10pt;">符号</span></strong></span></p>
-</td>
-<td width="73" style="border:1pt solid #000000;width:54.75pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;theta;</span></strong></span></p>
-</td>
-</tr><tr><td width="29" style="border:1pt solid #000000;width:21.75pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">￡</span></strong></span></p>
-</td>
-<td width="63" style="border:1pt solid #000000;width:47.25pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">英镑符号</span></strong></span></p>
-</td>
-<td width="72" style="border:1pt solid #000000;width:54pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;pound;</span></strong></span></p>
-</td>
-<td width="36" style="border:1pt solid #000000;width:27pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">π</span></strong></span></p>
-</td>
-<td width="94" style="border:1pt solid #000000;width:70.5pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">圆周率符号</span></strong></span></p>
-</td>
-<td width="72" style="border:1pt solid #000000;width:54pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;pi;</span></strong></span></p>
-</td>
-<td width="36" style="border:1pt solid #000000;width:27pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">λ</span></strong></span></p>
-</td>
-<td width="96" style="border:1pt solid #000000;width:72pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">Lambda</span><span style="font-family:'宋体';font-size:10pt;">符号</span></strong></span></p>
-</td>
-<td width="73" style="border:1pt solid #000000;width:54.75pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;lambda;</span></strong></span></p>
-</td>
-</tr><tr><td width="29" style="border:1pt solid #000000;width:21.75pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">￥</span></strong></span></p>
-</td>
-<td width="63" style="border:1pt solid #000000;width:47.25pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">日圆符号</span></strong></span></p>
-</td>
-<td width="72" style="border:1pt solid #000000;width:54pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;yen;</span></strong></span></p>
-</td>
-<td width="36" style="border:1pt solid #000000;width:27pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">1</span></strong></span></p>
-</td>
-<td width="94" style="border:1pt solid #000000;width:70.5pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">批注<span lang="en-us" xml:lang="en-us">1</span>符号</span></strong></span></p>
-</td>
-<td width="72" style="border:1pt solid #000000;width:54pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;sup1;</span></strong></span></p>
-</td>
-<td width="36" style="border:1pt solid #000000;width:27pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">Σ</span></strong></span></p>
-</td>
-<td width="96" style="border:1pt solid #000000;width:72pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">Sigma</span><span style="font-family:'宋体';font-size:10pt;">符号</span></strong></span></p>
-</td>
-<td width="73" style="border:1pt solid #000000;width:54.75pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;Sigma;</span></strong></span></p>
-</td>
-</tr><tr><td width="29" style="border:1pt solid #000000;width:21.75pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">…</span></strong></span></p>
-</td>
-<td width="63" style="border:1pt solid #000000;width:47.25pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">...</span></strong></span></p>
-</td>
-<td width="72" style="border:1pt solid #000000;width:54pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;hellip;</span></strong></span></p>
-</td>
-<td width="36" style="border:1pt solid #000000;width:27pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">2</span></strong></span></p>
-</td>
-<td width="94" style="border:1pt solid #000000;width:70.5pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">批注<span lang="en-us" xml:lang="en-us">2</span>符号、平方</span></strong></span></p>
-</td>
-<td width="72" style="border:1pt solid #000000;width:54pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;sup2;</span></strong></span></p>
-</td>
-<td width="36" style="border:1pt solid #000000;width:27pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">τ</span></strong></span></p>
-</td>
-<td width="96" style="border:1pt solid #000000;width:72pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">Tau</span><span style="font-family:'宋体';font-size:10pt;">符号</span></strong></span></p>
-</td>
-<td width="73" style="border:1pt solid #000000;width:54.75pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;tau;</span></strong></span></p>
-</td>
-</tr><tr><td width="29" style="border:1pt solid #000000;width:21.75pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;"><span style="font-size:18px;">⊕</span></span></strong></span></p>
-</td>
-<td width="63" style="border:1pt solid #000000;width:47.25pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&nbsp;</span></strong></span></p>
-</td>
-<td width="72" style="border:1pt solid #000000;width:54pt;">
-<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;oplus;</span></strong></span></p>
-</td>
-<td><span style="color:#666666;"><strong><br></strong></span></td>
-</tr></tbody></table>
+          <h4 id="TypeScript-静态类型"><a href="#TypeScript-静态类型" class="headerlink" title="TypeScript 静态类型"></a>TypeScript 静态类型</h4><h5 id="TypeScript-最主要的特点就是可以定义静态类型"><a href="#TypeScript-最主要的特点就是可以定义静态类型" class="headerlink" title="TypeScript 最主要的特点就是可以定义静态类型"></a>TypeScript 最主要的特点就是可以定义静态类型</h5><p>Static Typing  (一旦定义了就不可以再改变了)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let count : number &#x3D; 1;   (一旦定义了是number，就是number，不能改变类型。)</span><br><span class="line">count.后面可以跟number的所有方法</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">interface XiaojieJie &#123;</span><br><span class="line">    uname: string, </span><br><span class="line">    age: number</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const xiaohong : XiaojieJie &#x3D; &#123;</span><br><span class="line">    uname: &#39;小红&#39;, </span><br><span class="line">    age: 18</span><br><span class="line">&#125;</span><br><span class="line">console.log(xiaohong.age) </span><br></pre></td></tr></table></figure>
+<h4 id="基础静态类型和对象静态类型"><a href="#基础静态类型和对象静态类型" class="headerlink" title="基础静态类型和对象静态类型"></a>基础静态类型和对象静态类型</h4><h5 id="基础静态类型"><a href="#基础静态类型" class="headerlink" title="基础静态类型"></a>基础静态类型</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const count0 : number &#x3D; 918;</span><br><span class="line">const myName : string &#x3D; &#39;jspang&#39;;</span><br><span class="line">&#x2F;&#x2F; null , undefinde , booLean, void, symboL</span><br></pre></td></tr></table></figure>
+<h5 id="对象静态类型"><a href="#对象静态类型" class="headerlink" title="对象静态类型"></a>对象静态类型</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const xiaojieJie: &#123;</span><br><span class="line">    name : string,</span><br><span class="line">    age : number </span><br><span class="line">&#125; &#x3D; &#123;</span><br><span class="line">    name : &#39;大脚&#39;,</span><br><span class="line">    age:18</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const xiaojiejie : string [] &#x3D; [&quot;小红&quot;, &quot;小林&quot;, &quot;小星星&quot;]</span><br><span class="line"></span><br><span class="line">class Person&#123;&#125;</span><br><span class="line">const dajiao : Person &#x3D; new Person();</span><br></pre></td></tr></table></figure>
+<p>定义一个函数，返回值必须是字符串：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const jianXiaoJieJie :()&#x3D;&gt;string &#x3D;()&#x3D;&gt;&#123;return &#39;大脚&#39;&#125;</span><br><span class="line">&#x2F;&#x2F;对象类型，数组类型，类类型，函数类型</span><br></pre></td></tr></table></figure>
+<h4 id="类型注解和类型推断"><a href="#类型注解和类型推断" class="headerlink" title="类型注解和类型推断"></a>类型注解和类型推断</h4><h5 id="类型注解-type-annotation"><a href="#类型注解-type-annotation" class="headerlink" title="类型注解 - type annotation"></a>类型注解 - type annotation</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">let count : number ;</span><br><span class="line"></span><br><span class="line">function getTotal(one : number , two : number)&#123;</span><br><span class="line">	return one + two</span><br><span class="line">&#125;</span><br><span class="line">const total &#x3D; getTotal(1,2);</span><br></pre></td></tr></table></figure>
 
 
+<h5 id="类型推断-type-inference"><a href="#类型推断-type-inference" class="headerlink" title="类型推断 - type inference"></a>类型推断 - type inference</h5><h4 id="函数参数和返回类型的注解"><a href="#函数参数和返回类型的注解" class="headerlink" title="函数参数和返回类型的注解"></a>函数参数和返回类型的注解</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function getTotal(one : number , two : number)&#123;</span><br><span class="line">	return one + two +&#39;&#39;</span><br><span class="line">&#125;</span><br><span class="line">const total &#x3D; getTotal(1,2);  (会有错误提示) （定义的是number类型，返回的是string类型）</span><br><span class="line"></span><br><span class="line">解决方法：对返回做注解</span><br><span class="line">function getTotal(one : number , two : number): number&#123;</span><br><span class="line">	return one + two +&#39;&#39;  (这样写，编辑器就会有错误的提示)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">改正：</span><br><span class="line">function getTotal(one : number , two : number): number&#123;</span><br><span class="line">	return one + two </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="void："><a href="#void：" class="headerlink" title="void："></a>void：</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function sayHe1lo(): void&#123;</span><br><span class="line">	console.log(&#39;Hello worid&#39;)</span><br><span class="line">	return &quot;&quot;;(如果在函数中，任何地方有return就会报错，就会很直观的知道);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="never："><a href="#never：" class="headerlink" title="never："></a>never：</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">抛出异常：</span><br><span class="line">function errorFuntion() : never&#123;</span><br><span class="line">	throw new Error()</span><br><span class="line">	console.log(&quot;Hello world&quot;)</span><br><span class="line">&#125;</span><br><span class="line">或者死循环：</span><br><span class="line">function forNever() : never&#123;</span><br><span class="line">	while(true)&#123;&#125;</span><br><span class="line">	console.log( &#39;Hello world &#39;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function add(&#123;one ,two&#125; : &#123;one : number ,two : number&#125; )&#123;</span><br><span class="line">	return one + two</span><br><span class="line">&#125;</span><br><span class="line">const total &#x3D; add(fone: 1,two:2&#125;); </span><br><span class="line"></span><br><span class="line">function getNumber(&#123;one&#125; : &#123;one : number&#125;)&#123;</span><br><span class="line">	return one</span><br><span class="line">&#125;</span><br><span class="line">const one &#x3D; getNumber(&#123;one: 1&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="数组类型注解的方法"><a href="#数组类型注解的方法" class="headerlink" title="数组类型注解的方法"></a>数组类型注解的方法</h4><h5 id="类型推断"><a href="#类型推断" class="headerlink" title="类型推断"></a>类型推断</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const numberArr &#x3D; [1,2,3]</span><br><span class="line">(鼠标放上去，能够看到推断出是number类型)</span><br></pre></td></tr></table></figure>
+<h5 id="类型注释"><a href="#类型注释" class="headerlink" title="类型注释"></a>类型注释</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const numberArr : number[] &#x3D; [1,2,3];</span><br><span class="line">const stringArr : string[] &#x3D; [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;];</span><br><span class="line">const undefinedArr : undefined[] &#x3D; [undefined, undefined];</span><br><span class="line">const arr : (number | string)[] &#x3D; [1, &#39;string&#39;, 2];</span><br></pre></td></tr></table></figure>
+<h5 id="对象数组"><a href="#对象数组" class="headerlink" title="对象数组"></a>对象数组</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const xiaojiejies :&#123;name : string, age:number&#125;[] &#x3D;[</span><br><span class="line">	&#123;name: &#39;刘英&#39;, age: 18&#125;,</span><br><span class="line">	&#123;name : &#39;谢大脚&quot;, age: 28&#125;,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<h6 id="其他形式写法："><a href="#其他形式写法：" class="headerlink" title="其他形式写法："></a>其他形式写法：</h6><ol>
+<li><h6 id="type-alias-类型别名"><a href="#type-alias-类型别名" class="headerlink" title="type alias 类型别名"></a>type alias 类型别名</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">type Lady &#x3D; &#123;name: string,age: number&#125;</span><br><span class="line">const xiaojiejies : Lady[] [</span><br><span class="line">	&#123;name:&#39;刘英&#39;, age: 18&#125;,</span><br><span class="line">	&#123;name : &#39;谢大脚&quot; , age:28&#125;,</span><br><span class="line">]</span><br></pre></td></tr></table></figure></li>
+<li><h6 id="类"><a href="#类" class="headerlink" title="类"></a>类</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">class Madam &#123;</span><br><span class="line">	name: string ;</span><br><span class="line">	age : number;</span><br><span class="line">&#125;</span><br><span class="line">const xiaojiejies : Madam[] &#x3D; [</span><br><span class="line">	&#123;name: &#39;刘英&#39;, age: 18&#125;,</span><br><span class="line">	&#123;name: &#39;谢大脚&quot;, age: 28&#125;,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ol>
+<h4 id="元组的使用和类型约束"><a href="#元组的使用和类型约束" class="headerlink" title="元组的使用和类型约束"></a>元组的使用和类型约束</h4><h5 id="类型约束"><a href="#类型约束" class="headerlink" title="类型约束"></a>类型约束</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; const xiaojiejie : (string | number)[] &#x3D; [ &#39;dajiao &#39; , &#39;teacher &#39;, 28]</span><br></pre></td></tr></table></figure>
+<h5 id="元组的写法"><a href="#元组的写法" class="headerlink" title="元组的写法"></a>元组的写法</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const xiaojiejie : [string,string,number] &#x3D; [ &#39;dajiao&#39; , &#39;teacher&#39;,28]</span><br></pre></td></tr></table></figure>
+<h5 id="CSV（现在很少用）"><a href="#CSV（现在很少用）" class="headerlink" title="CSV（现在很少用）"></a>CSV（现在很少用）</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const xiaojiejies : [string, string, number][] &#x3D;[</span><br><span class="line">	[ &#39;dajiao &#39; , &#39;teacher&quot; ,28],</span><br><span class="line">	[ &#39;liuying&quot; , &#39;teacher&#39; ,18],</span><br><span class="line">	[ &quot; cuihua &#39; , &#39;teacher&quot; ,22]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -1097,7 +463,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/13/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><span class="page-number current">14</span><a class="page-number" href="/page/15/">15</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/">26</a><a class="extend next" rel="next" href="/page/15/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/13/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><span class="page-number current">14</span><a class="page-number" href="/page/15/">15</a><span class="space">&hellip;</span><a class="page-number" href="/page/28/">28</a><a class="extend next" rel="next" href="/page/15/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1165,20 +531,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">78</span>
+          <span class="site-state-item-count">84</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">45</span>
+        <span class="site-state-item-count">46</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">46</span>
+        <span class="site-state-item-count">47</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

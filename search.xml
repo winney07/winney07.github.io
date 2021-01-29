@@ -1,20 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>CMS-笔记</title>
-    <url>/2021/01/19/CMS-%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<p><a href="http://www.phome.net/">帝国cms官网</a></p>
-<p><a href="http://phome.net/doc/ecmsedu/template/ecmsinfo.html">万能标签</a></p>
-]]></content>
-      <categories>
-        <category>工作笔记</category>
-        <category>CMS</category>
-      </categories>
-      <tags>
-        <tag>CMS</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Ajax-笔记</title>
     <url>/2021/01/21/Ajax-%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<table>
@@ -64,6 +50,20 @@
       </categories>
       <tags>
         <tag>Clipboard</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CMS-笔记</title>
+    <url>/2021/01/19/CMS-%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p><a href="http://www.phome.net/">帝国cms官网</a></p>
+<p><a href="http://phome.net/doc/ecmsedu/template/ecmsinfo.html">万能标签</a></p>
+]]></content>
+      <categories>
+        <category>工作笔记</category>
+        <category>CMS</category>
+      </categories>
+      <tags>
+        <tag>CMS</tag>
       </tags>
   </entry>
   <entry>
@@ -162,21 +162,6 @@
       </tags>
   </entry>
   <entry>
-    <title>FastAdmin框架-使用笔记</title>
-    <url>/2020/07/24/FastAdmin%E6%A1%86%E6%9E%B6-%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h3 id="在FastAdmin动态追加bootstrap-select下拉列表"><a href="#在FastAdmin动态追加bootstrap-select下拉列表" class="headerlink" title="在FastAdmin动态追加bootstrap-select下拉列表"></a>在FastAdmin动态追加bootstrap-select下拉列表</h3>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;select data-rule&#x3D;&quot;required&quot; class&#x3D;&quot;form-control selectpicker&quot; data-live-search&#x3D;&quot;true&quot; name&#x3D;&quot;row[admin_role_name]&quot; data-url&#x3D;&quot;&quot; data-query-name&#x3D;&quot;&quot;&gt; &lt;&#x2F;select&gt;</span><br><span class="line"></span><br><span class="line">注：data-live-search&#x3D;&quot;true&quot;是添加可以模糊搜索功能</span><br></pre></td></tr></table></figure>
-<p>关键代码：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">define([&#39;jquery&#39;, &#39;bootstrap&#39;, &#39;backend&#39;, &#39;table&#39;, &#39;form&#39;], function ($, undefined, Backend, Table, Form) &#123;</span><br><span class="line">    var Controller &#x3D; &#123;</span><br><span class="line">      ......</span><br><span class="line">      ......</span><br><span class="line">      add: function () &#123;</span><br><span class="line">            &#x2F;&#x2F;关键代码：（要引入）</span><br><span class="line">            require([&#39;bootstrap-select&#39;, &#39;bootstrap-select-lang&#39;]);</span><br><span class="line"></span><br><span class="line">            &#x2F;&#x2F;渲染下拉框</span><br><span class="line">            var renderselect &#x3D; function (select, data, defaultOpt) &#123;</span><br><span class="line">                if(defaultOpt &amp;&amp; data.length&gt;0) &#123;</span><br><span class="line">                    var opt &#x3D; &#39;&lt;option value&#x3D;&quot;&quot;&gt;&#39; + defaultOpt + &#39;&lt;&#x2F;option&gt;&#39;;</span><br><span class="line">                &#125;</span><br><span class="line">                var html &#x3D; [opt] || [];</span><br><span class="line">                for (var i &#x3D; 0; i &lt; data.length; i++) &#123;</span><br><span class="line">                    html.push(&quot;&lt;option value&#x3D;&#39;&quot; + data[i] + &quot;&#39;&gt;&quot; + data[i] + &quot;&lt;&#x2F;option&gt;&quot;);</span><br><span class="line">                &#125;</span><br><span class="line">                $(select).html(html.join(&quot;&quot;));</span><br><span class="line">                $(&quot;.selectpicker&quot;).selectpicker(&#39;refresh&#39;);</span><br><span class="line">                return select;</span><br><span class="line">            &#125;;</span><br><span class="line"></span><br><span class="line">           $(&quot;select[name&#x3D;&#39;row[server_id]&#39;]&quot;).change(function () &#123;</span><br><span class="line">                var admin_id &#x3D; $(&quot;select[name&#x3D;&#39;row[admin_id]&#39;]&quot;).val();</span><br><span class="line">                var app_id &#x3D; $(&quot;select[name&#x3D;&#39;row[app_id]&#39;]&quot;).val();</span><br><span class="line">                var server_id &#x3D; $(&quot;select[name&#x3D;&#39;row[server_id]&#39;]&quot;).val();</span><br><span class="line"></span><br><span class="line">                $.ajax(&#123;</span><br><span class="line">                    url: &#39;&#x2F;admin&#x2F;boon&#x2F;resource&#x2F;role_name_lise&#39;,</span><br><span class="line">                    data: &#123;admin_id: admin_id, app_id: app_id, server_id: server_id&#125;,</span><br><span class="line">                    type: &#39;get&#39;,</span><br><span class="line">                    dataType: &#39;json&#39;,</span><br><span class="line">                    success: function (data, textStatus, xhr) &#123;</span><br><span class="line">                        var list &#x3D; data.data.list;</span><br><span class="line"></span><br><span class="line">                        renderselect($(&quot;select[name&#x3D;&#39;row[admin_role_name]&#39;]&quot;), list, &quot;请选择测试角色名&quot;);</span><br><span class="line">                        renderselect($(&quot;select[name&#x3D;&#39;row[player_role_name]&#39;]&quot;), list, &quot;请选择玩家角色名&quot;);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;);</span><br><span class="line">           &#125;);</span><br><span class="line">            </span><br><span class="line">           $(&quot;select[name&#x3D;&#39;row[admin_id]&#39;], select[name&#x3D;&#39;row[app_id]&#39;]&quot;).change(function () &#123;</span><br><span class="line">               console.log(&quot;dianji&quot;)</span><br><span class="line">               var list &#x3D; [];</span><br><span class="line">                renderselect($(&quot;select[name&#x3D;&#39;row[admin_role_name]&#39;]&quot;), list);</span><br><span class="line">                renderselect($(&quot;select[name&#x3D;&#39;row[player_role_name]&#39;]&quot;), list);</span><br><span class="line">           &#125;); </span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>工作笔记</category>
-        <category>FastAdmin框架</category>
-      </categories>
-      <tags>
-        <tag>FastAdmin框架</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>ES6-基础课程2</title>
     <url>/2019/07/16/ES6-%E5%9F%BA%E7%A1%80%E8%AF%BE%E7%A8%8B2/</url>
     <content><![CDATA[<h4 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">var   = variable 变量   声明全局变量</span><br><span class="line"><span class="built_in">let</span>   = 假设</span><br><span class="line">const = 常量</span><br></pre></td></tr></table></figure>
@@ -209,6 +194,21 @@
       </categories>
       <tags>
         <tag>ES6</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>FastAdmin框架-使用笔记</title>
+    <url>/2020/07/24/FastAdmin%E6%A1%86%E6%9E%B6-%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h3 id="在FastAdmin动态追加bootstrap-select下拉列表"><a href="#在FastAdmin动态追加bootstrap-select下拉列表" class="headerlink" title="在FastAdmin动态追加bootstrap-select下拉列表"></a>在FastAdmin动态追加bootstrap-select下拉列表</h3>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;select data-rule&#x3D;&quot;required&quot; class&#x3D;&quot;form-control selectpicker&quot; data-live-search&#x3D;&quot;true&quot; name&#x3D;&quot;row[admin_role_name]&quot; data-url&#x3D;&quot;&quot; data-query-name&#x3D;&quot;&quot;&gt; &lt;&#x2F;select&gt;</span><br><span class="line"></span><br><span class="line">注：data-live-search&#x3D;&quot;true&quot;是添加可以模糊搜索功能</span><br></pre></td></tr></table></figure>
+<p>关键代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">define([&#39;jquery&#39;, &#39;bootstrap&#39;, &#39;backend&#39;, &#39;table&#39;, &#39;form&#39;], function ($, undefined, Backend, Table, Form) &#123;</span><br><span class="line">    var Controller &#x3D; &#123;</span><br><span class="line">      ......</span><br><span class="line">      ......</span><br><span class="line">      add: function () &#123;</span><br><span class="line">            &#x2F;&#x2F;关键代码：（要引入）</span><br><span class="line">            require([&#39;bootstrap-select&#39;, &#39;bootstrap-select-lang&#39;]);</span><br><span class="line"></span><br><span class="line">            &#x2F;&#x2F;渲染下拉框</span><br><span class="line">            var renderselect &#x3D; function (select, data, defaultOpt) &#123;</span><br><span class="line">                if(defaultOpt &amp;&amp; data.length&gt;0) &#123;</span><br><span class="line">                    var opt &#x3D; &#39;&lt;option value&#x3D;&quot;&quot;&gt;&#39; + defaultOpt + &#39;&lt;&#x2F;option&gt;&#39;;</span><br><span class="line">                &#125;</span><br><span class="line">                var html &#x3D; [opt] || [];</span><br><span class="line">                for (var i &#x3D; 0; i &lt; data.length; i++) &#123;</span><br><span class="line">                    html.push(&quot;&lt;option value&#x3D;&#39;&quot; + data[i] + &quot;&#39;&gt;&quot; + data[i] + &quot;&lt;&#x2F;option&gt;&quot;);</span><br><span class="line">                &#125;</span><br><span class="line">                $(select).html(html.join(&quot;&quot;));</span><br><span class="line">                $(&quot;.selectpicker&quot;).selectpicker(&#39;refresh&#39;);</span><br><span class="line">                return select;</span><br><span class="line">            &#125;;</span><br><span class="line"></span><br><span class="line">           $(&quot;select[name&#x3D;&#39;row[server_id]&#39;]&quot;).change(function () &#123;</span><br><span class="line">                var admin_id &#x3D; $(&quot;select[name&#x3D;&#39;row[admin_id]&#39;]&quot;).val();</span><br><span class="line">                var app_id &#x3D; $(&quot;select[name&#x3D;&#39;row[app_id]&#39;]&quot;).val();</span><br><span class="line">                var server_id &#x3D; $(&quot;select[name&#x3D;&#39;row[server_id]&#39;]&quot;).val();</span><br><span class="line"></span><br><span class="line">                $.ajax(&#123;</span><br><span class="line">                    url: &#39;&#x2F;admin&#x2F;boon&#x2F;resource&#x2F;role_name_lise&#39;,</span><br><span class="line">                    data: &#123;admin_id: admin_id, app_id: app_id, server_id: server_id&#125;,</span><br><span class="line">                    type: &#39;get&#39;,</span><br><span class="line">                    dataType: &#39;json&#39;,</span><br><span class="line">                    success: function (data, textStatus, xhr) &#123;</span><br><span class="line">                        var list &#x3D; data.data.list;</span><br><span class="line"></span><br><span class="line">                        renderselect($(&quot;select[name&#x3D;&#39;row[admin_role_name]&#39;]&quot;), list, &quot;请选择测试角色名&quot;);</span><br><span class="line">                        renderselect($(&quot;select[name&#x3D;&#39;row[player_role_name]&#39;]&quot;), list, &quot;请选择玩家角色名&quot;);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;);</span><br><span class="line">           &#125;);</span><br><span class="line">            </span><br><span class="line">           $(&quot;select[name&#x3D;&#39;row[admin_id]&#39;], select[name&#x3D;&#39;row[app_id]&#39;]&quot;).change(function () &#123;</span><br><span class="line">               console.log(&quot;dianji&quot;)</span><br><span class="line">               var list &#x3D; [];</span><br><span class="line">                renderselect($(&quot;select[name&#x3D;&#39;row[admin_role_name]&#39;]&quot;), list);</span><br><span class="line">                renderselect($(&quot;select[name&#x3D;&#39;row[player_role_name]&#39;]&quot;), list);</span><br><span class="line">           &#125;); </span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>工作笔记</category>
+        <category>FastAdmin框架</category>
+      </categories>
+      <tags>
+        <tag>FastAdmin框架</tag>
       </tags>
   </entry>
   <entry>
@@ -530,6 +530,34 @@
       </tags>
   </entry>
   <entry>
+    <title>Hexo-Gitee-Pages搭建个人博客</title>
+    <url>/2020/07/07/Hexo-Gitee-Pages%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<h3 id="一、环境配置"><a href="#一、环境配置" class="headerlink" title="一、环境配置"></a>一、环境配置</h3><p>node.js  <a href="https://nodejs.org/zh-cn/" title="" target="">官网</a><br>Git   <a href="https://git-scm.com/" title="" target="">官网</a></p>
+<h3 id="二、Hexo的安装与基本命令"><a href="#二、Hexo的安装与基本命令" class="headerlink" title="二、Hexo的安装与基本命令"></a>二、Hexo的安装与基本命令</h3><h4 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h4><p>如果没有安装hexo的，只需要在目录中单击右键启动Git Bash Here，输入命令：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install -g hexo </span><br></pre></td></tr></table></figure>
+<h4 id="初始化在本地生成Hexo相关目录"><a href="#初始化在本地生成Hexo相关目录" class="headerlink" title="初始化在本地生成Hexo相关目录"></a>初始化在本地生成Hexo相关目录</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo init Note  # 初始化创建，会再桌面创建Note文件夹</span><br><span class="line">cd Note         # 进入Note目录</span><br><span class="line">npm install     # 进一步安装hexo所需文件</span><br></pre></td></tr></table></figure>
+<h4 id="Hexo三连"><a href="#Hexo三连" class="headerlink" title="Hexo三连"></a>Hexo三连</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo clean(or c)          # 清空已有hexo网站文件</span><br><span class="line">hexo generate(or g)   # 依据网页文本与新的CSS样式生成新网站文件</span><br><span class="line">hexo server(or s)     # 启动本地服务器，可以在localhost:4000查看网站修改效果</span><br></pre></td></tr></table></figure>
+<h3 id="配置Git个人信息"><a href="#配置Git个人信息" class="headerlink" title="配置Git个人信息"></a>配置Git个人信息</h3><p>Git 全局设置:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git config --global user.name &quot;Github用户名&quot;       &#x2F;&#x2F;自己Github的账号名</span><br><span class="line">git config --global user.email &quot;Github邮箱&quot;        &#x2F;&#x2F;自己注册Github的邮箱地址</span><br></pre></td></tr></table></figure>
+<p>创建 git 仓库:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mkdir test</span><br><span class="line">cd test</span><br><span class="line">git init</span><br><span class="line">touch README.md</span><br><span class="line">git add README.md</span><br><span class="line">git commit -m &quot;first commit&quot;</span><br><span class="line">git remote add origin git@gitee.com:AAAA&#x2F;AAAA.git</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
+<p>已有仓库?</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd existing_git_repo</span><br><span class="line">git remote add origin git@gitee.com:AAAA&#x2F;AAAA.git</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
+<h3 id="三、主题下载与安装"><a href="#三、主题下载与安装" class="headerlink" title="三、主题下载与安装"></a>三、主题下载与安装</h3><p>Hexo官网上提供了丰富的主题可选，你只需要打开对应的界面（<a href="https://hexo.io/themes/" rel="nofollow noreferrer" target="_blank">https://hexo.io/themes/</a>）选择喜欢的，然后点击<strong>名称</strong>跳转到<strong>GitHub</strong>仓库选择<em>下载或者克隆</em>对应的<strong>zip</strong>文件到本地，并且解压到网站目录下的<strong>themes</strong>目录即可。</p>
+<p>然后接下来，你需要修改两个配置文件：</p>
+<li>你的网站根目录下的<strong>_config.yml</strong>文件，即网站配置文件；</li>
+<li>你选择的主题的自带配置文件<strong>_config.yml</strong>，即主题样式配置文件；</li>
+
+<h4 id="生成-添加-SSH-公钥之后，测试是否连接成功"><a href="#生成-添加-SSH-公钥之后，测试是否连接成功" class="headerlink" title="生成/添加 SSH 公钥之后，测试是否连接成功:"></a>生成/添加 SSH 公钥之后，测试是否连接成功:</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssh -T git@gitee.com</span><br><span class="line"></span><br><span class="line">如果成功，会显示：</span><br><span class="line">Hi xxx! You&#39;ve successfully authenticated, but GITEE.COM does not provide shell access.</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>工作笔记</category>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hexo + NexT主题博客相关设置</title>
     <url>/2018/08/02/Hexo-NexT%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2%E7%9B%B8%E5%85%B3%E8%AE%BE%E7%BD%AE/</url>
     <content><![CDATA[<h2 id="一、添加文章版权声明功能"><a href="#一、添加文章版权声明功能" class="headerlink" title="一、添加文章版权声明功能"></a>一、添加文章版权声明功能</h2><p>打开博客目录下的主题配置文件（/themes/next/_config.yml），找到Declare license on posts 标签，进行配置：</p>
@@ -551,34 +579,6 @@
 <h2 id="五、调整hexo页面宽度"><a href="#五、调整hexo页面宽度" class="headerlink" title="五、调整hexo页面宽度"></a>五、调整hexo页面宽度</h2><p>博客在浏览器上的留白太多，因此想增加文章的宽度。</p>
 <p>打开/Hexo/themes/hexo-theme-next/source//css/_variables/custom.styl 添加两行代码即可：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$main-desktop &#x3D; 1400px </span><br><span class="line">$content-desktop &#x3D; 1100px</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>工作笔记</category>
-        <category>Hexo</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hexo-Gitee-Pages搭建个人博客</title>
-    <url>/2020/07/07/Hexo-Gitee-Pages%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<h3 id="一、环境配置"><a href="#一、环境配置" class="headerlink" title="一、环境配置"></a>一、环境配置</h3><p>node.js  <a href="https://nodejs.org/zh-cn/" title="" target="">官网</a><br>Git   <a href="https://git-scm.com/" title="" target="">官网</a></p>
-<h3 id="二、Hexo的安装与基本命令"><a href="#二、Hexo的安装与基本命令" class="headerlink" title="二、Hexo的安装与基本命令"></a>二、Hexo的安装与基本命令</h3><h4 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h4><p>如果没有安装hexo的，只需要在目录中单击右键启动Git Bash Here，输入命令：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install -g hexo </span><br></pre></td></tr></table></figure>
-<h4 id="初始化在本地生成Hexo相关目录"><a href="#初始化在本地生成Hexo相关目录" class="headerlink" title="初始化在本地生成Hexo相关目录"></a>初始化在本地生成Hexo相关目录</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo init Note  # 初始化创建，会再桌面创建Note文件夹</span><br><span class="line">cd Note         # 进入Note目录</span><br><span class="line">npm install     # 进一步安装hexo所需文件</span><br></pre></td></tr></table></figure>
-<h4 id="Hexo三连"><a href="#Hexo三连" class="headerlink" title="Hexo三连"></a>Hexo三连</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo clean(or c)          # 清空已有hexo网站文件</span><br><span class="line">hexo generate(or g)   # 依据网页文本与新的CSS样式生成新网站文件</span><br><span class="line">hexo server(or s)     # 启动本地服务器，可以在localhost:4000查看网站修改效果</span><br></pre></td></tr></table></figure>
-<h3 id="配置Git个人信息"><a href="#配置Git个人信息" class="headerlink" title="配置Git个人信息"></a>配置Git个人信息</h3><p>Git 全局设置:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git config --global user.name &quot;Github用户名&quot;       &#x2F;&#x2F;自己Github的账号名</span><br><span class="line">git config --global user.email &quot;Github邮箱&quot;        &#x2F;&#x2F;自己注册Github的邮箱地址</span><br></pre></td></tr></table></figure>
-<p>创建 git 仓库:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mkdir test</span><br><span class="line">cd test</span><br><span class="line">git init</span><br><span class="line">touch README.md</span><br><span class="line">git add README.md</span><br><span class="line">git commit -m &quot;first commit&quot;</span><br><span class="line">git remote add origin git@gitee.com:AAAA&#x2F;AAAA.git</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
-<p>已有仓库?</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd existing_git_repo</span><br><span class="line">git remote add origin git@gitee.com:AAAA&#x2F;AAAA.git</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
-<h3 id="三、主题下载与安装"><a href="#三、主题下载与安装" class="headerlink" title="三、主题下载与安装"></a>三、主题下载与安装</h3><p>Hexo官网上提供了丰富的主题可选，你只需要打开对应的界面（<a href="https://hexo.io/themes/" rel="nofollow noreferrer" target="_blank">https://hexo.io/themes/</a>）选择喜欢的，然后点击<strong>名称</strong>跳转到<strong>GitHub</strong>仓库选择<em>下载或者克隆</em>对应的<strong>zip</strong>文件到本地，并且解压到网站目录下的<strong>themes</strong>目录即可。</p>
-<p>然后接下来，你需要修改两个配置文件：</p>
-<li>你的网站根目录下的<strong>_config.yml</strong>文件，即网站配置文件；</li>
-<li>你选择的主题的自带配置文件<strong>_config.yml</strong>，即主题样式配置文件；</li>
-
-<h4 id="生成-添加-SSH-公钥之后，测试是否连接成功"><a href="#生成-添加-SSH-公钥之后，测试是否连接成功" class="headerlink" title="生成/添加 SSH 公钥之后，测试是否连接成功:"></a>生成/添加 SSH 公钥之后，测试是否连接成功:</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssh -T git@gitee.com</span><br><span class="line"></span><br><span class="line">如果成功，会显示：</span><br><span class="line">Hi xxx! You&#39;ve successfully authenticated, but GITEE.COM does not provide shell access.</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>工作笔记</category>
         <category>Hexo</category>
@@ -864,67 +864,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Koa-笔记</title>
-    <url>/2021/01/20/Koa-%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<p><a href="https://www.bilibili.com/video/BV1Pt41127sj?from=search&seid=17378531192218366513">技术胖-koa2教程</a>    <a href="http://www.jspang.com/detailed?id=34">技术胖博客笔记</a></p>
-<h4 id="第01节：Koa开发环境搭建"><a href="#第01节：Koa开发环境搭建" class="headerlink" title="第01节：Koa开发环境搭建"></a>第01节：Koa开发环境搭建</h4><p>1、npminit -y (-y可选)  ————生成package.json文件</p>
-<p>2、npm install –save koa ————在开发环境安装koa</p>
-<p>3、编写测试程序：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const Koa &#x3D; require(&#39;koa&#39;);</span><br><span class="line">const app &#x3D; new Koa();</span><br><span class="line"></span><br><span class="line">app.use(async (ctx) &#x3D;&gt; &#123;</span><br><span class="line">  ctx.body &#x3D; &#39;Hello Winney&#39;  </span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.listen(3000)</span><br></pre></td></tr></table></figure>
-<p>4、运行node index.js  （因为是基于node的，所以直接node **.js）</p>
-<p>5、然后在浏览器中输入：<a href="http://127.0.0.1:3000/">http://127.0.0.1:3000</a></p>
-<h4 id="第02节：async-await的使用方法"><a href="#第02节：async-await的使用方法" class="headerlink" title="第02节：async/await的使用方法"></a>第02节：async/await的使用方法</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">async function testAsync() &#123;</span><br><span class="line">	return &#39;Hello async&#39;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>加上async，就把这个方法变成了异步的</p>
-<p>启用了async，返回的不是一个普通字符串，而是一个promise</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function getSomething() &#123;</span><br><span class="line">    return &#39;something&#39;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">async function testAsync() &#123;</span><br><span class="line">    return &#39;Helllo Async&#39;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const result &#x3D; testAsync();</span><br><span class="line">console.log(result);</span><br><span class="line">getSomething();</span><br></pre></td></tr></table></figure>
-<h4 id="await：async-wait"><a href="#await：async-wait" class="headerlink" title="await：async wait"></a>await：async wait</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function getSomething() &#123;</span><br><span class="line">    return &#39;something&#39;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">async function testAsync() &#123;</span><br><span class="line">    return &#39;Helllo Async&#39;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">async function test() &#123;</span><br><span class="line">    const v1 &#x3D; await getSomething();</span><br><span class="line">    const v2 &#x3D; await testAsync();</span><br><span class="line">    console.log(v1, v2);</span><br><span class="line">    console.log(&#96;$&#123;v1&#125; $&#123;v2&#125;&#96;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test();</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>await不仅可以接收promise对象也可以接收普通返回值。</p>
-</blockquote>
-<h4 id="setTimeout延迟处理"><a href="#setTimeout延迟处理" class="headerlink" title="setTimeout延迟处理"></a>setTimeout延迟处理</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function takeLongTime() &#123;</span><br><span class="line">    return new Promise(resolve &#x3D;&gt; &#123;</span><br><span class="line">        setTimeout(() &#x3D;&gt; resolve(&#39;long_time_value&#39;), 1000)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">async function test() &#123;</span><br><span class="line">    const v &#x3D; await takeLongTime();</span><br><span class="line">    console.log(v);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test();</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>node demo.js     输入命令后，3秒后出现结果</p>
-</blockquote>
-<h4 id="第03节：Get请求的接收"><a href="#第03节：Get请求的接收" class="headerlink" title="第03节：Get请求的接收"></a>第03节：Get请求的接收</h4><p>监听端口</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">app.listen();</span><br></pre></td></tr></table></figure>
-<p>query和querystring区别</p>
-<ul>
-<li><p>query：返回的是格式化好的参数对象。</p>
-</li>
-<li><p>querystring：返回的是请求字符串</p>
-</li>
-</ul>
-<blockquote>
-<p>在koa2中GET请求通过request接收，但是接受的方法有两种：query和querystring。</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const Koa &#x3D; require(&#39;koa&#39;);</span><br><span class="line">const app &#x3D; new Koa();</span><br><span class="line"></span><br><span class="line">app.use(async(ctx) &#x3D;&gt; &#123;</span><br><span class="line">    let url &#x3D; ctx.url;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;从request中获取GET请求</span><br><span class="line">    let request &#x3D; ctx.request;</span><br><span class="line">    let req_query &#x3D; request.query;</span><br><span class="line">    let req_querystring &#x3D; request.querystring;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;从上下文中直接获取</span><br><span class="line">    let ctx_query &#x3D; ctx.query;</span><br><span class="line">    let ctx_querystring &#x3D; ctx.querystring;</span><br><span class="line"></span><br><span class="line">    ctx.body &#x3D; &#123;</span><br><span class="line">        url,</span><br><span class="line">        req_query,</span><br><span class="line">        req_querystring,</span><br><span class="line">        ctx_query,</span><br><span class="line">        ctx_querystring</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.listen(3000, ()&#x3D;&gt;&#123;</span><br><span class="line">    console.log(&#39;demo server is starting at port 3000&#39;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>访问<a href="http://localhost:3000/%E5%9C%A8%E9%A1%B5%E9%9D%A2%E4%B8%AD%E6%98%BE%E7%A4%BA%EF%BC%9A">http://localhost:3000/在页面中显示：</a></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&quot;url&quot;: &quot;&#x2F;&quot; , &quot;req_query&quot;: &#123;&#125;, &quot;reg_querystring&quot;:&quot;&quot;&#125;</span><br></pre></td></tr></table></figure>
-<p>访问<a href="http://localhost:3000/?user=winney&amp;age=26%E5%9C%A8%E9%A1%B5%E9%9D%A2%E4%B8%AD%E6%98%BE%E7%A4%BA%EF%BC%9A">http://localhost:3000/?user=winney&amp;age=26在页面中显示：</a></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&quot;url&quot; :&quot;&#x2F;?user&#x3D;winney&amp;age&#x3D;26&quot; , &quot;req_query&quot;: &#123;&quot;user&quot;:&quot;winney, &quot;age&quot;: &quot;26&quot;&#125;,&#39;req_querystring &quot;: &quot;user&#x3D;winney&amp;age&#x3D;26&quot;&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>我们可以使用浏览器插件-iFormatTool，让内容更清晰。图片中我们可以清楚看到query是一个对象，而querystring就是一个普通的字符串。</p>
-</blockquote>
-<p>下载地址：<a href="http://www.pc6.com/soft/FireFox_579049.html">http://www.pc6.com/soft/FireFox_579049.html</a></p>
-<blockquote>
-<p>将解压后里面的.crx文件拖拽到谷歌浏览器的扩展程序中，选择”添加”</p>
-</blockquote>
-<h4 id="添加扩展程序成功后，在页面中可以看到json格式的数据"><a href="#添加扩展程序成功后，在页面中可以看到json格式的数据" class="headerlink" title="添加扩展程序成功后，在页面中可以看到json格式的数据"></a>添加扩展程序成功后，在页面中可以看到json格式的数据</h4><img src="/2021/01/20/Koa-%E7%AC%94%E8%AE%B0/note1.png" class="">
-
-
-
-<h4 id=""><a href="#" class="headerlink" title=""></a></h4>]]></content>
-      <categories>
-        <category>工作笔记</category>
-        <category>Koa</category>
-      </categories>
-      <tags>
-        <tag>Koa</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>MangoDB</title>
     <url>/2021/01/20/MangoDB/</url>
     <content><![CDATA[<p><a href="https://www.mongodb.com/">mongoDB官网</a>    <a href="https://www.mongodb.org.cn/">mongoDB中文官网</a>  </p>
@@ -1086,6 +1025,67 @@
       </categories>
       <tags>
         <tag>MangoDB</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Koa-笔记</title>
+    <url>/2021/01/20/Koa-%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p><a href="https://www.bilibili.com/video/BV1Pt41127sj?from=search&seid=17378531192218366513">技术胖-koa2教程</a>    <a href="http://www.jspang.com/detailed?id=34">技术胖博客笔记</a></p>
+<h4 id="第01节：Koa开发环境搭建"><a href="#第01节：Koa开发环境搭建" class="headerlink" title="第01节：Koa开发环境搭建"></a>第01节：Koa开发环境搭建</h4><p>1、npminit -y (-y可选)  ————生成package.json文件</p>
+<p>2、npm install –save koa ————在开发环境安装koa</p>
+<p>3、编写测试程序：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const Koa &#x3D; require(&#39;koa&#39;);</span><br><span class="line">const app &#x3D; new Koa();</span><br><span class="line"></span><br><span class="line">app.use(async (ctx) &#x3D;&gt; &#123;</span><br><span class="line">  ctx.body &#x3D; &#39;Hello Winney&#39;  </span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.listen(3000)</span><br></pre></td></tr></table></figure>
+<p>4、运行node index.js  （因为是基于node的，所以直接node **.js）</p>
+<p>5、然后在浏览器中输入：<a href="http://127.0.0.1:3000/">http://127.0.0.1:3000</a></p>
+<h4 id="第02节：async-await的使用方法"><a href="#第02节：async-await的使用方法" class="headerlink" title="第02节：async/await的使用方法"></a>第02节：async/await的使用方法</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">async function testAsync() &#123;</span><br><span class="line">	return &#39;Hello async&#39;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>加上async，就把这个方法变成了异步的</p>
+<p>启用了async，返回的不是一个普通字符串，而是一个promise</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function getSomething() &#123;</span><br><span class="line">    return &#39;something&#39;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">async function testAsync() &#123;</span><br><span class="line">    return &#39;Helllo Async&#39;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const result &#x3D; testAsync();</span><br><span class="line">console.log(result);</span><br><span class="line">getSomething();</span><br></pre></td></tr></table></figure>
+<h4 id="await：async-wait"><a href="#await：async-wait" class="headerlink" title="await：async wait"></a>await：async wait</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function getSomething() &#123;</span><br><span class="line">    return &#39;something&#39;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">async function testAsync() &#123;</span><br><span class="line">    return &#39;Helllo Async&#39;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">async function test() &#123;</span><br><span class="line">    const v1 &#x3D; await getSomething();</span><br><span class="line">    const v2 &#x3D; await testAsync();</span><br><span class="line">    console.log(v1, v2);</span><br><span class="line">    console.log(&#96;$&#123;v1&#125; $&#123;v2&#125;&#96;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test();</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>await不仅可以接收promise对象也可以接收普通返回值。</p>
+</blockquote>
+<h4 id="setTimeout延迟处理"><a href="#setTimeout延迟处理" class="headerlink" title="setTimeout延迟处理"></a>setTimeout延迟处理</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function takeLongTime() &#123;</span><br><span class="line">    return new Promise(resolve &#x3D;&gt; &#123;</span><br><span class="line">        setTimeout(() &#x3D;&gt; resolve(&#39;long_time_value&#39;), 1000)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">async function test() &#123;</span><br><span class="line">    const v &#x3D; await takeLongTime();</span><br><span class="line">    console.log(v);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test();</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>node demo.js     输入命令后，3秒后出现结果</p>
+</blockquote>
+<h4 id="第03节：Get请求的接收"><a href="#第03节：Get请求的接收" class="headerlink" title="第03节：Get请求的接收"></a>第03节：Get请求的接收</h4><p>监听端口</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">app.listen();</span><br></pre></td></tr></table></figure>
+<p>query和querystring区别</p>
+<ul>
+<li><p>query：返回的是格式化好的参数对象。</p>
+</li>
+<li><p>querystring：返回的是请求字符串</p>
+</li>
+</ul>
+<blockquote>
+<p>在koa2中GET请求通过request接收，但是接受的方法有两种：query和querystring。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const Koa &#x3D; require(&#39;koa&#39;);</span><br><span class="line">const app &#x3D; new Koa();</span><br><span class="line"></span><br><span class="line">app.use(async(ctx) &#x3D;&gt; &#123;</span><br><span class="line">    let url &#x3D; ctx.url;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;从request中获取GET请求</span><br><span class="line">    let request &#x3D; ctx.request;</span><br><span class="line">    let req_query &#x3D; request.query;</span><br><span class="line">    let req_querystring &#x3D; request.querystring;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;从上下文中直接获取</span><br><span class="line">    let ctx_query &#x3D; ctx.query;</span><br><span class="line">    let ctx_querystring &#x3D; ctx.querystring;</span><br><span class="line"></span><br><span class="line">    ctx.body &#x3D; &#123;</span><br><span class="line">        url,</span><br><span class="line">        req_query,</span><br><span class="line">        req_querystring,</span><br><span class="line">        ctx_query,</span><br><span class="line">        ctx_querystring</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.listen(3000, ()&#x3D;&gt;&#123;</span><br><span class="line">    console.log(&#39;demo server is starting at port 3000&#39;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>访问<a href="http://localhost:3000/%E5%9C%A8%E9%A1%B5%E9%9D%A2%E4%B8%AD%E6%98%BE%E7%A4%BA%EF%BC%9A">http://localhost:3000/在页面中显示：</a></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&quot;url&quot;: &quot;&#x2F;&quot; , &quot;req_query&quot;: &#123;&#125;, &quot;reg_querystring&quot;:&quot;&quot;&#125;</span><br></pre></td></tr></table></figure>
+<p>访问<a href="http://localhost:3000/?user=winney&amp;age=26%E5%9C%A8%E9%A1%B5%E9%9D%A2%E4%B8%AD%E6%98%BE%E7%A4%BA%EF%BC%9A">http://localhost:3000/?user=winney&amp;age=26在页面中显示：</a></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&quot;url&quot; :&quot;&#x2F;?user&#x3D;winney&amp;age&#x3D;26&quot; , &quot;req_query&quot;: &#123;&quot;user&quot;:&quot;winney, &quot;age&quot;: &quot;26&quot;&#125;,&#39;req_querystring &quot;: &quot;user&#x3D;winney&amp;age&#x3D;26&quot;&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>我们可以使用浏览器插件-iFormatTool，让内容更清晰。图片中我们可以清楚看到query是一个对象，而querystring就是一个普通的字符串。</p>
+</blockquote>
+<p>下载地址：<a href="http://www.pc6.com/soft/FireFox_579049.html">http://www.pc6.com/soft/FireFox_579049.html</a></p>
+<blockquote>
+<p>将解压后里面的.crx文件拖拽到谷歌浏览器的扩展程序中，选择”添加”</p>
+</blockquote>
+<h4 id="添加扩展程序成功后，在页面中可以看到json格式的数据"><a href="#添加扩展程序成功后，在页面中可以看到json格式的数据" class="headerlink" title="添加扩展程序成功后，在页面中可以看到json格式的数据"></a>添加扩展程序成功后，在页面中可以看到json格式的数据</h4><img src="/2021/01/20/Koa-%E7%AC%94%E8%AE%B0/note1.png" class="">
+
+
+
+<h4 id=""><a href="#" class="headerlink" title=""></a></h4>]]></content>
+      <categories>
+        <category>工作笔记</category>
+        <category>Koa</category>
+      </categories>
+      <tags>
+        <tag>Koa</tag>
       </tags>
   </entry>
   <entry>
@@ -1637,22 +1637,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Vue-Elemennt</title>
-    <url>/2021/01/19/Vue-Elemennt/</url>
-    <content><![CDATA[<h4 id="vue是否安装成功"><a href="#vue是否安装成功" class="headerlink" title="vue是否安装成功"></a>vue是否安装成功</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ vue</span><br></pre></td></tr></table></figure>
-<p>如果显示以下内容，说明安装成功</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Usage: vue &lt;command&gt; [options]</span><br><span class="line"></span><br><span class="line">Options:</span><br><span class="line">  -V, --version                              output the version number</span><br><span class="line">  -h, --help                                 output usage information</span><br><span class="line">.....</span><br></pre></td></tr></table></figure>
-<h4 id=""><a href="#" class="headerlink" title=""></a></h4>]]></content>
-      <categories>
-        <category>工作笔记</category>
-        <category>Vue</category>
-      </categories>
-      <tags>
-        <tag>Vue</tag>
-        <tag>Element</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Vue.js + Element-UI导航写法</title>
     <url>/2020/03/19/Vue-js-Element-UI%E5%AF%BC%E8%88%AA%E5%86%99%E6%B3%95/</url>
     <content><![CDATA[<h4 id="方法一（基本的）："><a href="#方法一（基本的）：" class="headerlink" title="方法一（基本的）："></a>方法一（基本的）：</h4><blockquote>
@@ -1692,6 +1676,22 @@
       </tags>
   </entry>
   <entry>
+    <title>Vue-Elemennt</title>
+    <url>/2021/01/19/Vue-Elemennt/</url>
+    <content><![CDATA[<h4 id="vue是否安装成功"><a href="#vue是否安装成功" class="headerlink" title="vue是否安装成功"></a>vue是否安装成功</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ vue</span><br></pre></td></tr></table></figure>
+<p>如果显示以下内容，说明安装成功</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Usage: vue &lt;command&gt; [options]</span><br><span class="line"></span><br><span class="line">Options:</span><br><span class="line">  -V, --version                              output the version number</span><br><span class="line">  -h, --help                                 output usage information</span><br><span class="line">.....</span><br></pre></td></tr></table></figure>
+<h4 id=""><a href="#" class="headerlink" title=""></a></h4>]]></content>
+      <categories>
+        <category>工作笔记</category>
+        <category>Vue</category>
+      </categories>
+      <tags>
+        <tag>Vue</tag>
+        <tag>Element</tag>
+      </tags>
+  </entry>
+  <entry>
     <title></title>
     <url>/2021/01/14/Vue3/</url>
     <content><![CDATA[<p>Vetur   代码高亮</p>
@@ -1712,34 +1712,6 @@
       </categories>
       <tags>
         <tag>Vue.js</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Wampserver-笔记</title>
-    <url>/2021/01/18/Wampserver-%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<p>注：如果重新有问题，启动服务一直是黄色，可以卸载了wamp，然后重启电脑，再重装</p>
-<h4 id="phpmyadmin默认SQL账号密码"><a href="#phpmyadmin默认SQL账号密码" class="headerlink" title="phpmyadmin默认SQL账号密码:"></a>phpmyadmin默认SQL账号密码:</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">账号：root，密码为空</span><br></pre></td></tr></table></figure>
-<img src="/2021/01/18/Wampserver-%E7%AC%94%E8%AE%B0/note1.png" class="">
-
-<h4 id="虚拟目录的配置"><a href="#虚拟目录的配置" class="headerlink" title="虚拟目录的配置"></a>虚拟目录的配置</h4><p>修改默认网站目录</p>
-<p>第一步：修改d:\wamp\bin\apache\Apache2.4.9\conf\httpd.conf</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">查找： DocumentRoot &quot;c:&#x2F;wamp&#x2F;www&#x2F;&quot;</span><br><span class="line">修改： DocumentRoot &quot;d:&#x2F;www&#x2F;&quot;</span><br><span class="line">查找： &lt;Directory &quot;c:&#x2F;wamp&#x2F;www&#x2F;&quot;&gt;</span><br><span class="line">修改： &lt;Directory &quot;d:&#x2F;www&#x2F;&quot;&gt;</span><br></pre></td></tr></table></figure>
-<p>第二步：修改wampmanager.ini和wampmanager.tpl</p>
-<p>1、修改c:\wamp\wampmanager.ini:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">(1)打开：c:\wamp\wampmanager.ini</span><br><span class="line">(2)查找：Type: item; Caption: &quot;www 目录&quot;; Action: shellexecute; FileName: &quot;c:&#x2F;wamp&#x2F;www&quot;; Glyph: 2</span><br><span class="line">(3)修改：Type: item; Caption: &quot;www 目录&quot;; Action: shellexecute; FileName: &quot;d:&#x2F;www&quot;; Glyph: 2</span><br></pre></td></tr></table></figure>
-<p>2、修改c:\wamp\wampmanager.tpl：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">(1)打开：c:\wamp\wampmanager.tpl</span><br><span class="line">(2)查找：Type: item; Caption: &quot;$&#123;w_wwwDirectory&#125;&quot;; Action: shellexecute; FileName: &quot;$&#123;wwwdir&#125;&quot;; Glyph: 2</span><br><span class="line">(3)修改：Type: item; Caption: &quot;$&#123;w_wwwDirectory&#125;&quot;; Action: shellexecute; FileName: &quot;d:&#x2F;www&quot;; Glyph: 2</span><br></pre></td></tr></table></figure>
-<h4 id="修改默认项目目录"><a href="#修改默认项目目录" class="headerlink" title="修改默认项目目录"></a>修改默认项目目录</h4><p>1、修改httpd.conf:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">DocumentRoot &quot;D:&#x2F;Work&#x2F;&quot;</span><br><span class="line">&lt;Directory &quot;D:&#x2F;Work&#x2F;&quot;&gt;</span><br></pre></td></tr></table></figure>
-<p>2、修改httpd-vhost.conf:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;VirtualHost *:80&gt;</span><br><span class="line">	ServerName localhost</span><br><span class="line">	ServerAlias localhost</span><br><span class="line">	DocumentRoot D:&#x2F;Work&#x2F;</span><br><span class="line">	&lt;Directory  &quot;D:&#x2F;Work&#x2F;&quot;&gt;</span><br><span class="line">		Options +Indexes +Includes +FollowSymLinks +MultiViews</span><br><span class="line">		AllowOverride All</span><br><span class="line">		Require local</span><br><span class="line">	&lt;&#x2F;Directory&gt;</span><br><span class="line">&lt;&#x2F;VirtualHost&gt;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>工作笔记</category>
-        <category>Wampserver</category>
-      </categories>
-      <tags>
-        <tag>Wampserver</tag>
       </tags>
   </entry>
   <entry>
@@ -1932,6 +1904,34 @@
       </categories>
       <tags>
         <tag>webpack</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Wampserver-笔记</title>
+    <url>/2021/01/18/Wampserver-%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p>注：如果重新有问题，启动服务一直是黄色，可以卸载了wamp，然后重启电脑，再重装</p>
+<h4 id="phpmyadmin默认SQL账号密码"><a href="#phpmyadmin默认SQL账号密码" class="headerlink" title="phpmyadmin默认SQL账号密码:"></a>phpmyadmin默认SQL账号密码:</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">账号：root，密码为空</span><br></pre></td></tr></table></figure>
+<img src="/2021/01/18/Wampserver-%E7%AC%94%E8%AE%B0/note1.png" class="">
+
+<h4 id="虚拟目录的配置"><a href="#虚拟目录的配置" class="headerlink" title="虚拟目录的配置"></a>虚拟目录的配置</h4><p>修改默认网站目录</p>
+<p>第一步：修改d:\wamp\bin\apache\Apache2.4.9\conf\httpd.conf</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">查找： DocumentRoot &quot;c:&#x2F;wamp&#x2F;www&#x2F;&quot;</span><br><span class="line">修改： DocumentRoot &quot;d:&#x2F;www&#x2F;&quot;</span><br><span class="line">查找： &lt;Directory &quot;c:&#x2F;wamp&#x2F;www&#x2F;&quot;&gt;</span><br><span class="line">修改： &lt;Directory &quot;d:&#x2F;www&#x2F;&quot;&gt;</span><br></pre></td></tr></table></figure>
+<p>第二步：修改wampmanager.ini和wampmanager.tpl</p>
+<p>1、修改c:\wamp\wampmanager.ini:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">(1)打开：c:\wamp\wampmanager.ini</span><br><span class="line">(2)查找：Type: item; Caption: &quot;www 目录&quot;; Action: shellexecute; FileName: &quot;c:&#x2F;wamp&#x2F;www&quot;; Glyph: 2</span><br><span class="line">(3)修改：Type: item; Caption: &quot;www 目录&quot;; Action: shellexecute; FileName: &quot;d:&#x2F;www&quot;; Glyph: 2</span><br></pre></td></tr></table></figure>
+<p>2、修改c:\wamp\wampmanager.tpl：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">(1)打开：c:\wamp\wampmanager.tpl</span><br><span class="line">(2)查找：Type: item; Caption: &quot;$&#123;w_wwwDirectory&#125;&quot;; Action: shellexecute; FileName: &quot;$&#123;wwwdir&#125;&quot;; Glyph: 2</span><br><span class="line">(3)修改：Type: item; Caption: &quot;$&#123;w_wwwDirectory&#125;&quot;; Action: shellexecute; FileName: &quot;d:&#x2F;www&quot;; Glyph: 2</span><br></pre></td></tr></table></figure>
+<h4 id="修改默认项目目录"><a href="#修改默认项目目录" class="headerlink" title="修改默认项目目录"></a>修改默认项目目录</h4><p>1、修改httpd.conf:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">DocumentRoot &quot;D:&#x2F;Work&#x2F;&quot;</span><br><span class="line">&lt;Directory &quot;D:&#x2F;Work&#x2F;&quot;&gt;</span><br></pre></td></tr></table></figure>
+<p>2、修改httpd-vhost.conf:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;VirtualHost *:80&gt;</span><br><span class="line">	ServerName localhost</span><br><span class="line">	ServerAlias localhost</span><br><span class="line">	DocumentRoot D:&#x2F;Work&#x2F;</span><br><span class="line">	&lt;Directory  &quot;D:&#x2F;Work&#x2F;&quot;&gt;</span><br><span class="line">		Options +Indexes +Includes +FollowSymLinks +MultiViews</span><br><span class="line">		AllowOverride All</span><br><span class="line">		Require local</span><br><span class="line">	&lt;&#x2F;Directory&gt;</span><br><span class="line">&lt;&#x2F;VirtualHost&gt;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>工作笔记</category>
+        <category>Wampserver</category>
+      </categories>
+      <tags>
+        <tag>Wampserver</tag>
       </tags>
   </entry>
   <entry>
@@ -2318,16 +2318,15 @@
       </tags>
   </entry>
   <entry>
-    <title>vue2.js 基础知识</title>
-    <url>/2019/06/19/vue2-js-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</url>
-    <content><![CDATA[<h4 id="vue特点"><a href="#vue特点" class="headerlink" title="vue特点"></a>vue特点</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">一个Vue实例必须与一个页面元素绑定</span><br><span class="line"></span><br><span class="line">*.vue是Vue.js特有的文件格式，表示的就是一个Vue组件，被称为单页式组件</span><br><span class="line"></span><br><span class="line">Vue2具有很高的兼容性，我们也可以用<span class="string">&quot;.js&quot;</span>文件来单纯地定义组件的逻辑，</span><br><span class="line">甚至可以使用React 的JSX格式的组件（需要babel-plugin-transform-vue-jsx支持）</span><br><span class="line"></span><br><span class="line">注： 从Vue2开始，组件模板必须且只能有一个顶层元素，如果在组件模板内设置多个顶层元素将会引发编译异常。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+    <title>vue.js 基本环境</title>
+    <url>/2019/06/19/vue-js-%E5%9F%BA%E6%9C%AC%E7%8E%AF%E5%A2%83/</url>
+    <content><![CDATA[<h4 id="1、安装有npm"><a href="#1、安装有npm" class="headerlink" title="1、安装有npm"></a>1、安装有npm</h4><a href="https://nodejs.org/en/" title="" target="">node.js官网</a>
+<h4 id="2、安装vue-cli"><a href="#2、安装vue-cli" class="headerlink" title="2、安装vue-cli"></a>2、安装vue-cli</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm i vue-cli -g</span><br><span class="line"></span><br><span class="line">输入vue命令查看是否安装成功</span><br><span class="line">输入vue list 查看</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-<h4 id="单页组件由一下三部分组成："><a href="#单页组件由一下三部分组成：" class="headerlink" title="单页组件由一下三部分组成："></a>单页组件由一下三部分组成：</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;&lt;/template&gt; ——视图模板</span><br><span class="line">&lt;style&gt;&lt;/style&gt; ——组件样式表</span><br><span class="line">&lt;script&gt;&lt;/script&gt; ——组件定义</span><br></pre></td></tr></table></figure>
-<h4 id="data使用函数返回是为了可以具有更高的灵活性"><a href="#data使用函数返回是为了可以具有更高的灵活性" class="headerlink" title="data使用函数返回是为了可以具有更高的灵活性"></a>data使用函数返回是为了可以具有更高的灵活性</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> default &#123;</span><br><span class="line">  name: <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">  <span class="function"><span class="title">data</span></span>() &#123; </span><br><span class="line">    <span class="built_in">return</span> &#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="使用less（直接使用CSS语法来编写样式表，代码量大）"><a href="#使用less（直接使用CSS语法来编写样式表，代码量大）" class="headerlink" title="使用less（直接使用CSS语法来编写样式表，代码量大）"></a>使用less（直接使用CSS语法来编写样式表，代码量大）</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm i less style-loader css-loader less-loader -D</span><br><span class="line"></span><br><span class="line">在/assets/中添加一个todos.less文件，并在App.vue的组件定义内引入less样式表</span><br><span class="line"></span><br><span class="line">import <span class="string">&#x27;./assets/todo.less&#x27;</span></span><br><span class="line"></span><br><span class="line">注：通过import将样式文件导入是一种全局性的做法，也就是说，在每一个页面内的</span><br><span class="line">&lt;head&gt;&lt;/head&gt;中都会有一个样式表，这样做的缺点是很容易导致样式冲突。如果希</span><br><span class="line">望样式表仅应用于当前组件，可以使用&lt;style scoped&gt;&lt;/style&gt;，然后用css的</span><br><span class="line">@import导入样式表：</span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line">    @import <span class="string">&#x27;./assets/todos.less&#x27;</span></span><br><span class="line">&lt;/style&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h4 id="注：如果在元素属性中不加上”-”-Vue认为是向这个属性赋上字符串值而不是Vue组件上定义的属性引用！"><a href="#注：如果在元素属性中不加上”-”-Vue认为是向这个属性赋上字符串值而不是Vue组件上定义的属性引用！" class="headerlink" title="注：如果在元素属性中不加上”:”,Vue认为是向这个属性赋上字符串值而不是Vue组件上定义的属性引用！"></a>注：如果在元素属性中不加上”:”,Vue认为是向这个属性赋上字符串值而不是Vue组件上定义的属性引用！</h4><p>注：无论是绑定的是样式类还是样式属性，:class和:style表达式内一定是一个JSON对象。<br>如： :class=”{‘btn’: true}”     :style=”{‘color’: ‘red’}”<br>:class的JSON对象的值一定是布尔型的，true表示加上样式，false表示移除样式类。<br>:style的JSON对象则像是一个样式配置项，key声明属性名，value则是样式属性的具体值。</p>
-<h4 id="时间格式化专用的包——moment-js"><a href="#时间格式化专用的包——moment-js" class="headerlink" title="时间格式化专用的包——moment.js"></a>时间格式化专用的包——moment.js</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm i moment -S</span><br><span class="line"></span><br><span class="line">引入moment,并设定moment的区域为中国</span><br><span class="line">import moment from <span class="string">&#x27;moment&#x27;</span></span><br><span class="line">import <span class="string">&#x27;moment/locale/zh-cn&#x27;</span></span><br><span class="line">moment.locale(<span class="string">&#x27;zh-cn&#x27;</span>)</span><br><span class="line"></span><br><span class="line">加入date的过滤器</span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> default &#123;</span><br><span class="line">    //省略.....</span><br><span class="line">    filters: &#123;</span><br><span class="line">        date(val) &#123;</span><br><span class="line">            <span class="built_in">return</span> moment(val).calendar()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">在模板上应用过滤器</span><br><span class="line">&lt;time&gt; &#123;&#123; todo.created | date&#125;&#125;&lt;/time&gt;</span><br><span class="line"></span><br><span class="line">注：在所有的过滤器中是没有this引用的，过滤器内的this是一个undefined的值，所以要在过滤器内尝试引用组件实例内的变量或方法，否则会引发空值引用的异常。</span><br></pre></td></tr></table></figure>
-<p>&lt;– 参考《vue2实践揭秘&gt; –&gt;</p>
+<h4 id="3、建立工程"><a href="#3、建立工程" class="headerlink" title="3、建立工程"></a>3、建立工程</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vue init webpack 项目名</span><br></pre></td></tr></table></figure>
+<h4 id="4、进入-项目名-目录，安装脚手架项目的基本支持包"><a href="#4、进入-项目名-目录，安装脚手架项目的基本支持包" class="headerlink" title="4、进入 项目名 目录，安装脚手架项目的基本支持包"></a>4、进入 项目名 目录，安装脚手架项目的基本支持包</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm i</span><br></pre></td></tr></table></figure>
+<h4 id="5、运行基本Vue-js程序"><a href="#5、运行基本Vue-js程序" class="headerlink" title="5、运行基本Vue.js程序"></a>5、运行基本Vue.js程序</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
+ <a href="https://www.cnblogs.com/wubaiqing/p/6726429.html" title="" target="">了解Virtual DOM(虚拟DOM)</a>
 ]]></content>
       <categories>
         <category>工作笔记</category>
@@ -2338,15 +2337,16 @@
       </tags>
   </entry>
   <entry>
-    <title>vue.js 基本环境</title>
-    <url>/2019/06/19/vue-js-%E5%9F%BA%E6%9C%AC%E7%8E%AF%E5%A2%83/</url>
-    <content><![CDATA[<h4 id="1、安装有npm"><a href="#1、安装有npm" class="headerlink" title="1、安装有npm"></a>1、安装有npm</h4><a href="https://nodejs.org/en/" title="" target="">node.js官网</a>
-<h4 id="2、安装vue-cli"><a href="#2、安装vue-cli" class="headerlink" title="2、安装vue-cli"></a>2、安装vue-cli</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm i vue-cli -g</span><br><span class="line"></span><br><span class="line">输入vue命令查看是否安装成功</span><br><span class="line">输入vue list 查看</span><br></pre></td></tr></table></figure>
+    <title>vue2.js 基础知识</title>
+    <url>/2019/06/19/vue2-js-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</url>
+    <content><![CDATA[<h4 id="vue特点"><a href="#vue特点" class="headerlink" title="vue特点"></a>vue特点</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">一个Vue实例必须与一个页面元素绑定</span><br><span class="line"></span><br><span class="line">*.vue是Vue.js特有的文件格式，表示的就是一个Vue组件，被称为单页式组件</span><br><span class="line"></span><br><span class="line">Vue2具有很高的兼容性，我们也可以用<span class="string">&quot;.js&quot;</span>文件来单纯地定义组件的逻辑，</span><br><span class="line">甚至可以使用React 的JSX格式的组件（需要babel-plugin-transform-vue-jsx支持）</span><br><span class="line"></span><br><span class="line">注： 从Vue2开始，组件模板必须且只能有一个顶层元素，如果在组件模板内设置多个顶层元素将会引发编译异常。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-<h4 id="3、建立工程"><a href="#3、建立工程" class="headerlink" title="3、建立工程"></a>3、建立工程</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vue init webpack 项目名</span><br></pre></td></tr></table></figure>
-<h4 id="4、进入-项目名-目录，安装脚手架项目的基本支持包"><a href="#4、进入-项目名-目录，安装脚手架项目的基本支持包" class="headerlink" title="4、进入 项目名 目录，安装脚手架项目的基本支持包"></a>4、进入 项目名 目录，安装脚手架项目的基本支持包</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm i</span><br></pre></td></tr></table></figure>
-<h4 id="5、运行基本Vue-js程序"><a href="#5、运行基本Vue-js程序" class="headerlink" title="5、运行基本Vue.js程序"></a>5、运行基本Vue.js程序</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
- <a href="https://www.cnblogs.com/wubaiqing/p/6726429.html" title="" target="">了解Virtual DOM(虚拟DOM)</a>
+<h4 id="单页组件由一下三部分组成："><a href="#单页组件由一下三部分组成：" class="headerlink" title="单页组件由一下三部分组成："></a>单页组件由一下三部分组成：</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;&lt;/template&gt; ——视图模板</span><br><span class="line">&lt;style&gt;&lt;/style&gt; ——组件样式表</span><br><span class="line">&lt;script&gt;&lt;/script&gt; ——组件定义</span><br></pre></td></tr></table></figure>
+<h4 id="data使用函数返回是为了可以具有更高的灵活性"><a href="#data使用函数返回是为了可以具有更高的灵活性" class="headerlink" title="data使用函数返回是为了可以具有更高的灵活性"></a>data使用函数返回是为了可以具有更高的灵活性</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> default &#123;</span><br><span class="line">  name: <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">  <span class="function"><span class="title">data</span></span>() &#123; </span><br><span class="line">    <span class="built_in">return</span> &#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="使用less（直接使用CSS语法来编写样式表，代码量大）"><a href="#使用less（直接使用CSS语法来编写样式表，代码量大）" class="headerlink" title="使用less（直接使用CSS语法来编写样式表，代码量大）"></a>使用less（直接使用CSS语法来编写样式表，代码量大）</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm i less style-loader css-loader less-loader -D</span><br><span class="line"></span><br><span class="line">在/assets/中添加一个todos.less文件，并在App.vue的组件定义内引入less样式表</span><br><span class="line"></span><br><span class="line">import <span class="string">&#x27;./assets/todo.less&#x27;</span></span><br><span class="line"></span><br><span class="line">注：通过import将样式文件导入是一种全局性的做法，也就是说，在每一个页面内的</span><br><span class="line">&lt;head&gt;&lt;/head&gt;中都会有一个样式表，这样做的缺点是很容易导致样式冲突。如果希</span><br><span class="line">望样式表仅应用于当前组件，可以使用&lt;style scoped&gt;&lt;/style&gt;，然后用css的</span><br><span class="line">@import导入样式表：</span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line">    @import <span class="string">&#x27;./assets/todos.less&#x27;</span></span><br><span class="line">&lt;/style&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="注：如果在元素属性中不加上”-”-Vue认为是向这个属性赋上字符串值而不是Vue组件上定义的属性引用！"><a href="#注：如果在元素属性中不加上”-”-Vue认为是向这个属性赋上字符串值而不是Vue组件上定义的属性引用！" class="headerlink" title="注：如果在元素属性中不加上”:”,Vue认为是向这个属性赋上字符串值而不是Vue组件上定义的属性引用！"></a>注：如果在元素属性中不加上”:”,Vue认为是向这个属性赋上字符串值而不是Vue组件上定义的属性引用！</h4><p>注：无论是绑定的是样式类还是样式属性，:class和:style表达式内一定是一个JSON对象。<br>如： :class=”{‘btn’: true}”     :style=”{‘color’: ‘red’}”<br>:class的JSON对象的值一定是布尔型的，true表示加上样式，false表示移除样式类。<br>:style的JSON对象则像是一个样式配置项，key声明属性名，value则是样式属性的具体值。</p>
+<h4 id="时间格式化专用的包——moment-js"><a href="#时间格式化专用的包——moment-js" class="headerlink" title="时间格式化专用的包——moment.js"></a>时间格式化专用的包——moment.js</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm i moment -S</span><br><span class="line"></span><br><span class="line">引入moment,并设定moment的区域为中国</span><br><span class="line">import moment from <span class="string">&#x27;moment&#x27;</span></span><br><span class="line">import <span class="string">&#x27;moment/locale/zh-cn&#x27;</span></span><br><span class="line">moment.locale(<span class="string">&#x27;zh-cn&#x27;</span>)</span><br><span class="line"></span><br><span class="line">加入date的过滤器</span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> default &#123;</span><br><span class="line">    //省略.....</span><br><span class="line">    filters: &#123;</span><br><span class="line">        date(val) &#123;</span><br><span class="line">            <span class="built_in">return</span> moment(val).calendar()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">在模板上应用过滤器</span><br><span class="line">&lt;time&gt; &#123;&#123; todo.created | date&#125;&#125;&lt;/time&gt;</span><br><span class="line"></span><br><span class="line">注：在所有的过滤器中是没有this引用的，过滤器内的this是一个undefined的值，所以要在过滤器内尝试引用组件实例内的变量或方法，否则会引发空值引用的异常。</span><br></pre></td></tr></table></figure>
+<p>&lt;– 参考《vue2实践揭秘&gt; –&gt;</p>
 ]]></content>
       <categories>
         <category>工作笔记</category>
@@ -2928,7 +2928,7 @@
 <h5 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h5><p>如有以下报错，是版本的问题影响的：</p>
 <p>Module build failed: TypeError: this.getResolve is not a function at Object.loader 安装node-sass运行报错</p>
 <p><strong>解决方法</strong>： 选择更低版本的sass-loader</p>
-<p><strong>卸载当前版本</strong>：npm uninstall sass-loader<br><strong>安装指定版本</strong>：npm install <a href="mailto:&#115;&#97;&#x73;&#x73;&#x2d;&#108;&#111;&#x61;&#100;&#101;&#x72;&#x40;&#x37;&#x2e;&#x33;&#46;&#49;">&#115;&#97;&#x73;&#x73;&#x2d;&#108;&#111;&#x61;&#100;&#101;&#x72;&#x40;&#x37;&#x2e;&#x33;&#46;&#49;</a> –save-dev</p>
+<p><strong>卸载当前版本</strong>：npm uninstall sass-loader<br><strong>安装指定版本</strong>：npm install <a href="mailto:&#115;&#x61;&#x73;&#x73;&#45;&#x6c;&#111;&#x61;&#x64;&#x65;&#114;&#x40;&#55;&#46;&#x33;&#x2e;&#x31;">&#115;&#x61;&#x73;&#x73;&#45;&#x6c;&#111;&#x61;&#x64;&#x65;&#114;&#x40;&#55;&#46;&#x33;&#x2e;&#x31;</a> –save-dev</p>
 <p>参考： <a href="https://blog.csdn.net/ze1024/article/details/100516650">安装node-sass运行报错</a></p>
 ]]></content>
       <categories>

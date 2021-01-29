@@ -115,3 +115,48 @@ $("#cancel").click(function() {
     })
   })
 ```
+
+#### 将MD5定义成layui的模块
+
+[扩展一个 layui 模块](https://www.layui.com/doc/base/modules.html#extend)
+
+1、在md5的js文件最后加上：
+
+```
+layui.define(function(exports){ 
+  exports('mymd', {});
+});
+```
+
+2、如果mymd.js文件放在与使用它的html文件同一个目录下，在html文件中直接使用：
+
+```
+//使用拓展模块
+layui.use(['mymd'], function(){
+  var mymd = layui.mymd;
+
+  mymd.hash = md5;   //md5加密方法
+  console.log(mymd.hash("md5加密"));
+});
+```
+
+3、如果mymd.js文件放在与使用它的html文件不同目录下，在html文件中要在 extend 指定路径：
+
+```
+layui.extend({
+  mymd: './js/mymd' 
+})
+```
+
+再使用：
+
+```
+//使用拓展模块
+layui.use(['mymd'], function(){
+  var mymd = layui.mymd;
+
+  mymd.hash = md5;   //md5加密方法
+  console.log(mymd.hash("md5加密"));
+});
+```
+

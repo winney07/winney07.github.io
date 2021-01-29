@@ -139,6 +139,67 @@ text-overflow: ellipsis;
 overflow: hidden;
 ```
 
+#### 溢出文字省略号显示
+
+```
+.content{
+    /* display:block; */
+    width:200px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+```
+
+> 注：如果是表格元素，需要加上display:block;
+
+处理IE浏览器：
+
+```
+(function($) { 
+    $.fn.ellipsis = function(enableUpdating){ 
+        var s = document.documentElement.style; 
+        if (!('textOverflow' in s || 'OTextOverflow' in s)) { 
+            return this.each(function(){ 
+                var el = $(this); 
+                if(el.css("overflow") == "hidden"){ 
+                    var originalText = el.html(); 
+                    var w = el.width(); 
+
+                  var t = $(this.cloneNode(true)).hide().css({ 
+                      'position': 'absolute', 
+                      'width': 'auto', 
+                      'overflow': 'visible', 
+                      'max-width': 'inherit' 
+                  }); 
+                  el.after(t); 
+
+                  var text = originalText; 
+                  while(text.length > 0 && t.width() > el.width()){ 
+                         text = text.substr(0, text.length - 1); 
+                         t.html(text + "..."); 
+                     } 
+                     el.html(t.html()); 
+
+                     t.remove(); 
+
+                     if(enableUpdating == true){ 
+                         var oldW = el.width(); 
+                         setInterval(function(){ 
+                             if(el.width() != oldW){ 
+                                 oldW = el.width(); 
+                                 el.html(originalText); 
+                                 el.ellipsis(); 
+                             } 
+                         }, 200); 
+                     } 
+                 } 
+             }); 
+         } else return this; 
+     }; 
+ })(jQuery);
+```
+
 #### 文本域(textarea)的提示文字(placeholder)换行显示
 
 ```
@@ -203,6 +264,27 @@ css样式：
     height: 100%;
     cursor: pointer;
 }
+```
+
+#### 头部和底部固定定位，中间内容区滚动展示
+
+```
+<header class="head">顶部固定区域</header>
+
+<article  class="main" id="wrapper">  
+</article>
+
+<footer class="foot">底部固定区域</footer>
+```
+
+```
+.head,.foot{position:fixed;left:0;height:38px;line-height:38px;width:100%;background-color:#999;}
+
+.head{top:0;}
+
+.foot{bottom:0;}
+
+.main{position:fixed;top:38px;bottom:38px;width:100%;overflow:scroll;background-color:#f2f2f2;}
 ```
 
 

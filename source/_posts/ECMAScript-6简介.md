@@ -78,3 +78,101 @@ npx babel src -d lib
 npx babel src -d lib -s
 ```
 6、如：npx babel es6.js -o es5.js
+
+
+
+```
+var obj1 = {name: 'yangyanyi'};
+var obj2 = {name: 'yangyanyi'};
+
+console.log(obj1 == obj2);  //因为指向的地址不一样
+
+var obj3 = {age: 12};
+var obj4 = obj3;
+
+console.log(obj3 == obj4);  //指向同一个地址
+```
+
+```
+// 包装类
+// 自动创建的基本包装类型的对象，则只存在于一行代码的执行瞬间，然后立即被销毁
+var s1 = 'some text';
+s1.color = 'red';
+console.log(s1.color);  //undefined
+
+//使用new操作符创建的引用类型的实例，在执行流离开当前作用域之前都一直保存在内存中。
+var s2 = new String('some text');
+s2.color = 'red';
+console.log(s2.color);
+```
+
+```
+//可以通过new操作符显式创建包装对象
+//两种方式显式创建包装类型的方式：
+//Object方式
+var a = new Object('abc');
+//构造函数方式
+var a = new String('abc');
+
+// 常常使用“逻辑或运算符”给省略的参数设置一个合理的默认值
+
+function add(x, y) {
+    y = y || 2;
+    console.log(x, y);
+}
+add(1);
+```
+
+```
+let [a, b, c] = [1, 2, 3];
+console.log(a, b, c);
+
+let [x, , y] = [1, 2, 3];
+console.log(x, y);
+
+let[head, ...tail] = [1, 2, 3, 4];
+console.log(head, tail);
+
+let [q, w, ...e] = ['a'];
+console.log(q, w, e);
+
+// let [foo] = {};  //报错
+
+let [l, m, n] = new Set(['a', 'b', 'c']);
+console.log(l, m, n);
+
+// ES6内部使用严格相等运算符（===），判断一个位置是否有值。所以只有当一个数组成员严格等于undefined，默认值才会成效
+
+let [x = 1] =[undefined];
+
+let [ y = 1] = [null];
+
+console.log(x, y);  //1  null   
+// 原因：因为null不严格等于undefined，所以默认值不会生效
+```
+
+```
+// 对象的结构赋值            
+let  { foo, bar } = { foo: 'aaa', bar: "bbb"};
+console.log(foo, bar);
+
+// 不是按照顺序，是根据键名
+let { bbb, aaa } = { aaa: 'aaa', bbb: 'bbbb'};
+console.log(aaa, bbb);
+
+let { baz } = { bnv:'bnv', kjl: 'kjl'};
+console.log(baz);
+
+// 当变量名与属性名不一致，必须写成下面这样
+let { foo: baz } = { foo: 'aaa', bar: 'bbb'};
+console.log(baz);
+
+let obj = { first: 'hello', last: 'world'};
+let { first: f, last: l} = obj;
+console.log(f, l);
+
+let { foo: baz } = { foo: 'aaa', bar: 'bbb'};
+console.log(baz, foo);    //foo is not defined
+// 原因：foo是匹配的模式，baz才是变量。真正被赋值的是变量baz，而不是模式foo
+```
+

@@ -258,3 +258,39 @@ class Son extends Father{
 
 `super关键字`用于访问和调用对象父类上的函数。`可以调用父类的构造函数`，也可以调用父类的普通函数
 
+
+
+------
+
+#### prototype-深入浅出原型
+
+```
+function Dogs() {
+
+}
+Dogs.prototype.name = 'collie';
+Dogs.prototype.age = 24;
+Dogs.prototype.DogsName = function() {
+    alert(this.name);
+}
+
+//JS在创建对象（不论是普通对象还是函数对象）的时候，都有一个叫做__proto__的内置属性，用于指向创建它的函数对象的原型对象prototype
+var DogsA = new Dogs();
+// console.log(DogsA.DogsName());
+
+// DogsA 的construtor（构造函数）是Dogs()
+console.log(Dogs.prototype);
+console.log(DogsA.constructor);
+console.log(DogsA);
+
+// DogsA的__proto__属性等于Dogs的prototype属性
+console.log(Dogs.prototype === DogsA.__proto__);   //true
+
+//Dogs.prototype对象也有 _proto _ 属性，它指向创建它的函数对象（Object）的 prototype。
+//Dogs.prototype的__proto__属性等于Object的prototype属性
+console.log(Dogs.prototype.__proto__ === Object.prototype);  //true
+
+//判断是不是某实例化对象的原型
+console.log(Dogs.prototype.isPrototypeOf(DogsA));
+```
+

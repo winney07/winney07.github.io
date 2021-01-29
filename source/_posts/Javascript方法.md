@@ -528,7 +528,64 @@ $("input").attr("checked", false);
 $("input").prop("checked", false); 
 ```
 
+#### 全选/全不选复选框
 
+```
+$('#selectAll').bind('change',function(event) {
+    var isCheck=$("#selectAll").is(':checked');  //获得全选复选框是否选中
+    $("input[name='platform']").each(function() {  
+        this.checked = isCheck;       //循环赋值给每个复选框是否选中
+    });
+
+
+    var selectArr = [], checkbox;  
+    checkbox = $('input[name ="platform"]');
+
+    for(var i = 0; i < checkbox.length;i++){
+        if(checkbox[i].checked == true){
+            selectArr.push(checkbox[i].value);
+        }
+    }
+    console.log(selectArr);
+});
+```
+
+#### 全选复选框和普通复选框联合
+
+```
+var $all_check = $('#all_check');
+var $check = $('.check');
+
+/**
+ * 全选按钮点击事件
+ */
+$all_check.bind('click', function () {
+    if ($(this).is(':checked')) {
+        $check.prop('checked', true);
+    } else {
+        $check.prop('checked', false);
+    }
+});
+
+/**
+ * 普通按钮点击事件
+ */
+$check.bind('click', function () {
+    if ($(this).is(':checked')) {
+        var isAllCheck = true;
+        $check.each(function () {
+            if (!$(this).is(':checked')) {
+                isAllCheck = false;
+            }
+        });
+        if(isAllCheck){
+            $all_check.prop('checked', true);
+        }
+    } else {
+        $all_check.prop('checked', false);
+    }
+});
+```
 
 #### 获取单选框选中的值
 
@@ -1008,4 +1065,265 @@ body.blue {
   }
   ```
 
+#### 获取form表单全部value值
+
+  ```
+  var data = $("#form").serializeArray();
+  ```
+
+  #### 鼠标在图片上，滚动滚轮，可放大缩小图片
+
+  ```
+  <img src="./blog-head-img.jpg" onmousewheel="return bbimg(this)" 
+  onload="if(this.width > screen.width - 500) this.style.width = screen.width - 500;">
   
+  function bbimg(obj){
+      var zoom = parseInt(obj.style.zoom, 10) || 100;
+      zoom += event.wheelDelta/12;
+      if (zoom>0) {
+          obj.style.zoom = zoom + '%';
+      } 
+      return false;
+  }
+  ```
+
+  #### delegate() 方法
+
+> [delegate() 方法](https://www.w3school.com.cn/jquery/event_delegate.asp)为指定的元素（属于被选元素的子元素）添加一个或多个事件处理程序，并规定当这些事件发生时运行的函数。
+>
+> 使用 delegate() 方法的事件处理程序适用于当前或未来的元素（比如由脚本创建的新元素）。
+
+```
+$("div").delegate("button","click",function(){
+  $("p").slideToggle();
+});
+```
+
+```
+$(selector).delegate(childSelector,event,data,function)
+```
+
+#### 记录及清空搜索历史记录
+
+
+
+#### 移动端设备判断
+
+```
+var ua=navigator.userAgent, 			     wxv=parseInt(ua.substring(ua.toLowerCase().indexOf("micromessenger/")+15));
+var uClient = "mq";
+if(wxv >= 5){
+    uClient = "wx";
+}else{
+    isQzone = ua.match("Qzone");
+    if(isQzone){
+        uClient = 'qzone';
+    }
+}
+var iPad = ua.match(/(iPad).*OS\s([\d_]+)/),
+    iPhone = !iPad && ua.match(/(iPhone\sOS)\s([\d_]+)/),
+    iPod = ua.match(/(iPod).*OS\s([\d_]+)/),
+    android = ua.match(/(Android)\s+([\d.]+)/)||ua.match(/Android/),
+    wp = ua.match(/Windows Phone ([\d.]+)/),
+    isMobile = iPad || iPhone || iPad || wp || android;
+```
+
+#### 回调函数：
+
+```
+var foo = 1;
+function bar(callback) {
+    foo = 10;
+    console.log(foo);
+    console.log(this);
+    console.log(this.foo);
+    return;
+    function foo() {}
+}
+bar(function(){
+    console.log('回调');
+    console.log(foo);
+});
+
+console.log(this);
+console.log(this.foo);
+
+console.log(foo);
+```
+
+```
+ var func = (function(a) {
+    this.a = a;
+    return function(a) {
+        a += this.a;
+        return a;
+    }
+})
+(function(a, b) {
+    return a;
+}(1, 2));
+
+console.log(func(4));
+```
+
+
+
+#### 对返回的数据进行处理-专为数组或对象格式
+
+```
+var data ={
+    'yangyibing':{
+        name: '杨伊冰',
+        age: '25',
+        job: 'web',
+        city: 'guangzhou' 
+    },
+    'liyishun':{
+        name: '李一瞬',
+        age: '25',
+        job: 'web',
+        city: 'guangzhou' 
+    }
+}
+
+function getList(data){
+    var obj = {}, list = [], returnData = {};
+
+    for(var key in data){
+        var item = {
+            k: key,
+            v: data[key]
+        }
+
+        obj[key] = data[key];
+
+        list.push(item);
+    }
+
+    returnData['list'] = list;
+    returnData['obj'] = obj;
+
+    return returnData;
+}
+
+var obj = getList(data)['obj'];
+var list = getList(data)['list'];
+console.log(obj);
+console.log(list);
+```
+
+#### 输入框获取焦点-放大/缩小页面（scale）
+
+```
+<div class="login-box">
+    <input type="text" id="login-input">
+</div>
+```
+
+```
+// var clientH = document.documentElement.clientHeight;
+// var clientW = document.documentElement.clientWidth;
+$(function(){
+    // $(".login-box").css({"width":clientW + "px","height":clientH + "px"});
+    $("#login-input").focus(function(){
+        zoomout();
+    })
+    $("#login-input").blur(function(){
+        zoomin();
+    })
+})
+var size = 1.0;
+
+function zoomout() {
+   size = size + 0.5;
+
+   set();
+ }
+
+function zoomin() {
+    size = size - 0.5;
+    set();
+}
+
+function set() {
+    document.body.style.cssText = document.body.style.cssText + '; -webkit-transform: scale(' + size + ');-webkit-transform-origin: 0 0;';
+}
+```
+
+#### 打开页面，直接跳转到百度
+
+```
+window.onload = function(){
+    // window.location.href = "http://baidu.com";
+    location.href = "http://baidu.com";
+}
+```
+
+#### 动态追加script脚本或js文件
+
+```
+function loadScript (url) {
+    loadScript.mark = 'load';
+    var script = document.createElement("script");
+    script.type = "type/javascript";
+    script.src = url;
+    document.body.appendChild(script);
+}
+
+// loadScript ("js/jquery.min.js");
+// console.log(loadScript.mark);
+
+var btn = document.getElementById('btn');
+btn.onclick = function () {
+    if(loadScript.mark != 'load') {
+        loadScript("js/script.js");
+    }
+}
+```
+
+#### 打开一个新的浏览器窗口
+
+[菜鸟教程](https://www.runoob.com/jsref/met-win-open.html)
+
+```
+<button onclick="openwindow()">创建窗口</button>
+```
+
+```
+var w = window;
+function openwindow(){
+    w.open('http://www.runoob.com','菜鸟教程', 'width=800,height=800');
+    w.focus();
+}
+```
+
+#### 捕获错误信息
+
+```
+var errorTxt = "";
+window.onerror = function(errorMessage, scriptURI, lineNumber,columnNumber,errorObj) { 
+    errorTxt = "接收到的错误信息如下：\n\n";
+    errorTxt += "错误信息：" + errorMessage + "\n";
+    errorTxt += "出错文件：" + scriptURI + "\n";
+    errorTxt += "出错行号：" + lineNumber + "\n";
+    errorTxt += "出错列号：" + columnNumber + "\n";
+    errorTxt += "错误详情：" + errorObj + "\n";
+
+    alert(errorTxt);
+} 
+```
+
+#### 阻止事件冒泡
+
+```
+oSpan.onclick = function(e){
+    // 阻止冒泡
+    e = e || event;
+    if(e.stopPropagation){
+        e.stopPropagation();
+    }else{
+        e.cancelBubble = true;
+    }
+}
+```
+

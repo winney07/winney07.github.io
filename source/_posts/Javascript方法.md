@@ -633,6 +633,10 @@ var newData= $.extend(true,{},data);;
 var isMobile = /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent);
 ```
 
+
+
+
+
 #### 判断输入框是否获取焦点
 
 ```
@@ -1325,5 +1329,38 @@ oSpan.onclick = function(e){
         e.cancelBubble = true;
     }
 }
+```
+
+#### 使用定时器是为了让输入框上滑时更加自然-移动端
+
+```
+var bfscrolltop = document.body.scrollTop;
+var interval;
+$("input").focus(function(){
+    interval = setInterval(function(){
+    document.body.scrollTop = document.body.scrollHeight;
+    },100)
+}).blur(function(){
+    clearInterval(interval);
+    document.body.scrollTop = bfscrolltop;
+});
+```
+
+#### jQuery插件扩展
+
+#### 数组里的字符串转换成数字或者把数字转换成字符串
+
+数字转字符串：
+
+```
+var arr = [1,2,3,4,5,6,7,8,9];
+arr.map(String);   // 结果: ['1','2'，'3','4'，'5','6','7','8','9']
+```
+
+字符串转数字：
+
+```
+var a = ['1','2'，'3','4'，'5','6','7','8','9'];
+a.map(Number);  // 结果:[1,2,3,4,5,6,7,8,9]
 ```
 

@@ -73,3 +73,35 @@ DocumentRoot "D:/Work/"
 </VirtualHost>
 ```
 
+#### 本地项目-配置服务器访问
+
+1、配置host（C:\Windows\System32\drivers\etc）
+
+例如：
+
+```
+127.0.0.1       localhost
+192.168.1.49    www.web.com
+```
+
+2、配置httpd-vhosts.conf（wampserver\bin\apache\apache2.4.23\conf\extra\httpd-vhosts.conf）
+
+例如：
+
+```
+#
+listen 8081
+<VirtualHost *:8081>
+    ServerName www.web.com
+    DocumentRoot "E:/wampserver/www/web"
+    <Directory "E:/wampserver/www/web">
+      Options Indexes FollowSymLinks
+      AllowOverride All
+      Order allow,deny
+      Allow from all
+    </Directory>
+</VirtualHost>
+#
+```
+
+3、访问的时候，使用www.web.com来访问本地项目

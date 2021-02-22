@@ -294,3 +294,35 @@ console.log(Dogs.prototype.__proto__ === Object.prototype);  //true
 console.log(Dogs.prototype.isPrototypeOf(DogsA));
 ```
 
+[JavaScript面向对象-原型的内存模型](http://www.htmleaf.com/ziliaoku/qianduanjiaocheng/201512142905.html)
+
+> 通过prototype创建的属性和方法，会存放在函数对象中的`__pro__`属性中，`__pro__`是一个对象
+>
+> 通过prototype创建的属性和方法，也会存放在该函数对象的`__pro__`属性中的constructor（例如：构造函数是Person)中的prototype中 
+
+创建一个对象是会给它分配内存空间的。
+
+通过构造函数的方法，创建一个对象出来，在新对象的内存空间中会有一个`_proto_`内部属性，这个内部属性是不能被访问的，它也指向构造函数（例如：`Person`）的原型。`_proto_`内部属性是隐藏的
+
+> 需要特别注意的是：原型中的值是不会被替换的，仅仅只是在属性查找时被对象自己空间中的同名属性所覆盖。
+
+[JavaScript面向对象-原型的重写](http://www.htmleaf.com/ziliaoku/qianduanjiaocheng/201512162910.html)
+
+#### 对象的创建方式不一样，存储位置不一样
+
+这里定义了两个对象，即使内容一样，但是存储位置不一样
+
+```
+var objectFoo = {same : 'same' };
+var objectBar = {same : 'same' };
+console.log(objectFoo == objectBar); // false
+```
+
+这里也是定义两个对象，但是它们的存储位置一样
+
+```
+var objectA = { foo: 'bar' };
+var objectB = objectA;
+console.log(objectA == objectB);  // true
+```
+

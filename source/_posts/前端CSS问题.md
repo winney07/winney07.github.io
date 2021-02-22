@@ -200,6 +200,16 @@ overflow: hidden;
  })(jQuery);
 ```
 
+要调整placeholder属性的样式，如果在谷歌浏览器下审核不了placeholder
+
+解决方法：
+
+1. F12，打开控制台
+2. 在控制台右上角，选择三个点（更多选项图标），选择“Settings"
+3. 将Show user agent shadow DOM勾选上
+
+
+
 #### 文本域(textarea)的提示文字(placeholder)换行显示
 
 ```
@@ -287,7 +297,69 @@ css样式：
 .main{position:fixed;top:38px;bottom:38px;width:100%;overflow:scroll;background-color:#f2f2f2;}
 ```
 
+#### cSS3 :nth-last-child()选择器
 
+规定属于其父元素的第二个子元素的每个p元素，从最后一个子元素开始计数∶
+
+```
+p:nth-last-child(2) {
+	background: #fff;
+}
+```
+
+#### chrome提示框（弹窗）字体模糊
+
+白己写的一个很简单的提示框，firefox , Safari , ie都清晰，但是chrome就惑觉很模糊
+
+ transform，z-index有可能导致这个问题
+
+#### 取消a标签在移动端点击时的蓝色:
+
+```
+-webkit-tap-highlight-color: rgba(255,255,255, 0);
+-webkit-user-select: none;
+-moz-user-focus: none;
+-moz-user-select: none;
+```
+
+#### 使用图片作为a标签的点击按钮时，当触发touchstart的时候，往往会有一个灰色的背景︰
+
+```
+a,a:hover,a:active,a:visited,a:link,a:focus{
+	-webkit-tap-highlight-color:rgba(0,0,0,0);
+	-webkit-tap-highlight-color: transparent;
+	outline:none;
+	background: none;
+	text-decoration: none;
+}
+```
+
+#### 改变选中内容的背景颜色
+
+```
+::selection {
+	background: #FFF;
+	color: #333;
+}
+::-moz-selection {
+	background: #FFF;
+	color: #333;
+)
+::-webkit-selection {
+	background:#FFF;
+	color: #333;
+}
+```
+
+#### 去除ios input框点击时的灰色背景︰
+
+```
+-webkit-tap-highlight-color:rgba(0,0,0,0);
+```
+
+#### 解决IE阴影兼容性
+
+[ie-css3.htc](https://www.cnblogs.com/viewcozy/p/4828122.html)       [CSS3PIe]( http://css3pie.com/about/)
 
 #### IE样式的兼容写法
 

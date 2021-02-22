@@ -20,8 +20,6 @@ function getStyle(element) {
 }
 ```
 
-
-
 #### 闭包
 
 ```
@@ -527,7 +525,41 @@ console.log(cat);
 console.log(window);
 ```
 
+#### 基本数据类型(值类型)
 
+- number
+
+- string
+
+- boolean
+
+- null
+
+- undefined
+
+#### 引用数据类型
+
+- 对象
+
+  - 普通对象
+- 数组
+  - /^$/正则
+- Math对象数据类型的
+  - ....
+
+- 函数
+
+  - function普通函数
+  - 类
+  - .....
+
+#### 变量提升（预解释）
+
+- 基础概念（变量提升和作用域链)
+- 定义变量带var和不带var的区别
+- 只对等号左边的进行变量提升
+- 不管条件是否成立都要进行预解释
+- 重名的处理
 
 #### 打印当前时间
 
@@ -537,3 +569,98 @@ console.log(window);
 </a>
 ```
 
+#### window
+
+变量提升
+
+```
+var num;
+fn = aaafff111
+
+function aaafff111() {
+	console.log(a);
+    var a = 10;
+    console.log(a);
+}
+```
+
+代码执行：
+
+```
+num => undefined
+fn => 函数本身
+
+num= 13: //->提升阶段已经完成声明了，此处不需要再var，但是没有定义过，所以此处还需要重新的赋值
+//->遇到创建fn的代码直接跳过∶在提升阶段声明和定义都做过了
+
+fn()
+num => 13
+```
+
+#### fn()
+
+```
+变量提升: var a; //->在私有作用域中声明的变量都是私有变量代码执行
+a => undefined
+a = 10;
+a => 10;
+```
+
+#### window全局作用域
+
+```
+var a = 12;
+var b = a; ->b = 12
+b = 13;
+a=>12
+```
+
+```
+var o = xxxfff000
+var p = o; ->p = xxxfff000 
+p.name ="周啸天"
+
+xxxfff000是地址
+```
+
+xxxfff000
+
+> name :“~~珠峰培训~~“
+> 				"周啸天”
+
+```
+var m = aaafff111
+var n =m; ->n = aaafff111
+n = aaafff222
+fn = aaafff333
+```
+
+aaafff111
+
+> name :“珠峰培训“
+
+aaafff222
+
+> name :“中国最权威...“
+
+aaafff333
+
+> "var
+> ary=Array.prototype.slice.call(arguments);
+> return
+> evalary.join(" + ):"
+
+fn(..)私有的（作用域）
+
+```
+var ary =
+Array.prototype...
+...
+```
+
+#### jq里面用this和用$(this)有什么区别
+
+this表示的是javascript提供的当前对象
+$(this)表示的是用jquery封装候的当前对象
+this对象可以直接用this.style修改样式
+$(this)可以使用jquery提供的方法访问样式

@@ -8,6 +8,10 @@ categories:
 - Git
 ---
 
+#### Github创建仓库
+
+{% asset_img create.png %}
+
 ### Git常用命令速查表
 
 #### 创建版本库

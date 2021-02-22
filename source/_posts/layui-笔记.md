@@ -8,6 +8,8 @@ categories:
 - layui
 ---
 
+[layui-github](https://github.com/sentsin/layui)
+
 #### 判断复选框是否选中(获取复选框的值)
 
 ```
@@ -158,5 +160,62 @@ layui.use(['mymd'], function(){
   mymd.hash = md5;   //md5加密方法
   console.log(mymd.hash("md5加密"));
 });
+```
+
+#### laypage
+
+```
+layui.use(['laypage', 'layer'], function(){
+  var laypage = layui.laypage
+  ,layer = layui.layer;
+  
+  //完整功能
+  laypage.render({
+    elem: 'demo7'
+    ,count: 100
+    ,layout: ['count', 'prev', 'page', 'next', 'limit', 'skip']
+    ,jump: function(obj){
+      console.log(obj)
+    }
+  });
+  
+});
+```
+
+#### layui日期时间段的设置，开始时间-结束时间
+
+```
+var nowTime = new Date( ).valueOf( );
+
+var start = laydate.render({
+	elem: "#start",
+	min: nowTime,
+	done: function(value, date) {
+		endMax = end.config.max;
+		end.config.min = date;     // 根据开始时间来设置结束时间的最小值/最大值
+		end.config.min.month = date.month - 1;
+	}
+})
+
+var end = laydate.render({
+	elem: "#end",
+	min：nowTime,   //  结束时间初始化的时候要设置一个值，不然开始时间的回调中，设置了也不起作用。初始化的时候就要写上nowTime这个，不然动态控制不了
+	done: function(value, date) {
+		
+	}
+})
+```
+
+#### laytui表格内容超过表格长度的处理
+
+当表格内容的文字长度超过表格的长度的时候，点击内容，会出现如图：
+
+{% asset_img note7.png %}
+
+解决方法：
+
+```
+.layui-table-tips-main{display:none}
+.layui-table-tips-c{display:none}
 ```
 

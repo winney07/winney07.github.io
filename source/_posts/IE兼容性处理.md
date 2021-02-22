@@ -34,9 +34,10 @@ function isIE() { //ie?
 
 {% asset_img ie-fixed.png %}
 
-解决：使用相对定位（absolute），弹出蒙层，body使用overflow:hidden样式，控制页面不滚动。
+解决：
 
-
+1. 使用相对定位（absolute），弹出蒙层
+2. body使用overflow:hidden样式，让body溢出隐藏，控制页面不滚动。
 
 #### 去除IE10中输入框和密码框的X按钮和小眼睛
 
@@ -77,5 +78,73 @@ a:active{
 <input type="checkbox" CHECKED="" />
 
 所以js获取checked时，要考虑ie的情况。
+```
+
+#### ie 下input输入框readonly失效,光标仍可聚焦
+
+> ie下input输入框设置了readonly属性,但是鼠标还可以点击光标聚焦,
+>
+> 改为bootstrap的disable属性后,无法聚焦但是表单提交又失效,无法传递参数,
+>
+> 而且聚焦后,backspace按键默认触发浏览器的返回功能,
+>
+> 后改为增加屈性unselectable='on',可以解决.
+
+```
+$("#config_name'+index).attr("readonly", "readonly");
+$("#config_name'+index ).attr("unselectable", "on");
+```
+
+```
+<pre name="code" class="javascript">$('#config_name'+index) .removeAttr("unselectable");
+```
+
+#### 文件上传按钮（input type= "file"）
+
+美化后的按钮，在在ie浏览器下要双击才能打开
+
+{% asset_img input-file.png %}
+
+{% asset_img input-file2.png %}
+
+{% asset_img input-file3.png %}
+
+> 目的是让选择文件的文字铺满该按钮，可以点击
+
+
+
+#### a标签添加事件的注意事项
+
+```
+<a href="javascript:void(0);" class="refresh-icon"></a>
+```
+
+> 当不添加链接的时候，只是为了触发事件的时候，要加上void(0);不然在IE浏览器会报错
+
+#### 解决IE下a标签点击有虚线边框的问题
+
+```
+a:focus{outline:none;}
+```
+
+#### IE上设置input type = file文件上传区域的光标不闪烁
+
+我们使用文件上传时,时常自定义图标,这时候通常会把input的透明度设置为0,然后覆盖在一个按钮上实现自定义图标，但是在IE上使用时会出现光标闪烁问题
+
+解决办法: css设置font-size为0
+
+#### js判断浏览器是否为IE浏览器
+
+IE6-8和IE11都适用:
+
+```
+function isIE() {
+	if (!!window.Activexobject || "Activexobject" in window)
+ 		return true;
+ 	}
+	else{
+ 		return false;
+ 	}
+}
 ```
 

@@ -8,6 +8,10 @@ categories:
 - HTML
 ---
 
+{% asset_img note1.png  %}
+
+{% asset_img note2.png  %}
+
 1、html
 
 HTML：hyperText markup language (超文本标记语言）

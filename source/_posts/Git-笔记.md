@@ -8,6 +8,32 @@ categories:
 - Git
 ---
 
+#### 提交到远程仓库报错
+
+```
+OpenSSL SSL_connect: Connection was reset in connection to github.com:443
+ 
+ 或
+ 
+OpenSSL SSL_connect: Connection was reset in connection to github.com:403
+```
+
+解决方法，将.git/config：
+
+```
+[remote "origin"]
+	url = https://github.com/winney07/winney07.github.io.git
+```
+
+改为：
+
+```
+[remote "origin"]
+	url = git@github.com:winney07/winney07.github.io.git
+```
+
+
+
 #### Github创建仓库
 
 {% asset_img create.png %}

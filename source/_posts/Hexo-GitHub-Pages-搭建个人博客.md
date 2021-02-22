@@ -238,3 +238,20 @@ search:
 ```bash
 hexo server    //简写为hexo s
 ```
+
+#### 提交到远程仓库报错
+
+报403或者每次提交都要输入账号密码
+
+可以将_config.yml里的
+
+```
+repository: https://github.com/winney07/winney07.github.io.git   #仓库地址
+```
+
+改为：
+
+```
+repository: git@github.com:winney07/winney07.github.io.git   #仓库地址
+```
+

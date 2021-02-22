@@ -61,6 +61,27 @@
       </tags>
   </entry>
   <entry>
+    <title>Clipboard的使用</title>
+    <url>/2020/11/04/Clipboard%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<h4 id="如果存在clipboard-先将它销毁"><a href="#如果存在clipboard-先将它销毁" class="headerlink" title="如果存在clipboard,先将它销毁"></a>如果存在clipboard,先将它销毁</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">if(clipboard) &#123;</span><br><span class="line">    clipboard.destroy();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="Clipboard官网使用教程"><a href="#Clipboard官网使用教程" class="headerlink" title="Clipboard官网使用教程"></a><a href="http://www.clipboardjs.cn/">Clipboard官网使用教程</a></h5><h5 id="复制成功和复制失败的提示"><a href="#复制成功和复制失败的提示" class="headerlink" title="复制成功和复制失败的提示"></a>复制成功和复制失败的提示</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var u &#x3D; navigator.userAgent;</span><br><span class="line">clipboard.on(&#39;success&#39;, function(e) &#123;</span><br><span class="line">    layer.msg(&#39;复制成功&#39;, &#123;time: 1000&#125;);</span><br><span class="line">    e.clearSelection();</span><br><span class="line">&#125;);</span><br><span class="line">clipboard.on(&#39;error&#39;, function(e) &#123;</span><br><span class="line">    if(u.indexOf(&#39;UCBrowser&#39;) &gt; -1)&#123;</span><br><span class="line">        layer.msg(&#39;您的浏览器不支持，请长按内容手动复制！&#39;, &#123;time: 1000&#125;);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        layer.msg(&#39;复制失败&#39;, &#123;time: 1000&#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h5 id="如果提示信息弹两次"><a href="#如果提示信息弹两次" class="headerlink" title="如果提示信息弹两次"></a>如果提示信息弹两次</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">自己写一个copySuccessTip提示信息</span><br><span class="line">$(&quot;.copySuccessTip&quot;).addClass(&quot;mymove&quot;);</span><br><span class="line">setTimeout(function() &#123;</span><br><span class="line">    $(&quot;.copySuccessTip&quot;).removeClass(&quot;mymove&quot;);</span><br><span class="line">&#125;,1000);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">引入图片：</span><br><span class="line">&#123;% asset_img css1.png %&#125;</span><br><span class="line">引入链接：</span><br><span class="line">[参考的博客](https:&#x2F;&#x2F;juejin.im&#x2F;post&#x2F;5b15022ff265da6e163720c6)</span><br></pre></td></tr></table></figure>
+<h4 id="解决clipboard复制弹多次提示的问题"><a href="#解决clipboard复制弹多次提示的问题" class="headerlink" title="解决clipboard复制弹多次提示的问题"></a>解决clipboard复制弹多次提示的问题</h4><p>1、使用destroy（在单页面里面，回来页面，如果存在这个对象，就删除。）</p>
+<img src="/2020/11/04/Clipboard%E7%9A%84%E4%BD%BF%E7%94%A8/note1.png" class="">
+
+<p>2、换成setTimeout，不用layer.msg（copySuccessTip的样式模拟layer.msg的样式即可）</p>
+<img src="/2020/11/04/Clipboard%E7%9A%84%E4%BD%BF%E7%94%A8/note2.png" class="">]]></content>
+      <categories>
+        <category>工作笔记</category>
+        <category>Clipboard</category>
+      </categories>
+      <tags>
+        <tag>Clipboard</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>ECMAScript 6简介</title>
     <url>/2019/07/04/ECMAScript-6%E7%AE%80%E4%BB%8B/</url>
     <content><![CDATA[<a href="http://es6.ruanyifeng.com/" title="" target="">阮一峰-ECMAScript 6</a> 
@@ -93,27 +114,6 @@
       </categories>
       <tags>
         <tag>阮一峰-ES6</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Clipboard的使用</title>
-    <url>/2020/11/04/Clipboard%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
-    <content><![CDATA[<h4 id="如果存在clipboard-先将它销毁"><a href="#如果存在clipboard-先将它销毁" class="headerlink" title="如果存在clipboard,先将它销毁"></a>如果存在clipboard,先将它销毁</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">if(clipboard) &#123;</span><br><span class="line">    clipboard.destroy();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="Clipboard官网使用教程"><a href="#Clipboard官网使用教程" class="headerlink" title="Clipboard官网使用教程"></a><a href="http://www.clipboardjs.cn/">Clipboard官网使用教程</a></h5><h5 id="复制成功和复制失败的提示"><a href="#复制成功和复制失败的提示" class="headerlink" title="复制成功和复制失败的提示"></a>复制成功和复制失败的提示</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var u &#x3D; navigator.userAgent;</span><br><span class="line">clipboard.on(&#39;success&#39;, function(e) &#123;</span><br><span class="line">    layer.msg(&#39;复制成功&#39;, &#123;time: 1000&#125;);</span><br><span class="line">    e.clearSelection();</span><br><span class="line">&#125;);</span><br><span class="line">clipboard.on(&#39;error&#39;, function(e) &#123;</span><br><span class="line">    if(u.indexOf(&#39;UCBrowser&#39;) &gt; -1)&#123;</span><br><span class="line">        layer.msg(&#39;您的浏览器不支持，请长按内容手动复制！&#39;, &#123;time: 1000&#125;);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        layer.msg(&#39;复制失败&#39;, &#123;time: 1000&#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h5 id="如果提示信息弹两次"><a href="#如果提示信息弹两次" class="headerlink" title="如果提示信息弹两次"></a>如果提示信息弹两次</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">自己写一个copySuccessTip提示信息</span><br><span class="line">$(&quot;.copySuccessTip&quot;).addClass(&quot;mymove&quot;);</span><br><span class="line">setTimeout(function() &#123;</span><br><span class="line">    $(&quot;.copySuccessTip&quot;).removeClass(&quot;mymove&quot;);</span><br><span class="line">&#125;,1000);</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">引入图片：</span><br><span class="line">&#123;% asset_img css1.png %&#125;</span><br><span class="line">引入链接：</span><br><span class="line">[参考的博客](https:&#x2F;&#x2F;juejin.im&#x2F;post&#x2F;5b15022ff265da6e163720c6)</span><br></pre></td></tr></table></figure>
-<h4 id="解决clipboard复制弹多次提示的问题"><a href="#解决clipboard复制弹多次提示的问题" class="headerlink" title="解决clipboard复制弹多次提示的问题"></a>解决clipboard复制弹多次提示的问题</h4><p>1、使用destroy（在单页面里面，回来页面，如果存在这个对象，就删除。）</p>
-<img src="/2020/11/04/Clipboard%E7%9A%84%E4%BD%BF%E7%94%A8/note1.png" class="">
-
-<p>2、换成setTimeout，不用layer.msg（copySuccessTip的样式模拟layer.msg的样式即可）</p>
-<img src="/2020/11/04/Clipboard%E7%9A%84%E4%BD%BF%E7%94%A8/note2.png" class="">]]></content>
-      <categories>
-        <category>工作笔记</category>
-        <category>Clipboard</category>
-      </categories>
-      <tags>
-        <tag>Clipboard</tag>
       </tags>
   </entry>
   <entry>
@@ -316,215 +316,6 @@ limitations under the License.</code></pre>
       </categories>
       <tags>
         <tag>FastAdmin框架</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Git-笔记</title>
-    <url>/2021/01/14/Git-%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h4 id="提交到远程仓库报错"><a href="#提交到远程仓库报错" class="headerlink" title="提交到远程仓库报错"></a>提交到远程仓库报错</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">OpenSSL SSL_connect: Connection was reset in connection to github.com:443</span><br><span class="line"> </span><br><span class="line"> 或</span><br><span class="line"> </span><br><span class="line">OpenSSL SSL_connect: Connection was reset in connection to github.com:403</span><br></pre></td></tr></table></figure>
-<p>解决方法，将.git/config：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[remote &quot;origin&quot;]</span><br><span class="line">	url &#x3D; https:&#x2F;&#x2F;github.com&#x2F;winney07&#x2F;winney07.github.io.git</span><br></pre></td></tr></table></figure>
-<p>改为：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[remote &quot;origin&quot;]</span><br><span class="line">	url &#x3D; git@github.com:winney07&#x2F;winney07.github.io.git</span><br></pre></td></tr></table></figure>
-
-
-<h4 id="Github创建仓库"><a href="#Github创建仓库" class="headerlink" title="Github创建仓库"></a>Github创建仓库</h4><img src="/2021/01/14/Git-%E7%AC%94%E8%AE%B0/create.png" class="">
-
-<h3 id="Git常用命令速查表"><a href="#Git常用命令速查表" class="headerlink" title="Git常用命令速查表"></a>Git常用命令速查表</h3><h4 id="创建版本库"><a href="#创建版本库" class="headerlink" title="创建版本库"></a>创建版本库</h4><ol>
-<li><p>克隆远程版本库</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone &lt;url&gt;</span><br></pre></td></tr></table></figure></li>
-<li><p>初始化本地版本库</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
-<h4 id="修改和提交"><a href="#修改和提交" class="headerlink" title="修改和提交"></a>修改和提交</h4></li>
-<li><p>查看状态</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure></li>
-<li><p>查看变更内容</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git diff</span><br></pre></td></tr></table></figure></li>
-<li><p>跟踪所有改动过的文件</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></table></figure></li>
-<li><p>跟踪指定的文件</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git add &lt;file&gt;</span><br></pre></td></tr></table></figure></li>
-<li><p>文件改名</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git mv &lt;old&gt; &lt;new&gt;</span><br></pre></td></tr></table></figure></li>
-<li><p>删除文件</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git rm &lt;file&gt;</span><br></pre></td></tr></table></figure></li>
-<li><p>停止跟踪文件但不删除</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git rm --cached &lt;file&gt;</span><br></pre></td></tr></table></figure></li>
-<li><p>提交所有更新过的文件</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git commit -m &quot;commit message&quot;</span><br></pre></td></tr></table></figure></li>
-<li><p>修改最后一次提交</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git commit --amend</span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ol>
-<h4 id="查看提交历史"><a href="#查看提交历史" class="headerlink" title="查看提交历史"></a>查看提交历史</h4><ol>
-<li><p>查看提交历史</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git log</span><br></pre></td></tr></table></figure></li>
-<li><p>查看指定文件的提交历史</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git log -p &lt;file&gt;</span><br></pre></td></tr></table></figure></li>
-<li><p>以列表方式查看指定文件的提交历史</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git blame &lt;file&gt;</span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ol>
-<h4 id="撤销"><a href="#撤销" class="headerlink" title="撤销"></a>撤销</h4><ol>
-<li><p>撤销工作目录中所有未提交文件的修改内容</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git reset --hard HEAD</span><br></pre></td></tr></table></figure></li>
-<li><p>撤销指定的未提交文件的修改内容</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git checkout HEAD &lt;file&gt;</span><br></pre></td></tr></table></figure></li>
-<li><p>撤销指定的提交</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git revert &lt;commit&gt;</span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ol>
-<h4 id="分支与标签"><a href="#分支与标签" class="headerlink" title="分支与标签"></a>分支与标签</h4><ol>
-<li><p>显示所有本地分支</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git branch</span><br></pre></td></tr></table></figure></li>
-<li><p>切换到指定分支或标签</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git checkout &lt;branch&#x2F;tag&gt;</span><br></pre></td></tr></table></figure></li>
-<li><p>创建新分支</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git branch &lt;new-branch&gt;</span><br></pre></td></tr></table></figure></li>
-<li><p>删除本地分支</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git branch -d &lt;branch&gt;</span><br></pre></td></tr></table></figure></li>
-<li><p>列出所有本地标签</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git tag</span><br></pre></td></tr></table></figure></li>
-<li><p>给予最新提交创建标签</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git tag &lt;tagname&gt;</span><br></pre></td></tr></table></figure></li>
-<li><p>删除标签</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git tag -d &lt;tagname&gt;</span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ol>
-<h4 id="合并与衍合"><a href="#合并与衍合" class="headerlink" title="合并与衍合"></a>合并与衍合</h4><ol>
-<li><p>合并指定分支到当前分支</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git merge &lt;branch&gt;</span><br></pre></td></tr></table></figure></li>
-<li><p>衍合指定分支到当前分支</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git rebase &lt;branch&gt;</span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ol>
-<h4 id="远程操作"><a href="#远程操作" class="headerlink" title="远程操作"></a>远程操作</h4><ol>
-<li><p>查看远程版本库信息</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git remote -v</span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ol>
-<ol start="2">
-<li><p>查看指定远程版本库信息</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git remote show &lt;remote&gt;</span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ol>
-<ol start="3">
-<li><p>添加远程版本库</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git remote add &lt;remote&gt; &lt;url&gt;</span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ol>
-<ol start="4">
-<li><p>从远程库获取代码</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git fetch &lt;remote&gt;</span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ol>
-<ol start="5">
-<li><p>下载代码及快速合并</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git pull &lt;remote&gt; &lt;branch&gt;</span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ol>
-<ol start="6">
-<li><p>上传代码及快速合并</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git push &lt;remote&gt; &lt;branch&gt;</span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ol>
-<ol start="7">
-<li><p>删除远程分支或标签</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git pull &lt;remote&gt; : &lt;branch&#x2F;tag-name&gt;</span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ol>
-<ol start="8">
-<li><p>上传所有标签</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git push --tags</span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ol>
-<h3 id="管理分支"><a href="#管理分支" class="headerlink" title="管理分支"></a>管理分支</h3><h4 id="1、查看本地分支"><a href="#1、查看本地分支" class="headerlink" title="1、查看本地分支"></a>1、查看本地分支</h4><p>使用 git branch命令，如下：</p>
-<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="variable">$ </span>git branch</span><br><span class="line">* master</span><br></pre></td></tr></table></figure>
-<p>*<strong>标识的是你当前所在的分支。</strong></p>
-<h4 id="2、查看远程分支"><a href="#2、查看远程分支" class="headerlink" title="2、查看远程分支"></a>2、查看远程分支</h4><p>命令如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git branch -r</span><br></pre></td></tr></table></figure>
-<h4 id="3、查看所有分支"><a href="#3、查看所有分支" class="headerlink" title="3、查看所有分支"></a>3、查看所有分支</h4><p>命令如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git branch -a</span><br></pre></td></tr></table></figure>
-<h4 id="2、本地创建新的分支"><a href="#2、本地创建新的分支" class="headerlink" title="2、本地创建新的分支"></a>2、本地创建新的分支</h4><p>命令如下：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">git</span> <span class="selector-tag">branch</span> <span class="selector-attr">[branch name]</span></span><br></pre></td></tr></table></figure>
-<p>例如：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git branch save</span><br></pre></td></tr></table></figure>
-<h4 id="3、切换到新的分支"><a href="#3、切换到新的分支" class="headerlink" title="3、切换到新的分支"></a>3、切换到新的分支</h4><p>命令如下：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">git</span> <span class="selector-tag">checkout</span> <span class="selector-attr">[branch name]</span></span><br></pre></td></tr></table></figure>
-<p>例如：</p>
-<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="variable">$ </span>git checkout save</span><br></pre></td></tr></table></figure>
-<h4 id="4、创建-切换分支"><a href="#4、创建-切换分支" class="headerlink" title="4、创建+切换分支"></a>4、创建+切换分支</h4><p>创建分支的同时切换到该分支上，命令如下：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">git</span> <span class="selector-tag">checkout</span> <span class="selector-tag">-b</span> <span class="selector-attr">[branch name]</span></span><br></pre></td></tr></table></figure>
-<p>git checkout -b [branch name] 的效果相当于以下两步操作：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">git</span> <span class="selector-tag">branch</span> <span class="selector-attr">[branch name]</span></span><br><span class="line"><span class="selector-tag">git</span> <span class="selector-tag">checkout</span> <span class="selector-attr">[branch name]</span></span><br></pre></td></tr></table></figure>
-<h4 id="5、将新分支推送到github"><a href="#5、将新分支推送到github" class="headerlink" title="5、将新分支推送到github"></a>5、将新分支推送到github</h4><p>命令如下：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">git</span> <span class="selector-tag">push</span> <span class="selector-tag">origin</span> <span class="selector-attr">[branch name]</span></span><br></pre></td></tr></table></figure>
-<p>例如：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git push origin save</span><br></pre></td></tr></table></figure>
-<h4 id="6、删除本地分支"><a href="#6、删除本地分支" class="headerlink" title="6、删除本地分支"></a>6、删除本地分支</h4><p>命令如下：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">git</span> <span class="selector-tag">branch</span> <span class="selector-tag">-d</span> <span class="selector-attr">[branch name]</span></span><br></pre></td></tr></table></figure>
-<p>例如：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git branch -d save</span><br></pre></td></tr></table></figure>
-<h4 id="7、删除github远程分支"><a href="#7、删除github远程分支" class="headerlink" title="7、删除github远程分支"></a>7、删除github远程分支</h4><p>命令如下：</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">git</span> <span class="selector-tag">push</span> <span class="selector-tag">origin</span> :<span class="selector-attr">[branch name]</span></span><br></pre></td></tr></table></figure>
-<p>分支名前的冒号代表删除。<br> 例如：</p>
-<p>git push origin :save</p>
-<h4 id="查看配置信息"><a href="#查看配置信息" class="headerlink" title="查看配置信息"></a>查看配置信息</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git config --list</span><br></pre></td></tr></table></figure>
-<h4 id="查看状态"><a href="#查看状态" class="headerlink" title="查看状态"></a>查看状态</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure>
-<h4 id="提交工作区文件到暂存区"><a href="#提交工作区文件到暂存区" class="headerlink" title="提交工作区文件到暂存区"></a>提交工作区文件到暂存区</h4><ol>
-<li><p>提交工作区中所有文件到暂存区</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></table></figure></li>
-<li><p>提交工作区中指定文件到暂存区</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git add &lt;file1&gt; &lt;file2&gt; </span><br></pre></td></tr></table></figure></li>
-<li><p>提交工作区中某个文件夹中所有文件到暂存区</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git add [dir]</span><br></pre></td></tr></table></figure>
-<h4 id="提交到本地仓库"><a href="#提交到本地仓库" class="headerlink" title="提交到本地仓库"></a>提交到本地仓库</h4></li>
-<li><p>将暂存区中的文件提交到本地仓库中，即打上新版本</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git commit -m &quot;commit_info&quot;</span><br></pre></td></tr></table></figure></li>
-<li><p>将所有已经使用git管理过的文件暂存后一并提交，跳过add到暂存区的过程</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git commit -a -m “commit_info”</span><br></pre></td></tr></table></figure></li>
-<li><p>提交文件时，发现漏掉几个文件，或者注释写错了，可以撤销上一次提交</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git commit --amend</span><br></pre></td></tr></table></figure>
-<h4 id="查看本地仓库关联的远程仓库"><a href="#查看本地仓库关联的远程仓库" class="headerlink" title="查看本地仓库关联的远程仓库"></a>查看本地仓库关联的远程仓库</h4></li>
-<li><p>查看本地仓库关联的远程仓库</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git remote</span><br></pre></td></tr></table></figure></li>
-<li><p>查看远程仓库的url地址</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git remote -v</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>工作笔记</category>
-        <category>Git</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
       </tags>
   </entry>
   <entry>
@@ -852,6 +643,220 @@ limitations under the License.</code></pre>
       </tags>
   </entry>
   <entry>
+    <title>Git-笔记</title>
+    <url>/2021/01/14/Git-%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h4 id="提交到远程仓库报错"><a href="#提交到远程仓库报错" class="headerlink" title="提交到远程仓库报错"></a>提交到远程仓库报错</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">OpenSSL SSL_connect: Connection was reset in connection to github.com:443</span><br><span class="line"> </span><br><span class="line"> 或</span><br><span class="line"> </span><br><span class="line">OpenSSL SSL_connect: Connection was reset in connection to github.com:403</span><br></pre></td></tr></table></figure>
+<p>解决方法，将.git/config：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[remote &quot;origin&quot;]</span><br><span class="line">	url &#x3D; https:&#x2F;&#x2F;github.com&#x2F;winney07&#x2F;winney07.github.io.git</span><br></pre></td></tr></table></figure>
+<p>改为：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[remote &quot;origin&quot;]</span><br><span class="line">	url &#x3D; git@github.com:winney07&#x2F;winney07.github.io.git</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="Github创建仓库"><a href="#Github创建仓库" class="headerlink" title="Github创建仓库"></a>Github创建仓库</h4><img src="/2021/01/14/Git-%E7%AC%94%E8%AE%B0/create.png" class="">
+
+<h3 id="Git常用命令速查表"><a href="#Git常用命令速查表" class="headerlink" title="Git常用命令速查表"></a>Git常用命令速查表</h3><h4 id="创建版本库"><a href="#创建版本库" class="headerlink" title="创建版本库"></a>创建版本库</h4><ol>
+<li><p>克隆远程版本库</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone &lt;url&gt;</span><br></pre></td></tr></table></figure></li>
+<li><p>初始化本地版本库</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
+<h4 id="修改和提交"><a href="#修改和提交" class="headerlink" title="修改和提交"></a>修改和提交</h4></li>
+<li><p>查看状态</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure></li>
+<li><p>查看变更内容</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git diff</span><br></pre></td></tr></table></figure></li>
+<li><p>跟踪所有改动过的文件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></table></figure></li>
+<li><p>跟踪指定的文件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git add &lt;file&gt;</span><br></pre></td></tr></table></figure></li>
+<li><p>文件改名</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git mv &lt;old&gt; &lt;new&gt;</span><br></pre></td></tr></table></figure></li>
+<li><p>删除文件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git rm &lt;file&gt;</span><br></pre></td></tr></table></figure></li>
+<li><p>停止跟踪文件但不删除</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git rm --cached &lt;file&gt;</span><br></pre></td></tr></table></figure></li>
+<li><p>提交所有更新过的文件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git commit -m &quot;commit message&quot;</span><br></pre></td></tr></table></figure></li>
+<li><p>修改最后一次提交</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git commit --amend</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ol>
+<h4 id="查看提交历史"><a href="#查看提交历史" class="headerlink" title="查看提交历史"></a>查看提交历史</h4><ol>
+<li><p>查看提交历史</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git log</span><br></pre></td></tr></table></figure></li>
+<li><p>查看指定文件的提交历史</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git log -p &lt;file&gt;</span><br></pre></td></tr></table></figure></li>
+<li><p>以列表方式查看指定文件的提交历史</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git blame &lt;file&gt;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ol>
+<h4 id="撤销"><a href="#撤销" class="headerlink" title="撤销"></a>撤销</h4><ol>
+<li><p>撤销工作目录中所有未提交文件的修改内容</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git reset --hard HEAD</span><br></pre></td></tr></table></figure></li>
+<li><p>撤销指定的未提交文件的修改内容</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git checkout HEAD &lt;file&gt;</span><br></pre></td></tr></table></figure></li>
+<li><p>撤销指定的提交</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git revert &lt;commit&gt;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ol>
+<h4 id="分支与标签"><a href="#分支与标签" class="headerlink" title="分支与标签"></a>分支与标签</h4><ol>
+<li><p>显示所有本地分支</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git branch</span><br></pre></td></tr></table></figure></li>
+<li><p>切换到指定分支或标签</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git checkout &lt;branch&#x2F;tag&gt;</span><br></pre></td></tr></table></figure></li>
+<li><p>创建新分支</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git branch &lt;new-branch&gt;</span><br></pre></td></tr></table></figure></li>
+<li><p>删除本地分支</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git branch -d &lt;branch&gt;</span><br></pre></td></tr></table></figure></li>
+<li><p>列出所有本地标签</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git tag</span><br></pre></td></tr></table></figure></li>
+<li><p>给予最新提交创建标签</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git tag &lt;tagname&gt;</span><br></pre></td></tr></table></figure></li>
+<li><p>删除标签</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git tag -d &lt;tagname&gt;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ol>
+<h4 id="合并与衍合"><a href="#合并与衍合" class="headerlink" title="合并与衍合"></a>合并与衍合</h4><ol>
+<li><p>合并指定分支到当前分支</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git merge &lt;branch&gt;</span><br></pre></td></tr></table></figure></li>
+<li><p>衍合指定分支到当前分支</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git rebase &lt;branch&gt;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ol>
+<h4 id="远程操作"><a href="#远程操作" class="headerlink" title="远程操作"></a>远程操作</h4><ol>
+<li><p>查看远程版本库信息</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git remote -v</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ol>
+<ol start="2">
+<li><p>查看指定远程版本库信息</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git remote show &lt;remote&gt;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ol>
+<ol start="3">
+<li><p>添加远程版本库</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git remote add &lt;remote&gt; &lt;url&gt;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ol>
+<ol start="4">
+<li><p>从远程库获取代码</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git fetch &lt;remote&gt;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ol>
+<ol start="5">
+<li><p>下载代码及快速合并</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git pull &lt;remote&gt; &lt;branch&gt;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ol>
+<ol start="6">
+<li><p>上传代码及快速合并</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git push &lt;remote&gt; &lt;branch&gt;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ol>
+<ol start="7">
+<li><p>删除远程分支或标签</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git pull &lt;remote&gt; : &lt;branch&#x2F;tag-name&gt;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ol>
+<ol start="8">
+<li><p>上传所有标签</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git push --tags</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ol>
+<h3 id="管理分支"><a href="#管理分支" class="headerlink" title="管理分支"></a>管理分支</h3><h4 id="1、查看本地分支"><a href="#1、查看本地分支" class="headerlink" title="1、查看本地分支"></a>1、查看本地分支</h4><p>使用 git branch命令，如下：</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="variable">$ </span>git branch</span><br><span class="line">* master</span><br></pre></td></tr></table></figure>
+<p>*<strong>标识的是你当前所在的分支。</strong></p>
+<h4 id="2、查看远程分支"><a href="#2、查看远程分支" class="headerlink" title="2、查看远程分支"></a>2、查看远程分支</h4><p>命令如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git branch -r</span><br></pre></td></tr></table></figure>
+<h4 id="3、查看所有分支"><a href="#3、查看所有分支" class="headerlink" title="3、查看所有分支"></a>3、查看所有分支</h4><p>命令如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git branch -a</span><br></pre></td></tr></table></figure>
+<h4 id="2、本地创建新的分支"><a href="#2、本地创建新的分支" class="headerlink" title="2、本地创建新的分支"></a>2、本地创建新的分支</h4><p>命令如下：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">git</span> <span class="selector-tag">branch</span> <span class="selector-attr">[branch name]</span></span><br></pre></td></tr></table></figure>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git branch save</span><br></pre></td></tr></table></figure>
+<h4 id="3、切换到新的分支"><a href="#3、切换到新的分支" class="headerlink" title="3、切换到新的分支"></a>3、切换到新的分支</h4><p>命令如下：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">git</span> <span class="selector-tag">checkout</span> <span class="selector-attr">[branch name]</span></span><br></pre></td></tr></table></figure>
+<p>例如：</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="variable">$ </span>git checkout save</span><br></pre></td></tr></table></figure>
+<h4 id="4、创建-切换分支"><a href="#4、创建-切换分支" class="headerlink" title="4、创建+切换分支"></a>4、创建+切换分支</h4><p>创建分支的同时切换到该分支上，命令如下：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">git</span> <span class="selector-tag">checkout</span> <span class="selector-tag">-b</span> <span class="selector-attr">[branch name]</span></span><br></pre></td></tr></table></figure>
+<p>git checkout -b [branch name] 的效果相当于以下两步操作：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">git</span> <span class="selector-tag">branch</span> <span class="selector-attr">[branch name]</span></span><br><span class="line"><span class="selector-tag">git</span> <span class="selector-tag">checkout</span> <span class="selector-attr">[branch name]</span></span><br></pre></td></tr></table></figure>
+<h4 id="5、将新分支推送到github"><a href="#5、将新分支推送到github" class="headerlink" title="5、将新分支推送到github"></a>5、将新分支推送到github</h4><p>命令如下：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">git</span> <span class="selector-tag">push</span> <span class="selector-tag">origin</span> <span class="selector-attr">[branch name]</span></span><br></pre></td></tr></table></figure>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git push origin save</span><br></pre></td></tr></table></figure>
+<h4 id="6、删除本地分支"><a href="#6、删除本地分支" class="headerlink" title="6、删除本地分支"></a>6、删除本地分支</h4><p>命令如下：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">git</span> <span class="selector-tag">branch</span> <span class="selector-tag">-d</span> <span class="selector-attr">[branch name]</span></span><br></pre></td></tr></table></figure>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git branch -d save</span><br></pre></td></tr></table></figure>
+<h4 id="7、删除github远程分支"><a href="#7、删除github远程分支" class="headerlink" title="7、删除github远程分支"></a>7、删除github远程分支</h4><p>命令如下：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">git</span> <span class="selector-tag">push</span> <span class="selector-tag">origin</span> :<span class="selector-attr">[branch name]</span></span><br></pre></td></tr></table></figure>
+<p>分支名前的冒号代表删除。<br> 例如：</p>
+<p>git push origin :save</p>
+<h4 id="查看配置信息"><a href="#查看配置信息" class="headerlink" title="查看配置信息"></a>查看配置信息</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git config --list</span><br></pre></td></tr></table></figure>
+<h4 id="查看状态"><a href="#查看状态" class="headerlink" title="查看状态"></a>查看状态</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure>
+<h4 id="提交工作区文件到暂存区"><a href="#提交工作区文件到暂存区" class="headerlink" title="提交工作区文件到暂存区"></a>提交工作区文件到暂存区</h4><ol>
+<li><p>提交工作区中所有文件到暂存区</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></table></figure></li>
+<li><p>提交工作区中指定文件到暂存区</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git add &lt;file1&gt; &lt;file2&gt; </span><br></pre></td></tr></table></figure></li>
+<li><p>提交工作区中某个文件夹中所有文件到暂存区</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git add [dir]</span><br></pre></td></tr></table></figure>
+<h4 id="提交到本地仓库"><a href="#提交到本地仓库" class="headerlink" title="提交到本地仓库"></a>提交到本地仓库</h4></li>
+<li><p>将暂存区中的文件提交到本地仓库中，即打上新版本</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git commit -m &quot;commit_info&quot;</span><br></pre></td></tr></table></figure></li>
+<li><p>将所有已经使用git管理过的文件暂存后一并提交，跳过add到暂存区的过程</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git commit -a -m “commit_info”</span><br></pre></td></tr></table></figure></li>
+<li><p>提交文件时，发现漏掉几个文件，或者注释写错了，可以撤销上一次提交</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git commit --amend</span><br></pre></td></tr></table></figure>
+<h4 id="查看本地仓库关联的远程仓库"><a href="#查看本地仓库关联的远程仓库" class="headerlink" title="查看本地仓库关联的远程仓库"></a>查看本地仓库关联的远程仓库</h4></li>
+<li><p>查看本地仓库关联的远程仓库</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git remote</span><br></pre></td></tr></table></figure></li>
+<li><p>查看远程仓库的url地址</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git remote -v</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ol>
+<h4 id="解决git-pull后本地写的代码没了的问题"><a href="#解决git-pull后本地写的代码没了的问题" class="headerlink" title="解决git pull后本地写的代码没了的问题"></a>解决git pull后本地写的代码没了的问题</h4><p>第一步：git reflog</p>
+<p>第二步：git reset –hard HEAD@{n}   (HEAD:为版本号，就前面那一串数字，n是你要回退到的引用位置)</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git reset --hard 84ef223</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>工作笔记</category>
+        <category>Git</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>HTML-笔记</title>
     <url>/2021/01/18/HTML-%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<img src="/2021/01/18/HTML-%E7%AC%94%E8%AE%B0/note1.png" class="">
@@ -976,6 +981,34 @@ limitations under the License.</code></pre>
       </tags>
   </entry>
   <entry>
+    <title>Hexo-Gitee-Pages搭建个人博客</title>
+    <url>/2020/07/07/Hexo-Gitee-Pages%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<h3 id="一、环境配置"><a href="#一、环境配置" class="headerlink" title="一、环境配置"></a>一、环境配置</h3><p>node.js  <a href="https://nodejs.org/zh-cn/" title="" target="">官网</a><br>Git   <a href="https://git-scm.com/" title="" target="">官网</a></p>
+<h3 id="二、Hexo的安装与基本命令"><a href="#二、Hexo的安装与基本命令" class="headerlink" title="二、Hexo的安装与基本命令"></a>二、Hexo的安装与基本命令</h3><h4 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h4><p>如果没有安装hexo的，只需要在目录中单击右键启动Git Bash Here，输入命令：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install -g hexo </span><br></pre></td></tr></table></figure>
+<h4 id="初始化在本地生成Hexo相关目录"><a href="#初始化在本地生成Hexo相关目录" class="headerlink" title="初始化在本地生成Hexo相关目录"></a>初始化在本地生成Hexo相关目录</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo init Note  # 初始化创建，会再桌面创建Note文件夹</span><br><span class="line">cd Note         # 进入Note目录</span><br><span class="line">npm install     # 进一步安装hexo所需文件</span><br></pre></td></tr></table></figure>
+<h4 id="Hexo三连"><a href="#Hexo三连" class="headerlink" title="Hexo三连"></a>Hexo三连</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo clean(or c)          # 清空已有hexo网站文件</span><br><span class="line">hexo generate(or g)   # 依据网页文本与新的CSS样式生成新网站文件</span><br><span class="line">hexo server(or s)     # 启动本地服务器，可以在localhost:4000查看网站修改效果</span><br></pre></td></tr></table></figure>
+<h3 id="配置Git个人信息"><a href="#配置Git个人信息" class="headerlink" title="配置Git个人信息"></a>配置Git个人信息</h3><p>Git 全局设置:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git config --global user.name &quot;Github用户名&quot;       &#x2F;&#x2F;自己Github的账号名</span><br><span class="line">git config --global user.email &quot;Github邮箱&quot;        &#x2F;&#x2F;自己注册Github的邮箱地址</span><br></pre></td></tr></table></figure>
+<p>创建 git 仓库:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mkdir test</span><br><span class="line">cd test</span><br><span class="line">git init</span><br><span class="line">touch README.md</span><br><span class="line">git add README.md</span><br><span class="line">git commit -m &quot;first commit&quot;</span><br><span class="line">git remote add origin git@gitee.com:AAAA&#x2F;AAAA.git</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
+<p>已有仓库?</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd existing_git_repo</span><br><span class="line">git remote add origin git@gitee.com:AAAA&#x2F;AAAA.git</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
+<h3 id="三、主题下载与安装"><a href="#三、主题下载与安装" class="headerlink" title="三、主题下载与安装"></a>三、主题下载与安装</h3><p>Hexo官网上提供了丰富的主题可选，你只需要打开对应的界面（<a href="https://hexo.io/themes/" rel="nofollow noreferrer" target="_blank">https://hexo.io/themes/</a>）选择喜欢的，然后点击<strong>名称</strong>跳转到<strong>GitHub</strong>仓库选择<em>下载或者克隆</em>对应的<strong>zip</strong>文件到本地，并且解压到网站目录下的<strong>themes</strong>目录即可。</p>
+<p>然后接下来，你需要修改两个配置文件：</p>
+<li>你的网站根目录下的<strong>_config.yml</strong>文件，即网站配置文件；</li>
+<li>你选择的主题的自带配置文件<strong>_config.yml</strong>，即主题样式配置文件；</li>
+
+<h4 id="生成-添加-SSH-公钥之后，测试是否连接成功"><a href="#生成-添加-SSH-公钥之后，测试是否连接成功" class="headerlink" title="生成/添加 SSH 公钥之后，测试是否连接成功:"></a>生成/添加 SSH 公钥之后，测试是否连接成功:</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssh -T git@gitee.com</span><br><span class="line"></span><br><span class="line">如果成功，会显示：</span><br><span class="line">Hi xxx! You&#39;ve successfully authenticated, but GITEE.COM does not provide shell access.</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>工作笔记</category>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hexo + NexT主题博客相关设置</title>
     <url>/2018/08/02/Hexo-NexT%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2%E7%9B%B8%E5%85%B3%E8%AE%BE%E7%BD%AE/</url>
     <content><![CDATA[<h2 id="一、添加文章版权声明功能"><a href="#一、添加文章版权声明功能" class="headerlink" title="一、添加文章版权声明功能"></a>一、添加文章版权声明功能</h2><p>打开博客目录下的主题配置文件（/themes/next/_config.yml），找到Declare license on posts 标签，进行配置：</p>
@@ -997,34 +1030,6 @@ limitations under the License.</code></pre>
 <h2 id="五、调整hexo页面宽度"><a href="#五、调整hexo页面宽度" class="headerlink" title="五、调整hexo页面宽度"></a>五、调整hexo页面宽度</h2><p>博客在浏览器上的留白太多，因此想增加文章的宽度。</p>
 <p>打开/Hexo/themes/hexo-theme-next/source//css/_variables/custom.styl 添加两行代码即可：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$main-desktop &#x3D; 1400px </span><br><span class="line">$content-desktop &#x3D; 1100px</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>工作笔记</category>
-        <category>Hexo</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hexo-Gitee-Pages搭建个人博客</title>
-    <url>/2020/07/07/Hexo-Gitee-Pages%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<h3 id="一、环境配置"><a href="#一、环境配置" class="headerlink" title="一、环境配置"></a>一、环境配置</h3><p>node.js  <a href="https://nodejs.org/zh-cn/" title="" target="">官网</a><br>Git   <a href="https://git-scm.com/" title="" target="">官网</a></p>
-<h3 id="二、Hexo的安装与基本命令"><a href="#二、Hexo的安装与基本命令" class="headerlink" title="二、Hexo的安装与基本命令"></a>二、Hexo的安装与基本命令</h3><h4 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h4><p>如果没有安装hexo的，只需要在目录中单击右键启动Git Bash Here，输入命令：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install -g hexo </span><br></pre></td></tr></table></figure>
-<h4 id="初始化在本地生成Hexo相关目录"><a href="#初始化在本地生成Hexo相关目录" class="headerlink" title="初始化在本地生成Hexo相关目录"></a>初始化在本地生成Hexo相关目录</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo init Note  # 初始化创建，会再桌面创建Note文件夹</span><br><span class="line">cd Note         # 进入Note目录</span><br><span class="line">npm install     # 进一步安装hexo所需文件</span><br></pre></td></tr></table></figure>
-<h4 id="Hexo三连"><a href="#Hexo三连" class="headerlink" title="Hexo三连"></a>Hexo三连</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo clean(or c)          # 清空已有hexo网站文件</span><br><span class="line">hexo generate(or g)   # 依据网页文本与新的CSS样式生成新网站文件</span><br><span class="line">hexo server(or s)     # 启动本地服务器，可以在localhost:4000查看网站修改效果</span><br></pre></td></tr></table></figure>
-<h3 id="配置Git个人信息"><a href="#配置Git个人信息" class="headerlink" title="配置Git个人信息"></a>配置Git个人信息</h3><p>Git 全局设置:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git config --global user.name &quot;Github用户名&quot;       &#x2F;&#x2F;自己Github的账号名</span><br><span class="line">git config --global user.email &quot;Github邮箱&quot;        &#x2F;&#x2F;自己注册Github的邮箱地址</span><br></pre></td></tr></table></figure>
-<p>创建 git 仓库:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mkdir test</span><br><span class="line">cd test</span><br><span class="line">git init</span><br><span class="line">touch README.md</span><br><span class="line">git add README.md</span><br><span class="line">git commit -m &quot;first commit&quot;</span><br><span class="line">git remote add origin git@gitee.com:AAAA&#x2F;AAAA.git</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
-<p>已有仓库?</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd existing_git_repo</span><br><span class="line">git remote add origin git@gitee.com:AAAA&#x2F;AAAA.git</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
-<h3 id="三、主题下载与安装"><a href="#三、主题下载与安装" class="headerlink" title="三、主题下载与安装"></a>三、主题下载与安装</h3><p>Hexo官网上提供了丰富的主题可选，你只需要打开对应的界面（<a href="https://hexo.io/themes/" rel="nofollow noreferrer" target="_blank">https://hexo.io/themes/</a>）选择喜欢的，然后点击<strong>名称</strong>跳转到<strong>GitHub</strong>仓库选择<em>下载或者克隆</em>对应的<strong>zip</strong>文件到本地，并且解压到网站目录下的<strong>themes</strong>目录即可。</p>
-<p>然后接下来，你需要修改两个配置文件：</p>
-<li>你的网站根目录下的<strong>_config.yml</strong>文件，即网站配置文件；</li>
-<li>你选择的主题的自带配置文件<strong>_config.yml</strong>，即主题样式配置文件；</li>
-
-<h4 id="生成-添加-SSH-公钥之后，测试是否连接成功"><a href="#生成-添加-SSH-公钥之后，测试是否连接成功" class="headerlink" title="生成/添加 SSH 公钥之后，测试是否连接成功:"></a>生成/添加 SSH 公钥之后，测试是否连接成功:</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssh -T git@gitee.com</span><br><span class="line"></span><br><span class="line">如果成功，会显示：</span><br><span class="line">Hi xxx! You&#39;ve successfully authenticated, but GITEE.COM does not provide shell access.</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>工作笔记</category>
         <category>Hexo</category>
@@ -1665,6 +1670,57 @@ limitations under the License.</code></pre>
       </tags>
   </entry>
   <entry>
+    <title>PHP-笔记</title>
+    <url>/2021/01/25/PHP-%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h4 id="输出json数据"><a href="#输出json数据" class="headerlink" title="输出json数据"></a>输出json数据</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">echo &#39;&#123;&quot;code&quot;:0,&quot;msg&quot;:&quot;&quot;,&quot;count&quot;:1000,&quot;data&quot;:[&#123;&quot;id&quot;:10000,&quot;username&quot;:&quot;user-0&quot;,&quot;sex&quot;:&quot;女&quot;,&quot;city&quot;:&quot;城市-0&quot;,&quot;sign&quot;:&quot;签名-0&quot;,&quot;experience&quot;:255,&quot;logins&quot;:24,&quot;wealth&quot;:82830700,&quot;classify&quot;:&quot;作家&quot;,&quot;score&quot;:57&#125;,&#123;&quot;id&quot;:10029,&quot;username&quot;:&quot;user-29&quot;,&quot;sex&quot;:&quot;男&quot;,&quot;city&quot;:&quot;城市-29&quot;,&quot;sign&quot;:&quot;签名-29&quot;,&quot;experience&quot;:647,&quot;logins&quot;:107,&quot;wealth&quot;:97450636,&quot;classify&quot;:&quot;酱油&quot;,&quot;score&quot;:27&#125;]&#125;&#39;;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>工作笔记</category>
+        <category>PHP</category>
+      </categories>
+      <tags>
+        <tag>PHP</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SVN-笔记</title>
+    <url>/2021/01/18/SVN-%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h4 id="显示日志（查看更新内容）"><a href="#显示日志（查看更新内容）" class="headerlink" title="显示日志（查看更新内容）"></a>显示日志（查看更新内容）</h4><p>右键—&gt;TortoiseSVN—&gt;显示日志—&gt;查看更新下来的内容，或者对之前的代码进行比较</p>
+]]></content>
+      <categories>
+        <category>工作笔记</category>
+        <category>SVN</category>
+      </categories>
+      <tags>
+        <tag>SVN</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>TypeScript 简介</title>
+    <url>/2020/11/04/TypeScript-%E7%AE%80%E4%BB%8B/</url>
+    <content><![CDATA[<p><a href="https://jspang.com/detailed?id=63">【技术胖博客】</a></p>
+<h6 id="Demo1-ts"><a href="#Demo1-ts" class="headerlink" title="Demo1.ts"></a>Demo1.ts</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function jspang() </span><br><span class="line">&#123; </span><br><span class="line">    let web: string &#x3D; &quot;Hello world&quot; </span><br><span class="line">    console.log (web)</span><br><span class="line">&#125;</span><br><span class="line">jspang()</span><br></pre></td></tr></table></figure>
+
+
+<h5 id="初步运行"><a href="#初步运行" class="headerlink" title="初步运行"></a>初步运行</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">node Demo.ts</span><br><span class="line"></span><br><span class="line">会出现报错：</span><br><span class="line">SyntaxError: Unexpected token &#39;:&#39;</span><br><span class="line">表示异常，不支持这个东西。</span><br></pre></td></tr></table></figure>
+<p>输入以下语句来转ts为js：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">tsc Demo1.ts</span><br></pre></td></tr></table></figure>
+<p>如果出现：<br> 无法将“tsc”项识别为 cmdlet、函数、脚本文件或可运行程序的名称。请检查名称的拼写，如果包括路径，请确保路径正确，然后再试一次。</p>
+<p><a href="https://www.cnblogs.com/vickylinj/p/12228773.html">参考</a>  则：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install typescript -g</span><br><span class="line">cnpm install typescript -g</span><br><span class="line"></span><br><span class="line">再次运行即可：</span><br><span class="line">tsc Demo1.ts</span><br><span class="line">node Demo1.js</span><br></pre></td></tr></table></figure>
+<p>每次都这样的操作比较麻烦，可以全局安装ts-node</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cnpm install -g ts-node </span><br></pre></td></tr></table></figure>
+<p>即可直接输入以下语句执行：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ts-node Demo1.ts</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>工作笔记</category>
+        <category>TypeScript</category>
+      </categories>
+      <tags>
+        <tag>TypeScript</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Parcel打包TypeScript</title>
     <url>/2020/11/12/Parcel%E6%89%93%E5%8C%85TypeScript/</url>
     <content><![CDATA[<h4 id="用-Parcel-打包-TypeScript-代码"><a href="#用-Parcel-打包-TypeScript-代码" class="headerlink" title="用 Parcel 打包 TypeScript 代码"></a>用 Parcel 打包 TypeScript 代码</h4><blockquote>
@@ -1708,57 +1764,6 @@ limitations under the License.</code></pre>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">declare <span class="keyword">var</span> $: any;</span><br></pre></td></tr></table></figure>
 <p>第三种：自己写一个<code>.d.ts</code>声明文件的类库，如果你用的类库很少见，就需要自己写了。这个写起来还是很麻烦的。 比如 JQuery 就有几十个接口，如果你要写，这个文件会写很长，所以原则就是有别人写好的就直接用，实在没有就用粗暴的方法，如果实在不行，再考虑写<code>.d.ts</code>声明文件。</p>
 ]]></content>
-      <categories>
-        <category>工作笔记</category>
-        <category>TypeScript</category>
-      </categories>
-      <tags>
-        <tag>TypeScript</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>PHP-笔记</title>
-    <url>/2021/01/25/PHP-%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h4 id="输出json数据"><a href="#输出json数据" class="headerlink" title="输出json数据"></a>输出json数据</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">echo &#39;&#123;&quot;code&quot;:0,&quot;msg&quot;:&quot;&quot;,&quot;count&quot;:1000,&quot;data&quot;:[&#123;&quot;id&quot;:10000,&quot;username&quot;:&quot;user-0&quot;,&quot;sex&quot;:&quot;女&quot;,&quot;city&quot;:&quot;城市-0&quot;,&quot;sign&quot;:&quot;签名-0&quot;,&quot;experience&quot;:255,&quot;logins&quot;:24,&quot;wealth&quot;:82830700,&quot;classify&quot;:&quot;作家&quot;,&quot;score&quot;:57&#125;,&#123;&quot;id&quot;:10029,&quot;username&quot;:&quot;user-29&quot;,&quot;sex&quot;:&quot;男&quot;,&quot;city&quot;:&quot;城市-29&quot;,&quot;sign&quot;:&quot;签名-29&quot;,&quot;experience&quot;:647,&quot;logins&quot;:107,&quot;wealth&quot;:97450636,&quot;classify&quot;:&quot;酱油&quot;,&quot;score&quot;:27&#125;]&#125;&#39;;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>工作笔记</category>
-        <category>PHP</category>
-      </categories>
-      <tags>
-        <tag>PHP</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>SVN-笔记</title>
-    <url>/2021/01/18/SVN-%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h4 id="显示日志（查看更新内容）"><a href="#显示日志（查看更新内容）" class="headerlink" title="显示日志（查看更新内容）"></a>显示日志（查看更新内容）</h4><p>右键—&gt;TortoiseSVN—&gt;显示日志—&gt;查看更新下来的内容，或者对之前的代码进行比较</p>
-]]></content>
-      <categories>
-        <category>工作笔记</category>
-        <category>SVN</category>
-      </categories>
-      <tags>
-        <tag>SVN</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>TypeScript 简介</title>
-    <url>/2020/11/04/TypeScript-%E7%AE%80%E4%BB%8B/</url>
-    <content><![CDATA[<p><a href="https://jspang.com/detailed?id=63">【技术胖博客】</a></p>
-<h6 id="Demo1-ts"><a href="#Demo1-ts" class="headerlink" title="Demo1.ts"></a>Demo1.ts</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function jspang() </span><br><span class="line">&#123; </span><br><span class="line">    let web: string &#x3D; &quot;Hello world&quot; </span><br><span class="line">    console.log (web)</span><br><span class="line">&#125;</span><br><span class="line">jspang()</span><br></pre></td></tr></table></figure>
-
-
-<h5 id="初步运行"><a href="#初步运行" class="headerlink" title="初步运行"></a>初步运行</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">node Demo.ts</span><br><span class="line"></span><br><span class="line">会出现报错：</span><br><span class="line">SyntaxError: Unexpected token &#39;:&#39;</span><br><span class="line">表示异常，不支持这个东西。</span><br></pre></td></tr></table></figure>
-<p>输入以下语句来转ts为js：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">tsc Demo1.ts</span><br></pre></td></tr></table></figure>
-<p>如果出现：<br> 无法将“tsc”项识别为 cmdlet、函数、脚本文件或可运行程序的名称。请检查名称的拼写，如果包括路径，请确保路径正确，然后再试一次。</p>
-<p><a href="https://www.cnblogs.com/vickylinj/p/12228773.html">参考</a>  则：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install typescript -g</span><br><span class="line">cnpm install typescript -g</span><br><span class="line"></span><br><span class="line">再次运行即可：</span><br><span class="line">tsc Demo1.ts</span><br><span class="line">node Demo1.js</span><br></pre></td></tr></table></figure>
-<p>每次都这样的操作比较麻烦，可以全局安装ts-node</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cnpm install -g ts-node </span><br></pre></td></tr></table></figure>
-<p>即可直接输入以下语句执行：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ts-node Demo1.ts</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>工作笔记</category>
         <category>TypeScript</category>
@@ -2268,6 +2273,12 @@ limitations under the License.</code></pre>
       </tags>
   </entry>
   <entry>
+    <title></title>
+    <url>/2021/01/14/Vue3/</url>
+    <content><![CDATA[<p>Vetur   代码高亮</p>
+]]></content>
+  </entry>
+  <entry>
     <title>Vue2-基础知识</title>
     <url>/2021/02/20/Vue2-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</url>
     <content><![CDATA[<h4 id="vue特点"><a href="#vue特点" class="headerlink" title="vue特点"></a>vue特点</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">一个Vue实例必须与一个页面元素绑定</span><br><span class="line"></span><br><span class="line">*.vue是Vue.js特有的文件格式，表示的就是一个Vue组件，被称为单页式组件</span><br><span class="line"></span><br><span class="line">Vue2具有很高的兼容性，我们也可以用&quot;.js&quot;文件来单纯地定义组件的逻辑，</span><br><span class="line">甚至可以使用React 的JSX格式的组件（需要babel-plugin-transform-vue-jsx支持）</span><br><span class="line"></span><br><span class="line">注： 从Vue2开始，组件模板必须且只能有一个顶层元素，如果在组件模板内设置多个顶层元素将会引发编译异常。</span><br></pre></td></tr></table></figure>
@@ -2335,12 +2346,6 @@ limitations under the License.</code></pre>
       </tags>
   </entry>
   <entry>
-    <title></title>
-    <url>/2021/01/14/Vue3/</url>
-    <content><![CDATA[<p>Vetur   代码高亮</p>
-]]></content>
-  </entry>
-  <entry>
     <title>Vue项目设置每个页面的title</title>
     <url>/2020/03/19/Vue%E9%A1%B9%E7%9B%AE%E8%AE%BE%E7%BD%AE%E6%AF%8F%E4%B8%AA%E9%A1%B5%E9%9D%A2%E7%9A%84title/</url>
     <content><![CDATA[<h5 id="1、在项目目录下安装vue-wechat-title"><a href="#1、在项目目录下安装vue-wechat-title" class="headerlink" title="1、在项目目录下安装vue-wechat-title"></a>1、在项目目录下安装vue-wechat-title</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cnpm i vue-wechat-title --save-dev</span><br></pre></td></tr></table></figure>
@@ -2383,6 +2388,8 @@ limitations under the License.</code></pre>
 <p>例如：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#</span><br><span class="line">listen 8081</span><br><span class="line">&lt;VirtualHost *:8081&gt;</span><br><span class="line">    ServerName www.web.com</span><br><span class="line">    DocumentRoot &quot;E:&#x2F;wampserver&#x2F;www&#x2F;web&quot;</span><br><span class="line">    &lt;Directory &quot;E:&#x2F;wampserver&#x2F;www&#x2F;web&quot;&gt;</span><br><span class="line">      Options Indexes FollowSymLinks</span><br><span class="line">      AllowOverride All</span><br><span class="line">      Order allow,deny</span><br><span class="line">      Allow from all</span><br><span class="line">    &lt;&#x2F;Directory&gt;</span><br><span class="line">&lt;&#x2F;VirtualHost&gt;</span><br><span class="line">#</span><br></pre></td></tr></table></figure>
 <p>3、访问的时候，使用<a href="http://www.web.com来访问本地项目/">www.web.com来访问本地项目</a></p>
+<h4 id="Apache相对路径文件的放置"><a href="#Apache相对路径文件的放置" class="headerlink" title="Apache相对路径文件的放置"></a>Apache相对路径文件的放置</h4><img src="/2021/01/18/Wampserver-%E7%AC%94%E8%AE%B0/note2.png" class="">
+
 ]]></content>
       <categories>
         <category>工作笔记</category>
@@ -2786,24 +2793,6 @@ limitations under the License.</code></pre>
       </tags>
   </entry>
   <entry>
-    <title>hexo实现文章置顶功能</title>
-    <url>/2020/05/25/hexo%E5%AE%9E%E7%8E%B0%E6%96%87%E7%AB%A0%E7%BD%AE%E9%A1%B6%E5%8A%9F%E8%83%BD/</url>
-    <content><![CDATA[<h3 id="修改generator-js"><a href="#修改generator-js" class="headerlink" title="修改generator.js"></a>修改generator.js</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">找到node_modules&#x2F;hexo-generator-index&#x2F;lib&#x2F;generator.js这个文件。</span><br></pre></td></tr></table></figure>
-<p>在</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var posts &#x3D; locals.posts.sort(config.index_generator.order_by);</span><br></pre></td></tr></table></figure>
-<p>下面添加：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">posts.data &#x3D; posts.data.sort(function(a, b) &#123;</span><br><span class="line">    if(a.top &amp;&amp; b.top) &#123; &#x2F;&#x2F; 两篇文章top都有定义</span><br><span class="line">        if(a.top &#x3D;&#x3D; b.top) return b.date - a.date; &#x2F;&#x2F; 若top值一样则按照文章日期降序排</span><br><span class="line">        else return b.top - a.top; &#x2F;&#x2F; 否则按照top值降序排</span><br><span class="line">    &#125;</span><br><span class="line">    else if(a.top &amp;&amp; !b.top) &#123; &#x2F;&#x2F; 以下是只有一篇文章top有定义，那么将有top的排在前面（这里用异或操作居然不行233）</span><br><span class="line">        return -1;</span><br><span class="line">    &#125;</span><br><span class="line">    else if(!a.top &amp;&amp; b.top) &#123;</span><br><span class="line">        return 1;</span><br><span class="line">    &#125;</span><br><span class="line">    else return b.date - a.date; &#x2F;&#x2F; 都没定义按照文章日期降序排</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>完整代码:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#39;use strict&#39;;</span><br><span class="line"></span><br><span class="line">var pagination &#x3D; require(&#39;hexo-pagination&#39;);</span><br><span class="line"></span><br><span class="line">module.exports &#x3D; function(locals) &#123;</span><br><span class="line">  var config &#x3D; this.config;</span><br><span class="line">  var posts &#x3D; locals.posts.sort(config.index_generator.order_by);</span><br><span class="line">  posts.data &#x3D; posts.data.sort(function(a, b) &#123;</span><br><span class="line">      if(a.top &amp;&amp; b.top) &#123; &#x2F;&#x2F; 两篇文章top都有定义</span><br><span class="line">          if(a.top &#x3D;&#x3D; b.top) return b.date - a.date; &#x2F;&#x2F; 若top值一样则按照文章日期降序排</span><br><span class="line">          else return b.top - a.top; &#x2F;&#x2F; 否则按照top值降序排</span><br><span class="line">      &#125;</span><br><span class="line">      else if(a.top &amp;&amp; !b.top) &#123; &#x2F;&#x2F; 以下是只有一篇文章top有定义，那么将有top的排在前面（这里用异或操作居然不行233）</span><br><span class="line">          return -1;</span><br><span class="line">      &#125;</span><br><span class="line">      else if(!a.top &amp;&amp; b.top) &#123;</span><br><span class="line">          return 1;</span><br><span class="line">      &#125;</span><br><span class="line">      else return b.date - a.date; &#x2F;&#x2F; 都没定义按照文章日期降序排</span><br><span class="line">  &#125;);</span><br><span class="line">  var paginationDir &#x3D; config.pagination_dir || &#39;page&#39;;</span><br><span class="line">  var path &#x3D; config.index_generator.path || &#39;&#39;;</span><br><span class="line"></span><br><span class="line">  return pagination(path, posts, &#123;</span><br><span class="line">    perPage: config.index_generator.per_page,</span><br><span class="line">    layout: [&#39;index&#39;, &#39;archive&#39;],</span><br><span class="line">    format: paginationDir + &#39;&#x2F;%d&#x2F;&#39;,</span><br><span class="line">    data: &#123;</span><br><span class="line">      __index: true</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>工作笔记</category>
-        <category>常用命令</category>
-      </categories>
-      <tags>
-        <tag>常用命令</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>jsTree笔记</title>
     <url>/2021/01/15/jsTree%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<p><a href="https://www.jstree.com.cn/">jsTree</a></p>
@@ -2920,6 +2909,24 @@ limitations under the License.</code></pre>
       </categories>
       <tags>
         <tag>layui</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>hexo实现文章置顶功能</title>
+    <url>/2020/05/25/hexo%E5%AE%9E%E7%8E%B0%E6%96%87%E7%AB%A0%E7%BD%AE%E9%A1%B6%E5%8A%9F%E8%83%BD/</url>
+    <content><![CDATA[<h3 id="修改generator-js"><a href="#修改generator-js" class="headerlink" title="修改generator.js"></a>修改generator.js</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">找到node_modules&#x2F;hexo-generator-index&#x2F;lib&#x2F;generator.js这个文件。</span><br></pre></td></tr></table></figure>
+<p>在</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var posts &#x3D; locals.posts.sort(config.index_generator.order_by);</span><br></pre></td></tr></table></figure>
+<p>下面添加：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">posts.data &#x3D; posts.data.sort(function(a, b) &#123;</span><br><span class="line">    if(a.top &amp;&amp; b.top) &#123; &#x2F;&#x2F; 两篇文章top都有定义</span><br><span class="line">        if(a.top &#x3D;&#x3D; b.top) return b.date - a.date; &#x2F;&#x2F; 若top值一样则按照文章日期降序排</span><br><span class="line">        else return b.top - a.top; &#x2F;&#x2F; 否则按照top值降序排</span><br><span class="line">    &#125;</span><br><span class="line">    else if(a.top &amp;&amp; !b.top) &#123; &#x2F;&#x2F; 以下是只有一篇文章top有定义，那么将有top的排在前面（这里用异或操作居然不行233）</span><br><span class="line">        return -1;</span><br><span class="line">    &#125;</span><br><span class="line">    else if(!a.top &amp;&amp; b.top) &#123;</span><br><span class="line">        return 1;</span><br><span class="line">    &#125;</span><br><span class="line">    else return b.date - a.date; &#x2F;&#x2F; 都没定义按照文章日期降序排</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>完整代码:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#39;use strict&#39;;</span><br><span class="line"></span><br><span class="line">var pagination &#x3D; require(&#39;hexo-pagination&#39;);</span><br><span class="line"></span><br><span class="line">module.exports &#x3D; function(locals) &#123;</span><br><span class="line">  var config &#x3D; this.config;</span><br><span class="line">  var posts &#x3D; locals.posts.sort(config.index_generator.order_by);</span><br><span class="line">  posts.data &#x3D; posts.data.sort(function(a, b) &#123;</span><br><span class="line">      if(a.top &amp;&amp; b.top) &#123; &#x2F;&#x2F; 两篇文章top都有定义</span><br><span class="line">          if(a.top &#x3D;&#x3D; b.top) return b.date - a.date; &#x2F;&#x2F; 若top值一样则按照文章日期降序排</span><br><span class="line">          else return b.top - a.top; &#x2F;&#x2F; 否则按照top值降序排</span><br><span class="line">      &#125;</span><br><span class="line">      else if(a.top &amp;&amp; !b.top) &#123; &#x2F;&#x2F; 以下是只有一篇文章top有定义，那么将有top的排在前面（这里用异或操作居然不行233）</span><br><span class="line">          return -1;</span><br><span class="line">      &#125;</span><br><span class="line">      else if(!a.top &amp;&amp; b.top) &#123;</span><br><span class="line">          return 1;</span><br><span class="line">      &#125;</span><br><span class="line">      else return b.date - a.date; &#x2F;&#x2F; 都没定义按照文章日期降序排</span><br><span class="line">  &#125;);</span><br><span class="line">  var paginationDir &#x3D; config.pagination_dir || &#39;page&#39;;</span><br><span class="line">  var path &#x3D; config.index_generator.path || &#39;&#39;;</span><br><span class="line"></span><br><span class="line">  return pagination(path, posts, &#123;</span><br><span class="line">    perPage: config.index_generator.per_page,</span><br><span class="line">    layout: [&#39;index&#39;, &#39;archive&#39;],</span><br><span class="line">    format: paginationDir + &#39;&#x2F;%d&#x2F;&#39;,</span><br><span class="line">    data: &#123;</span><br><span class="line">      __index: true</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>工作笔记</category>
+        <category>常用命令</category>
+      </categories>
+      <tags>
+        <tag>常用命令</tag>
       </tags>
   </entry>
   <entry>
@@ -3294,42 +3301,6 @@ limitations under the License.</code></pre>
       </tags>
   </entry>
   <entry>
-    <title>vue项目记录</title>
-    <url>/2020/05/26/vue%E9%A1%B9%E7%9B%AE%E8%AE%B0%E5%BD%95/</url>
-    <content><![CDATA[<h3 id="在项目中引入阿里图库"><a href="#在项目中引入阿里图库" class="headerlink" title="在项目中引入阿里图库"></a>在项目中引入阿里图库</h3><ol>
-<li>在阿里图库中，选好图标，建立好项目</li>
-<li>将整个项目的图标下载到本地解压</li>
-<li>在Vue.js项目的assets目录中，新建一个icon目录，将解压后文件夹里面的文件复制到这个目录下</li>
-<li>在main.js文件里引入iconfont.css, import ‘@/assets/icon/iconfont.css’</li>
-<li>在项目中引入图标的时候要加上iconfont类，然后再添加图标本身的类名</li>
-</ol>
-<h3 id="链接文字的写法-路由跳转"><a href="#链接文字的写法-路由跳转" class="headerlink" title="链接文字的写法(路由跳转)"></a>链接文字的写法(路由跳转)</h3><h5 id="不传参"><a href="#不传参" class="headerlink" title="不传参"></a>不传参</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">声明式：&lt;router-link :to&#x3D;&quot;&#123;name:&#39;index&#39;&#125;&#125;&quot;&gt;    或者    &lt;router-link to&#x3D;&#39;&#x2F;index&#39;&gt;</span><br><span class="line"></span><br><span class="line">编程式：router.push(...)</span><br><span class="line">方法一: this.$router.push(&#123;path:&#39;路径&#39;)&#125;;</span><br><span class="line">方法二：this.$router.push(&#123;name:&#39;组件名&#39;)&#125;;</span><br></pre></td></tr></table></figure>
-<h5 id="传参"><a href="#传参" class="headerlink" title="传参"></a>传参</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">声明式：&lt;router-link :to&#x3D;&quot;&#123;name:&#39;index&#39;,query:&#123;id:&#39;xxx&#39;,name:&#39;xxx&#39;&#125;&#125;&quot;&gt;</span><br><span class="line">编程式：router.push(...)</span><br><span class="line"></span><br><span class="line">方法一：this.$router.push(&#123;path:&#39;xxx&#39;,query:&#123;aa:xx, bb: xx&#125;&#125;);   &#x2F;&#x2F;带查询参数，类似于 “？” 的形式传值</span><br><span class="line"></span><br><span class="line">方法二：this.$router.push(&#123;path:&#39;xxx&#39;,params:&#123;aa:xx, bb: xx&#125;&#125;); </span><br><span class="line"></span><br><span class="line">注：以上两种方法的query跳转路径也可以写成name:&#39;组件名&#39;的形式</span><br><span class="line"></span><br><span class="line">在query中放入需要传递的参数即可，多个参数之间用逗号隔开；</span><br><span class="line"></span><br><span class="line">取值：this.$route.query.xx   (可在跳转的页面取得所传递的值)；</span><br></pre></td></tr></table></figure>
-<h3 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">component: () &#x3D;&gt; import(&#39;@&#x2F;views&#x2F;dashboard&#x2F;console&#x2F;index.vue&#39;),</span><br><span class="line">可以简写为：</span><br><span class="line">component: () &#x3D;&gt; import(&#39;@&#x2F;views&#x2F;dashboard&#x2F;console&#39;),</span><br></pre></td></tr></table></figure>
-<h3 id="Vue-js-组件中绑定点击事件不生效的解决方法"><a href="#Vue-js-组件中绑定点击事件不生效的解决方法" class="headerlink" title="Vue.js 组件中绑定点击事件不生效的解决方法"></a>Vue.js 组件中绑定点击事件不生效的解决方法</h3><p>在使用组件（比如 element UI）的过程中，会发现无法通过 @click 绑定标签的点击事件。</p>
-<p>因为 Vue.js 使用的是一套自己的事件传递机制，所以我们需要添加 @click.native 来绑定 DOM 原生事件。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;el-dropdown-item icon&#x3D;&quot;el-icon-unlock&quot; @click.native&#x3D;&quot;resetPass&quot;&gt;&lt;&#x2F;el-dropdown-item&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="Vuex的store的使用"><a href="#Vuex的store的使用" class="headerlink" title="Vuex的store的使用"></a>Vuex的store的使用</h3><p>注意：改变store值，要使用mutations，不要直接改变<br>store.js文件：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export default new Vuex.Store(&#123;</span><br><span class="line">  state: &#123;</span><br><span class="line">    isCollapse: false,</span><br><span class="line">    isMobile: false</span><br><span class="line">  &#125;,</span><br><span class="line">  mutations: &#123;</span><br><span class="line">    toggleCollapse(state) &#123;</span><br><span class="line">      state.isCollapse &#x3D;  !state.isCollapse;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<h4 id="在页面中的使用："><a href="#在页面中的使用：" class="headerlink" title="在页面中的使用："></a>在页面中的使用：</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">在页面中引入：</span><br><span class="line">import &#123; mapState , mapMutations &#125; from &#39;vuex&#39;;</span><br><span class="line"></span><br><span class="line">引入state：</span><br><span class="line">computed: &#123;</span><br><span class="line">  ...mapState([&#39;isCollapse&#39;,&#39;isMobile&#39;])</span><br><span class="line">&#125;,</span><br><span class="line"></span><br><span class="line">引入方法：</span><br><span class="line">methods: &#123;</span><br><span class="line">  ...mapMutations([&#39;toggleCollapse&#39;])</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">页面结构中，直接使用：</span><br><span class="line">:class&#x3D;&quot;&#123;&#39;sider-collapse&#39;:isCollapse&#125;&quot;</span><br><span class="line"></span><br><span class="line">在事件中直接使用：</span><br><span class="line">this.toggleCollapse();</span><br><span class="line"></span><br><span class="line">如果要传参：</span><br><span class="line">this.toggleCollapse(&#123;</span><br><span class="line">  param: this.isCollapse</span><br><span class="line">&#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="emit的使用"><a href="#emit的使用" class="headerlink" title="$emit的使用"></a>$emit的使用</h3><p>通过 Event Bus 进行组件间通信，来折叠侧边栏</p>
-<p>bus.js:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import Vue from &#39;vue&#39;;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 使用 Event Bus</span><br><span class="line">const bus &#x3D; new Vue();</span><br><span class="line"></span><br><span class="line">export default bus;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">在点击事件的组件中：</span><br><span class="line">引入：</span><br><span class="line">import bus from &#39;..&#x2F;public&#x2F;bus&#39;;</span><br><span class="line"></span><br><span class="line">页面结构中：</span><br><span class="line">@click&#x3D;&quot;collapseChage&quot;</span><br><span class="line">v-show&#x3D;&quot;!isCollapse&quot;</span><br><span class="line"></span><br><span class="line">数据，方法：</span><br><span class="line">data() &#123; </span><br><span class="line">  return &#123;</span><br><span class="line">      isCollapse: false,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br><span class="line">methods: &#123;</span><br><span class="line">  &#x2F;&#x2F; 侧边栏折叠</span><br><span class="line">  collapseChage() &#123;</span><br><span class="line">      this.isCollapse &#x3D; !this.isCollapse;</span><br><span class="line">      bus.$emit(&#39;toggleCollapse&#39;, this.isCollapse);</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">在需要用到这个状态的组件中：</span><br><span class="line">引入：</span><br><span class="line">import bus from &#39;..&#x2F;public&#x2F;bus&#39;;</span><br><span class="line">数据：</span><br><span class="line">data() &#123; </span><br><span class="line">  return &#123;</span><br><span class="line">      isCollapse: false,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br><span class="line"></span><br><span class="line">页面结构：</span><br><span class="line">:class&#x3D;&quot;&#123;&#39;content-collapse&#39;:isCollapse&#125;&quot;</span><br><span class="line"></span><br><span class="line">监听toggleCollapse事件：</span><br><span class="line">created() &#123;</span><br><span class="line">  bus.$on(&#39;toggleCollapse&#39;, msg &#x3D;&gt; &#123;</span><br><span class="line">      this.isCollapse &#x3D; msg;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="如何将element-ui中的表格和分页器连接起来"><a href="#如何将element-ui中的表格和分页器连接起来" class="headerlink" title="如何将element-ui中的表格和分页器连接起来"></a>如何将element-ui中的表格和分页器连接起来</h3><img src="/2020/05/26/vue%E9%A1%B9%E7%9B%AE%E8%AE%B0%E5%BD%95/vue01.png" class="">
-<img src="/2020/05/26/vue%E9%A1%B9%E7%9B%AE%E8%AE%B0%E5%BD%95/vue02.png" class="">
-<img src="/2020/05/26/vue%E9%A1%B9%E7%9B%AE%E8%AE%B0%E5%BD%95/vue03.png" class="">
-<img src="/2020/05/26/vue%E9%A1%B9%E7%9B%AE%E8%AE%B0%E5%BD%95/vue04.png" class="">
-]]></content>
-      <categories>
-        <category>工作笔记</category>
-        <category>Vue.js</category>
-      </categories>
-      <tags>
-        <tag>Vue.js</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>vue项目配置模块化路由</title>
     <url>/2020/05/25/vue%E9%A1%B9%E7%9B%AE%E9%85%8D%E7%BD%AE%E6%A8%A1%E5%9D%97%E5%8C%96%E8%B7%AF%E7%94%B1/</url>
     <content><![CDATA[<h3 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">├── src</span><br><span class="line">|    ├── assets         &#x2F;&#x2F; 静态资源img、css、js</span><br><span class="line">|    ├── components     &#x2F;&#x2F; 小组件</span><br><span class="line">|    ├── views          &#x2F;&#x2F; 页面(视图)组件</span><br><span class="line">|    ├── App.vue        &#x2F;&#x2F; 根组件</span><br><span class="line">|    ├── main.js        &#x2F;&#x2F; 全局脚本文件（项目的入口）</span><br><span class="line">|    ├── router</span><br><span class="line">|    |    ├── index.js       &#x2F;&#x2F; 路由脚本文件</span><br><span class="line">|    |    ├── modules       &#x2F;&#x2F; 模块</span><br><span class="line">|    |    |    ├── user.js         &#x2F;&#x2F; 用户模块</span><br><span class="line">|    |    |    ├── other.js        &#x2F;&#x2F; 其他模块</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
@@ -3401,6 +3372,42 @@ limitations under the License.</code></pre>
       </categories>
       <tags>
         <tag>听课笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>vue项目记录</title>
+    <url>/2020/05/26/vue%E9%A1%B9%E7%9B%AE%E8%AE%B0%E5%BD%95/</url>
+    <content><![CDATA[<h3 id="在项目中引入阿里图库"><a href="#在项目中引入阿里图库" class="headerlink" title="在项目中引入阿里图库"></a>在项目中引入阿里图库</h3><ol>
+<li>在阿里图库中，选好图标，建立好项目</li>
+<li>将整个项目的图标下载到本地解压</li>
+<li>在Vue.js项目的assets目录中，新建一个icon目录，将解压后文件夹里面的文件复制到这个目录下</li>
+<li>在main.js文件里引入iconfont.css, import ‘@/assets/icon/iconfont.css’</li>
+<li>在项目中引入图标的时候要加上iconfont类，然后再添加图标本身的类名</li>
+</ol>
+<h3 id="链接文字的写法-路由跳转"><a href="#链接文字的写法-路由跳转" class="headerlink" title="链接文字的写法(路由跳转)"></a>链接文字的写法(路由跳转)</h3><h5 id="不传参"><a href="#不传参" class="headerlink" title="不传参"></a>不传参</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">声明式：&lt;router-link :to&#x3D;&quot;&#123;name:&#39;index&#39;&#125;&#125;&quot;&gt;    或者    &lt;router-link to&#x3D;&#39;&#x2F;index&#39;&gt;</span><br><span class="line"></span><br><span class="line">编程式：router.push(...)</span><br><span class="line">方法一: this.$router.push(&#123;path:&#39;路径&#39;)&#125;;</span><br><span class="line">方法二：this.$router.push(&#123;name:&#39;组件名&#39;)&#125;;</span><br></pre></td></tr></table></figure>
+<h5 id="传参"><a href="#传参" class="headerlink" title="传参"></a>传参</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">声明式：&lt;router-link :to&#x3D;&quot;&#123;name:&#39;index&#39;,query:&#123;id:&#39;xxx&#39;,name:&#39;xxx&#39;&#125;&#125;&quot;&gt;</span><br><span class="line">编程式：router.push(...)</span><br><span class="line"></span><br><span class="line">方法一：this.$router.push(&#123;path:&#39;xxx&#39;,query:&#123;aa:xx, bb: xx&#125;&#125;);   &#x2F;&#x2F;带查询参数，类似于 “？” 的形式传值</span><br><span class="line"></span><br><span class="line">方法二：this.$router.push(&#123;path:&#39;xxx&#39;,params:&#123;aa:xx, bb: xx&#125;&#125;); </span><br><span class="line"></span><br><span class="line">注：以上两种方法的query跳转路径也可以写成name:&#39;组件名&#39;的形式</span><br><span class="line"></span><br><span class="line">在query中放入需要传递的参数即可，多个参数之间用逗号隔开；</span><br><span class="line"></span><br><span class="line">取值：this.$route.query.xx   (可在跳转的页面取得所传递的值)；</span><br></pre></td></tr></table></figure>
+<h3 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">component: () &#x3D;&gt; import(&#39;@&#x2F;views&#x2F;dashboard&#x2F;console&#x2F;index.vue&#39;),</span><br><span class="line">可以简写为：</span><br><span class="line">component: () &#x3D;&gt; import(&#39;@&#x2F;views&#x2F;dashboard&#x2F;console&#39;),</span><br></pre></td></tr></table></figure>
+<h3 id="Vue-js-组件中绑定点击事件不生效的解决方法"><a href="#Vue-js-组件中绑定点击事件不生效的解决方法" class="headerlink" title="Vue.js 组件中绑定点击事件不生效的解决方法"></a>Vue.js 组件中绑定点击事件不生效的解决方法</h3><p>在使用组件（比如 element UI）的过程中，会发现无法通过 @click 绑定标签的点击事件。</p>
+<p>因为 Vue.js 使用的是一套自己的事件传递机制，所以我们需要添加 @click.native 来绑定 DOM 原生事件。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;el-dropdown-item icon&#x3D;&quot;el-icon-unlock&quot; @click.native&#x3D;&quot;resetPass&quot;&gt;&lt;&#x2F;el-dropdown-item&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="Vuex的store的使用"><a href="#Vuex的store的使用" class="headerlink" title="Vuex的store的使用"></a>Vuex的store的使用</h3><p>注意：改变store值，要使用mutations，不要直接改变<br>store.js文件：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export default new Vuex.Store(&#123;</span><br><span class="line">  state: &#123;</span><br><span class="line">    isCollapse: false,</span><br><span class="line">    isMobile: false</span><br><span class="line">  &#125;,</span><br><span class="line">  mutations: &#123;</span><br><span class="line">    toggleCollapse(state) &#123;</span><br><span class="line">      state.isCollapse &#x3D;  !state.isCollapse;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="在页面中的使用："><a href="#在页面中的使用：" class="headerlink" title="在页面中的使用："></a>在页面中的使用：</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">在页面中引入：</span><br><span class="line">import &#123; mapState , mapMutations &#125; from &#39;vuex&#39;;</span><br><span class="line"></span><br><span class="line">引入state：</span><br><span class="line">computed: &#123;</span><br><span class="line">  ...mapState([&#39;isCollapse&#39;,&#39;isMobile&#39;])</span><br><span class="line">&#125;,</span><br><span class="line"></span><br><span class="line">引入方法：</span><br><span class="line">methods: &#123;</span><br><span class="line">  ...mapMutations([&#39;toggleCollapse&#39;])</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">页面结构中，直接使用：</span><br><span class="line">:class&#x3D;&quot;&#123;&#39;sider-collapse&#39;:isCollapse&#125;&quot;</span><br><span class="line"></span><br><span class="line">在事件中直接使用：</span><br><span class="line">this.toggleCollapse();</span><br><span class="line"></span><br><span class="line">如果要传参：</span><br><span class="line">this.toggleCollapse(&#123;</span><br><span class="line">  param: this.isCollapse</span><br><span class="line">&#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="emit的使用"><a href="#emit的使用" class="headerlink" title="$emit的使用"></a>$emit的使用</h3><p>通过 Event Bus 进行组件间通信，来折叠侧边栏</p>
+<p>bus.js:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import Vue from &#39;vue&#39;;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 使用 Event Bus</span><br><span class="line">const bus &#x3D; new Vue();</span><br><span class="line"></span><br><span class="line">export default bus;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">在点击事件的组件中：</span><br><span class="line">引入：</span><br><span class="line">import bus from &#39;..&#x2F;public&#x2F;bus&#39;;</span><br><span class="line"></span><br><span class="line">页面结构中：</span><br><span class="line">@click&#x3D;&quot;collapseChage&quot;</span><br><span class="line">v-show&#x3D;&quot;!isCollapse&quot;</span><br><span class="line"></span><br><span class="line">数据，方法：</span><br><span class="line">data() &#123; </span><br><span class="line">  return &#123;</span><br><span class="line">      isCollapse: false,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br><span class="line">methods: &#123;</span><br><span class="line">  &#x2F;&#x2F; 侧边栏折叠</span><br><span class="line">  collapseChage() &#123;</span><br><span class="line">      this.isCollapse &#x3D; !this.isCollapse;</span><br><span class="line">      bus.$emit(&#39;toggleCollapse&#39;, this.isCollapse);</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">在需要用到这个状态的组件中：</span><br><span class="line">引入：</span><br><span class="line">import bus from &#39;..&#x2F;public&#x2F;bus&#39;;</span><br><span class="line">数据：</span><br><span class="line">data() &#123; </span><br><span class="line">  return &#123;</span><br><span class="line">      isCollapse: false,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br><span class="line"></span><br><span class="line">页面结构：</span><br><span class="line">:class&#x3D;&quot;&#123;&#39;content-collapse&#39;:isCollapse&#125;&quot;</span><br><span class="line"></span><br><span class="line">监听toggleCollapse事件：</span><br><span class="line">created() &#123;</span><br><span class="line">  bus.$on(&#39;toggleCollapse&#39;, msg &#x3D;&gt; &#123;</span><br><span class="line">      this.isCollapse &#x3D; msg;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="如何将element-ui中的表格和分页器连接起来"><a href="#如何将element-ui中的表格和分页器连接起来" class="headerlink" title="如何将element-ui中的表格和分页器连接起来"></a>如何将element-ui中的表格和分页器连接起来</h3><img src="/2020/05/26/vue%E9%A1%B9%E7%9B%AE%E8%AE%B0%E5%BD%95/vue01.png" class="">
+<img src="/2020/05/26/vue%E9%A1%B9%E7%9B%AE%E8%AE%B0%E5%BD%95/vue02.png" class="">
+<img src="/2020/05/26/vue%E9%A1%B9%E7%9B%AE%E8%AE%B0%E5%BD%95/vue03.png" class="">
+<img src="/2020/05/26/vue%E9%A1%B9%E7%9B%AE%E8%AE%B0%E5%BD%95/vue04.png" class="">
+]]></content>
+      <categories>
+        <category>工作笔记</category>
+        <category>Vue.js</category>
+      </categories>
+      <tags>
+        <tag>Vue.js</tag>
       </tags>
   </entry>
   <entry>
@@ -3505,20 +3512,6 @@ limitations under the License.</code></pre>
 ]]></content>
   </entry>
   <entry>
-    <title>使用cmd命令删除文件夹</title>
-    <url>/2019/12/06/%E4%BD%BF%E7%94%A8cmd%E5%91%BD%E4%BB%A4%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6%E5%A4%B9/</url>
-    <content><![CDATA[<h6 id="1、删除空文件夹"><a href="#1、删除空文件夹" class="headerlink" title="1、删除空文件夹"></a>1、删除空文件夹</h6><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rmdir 空文件夹名</span><br></pre></td></tr></table></figure>
-<h6 id="2、删除文件夹以及文件夹内所有内容（-s是删除所有子目录以及其中的内容；-q是在删除时，不提示yes-or-no）"><a href="#2、删除文件夹以及文件夹内所有内容（-s是删除所有子目录以及其中的内容；-q是在删除时，不提示yes-or-no）" class="headerlink" title="2、删除文件夹以及文件夹内所有内容（/s是删除所有子目录以及其中的内容；/q是在删除时，不提示yes or no）"></a>2、删除文件夹以及文件夹内所有内容（/s是删除所有子目录以及其中的内容；/q是在删除时，不提示yes or no）</h6><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rmdir /s/q 文件夹名</span><br></pre></td></tr></table></figure>
-<h6 id="3、删除指定盘符的文件夹-删除D盘multify文件夹下的my-multify文件夹以及子内容，并且不提示"><a href="#3、删除指定盘符的文件夹-删除D盘multify文件夹下的my-multify文件夹以及子内容，并且不提示" class="headerlink" title="3、删除指定盘符的文件夹(删除D盘multify文件夹下的my-multify文件夹以及子内容，并且不提示)"></a>3、删除指定盘符的文件夹(删除D盘multify文件夹下的my-multify文件夹以及子内容，并且不提示)</h6><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rmdir /s/q d:\multify\my-multify</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>工作笔记</category>
-        <category>常用命令</category>
-      </categories>
-      <tags>
-        <tag>常用命令</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>元组的使用和类型约束</title>
     <url>/2020/11/09/%E5%85%83%E7%BB%84%E7%9A%84%E4%BD%BF%E7%94%A8%E5%92%8C%E7%B1%BB%E5%9E%8B%E7%BA%A6%E6%9D%9F/</url>
     <content><![CDATA[<h6 id="类型约束"><a href="#类型约束" class="headerlink" title="类型约束"></a>类型约束</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; const xiaojiejie : (string | number)[] &#x3D; [ &#39;dajiao &#39; , &#39;teacher &#39;, 28]</span><br></pre></td></tr></table></figure>
@@ -3532,6 +3525,20 @@ limitations under the License.</code></pre>
       </categories>
       <tags>
         <tag>TypeScript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用cmd命令删除文件夹</title>
+    <url>/2019/12/06/%E4%BD%BF%E7%94%A8cmd%E5%91%BD%E4%BB%A4%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6%E5%A4%B9/</url>
+    <content><![CDATA[<h6 id="1、删除空文件夹"><a href="#1、删除空文件夹" class="headerlink" title="1、删除空文件夹"></a>1、删除空文件夹</h6><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rmdir 空文件夹名</span><br></pre></td></tr></table></figure>
+<h6 id="2、删除文件夹以及文件夹内所有内容（-s是删除所有子目录以及其中的内容；-q是在删除时，不提示yes-or-no）"><a href="#2、删除文件夹以及文件夹内所有内容（-s是删除所有子目录以及其中的内容；-q是在删除时，不提示yes-or-no）" class="headerlink" title="2、删除文件夹以及文件夹内所有内容（/s是删除所有子目录以及其中的内容；/q是在删除时，不提示yes or no）"></a>2、删除文件夹以及文件夹内所有内容（/s是删除所有子目录以及其中的内容；/q是在删除时，不提示yes or no）</h6><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rmdir /s/q 文件夹名</span><br></pre></td></tr></table></figure>
+<h6 id="3、删除指定盘符的文件夹-删除D盘multify文件夹下的my-multify文件夹以及子内容，并且不提示"><a href="#3、删除指定盘符的文件夹-删除D盘multify文件夹下的my-multify文件夹以及子内容，并且不提示" class="headerlink" title="3、删除指定盘符的文件夹(删除D盘multify文件夹下的my-multify文件夹以及子内容，并且不提示)"></a>3、删除指定盘符的文件夹(删除D盘multify文件夹下的my-multify文件夹以及子内容，并且不提示)</h6><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rmdir /s/q d:\multify\my-multify</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>工作笔记</category>
+        <category>常用命令</category>
+      </categories>
+      <tags>
+        <tag>常用命令</tag>
       </tags>
   </entry>
   <entry>
@@ -3835,7 +3842,7 @@ limitations under the License.</code></pre>
 <h5 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h5><p>如有以下报错，是版本的问题影响的：</p>
 <p>Module build failed: TypeError: this.getResolve is not a function at Object.loader 安装node-sass运行报错</p>
 <p><strong>解决方法</strong>： 选择更低版本的sass-loader</p>
-<p><strong>卸载当前版本</strong>：npm uninstall sass-loader<br><strong>安装指定版本</strong>：npm install <a href="mailto:&#115;&#97;&#x73;&#115;&#45;&#108;&#x6f;&#x61;&#x64;&#x65;&#114;&#64;&#55;&#46;&#51;&#46;&#x31;">&#115;&#97;&#x73;&#115;&#45;&#108;&#x6f;&#x61;&#x64;&#x65;&#114;&#64;&#55;&#46;&#51;&#46;&#x31;</a> –save-dev</p>
+<p><strong>卸载当前版本</strong>：npm uninstall sass-loader<br><strong>安装指定版本</strong>：npm install <a href="mailto:&#115;&#97;&#115;&#x73;&#45;&#x6c;&#111;&#97;&#100;&#101;&#x72;&#x40;&#55;&#46;&#51;&#46;&#x31;">&#115;&#97;&#115;&#x73;&#45;&#x6c;&#111;&#97;&#100;&#101;&#x72;&#x40;&#55;&#46;&#51;&#46;&#x31;</a> –save-dev</p>
 <p>参考： <a href="https://blog.csdn.net/ze1024/article/details/100516650">安装node-sass运行报错</a></p>
 ]]></content>
       <categories>
@@ -7656,7 +7663,7 @@ limitations under the License.</code></pre>
 </thead>
 <tbody><tr>
 <td><a href="http://nodejs.cn/">Node.js中文网</a></td>
-<td></td>
+<td><a href="https://github.com/nvm-sh/nvm">nvm</a></td>
 <td></td>
 <td></td>
 <td></td>

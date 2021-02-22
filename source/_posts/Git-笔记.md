@@ -28,8 +28,6 @@ categories:
    git init
    ```
 
-
-
 #### 修改和提交
 
 1. 查看状态

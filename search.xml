@@ -61,27 +61,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Clipboard的使用</title>
-    <url>/2020/11/04/Clipboard%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
-    <content><![CDATA[<h4 id="如果存在clipboard-先将它销毁"><a href="#如果存在clipboard-先将它销毁" class="headerlink" title="如果存在clipboard,先将它销毁"></a>如果存在clipboard,先将它销毁</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">if(clipboard) &#123;</span><br><span class="line">    clipboard.destroy();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="Clipboard官网使用教程"><a href="#Clipboard官网使用教程" class="headerlink" title="Clipboard官网使用教程"></a><a href="http://www.clipboardjs.cn/">Clipboard官网使用教程</a></h5><h5 id="复制成功和复制失败的提示"><a href="#复制成功和复制失败的提示" class="headerlink" title="复制成功和复制失败的提示"></a>复制成功和复制失败的提示</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var u &#x3D; navigator.userAgent;</span><br><span class="line">clipboard.on(&#39;success&#39;, function(e) &#123;</span><br><span class="line">    layer.msg(&#39;复制成功&#39;, &#123;time: 1000&#125;);</span><br><span class="line">    e.clearSelection();</span><br><span class="line">&#125;);</span><br><span class="line">clipboard.on(&#39;error&#39;, function(e) &#123;</span><br><span class="line">    if(u.indexOf(&#39;UCBrowser&#39;) &gt; -1)&#123;</span><br><span class="line">        layer.msg(&#39;您的浏览器不支持，请长按内容手动复制！&#39;, &#123;time: 1000&#125;);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        layer.msg(&#39;复制失败&#39;, &#123;time: 1000&#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h5 id="如果提示信息弹两次"><a href="#如果提示信息弹两次" class="headerlink" title="如果提示信息弹两次"></a>如果提示信息弹两次</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">自己写一个copySuccessTip提示信息</span><br><span class="line">$(&quot;.copySuccessTip&quot;).addClass(&quot;mymove&quot;);</span><br><span class="line">setTimeout(function() &#123;</span><br><span class="line">    $(&quot;.copySuccessTip&quot;).removeClass(&quot;mymove&quot;);</span><br><span class="line">&#125;,1000);</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">引入图片：</span><br><span class="line">&#123;% asset_img css1.png %&#125;</span><br><span class="line">引入链接：</span><br><span class="line">[参考的博客](https:&#x2F;&#x2F;juejin.im&#x2F;post&#x2F;5b15022ff265da6e163720c6)</span><br></pre></td></tr></table></figure>
-<h4 id="解决clipboard复制弹多次提示的问题"><a href="#解决clipboard复制弹多次提示的问题" class="headerlink" title="解决clipboard复制弹多次提示的问题"></a>解决clipboard复制弹多次提示的问题</h4><p>1、使用destroy（在单页面里面，回来页面，如果存在这个对象，就删除。）</p>
-<img src="/2020/11/04/Clipboard%E7%9A%84%E4%BD%BF%E7%94%A8/note1.png" class="">
-
-<p>2、换成setTimeout，不用layer.msg（copySuccessTip的样式模拟layer.msg的样式即可）</p>
-<img src="/2020/11/04/Clipboard%E7%9A%84%E4%BD%BF%E7%94%A8/note2.png" class="">]]></content>
-      <categories>
-        <category>工作笔记</category>
-        <category>Clipboard</category>
-      </categories>
-      <tags>
-        <tag>Clipboard</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>ECMAScript 6简介</title>
     <url>/2019/07/04/ECMAScript-6%E7%AE%80%E4%BB%8B/</url>
     <content><![CDATA[<a href="http://es6.ruanyifeng.com/" title="" target="">阮一峰-ECMAScript 6</a> 
@@ -114,6 +93,27 @@
       </categories>
       <tags>
         <tag>阮一峰-ES6</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Clipboard的使用</title>
+    <url>/2020/11/04/Clipboard%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<h4 id="如果存在clipboard-先将它销毁"><a href="#如果存在clipboard-先将它销毁" class="headerlink" title="如果存在clipboard,先将它销毁"></a>如果存在clipboard,先将它销毁</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">if(clipboard) &#123;</span><br><span class="line">    clipboard.destroy();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="Clipboard官网使用教程"><a href="#Clipboard官网使用教程" class="headerlink" title="Clipboard官网使用教程"></a><a href="http://www.clipboardjs.cn/">Clipboard官网使用教程</a></h5><h5 id="复制成功和复制失败的提示"><a href="#复制成功和复制失败的提示" class="headerlink" title="复制成功和复制失败的提示"></a>复制成功和复制失败的提示</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var u &#x3D; navigator.userAgent;</span><br><span class="line">clipboard.on(&#39;success&#39;, function(e) &#123;</span><br><span class="line">    layer.msg(&#39;复制成功&#39;, &#123;time: 1000&#125;);</span><br><span class="line">    e.clearSelection();</span><br><span class="line">&#125;);</span><br><span class="line">clipboard.on(&#39;error&#39;, function(e) &#123;</span><br><span class="line">    if(u.indexOf(&#39;UCBrowser&#39;) &gt; -1)&#123;</span><br><span class="line">        layer.msg(&#39;您的浏览器不支持，请长按内容手动复制！&#39;, &#123;time: 1000&#125;);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        layer.msg(&#39;复制失败&#39;, &#123;time: 1000&#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h5 id="如果提示信息弹两次"><a href="#如果提示信息弹两次" class="headerlink" title="如果提示信息弹两次"></a>如果提示信息弹两次</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">自己写一个copySuccessTip提示信息</span><br><span class="line">$(&quot;.copySuccessTip&quot;).addClass(&quot;mymove&quot;);</span><br><span class="line">setTimeout(function() &#123;</span><br><span class="line">    $(&quot;.copySuccessTip&quot;).removeClass(&quot;mymove&quot;);</span><br><span class="line">&#125;,1000);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">引入图片：</span><br><span class="line">&#123;% asset_img css1.png %&#125;</span><br><span class="line">引入链接：</span><br><span class="line">[参考的博客](https:&#x2F;&#x2F;juejin.im&#x2F;post&#x2F;5b15022ff265da6e163720c6)</span><br></pre></td></tr></table></figure>
+<h4 id="解决clipboard复制弹多次提示的问题"><a href="#解决clipboard复制弹多次提示的问题" class="headerlink" title="解决clipboard复制弹多次提示的问题"></a>解决clipboard复制弹多次提示的问题</h4><p>1、使用destroy（在单页面里面，回来页面，如果存在这个对象，就删除。）</p>
+<img src="/2020/11/04/Clipboard%E7%9A%84%E4%BD%BF%E7%94%A8/note1.png" class="">
+
+<p>2、换成setTimeout，不用layer.msg（copySuccessTip的样式模拟layer.msg的样式即可）</p>
+<img src="/2020/11/04/Clipboard%E7%9A%84%E4%BD%BF%E7%94%A8/note2.png" class="">]]></content>
+      <categories>
+        <category>工作笔记</category>
+        <category>Clipboard</category>
+      </categories>
+      <tags>
+        <tag>Clipboard</tag>
       </tags>
   </entry>
   <entry>
@@ -167,6 +167,41 @@
 </blockquote>
 <h4 id="实时监听代码"><a href="#实时监听代码" class="headerlink" title="实时监听代码"></a>实时监听代码</h4><p>安装 live-server，在控制台输入live-server运行代码</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install –g live-server</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>工作笔记</category>
+        <category>ES6</category>
+      </categories>
+      <tags>
+        <tag>ES6</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ES6-基础课程2</title>
+    <url>/2019/07/16/ES6-%E5%9F%BA%E7%A1%80%E8%AF%BE%E7%A8%8B2/</url>
+    <content><![CDATA[<h4 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">var   = variable 变量   声明全局变量</span><br><span class="line"><span class="built_in">let</span>   = 假设</span><br><span class="line">const = 常量</span><br></pre></td></tr></table></figure>
+<p>for循环使用let，不受污染</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="built_in">let</span> i = 0; i &lt;10; i++) &#123;</span><br><span class="line">    console.log(i);</span><br><span class="line">&#125;</span><br><span class="line">console.log(i);   // Uncaught ReferenceError: i is not defined</span><br></pre></td></tr></table></figure>
+<p>例如：gulpfile.js引入插件模块可以使用const gulp = require(‘gulp’);</p>
+<h4 id="数据解构"><a href="#数据解构" class="headerlink" title="数据解构"></a>数据解构</h4><h6 id="注：数据解构，数据模式要一样"><a href="#注：数据解构，数据模式要一样" class="headerlink" title="注：数据解构，数据模式要一样"></a>注：数据解构，数据模式要一样</h6><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">let</span> array = [1,2,3];</span><br><span class="line"><span class="built_in">let</span> [i,j,k] = [1,2,3];</span><br><span class="line"><span class="built_in">let</span> [x,y,z] = array;</span><br><span class="line">console.log(z);</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">undefined  无      NaN    缺少值</span><br><span class="line">null       无对象    0    不是对象</span><br></pre></td></tr></table></figure>
+<h6 id="允许默认值存在"><a href="#允许默认值存在" class="headerlink" title="允许默认值存在"></a>允许默认值存在</h6><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">let</span> [m, n=<span class="string">&#x27;hello world&#x27;</span>] = [<span class="string">&#x27;say&#x27;</span>];</span><br><span class="line"><span class="built_in">let</span> [m, n=<span class="string">&#x27;hello world&#x27;</span>] = [<span class="string">&#x27;say&#x27;</span>, undefined];</span><br><span class="line">这两种情况，n为hello world</span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> [m, n=<span class="string">&#x27;hello world&#x27;</span>] = [<span class="string">&#x27;say&#x27;</span>, null];</span><br><span class="line">这两种情况，n为null</span><br></pre></td></tr></table></figure>
+<h6 id="对象的结构"><a href="#对象的结构" class="headerlink" title="对象的结构"></a>对象的结构</h6><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">let</span>&#123;u, v&#125; = &#123;u:1, v:3, e:0&#125;</span><br><span class="line">console.log(v);</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">这样写，会报错，让gulp不能执行正常编译</span><br><span class="line"><span class="built_in">let</span> l</span><br><span class="line">&#123;l&#125; = &#123;l: 222&#125;</span><br><span class="line">console.log(l)</span><br><span class="line">要加上括号：</span><br><span class="line"><span class="built_in">let</span> l</span><br><span class="line">(&#123;l&#125; = &#123;l: 222&#125;)</span><br></pre></td></tr></table></figure>
+<h6 id="常量数据结构"><a href="#常量数据结构" class="headerlink" title="常量数据结构"></a>常量数据结构</h6><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">const [aa,bb,cc,dd,ee] = <span class="string">&#x27;hello&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<h6 id="函数参数的数据结构"><a href="#函数参数的数据结构" class="headerlink" title="函数参数的数据结构"></a>函数参数的数据结构</h6><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> add([a,b]) &#123;</span><br><span class="line">    <span class="built_in">return</span> a+b</span><br><span class="line">&#125;</span><br><span class="line">console.log(add([1,2]));</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> add([a,b=3]) &#123;</span><br><span class="line">    <span class="built_in">return</span> a+b</span><br><span class="line">&#125;</span><br><span class="line">console.log(add([1]));</span><br></pre></td></tr></table></figure>
+<h6 id="json的数据结构"><a href="#json的数据结构" class="headerlink" title="json的数据结构"></a>json的数据结构</h6><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">let</span> json = &#123;</span><br><span class="line">    name: <span class="string">&#x27;yangyanyi&#x27;</span>,</span><br><span class="line">    age: 27</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">let</span> &#123;name, age&#125; = json;</span><br></pre></td></tr></table></figure>
+<h3 id="对象扩展运算符-…-（对象的值扩展）"><a href="#对象扩展运算符-…-（对象的值扩展）" class="headerlink" title="对象扩展运算符 … （对象的值扩展）"></a>对象扩展运算符 … （对象的值扩展）</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">aaa</span></span>() &#123;</span><br><span class="line">    console.log(arguments[0])</span><br><span class="line">    console.log(arguments[1])</span><br><span class="line">    console.log(arguments[2])</span><br><span class="line">    console.log(arguments[3])</span><br><span class="line">&#125;</span><br><span class="line">aaa(1,2,3);</span><br><span class="line">输出的是1，2，3，undefined</span><br><span class="line"><span class="keyword">function</span> bbb(...arg) &#123;</span><br><span class="line">    console.log(arg[0])</span><br><span class="line">    console.log(arg[1])</span><br><span class="line">    console.log(arg[2])</span><br><span class="line">    console.log(arg[3])</span><br><span class="line">&#125;</span><br><span class="line">bbb(1,2,3);</span><br><span class="line">输出的是1，2，3，undefined</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">let</span> arr1 = [1,2,3];</span><br><span class="line"><span class="built_in">let</span> arr2 = arr1;</span><br><span class="line">console.log(arr2);    //[1,2,3]</span><br><span class="line">arr2.push(4);</span><br><span class="line">console.log(arr1);    //[1,2,3,4]</span><br><span class="line">console.log(arr2);    //[1,2,3,4]</span><br><span class="line">注：这种赋值不是简单的赋值，而是地址映射</span><br></pre></td></tr></table></figure>
+<p>只要是对象，都可以用对象运算符</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">let</span> arr2 = [...arr1];</span><br><span class="line">加上...代表对象的值</span><br><span class="line"><span class="built_in">let</span> arr2 = [...arr1,4,5,6,7];</span><br><span class="line">console.log(arr1);    //[1,2,3]</span><br><span class="line">console.log(arr2);    //[1,2,3,4,5,6,7]</span><br><span class="line">这样赋值，修改arr2的值，不会对arr1有影响。</span><br></pre></td></tr></table></figure>
+<h6 id="rest运算符-rest休息-剩余的部分"><a href="#rest运算符-rest休息-剩余的部分" class="headerlink" title="rest运算符  rest休息 剩余的部分"></a>rest运算符  rest休息 剩余的部分</h6><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> ccc(first, ...arg) &#123;</span><br><span class="line">    console.log(arg.length);</span><br><span class="line">    console.log(first);</span><br><span class="line">    <span class="keyword">for</span>(<span class="built_in">let</span> val of arg)&#123;</span><br><span class="line">        console.log(val);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">ccc(1,2,3,4,5,6,7);</span><br></pre></td></tr></table></figure>
+<p>（可以使用在组件化编程的时候，父组件调子组件，子组件调父组件）</p>
+<h3 id="字符串模板"><a href="#字符串模板" class="headerlink" title="字符串模板"></a>字符串模板</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">let</span> chr = <span class="string">&#x27;z&#x27;</span>;</span><br><span class="line"><span class="built_in">let</span> chr1 =<span class="string">&#x27;\z&#x27;</span>;</span><br><span class="line"><span class="built_in">let</span> chr2 =<span class="string">&#x27;\u007A&#x27;</span>;</span><br><span class="line"><span class="built_in">let</span> chr3 = <span class="string">&#x27;\x2F&#x27;</span>;</span><br><span class="line">console.log(chr3);</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">let</span> person = <span class="string">&#x27;杨&#x27;</span>;</span><br><span class="line">// ES5写法：</span><br><span class="line"><span class="built_in">let</span> news = <span class="string">&#x27;今天上午10点，&#x27;</span> + person + <span class="string">&#x27;学习ES6&#x27;</span>;</span><br><span class="line">// ES6写法：</span><br><span class="line"><span class="built_in">let</span> news1 = `今天上午10点，<span class="variable">$&#123;person&#125;</span>学习ES6`;</span><br><span class="line">console.log(news);</span><br><span class="line">console.log(news1);</span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> a = 1;</span><br><span class="line"><span class="built_in">let</span> b = 2;</span><br><span class="line"><span class="built_in">let</span> sum = `&lt;p&gt;<span class="variable">$&#123; a+b &#125;</span>&lt;/p&gt;`</span><br></pre></td></tr></table></figure>
+<h5 id="判断一个字符串里面是否含有某字符"><a href="#判断一个字符串里面是否含有某字符" class="headerlink" title="判断一个字符串里面是否含有某字符"></a>判断一个字符串里面是否含有某字符</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">let</span> person = <span class="string">&#x27;杨&#x27;</span>;</span><br><span class="line"><span class="built_in">let</span> news = <span class="string">&#x27;今天上午10点，杨学习ES6&#x27;</span>;</span><br><span class="line"></span><br><span class="line">ES5:</span><br><span class="line">console.log(news.indexOf(person));</span><br><span class="line"></span><br><span class="line">ES6:</span><br><span class="line">console.log(news.includes(person));</span><br><span class="line">//文章开头</span><br><span class="line">console.log(news.startsWidth(person));</span><br><span class="line">//文章结尾</span><br><span class="line">console.log(news.endsWidth(person));</span><br></pre></td></tr></table></figure>
+<h5 id="循环输出"><a href="#循环输出" class="headerlink" title="循环输出"></a>循环输出</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">console.log(<span class="string">&#x27;*&#x27;</span>,repeat(2));   //**</span><br><span class="line">//会自动去掉小数点</span><br><span class="line">console.log(<span class="string">&#x27;*&#x27;</span>,repeat(2.5));   //** </span><br></pre></td></tr></table></figure>
+<h4 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h4><a href="https://flykeying.github.io/regex/index.html" title="" target="">正则表达式学习环境</a>
 ]]></content>
       <categories>
         <category>工作笔记</category>
@@ -269,41 +304,6 @@ limitations under the License.</code></pre>
       </tags>
   </entry>
   <entry>
-    <title>ES6-基础课程2</title>
-    <url>/2019/07/16/ES6-%E5%9F%BA%E7%A1%80%E8%AF%BE%E7%A8%8B2/</url>
-    <content><![CDATA[<h4 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">var   = variable 变量   声明全局变量</span><br><span class="line"><span class="built_in">let</span>   = 假设</span><br><span class="line">const = 常量</span><br></pre></td></tr></table></figure>
-<p>for循环使用let，不受污染</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="built_in">let</span> i = 0; i &lt;10; i++) &#123;</span><br><span class="line">    console.log(i);</span><br><span class="line">&#125;</span><br><span class="line">console.log(i);   // Uncaught ReferenceError: i is not defined</span><br></pre></td></tr></table></figure>
-<p>例如：gulpfile.js引入插件模块可以使用const gulp = require(‘gulp’);</p>
-<h4 id="数据解构"><a href="#数据解构" class="headerlink" title="数据解构"></a>数据解构</h4><h6 id="注：数据解构，数据模式要一样"><a href="#注：数据解构，数据模式要一样" class="headerlink" title="注：数据解构，数据模式要一样"></a>注：数据解构，数据模式要一样</h6><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">let</span> array = [1,2,3];</span><br><span class="line"><span class="built_in">let</span> [i,j,k] = [1,2,3];</span><br><span class="line"><span class="built_in">let</span> [x,y,z] = array;</span><br><span class="line">console.log(z);</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">undefined  无      NaN    缺少值</span><br><span class="line">null       无对象    0    不是对象</span><br></pre></td></tr></table></figure>
-<h6 id="允许默认值存在"><a href="#允许默认值存在" class="headerlink" title="允许默认值存在"></a>允许默认值存在</h6><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">let</span> [m, n=<span class="string">&#x27;hello world&#x27;</span>] = [<span class="string">&#x27;say&#x27;</span>];</span><br><span class="line"><span class="built_in">let</span> [m, n=<span class="string">&#x27;hello world&#x27;</span>] = [<span class="string">&#x27;say&#x27;</span>, undefined];</span><br><span class="line">这两种情况，n为hello world</span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> [m, n=<span class="string">&#x27;hello world&#x27;</span>] = [<span class="string">&#x27;say&#x27;</span>, null];</span><br><span class="line">这两种情况，n为null</span><br></pre></td></tr></table></figure>
-<h6 id="对象的结构"><a href="#对象的结构" class="headerlink" title="对象的结构"></a>对象的结构</h6><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">let</span>&#123;u, v&#125; = &#123;u:1, v:3, e:0&#125;</span><br><span class="line">console.log(v);</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">这样写，会报错，让gulp不能执行正常编译</span><br><span class="line"><span class="built_in">let</span> l</span><br><span class="line">&#123;l&#125; = &#123;l: 222&#125;</span><br><span class="line">console.log(l)</span><br><span class="line">要加上括号：</span><br><span class="line"><span class="built_in">let</span> l</span><br><span class="line">(&#123;l&#125; = &#123;l: 222&#125;)</span><br></pre></td></tr></table></figure>
-<h6 id="常量数据结构"><a href="#常量数据结构" class="headerlink" title="常量数据结构"></a>常量数据结构</h6><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">const [aa,bb,cc,dd,ee] = <span class="string">&#x27;hello&#x27;</span>;</span><br></pre></td></tr></table></figure>
-<h6 id="函数参数的数据结构"><a href="#函数参数的数据结构" class="headerlink" title="函数参数的数据结构"></a>函数参数的数据结构</h6><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> add([a,b]) &#123;</span><br><span class="line">    <span class="built_in">return</span> a+b</span><br><span class="line">&#125;</span><br><span class="line">console.log(add([1,2]));</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> add([a,b=3]) &#123;</span><br><span class="line">    <span class="built_in">return</span> a+b</span><br><span class="line">&#125;</span><br><span class="line">console.log(add([1]));</span><br></pre></td></tr></table></figure>
-<h6 id="json的数据结构"><a href="#json的数据结构" class="headerlink" title="json的数据结构"></a>json的数据结构</h6><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">let</span> json = &#123;</span><br><span class="line">    name: <span class="string">&#x27;yangyanyi&#x27;</span>,</span><br><span class="line">    age: 27</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">let</span> &#123;name, age&#125; = json;</span><br></pre></td></tr></table></figure>
-<h3 id="对象扩展运算符-…-（对象的值扩展）"><a href="#对象扩展运算符-…-（对象的值扩展）" class="headerlink" title="对象扩展运算符 … （对象的值扩展）"></a>对象扩展运算符 … （对象的值扩展）</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">aaa</span></span>() &#123;</span><br><span class="line">    console.log(arguments[0])</span><br><span class="line">    console.log(arguments[1])</span><br><span class="line">    console.log(arguments[2])</span><br><span class="line">    console.log(arguments[3])</span><br><span class="line">&#125;</span><br><span class="line">aaa(1,2,3);</span><br><span class="line">输出的是1，2，3，undefined</span><br><span class="line"><span class="keyword">function</span> bbb(...arg) &#123;</span><br><span class="line">    console.log(arg[0])</span><br><span class="line">    console.log(arg[1])</span><br><span class="line">    console.log(arg[2])</span><br><span class="line">    console.log(arg[3])</span><br><span class="line">&#125;</span><br><span class="line">bbb(1,2,3);</span><br><span class="line">输出的是1，2，3，undefined</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">let</span> arr1 = [1,2,3];</span><br><span class="line"><span class="built_in">let</span> arr2 = arr1;</span><br><span class="line">console.log(arr2);    //[1,2,3]</span><br><span class="line">arr2.push(4);</span><br><span class="line">console.log(arr1);    //[1,2,3,4]</span><br><span class="line">console.log(arr2);    //[1,2,3,4]</span><br><span class="line">注：这种赋值不是简单的赋值，而是地址映射</span><br></pre></td></tr></table></figure>
-<p>只要是对象，都可以用对象运算符</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">let</span> arr2 = [...arr1];</span><br><span class="line">加上...代表对象的值</span><br><span class="line"><span class="built_in">let</span> arr2 = [...arr1,4,5,6,7];</span><br><span class="line">console.log(arr1);    //[1,2,3]</span><br><span class="line">console.log(arr2);    //[1,2,3,4,5,6,7]</span><br><span class="line">这样赋值，修改arr2的值，不会对arr1有影响。</span><br></pre></td></tr></table></figure>
-<h6 id="rest运算符-rest休息-剩余的部分"><a href="#rest运算符-rest休息-剩余的部分" class="headerlink" title="rest运算符  rest休息 剩余的部分"></a>rest运算符  rest休息 剩余的部分</h6><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> ccc(first, ...arg) &#123;</span><br><span class="line">    console.log(arg.length);</span><br><span class="line">    console.log(first);</span><br><span class="line">    <span class="keyword">for</span>(<span class="built_in">let</span> val of arg)&#123;</span><br><span class="line">        console.log(val);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">ccc(1,2,3,4,5,6,7);</span><br></pre></td></tr></table></figure>
-<p>（可以使用在组件化编程的时候，父组件调子组件，子组件调父组件）</p>
-<h3 id="字符串模板"><a href="#字符串模板" class="headerlink" title="字符串模板"></a>字符串模板</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">let</span> chr = <span class="string">&#x27;z&#x27;</span>;</span><br><span class="line"><span class="built_in">let</span> chr1 =<span class="string">&#x27;\z&#x27;</span>;</span><br><span class="line"><span class="built_in">let</span> chr2 =<span class="string">&#x27;\u007A&#x27;</span>;</span><br><span class="line"><span class="built_in">let</span> chr3 = <span class="string">&#x27;\x2F&#x27;</span>;</span><br><span class="line">console.log(chr3);</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">let</span> person = <span class="string">&#x27;杨&#x27;</span>;</span><br><span class="line">// ES5写法：</span><br><span class="line"><span class="built_in">let</span> news = <span class="string">&#x27;今天上午10点，&#x27;</span> + person + <span class="string">&#x27;学习ES6&#x27;</span>;</span><br><span class="line">// ES6写法：</span><br><span class="line"><span class="built_in">let</span> news1 = `今天上午10点，<span class="variable">$&#123;person&#125;</span>学习ES6`;</span><br><span class="line">console.log(news);</span><br><span class="line">console.log(news1);</span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> a = 1;</span><br><span class="line"><span class="built_in">let</span> b = 2;</span><br><span class="line"><span class="built_in">let</span> sum = `&lt;p&gt;<span class="variable">$&#123; a+b &#125;</span>&lt;/p&gt;`</span><br></pre></td></tr></table></figure>
-<h5 id="判断一个字符串里面是否含有某字符"><a href="#判断一个字符串里面是否含有某字符" class="headerlink" title="判断一个字符串里面是否含有某字符"></a>判断一个字符串里面是否含有某字符</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">let</span> person = <span class="string">&#x27;杨&#x27;</span>;</span><br><span class="line"><span class="built_in">let</span> news = <span class="string">&#x27;今天上午10点，杨学习ES6&#x27;</span>;</span><br><span class="line"></span><br><span class="line">ES5:</span><br><span class="line">console.log(news.indexOf(person));</span><br><span class="line"></span><br><span class="line">ES6:</span><br><span class="line">console.log(news.includes(person));</span><br><span class="line">//文章开头</span><br><span class="line">console.log(news.startsWidth(person));</span><br><span class="line">//文章结尾</span><br><span class="line">console.log(news.endsWidth(person));</span><br></pre></td></tr></table></figure>
-<h5 id="循环输出"><a href="#循环输出" class="headerlink" title="循环输出"></a>循环输出</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">console.log(<span class="string">&#x27;*&#x27;</span>,repeat(2));   //**</span><br><span class="line">//会自动去掉小数点</span><br><span class="line">console.log(<span class="string">&#x27;*&#x27;</span>,repeat(2.5));   //** </span><br></pre></td></tr></table></figure>
-<h4 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h4><a href="https://flykeying.github.io/regex/index.html" title="" target="">正则表达式学习环境</a>
-]]></content>
-      <categories>
-        <category>工作笔记</category>
-        <category>ES6</category>
-      </categories>
-      <tags>
-        <tag>ES6</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>FastAdmin框架-使用笔记</title>
     <url>/2020/07/24/FastAdmin%E6%A1%86%E6%9E%B6-%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<h3 id="在FastAdmin动态追加bootstrap-select下拉列表"><a href="#在FastAdmin动态追加bootstrap-select下拉列表" class="headerlink" title="在FastAdmin动态追加bootstrap-select下拉列表"></a>在FastAdmin动态追加bootstrap-select下拉列表</h3>
@@ -321,18 +321,21 @@ limitations under the License.</code></pre>
   <entry>
     <title>Git-笔记</title>
     <url>/2021/01/14/Git-%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h4 id="Github创建仓库"><a href="#Github创建仓库" class="headerlink" title="Github创建仓库"></a>Github创建仓库</h4><img src="/2021/01/14/Git-%E7%AC%94%E8%AE%B0/create.png" class="">
+    <content><![CDATA[<h4 id="提交到远程仓库报错"><a href="#提交到远程仓库报错" class="headerlink" title="提交到远程仓库报错"></a>提交到远程仓库报错</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">OpenSSL SSL_connect: Connection was reset in connection to github.com:443</span><br><span class="line"> </span><br><span class="line"> 或</span><br><span class="line"> </span><br><span class="line">OpenSSL SSL_connect: Connection was reset in connection to github.com:403</span><br></pre></td></tr></table></figure>
+<p>解决方法，将.git/config：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[remote &quot;origin&quot;]</span><br><span class="line">	url &#x3D; https:&#x2F;&#x2F;github.com&#x2F;winney07&#x2F;winney07.github.io.git</span><br></pre></td></tr></table></figure>
+<p>改为：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[remote &quot;origin&quot;]</span><br><span class="line">	url &#x3D; git@github.com:winney07&#x2F;winney07.github.io.git</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="Github创建仓库"><a href="#Github创建仓库" class="headerlink" title="Github创建仓库"></a>Github创建仓库</h4><img src="/2021/01/14/Git-%E7%AC%94%E8%AE%B0/create.png" class="">
 
 <h3 id="Git常用命令速查表"><a href="#Git常用命令速查表" class="headerlink" title="Git常用命令速查表"></a>Git常用命令速查表</h3><h4 id="创建版本库"><a href="#创建版本库" class="headerlink" title="创建版本库"></a>创建版本库</h4><ol>
 <li><p>克隆远程版本库</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone &lt;url&gt;</span><br></pre></td></tr></table></figure></li>
 <li><p>初始化本地版本库</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ol>
-<h4 id="修改和提交"><a href="#修改和提交" class="headerlink" title="修改和提交"></a>修改和提交</h4><ol>
+<h4 id="修改和提交"><a href="#修改和提交" class="headerlink" title="修改和提交"></a>修改和提交</h4></li>
 <li><p>查看状态</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure></li>
 <li><p>查看变更内容</p>
@@ -957,35 +960,13 @@ limitations under the License.</code></pre>
 <h2 id="四、配置博客的个人信息"><a href="#四、配置博客的个人信息" class="headerlink" title="四、配置博客的个人信息"></a>四、配置博客的个人信息</h2><p>1、在hexo目录中，找到全局配置文件_config.yml<br>2、配置信息如下所示：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Hexo Configuration</span></span><br><span class="line"><span class="comment">## Docs: https://hexo.io/docs/configuration.html</span></span><br><span class="line"><span class="comment">## Source: https://github.com/hexojs/hexo/</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Site 站点信息配置</span></span><br><span class="line">title: winney     <span class="comment">#站点名</span></span><br><span class="line">subtitle: It is never too old to learn.  <span class="comment">#站点副标题</span></span><br><span class="line">description: Doing is better than saying.     <span class="comment">#站点信息简介</span></span><br><span class="line">keywords: winneyBlog   博客</span><br><span class="line">author: winney   <span class="comment">#站点作者</span></span><br><span class="line">language: zh-Hans     <span class="comment">#站点语言，default默认是英文，zh-Hans是中文</span></span><br><span class="line">timezone: Asia/Shanghai      <span class="comment">#时区</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># URL   博客地址</span></span><br><span class="line"><span class="comment">## If your site is put in a subdirectory, set url as &#x27;http://yoursite.com/child&#x27; and root as &#x27;/child/&#x27;</span></span><br><span class="line">url: https://AAAAAAAAAA.github.io/</span><br><span class="line">root: /</span><br><span class="line">permalink: :year/:month/:day/:title/</span><br><span class="line">permalink_defaults:</span><br><span class="line"></span><br><span class="line"><span class="comment"># Directory  目录设置</span></span><br><span class="line">source_dir: <span class="built_in">source</span></span><br><span class="line">public_dir: public</span><br><span class="line">tag_dir: tags</span><br><span class="line">archive_dir: archives</span><br><span class="line">category_dir: categories</span><br><span class="line">code_dir: downloads/code</span><br><span class="line">i18n_dir: :lang</span><br><span class="line">skip_render:</span><br><span class="line"></span><br><span class="line"><span class="comment"># Writing 文章布局</span></span><br><span class="line">new_post_name: :title.md <span class="comment"># File name of new posts</span></span><br><span class="line">default_layout: post</span><br><span class="line">titlecase: <span class="literal">false</span> <span class="comment"># Transform title into titlecase</span></span><br><span class="line">external_link: <span class="literal">true</span> <span class="comment"># Open external links in new tab</span></span><br><span class="line">filename_case: 0</span><br><span class="line">render_drafts: <span class="literal">false</span></span><br><span class="line">post_asset_folder: <span class="literal">true</span></span><br><span class="line">relative_link: <span class="literal">false</span></span><br><span class="line">future: <span class="literal">true</span></span><br><span class="line">highlight:</span><br><span class="line">  <span class="built_in">enable</span>: <span class="literal">true</span></span><br><span class="line">  line_number: <span class="literal">true</span></span><br><span class="line">  auto_detect: <span class="literal">false</span></span><br><span class="line">  tab_replace:</span><br><span class="line">  </span><br><span class="line"><span class="comment"># Home page setting  主页设置</span></span><br><span class="line"><span class="comment"># path: Root path for your blogs index page. (default = &#x27;&#x27;)</span></span><br><span class="line"><span class="comment"># per_page: Posts displayed per page. (0 = disable pagination)</span></span><br><span class="line"><span class="comment"># order_by: Posts order. (Order by date descending by default)</span></span><br><span class="line">index_generator:</span><br><span class="line">  path: <span class="string">&#x27;&#x27;</span></span><br><span class="line">  per_page: 3  <span class="comment">#每页文章数量</span></span><br><span class="line">  order_by: -date</span><br><span class="line">  </span><br><span class="line"><span class="comment"># Category &amp; Tag   分类和标签</span></span><br><span class="line">default_category: uncategorized</span><br><span class="line">category_map:</span><br><span class="line">tag_map:</span><br><span class="line"></span><br><span class="line"><span class="comment"># Date / Time format  日期 / 时间格式</span></span><br><span class="line"><span class="comment">## Hexo uses Moment.js to parse and display date</span></span><br><span class="line"><span class="comment">## You can customize the date format as defined in</span></span><br><span class="line"><span class="comment">## http://momentjs.com/docs/#/displaying/format/</span></span><br><span class="line">date_format: YYYY-MM-DD</span><br><span class="line">time_format: HH:mm:ss</span><br><span class="line"></span><br><span class="line"><span class="comment"># Pagination    归档显示</span></span><br><span class="line"><span class="comment">## Set per_page to 0 to disable pagination</span></span><br><span class="line">per_page: 10</span><br><span class="line">pagination_dir: page</span><br><span class="line"></span><br><span class="line"><span class="comment"># Extensions  扩展</span></span><br><span class="line"><span class="comment">## Plugins: https://hexo.io/plugins/</span></span><br><span class="line"><span class="comment">## Themes: https://hexo.io/themes/</span></span><br><span class="line">theme: next</span><br><span class="line"></span><br><span class="line"><span class="comment"># Deployment</span></span><br><span class="line"><span class="comment">## Docs: https://hexo.io/docs/deployment.html</span></span><br><span class="line">deploy:</span><br><span class="line">  <span class="built_in">type</span>: git    <span class="comment">#部署的类型</span></span><br><span class="line">  repository: https://github.com/AAAAAAA/AAAAAAA.github.io.git    <span class="comment">#仓库地址</span></span><br><span class="line">  branch: master    <span class="comment">#分支名称</span></span><br><span class="line">  message: hexo deploy  <span class="comment">#提交信息</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#Search</span></span><br><span class="line">search:</span><br><span class="line">  path: search.xml</span><br><span class="line">  field: post</span><br><span class="line">  format: html</span><br><span class="line">  <span class="built_in">limit</span>: 10000</span><br></pre></td></tr></table></figure>
 <p>注意：.yml 文件有严格的格式要求，文件里所有的配置都是：冒号 空格 值，并且冒号是英文状态下的输入。想了解更多的可以前往 官网 。<br>3、在博客目录下，右键点击Git Bash，进去命令窗口，输入下面的命令，即可在浏览器中看到刚刚设置的内容显示在页面中：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo server    //简写为hexo s</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>工作笔记</category>
-        <category>Hexo</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hexo-Gitee-Pages搭建个人博客</title>
-    <url>/2020/07/07/Hexo-Gitee-Pages%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<h3 id="一、环境配置"><a href="#一、环境配置" class="headerlink" title="一、环境配置"></a>一、环境配置</h3><p>node.js  <a href="https://nodejs.org/zh-cn/" title="" target="">官网</a><br>Git   <a href="https://git-scm.com/" title="" target="">官网</a></p>
-<h3 id="二、Hexo的安装与基本命令"><a href="#二、Hexo的安装与基本命令" class="headerlink" title="二、Hexo的安装与基本命令"></a>二、Hexo的安装与基本命令</h3><h4 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h4><p>如果没有安装hexo的，只需要在目录中单击右键启动Git Bash Here，输入命令：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install -g hexo </span><br></pre></td></tr></table></figure>
-<h4 id="初始化在本地生成Hexo相关目录"><a href="#初始化在本地生成Hexo相关目录" class="headerlink" title="初始化在本地生成Hexo相关目录"></a>初始化在本地生成Hexo相关目录</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo init Note  # 初始化创建，会再桌面创建Note文件夹</span><br><span class="line">cd Note         # 进入Note目录</span><br><span class="line">npm install     # 进一步安装hexo所需文件</span><br></pre></td></tr></table></figure>
-<h4 id="Hexo三连"><a href="#Hexo三连" class="headerlink" title="Hexo三连"></a>Hexo三连</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo clean(or c)          # 清空已有hexo网站文件</span><br><span class="line">hexo generate(or g)   # 依据网页文本与新的CSS样式生成新网站文件</span><br><span class="line">hexo server(or s)     # 启动本地服务器，可以在localhost:4000查看网站修改效果</span><br></pre></td></tr></table></figure>
-<h3 id="配置Git个人信息"><a href="#配置Git个人信息" class="headerlink" title="配置Git个人信息"></a>配置Git个人信息</h3><p>Git 全局设置:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git config --global user.name &quot;Github用户名&quot;       &#x2F;&#x2F;自己Github的账号名</span><br><span class="line">git config --global user.email &quot;Github邮箱&quot;        &#x2F;&#x2F;自己注册Github的邮箱地址</span><br></pre></td></tr></table></figure>
-<p>创建 git 仓库:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mkdir test</span><br><span class="line">cd test</span><br><span class="line">git init</span><br><span class="line">touch README.md</span><br><span class="line">git add README.md</span><br><span class="line">git commit -m &quot;first commit&quot;</span><br><span class="line">git remote add origin git@gitee.com:AAAA&#x2F;AAAA.git</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
-<p>已有仓库?</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd existing_git_repo</span><br><span class="line">git remote add origin git@gitee.com:AAAA&#x2F;AAAA.git</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
-<h3 id="三、主题下载与安装"><a href="#三、主题下载与安装" class="headerlink" title="三、主题下载与安装"></a>三、主题下载与安装</h3><p>Hexo官网上提供了丰富的主题可选，你只需要打开对应的界面（<a href="https://hexo.io/themes/" rel="nofollow noreferrer" target="_blank">https://hexo.io/themes/</a>）选择喜欢的，然后点击<strong>名称</strong>跳转到<strong>GitHub</strong>仓库选择<em>下载或者克隆</em>对应的<strong>zip</strong>文件到本地，并且解压到网站目录下的<strong>themes</strong>目录即可。</p>
-<p>然后接下来，你需要修改两个配置文件：</p>
-<li>你的网站根目录下的<strong>_config.yml</strong>文件，即网站配置文件；</li>
-<li>你选择的主题的自带配置文件<strong>_config.yml</strong>，即主题样式配置文件；</li>
-
-<h4 id="生成-添加-SSH-公钥之后，测试是否连接成功"><a href="#生成-添加-SSH-公钥之后，测试是否连接成功" class="headerlink" title="生成/添加 SSH 公钥之后，测试是否连接成功:"></a>生成/添加 SSH 公钥之后，测试是否连接成功:</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssh -T git@gitee.com</span><br><span class="line"></span><br><span class="line">如果成功，会显示：</span><br><span class="line">Hi xxx! You&#39;ve successfully authenticated, but GITEE.COM does not provide shell access.</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo server    //简写为hexo s</span><br></pre></td></tr></table></figure>
+<h4 id="提交到远程仓库报错"><a href="#提交到远程仓库报错" class="headerlink" title="提交到远程仓库报错"></a>提交到远程仓库报错</h4><p>报403或者每次提交都要输入账号密码</p>
+<p>可以将_config.yml里的</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">repository: https:&#x2F;&#x2F;github.com&#x2F;winney07&#x2F;winney07.github.io.git   #仓库地址</span><br></pre></td></tr></table></figure>
+<p>改为：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">repository: git@github.com:winney07&#x2F;winney07.github.io.git   #仓库地址</span><br></pre></td></tr></table></figure>
+]]></content>
       <categories>
         <category>工作笔记</category>
         <category>Hexo</category>
@@ -1016,6 +997,34 @@ limitations under the License.</code></pre>
 <h2 id="五、调整hexo页面宽度"><a href="#五、调整hexo页面宽度" class="headerlink" title="五、调整hexo页面宽度"></a>五、调整hexo页面宽度</h2><p>博客在浏览器上的留白太多，因此想增加文章的宽度。</p>
 <p>打开/Hexo/themes/hexo-theme-next/source//css/_variables/custom.styl 添加两行代码即可：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$main-desktop &#x3D; 1400px </span><br><span class="line">$content-desktop &#x3D; 1100px</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>工作笔记</category>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo-Gitee-Pages搭建个人博客</title>
+    <url>/2020/07/07/Hexo-Gitee-Pages%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<h3 id="一、环境配置"><a href="#一、环境配置" class="headerlink" title="一、环境配置"></a>一、环境配置</h3><p>node.js  <a href="https://nodejs.org/zh-cn/" title="" target="">官网</a><br>Git   <a href="https://git-scm.com/" title="" target="">官网</a></p>
+<h3 id="二、Hexo的安装与基本命令"><a href="#二、Hexo的安装与基本命令" class="headerlink" title="二、Hexo的安装与基本命令"></a>二、Hexo的安装与基本命令</h3><h4 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h4><p>如果没有安装hexo的，只需要在目录中单击右键启动Git Bash Here，输入命令：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install -g hexo </span><br></pre></td></tr></table></figure>
+<h4 id="初始化在本地生成Hexo相关目录"><a href="#初始化在本地生成Hexo相关目录" class="headerlink" title="初始化在本地生成Hexo相关目录"></a>初始化在本地生成Hexo相关目录</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo init Note  # 初始化创建，会再桌面创建Note文件夹</span><br><span class="line">cd Note         # 进入Note目录</span><br><span class="line">npm install     # 进一步安装hexo所需文件</span><br></pre></td></tr></table></figure>
+<h4 id="Hexo三连"><a href="#Hexo三连" class="headerlink" title="Hexo三连"></a>Hexo三连</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo clean(or c)          # 清空已有hexo网站文件</span><br><span class="line">hexo generate(or g)   # 依据网页文本与新的CSS样式生成新网站文件</span><br><span class="line">hexo server(or s)     # 启动本地服务器，可以在localhost:4000查看网站修改效果</span><br></pre></td></tr></table></figure>
+<h3 id="配置Git个人信息"><a href="#配置Git个人信息" class="headerlink" title="配置Git个人信息"></a>配置Git个人信息</h3><p>Git 全局设置:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git config --global user.name &quot;Github用户名&quot;       &#x2F;&#x2F;自己Github的账号名</span><br><span class="line">git config --global user.email &quot;Github邮箱&quot;        &#x2F;&#x2F;自己注册Github的邮箱地址</span><br></pre></td></tr></table></figure>
+<p>创建 git 仓库:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mkdir test</span><br><span class="line">cd test</span><br><span class="line">git init</span><br><span class="line">touch README.md</span><br><span class="line">git add README.md</span><br><span class="line">git commit -m &quot;first commit&quot;</span><br><span class="line">git remote add origin git@gitee.com:AAAA&#x2F;AAAA.git</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
+<p>已有仓库?</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd existing_git_repo</span><br><span class="line">git remote add origin git@gitee.com:AAAA&#x2F;AAAA.git</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
+<h3 id="三、主题下载与安装"><a href="#三、主题下载与安装" class="headerlink" title="三、主题下载与安装"></a>三、主题下载与安装</h3><p>Hexo官网上提供了丰富的主题可选，你只需要打开对应的界面（<a href="https://hexo.io/themes/" rel="nofollow noreferrer" target="_blank">https://hexo.io/themes/</a>）选择喜欢的，然后点击<strong>名称</strong>跳转到<strong>GitHub</strong>仓库选择<em>下载或者克隆</em>对应的<strong>zip</strong>文件到本地，并且解压到网站目录下的<strong>themes</strong>目录即可。</p>
+<p>然后接下来，你需要修改两个配置文件：</p>
+<li>你的网站根目录下的<strong>_config.yml</strong>文件，即网站配置文件；</li>
+<li>你选择的主题的自带配置文件<strong>_config.yml</strong>，即主题样式配置文件；</li>
+
+<h4 id="生成-添加-SSH-公钥之后，测试是否连接成功"><a href="#生成-添加-SSH-公钥之后，测试是否连接成功" class="headerlink" title="生成/添加 SSH 公钥之后，测试是否连接成功:"></a>生成/添加 SSH 公钥之后，测试是否连接成功:</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssh -T git@gitee.com</span><br><span class="line"></span><br><span class="line">如果成功，会显示：</span><br><span class="line">Hi xxx! You&#39;ve successfully authenticated, but GITEE.COM does not provide shell access.</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>工作笔记</category>
         <category>Hexo</category>
@@ -1656,19 +1665,6 @@ limitations under the License.</code></pre>
       </tags>
   </entry>
   <entry>
-    <title>PHP-笔记</title>
-    <url>/2021/01/25/PHP-%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h4 id="输出json数据"><a href="#输出json数据" class="headerlink" title="输出json数据"></a>输出json数据</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">echo &#39;&#123;&quot;code&quot;:0,&quot;msg&quot;:&quot;&quot;,&quot;count&quot;:1000,&quot;data&quot;:[&#123;&quot;id&quot;:10000,&quot;username&quot;:&quot;user-0&quot;,&quot;sex&quot;:&quot;女&quot;,&quot;city&quot;:&quot;城市-0&quot;,&quot;sign&quot;:&quot;签名-0&quot;,&quot;experience&quot;:255,&quot;logins&quot;:24,&quot;wealth&quot;:82830700,&quot;classify&quot;:&quot;作家&quot;,&quot;score&quot;:57&#125;,&#123;&quot;id&quot;:10029,&quot;username&quot;:&quot;user-29&quot;,&quot;sex&quot;:&quot;男&quot;,&quot;city&quot;:&quot;城市-29&quot;,&quot;sign&quot;:&quot;签名-29&quot;,&quot;experience&quot;:647,&quot;logins&quot;:107,&quot;wealth&quot;:97450636,&quot;classify&quot;:&quot;酱油&quot;,&quot;score&quot;:27&#125;]&#125;&#39;;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>工作笔记</category>
-        <category>PHP</category>
-      </categories>
-      <tags>
-        <tag>PHP</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Parcel打包TypeScript</title>
     <url>/2020/11/12/Parcel%E6%89%93%E5%8C%85TypeScript/</url>
     <content><![CDATA[<h4 id="用-Parcel-打包-TypeScript-代码"><a href="#用-Parcel-打包-TypeScript-代码" class="headerlink" title="用 Parcel 打包 TypeScript 代码"></a>用 Parcel 打包 TypeScript 代码</h4><blockquote>
@@ -1718,6 +1714,19 @@ limitations under the License.</code></pre>
       </categories>
       <tags>
         <tag>TypeScript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>PHP-笔记</title>
+    <url>/2021/01/25/PHP-%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h4 id="输出json数据"><a href="#输出json数据" class="headerlink" title="输出json数据"></a>输出json数据</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">echo &#39;&#123;&quot;code&quot;:0,&quot;msg&quot;:&quot;&quot;,&quot;count&quot;:1000,&quot;data&quot;:[&#123;&quot;id&quot;:10000,&quot;username&quot;:&quot;user-0&quot;,&quot;sex&quot;:&quot;女&quot;,&quot;city&quot;:&quot;城市-0&quot;,&quot;sign&quot;:&quot;签名-0&quot;,&quot;experience&quot;:255,&quot;logins&quot;:24,&quot;wealth&quot;:82830700,&quot;classify&quot;:&quot;作家&quot;,&quot;score&quot;:57&#125;,&#123;&quot;id&quot;:10029,&quot;username&quot;:&quot;user-29&quot;,&quot;sex&quot;:&quot;男&quot;,&quot;city&quot;:&quot;城市-29&quot;,&quot;sign&quot;:&quot;签名-29&quot;,&quot;experience&quot;:647,&quot;logins&quot;:107,&quot;wealth&quot;:97450636,&quot;classify&quot;:&quot;酱油&quot;,&quot;score&quot;:27&#125;]&#125;&#39;;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>工作笔记</category>
+        <category>PHP</category>
+      </categories>
+      <tags>
+        <tag>PHP</tag>
       </tags>
   </entry>
   <entry>
@@ -2795,6 +2804,46 @@ limitations under the License.</code></pre>
       </tags>
   </entry>
   <entry>
+    <title>jsTree笔记</title>
+    <url>/2021/01/15/jsTree%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p><a href="https://www.jstree.com.cn/">jsTree</a></p>
+<h4 id="清除上次操作记录"><a href="#清除上次操作记录" class="headerlink" title="清除上次操作记录"></a>清除上次操作记录</h4><p><strong>需求</strong>：当进来页面时，页面只展开第一级目录</p>
+<img src="/2021/01/15/jsTree%E7%AC%94%E8%AE%B0/note1.png" class="">
+
+<p><strong>目前存在问题</strong>：当用户在树上操作了置换，重新刷新页面，进来置换，依然保持上次操作后的状态，如图：</p>
+<img src="/2021/01/15/jsTree%E7%AC%94%E8%AE%B0/note2.png" class="">
+
+<p>解决方法：</p>
+<p>在changed.jstree事件里面，让树重新刷新</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$(&#39;#jstree_demo_div&#39;).on(&quot;changed.jstree&quot;, function (e, data) &#123;</span><br><span class="line">      $(&#39;#jstree_demo_div&#39;).jstree(&#39;refresh&#39;);</span><br><span class="line"> &#125;);</span><br></pre></td></tr></table></figure>
+<p>写法1：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$(&#39;#treeId&#39;).jstree(true).refresh();</span><br></pre></td></tr></table></figure>
+<p>写法2：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$(&#39;#jstree_demo_div&#39;).jstree(&#39;refresh&#39;);</span><br></pre></td></tr></table></figure>
+<h5 id="只展开第一级目录"><a href="#只展开第一级目录" class="headerlink" title="只展开第一级目录"></a>只展开第一级目录</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">data[0].state.opened &#x3D; true;</span><br><span class="line">rendertree_group_admin(data);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>state.opened是控制展开还是收起，设置第一级的state.opened为true。</p>
+</blockquote>
+<p>结合（解决jstree初始状态只展开第一级目录）</p>
+<img src="/2021/01/15/jsTree%E7%AC%94%E8%AE%B0/note3.png" class="">
+
+<p>存在bug：</p>
+<img src="/2021/01/15/jsTree%E7%AC%94%E8%AE%B0/note4.png" class="">
+
+
+
+<h5 id="展开全部"><a href="#展开全部" class="headerlink" title="展开全部"></a>展开全部</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$(&quot;#group_admin&quot;).jstree(&quot;close_all&quot;);</span><br></pre></td></tr></table></figure>
+<h5 id="收起全部"><a href="#收起全部" class="headerlink" title="收起全部"></a>收起全部</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$(&quot;#group_admin&quot;).jstree(&quot;open_all&quot;);</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>工作笔记</category>
+        <category>jsTree</category>
+      </categories>
+      <tags>
+        <tag>jsTree</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>lay-excel-导出插件</title>
     <url>/2021/02/19/lay-excel-%E5%AF%BC%E5%87%BA%E6%8F%92%E4%BB%B6/</url>
     <content><![CDATA[<h1 id="LAY-EXCEL-简单快捷的导出插件"><a href="#LAY-EXCEL-简单快捷的导出插件" class="headerlink" title="LAY-EXCEL 简单快捷的导出插件"></a>LAY-EXCEL 简单快捷的导出插件</h1><p>现有导出前端库中，XLSX.JS功能强大但是操作颇为不便，于是封装了此插件，依赖jQuery，支持Layui插件形式加载，<strong>导出仅需一句话</strong>。</p>
@@ -2871,46 +2920,6 @@ limitations under the License.</code></pre>
       </categories>
       <tags>
         <tag>layui</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>jsTree笔记</title>
-    <url>/2021/01/15/jsTree%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<p><a href="https://www.jstree.com.cn/">jsTree</a></p>
-<h4 id="清除上次操作记录"><a href="#清除上次操作记录" class="headerlink" title="清除上次操作记录"></a>清除上次操作记录</h4><p><strong>需求</strong>：当进来页面时，页面只展开第一级目录</p>
-<img src="/2021/01/15/jsTree%E7%AC%94%E8%AE%B0/note1.png" class="">
-
-<p><strong>目前存在问题</strong>：当用户在树上操作了置换，重新刷新页面，进来置换，依然保持上次操作后的状态，如图：</p>
-<img src="/2021/01/15/jsTree%E7%AC%94%E8%AE%B0/note2.png" class="">
-
-<p>解决方法：</p>
-<p>在changed.jstree事件里面，让树重新刷新</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$(&#39;#jstree_demo_div&#39;).on(&quot;changed.jstree&quot;, function (e, data) &#123;</span><br><span class="line">      $(&#39;#jstree_demo_div&#39;).jstree(&#39;refresh&#39;);</span><br><span class="line"> &#125;);</span><br></pre></td></tr></table></figure>
-<p>写法1：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$(&#39;#treeId&#39;).jstree(true).refresh();</span><br></pre></td></tr></table></figure>
-<p>写法2：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$(&#39;#jstree_demo_div&#39;).jstree(&#39;refresh&#39;);</span><br></pre></td></tr></table></figure>
-<h5 id="只展开第一级目录"><a href="#只展开第一级目录" class="headerlink" title="只展开第一级目录"></a>只展开第一级目录</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">data[0].state.opened &#x3D; true;</span><br><span class="line">rendertree_group_admin(data);</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>state.opened是控制展开还是收起，设置第一级的state.opened为true。</p>
-</blockquote>
-<p>结合（解决jstree初始状态只展开第一级目录）</p>
-<img src="/2021/01/15/jsTree%E7%AC%94%E8%AE%B0/note3.png" class="">
-
-<p>存在bug：</p>
-<img src="/2021/01/15/jsTree%E7%AC%94%E8%AE%B0/note4.png" class="">
-
-
-
-<h5 id="展开全部"><a href="#展开全部" class="headerlink" title="展开全部"></a>展开全部</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$(&quot;#group_admin&quot;).jstree(&quot;close_all&quot;);</span><br></pre></td></tr></table></figure>
-<h5 id="收起全部"><a href="#收起全部" class="headerlink" title="收起全部"></a>收起全部</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$(&quot;#group_admin&quot;).jstree(&quot;open_all&quot;);</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>工作笔记</category>
-        <category>jsTree</category>
-      </categories>
-      <tags>
-        <tag>jsTree</tag>
       </tags>
   </entry>
   <entry>
@@ -3702,7 +3711,7 @@ limitations under the License.</code></pre>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;*点方input框时加租监听毒件*&#x2F;</span><br><span class="line">document.getElementsByName(&#39;input的name名称&#39;)[0].addEventListener(&#39;click&#39;,myfunc)</span><br><span class="line">function myfunc(e)&#123;</span><br><span class="line">	e.currentTarget.blur();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>以上这段代码必须放在datetimepicker方法的后面。</p>
 <p>例如：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;日历</span><br><span class="line">var startDate &#x3D; $(&#39;#startDate&#39;).fdatepicker(&#123;</span><br><span class="line">	format: &quot;yyyy-mm-dd&quot;,</span><br><span class="line">	todayBtn: true</span><br><span class="line">&#125;).on(&#39;changeDate&#39;, function (ev)&#123;</span><br><span class="line">	startDate.hide();</span><br><span class="line">	$(&#39;#endDate&#39;)[o].focus();</span><br><span class="line">&#125;).data(&#39;datepicker&#39;);</span><br><span class="line"></span><br><span class="line">var endDate &#x3D; $(&#39;#endDate&#39;).fdatepicker(&#123;</span><br><span class="line">	format: &quot;yyyy-mm-dd&quot;,</span><br><span class="line">	todayBtn: true,</span><br><span class="line">&#125;).on(&#39;changeDate&#39;, function (ev)&#123;</span><br><span class="line">	endDate.hide();</span><br><span class="line">&#125;).data(&#39;datepicker&#39;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;解决输入框点击多次（包括两次）不显示的问题</span><br><span class="line">document.getElementById(&#39;startDate&#39;).addEventListener(&#39;click&#39;,myfunc);</span><br><span class="line">document.getElementById(&#39;endDate&#39;).addEventListener(&#39;click&#39;,myfunc);</span><br><span class="line">function myfunc(e)&#123;</span><br><span class="line">	e.currentTarget.blur();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;日历</span><br><span class="line">var startDate &#x3D; $(&#39;#startDate&#39;).fdatepicker(&#123;</span><br><span class="line">	format: &quot;yyyy-mm-dd&quot;,</span><br><span class="line">	todayBtn: true</span><br><span class="line">&#125;).on(&#39;changeDate&#39;, function (ev)&#123;</span><br><span class="line">	startDate.hide();</span><br><span class="line">	$(&#39;#endDate&#39;)[0].focus();</span><br><span class="line">&#125;).data(&#39;datepicker&#39;);</span><br><span class="line"></span><br><span class="line">var endDate &#x3D; $(&#39;#endDate&#39;).fdatepicker(&#123;</span><br><span class="line">	format: &quot;yyyy-mm-dd&quot;,</span><br><span class="line">	todayBtn: true,</span><br><span class="line">&#125;).on(&#39;changeDate&#39;, function (ev)&#123;</span><br><span class="line">	endDate.hide();</span><br><span class="line">&#125;).data(&#39;datepicker&#39;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;解决输入框点击多次（包括两次）不显示的问题</span><br><span class="line">document.getElementById(&#39;startDate&#39;).addEventListener(&#39;click&#39;,myfunc);</span><br><span class="line">document.getElementById(&#39;endDate&#39;).addEventListener(&#39;click&#39;,myfunc);</span><br><span class="line">function myfunc(e)&#123;</span><br><span class="line">	e.currentTarget.blur();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>工作笔记</category>
@@ -3826,7 +3835,7 @@ limitations under the License.</code></pre>
 <h5 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h5><p>如有以下报错，是版本的问题影响的：</p>
 <p>Module build failed: TypeError: this.getResolve is not a function at Object.loader 安装node-sass运行报错</p>
 <p><strong>解决方法</strong>： 选择更低版本的sass-loader</p>
-<p><strong>卸载当前版本</strong>：npm uninstall sass-loader<br><strong>安装指定版本</strong>：npm install <a href="mailto:&#x73;&#97;&#115;&#115;&#x2d;&#x6c;&#x6f;&#x61;&#x64;&#101;&#114;&#x40;&#55;&#46;&#51;&#x2e;&#x31;">&#x73;&#97;&#115;&#115;&#x2d;&#x6c;&#x6f;&#x61;&#x64;&#101;&#114;&#x40;&#55;&#46;&#51;&#x2e;&#x31;</a> –save-dev</p>
+<p><strong>卸载当前版本</strong>：npm uninstall sass-loader<br><strong>安装指定版本</strong>：npm install <a href="mailto:&#115;&#97;&#x73;&#115;&#45;&#108;&#x6f;&#x61;&#x64;&#x65;&#114;&#64;&#55;&#46;&#51;&#46;&#x31;">&#115;&#97;&#x73;&#115;&#45;&#108;&#x6f;&#x61;&#x64;&#x65;&#114;&#64;&#55;&#46;&#51;&#46;&#x31;</a> –save-dev</p>
 <p>参考： <a href="https://blog.csdn.net/ze1024/article/details/100516650">安装node-sass运行报错</a></p>
 ]]></content>
       <categories>

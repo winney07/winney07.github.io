@@ -466,3 +466,14 @@ git status
    ```
 
    
+
+#### 解决git pull后本地写的代码没了的问题
+
+第一步：git reflog
+
+第二步：git reset --hard HEAD@{n}   (HEAD:为版本号，就前面那一串数字，n是你要回退到的引用位置)
+
+```
+git reset --hard 84ef223
+```
+

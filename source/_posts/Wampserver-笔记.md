@@ -105,3 +105,8 @@ listen 8081
 ```
 
 3、访问的时候，使用www.web.com来访问本地项目
+
+#### Apache相对路径文件的放置
+
+{% asset_img note2.png %}
+

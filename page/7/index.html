@@ -193,7 +193,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/18/Wampserver-%E7%AC%94%E8%AE%B0/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/25/PHP-%E7%AC%94%E8%AE%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -207,7 +207,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/01/18/Wampserver-%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">Wampserver-笔记</a>
+            <a href="/2021/01/25/PHP-%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">PHP-笔记</a>
         </h2>
 
         <div class="post-meta">
@@ -218,7 +218,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2021-01-18 15:50:25 / 修改时间：16:31:46" itemprop="dateCreated datePublished" datetime="2021-01-18T15:50:25+08:00">2021-01-18</time>
+              <time title="创建时间：2021-01-25 14:29:47 / 修改时间：14:46:22" itemprop="dateCreated datePublished" datetime="2021-01-25T14:29:47+08:00">2021-01-25</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -230,7 +230,7 @@
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/Wampserver/" itemprop="url" rel="index"><span itemprop="name">Wampserver</span></a>
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/PHP/" itemprop="url" rel="index"><span itemprop="name">PHP</span></a>
                 </span>
             </span>
 
@@ -245,22 +245,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>注：如果重新有问题，启动服务一直是黄色，可以卸载了wamp，然后重启电脑，再重装</p>
-<h4 id="phpmyadmin默认SQL账号密码"><a href="#phpmyadmin默认SQL账号密码" class="headerlink" title="phpmyadmin默认SQL账号密码:"></a>phpmyadmin默认SQL账号密码:</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">账号：root，密码为空</span><br></pre></td></tr></table></figure>
-<img src="/2021/01/18/Wampserver-%E7%AC%94%E8%AE%B0/note1.png" class="">
-
-<h4 id="虚拟目录的配置"><a href="#虚拟目录的配置" class="headerlink" title="虚拟目录的配置"></a>虚拟目录的配置</h4><p>修改默认网站目录</p>
-<p>第一步：修改d:\wamp\bin\apache\Apache2.4.9\conf\httpd.conf</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">查找： DocumentRoot &quot;c:&#x2F;wamp&#x2F;www&#x2F;&quot;</span><br><span class="line">修改： DocumentRoot &quot;d:&#x2F;www&#x2F;&quot;</span><br><span class="line">查找： &lt;Directory &quot;c:&#x2F;wamp&#x2F;www&#x2F;&quot;&gt;</span><br><span class="line">修改： &lt;Directory &quot;d:&#x2F;www&#x2F;&quot;&gt;</span><br></pre></td></tr></table></figure>
-<p>第二步：修改wampmanager.ini和wampmanager.tpl</p>
-<p>1、修改c:\wamp\wampmanager.ini:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(1)打开：c:\wamp\wampmanager.ini</span><br><span class="line">(2)查找：Type: item; Caption: &quot;www 目录&quot;; Action: shellexecute; FileName: &quot;c:&#x2F;wamp&#x2F;www&quot;; Glyph: 2</span><br><span class="line">(3)修改：Type: item; Caption: &quot;www 目录&quot;; Action: shellexecute; FileName: &quot;d:&#x2F;www&quot;; Glyph: 2</span><br></pre></td></tr></table></figure>
-<p>2、修改c:\wamp\wampmanager.tpl：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(1)打开：c:\wamp\wampmanager.tpl</span><br><span class="line">(2)查找：Type: item; Caption: &quot;$&#123;w_wwwDirectory&#125;&quot;; Action: shellexecute; FileName: &quot;$&#123;wwwdir&#125;&quot;; Glyph: 2</span><br><span class="line">(3)修改：Type: item; Caption: &quot;$&#123;w_wwwDirectory&#125;&quot;; Action: shellexecute; FileName: &quot;d:&#x2F;www&quot;; Glyph: 2</span><br></pre></td></tr></table></figure>
-<h4 id="修改默认项目目录"><a href="#修改默认项目目录" class="headerlink" title="修改默认项目目录"></a>修改默认项目目录</h4><p>1、修改httpd.conf:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">DocumentRoot &quot;D:&#x2F;Work&#x2F;&quot;</span><br><span class="line">&lt;Directory &quot;D:&#x2F;Work&#x2F;&quot;&gt;</span><br></pre></td></tr></table></figure>
-<p>2、修改httpd-vhost.conf:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;VirtualHost *:80&gt;</span><br><span class="line">	ServerName localhost</span><br><span class="line">	ServerAlias localhost</span><br><span class="line">	DocumentRoot D:&#x2F;Work&#x2F;</span><br><span class="line">	&lt;Directory  &quot;D:&#x2F;Work&#x2F;&quot;&gt;</span><br><span class="line">		Options +Indexes +Includes +FollowSymLinks +MultiViews</span><br><span class="line">		AllowOverride All</span><br><span class="line">		Require local</span><br><span class="line">	&lt;&#x2F;Directory&gt;</span><br><span class="line">&lt;&#x2F;VirtualHost&gt;</span><br></pre></td></tr></table></figure>
+          <h4 id="输出json数据"><a href="#输出json数据" class="headerlink" title="输出json数据"></a>输出json数据</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">echo &#39;&#123;&quot;code&quot;:0,&quot;msg&quot;:&quot;&quot;,&quot;count&quot;:1000,&quot;data&quot;:[&#123;&quot;id&quot;:10000,&quot;username&quot;:&quot;user-0&quot;,&quot;sex&quot;:&quot;女&quot;,&quot;city&quot;:&quot;城市-0&quot;,&quot;sign&quot;:&quot;签名-0&quot;,&quot;experience&quot;:255,&quot;logins&quot;:24,&quot;wealth&quot;:82830700,&quot;classify&quot;:&quot;作家&quot;,&quot;score&quot;:57&#125;,&#123;&quot;id&quot;:10029,&quot;username&quot;:&quot;user-29&quot;,&quot;sex&quot;:&quot;男&quot;,&quot;city&quot;:&quot;城市-29&quot;,&quot;sign&quot;:&quot;签名-29&quot;,&quot;experience&quot;:647,&quot;logins&quot;:107,&quot;wealth&quot;:97450636,&quot;classify&quot;:&quot;酱油&quot;,&quot;score&quot;:27&#125;]&#125;&#39;;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -280,7 +265,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/18/HTML-%E7%AC%94%E8%AE%B0/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/21/JavaScript%E9%AB%98%E7%BA%A7%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -294,7 +279,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/01/18/HTML-%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">HTML-笔记</a>
+            <a href="/2021/01/21/JavaScript%E9%AB%98%E7%BA%A7%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" class="post-title-link" itemprop="url">JavaScript高级面向对象</a>
         </h2>
 
         <div class="post-meta">
@@ -304,14 +289,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-01-18 14:17:09" itemprop="dateCreated datePublished" datetime="2021-01-18T14:17:09+08:00">2021-01-18</time>
+              <time title="创建时间：2021-01-21 17:46:22" itemprop="dateCreated datePublished" datetime="2021-01-21T17:46:22+08:00">2021-01-21</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-01-25 11:43:39" itemprop="dateModified" datetime="2021-01-25T11:43:39+08:00">2021-01-25</time>
+                <time title="修改时间：2021-02-20 17:33:42" itemprop="dateModified" datetime="2021-02-20T17:33:42+08:00">2021-02-20</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -323,7 +308,7 @@
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/HTML/" itemprop="url" rel="index"><span itemprop="name">HTML</span></a>
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/%E5%90%AC%E8%AF%BE%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">听课笔记</span></a>
                 </span>
             </span>
 
@@ -338,21 +323,118 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>1、html</p>
-<p>HTML：hyperText markup language (超文本标记语言）</p>
-<p>2、是由标签组成的，解释标签是怎样的</p>
-<p>根标签：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
-<p>3、头标签，身体标签，类似人，头部是装思想的，身体是衣服样子</p>
-<p>写一个简单的英文，然后写中文乱码，因为是国外人创造的，不认识中文，需要告诉浏览器，要以中文的形式显示，然后要加meta标签，单加标签没有用。要加属性，解释属性</p>
-<p>Lang属性是告诉搜索引擎爬虫，我们的网站是关于什么内容的</p>
-<p>Lang = ‘en’ 英文的</p>
-<p>Lang = ‘zh’ 中文的</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;html lang&#x3D;&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">	&lt;meta charset&#x3D;&quot;utf-8&quot;&gt;</span><br><span class="line">	&lt;!-- gb2312 gbk unicode--&gt;</span><br><span class="line">	&lt;!-- Utf-8是unicode的升级版 --&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">	Life is shit!!!美好的生活!!!</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h4 id="select下拉框，添加分组-optgroup"><a href="#select下拉框，添加分组-optgroup" class="headerlink" title="select下拉框，添加分组(optgroup)"></a>select下拉框，添加分组(optgroup)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;select&gt;</span><br><span class="line">  &lt;optgroup label&#x3D;&quot;蔬菜&quot;&gt;</span><br><span class="line">    &lt;option value &#x3D;&quot;娃娃菜&quot;&gt;娃娃菜&lt;&#x2F;option&gt;</span><br><span class="line">    &lt;option value &#x3D;&quot;西红柿&quot;&gt;西红柿&lt;&#x2F;option&gt;</span><br><span class="line">  &lt;&#x2F;optgroup&gt;</span><br><span class="line"></span><br><span class="line">  &lt;optgroup label&#x3D;&quot;水果&quot;&gt;</span><br><span class="line">    &lt;option value &#x3D;&quot;苹果&quot;&gt;苹果&lt;&#x2F;option&gt;</span><br><span class="line">    &lt;option value &#x3D;&quot;蓝莓&quot;&gt;蓝莓&lt;&#x2F;option&gt;</span><br><span class="line">  &lt;&#x2F;optgroup&gt;</span><br><span class="line">&lt;&#x2F;select&gt;</span><br></pre></td></tr></table></figure>
-<h4 id="添加网页图标（favicon"><a href="#添加网页图标（favicon" class="headerlink" title="添加网页图标（favicon)"></a>添加网页图标（favicon)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel&#x3D;&quot;shortcut icon&quot; href&#x3D;&quot; &#x2F;favicon.ico&quot; &#x2F;&gt;</span><br></pre></td></tr></table></figure>
-
-
+          <h3 id="1-面向对象编程介绍"><a href="#1-面向对象编程介绍" class="headerlink" title="1.面向对象编程介绍"></a>1.面向对象编程介绍</h3><h4 id="1-2面向过程编程POP-Process-oriented-programming"><a href="#1-2面向过程编程POP-Process-oriented-programming" class="headerlink" title="1.2面向过程编程POP(Process-oriented programming)"></a>1.2面向过程编程POP(Process-oriented programming)</h4><p><strong>面向过程</strong>就是分析出解决问题所需要的步骤，然后用函数把这些步骤一步一步实现，使用的时候再一个一个的依次调用就可以了。</p>
+<p>举个粟子∶将大象装进冰箱，面向过程做法。</p>
+<ol>
+<li>打开冰箱门</li>
+<li>大象装进去</li>
+<li>关上冰箱门</li>
+</ol>
+<blockquote>
+<p>面向过程，就是按照我们分析好了的步骤，按照步骤解决问题。</p>
+</blockquote>
+<h4 id="1-3面向对象编程OOP-Object-Oriented-Programming"><a href="#1-3面向对象编程OOP-Object-Oriented-Programming" class="headerlink" title="1.3面向对象编程OOP(Object Oriented Programming)"></a>1.3面向对象编程OOP(Object Oriented Programming)</h4><p><strong>面向对象</strong>是把事务分解成为一个个对象，然后由对象之间分工与合作。</p>
+<p>举个粟子：将大象装进冰箱，面向对象做法。<br>先找出对象，并写出这些对象的功能:</p>
+<ol>
+<li><p>大象对象</p>
+<p>-进去</p>
+</li>
+<li><p>冰箱对象</p>
+<p>-打开</p>
+<p>-关闭</p>
+</li>
+<li><p>使用大象和冰箱的功能</p>
+</li>
+</ol>
+<blockquote>
+<p>面向对象是以对象功能来划分问题，而不是步骤。</p>
+</blockquote>
+<p>在面向对象程序开发思想中，每一个对象都是功能中心，具有明确分工。</p>
+<p>面向对象编程具有灵活、代码可复用、容易维护和开发的优点，更适合多人合作的大型软件项目。</p>
+<h5 id="面向对象的特性"><a href="#面向对象的特性" class="headerlink" title="面向对象的特性:"></a>面向对象的特性:</h5><ul>
+<li>封装性</li>
+<li>继承性</li>
+<li>多态性</li>
+</ul>
+<h4 id="1-4面向过程和面向对象的对比"><a href="#1-4面向过程和面向对象的对比" class="headerlink" title="1.4面向过程和面向对象的对比"></a>1.4面向过程和面向对象的对比</h4><h5 id="面向过程"><a href="#面向过程" class="headerlink" title="面向过程"></a>面向过程</h5><ul>
+<li><p>优点︰性能比面向对象高，适合跟硬件联系很紧密的东西，例如单片机就采用的面向过程编程</p>
+</li>
+<li><p>缺点：没有面向对象易维护、易复用、易扩展</p>
+</li>
+</ul>
+<h5 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h5><ul>
+<li><p>优点：易维护、易复用、易扩展，由于面向对象有封装、继承、多态性的特性，可以设计出低耦合的系统，使系统更加灵活、更加易于维护心</p>
+</li>
+<li><p>缺点：性能比面向过程低</p>
+</li>
+</ul>
+<p>用面向过程的方法写出来的程序是一份蛋炒饭，而用面向对象写出来的程序是一份盖浇饭。</p>
+<h3 id="2-ES6中的类和对象"><a href="#2-ES6中的类和对象" class="headerlink" title="2.ES6中的类和对象"></a>2.ES6中的类和对象</h3><h4 id="面向对象-1"><a href="#面向对象-1" class="headerlink" title="面向对象"></a>面向对象</h4><p>面向对象更贴近我们的实际生活,可以使用面向对象描述现实世界事物。但是事物分为具体的事物和抽象的事物</p>
+<p>手机   抽象的(泛指的)<br>           具体的(特指的)</p>
+<p>面向对象的思维特点:<br>1．抽取(抽象)对象共用的属性和行为组织(封装)成一个类（模板）</p>
+<p>2．对类进行实例化,获取类的对象</p>
+<p>面向对象编程我们考虑的是有哪些对象，按照面向对象的思维特点不断的创建对象,使用对象,指挥对象做事情.</p>
+<h4 id="2-1对象"><a href="#2-1对象" class="headerlink" title="2.1对象"></a>2.1对象</h4><p>现实生活中∶万物皆对象，对象是<code>一个具体的事物</code>，看得见摸得着的实物。例如，一本书、一辆汽车、一个人可以是“对象”，一个数据库、一张网页、一个与远程服务器的连接也可以是“对象”。<br><code>在JavaScript中，对象是一组无序的相关属性和方法的集合，所有的事物都是对象</code>，例如字符串、数值、数组、函数等。</p>
+<p>对象是由<code>属性</code>和<code>方法</code>组成的:</p>
+<ul>
+<li>属性：事物的<code>特征</code>，在对象中用<code>属性</code>来表示(常用名词)</li>
+<li>方法：事物的<code>行为</code>，在对象中用<code>方法</code>来表示(常用动词)</li>
+</ul>
+<h4 id="2-2类class"><a href="#2-2类class" class="headerlink" title="2.2类class"></a>2.2类class</h4><p>在ES6中新增加了类的概念，可以使用<code>class</code>关键字声明一个类，之后以这个类来实例化对象。</p>
+<p><code>类</code>抽象了对象的公共部分，它<code>泛指</code>某一大类( class )</p>
+<p><code>对</code>象<code>特指</code>某一个，通过类实例化一个具体的对象</p>
+<p>面向对象的思维特点:</p>
+<ol>
+<li><p>抽取（抽象）对象共用的属性和行为组织(封装)成一个<code>类</code>(模板)</p>
+</li>
+<li><p>对类进行实例化,获取类的<code>对象</code></p>
+</li>
+</ol>
+<h4 id="2-3创建类"><a href="#2-3创建类" class="headerlink" title="2.3创建类"></a>2.3创建类</h4><p>语法︰</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">class name &#123;</span><br><span class="line">  class body</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>创建实例:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var XX &#x3D; new name();</span><br></pre></td></tr></table></figure>
+<p><code>注意：类必须使用new实例化对象</code></p>
+<p>1．创建类class创建一个明星类</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class Star &#123;</span><br><span class="line">    constructor(uname, age) &#123;</span><br><span class="line">    	this.uname &#x3D; uname;</span><br><span class="line">    	this.age &#x3D; age;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2．利用类创建对象 new</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var ldh &#x3D; new Star(&#39;刘德华&#39;, 18);</span><br><span class="line">var zxy &#x3D; new star(张学友&quot;，20);</span><br><span class="line">console.log(ldh);</span><br><span class="line">console.log(zxy);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>(1）通过class关键字创建类，类名我们还是习惯性定义首字母大写</li>
+<li>(2)   类里面有个constructor函数,可以接受传递过来的参数,同时返回实例对象</li>
+<li>(3)   constructor函数只要new生成实例时,就会自动调用这个函数，如果我们不写这个函数,类也会自动生成这个函数</li>
+<li>(4)   生成实例new不能省略</li>
+<li>(5）最后注意语法规范，创建类类名后面不要加小括号,生成实例类名后面加小括号，构造函数不需要加function</li>
+</ul>
+<h4 id="2-5类添加方法"><a href="#2-5类添加方法" class="headerlink" title="2.5类添加方法"></a>2.5类添加方法</h4><p>语法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">class Person &#123;</span><br><span class="line">	constructor (name, age)&#123;     &#x2F;&#x2F; constructor构造器或者构造函数</span><br><span class="line">		this.name &#x3D; name;</span><br><span class="line">		this.age &#x3D; age;</span><br><span class="line">	&#125;</span><br><span class="line">	say()&#123;</span><br><span class="line">		console.log (this.name + &quot;你好&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">	sing(song)&#123;</span><br><span class="line">		console.log (&quot;我唱歌&quot;);</span><br><span class="line">		console.log (this.name + song);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">var ldh &#x3D; new Star(&#39;刘德华&#39;, 18);</span><br><span class="line">var zxy &#x3D; new star(张学友&quot;，20);</span><br><span class="line">&#x2F;&#x2F; 1)我们类里面所有的函数不需要写function</span><br><span class="line">&#x2F;&#x2F; 2)多个函数方法之间不需要添加逗号分隔</span><br><span class="line">ldh.sing(&quot;冰雨&quot;);</span><br><span class="line">zxy.sing(&quot;李香兰&quot;);</span><br></pre></td></tr></table></figure>
+<h3 id="3-类的继承"><a href="#3-类的继承" class="headerlink" title="3.类的继承"></a>3.类的继承</h3><h4 id="3-1继承"><a href="#3-1继承" class="headerlink" title="3.1继承"></a>3.1继承</h4><p>现实中的继承：子承父业，比如我们都继承了父亲的姓。</p>
+<p>程序中的继承：子类可以继承父类的一些属性和方法。</p>
+<p>语法︰</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 父类</span><br><span class="line">class Father&#123;</span><br><span class="line">	money() &#123;</span><br><span class="line">		console.log(100);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F; 子类继承父类</span><br><span class="line">class Son extends Father&#123; </span><br><span class="line">&#125;</span><br><span class="line">var son &#x3D; new Son();</span><br><span class="line">son.money();</span><br></pre></td></tr></table></figure>
+<p>这样写，会报错：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 父类</span><br><span class="line">class Father&#123;</span><br><span class="line">	constructor(x, y)&#123;</span><br><span class="line">		this.x &#x3D; x;</span><br><span class="line">		this.y &#x3D; y;</span><br><span class="line">	&#125;</span><br><span class="line">	sum() &#123;</span><br><span class="line">		console.log(this.x + this.y);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F; 子类继承父类</span><br><span class="line">class Son extends Father&#123; </span><br><span class="line">	constructor(x, y)&#123;</span><br><span class="line">		this.x &#x3D; x;</span><br><span class="line">		this.y &#x3D; y;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">var son2 &#x3D; new Son(1, 2);</span><br><span class="line">son2.sum();</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Uncaught ReferenceError:Must call super constructor in derived class before accessing &#39;this &#39; or returningfrom derived constructor</span><br></pre></td></tr></table></figure>
+<p>解决方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 子类继承父类</span><br><span class="line">class Son extends Father&#123; </span><br><span class="line">	constructor(x, y)&#123;</span><br><span class="line">		super(x, y);   &#x2F;&#x2F; 调用了父类中的构造函数</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="3-2-super关键字"><a href="#3-2-super关键字" class="headerlink" title="3.2 super关键字"></a>3.2 super关键字</h4><p><code>super关键字</code>用于访问和调用对象父类上的函数。<code>可以调用父类的构造函数</code>，也可以调用父类的普通函数</p>
+<hr>
+<h4 id="prototype-深入浅出原型"><a href="#prototype-深入浅出原型" class="headerlink" title="prototype-深入浅出原型"></a>prototype-深入浅出原型</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">function Dogs() &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">Dogs.prototype.name &#x3D; &#39;collie&#39;;</span><br><span class="line">Dogs.prototype.age &#x3D; 24;</span><br><span class="line">Dogs.prototype.DogsName &#x3D; function() &#123;</span><br><span class="line">    alert(this.name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;JS在创建对象（不论是普通对象还是函数对象）的时候，都有一个叫做__proto__的内置属性，用于指向创建它的函数对象的原型对象prototype</span><br><span class="line">var DogsA &#x3D; new Dogs();</span><br><span class="line">&#x2F;&#x2F; console.log(DogsA.DogsName());</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; DogsA 的construtor（构造函数）是Dogs()</span><br><span class="line">console.log(Dogs.prototype);</span><br><span class="line">console.log(DogsA.constructor);</span><br><span class="line">console.log(DogsA);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; DogsA的__proto__属性等于Dogs的prototype属性</span><br><span class="line">console.log(Dogs.prototype &#x3D;&#x3D;&#x3D; DogsA.__proto__);   &#x2F;&#x2F;true</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;Dogs.prototype对象也有 _proto _ 属性，它指向创建它的函数对象（Object）的 prototype。</span><br><span class="line">&#x2F;&#x2F;Dogs.prototype的__proto__属性等于Object的prototype属性</span><br><span class="line">console.log(Dogs.prototype.__proto__ &#x3D;&#x3D;&#x3D; Object.prototype);  &#x2F;&#x2F;true</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;判断是不是某实例化对象的原型</span><br><span class="line">console.log(Dogs.prototype.isPrototypeOf(DogsA));</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="http://www.htmleaf.com/ziliaoku/qianduanjiaocheng/201512142905.html">JavaScript面向对象-原型的内存模型</a></p>
+<blockquote>
+<p>通过prototype创建的属性和方法，会存放在函数对象中的<code>__pro__</code>属性中，<code>__pro__</code>是一个对象</p>
+<p>通过prototype创建的属性和方法，也会存放在该函数对象的<code>__pro__</code>属性中的constructor（例如：构造函数是Person)中的prototype中 </p>
+</blockquote>
+<p>创建一个对象是会给它分配内存空间的。</p>
+<p>通过构造函数的方法，创建一个对象出来，在新对象的内存空间中会有一个<code>_proto_</code>内部属性，这个内部属性是不能被访问的，它也指向构造函数（例如：<code>Person</code>）的原型。<code>_proto_</code>内部属性是隐藏的</p>
+<blockquote>
+<p>需要特别注意的是：原型中的值是不会被替换的，仅仅只是在属性查找时被对象自己空间中的同名属性所覆盖。</p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="http://www.htmleaf.com/ziliaoku/qianduanjiaocheng/201512162910.html">JavaScript面向对象-原型的重写</a></p>
+<h4 id="对象的创建方式不一样，存储位置不一样"><a href="#对象的创建方式不一样，存储位置不一样" class="headerlink" title="对象的创建方式不一样，存储位置不一样"></a>对象的创建方式不一样，存储位置不一样</h4><p>这里定义了两个对象，即使内容一样，但是存储位置不一样</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var objectFoo &#x3D; &#123;same : &#39;same&#39; &#125;;</span><br><span class="line">var objectBar &#x3D; &#123;same : &#39;same&#39; &#125;;</span><br><span class="line">console.log(objectFoo &#x3D;&#x3D; objectBar); &#x2F;&#x2F; false</span><br></pre></td></tr></table></figure>
+<p>这里也是定义两个对象，但是它们的存储位置一样</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var objectA &#x3D; &#123; foo: &#39;bar&#39; &#125;;</span><br><span class="line">var objectB &#x3D; objectA;</span><br><span class="line">console.log(objectA &#x3D;&#x3D; objectB);  &#x2F;&#x2F; true</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -372,7 +454,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/18/VSCode-%E7%AC%94%E8%AE%B0/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/21/web%E5%89%8D%E7%AB%AF%E5%88%9D%E4%B8%AD%E9%AB%98-%E8%B5%84%E6%B7%B1-%E4%B8%93%E5%AE%B6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -386,7 +468,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/01/18/VSCode-%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">VSCode-笔记</a>
+            <a href="/2021/01/21/web%E5%89%8D%E7%AB%AF%E5%88%9D%E4%B8%AD%E9%AB%98-%E8%B5%84%E6%B7%B1-%E4%B8%93%E5%AE%B6/" class="post-title-link" itemprop="url">web前端初中高+资深+专家</a>
         </h2>
 
         <div class="post-meta">
@@ -397,7 +479,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2021-01-18 11:41:32 / 修改时间：12:02:15" itemprop="dateCreated datePublished" datetime="2021-01-18T11:41:32+08:00">2021-01-18</time>
+              <time title="创建时间：2021-01-21 17:31:35 / 修改时间：17:43:44" itemprop="dateCreated datePublished" datetime="2021-01-21T17:31:35+08:00">2021-01-21</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -409,7 +491,7 @@
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/VSCode/" itemprop="url" rel="index"><span itemprop="name">VSCode</span></a>
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/%E5%90%AC%E8%AF%BE%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">听课笔记</span></a>
                 </span>
             </span>
 
@@ -424,9 +506,50 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p><a target="_blank" rel="noopener" href="https://lzw.me/a/vscode-visual-studio-code-shortcut.html">常用快捷键</a>    <a target="_blank" rel="noopener" href="https://www.awesomes.cn/">大牛在用</a></p>
-<h4 id="格式化代码"><a href="#格式化代码" class="headerlink" title="格式化代码"></a>格式化代码</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Shift + Alt + F</span><br></pre></td></tr></table></figure>
-
+          <p>课程网址：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/av46236917?from=search&seid=11530041288730825105">【极客学院】web前端工程师 初级+中级+高级+资深+专家级（五部分完）</a></p>
+<h3 id="HTML5与HTML4的区别"><a href="#HTML5与HTML4的区别" class="headerlink" title="HTML5与HTML4的区别"></a>HTML5与HTML4的区别</h3><h4 id="一、推出的理由及目标"><a href="#一、推出的理由及目标" class="headerlink" title="一、推出的理由及目标"></a>一、推出的理由及目标</h4><p>HTML5的出现，对于Web来说意义是非常重大的，因为他的意图是想要把目前Web上存在的各种问题一并解决掉了。</p>
+<ul>
+<li><p>Web浏览器之间的兼容性很低</p>
+</li>
+<li><p>文档结构不够明确</p>
+</li>
+<li><p>Web应用程序的功能受到了限制</p>
+<p>世界知名浏览器厂商对HTML5的支持<br>微软、Google、苹果、Opera、Mozilla</p>
+</li>
+</ul>
+<h4 id="二、语法的改变"><a href="#二、语法的改变" class="headerlink" title="二、语法的改变"></a>二、语法的改变</h4><ul>
+<li>内容类型</li>
+<li>DOCTYPE声明</li>
+<li>指定字符编码</li>
+<li>可以省略标记的元素</li>
+<li>具有boolean值的属性</li>
+<li>省略引号</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type&#x3D;&quot;checkbox&quot; checked&#x3D;&quot;checked&quot;&gt;</span><br></pre></td></tr></table></figure>
+<p>可省略引号：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type&#x3D;&quot;checkbox&quot; checked&#x3D;checked&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="三、新增的元素和废除的元素"><a href="#三、新增的元素和废除的元素" class="headerlink" title="三、新增的元素和废除的元素"></a>三、新增的元素和废除的元素</h4><ul>
+<li><p>新增的结构元素</p>
+<p>section、article、aside、header、hgroup、footer、nav、figure</p>
+</li>
+<li><p>新增的其他元素<br>video、audio、embed、mark、progress、meter、time、ruby、rt、rp、wbr、canvas、command、details、datalist、datagrid、keygen、output、source、menu</p>
+</li>
+<li><p>新增的input元素的类型<br>email、url、number、range、Date Pickers</p>
+</li>
+</ul>
+<h4 id="四、新增的属性和废除的属性"><a href="#四、新增的属性和废除的属性" class="headerlink" title="四、新增的属性和废除的属性"></a>四、新增的属性和废除的属性</h4><ul>
+<li>contentEditable属性</li>
+<li>designMode属性</li>
+<li>hidden属性</li>
+<li>spellcheck属性</li>
+<li>tabindex属性</li>
+</ul>
+<blockquote>
+<p>hidden属性：hidden的元素不渲染</p>
+</blockquote>
+<p>tabindex为-1时按tab获取不了焦点，但开发中js可以获取</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href&#x3D;&quot;#&quot;tabindex&#x3D;&quot;&quot;1&quot;&gt;hello&lt;&#x2F;a&gt;</span><br><span class="line">&lt;a href&#x3D;&quot;#&quot;tabindex&#x3D;&quot;3&quot;&gt;hello&lt;&#x2F;a&gt;</span><br><span class="line">&lt;a href&#x3D;&quot;#&quot;tabindex&#x3D;&quot;2&quot;&gt;hello&lt;&#x2F;a&gt;</span><br><span class="line">&lt;ul tabindex&#x3D;&quot;-1&quot;&gt;</span><br><span class="line">	&lt;li&gt;1&lt;&#x2F;li&gt;</span><br><span class="line">	&lt;li&gt;1&lt;&#x2F;li&gt;</span><br><span class="line">	&lt;li&gt;1&lt;&#x2F;li&gt;</span><br><span class="line">	&lt;li&gt;1&lt;&#x2F;li&gt;</span><br><span class="line">&lt;&#x2F;ul&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="五、全局属性"><a href="#五、全局属性" class="headerlink" title="五、全局属性"></a>五、全局属性</h4>
       
     </div>
 
@@ -444,7 +567,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/28/">28</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/32/">32</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -512,20 +635,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">84</span>
+          <span class="site-state-item-count">94</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">46</span>
+        <span class="site-state-item-count">48</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">47</span>
+        <span class="site-state-item-count">50</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

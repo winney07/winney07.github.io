@@ -351,6 +351,14 @@ a,a:hover,a:active,a:visited,a:link,a:focus{
 }
 ```
 
+#### input 消除自动记忆功能 关闭浏览器自动填充输入框
+
+input 的autocomplete属性默认是on：其含义代表是否让浏览器自动记录之前输入的值
+
+```
+autocomplete="off"
+```
+
 #### 去除ios input框点击时的灰色背景︰
 
 ```

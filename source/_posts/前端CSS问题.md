@@ -379,6 +379,16 @@ autocomplete="off"
 }
 ```
 
+#### 元素在盒子中水平居中+垂直居中
+
+[参考文章](https://blog.csdn.net/qq_27576607/article/details/78697812)
+
+```
+display: flex;//flex布局
+justify-content: center;//使子项目水平居中
+align-items: center;//使子项目垂直居中
+```
+
 [参考教程](https://blog.csdn.net/namechenfl/article/details/83029189)
 
 但如果想要对IE8单独定义样式，可以这样：

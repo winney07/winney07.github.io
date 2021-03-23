@@ -160,7 +160,15 @@ function array_diff(a, b) {
     return arr;
 }
 ```
+#### js拷贝对象，不改变原来对象
+
+```
+var obj = {a:1,b:2}  
+var newObj = JSON.parse(JSON.stringify(obj)); 
+```
+
 #### JS 模拟浏览器 F5 自动刷新页面效果
+
 ```
 1. window.location.replace(window.location.href);
 
@@ -1170,6 +1178,15 @@ console.log(foo);
 console.log(func(4));
 ```
 
+#### 数组按一定原则排序
+
+```
+var arr5 = [{id:10},{id:5},{id:6},{id:9},{id:2},{id:3}];
+arr5.sort(function(a,b){
+    return a.id - b.id
+})
+```
+
 
 
 #### 对返回的数据进行处理-专为数组或对象格式
@@ -1364,3 +1381,8 @@ var a = ['1','2'，'3','4'，'5','6','7','8','9'];
 a.map(Number);  // 结果:[1,2,3,4,5,6,7,8,9]
 ```
 
+#### jquery获取第一个子节点元素
+
+```
+$("#body").children(":first")
+```

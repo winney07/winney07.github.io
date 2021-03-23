@@ -8,6 +8,10 @@ categories:
 - 《Vue2实践揭秘》
 ---
 
+#### 找相关资源
+
+vue.js官网的资源列表中的[awesome -vue](https://github.com/vuejs/awesome-vue)里面
+
 #### vue特点
 
 ```

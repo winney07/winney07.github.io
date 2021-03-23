@@ -477,3 +477,27 @@ git status
 git reset --hard 84ef223
 ```
 
+#### 创建分支，回退到某个版本
+
+```
+git branch pagination 96ba9b3
+git branch 分支名称 版本号
+```
+
+> 如果为了测试原来的代码，将它回退到某个版本，但是为了不影响当前分支里面的内容，创建一个新的分支。  如果git branch 分支名称，不加版本号，会在当前版本下创建分支。   如果需要回退到某个版本，需要在创建分支的时候加上版本号。
+
+如果要切换回原来的分支(master)，要先对新创建的分支(pagination)的内容提交，这个提交只会提交到pagination分支里面，不会影响到master分支
+
+提交：
+
+```
+git add .
+git commit -m "复习"
+```
+
+切换：
+
+```
+git checkout master
+```
+

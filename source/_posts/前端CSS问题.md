@@ -7,7 +7,20 @@ categories:
 - 工作笔记
 - css问题
 ---
+#### safari浏览器下 input/select 表单的阴影
+
+```
+input{
+	-webkit-appearance: none;
+}
+加上这个，单选/复选框按钮会不显示
+select{
+	-webkit-appearance: none;
+}
+```
+
 ### iPhone Safari浏览器字体放大 ——解决方法
+
 ```
 text-size-adjust: 100%;
 -webkit-text-size-adjust: 100%;
@@ -390,6 +403,31 @@ align-items: center;//使子项目垂直居中
 ```
 
 [参考教程](https://blog.csdn.net/namechenfl/article/details/83029189)
+
+#### KindEditor在移动端默认显示源码模式
+
+```
+var editor;
+KindEditor.ready(function(K) {
+	editor = K.create('textarea[name="content"]', {
+		resizeType : 1,
+		allowPreviewEmoticons : false,
+		allowImageUpload : false,
+		items : [
+			'source', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+			'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+			'insertunorderedlist', '|', 'link']
+	});
+
+    // 安卓手机兼容性处理(KindEditor在移动端默认显示源码模式)
+    var u = navigator.userAgent;
+    var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1;
+    if(isAndroid) {
+        $(".ke-outline[data-name='source']").click();
+    }
+
+});
+```
 
 但如果想要对IE8单独定义样式，可以这样：
 html*~body .example{这里是针对IE8识别的样式}

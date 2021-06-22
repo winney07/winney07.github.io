@@ -193,7 +193,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/21/Web%E5%89%8D%E7%AB%AFJavaScript%E9%AB%98%E7%BA%A7%E6%A1%86%E6%9E%B6/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/27/qrcode%E7%94%9F%E6%88%90%E4%BA%8C%E7%BB%B4%E7%A0%81/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -207,7 +207,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/01/21/Web%E5%89%8D%E7%AB%AFJavaScript%E9%AB%98%E7%BA%A7%E6%A1%86%E6%9E%B6/" class="post-title-link" itemprop="url">Web前端JavaScript高级框架</a>
+            <a href="/2021/01/27/qrcode%E7%94%9F%E6%88%90%E4%BA%8C%E7%BB%B4%E7%A0%81/" class="post-title-link" itemprop="url">qrcode生成二维码</a>
         </h2>
 
         <div class="post-meta">
@@ -218,7 +218,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2021-01-21 17:03:06 / 修改时间：19:33:26" itemprop="dateCreated datePublished" datetime="2021-01-21T17:03:06+08:00">2021-01-21</time>
+              <time title="创建时间：2021-01-27 11:09:11 / 修改时间：11:53:45" itemprop="dateCreated datePublished" datetime="2021-01-27T11:09:11+08:00">2021-01-27</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -230,7 +230,7 @@
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/%E6%8F%92%E4%BB%B6/" itemprop="url" rel="index"><span itemprop="name">插件</span></a>
                 </span>
             </span>
 
@@ -245,7 +245,16 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>课程链接：<a target="_blank" rel="noopener" href="https://ke.qq.com/course/232676">https://ke.qq.com/course/232676</a></p>
+          <h4 id="qrcode生成二维码"><a href="#qrcode生成二维码" class="headerlink" title="qrcode生成二维码"></a>qrcode生成二维码</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;jquery.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;qrcode.js&quot;&gt;&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;input id&#x3D;&quot;text&quot; type&#x3D;&quot;text&quot; value&#x3D;&quot;https:&#x2F;&#x2F;www.baidu.com&#x2F;&quot; style&#x3D;&quot;width:80%&quot; &#x2F;&gt;&lt;br &#x2F;&gt;</span><br><span class="line">&lt;div id&#x3D;&quot;qrcode&quot; style&#x3D;&quot;width:100px; height:100px; margin-top:15px;&quot;&gt;&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">    var qrcode &#x3D; new QRCode(document.getElementById(&quot;qrcode&quot;), &#123;</span><br><span class="line">        width : 100,</span><br><span class="line">        height : 100</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    function makeCode () &#123;		</span><br><span class="line">        var elText &#x3D; document.getElementById(&quot;text&quot;);</span><br><span class="line"></span><br><span class="line">        if (!elText.value) &#123;</span><br><span class="line">            alert(&quot;Input a text&quot;);</span><br><span class="line">            elText.focus();</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        qrcode.makeCode(elText.value);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    makeCode();</span><br><span class="line"></span><br><span class="line">    $(&quot;#text&quot;).on(&quot;blur&quot;, function () &#123;</span><br><span class="line">        makeCode();</span><br><span class="line">    &#125;).on(&quot;keydown&quot;, function (e) &#123;</span><br><span class="line">        if (e.keyCode &#x3D;&#x3D; 13) &#123;</span><br><span class="line">            makeCode();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="微信二维码电子名片生成系统"><a href="#微信二维码电子名片生成系统" class="headerlink" title="微信二维码电子名片生成系统"></a>微信二维码电子名片生成系统</h4><p><a target="_blank" rel="noopener" href="https://gitee.com/winney/work/blob/master/Plugs/qrcode/code.png">【示意图】</a></p>
+<p>清空二维码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">qrcode.clear(); &#x2F;&#x2F; clear the code.</span><br></pre></td></tr></table></figure>
+<p>加上中文内容会报错：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">qrcode.min.js:1 Uncaught Error: code length overflow. (3452&gt;1440)</span><br></pre></td></tr></table></figure>
+<p>解决方案：</p>
+<p> <a target="_blank" rel="noopener" href="https://github.com/KeeeX/qrcodejs">Keeex/qrcode</a>，用这里的js替换原来的js，但生成的内容格式跟原来的是不一样的。</p>
 
       
     </div>
@@ -265,7 +274,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/21/Ajax-%E7%AC%94%E8%AE%B0/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/25/PHP-%E7%AC%94%E8%AE%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -279,7 +288,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/01/21/Ajax-%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">Ajax-笔记</a>
+            <a href="/2021/01/25/PHP-%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">PHP-笔记</a>
         </h2>
 
         <div class="post-meta">
@@ -290,7 +299,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2021-01-21 10:53:32 / 修改时间：11:00:16" itemprop="dateCreated datePublished" datetime="2021-01-21T10:53:32+08:00">2021-01-21</time>
+              <time title="创建时间：2021-01-25 14:29:47 / 修改时间：14:46:22" itemprop="dateCreated datePublished" datetime="2021-01-25T14:29:47+08:00">2021-01-25</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -302,7 +311,7 @@
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/Ajax/" itemprop="url" rel="index"><span itemprop="name">Ajax</span></a>
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/PHP/" itemprop="url" rel="index"><span itemprop="name">PHP</span></a>
                 </span>
             </span>
 
@@ -317,25 +326,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <table>
-<thead>
-<tr>
-<th><a target="_blank" rel="noopener" href="https://api.jquery.com/jquery.ajax/">jQuery.ajax</a></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody><tr>
-<td><a target="_blank" rel="noopener" href="https://www.runoob.com/ajax/ajax-tutorial.html">AJAX教程</a></td>
-<td><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/ajax/index.asp">W3school</a></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">    url:&quot;&quot;,</span><br><span class="line">    timeout:8000,</span><br><span class="line">    type:&quot;POST&quot;,</span><br><span class="line">    dataType:&quot;json&quot;,</span><br><span class="line">    data:&#123;name:&quot;大名&quot;,age:&quot;23&quot;&#125;,</span><br><span class="line">    success:function(data,status,xhr)&#123;</span><br><span class="line"></span><br><span class="line">    &#125;,</span><br><span class="line">    error:function(xhr,status,error)&#123;</span><br><span class="line">        $(&quot;.success&quot;).hide();</span><br><span class="line">        $(&quot;.maskBg&quot;).hide();      </span><br><span class="line">        if(xhr.status &#x3D;&#x3D;&#x3D; 0)&#123;</span><br><span class="line">            if(status &#x3D;&#x3D;&#x3D; &quot;timeout&quot;)&#123;</span><br><span class="line">                app.alert(&quot;网络不给力，请检查网络设置&quot;); </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;else if(xhr.status.toString().charAt(0) &#x3D;&#x3D;&#x3D; &quot;4&quot;)&#123;</span><br><span class="line">            app.alert(&quot;客户端出错，请重新操作：&quot; + xhr.status);   </span><br><span class="line">        &#125;else if(xhr.status.toString().charAt(0) &#x3D;&#x3D; &quot;5&quot;)&#123;</span><br><span class="line">            app.alert(&quot;服务端出错，请联系网站管理员！错误代码：&quot;  + xhr.status);  </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+          <h4 id="输出json数据"><a href="#输出json数据" class="headerlink" title="输出json数据"></a>输出json数据</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">echo &#39;&#123;&quot;code&quot;:0,&quot;msg&quot;:&quot;&quot;,&quot;count&quot;:1000,&quot;data&quot;:[&#123;&quot;id&quot;:10000,&quot;username&quot;:&quot;user-0&quot;,&quot;sex&quot;:&quot;女&quot;,&quot;city&quot;:&quot;城市-0&quot;,&quot;sign&quot;:&quot;签名-0&quot;,&quot;experience&quot;:255,&quot;logins&quot;:24,&quot;wealth&quot;:82830700,&quot;classify&quot;:&quot;作家&quot;,&quot;score&quot;:57&#125;,&#123;&quot;id&quot;:10029,&quot;username&quot;:&quot;user-29&quot;,&quot;sex&quot;:&quot;男&quot;,&quot;city&quot;:&quot;城市-29&quot;,&quot;sign&quot;:&quot;签名-29&quot;,&quot;experience&quot;:647,&quot;logins&quot;:107,&quot;wealth&quot;:97450636,&quot;classify&quot;:&quot;酱油&quot;,&quot;score&quot;:27&#125;]&#125;&#39;;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -355,7 +346,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/20/Koa-%E7%AC%94%E8%AE%B0/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/21/JavaScript%E9%AB%98%E7%BA%A7%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -369,7 +360,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/01/20/Koa-%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">Koa-笔记</a>
+            <a href="/2021/01/21/JavaScript%E9%AB%98%E7%BA%A7%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" class="post-title-link" itemprop="url">JavaScript高级面向对象</a>
         </h2>
 
         <div class="post-meta">
@@ -378,10 +369,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-01-20 15:17:06 / 修改时间：19:17:14" itemprop="dateCreated datePublished" datetime="2021-01-20T15:17:06+08:00">2021-01-20</time>
+              <time title="创建时间：2021-01-21 17:46:22" itemprop="dateCreated datePublished" datetime="2021-01-21T17:46:22+08:00">2021-01-21</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-02-20 17:33:42" itemprop="dateModified" datetime="2021-02-20T17:33:42+08:00">2021-02-20</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -392,7 +389,7 @@
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/Koa/" itemprop="url" rel="index"><span itemprop="name">Koa</span></a>
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/%E5%90%AC%E8%AF%BE%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">听课笔记</span></a>
                 </span>
             </span>
 
@@ -407,56 +404,119 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Pt41127sj?from=search&seid=17378531192218366513">技术胖-koa2教程</a>    <a target="_blank" rel="noopener" href="http://www.jspang.com/detailed?id=34">技术胖博客笔记</a></p>
-<h4 id="第01节：Koa开发环境搭建"><a href="#第01节：Koa开发环境搭建" class="headerlink" title="第01节：Koa开发环境搭建"></a>第01节：Koa开发环境搭建</h4><p>1、npminit -y (-y可选)  ————生成package.json文件</p>
-<p>2、npm install –save koa ————在开发环境安装koa</p>
-<p>3、编写测试程序：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">const Koa &#x3D; require(&#39;koa&#39;);</span><br><span class="line">const app &#x3D; new Koa();</span><br><span class="line"></span><br><span class="line">app.use(async (ctx) &#x3D;&gt; &#123;</span><br><span class="line">  ctx.body &#x3D; &#39;Hello Winney&#39;  </span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.listen(3000)</span><br></pre></td></tr></table></figure>
-<p>4、运行node index.js  （因为是基于node的，所以直接node **.js）</p>
-<p>5、然后在浏览器中输入：<a target="_blank" rel="noopener" href="http://127.0.0.1:3000/">http://127.0.0.1:3000</a></p>
-<h4 id="第02节：async-await的使用方法"><a href="#第02节：async-await的使用方法" class="headerlink" title="第02节：async/await的使用方法"></a>第02节：async/await的使用方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">async function testAsync() &#123;</span><br><span class="line">	return &#39;Hello async&#39;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <h3 id="1-面向对象编程介绍"><a href="#1-面向对象编程介绍" class="headerlink" title="1.面向对象编程介绍"></a>1.面向对象编程介绍</h3><h4 id="1-2面向过程编程POP-Process-oriented-programming"><a href="#1-2面向过程编程POP-Process-oriented-programming" class="headerlink" title="1.2面向过程编程POP(Process-oriented programming)"></a>1.2面向过程编程POP(Process-oriented programming)</h4><p><strong>面向过程</strong>就是分析出解决问题所需要的步骤，然后用函数把这些步骤一步一步实现，使用的时候再一个一个的依次调用就可以了。</p>
+<p>举个粟子∶将大象装进冰箱，面向过程做法。</p>
+<ol>
+<li>打开冰箱门</li>
+<li>大象装进去</li>
+<li>关上冰箱门</li>
+</ol>
 <blockquote>
-<p>加上async，就把这个方法变成了异步的</p>
-<p>启用了async，返回的不是一个普通字符串，而是一个promise</p>
+<p>面向过程，就是按照我们分析好了的步骤，按照步骤解决问题。</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function getSomething() &#123;</span><br><span class="line">    return &#39;something&#39;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">async function testAsync() &#123;</span><br><span class="line">    return &#39;Helllo Async&#39;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const result &#x3D; testAsync();</span><br><span class="line">console.log(result);</span><br><span class="line">getSomething();</span><br></pre></td></tr></table></figure>
-<h4 id="await：async-wait"><a href="#await：async-wait" class="headerlink" title="await：async wait"></a>await：async wait</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">function getSomething() &#123;</span><br><span class="line">    return &#39;something&#39;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">async function testAsync() &#123;</span><br><span class="line">    return &#39;Helllo Async&#39;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">async function test() &#123;</span><br><span class="line">    const v1 &#x3D; await getSomething();</span><br><span class="line">    const v2 &#x3D; await testAsync();</span><br><span class="line">    console.log(v1, v2);</span><br><span class="line">    console.log(&#96;$&#123;v1&#125; $&#123;v2&#125;&#96;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test();</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>await不仅可以接收promise对象也可以接收普通返回值。</p>
-</blockquote>
-<h4 id="setTimeout延迟处理"><a href="#setTimeout延迟处理" class="headerlink" title="setTimeout延迟处理"></a>setTimeout延迟处理</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function takeLongTime() &#123;</span><br><span class="line">    return new Promise(resolve &#x3D;&gt; &#123;</span><br><span class="line">        setTimeout(() &#x3D;&gt; resolve(&#39;long_time_value&#39;), 1000)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">async function test() &#123;</span><br><span class="line">    const v &#x3D; await takeLongTime();</span><br><span class="line">    console.log(v);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test();</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>node demo.js     输入命令后，3秒后出现结果</p>
-</blockquote>
-<h4 id="第03节：Get请求的接收"><a href="#第03节：Get请求的接收" class="headerlink" title="第03节：Get请求的接收"></a>第03节：Get请求的接收</h4><p>监听端口</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app.listen();</span><br></pre></td></tr></table></figure>
-<p>query和querystring区别</p>
-<ul>
-<li><p>query：返回的是格式化好的参数对象。</p>
+<h4 id="1-3面向对象编程OOP-Object-Oriented-Programming"><a href="#1-3面向对象编程OOP-Object-Oriented-Programming" class="headerlink" title="1.3面向对象编程OOP(Object Oriented Programming)"></a>1.3面向对象编程OOP(Object Oriented Programming)</h4><p><strong>面向对象</strong>是把事务分解成为一个个对象，然后由对象之间分工与合作。</p>
+<p>举个粟子：将大象装进冰箱，面向对象做法。<br>先找出对象，并写出这些对象的功能:</p>
+<ol>
+<li><p>大象对象</p>
+<p>-进去</p>
 </li>
-<li><p>querystring：返回的是请求字符串</p>
+<li><p>冰箱对象</p>
+<p>-打开</p>
+<p>-关闭</p>
+</li>
+<li><p>使用大象和冰箱的功能</p>
+</li>
+</ol>
+<blockquote>
+<p>面向对象是以对象功能来划分问题，而不是步骤。</p>
+</blockquote>
+<p>在面向对象程序开发思想中，每一个对象都是功能中心，具有明确分工。</p>
+<p>面向对象编程具有灵活、代码可复用、容易维护和开发的优点，更适合多人合作的大型软件项目。</p>
+<h5 id="面向对象的特性"><a href="#面向对象的特性" class="headerlink" title="面向对象的特性:"></a>面向对象的特性:</h5><ul>
+<li>封装性</li>
+<li>继承性</li>
+<li>多态性</li>
+</ul>
+<h4 id="1-4面向过程和面向对象的对比"><a href="#1-4面向过程和面向对象的对比" class="headerlink" title="1.4面向过程和面向对象的对比"></a>1.4面向过程和面向对象的对比</h4><h5 id="面向过程"><a href="#面向过程" class="headerlink" title="面向过程"></a>面向过程</h5><ul>
+<li><p>优点︰性能比面向对象高，适合跟硬件联系很紧密的东西，例如单片机就采用的面向过程编程</p>
+</li>
+<li><p>缺点：没有面向对象易维护、易复用、易扩展</p>
 </li>
 </ul>
+<h5 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h5><ul>
+<li><p>优点：易维护、易复用、易扩展，由于面向对象有封装、继承、多态性的特性，可以设计出低耦合的系统，使系统更加灵活、更加易于维护心</p>
+</li>
+<li><p>缺点：性能比面向过程低</p>
+</li>
+</ul>
+<p>用面向过程的方法写出来的程序是一份蛋炒饭，而用面向对象写出来的程序是一份盖浇饭。</p>
+<h3 id="2-ES6中的类和对象"><a href="#2-ES6中的类和对象" class="headerlink" title="2.ES6中的类和对象"></a>2.ES6中的类和对象</h3><h4 id="面向对象-1"><a href="#面向对象-1" class="headerlink" title="面向对象"></a>面向对象</h4><p>面向对象更贴近我们的实际生活,可以使用面向对象描述现实世界事物。但是事物分为具体的事物和抽象的事物</p>
+<p>手机   抽象的(泛指的)<br>           具体的(特指的)</p>
+<p>面向对象的思维特点:<br>1．抽取(抽象)对象共用的属性和行为组织(封装)成一个类（模板）</p>
+<p>2．对类进行实例化,获取类的对象</p>
+<p>面向对象编程我们考虑的是有哪些对象，按照面向对象的思维特点不断的创建对象,使用对象,指挥对象做事情.</p>
+<h4 id="2-1对象"><a href="#2-1对象" class="headerlink" title="2.1对象"></a>2.1对象</h4><p>现实生活中∶万物皆对象，对象是<code>一个具体的事物</code>，看得见摸得着的实物。例如，一本书、一辆汽车、一个人可以是“对象”，一个数据库、一张网页、一个与远程服务器的连接也可以是“对象”。<br><code>在JavaScript中，对象是一组无序的相关属性和方法的集合，所有的事物都是对象</code>，例如字符串、数值、数组、函数等。</p>
+<p>对象是由<code>属性</code>和<code>方法</code>组成的:</p>
+<ul>
+<li>属性：事物的<code>特征</code>，在对象中用<code>属性</code>来表示(常用名词)</li>
+<li>方法：事物的<code>行为</code>，在对象中用<code>方法</code>来表示(常用动词)</li>
+</ul>
+<h4 id="2-2类class"><a href="#2-2类class" class="headerlink" title="2.2类class"></a>2.2类class</h4><p>在ES6中新增加了类的概念，可以使用<code>class</code>关键字声明一个类，之后以这个类来实例化对象。</p>
+<p><code>类</code>抽象了对象的公共部分，它<code>泛指</code>某一大类( class )</p>
+<p><code>对</code>象<code>特指</code>某一个，通过类实例化一个具体的对象</p>
+<p>面向对象的思维特点:</p>
+<ol>
+<li><p>抽取（抽象）对象共用的属性和行为组织(封装)成一个<code>类</code>(模板)</p>
+</li>
+<li><p>对类进行实例化,获取类的<code>对象</code></p>
+</li>
+</ol>
+<h4 id="2-3创建类"><a href="#2-3创建类" class="headerlink" title="2.3创建类"></a>2.3创建类</h4><p>语法︰</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">class name &#123;</span><br><span class="line">  class body</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>创建实例:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var XX &#x3D; new name();</span><br></pre></td></tr></table></figure>
+<p><code>注意：类必须使用new实例化对象</code></p>
+<p>1．创建类class创建一个明星类</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class Star &#123;</span><br><span class="line">    constructor(uname, age) &#123;</span><br><span class="line">    	this.uname &#x3D; uname;</span><br><span class="line">    	this.age &#x3D; age;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2．利用类创建对象 new</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var ldh &#x3D; new Star(&#39;刘德华&#39;, 18);</span><br><span class="line">var zxy &#x3D; new star(张学友&quot;，20);</span><br><span class="line">console.log(ldh);</span><br><span class="line">console.log(zxy);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>(1）通过class关键字创建类，类名我们还是习惯性定义首字母大写</li>
+<li>(2)   类里面有个constructor函数,可以接受传递过来的参数,同时返回实例对象</li>
+<li>(3)   constructor函数只要new生成实例时,就会自动调用这个函数，如果我们不写这个函数,类也会自动生成这个函数</li>
+<li>(4)   生成实例new不能省略</li>
+<li>(5）最后注意语法规范，创建类类名后面不要加小括号,生成实例类名后面加小括号，构造函数不需要加function</li>
+</ul>
+<h4 id="2-5类添加方法"><a href="#2-5类添加方法" class="headerlink" title="2.5类添加方法"></a>2.5类添加方法</h4><p>语法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">class Person &#123;</span><br><span class="line">	constructor (name, age)&#123;     &#x2F;&#x2F; constructor构造器或者构造函数</span><br><span class="line">		this.name &#x3D; name;</span><br><span class="line">		this.age &#x3D; age;</span><br><span class="line">	&#125;</span><br><span class="line">	say()&#123;</span><br><span class="line">		console.log (this.name + &quot;你好&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">	sing(song)&#123;</span><br><span class="line">		console.log (&quot;我唱歌&quot;);</span><br><span class="line">		console.log (this.name + song);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">var ldh &#x3D; new Star(&#39;刘德华&#39;, 18);</span><br><span class="line">var zxy &#x3D; new star(张学友&quot;，20);</span><br><span class="line">&#x2F;&#x2F; 1)我们类里面所有的函数不需要写function</span><br><span class="line">&#x2F;&#x2F; 2)多个函数方法之间不需要添加逗号分隔</span><br><span class="line">ldh.sing(&quot;冰雨&quot;);</span><br><span class="line">zxy.sing(&quot;李香兰&quot;);</span><br></pre></td></tr></table></figure>
+<h3 id="3-类的继承"><a href="#3-类的继承" class="headerlink" title="3.类的继承"></a>3.类的继承</h3><h4 id="3-1继承"><a href="#3-1继承" class="headerlink" title="3.1继承"></a>3.1继承</h4><p>现实中的继承：子承父业，比如我们都继承了父亲的姓。</p>
+<p>程序中的继承：子类可以继承父类的一些属性和方法。</p>
+<p>语法︰</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 父类</span><br><span class="line">class Father&#123;</span><br><span class="line">	money() &#123;</span><br><span class="line">		console.log(100);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F; 子类继承父类</span><br><span class="line">class Son extends Father&#123; </span><br><span class="line">&#125;</span><br><span class="line">var son &#x3D; new Son();</span><br><span class="line">son.money();</span><br></pre></td></tr></table></figure>
+<p>这样写，会报错：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 父类</span><br><span class="line">class Father&#123;</span><br><span class="line">	constructor(x, y)&#123;</span><br><span class="line">		this.x &#x3D; x;</span><br><span class="line">		this.y &#x3D; y;</span><br><span class="line">	&#125;</span><br><span class="line">	sum() &#123;</span><br><span class="line">		console.log(this.x + this.y);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F; 子类继承父类</span><br><span class="line">class Son extends Father&#123; </span><br><span class="line">	constructor(x, y)&#123;</span><br><span class="line">		this.x &#x3D; x;</span><br><span class="line">		this.y &#x3D; y;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">var son2 &#x3D; new Son(1, 2);</span><br><span class="line">son2.sum();</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Uncaught ReferenceError:Must call super constructor in derived class before accessing &#39;this &#39; or returningfrom derived constructor</span><br></pre></td></tr></table></figure>
+<p>解决方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 子类继承父类</span><br><span class="line">class Son extends Father&#123; </span><br><span class="line">	constructor(x, y)&#123;</span><br><span class="line">		super(x, y);   &#x2F;&#x2F; 调用了父类中的构造函数</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="3-2-super关键字"><a href="#3-2-super关键字" class="headerlink" title="3.2 super关键字"></a>3.2 super关键字</h4><p><code>super关键字</code>用于访问和调用对象父类上的函数。<code>可以调用父类的构造函数</code>，也可以调用父类的普通函数</p>
+<hr>
+<h4 id="prototype-深入浅出原型"><a href="#prototype-深入浅出原型" class="headerlink" title="prototype-深入浅出原型"></a>prototype-深入浅出原型</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">function Dogs() &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">Dogs.prototype.name &#x3D; &#39;collie&#39;;</span><br><span class="line">Dogs.prototype.age &#x3D; 24;</span><br><span class="line">Dogs.prototype.DogsName &#x3D; function() &#123;</span><br><span class="line">    alert(this.name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;JS在创建对象（不论是普通对象还是函数对象）的时候，都有一个叫做__proto__的内置属性，用于指向创建它的函数对象的原型对象prototype</span><br><span class="line">var DogsA &#x3D; new Dogs();</span><br><span class="line">&#x2F;&#x2F; console.log(DogsA.DogsName());</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; DogsA 的construtor（构造函数）是Dogs()</span><br><span class="line">console.log(Dogs.prototype);</span><br><span class="line">console.log(DogsA.constructor);</span><br><span class="line">console.log(DogsA);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; DogsA的__proto__属性等于Dogs的prototype属性</span><br><span class="line">console.log(Dogs.prototype &#x3D;&#x3D;&#x3D; DogsA.__proto__);   &#x2F;&#x2F;true</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;Dogs.prototype对象也有 _proto _ 属性，它指向创建它的函数对象（Object）的 prototype。</span><br><span class="line">&#x2F;&#x2F;Dogs.prototype的__proto__属性等于Object的prototype属性</span><br><span class="line">console.log(Dogs.prototype.__proto__ &#x3D;&#x3D;&#x3D; Object.prototype);  &#x2F;&#x2F;true</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;判断是不是某实例化对象的原型</span><br><span class="line">console.log(Dogs.prototype.isPrototypeOf(DogsA));</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="http://www.htmleaf.com/ziliaoku/qianduanjiaocheng/201512142905.html">JavaScript面向对象-原型的内存模型</a></p>
 <blockquote>
-<p>在koa2中GET请求通过request接收，但是接受的方法有两种：query和querystring。</p>
+<p>通过prototype创建的属性和方法，会存放在函数对象中的<code>__pro__</code>属性中，<code>__pro__</code>是一个对象</p>
+<p>通过prototype创建的属性和方法，也会存放在该函数对象的<code>__pro__</code>属性中的constructor（例如：构造函数是Person)中的prototype中 </p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">const Koa &#x3D; require(&#39;koa&#39;);</span><br><span class="line">const app &#x3D; new Koa();</span><br><span class="line"></span><br><span class="line">app.use(async(ctx) &#x3D;&gt; &#123;</span><br><span class="line">    let url &#x3D; ctx.url;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;从request中获取GET请求</span><br><span class="line">    let request &#x3D; ctx.request;</span><br><span class="line">    let req_query &#x3D; request.query;</span><br><span class="line">    let req_querystring &#x3D; request.querystring;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;从上下文中直接获取</span><br><span class="line">    let ctx_query &#x3D; ctx.query;</span><br><span class="line">    let ctx_querystring &#x3D; ctx.querystring;</span><br><span class="line"></span><br><span class="line">    ctx.body &#x3D; &#123;</span><br><span class="line">        url,</span><br><span class="line">        req_query,</span><br><span class="line">        req_querystring,</span><br><span class="line">        ctx_query,</span><br><span class="line">        ctx_querystring</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.listen(3000, ()&#x3D;&gt;&#123;</span><br><span class="line">    console.log(&#39;demo server is starting at port 3000&#39;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>访问<a target="_blank" rel="noopener" href="http://localhost:3000/%E5%9C%A8%E9%A1%B5%E9%9D%A2%E4%B8%AD%E6%98%BE%E7%A4%BA%EF%BC%9A">http://localhost:3000/在页面中显示：</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;url&quot;: &quot;&#x2F;&quot; , &quot;req_query&quot;: &#123;&#125;, &quot;reg_querystring&quot;:&quot;&quot;&#125;</span><br></pre></td></tr></table></figure>
-<p>访问<a target="_blank" rel="noopener" href="http://localhost:3000/?user=winney&amp;age=26%E5%9C%A8%E9%A1%B5%E9%9D%A2%E4%B8%AD%E6%98%BE%E7%A4%BA%EF%BC%9A">http://localhost:3000/?user=winney&amp;age=26在页面中显示：</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&quot;url&quot; :&quot;&#x2F;?user&#x3D;winney&amp;age&#x3D;26&quot; , &quot;req_query&quot;: &#123;&quot;user&quot;:&quot;winney, &quot;age&quot;: &quot;26&quot;&#125;,&#39;req_querystring &quot;: &quot;user&#x3D;winney&amp;age&#x3D;26&quot;&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>创建一个对象是会给它分配内存空间的。</p>
+<p>通过构造函数的方法，创建一个对象出来，在新对象的内存空间中会有一个<code>_proto_</code>内部属性，这个内部属性是不能被访问的，它也指向构造函数（例如：<code>Person</code>）的原型。<code>_proto_</code>内部属性是隐藏的</p>
 <blockquote>
-<p>我们可以使用浏览器插件-iFormatTool，让内容更清晰。图片中我们可以清楚看到query是一个对象，而querystring就是一个普通的字符串。</p>
+<p>需要特别注意的是：原型中的值是不会被替换的，仅仅只是在属性查找时被对象自己空间中的同名属性所覆盖。</p>
 </blockquote>
-<p>下载地址：<a target="_blank" rel="noopener" href="http://www.pc6.com/soft/FireFox_579049.html">http://www.pc6.com/soft/FireFox_579049.html</a></p>
-<blockquote>
-<p>将解压后里面的.crx文件拖拽到谷歌浏览器的扩展程序中，选择”添加”</p>
-</blockquote>
-<h4 id="添加扩展程序成功后，在页面中可以看到json格式的数据"><a href="#添加扩展程序成功后，在页面中可以看到json格式的数据" class="headerlink" title="添加扩展程序成功后，在页面中可以看到json格式的数据"></a>添加扩展程序成功后，在页面中可以看到json格式的数据</h4><img src="/2021/01/20/Koa-%E7%AC%94%E8%AE%B0/note1.png" class="">
+<p><a target="_blank" rel="noopener" href="http://www.htmleaf.com/ziliaoku/qianduanjiaocheng/201512162910.html">JavaScript面向对象-原型的重写</a></p>
+<h4 id="对象的创建方式不一样，存储位置不一样"><a href="#对象的创建方式不一样，存储位置不一样" class="headerlink" title="对象的创建方式不一样，存储位置不一样"></a>对象的创建方式不一样，存储位置不一样</h4><p>这里定义了两个对象，即使内容一样，但是存储位置不一样</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var objectFoo &#x3D; &#123;same : &#39;same&#39; &#125;;</span><br><span class="line">var objectBar &#x3D; &#123;same : &#39;same&#39; &#125;;</span><br><span class="line">console.log(objectFoo &#x3D;&#x3D; objectBar); &#x2F;&#x2F; false</span><br></pre></td></tr></table></figure>
+<p>这里也是定义两个对象，但是它们的存储位置一样</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var objectA &#x3D; &#123; foo: &#39;bar&#39; &#125;;</span><br><span class="line">var objectB &#x3D; objectA;</span><br><span class="line">console.log(objectA &#x3D;&#x3D; objectB);  &#x2F;&#x2F; true</span><br></pre></td></tr></table></figure>
 
-
-
-<h4 id=""><a href="#" class="headerlink" title=""></a></h4>
       
     </div>
 
@@ -474,7 +534,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/32/">32</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/33/">33</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -542,7 +602,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">94</span>
+          <span class="site-state-item-count">98</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -555,7 +615,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">50</span>
+        <span class="site-state-item-count">54</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

@@ -193,7 +193,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2019/06/27/%E8%B7%AF%E7%94%B1%E4%B8%8E%E9%A1%B5%E9%9D%A2%E9%97%B4%E5%AF%BC%E8%88%AA/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2019/07/04/let%E5%92%8Cconst%E5%91%BD%E4%BB%A4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -207,7 +207,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2019/06/27/%E8%B7%AF%E7%94%B1%E4%B8%8E%E9%A1%B5%E9%9D%A2%E9%97%B4%E5%AF%BC%E8%88%AA/" class="post-title-link" itemprop="url">路由与页面间导航</a>
+            <a href="/2019/07/04/let%E5%92%8Cconst%E5%91%BD%E4%BB%A4/" class="post-title-link" itemprop="url">let和const命令</a>
         </h2>
 
         <div class="post-meta">
@@ -217,14 +217,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2019-06-27 16:34:45" itemprop="dateCreated datePublished" datetime="2019-06-27T16:34:45+08:00">2019-06-27</time>
+              <time title="创建时间：2019-07-04 18:57:38" itemprop="dateCreated datePublished" datetime="2019-07-04T18:57:38+08:00">2019-07-04</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-01-12 17:52:19" itemprop="dateModified" datetime="2021-01-12T17:52:19+08:00">2021-01-12</time>
+                <time title="修改时间：2021-01-12 17:59:30" itemprop="dateModified" datetime="2021-01-12T17:59:30+08:00">2021-01-12</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -236,7 +236,7 @@
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/%E3%80%8AVue2%E5%AE%9E%E8%B7%B5%E6%8F%AD%E7%A7%98%E3%80%8B/" itemprop="url" rel="index"><span itemprop="name">《Vue2实践揭秘》</span></a>
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/%E9%98%AE%E4%B8%80%E5%B3%B0-ES6/" itemprop="url" rel="index"><span itemprop="name">阮一峰-ES6</span></a>
                 </span>
             </span>
 
@@ -251,16 +251,45 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h5 id="从思维导图到网站地图"><a href="#从思维导图到网站地图" class="headerlink" title="从思维导图到网站地图"></a>从思维导图到网站地图</h5><h5 id="设计原型"><a href="#设计原型" class="headerlink" title="设计原型"></a>设计原型</h5><h3 id="vue-router"><a href="#vue-router" class="headerlink" title="vue-router"></a>vue-router</h3><p>前端路由是直接找到与地址匹配的一个组件或者对象并将其渲染出来。改变浏览器地址而不向服务器发出请求有两种做法，一是在地址中加入#以欺骗浏览器，地址的改变是由于正在进行页内导航；二是使用HTML5的window.history功能，使用URL的Hash来模拟一个完整的URL。</p>
-<h5 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">npm i vue-router -D</span><br><span class="line"></span><br><span class="line">打开main.js文件并加入以下的引用：</span><br><span class="line">import Vue from <span class="string">&#x27;vue&#x27;</span></span><br><span class="line">import VueRouter from <span class="string">&#x27;vue-router&#x27;</span></span><br><span class="line">Vue.use(VueRouter)</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/06/27/%E8%B7%AF%E7%94%B1%E4%B8%8E%E9%A1%B5%E9%9D%A2%E9%97%B4%E5%AF%BC%E8%88%AA/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
+          <h3 id="1-let命令"><a href="#1-let命令" class="headerlink" title="1.let命令"></a>1.let命令</h3><h4 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h4><p>所声明的变量，只在let命令所在的代码块内有效</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="built_in">let</span> a = 10;</span><br><span class="line">  var b = 1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">a // ReferenceError: a is not defined.</span><br><span class="line">b // 1</span><br></pre></td></tr></table></figure>
+<p>for循环的计数器，就很适合使用let命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="built_in">let</span> i = 0; i &lt; 10; i++) &#123;</span><br><span class="line">  // ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.log(i);</span><br><span class="line">// ReferenceError: i is not defined</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var a = [];</span><br><span class="line"><span class="keyword">for</span> (var i = 0; i &lt; 10; i++) &#123;</span><br><span class="line">  a[i] = <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">    console.log(i);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line">a[6](); // 10</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var a = [];</span><br><span class="line"><span class="keyword">for</span> (<span class="built_in">let</span> i = 0; i &lt; 10; i++) &#123;</span><br><span class="line">  a[i] = <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">    console.log(i);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line">a[6](); // 6</span><br></pre></td></tr></table></figure>
+<p>for循环还有一个特别之处，就是设置循环变量的那部分是一个父作用域，而循环体内部是一个单独的子作用域。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="built_in">let</span> i = 0; i &lt; 3; i++) &#123;</span><br><span class="line">  <span class="built_in">let</span> i = <span class="string">&#x27;abc&#x27;</span>;</span><br><span class="line">  console.log(i);</span><br><span class="line">&#125;</span><br><span class="line">// abc</span><br><span class="line">// abc</span><br><span class="line">// abc</span><br></pre></td></tr></table></figure>
+<h4 id="不存在变量提升"><a href="#不存在变量提升" class="headerlink" title="不存在变量提升"></a>不存在变量提升</h4><h4 id="暂时性死区"><a href="#暂时性死区" class="headerlink" title="暂时性死区"></a>暂时性死区</h4><p>只要块级作用域内存在let命令，它所声明的变量就“绑定”（binding）这个区域，不再受外部的影响。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var tmp = 123;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">  tmp = <span class="string">&#x27;abc&#x27;</span>; // ReferenceError</span><br><span class="line">  <span class="built_in">let</span> tmp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样的设计是为了让大家养成良好的编程习惯，变量一定要在声明之后使用，否则就报错。</p>
+<h4 id="不允许重复声明"><a href="#不允许重复声明" class="headerlink" title="不允许重复声明"></a>不允许重复声明</h4><p>let不允许在相同作用域内，重复声明同一个变量。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// 报错</span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">func</span></span>() &#123;</span><br><span class="line">  <span class="built_in">let</span> a = 10;</span><br><span class="line">  var a = 1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 报错</span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">func</span></span>() &#123;</span><br><span class="line">  <span class="built_in">let</span> a = 10;</span><br><span class="line">  <span class="built_in">let</span> a = 1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>因此，不能在函数内部重新声明参数。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> func(arg) &#123;</span><br><span class="line">  <span class="built_in">let</span> arg;</span><br><span class="line">&#125;</span><br><span class="line">func() // 报错</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> func(arg) &#123;</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="built_in">let</span> arg;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">func() // 不报错</span><br></pre></td></tr></table></figure>
+<h4 id="ES6的块级作用域"><a href="#ES6的块级作用域" class="headerlink" title="ES6的块级作用域"></a>ES6的块级作用域</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// IIFE 写法</span><br><span class="line">(<span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">  var tmp = ...;</span><br><span class="line">  ...</span><br><span class="line">&#125;());</span><br><span class="line"></span><br><span class="line">// 块级作用域写法</span><br><span class="line">&#123;</span><br><span class="line">  <span class="built_in">let</span> tmp = ...;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="块级作用域与函数声明"><a href="#块级作用域与函数声明" class="headerlink" title="块级作用域与函数声明"></a>块级作用域与函数声明</h4><p>允许在块级作用域内声明函数。<br>函数声明类似于var，即会提升到全局作用域或函数作用域的头部。<br>同时，函数声明还会提升到所在的块级作用域的头部。</p>
+<p>考虑到环境导致的行为差异太大，应该避免在块级作用域内声明函数。如果确实需要，也应该写成函数表达式，而不是函数声明语句。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">// 块级作用域内部的函数声明语句，建议不要使用</span><br><span class="line">&#123;</span><br><span class="line">  <span class="built_in">let</span> a = <span class="string">&#x27;secret&#x27;</span>;</span><br><span class="line">  <span class="keyword">function</span> <span class="function"><span class="title">f</span></span>() &#123;</span><br><span class="line">    <span class="built_in">return</span> a;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 块级作用域内部，优先使用函数表达式</span><br><span class="line">&#123;</span><br><span class="line">  <span class="built_in">let</span> a = <span class="string">&#x27;secret&#x27;</span>;</span><br><span class="line">  <span class="built_in">let</span> f = <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">    <span class="built_in">return</span> a;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>另外，还有一个需要注意的地方。ES6 的块级作用域必须有大括号，如果没有大括号，JavaScript 引擎就认为不存在块级作用域。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// 第一种写法，报错</span><br><span class="line"><span class="keyword">if</span> (<span class="literal">true</span>) <span class="built_in">let</span> x = 1;</span><br><span class="line"></span><br><span class="line">// 第二种写法，不报错</span><br><span class="line"><span class="keyword">if</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">  <span class="built_in">let</span> x = 1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面代码中，第一种写法没有大括号，所以不存在块级作用域，而let只能出现在当前作用域的顶层，所以报错。第二种写法有大括号，所以块级作用域成立。</p>
+<p>函数声明也是如此，严格模式下，函数只能声明在当前作用域的顶层。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// 不报错</span><br><span class="line"><span class="string">&#x27;use strict&#x27;</span>;</span><br><span class="line"><span class="keyword">if</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">  <span class="keyword">function</span> <span class="function"><span class="title">f</span></span>() &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 报错</span><br><span class="line"><span class="string">&#x27;use strict&#x27;</span>;</span><br><span class="line"><span class="keyword">if</span> (<span class="literal">true</span>)</span><br><span class="line">  <span class="keyword">function</span> <span class="function"><span class="title">f</span></span>() &#123;&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="const命令"><a href="#const命令" class="headerlink" title="const命令"></a>const命令</h3><h4 id="基本用法-1"><a href="#基本用法-1" class="headerlink" title="基本用法"></a>基本用法</h4><p>const声明一个只读的常量。一旦声明，常量的值就不能改变。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const PI = 3.1415;</span><br><span class="line">PI // 3.1415</span><br><span class="line"></span><br><span class="line">PI = 3;</span><br><span class="line">// TypeError: Assignment to constant variable.</span><br></pre></td></tr></table></figure>
+<p>上面代码表明改变常量的值会报错。</p>
+<p><b>const声明的变量不得改变值，这意味着，const一旦声明变量，就必须立即初始化，不能留到以后赋值。</b></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const foo;</span><br><span class="line">// SyntaxError: Missing initializer <span class="keyword">in</span> const declaration</span><br></pre></td></tr></table></figure>
+<p>上面代码表示，对于const来说，只声明不赋值，就会报错。</p>
+<p>const的作用域与let命令相同：只在声明所在的块级作用域内有效。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">  console.log(MAX); // ReferenceError</span><br><span class="line">  const MAX = 5;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面代码在常量MAX声明之前就调用，结果报错。</p>
+<p>const声明的常量，也与let一样不可重复声明。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var message = <span class="string">&quot;Hello!&quot;</span>;</span><br><span class="line"><span class="built_in">let</span> age = 25;</span><br><span class="line"></span><br><span class="line">// 以下两行都会报错</span><br><span class="line">const message = <span class="string">&quot;Goodbye!&quot;</span>;</span><br><span class="line">const age = 30;</span><br></pre></td></tr></table></figure>
+<h4 id="本质"><a href="#本质" class="headerlink" title="本质"></a>本质</h4><p>const实际上保证的，并不是变量的值不得改动，而是变量指向的那个内存地址所保存的数据不得改动。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">const foo = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">// 为 foo 添加一个属性，可以成功</span><br><span class="line">foo.prop = 123;</span><br><span class="line">foo.prop // 123</span><br><span class="line"></span><br><span class="line">// 将 foo 指向另一个对象，就会报错</span><br><span class="line">foo = &#123;&#125;; // TypeError: <span class="string">&quot;foo&quot;</span> is read-only</span><br></pre></td></tr></table></figure>
+<p>如果真的想将对象冻结，应该使用Object.freeze方法。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const foo = Object.freeze(&#123;&#125;);</span><br><span class="line"></span><br><span class="line">// 常规模式时，下面一行不起作用；</span><br><span class="line">// 严格模式时，该行会报错</span><br><span class="line">foo.prop = 123;</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -279,7 +308,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2019/06/24/%E5%B7%A5%E7%A8%8B%E5%8C%96%E7%9A%84Vue-js%E5%BC%80%E5%8F%91/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2019/07/04/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -293,7 +322,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2019/06/24/%E5%B7%A5%E7%A8%8B%E5%8C%96%E7%9A%84Vue-js%E5%BC%80%E5%8F%91/" class="post-title-link" itemprop="url">工程化的Vue.js开发</a>
+            <a href="/2019/07/04/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="post-title-link" itemprop="url">计算机常用命令</a>
         </h2>
 
         <div class="post-meta">
@@ -303,14 +332,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2019-06-24 11:34:45" itemprop="dateCreated datePublished" datetime="2019-06-24T11:34:45+08:00">2019-06-24</time>
+              <time title="创建时间：2019-07-04 16:59:00" itemprop="dateCreated datePublished" datetime="2019-07-04T16:59:00+08:00">2019-07-04</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-01-12 17:50:31" itemprop="dateModified" datetime="2021-01-12T17:50:31+08:00">2021-01-12</time>
+                <time title="修改时间：2021-01-12 17:51:11" itemprop="dateModified" datetime="2021-01-12T17:51:11+08:00">2021-01-12</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -322,7 +351,7 @@
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/Vue2-js/" itemprop="url" rel="index"><span itemprop="name">Vue2.js</span></a>
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" itemprop="url" rel="index"><span itemprop="name">常用命令</span></a>
                 </span>
             </span>
 
@@ -337,15 +366,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h5 id="Vue-提供一套简化开发、测试与部署的方案，不再需要花大量的时间去学习理解框架的使用概念，以及耗费大量的精力去建立复杂的自动化环境。"><a href="#Vue-提供一套简化开发、测试与部署的方案，不再需要花大量的时间去学习理解框架的使用概念，以及耗费大量的精力去建立复杂的自动化环境。" class="headerlink" title="Vue 提供一套简化开发、测试与部署的方案，不再需要花大量的时间去学习理解框架的使用概念，以及耗费大量的精力去建立复杂的自动化环境。"></a>Vue 提供一套简化开发、测试与部署的方案，不再需要花大量的时间去学习理解框架的使用概念，以及耗费大量的精力去建立复杂的自动化环境。</h5><h3 id="脚手架-vue-cli"><a href="#脚手架-vue-cli" class="headerlink" title="脚手架 vue-cli"></a>脚手架 vue-cli</h3><p>这个工具可以让一个简单的命令行工具快速地构建一个足以支撑实际项目开发的Vue环境。 vue-cli的存在将项目环境的初始化工作与复杂度降到最低。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/06/24/%E5%B7%A5%E7%A8%8B%E5%8C%96%E7%9A%84Vue-js%E5%BC%80%E5%8F%91/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
+          <h4 id="命令行新建文件和文件夹"><a href="#命令行新建文件和文件夹" class="headerlink" title="命令行新建文件和文件夹"></a>命令行新建文件和文件夹</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">1.cmd           ——进去命令行提示符</span><br><span class="line">2.D:            ——去到对应的盘</span><br><span class="line">3.dir           ——查看d盘下所有目录和文件</span><br><span class="line">4.cd baidu      ——例如进去baidu文件夹目录</span><br><span class="line">5.dir           ——查看D盘baidu文件夹下的所有目录</span><br><span class="line">6.md xx         ——创建一个baidu文件夹下的xx文件夹</span><br><span class="line">7.dir           ——查看xx这个文件夹已经创建成功了</span><br><span class="line">8.cd.&gt;.babelrc  ——创建一个.babelrc的文件，<span class="built_in">cd</span>.表示为当前目录</span><br><span class="line">9.dir           ——可以看到baidu文件夹下已经生成了“.babelrc”文件</span><br><span class="line">10.EXIT         ——退出命令行提示符</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -364,7 +385,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2019/06/19/vue-js-%E5%9F%BA%E6%9C%AC%E7%8E%AF%E5%A2%83/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2019/07/04/ECMAScript-6%E7%AE%80%E4%BB%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -378,7 +399,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2019/06/19/vue-js-%E5%9F%BA%E6%9C%AC%E7%8E%AF%E5%A2%83/" class="post-title-link" itemprop="url">vue.js 基本环境</a>
+            <a href="/2019/07/04/ECMAScript-6%E7%AE%80%E4%BB%8B/" class="post-title-link" itemprop="url">ECMAScript 6简介</a>
         </h2>
 
         <div class="post-meta">
@@ -388,14 +409,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2019-06-19 15:30:15" itemprop="dateCreated datePublished" datetime="2019-06-19T15:30:15+08:00">2019-06-19</time>
+              <time title="创建时间：2019-07-04 16:00:29" itemprop="dateCreated datePublished" datetime="2019-07-04T16:00:29+08:00">2019-07-04</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-01-12 18:00:46" itemprop="dateModified" datetime="2021-01-12T18:00:46+08:00">2021-01-12</time>
+                <time title="修改时间：2021-01-28 16:28:31" itemprop="dateModified" datetime="2021-01-28T16:28:31+08:00">2021-01-28</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -407,7 +428,7 @@
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/%E3%80%8AVue2%E5%AE%9E%E8%B7%B5%E6%8F%AD%E7%A7%98%E3%80%8B/" itemprop="url" rel="index"><span itemprop="name">《Vue2实践揭秘》</span></a>
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/%E9%98%AE%E4%B8%80%E5%B3%B0-ES6/" itemprop="url" rel="index"><span itemprop="name">阮一峰-ES6</span></a>
                 </span>
             </span>
 
@@ -422,16 +443,30 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h4 id="1、安装有npm"><a href="#1、安装有npm" class="headerlink" title="1、安装有npm"></a>1、安装有npm</h4><a href="https://nodejs.org/en/" title="" target="">node.js官网</a>
-<h4 id="2、安装vue-cli"><a href="#2、安装vue-cli" class="headerlink" title="2、安装vue-cli"></a>2、安装vue-cli</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npm i vue-cli -g</span><br><span class="line"></span><br><span class="line">输入vue命令查看是否安装成功</span><br><span class="line">输入vue list 查看</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/06/19/vue-js-%E5%9F%BA%E6%9C%AC%E7%8E%AF%E5%A2%83/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
+          <a href="http://es6.ruanyifeng.com/" title="" target="">阮一峰-ECMAScript 6</a> 
+
+<p>ECMAScript 6.0（以下简称 ES6）。2015 年 6 月正式发布</p>
+<h4 id="ES6-与-ECMAScript-2015-的关系"><a href="#ES6-与-ECMAScript-2015-的关系" class="headerlink" title="ES6 与 ECMAScript 2015 的关系"></a>ES6 与 ECMAScript 2015 的关系</h4><p>ES6 的第一个版本，就这样在 2015 年 6 月发布了，正式名称就是《ECMAScript 2015 标准》（简称 ES2015）。<br>ES6 既是一个历史名词，也是一个泛指，含义是 5.1 版以后的 JavaScript 的下一代标准，涵盖了 ES2015、ES2016、ES2017 等等，而 ES2015 则是正式名称，特指该年发布的正式版本的语言标准。本书中提到 ES6 的地方，一般是指 ES2015 标准，但有时也是泛指“下一代 JavaScript 语言”。</p>
+<h4 id="部署进度"><a href="#部署进度" class="headerlink" title="部署进度"></a>部署进度</h4><p>各大浏览器的最新版本，对 ES6 的支持可以查看<a href="http://kangax.github.io/compat-table/es6/" title="" target="">点这里前往</a><br>Node 是 JavaScript 的服务器运行环境（runtime）。</p>
+<h4 id="Babel转码器"><a href="#Babel转码器" class="headerlink" title="Babel转码器"></a>Babel转码器</h4><h5 id="1、安装Babel"><a href="#1、安装Babel" class="headerlink" title="1、安装Babel"></a>1、安装Babel</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev @babel/core</span><br></pre></td></tr></table></figure>
+<h5 id="2、配置文件-babelrc"><a href="#2、配置文件-babelrc" class="headerlink" title="2、配置文件.babelrc"></a>2、配置文件.babelrc</h5><p>（使用命令行创建.babelrc文件）<br>Babel 的配置文件是.babelrc，存放在项目的根目录下。使用 Babel 的第一步，就是配置这个文件。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">&quot;presets&quot;</span>: [],</span><br><span class="line">    <span class="string">&quot;plugins&quot;</span>: []</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3、presets字段设定转码规则，官方提供以下的规则集，你可以根据需要安装。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 最新转码规则</span></span><br><span class="line">npm install --save-dev @babel/preset-env</span><br><span class="line"></span><br><span class="line"><span class="comment"># react 转码规则</span></span><br><span class="line">npm install --save-dev @babel/preset-react</span><br></pre></td></tr></table></figure>
+<p>4、然后，将这些规则加入.babelrc。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">&quot;presets&quot;</span>: [</span><br><span class="line">      <span class="string">&quot;@babel/env&quot;</span>,</span><br><span class="line">      <span class="string">&quot;@babel/preset-react&quot;</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="string">&quot;plugins&quot;</span>: []</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意，以下所有 Babel 工具和模块的使用，都必须先写好.babelrc。</p>
+<h5 id="命令行转码"><a href="#命令行转码" class="headerlink" title="命令行转码"></a>命令行转码</h5><p>Babel 提供命令行工具@babel/cli，用于命令行转码。<br>5、安装命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev @babel/cli</span><br></pre></td></tr></table></figure>
+<p>基本用法如下:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 转码结果输出到标准输出</span></span><br><span class="line">npx babel example.js</span><br><span class="line"></span><br><span class="line"><span class="comment"># 转码结果写入一个文件</span></span><br><span class="line"><span class="comment"># --out-file 或 -o 参数指定输出文件</span></span><br><span class="line">npx babel example.js --out-file compiled.js</span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line">npx babel example.js -o compiled.js</span><br><span class="line"></span><br><span class="line"><span class="comment"># 整个目录转码</span></span><br><span class="line"><span class="comment"># --out-dir 或 -d 参数指定输出目录</span></span><br><span class="line">npx babel src --out-dir lib</span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line">npx babel src -d lib</span><br><span class="line"></span><br><span class="line"><span class="comment"># -s 参数生成source map文件</span></span><br><span class="line">npx babel src -d lib -s</span><br></pre></td></tr></table></figure>
+<p>6、如：npx babel es6.js -o es5.js</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var obj1 &#x3D; &#123;name: &#39;yangyanyi&#39;&#125;;</span><br><span class="line">var obj2 &#x3D; &#123;name: &#39;yangyanyi&#39;&#125;;</span><br><span class="line"></span><br><span class="line">console.log(obj1 &#x3D;&#x3D; obj2);  &#x2F;&#x2F;因为指向的地址不一样</span><br><span class="line"></span><br><span class="line">var obj3 &#x3D; &#123;age: 12&#125;;</span><br><span class="line">var obj4 &#x3D; obj3;</span><br><span class="line"></span><br><span class="line">console.log(obj3 &#x3D;&#x3D; obj4);  &#x2F;&#x2F;指向同一个地址</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 包装类</span><br><span class="line">&#x2F;&#x2F; 自动创建的基本包装类型的对象，则只存在于一行代码的执行瞬间，然后立即被销毁</span><br><span class="line">var s1 &#x3D; &#39;some text&#39;;</span><br><span class="line">s1.color &#x3D; &#39;red&#39;;</span><br><span class="line">console.log(s1.color);  &#x2F;&#x2F;undefined</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;使用new操作符创建的引用类型的实例，在执行流离开当前作用域之前都一直保存在内存中。</span><br><span class="line">var s2 &#x3D; new String(&#39;some text&#39;);</span><br><span class="line">s2.color &#x3D; &#39;red&#39;;</span><br><span class="line">console.log(s2.color);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;可以通过new操作符显式创建包装对象</span><br><span class="line">&#x2F;&#x2F;两种方式显式创建包装类型的方式：</span><br><span class="line">&#x2F;&#x2F;Object方式</span><br><span class="line">var a &#x3D; new Object(&#39;abc&#39;);</span><br><span class="line">&#x2F;&#x2F;构造函数方式</span><br><span class="line">var a &#x3D; new String(&#39;abc&#39;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 常常使用“逻辑或运算符”给省略的参数设置一个合理的默认值</span><br><span class="line"></span><br><span class="line">function add(x, y) &#123;</span><br><span class="line">    y &#x3D; y || 2;</span><br><span class="line">    console.log(x, y);</span><br><span class="line">&#125;</span><br><span class="line">add(1);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">let [a, b, c] &#x3D; [1, 2, 3];</span><br><span class="line">console.log(a, b, c);</span><br><span class="line"></span><br><span class="line">let [x, , y] &#x3D; [1, 2, 3];</span><br><span class="line">console.log(x, y);</span><br><span class="line"></span><br><span class="line">let[head, ...tail] &#x3D; [1, 2, 3, 4];</span><br><span class="line">console.log(head, tail);</span><br><span class="line"></span><br><span class="line">let [q, w, ...e] &#x3D; [&#39;a&#39;];</span><br><span class="line">console.log(q, w, e);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; let [foo] &#x3D; &#123;&#125;;  &#x2F;&#x2F;报错</span><br><span class="line"></span><br><span class="line">let [l, m, n] &#x3D; new Set([&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]);</span><br><span class="line">console.log(l, m, n);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; ES6内部使用严格相等运算符（&#x3D;&#x3D;&#x3D;），判断一个位置是否有值。所以只有当一个数组成员严格等于undefined，默认值才会成效</span><br><span class="line"></span><br><span class="line">let [x &#x3D; 1] &#x3D;[undefined];</span><br><span class="line"></span><br><span class="line">let [ y &#x3D; 1] &#x3D; [null];</span><br><span class="line"></span><br><span class="line">console.log(x, y);  &#x2F;&#x2F;1  null   </span><br><span class="line">&#x2F;&#x2F; 原因：因为null不严格等于undefined，所以默认值不会生效</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 对象的结构赋值            </span><br><span class="line">let  &#123; foo, bar &#125; &#x3D; &#123; foo: &#39;aaa&#39;, bar: &quot;bbb&quot;&#125;;</span><br><span class="line">console.log(foo, bar);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 不是按照顺序，是根据键名</span><br><span class="line">let &#123; bbb, aaa &#125; &#x3D; &#123; aaa: &#39;aaa&#39;, bbb: &#39;bbbb&#39;&#125;;</span><br><span class="line">console.log(aaa, bbb);</span><br><span class="line"></span><br><span class="line">let &#123; baz &#125; &#x3D; &#123; bnv:&#39;bnv&#39;, kjl: &#39;kjl&#39;&#125;;</span><br><span class="line">console.log(baz);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 当变量名与属性名不一致，必须写成下面这样</span><br><span class="line">let &#123; foo: baz &#125; &#x3D; &#123; foo: &#39;aaa&#39;, bar: &#39;bbb&#39;&#125;;</span><br><span class="line">console.log(baz);</span><br><span class="line"></span><br><span class="line">let obj &#x3D; &#123; first: &#39;hello&#39;, last: &#39;world&#39;&#125;;</span><br><span class="line">let &#123; first: f, last: l&#125; &#x3D; obj;</span><br><span class="line">console.log(f, l);</span><br><span class="line"></span><br><span class="line">let &#123; foo: baz &#125; &#x3D; &#123; foo: &#39;aaa&#39;, bar: &#39;bbb&#39;&#125;;</span><br><span class="line">console.log(baz, foo);    &#x2F;&#x2F;foo is not defined</span><br><span class="line">&#x2F;&#x2F; 原因：foo是匹配的模式，baz才是变量。真正被赋值的是变量baz，而不是模式foo</span><br></pre></td></tr></table></figure>
+
       
     </div>
 
@@ -449,7 +484,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/28/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/28/">28</a><span class="page-number current">29</span><a class="page-number" href="/page/30/">30</a><span class="space">&hellip;</span><a class="page-number" href="/page/32/">32</a><a class="extend next" rel="next" href="/page/30/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/28/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/28/">28</a><span class="page-number current">29</span><a class="page-number" href="/page/30/">30</a><span class="space">&hellip;</span><a class="page-number" href="/page/33/">33</a><a class="extend next" rel="next" href="/page/30/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -517,7 +552,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">94</span>
+          <span class="site-state-item-count">98</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -530,7 +565,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">50</span>
+        <span class="site-state-item-count">54</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

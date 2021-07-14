@@ -32,3 +32,45 @@ shift + TAB
 TAB
 ```
 
+
+
+#### 更换主题
+
+```
+Ctrl + K + T
+```
+
+
+
+#### VSCode搜索指定某个目录下查找文件
+
+1. 先点击选中这个要查找的目录。
+2. 右键点击后，点击里面的「Find in Folder」即 在文件夹中查找.....
+
+[将VSCode设置成中文语言环境](https://jingyan.baidu.com/article/7e44095377c9d12fc1e2ef5b.html)
+
+
+
+##### 快速在浏览器中打开
+
+1. 安装open in browser插件
+2. 重新启动VSCode
+3. 快捷键：Alt + B
+
+
+
+##### 使用sublime快捷键
+
+安装插件：Sublime Text Keymap and Settings Importer
+
+
+
+##### 自动换行
+
+https://jingyan.baidu.com/article/6f2f55a14ba6e3b5b93e6cd6.html
+
+https://jingyan.baidu.com/article/6dad5075383c3fa123e36ec3.html
+
+##### VSCode编辑器字体大小设置
+
+"settings"——“文本编辑器”——常用设置——Editor：Font Size（这里设置为20）

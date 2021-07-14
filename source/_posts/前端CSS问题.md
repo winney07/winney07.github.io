@@ -7,6 +7,91 @@ categories:
 - 工作笔记
 - css问题
 ---
+##### html5 video在固定的宽度和高度内铺满
+
+一般是视频的缩略图或者视频需要铺满我们固定的区域。
+video ： poster是缩略图
+
+```css
+video{
+    object-fit:fill;
+}
+```
+
+https://developers.weixin.qq.com/community/develop/doc/0004403ab0c158af9f0adf1bd5b800
+
+https://bbs.csdn.net/topics/392450329
+
+https://blog.csdn.net/sepier/article/details/112780701
+
+
+
+##### 隐藏video的全屏按钮
+
+```
+video::-webkit-media-controls-fullscreen-button {
+    display: none;
+}
+```
+
+##### video按全屏按钮后变形，因为只设置了宽度，要给video设置宽度和高度
+
+
+
+#### [Chrome下面查看placeholder的样式](https://blog.csdn.net/weixin_30657999/article/details/95180171)
+
+F12——>Settings——>Preferences——>Element——>Show user agent shadow DOM（将这个勾选上）
+
+#### 浏览器默认滚动条默认样式
+
+1. **火狐和IE浏览器不可以修改浏览器滚动条默认样式**，IE浏览器可以修改滚动条颜色，但不能修改宽度
+
+2. 谷歌和360浏览器修改默认样式代码：
+
+   ```
+    /*滚动条样式*/
+   ::-webkit-scrollbar {/*滚动条整体样式*/
+     width: 2px;     /*高宽分别对应横竖滚动条的尺寸*/
+     height: 2px;
+   }
+   ::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
+     border-radius: 5px;
+     box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+     background: rgba(0,0,0,0.2);
+   }
+   ::-webkit-scrollbar-track {/*滚动条里面轨道*/
+     box-shadow: inset 0 0 5px rgba(0,0,0,0);
+     border-radius: 0;
+     background: rgba(0,0,0,0);
+   }
+   
+   // 如果只修改某个盒子的滚动条：
+   .box-name::-webkit-scrollbar{}
+   .box-name::-webkit-scrollbar-thumb{}
+   .box-name::-webkit-scrollbar-track{}
+   ```
+
+   
+
+#### 获取已知元素的前一个元素
+
+css不能实现，使用js
+
+```
+$("已知元素").prev("需要获取的元素")
+$("#certify  .swiper-slide-prev").prev(".swiper-slide")
+```
+
+#### 获取已知元素的后一个元素，使用 +
+
+```
+#certify .swiper-slide.swiper-slide-next + .swiper-slide{
+    transform: translateX(-986px) scale(0.6) !important;
+}
+```
+
+
+
 #### safari浏览器下 input/select 表单的阴影
 
 ```
@@ -122,11 +207,21 @@ div {
 ```
 
 #### input输入框禁止显示历史记录 
-在输入input时会提示原来输入过的内容，还会出现下拉的历史记录，禁止这种情况只需在input中加入：
+在输入input时会提示原来输入过的内容，还会出现下拉的历史记录，禁止这种情况(关闭自动提示)，只需在input中加入：
 autocomplete="off"
+
 ```
 <input type="text"  autocomplete="off" />
 ```
+如果所有表单元素都不想使用自动提示功能，只需在表单form上设置autocomplete=off：
+
+```
+<form autocomplete="off"> 
+<input type="text" name="name">
+<input type="text" name="password"> 
+</form>
+```
+
 [参考博客](https://blog.csdn.net/amao_aguai/article/details/83344455)
 
 #### 浏览器记住密码的情况下，解决密码输入框自动填充密码框（input type="password" 的问题）
@@ -226,7 +321,7 @@ overflow: hidden;
 #### 文本域(textarea)的提示文字(placeholder)换行显示
 
 ```
-加上&#13;&#10;
+// 在需要换行的地方加上&#13;&#10;
 
 placeholder="请输入微信APP支付参数，便于技术查看，涉及字段如下：&#13;&#10;微信支付商户号：&#13;&#10;商户Key：&#13;&#10;微信AppID：&#13;&#10;AppSecret:"
 ```
@@ -250,7 +345,7 @@ placeholder="请输入微信APP支付参数，便于技术查看，涉及字段�
 
 #### textarea元素的placeholder属性不显示
 
-> textarea的placeholder属性值不显示的原因可能是<textarea>与</textarea>之间存在空格或者换行
+> textarea的placeholder属性值不显示的原因可能是`<textarea>`与`</textarea>`之间存在空格或者换行
 
 #### 修改input type="file"按钮样式
 
@@ -310,7 +405,9 @@ css样式：
 .main{position:fixed;top:38px;bottom:38px;width:100%;overflow:scroll;background-color:#f2f2f2;}
 ```
 
-#### cSS3 :nth-last-child()选择器
+#### 选择倒数第n个元素
+
+css3    :nth-last-child()选择器
 
 规定属于其父元素的第二个子元素的每个p元素，从最后一个子元素开始计数∶
 
@@ -377,6 +474,46 @@ autocomplete="off"
 ```
 -webkit-tap-highlight-color:rgba(0,0,0,0);
 ```
+
+#### 下划线css偏移量
+
+[用CSS下划线距离](https://www.cnblogs.com/yeminglong/p/5481645.html)
+
+代码一：
+
+```
+a {
+    text-decoration: none; 
+    background: url(underline.gif) repeat-x 100% 100%;
+    padding-bottom: 4px;
+    white-space: nowrap;
+}
+```
+
+代码二：
+
+```
+a { 
+	text-decoration: none;
+	padding:0 0 6 0;
+	border-bottom-color:0;
+	border-bottom-width:1px;
+	border-bottom-style:solid; 
+}
+```
+
+代码三：
+
+```
+a{  
+    text-decoration:none; 
+    border-bottom:1px solid #ccc; /* #ccc换成链接的颜色 */
+    display: inline-block; 
+    padding-bottom:10px;  /*这里设置你要空的距离*/
+}
+```
+
+
 
 #### 解决IE阴影兼容性
 
@@ -461,6 +598,10 @@ background-color:#900\9;/*所有ie*/
 ```
 
 css中判断[IE](https://www.baidu.com/s?wd=IE&tn=SE_PcZhidaonwhc_ngpagmjz&rsv_dl=gh_pc_zhidao)版本的语句
+
+#### Koala设置scss编译后的输出路径
+
+![Koala设置输出路径](https://raw.githubusercontent.com/winney07/Images/main/Note/Koala-%E8%BE%93%E5%87%BA%E8%B7%AF%E5%BE%84.png)
 
 > 1. <!--[if !IE]> 除IE外都可识别 <!--<![endif]-->
 >

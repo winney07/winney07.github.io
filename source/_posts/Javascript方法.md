@@ -641,7 +641,14 @@ var newData= $.extend(true,{},data);;
 var isMobile = /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent);
 ```
 
-
+```
+(function(){
+    var o=navigator.userAgent;
+    if(o.indexOf("iPhone")!=-1 || o.indexOf("iPad")!=-1 || o.indexOf("iPod")!=-1 || o.indexOf("Android")!=-1){
+        self.location='/mobile/';
+    }}
+)();
+```
 
 
 
@@ -830,6 +837,17 @@ selectChannel[selectList[i]] = [];
 使用prop方法    [动态改变checkbox的选中状态](https://www.jianshu.com/p/d544167bd715)
 
 > 使用1.6.1 以上版本（测试使用1.10.1版本可以）
+
+#### 按回车触发的事件
+
+```
+document.onkeydown = function(e){ 
+    var ev = document.all ? window.event : e;
+    if(ev.keyCode==13) {
+        $(".login-btn").click();
+    }
+}
+```
 
 
 
@@ -1119,6 +1137,10 @@ $(selector).delegate(childSelector,event,data,function)
 
 
 
+#### 回到页面顶部
+
+[基于JS实现回到页面顶部的五种写法(从实现到增强)](https://www.jb51.net/article/91824.htm)
+
 #### 移动端设备判断
 
 ```
@@ -1386,3 +1408,102 @@ a.map(Number);  // 结果:[1,2,3,4,5,6,7,8,9]
 ```
 $("#body").children(":first")
 ```
+
+#### [JS数组添加元素的三种方式](https://www.cnblogs.com/meng-ma-blogs/p/8352787.html)
+
+1、push() 结尾添加
+
+　　数组.push(元素)
+
+| 参数        | 描述                             |
+| ----------- | -------------------------------- |
+| newelement1 | 必需。要添加到数组的第一个元素。 |
+| newelement2 | 可选。要添加到数组的第二个元素。 |
+| newelementX | 可选。可添加多个元素。           |
+
+2、unshift() 头部添加
+
+　　数组.unshift(元素)
+
+| 参数        | 描述                           |
+| ----------- | ------------------------------ |
+| newelement1 | 必需。向数组添加的第一个元素。 |
+| newelement2 | 可选。向数组添加的第二个元素。 |
+| newelementX | 可选。可添加若干个元素。       |
+
+3、splice() 方法向/从数组指定位置添加/删除项目，然后返回被删除的项目。
+
+| 参数              | 描述                                                         |
+| ----------------- | ------------------------------------------------------------ |
+| index             | 必需。整数，规定添加/删除项目的位置，使用负数可从数组结尾处规定位置。 |
+| howmany           | 必需。要删除的项目数量。如果设置为 0，则不会删除项目。       |
+| item1, ..., itemX | 可选。向数组添加的新项目。                                   |
+
+获取URL指定参数值（js/vue)
+
+[参考博客](https://www.cnblogs.com/linjiangxian/p/11466087.html)
+
+```
+function getParam(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+    var r = window.location.search.substr(1).match(reg);
+    if (r != null) return unescape(r[2]);
+    return null;
+}
+```
+
+#### $.each
+
+[jQuery中$.each的用法详解！](https://blog.csdn.net/u010786902/article/details/50954002)
+
+[jquery中$each()方法的使用指南](https://www.jb51.net/article/65215.htm)
+
+
+
+**Vue中**
+
+方法一:
+
+```
+this.$route.query.xxx  //只要是在url里用?拼接的都可以
+```
+
+方法二:
+
+```
+getParam function(paramName) { 
+    return decodeURIComponent((new RegExp('[?|&]' +
+      paramName + '=' + '([^&;]+?)(&|#|;|$)').exec(location.href) || [, ""])[1].replace(/\+/g, '%20')) || null
+}
+```
+
+[模糊搜索](https://github.com/Stevenzwzhai/plugs)
+
+#### 处理移动端点击延迟
+
+[移动端web开发，click touch tap区别](https://blog.csdn.net/sly94/article/details/51701188)
+
+[移动端WEB开发，click,touch,tap事件浅析](https://www.xuebuyuan.com/2174858.html)
+
+
+
+[JS 插件 fastclick.js 解决手机端click点击延迟](http://www.bubuko.com/infodetail-1015581.html)
+
+对于非移动浏览器不启作用，禁用缩放标签。
+
+
+
+#### call和 apply
+
+[web开发JS调用打印机打印Web页面](https://blog.csdn.net/u010670689/article/details/9065903)
+
+[JS实现浏览器打印、打印预览示例](https://www.jb51.net/article/106915.htm)
+
+
+
+#### 原生JS获取元素焦点
+
+```
+document.getElementById(id).focus();
+```
+

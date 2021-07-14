@@ -12,7 +12,7 @@ categories:
 
 #### 第01节：Koa开发环境搭建
 
-1、npminit -y (-y可选)  ————生成package.json文件
+1、npm init -y (-y可选)  ————生成package.json文件
 
 2、npm install --save koa ————在开发环境安装koa
 

@@ -148,3 +148,30 @@ function isIE() {
 }
 ```
 
+> window.ActiveXObject：判断浏览器是否支持ActiveX控件，只有IE浏览器里面支持ActiveX控件 如果浏览器支持ActiveX控件，可以利用 var xml = new ActiveXObject("Microsoft.XMLHTTP"); 创建XMLHttpRequest 对象（这是在IE7以前的版本中）；
+>
+> 在较新的IE版本中可以利用 var xml = new ActiveXObject("Msxml2.XMLHTTP")的形式创建XMLHttpRequest对象;
+>
+> 而在IE7及非IE浏览器中可以利用v ar xml=new XMLHttpRequest()创建XMLHttpRequest对象。
+
+#### IE不支持remove()方法。
+
+[ie浏览器的不能使用remove()方法去删除](https://blog.csdn.net/mengtianqq/article/details/79744394)
+
+> 1.因为ie浏览器没有remove()方法，可以使用 removeChild()方法去删除;
+>
+> 注意removeChild()的使用者是当前节点上一级，比如像删除节点node，使用的方法是：node.parentNode.removeChild(）；
+
+```
+function deleteRow(node){
+	 node.parentNode.removeChild(node);
+}
+```
+
+#### [IE对于域名带下划线访问问题]( http://www.360doc.com/content/14/0826/17/432969_404801617.shtml)
+
+[ie 浏览器无法保存cookie,且与域名包含了下划线(_)有关系的问题](https://blog.csdn.net/qidizi/article/details/44494169)
+
+https://datatracker.ietf.org/doc/html/rfc3696#section-2
+
+> 项目中用到cookie传递参数到服务器端，用ip localhost等访问均正常，由于项目以后要用域名访问，果断修改hosts文件，添加k_test.com进行域名映射测试，当再次通过IE浏览器打开项目后，悲剧的事情发生了，居然无法登陆，再次用ip 、 localhost访问，都正常，百思不得其解，这个问题正正纠结了一下午，试了各种测试，都没有结果，第二天一大早，灵机—动，换了个google浏览器，奇迹发生了，居然可以登陆了，然后再试IE，问题依旧，盯着域名看了半天，想起应该换个域名了，果断去掉下划线，IE能正常访问了，纠结差不多一天的问题终于得到了解决，百度了一下域名下划线，果然IE浏览器确实存在这方面的问题，虽然是一个小小的问题，但纠结了一天，确实很郁闷，谨以此告诫自己以后的人生中多注重细节。

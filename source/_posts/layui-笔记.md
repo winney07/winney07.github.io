@@ -206,6 +206,18 @@ var end = laydate.render({
 })
 ```
 
+#### 修改开始时间和结束时间之间的符号
+
+方法：修改laydate.js文件里面的t.range = "-"为t.range = "/"
+
+修改layui/lay/modules/laydate.js：
+
+```
+(t.range === !0 && (t.range = '/'))   改为： (t.range === !0 && (t.range = '-')) 
+```
+
+
+
 #### laytui表格内容超过表格长度的处理
 
 当表格内容的文字长度超过表格的长度的时候，点击内容，会出现如图：
@@ -222,3 +234,72 @@ var end = laydate.render({
 https://www.cnblogs.com/pyspang/p/11164736.html
 
 https://www.cnblogs.com/xxzb/p/12618226.html
+
+
+
+layui分页插件，一直在调用方法的解决办法
+
+（死循环）
+
+由于每次加载时都会执行jump回调，所以初次不让它执行jump里的方法（!first）
+
+```
+laypage.render({
+    elem: 'demo8'
+    , count: totalCount
+    , layout: ['count', 'prev', 'page', 'next', 'limit', 'refresh', 'skip']
+    , jump: function (obj, first) {
+        //模拟渲染
+        page = obj.curr;
+        limit = obj.limit;
+        if (!first) {
+             //执行方法
+        }
+    }
+});
+```
+
+#### [requriejs加载layui](https://blog.csdn.net/radzhang/article/details/84927005)
+
+#### 渲染动态表头
+
+```
+var dynamicCols = [];     //用来存放动态表头
+var colsList = [];  //表头列表
+$(数据返回的表头数组).each(function (i, item) {
+    //设置表头
+    var info = { field: item.field, title: item.title };
+    colsList.push(info);
+}
+dynamicCols.push(colsList);
+
+//执行渲染
+table.render({
+    elem: "#demo"  //指定原始表格元素选择器（推荐id选择器）
+    ,height: 315   //容器高度
+    ,cols:dynamicCols     //设置表头
+    
+    //,.....       //其他参数
+});
+```
+
+#### 动态修改select框的值
+
+![动态修改select框的值](https://raw.githubusercontent.com/winney07/Images/main/Note/layui-select.png)
+
+##### layui表格--当点击文字长度超过表格当前列宽度的时候，会出现如图所示：
+
+![超过表格当前列宽度](https://raw.githubusercontent.com/winney07/Images/main/Note/layui-table-tips.png)
+
+```
+解决方法：(使用css样式控制它隐藏)
+.layui-table-tips-main{display:none}
+.layui-table-tips-c{display:none}
+```
+
+#### layui日期时间段的设置，开始时间-结束时间
+
+最小值最大值动态设置的问题
+
+![最小值最大值动态设置的问题](https://raw.githubusercontent.com/winney07/Images/main/Note/layui-table-tips.png)
+

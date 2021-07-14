@@ -664,3 +664,49 @@ this表示的是javascript提供的当前对象
 $(this)表示的是用jquery封装候的当前对象
 this对象可以直接用this.style修改样式
 $(this)可以使用jquery提供的方法访问样式
+
+#### [Ajax及封装Ajax详解](https://blog.csdn.net/c__dreamer/article/details/80456565)
+
+```
+ajax({
+    url : "a.php",  // url---->地址
+    type : "POST",   // type ---> 请求方式
+    async : true,   // async----> 同步：false，异步：true 
+    data : {        //传入信息
+        name : "张三",
+        age : 18
+    },
+    success : function(data){   //返回接受信息
+        console.log(data);
+    }
+})
+```
+
+[HTTP缓存机制](http://blog.csdn.net/xiaozhuxmen/article/details/52074211)
+
+#### jQuery源码分析
+
+```
+$("ul li:last").addClass(function(index) {
+   return"item-" + index;
+});
+$('.container').append($('h2'));
+```
+
+#### text()与html()方法的区别
+
+```
+function showDialog(txt) {
+	$(".dialog-box").show();
+	$(".mask").show();
+	// $(".dialog-box .tiptxt").text(tiptxt);
+	$(".dialog-box .tiptxt").html(tiptxt);
+}
+```
+
+```
+showDialog(result.msg + "<br/>测试测试测试测试测试");
+加了<br/>不换行，原因可能是写入的时候用的是text()；改为html()；就可以，
+因为<br/>在text()里面不会把它当一个标签，而是把它当作字符.
+```
+

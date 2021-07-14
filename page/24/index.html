@@ -193,6 +193,90 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/05/25/vue%E9%A1%B9%E7%9B%AE%E9%85%8D%E7%BD%AE%E6%A8%A1%E5%9D%97%E5%8C%96%E8%B7%AF%E7%94%B1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="winney">
+      <meta itemprop="description" content="Doing is better than saying.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="winney">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/25/vue%E9%A1%B9%E7%9B%AE%E9%85%8D%E7%BD%AE%E6%A8%A1%E5%9D%97%E5%8C%96%E8%B7%AF%E7%94%B1/" class="post-title-link" itemprop="url">vue项目配置模块化路由</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-05-25 14:09:42" itemprop="dateCreated datePublished" datetime="2020-05-25T14:09:42+08:00">2020-05-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-01-12 18:01:53" itemprop="dateModified" datetime="2021-01-12T18:01:53+08:00">2021-01-12</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/Vue-js/" itemprop="url" rel="index"><span itemprop="name">Vue.js</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">├── src</span><br><span class="line">|    ├── assets         &#x2F;&#x2F; 静态资源img、css、js</span><br><span class="line">|    ├── components     &#x2F;&#x2F; 小组件</span><br><span class="line">|    ├── views          &#x2F;&#x2F; 页面(视图)组件</span><br><span class="line">|    ├── App.vue        &#x2F;&#x2F; 根组件</span><br><span class="line">|    ├── main.js        &#x2F;&#x2F; 全局脚本文件（项目的入口）</span><br><span class="line">|    ├── router</span><br><span class="line">|    |    ├── index.js       &#x2F;&#x2F; 路由脚本文件</span><br><span class="line">|    |    ├── modules       &#x2F;&#x2F; 模块</span><br><span class="line">|    |    |    ├── user.js         &#x2F;&#x2F; 用户模块</span><br><span class="line">|    |    |    ├── other.js        &#x2F;&#x2F; 其他模块</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="模块文件的配置-以用户模块为例，其他模块也是一样的"><a href="#模块文件的配置-以用户模块为例，其他模块也是一样的" class="headerlink" title="模块文件的配置 (以用户模块为例，其他模块也是一样的)"></a>模块文件的配置 (以用户模块为例，其他模块也是一样的)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">export default [</span><br><span class="line">    &#123;</span><br><span class="line">        name: &#39;login&#39;,</span><br><span class="line">        path: &#39;&#x2F;login&#39;,</span><br><span class="line">        meta: &#123;</span><br><span class="line">            title: &#39;登录页面&#39;</span><br><span class="line">        &#125;,</span><br><span class="line">        component: () &#x3D;&gt; import(&#39;@&#x2F;views&#x2F;account&#x2F;login&#x2F;index.vue&#39;) </span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        name: &#39;register&#39;,</span><br><span class="line">        path: &#39;&#x2F;register&#39;,</span><br><span class="line">        meta: &#123;</span><br><span class="line">            title: &#39;注册页面&#39;</span><br><span class="line">        &#125;,</span><br><span class="line">        component: () &#x3D;&gt; import(&#39;@&#x2F;views&#x2F;account&#x2F;register&#x2F;index.vue&#39;)</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        name: &#39;result&#39;,</span><br><span class="line">        path: &#39;&#x2F;result&#39;,</span><br><span class="line">        meta: &#123;</span><br><span class="line">            title: &#39;注册结果&#39;</span><br><span class="line">        &#125;,</span><br><span class="line">        component: () &#x3D;&gt; import(&#39;@&#x2F;views&#x2F;account&#x2F;register&#x2F;result&#x2F;index.vue&#39;)</span><br><span class="line">    &#125;</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;因为这里配置了页面title，所以加meta属性，如果不需要配置，可以不加</span><br></pre></td></tr></table></figure>
+<h3 id="index-js-router目录下的index-js"><a href="#index-js-router目录下的index-js" class="headerlink" title="index.js (router目录下的index.js)"></a>index.js (router目录下的index.js)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">import Vue from &#39;vue&#39;</span><br><span class="line">import VueRouter from &#39;vue-router&#39;</span><br><span class="line"></span><br><span class="line">import accoutRouter from &#39;.&#x2F;modules&#x2F;user&#39;</span><br><span class="line">import otherRouter from &#39;.&#x2F;modules&#x2F;other&#39;</span><br><span class="line"></span><br><span class="line">Vue.use(VueRouter)</span><br><span class="line"></span><br><span class="line">export default new VueRouter(&#123;</span><br><span class="line">  routes: [</span><br><span class="line">    ...accoutRouter,</span><br><span class="line">    ...otherRouter,</span><br><span class="line">  ]</span><br><span class="line">&#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="main-js"><a href="#main-js" class="headerlink" title="main.js"></a>main.js</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import Vue from &#39;vue&#39;</span><br><span class="line">import App from &#39;.&#x2F;App.vue&#39;</span><br><span class="line">import router from &#39;.&#x2F;router&#39;</span><br><span class="line">import store from &#39;.&#x2F;store&#39;</span><br><span class="line"></span><br><span class="line">Vue.config.productionTip &#x3D; false</span><br><span class="line"></span><br><span class="line">new Vue(&#123;</span><br><span class="line">  router,</span><br><span class="line">  store,</span><br><span class="line">  render: h &#x3D;&gt; h(App)</span><br><span class="line">&#125;).$mount(&#39;#app&#39;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="根据路由动态修改title"><a href="#根据路由动态修改title" class="headerlink" title="根据路由动态修改title"></a>根据路由动态修改title</h3><p>在main中加入以下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;* 路由发生变化修改页面title *&#x2F;</span><br><span class="line">router.beforeEach((to, from, next) &#x3D;&gt; &#123;</span><br><span class="line">  if (to.meta.title) &#123;</span><br><span class="line">      document.title &#x3D; to.meta.title || &#39;首页&#39;</span><br><span class="line">  &#125;</span><br><span class="line">  next()</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>main.js最终代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">import Vue from &#39;vue&#39;</span><br><span class="line">import App from &#39;.&#x2F;App.vue&#39;</span><br><span class="line">import router from &#39;.&#x2F;router&#39;</span><br><span class="line">import store from &#39;.&#x2F;store&#39;</span><br><span class="line"></span><br><span class="line">Vue.config.productionTip &#x3D; false</span><br><span class="line"></span><br><span class="line">&#x2F;* 路由发生变化修改页面title *&#x2F;</span><br><span class="line">router.beforeEach((to, from, next) &#x3D;&gt; &#123;</span><br><span class="line">  if (to.meta.title) &#123;</span><br><span class="line">      document.title &#x3D; to.meta.title || &#39;首页&#39;</span><br><span class="line">  &#125;</span><br><span class="line">  next()</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">new Vue(&#123;</span><br><span class="line">  router,</span><br><span class="line">  store,</span><br><span class="line">  render: h &#x3D;&gt; h(App)</span><br><span class="line">&#125;).$mount(&#39;#app&#39;)</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2020/04/07/Javascript%E6%96%B9%E6%B3%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -224,7 +308,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-05-13 17:48:19" itemprop="dateModified" datetime="2021-05-13T17:48:19+08:00">2021-05-13</time>
+                <time title="修改时间：2021-07-12 14:24:55" itemprop="dateModified" datetime="2021-07-12T14:24:55+08:00">2021-07-12</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -360,8 +444,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var newModel &#x3D; $.extend(true,[],oldModel)</span><br></pre></td></tr></table></figure>
 <h4 id="只赋值不改变原来对象"><a href="#只赋值不改变原来对象" class="headerlink" title="只赋值不改变原来对象"></a>只赋值不改变原来对象</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var data&#x3D;&#123;a:1,b:2,c:3,d:4&#125;;</span><br><span class="line">var newData&#x3D; $.extend(true,&#123;&#125;,data);;</span><br></pre></td></tr></table></figure>
 <h4 id="判断是否为移动端"><a href="#判断是否为移动端" class="headerlink" title="判断是否为移动端"></a>判断是否为移动端</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var isMobile &#x3D; &#x2F;Android|webOS|iPhone|iPod|BlackBerry&#x2F;i.test(navigator.userAgent);</span><br></pre></td></tr></table></figure>
-
-
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(function()&#123;</span><br><span class="line">    var o&#x3D;navigator.userAgent;</span><br><span class="line">    if(o.indexOf(&quot;iPhone&quot;)!&#x3D;-1 || o.indexOf(&quot;iPad&quot;)!&#x3D;-1 || o.indexOf(&quot;iPod&quot;)!&#x3D;-1 || o.indexOf(&quot;Android&quot;)!&#x3D;-1)&#123;</span><br><span class="line">        self.location&#x3D;&#39;&#x2F;mobile&#x2F;&#39;;</span><br><span class="line">    &#125;&#125;</span><br><span class="line">)();</span><br></pre></td></tr></table></figure>
 
 
 <h4 id="判断输入框是否获取焦点"><a href="#判断输入框是否获取焦点" class="headerlink" title="判断输入框是否获取焦点"></a>判断输入框是否获取焦点</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var isFocus&#x3D;$(&quot;#tRow&quot;).is(&quot;:focus&quot;);  </span><br></pre></td></tr></table></figure>
@@ -400,6 +483,9 @@
 <blockquote>
 <p>使用1.6.1 以上版本（测试使用1.10.1版本可以）</p>
 </blockquote>
+<h4 id="按回车触发的事件"><a href="#按回车触发的事件" class="headerlink" title="按回车触发的事件"></a>按回车触发的事件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">document.onkeydown &#x3D; function(e)&#123; </span><br><span class="line">    var ev &#x3D; document.all ? window.event : e;</span><br><span class="line">    if(ev.keyCode&#x3D;&#x3D;13) &#123;</span><br><span class="line">        $(&quot;.login-btn&quot;).click();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
 <h4 id="捕获错误信息"><a href="#捕获错误信息" class="headerlink" title="捕获错误信息"></a>捕获错误信息</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt; </span><br><span class="line">    &lt;input type&#x3D;&quot;button&quot; value&#x3D;&quot;获取页面错误信息&quot; onclick&#x3D;&quot;adlert(&#39;函数函数&#39;)&quot; &#x2F;&gt;</span><br><span class="line">&lt;&#x2F;body&gt; </span><br><span class="line"></span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt; </span><br><span class="line"> var errorTxt &#x3D; &quot;&quot;;</span><br><span class="line"> window.onerror &#x3D; function(errorMessage, scriptURI, lineNumber,columnNumber,errorObj) &#123; </span><br><span class="line">    errorTxt &#x3D; &quot;接收到的错误信息如下：\n\n&quot;;</span><br><span class="line">    errorTxt +&#x3D; &quot;错误信息：&quot; + errorMessage + &quot;\n&quot;;</span><br><span class="line">    errorTxt +&#x3D; &quot;出错文件：&quot; + scriptURI + &quot;\n&quot;;</span><br><span class="line">    errorTxt +&#x3D; &quot;出错行号：&quot; + lineNumber + &quot;\n&quot;;</span><br><span class="line">    errorTxt +&#x3D; &quot;出错列号：&quot; + columnNumber + &quot;\n&quot;;</span><br><span class="line">    errorTxt +&#x3D; &quot;错误详情：&quot; + errorObj + &quot;\n&quot;;</span><br><span class="line"></span><br><span class="line">    alert(errorTxt);</span><br><span class="line">  &#125; </span><br><span class="line">&lt;&#x2F;script&gt; </span><br></pre></td></tr></table></figure>
 <h4 id="返回文档的根节点（html）"><a href="#返回文档的根节点（html）" class="headerlink" title="返回文档的根节点（html）"></a>返回文档的根节点（html）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">document.documentElement</span><br></pre></td></tr></table></figure>
 <h4 id="返回DOM对象中的body节点"><a href="#返回DOM对象中的body节点" class="headerlink" title="返回DOM对象中的body节点"></a>返回DOM对象中的body节点</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">document.body</span><br></pre></td></tr></table></figure>
@@ -451,7 +537,8 @@
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(&quot;div&quot;).delegate(&quot;button&quot;,&quot;click&quot;,function()&#123;</span><br><span class="line">  $(&quot;p&quot;).slideToggle();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(selector).delegate(childSelector,event,data,function)</span><br></pre></td></tr></table></figure>
-<h4 id="记录及清空搜索历史记录"><a href="#记录及清空搜索历史记录" class="headerlink" title="记录及清空搜索历史记录"></a>记录及清空搜索历史记录</h4><h4 id="移动端设备判断"><a href="#移动端设备判断" class="headerlink" title="移动端设备判断"></a>移动端设备判断</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">var ua&#x3D;navigator.userAgent, 			     wxv&#x3D;parseInt(ua.substring(ua.toLowerCase().indexOf(&quot;micromessenger&#x2F;&quot;)+15));</span><br><span class="line">var uClient &#x3D; &quot;mq&quot;;</span><br><span class="line">if(wxv &gt;&#x3D; 5)&#123;</span><br><span class="line">    uClient &#x3D; &quot;wx&quot;;</span><br><span class="line">&#125;else&#123;</span><br><span class="line">    isQzone &#x3D; ua.match(&quot;Qzone&quot;);</span><br><span class="line">    if(isQzone)&#123;</span><br><span class="line">        uClient &#x3D; &#39;qzone&#39;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">var iPad &#x3D; ua.match(&#x2F;(iPad).*OS\s([\d_]+)&#x2F;),</span><br><span class="line">    iPhone &#x3D; !iPad &amp;&amp; ua.match(&#x2F;(iPhone\sOS)\s([\d_]+)&#x2F;),</span><br><span class="line">    iPod &#x3D; ua.match(&#x2F;(iPod).*OS\s([\d_]+)&#x2F;),</span><br><span class="line">    android &#x3D; ua.match(&#x2F;(Android)\s+([\d.]+)&#x2F;)||ua.match(&#x2F;Android&#x2F;),</span><br><span class="line">    wp &#x3D; ua.match(&#x2F;Windows Phone ([\d.]+)&#x2F;),</span><br><span class="line">    isMobile &#x3D; iPad || iPhone || iPad || wp || android;</span><br></pre></td></tr></table></figure>
+<h4 id="记录及清空搜索历史记录"><a href="#记录及清空搜索历史记录" class="headerlink" title="记录及清空搜索历史记录"></a>记录及清空搜索历史记录</h4><h4 id="回到页面顶部"><a href="#回到页面顶部" class="headerlink" title="回到页面顶部"></a>回到页面顶部</h4><p><a target="_blank" rel="noopener" href="https://www.jb51.net/article/91824.htm">基于JS实现回到页面顶部的五种写法(从实现到增强)</a></p>
+<h4 id="移动端设备判断"><a href="#移动端设备判断" class="headerlink" title="移动端设备判断"></a>移动端设备判断</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">var ua&#x3D;navigator.userAgent, 			     wxv&#x3D;parseInt(ua.substring(ua.toLowerCase().indexOf(&quot;micromessenger&#x2F;&quot;)+15));</span><br><span class="line">var uClient &#x3D; &quot;mq&quot;;</span><br><span class="line">if(wxv &gt;&#x3D; 5)&#123;</span><br><span class="line">    uClient &#x3D; &quot;wx&quot;;</span><br><span class="line">&#125;else&#123;</span><br><span class="line">    isQzone &#x3D; ua.match(&quot;Qzone&quot;);</span><br><span class="line">    if(isQzone)&#123;</span><br><span class="line">        uClient &#x3D; &#39;qzone&#39;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">var iPad &#x3D; ua.match(&#x2F;(iPad).*OS\s([\d_]+)&#x2F;),</span><br><span class="line">    iPhone &#x3D; !iPad &amp;&amp; ua.match(&#x2F;(iPhone\sOS)\s([\d_]+)&#x2F;),</span><br><span class="line">    iPod &#x3D; ua.match(&#x2F;(iPod).*OS\s([\d_]+)&#x2F;),</span><br><span class="line">    android &#x3D; ua.match(&#x2F;(Android)\s+([\d.]+)&#x2F;)||ua.match(&#x2F;Android&#x2F;),</span><br><span class="line">    wp &#x3D; ua.match(&#x2F;Windows Phone ([\d.]+)&#x2F;),</span><br><span class="line">    isMobile &#x3D; iPad || iPhone || iPad || wp || android;</span><br></pre></td></tr></table></figure>
 <h4 id="回调函数："><a href="#回调函数：" class="headerlink" title="回调函数："></a>回调函数：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">var foo &#x3D; 1;</span><br><span class="line">function bar(callback) &#123;</span><br><span class="line">    foo &#x3D; 10;</span><br><span class="line">    console.log(foo);</span><br><span class="line">    console.log(this);</span><br><span class="line">    console.log(this.foo);</span><br><span class="line">    return;</span><br><span class="line">    function foo() &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line">bar(function()&#123;</span><br><span class="line">    console.log(&#39;回调&#39;);</span><br><span class="line">    console.log(foo);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">console.log(this);</span><br><span class="line">console.log(this.foo);</span><br><span class="line"></span><br><span class="line">console.log(foo);</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"> var func &#x3D; (function(a) &#123;</span><br><span class="line">    this.a &#x3D; a;</span><br><span class="line">    return function(a) &#123;</span><br><span class="line">        a +&#x3D; this.a;</span><br><span class="line">        return a;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line">(function(a, b) &#123;</span><br><span class="line">    return a;</span><br><span class="line">&#125;(1, 2));</span><br><span class="line"></span><br><span class="line">console.log(func(4));</span><br></pre></td></tr></table></figure>
 <h4 id="数组按一定原则排序"><a href="#数组按一定原则排序" class="headerlink" title="数组按一定原则排序"></a>数组按一定原则排序</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var arr5 &#x3D; [&#123;id:10&#125;,&#123;id:5&#125;,&#123;id:6&#125;,&#123;id:9&#125;,&#123;id:2&#125;,&#123;id:3&#125;];</span><br><span class="line">arr5.sort(function(a,b)&#123;</span><br><span class="line">    return a.id - b.id</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
@@ -541,11 +628,22 @@
 <p>获取URL指定参数值（js/vue)</p>
 <p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/linjiangxian/p/11466087.html">参考博客</a></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function getParam(name) &#123;</span><br><span class="line">    var reg &#x3D; new RegExp(&quot;(^|&amp;)&quot; + name + &quot;&#x3D;([^&amp;]*)(&amp;|$)&quot;);</span><br><span class="line">    var r &#x3D; window.location.search.substr(1).match(reg);</span><br><span class="line">    if (r !&#x3D; null) return unescape(r[2]);</span><br><span class="line">    return null;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="each"><a href="#each" class="headerlink" title="$.each"></a>$.each</h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u010786902/article/details/50954002">jQuery中$.each的用法详解！</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.jb51.net/article/65215.htm">jquery中$each()方法的使用指南</a></p>
 <p><strong>Vue中</strong></p>
 <p>方法一:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.$route.query.xxx  &#x2F;&#x2F;只要是在url里用?拼接的都可以</span><br></pre></td></tr></table></figure>
 <p>方法二:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">getParam function(paramName) &#123; </span><br><span class="line">    return decodeURIComponent((new RegExp(&#39;[?|&amp;]&#39; +</span><br><span class="line">      paramName + &#39;&#x3D;&#39; + &#39;([^&amp;;]+?)(&amp;|#|;|$)&#39;).exec(location.href) || [, &quot;&quot;])[1].replace(&#x2F;\+&#x2F;g, &#39;%20&#39;)) || null</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://github.com/Stevenzwzhai/plugs">模糊搜索</a></p>
+<h4 id="处理移动端点击延迟"><a href="#处理移动端点击延迟" class="headerlink" title="处理移动端点击延迟"></a>处理移动端点击延迟</h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/sly94/article/details/51701188">移动端web开发，click touch tap区别</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.xuebuyuan.com/2174858.html">移动端WEB开发，click,touch,tap事件浅析</a></p>
+<p><a target="_blank" rel="noopener" href="http://www.bubuko.com/infodetail-1015581.html">JS 插件 fastclick.js 解决手机端click点击延迟</a></p>
+<p>对于非移动浏览器不启作用，禁用缩放标签。</p>
+<h4 id="call和-apply"><a href="#call和-apply" class="headerlink" title="call和 apply"></a>call和 apply</h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u010670689/article/details/9065903">web开发JS调用打印机打印Web页面</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.jb51.net/article/106915.htm">JS实现浏览器打印、打印预览示例</a></p>
+<h4 id="原生JS获取元素焦点"><a href="#原生JS获取元素焦点" class="headerlink" title="原生JS获取元素焦点"></a>原生JS获取元素焦点</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">document.getElementById(id).focus();</span><br></pre></td></tr></table></figure>
+
       
     </div>
 
@@ -647,88 +745,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/03/19/Vue%E9%A1%B9%E7%9B%AE%E8%AE%BE%E7%BD%AE%E6%AF%8F%E4%B8%AA%E9%A1%B5%E9%9D%A2%E7%9A%84title/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="winney">
-      <meta itemprop="description" content="Doing is better than saying.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="winney">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/03/19/Vue%E9%A1%B9%E7%9B%AE%E8%AE%BE%E7%BD%AE%E6%AF%8F%E4%B8%AA%E9%A1%B5%E9%9D%A2%E7%9A%84title/" class="post-title-link" itemprop="url">Vue项目设置每个页面的title</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-03-19 17:59:33" itemprop="dateCreated datePublished" datetime="2020-03-19T17:59:33+08:00">2020-03-19</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-01-12 18:01:57" itemprop="dateModified" datetime="2021-01-12T18:01:57+08:00">2021-01-12</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/Vue-js/" itemprop="url" rel="index"><span itemprop="name">Vue.js</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h5 id="1、在项目目录下安装vue-wechat-title"><a href="#1、在项目目录下安装vue-wechat-title" class="headerlink" title="1、在项目目录下安装vue-wechat-title"></a>1、在项目目录下安装vue-wechat-title</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm i vue-wechat-title --save-dev</span><br></pre></td></tr></table></figure>
-<h5 id="2、在main-js中-使用vue-wechat-title"><a href="#2、在main-js中-使用vue-wechat-title" class="headerlink" title="2、在main.js中 使用vue-wechat-title"></a>2、在main.js中 使用vue-wechat-title</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Vue.use(require(&#39;vue-wechat-title&#39;))     &#x2F;&#x2F;实例化参数</span><br></pre></td></tr></table></figure>
-<h5 id="3、在router的配置中设置"><a href="#3、在router的配置中设置" class="headerlink" title="3、在router的配置中设置"></a>3、在router的配置中设置</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">      path: &#39;&#x2F;home&#39;,</span><br><span class="line">      name: &#39;Home&#39;,</span><br><span class="line">      component: Home,</span><br><span class="line">      meta: &#123;</span><br><span class="line">        title: &#39;主页&#39;       &#x2F;&#x2F;页面标题</span><br><span class="line">      &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-<h5 id="4、在每个vue页面中加入"><a href="#4、在每个vue页面中加入" class="headerlink" title="4、在每个vue页面中加入 "></a>4、在每个vue页面中加入 <div v-wechat-title="$route.meta.title"></div></h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> &lt;div class&#x3D;&quot;content content-box&quot;&gt;</span><br><span class="line">      &lt;div v-wechat-title&#x3D;&quot;$route.meta.title&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
-
-<h6 id="【参考】：-vue项目设置每个页面的title"><a href="#【参考】：-vue项目设置每个页面的title" class="headerlink" title="【参考】： vue项目设置每个页面的title"></a>【参考】： <a target="_blank" rel="noopener" href="https://www.cnblogs.com/itgezhu/p/10817502.html">vue项目设置每个页面的title</a></h6>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -800,7 +816,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">98</span>
+          <span class="site-state-item-count">99</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

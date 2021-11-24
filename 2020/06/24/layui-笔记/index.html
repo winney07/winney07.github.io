@@ -20,29 +20,18 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="layui-github 判断复选框是否选中(获取复选框的值)1data.elem.checked 设置layer-alert和layer-comfirm为不可resize1将resize参数设置为false 导出excel表格1234567var ins1 &#x3D; table.render (&amp;#123;	elem: &#39;#demo &#39;	,id: &#39;test&#39;">
+  <meta name="description" content="layui-github layer文档 layer.comfirm弹窗按钮文字和事件 layui表格的复选框全选和单选的功能 表格需要导出的，导出时，要将自定义的复选框去除  &amp;#123; field: &#39;checkbox&#39;, title: &#39;&lt;input type&#x3D;&quot;checkbox&quot; lay-filter&#x3D;&quot;allAccountLi">
 <meta property="og:type" content="article">
 <meta property="og:title" content="layui 笔记">
 <meta property="og:url" content="http://example.com/2020/06/24/layui-%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="winney">
-<meta property="og:description" content="layui-github 判断复选框是否选中(获取复选框的值)1data.elem.checked 设置layer-alert和layer-comfirm为不可resize1将resize参数设置为false 导出excel表格1234567var ins1 &#x3D; table.render (&amp;#123;	elem: &#39;#demo &#39;	,id: &#39;test&#39;">
+<meta property="og:description" content="layui-github layer文档 layer.comfirm弹窗按钮文字和事件 layui表格的复选框全选和单选的功能 表格需要导出的，导出时，要将自定义的复选框去除  &amp;#123; field: &#39;checkbox&#39;, title: &#39;&lt;input type&#x3D;&quot;checkbox&quot; lay-filter&#x3D;&quot;allAccountLi">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/2020/06/24/layui-%E7%AC%94%E8%AE%B0/note1.png">
-<meta property="og:image" content="http://example.com/2020/06/24/layui-%E7%AC%94%E8%AE%B0/note2.png">
-<meta property="og:image" content="http://example.com/2020/06/24/layui-%E7%AC%94%E8%AE%B0/note3.png">
-<meta property="og:image" content="http://example.com/2020/06/24/layui-%E7%AC%94%E8%AE%B0/note4.png">
-<meta property="og:image" content="http://example.com/2020/06/24/layui-%E7%AC%94%E8%AE%B0/note5.png">
-<meta property="og:image" content="http://example.com/2020/06/24/layui-%E7%AC%94%E8%AE%B0/note6.png">
-<meta property="og:image" content="http://example.com/2020/06/24/layui-%E7%AC%94%E8%AE%B0/note7.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/winney07/Images/main/Note/layui-select.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/winney07/Images/main/Note/layui-table-tips.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/winney07/Images/main/Note/layui-table-tips.png">
 <meta property="article:published_time" content="2020-06-24T07:41:32.000Z">
-<meta property="article:modified_time" content="2021-07-14T03:20:37.301Z">
+<meta property="article:modified_time" content="2021-11-22T03:34:55.854Z">
 <meta property="article:author" content="winney">
 <meta property="article:tag" content="layui">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2020/06/24/layui-%E7%AC%94%E8%AE%B0/note1.png">
 
 <link rel="canonical" href="http://example.com/2020/06/24/layui-%E7%AC%94%E8%AE%B0/">
 
@@ -237,7 +226,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-07-14 11:20:37" itemprop="dateModified" datetime="2021-07-14T11:20:37+08:00">2021-07-14</time>
+                <time title="修改时间：2021-11-22 11:34:55" itemprop="dateModified" datetime="2021-11-22T11:34:55+08:00">2021-11-22</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -265,70 +254,158 @@
 
       
         <p><a target="_blank" rel="noopener" href="https://github.com/sentsin/layui">layui-github</a></p>
-<h4 id="判断复选框是否选中-获取复选框的值"><a href="#判断复选框是否选中-获取复选框的值" class="headerlink" title="判断复选框是否选中(获取复选框的值)"></a>判断复选框是否选中(获取复选框的值)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data.elem.checked</span><br></pre></td></tr></table></figure>
-<h4 id="设置layer-alert和layer-comfirm为不可resize"><a href="#设置layer-alert和layer-comfirm为不可resize" class="headerlink" title="设置layer-alert和layer-comfirm为不可resize"></a>设置layer-alert和layer-comfirm为不可resize</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">将resize参数设置为false</span><br></pre></td></tr></table></figure>
-<h4 id="导出excel表格"><a href="#导出excel表格" class="headerlink" title="导出excel表格"></a>导出excel表格</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var ins1 &#x3D; table.render (&#123;</span><br><span class="line">	elem: &#39;#demo &#39;</span><br><span class="line">	,id: &#39;test&#39;</span><br><span class="line">	...</span><br><span class="line">&#125;)</span><br><span class="line">&#x2F;&#x2F; 将上述表格示例导出为csv文件</span><br><span class="line">table.exportFile(ins1.config.id，data) ; &#x2F;&#x2F; data为该实例中的任意数量的数据</span><br></pre></td></tr></table></figure>
-<img src="/2020/06/24/layui-%E7%AC%94%E8%AE%B0/note1.png" class="">
-
-<h4 id="导出excel表格时，去掉页面表头显示的小图标"><a href="#导出excel表格时，去掉页面表头显示的小图标" class="headerlink" title="导出excel表格时，去掉页面表头显示的小图标"></a>导出excel表格时，去掉页面表头显示的小图标</h4><img src="/2020/06/24/layui-%E7%AC%94%E8%AE%B0/note2.png" class="">
-
-<img src="/2020/06/24/layui-%E7%AC%94%E8%AE%B0/note3.png" class="">
-
-<img src="/2020/06/24/layui-%E7%AC%94%E8%AE%B0/note4.png" class="">
-
-<blockquote>
-<p>点击下载时，将表格的头部图标去掉，执行了下载表格的函数之后，将表头的图标加上。<br>注意：由于表头cols是对象，指向地址，修改了，会影响全局的（例如：点击时间间隔时会拿到去掉图标的表头）<br>解决：（保留原来的不加以修改的表头数据）</p>
-</blockquote>
-<h4 id="修改重载表格时的加载图标"><a href="#修改重载表格时的加载图标" class="headerlink" title="修改重载表格时的加载图标"></a>修改重载表格时的加载图标</h4><img src="/2020/06/24/layui-%E7%AC%94%E8%AE%B0/note5.png" class="">
-
-<ul>
-<li><p>如果只修改样式</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.layui-table-view .layui-table-init .layui-icon-loading&#123;</span><br><span class="line">  	font-size: 60px;</span><br><span class="line">  	color: #666;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>如果不想页面显示表格加载图标</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.layui-table-view .layui-table-init .layui-icon-loading&#123;</span><br><span class="line">    display: none !important;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
+<p><a target="_blank" rel="noopener" href="https://layer.layui.com/api.html">layer文档</a></p>
+<p><a target="_blank" rel="noopener" href="https://layer.layui.com/api.html#btn">layer.comfirm弹窗按钮文字和事件</a></p>
+<h4 id="layui表格的复选框全选和单选的功能"><a href="#layui表格的复选框全选和单选的功能" class="headerlink" title="layui表格的复选框全选和单选的功能"></a>layui表格的复选框全选和单选的功能</h4><ol>
+<li><p>表格需要导出的，导出时，要将自定义的复选框去除</p>
 </li>
-</ul>
-<h4 id="表格表头标题之间边框不显示"><a href="#表格表头标题之间边框不显示" class="headerlink" title="表格表头标题之间边框不显示"></a>表格表头标题之间边框不显示</h4><img src="/2020/06/24/layui-%E7%AC%94%E8%AE%B0/note6.png" class="">
+<li><pre><code>&#123; field: &#39;checkbox&#39;, title: &#39;&lt;input type=&quot;checkbox&quot; lay-filter=&quot;allAccountList&quot; lay-skin=&quot;primary&quot;&gt;&#39;, width: 66 ,templet: function(res)&#123;
+                            return &#39;&lt;input type=&quot;checkbox&quot; data-id=&quot;&#39;+ res.id +&#39;&quot; lay-filter=&quot;accountList&quot; lay-skin=&quot;primary&quot;&gt;&#39;
+&#125;&#125;
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+// 监听全选复选框
+form.on(&#39;checkbox(allAccountList)&#39;, function(data)&#123;
+ if(!list.length) &#123;
+     $(&#39;input[lay-filter=&quot;allAccountList&quot;]&#39;).prop(&#39;checked&#39;, false);
+ &#125;
+ // 是否全选
+ var isAll = data.elem.checked ? true : false;
 
-<p>th本来是position：relative；改为position: static；</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.layui-table td, .layui-table th&#123;</span><br><span class="line">    position: static\9;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="修改了layui表格的内容，不刷新页面，只刷新表格内容，页码不刷新解决方法"><a href="#修改了layui表格的内容，不刷新页面，只刷新表格内容，页码不刷新解决方法" class="headerlink" title="修改了layui表格的内容，不刷新页面，只刷新表格内容，页码不刷新解决方法"></a>修改了layui表格的内容，不刷新页面，只刷新表格内容，页码不刷新解决方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">function render_table(tabledata, cur) &#123;</span><br><span class="line">  ·········</span><br><span class="line">  , page: &#123;</span><br><span class="line">    curr: cur</span><br><span class="line">  &#125;</span><br><span class="line">  , data: tabledata</span><br><span class="line">   ·········</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;获取当前页</span><br><span class="line">var curr &#x3D; $(&quot;.layui-laypage-skip input&quot;).val();</span><br><span class="line">&#x2F;&#x2F;重新渲染表格</span><br><span class="line">&lt;!-- res.data：修改数据后，重新返回渲染表格的数据 --&gt;</span><br><span class="line">&lt;!-- 从curr页开始渲染表格 --&gt;</span><br><span class="line">render_table(res.data, curr);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h4 id="layui同时清空多个表单元素的值"><a href="#layui同时清空多个表单元素的值" class="headerlink" title="layui同时清空多个表单元素的值"></a>layui同时清空多个表单元素的值</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">1、 form 加上 lay-filter属性  lay-filter&#x3D;&quot;group_form&quot;</span><br><span class="line">2、 </span><br><span class="line">$(&quot;#cancel&quot;).click(function() &#123;</span><br><span class="line">    form.val(&quot;group_form&quot;, &#123;</span><br><span class="line">      &quot;sdk&quot;: &quot;&quot;,     &#x2F;&#x2F;单选框清空不了</span><br><span class="line">      &quot;name&quot;: &quot;&quot;,    &#x2F;&#x2F;输入框可以清空</span><br><span class="line">      &quot;sort&quot;: &quot;&quot;,    &#x2F;&#x2F;复选框清空不了</span><br><span class="line">      &quot;ddddd&quot;: &quot;&quot;,   &#x2F;&#x2F;下拉框可以清空</span><br><span class="line">      &quot;password&quot;: &quot;&quot; &#x2F;&#x2F;密码框可以清空</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
-<h4 id="将MD5定义成layui的模块"><a href="#将MD5定义成layui的模块" class="headerlink" title="将MD5定义成layui的模块"></a>将MD5定义成layui的模块</h4><p><a target="_blank" rel="noopener" href="https://www.layui.com/doc/base/modules.html#extend">扩展一个 layui 模块</a></p>
-<p>1、在md5的js文件最后加上：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">layui.define(function(exports)&#123; </span><br><span class="line">  exports(&#39;mymd&#39;, &#123;&#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>2、如果mymd.js文件放在与使用它的html文件同一个目录下，在html文件中直接使用：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;使用拓展模块</span><br><span class="line">layui.use([&#39;mymd&#39;], function()&#123;</span><br><span class="line">  var mymd &#x3D; layui.mymd;</span><br><span class="line"></span><br><span class="line">  mymd.hash &#x3D; md5;   &#x2F;&#x2F;md5加密方法</span><br><span class="line">  console.log(mymd.hash(&quot;md5加密&quot;));</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>3、如果mymd.js文件放在与使用它的html文件不同目录下，在html文件中要在 extend 指定路径：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">layui.extend(&#123;</span><br><span class="line">  mymd: &#39;.&#x2F;js&#x2F;mymd&#39; </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>再使用：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;使用拓展模块</span><br><span class="line">layui.use([&#39;mymd&#39;], function()&#123;</span><br><span class="line">  var mymd &#x3D; layui.mymd;</span><br><span class="line"></span><br><span class="line">  mymd.hash &#x3D; md5;   &#x2F;&#x2F;md5加密方法</span><br><span class="line">  console.log(mymd.hash(&quot;md5加密&quot;));</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h4 id="laypage"><a href="#laypage" class="headerlink" title="laypage"></a>laypage</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">layui.use([&#39;laypage&#39;, &#39;layer&#39;], function()&#123;</span><br><span class="line">  var laypage &#x3D; layui.laypage</span><br><span class="line">  ,layer &#x3D; layui.layer;</span><br><span class="line">  </span><br><span class="line">  &#x2F;&#x2F;完整功能</span><br><span class="line">  laypage.render(&#123;</span><br><span class="line">    elem: &#39;demo7&#39;</span><br><span class="line">    ,count: 100</span><br><span class="line">    ,layout: [&#39;count&#39;, &#39;prev&#39;, &#39;page&#39;, &#39;next&#39;, &#39;limit&#39;, &#39;skip&#39;]</span><br><span class="line">    ,jump: function(obj)&#123;</span><br><span class="line">      console.log(obj)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">  </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h4 id="layui日期时间段的设置，开始时间-结束时间"><a href="#layui日期时间段的设置，开始时间-结束时间" class="headerlink" title="layui日期时间段的设置，开始时间-结束时间"></a>layui日期时间段的设置，开始时间-结束时间</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">var nowTime &#x3D; new Date( ).valueOf( );</span><br><span class="line"></span><br><span class="line">var start &#x3D; laydate.render(&#123;</span><br><span class="line">	elem: &quot;#start&quot;,</span><br><span class="line">	min: nowTime,</span><br><span class="line">	done: function(value, date) &#123;</span><br><span class="line">		endMax &#x3D; end.config.max;</span><br><span class="line">		end.config.min &#x3D; date;     &#x2F;&#x2F; 根据开始时间来设置结束时间的最小值&#x2F;最大值</span><br><span class="line">		end.config.min.month &#x3D; date.month - 1;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">var end &#x3D; laydate.render(&#123;</span><br><span class="line">	elem: &quot;#end&quot;,</span><br><span class="line">	min：nowTime,   &#x2F;&#x2F;  结束时间初始化的时候要设置一个值，不然开始时间的回调中，设置了也不起作用。初始化的时候就要写上nowTime这个，不然动态控制不了</span><br><span class="line">	done: function(value, date) &#123;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<h4 id="修改开始时间和结束时间之间的符号"><a href="#修改开始时间和结束时间之间的符号" class="headerlink" title="修改开始时间和结束时间之间的符号"></a>修改开始时间和结束时间之间的符号</h4><p>方法：修改laydate.js文件里面的t.range = “-“为t.range = “/“</p>
-<p>修改layui/lay/modules/laydate.js：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(t.range &#x3D;&#x3D;&#x3D; !0 &amp;&amp; (t.range &#x3D; &#39;&#x2F;&#39;))   改为： (t.range &#x3D;&#x3D;&#x3D; !0 &amp;&amp; (t.range &#x3D; &#39;-&#39;)) </span><br></pre></td></tr></table></figure>
+ // 是否被选中
+ if(isAll) &#123;
+     ids = list.map(function(item)&#123;
+         return item.id;
+     &#125;)
+ &#125; else &#123;
+     ids = [];
+ &#125;
+
+ // 更新复选框样式
+ $(&#39;.layui-table input[type=&quot;checkbox&quot;]&#39;).prop(&#39;checked&#39;, isAll);
+ // 重新渲染
+ form.render(&#39;checkbox&#39;);
+&#125;); 
+</code></pre>
+</li>
+</ol>
+<p>// 监听单选复选框<br>form.on(‘checkbox(accountList)’, function(data){<br>    // 是否被选中<br>    var isChecked = data.elem.checked;<br>    // 是否全选<br>    var isAll = false;<br>    // 当前项的id<br>    var _id = $(data.elem).data(“id”);</p>
+<pre><code>if(isChecked) &#123;
+    // 追加
+    ids.push(_id);
+    isAll = (ids.length == list.length) ? true : false;
+&#125; else &#123;
+    // 减去
+    var index = ids.indexOf(_id);
+    ids.splice(index, 1);
+
+    isAll =  false;
+&#125;
+
+// 更新全选复选框的样式
+$(&#39;input[lay-filter=&quot;allAccountList&quot;]&#39;).prop(&#39;checked&#39;, isAll);
+// 重新渲染
+form.render(&#39;checkbox&#39;);</code></pre>
+<p>}); </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#### 移动端，点击日期插件不显示</span><br><span class="line"></span><br><span class="line">解决方法：加上，trigger: &#39;click&#39; &#x2F;&#x2F;采用click弹出</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>laydate.render({<br>elem: ‘#compareTime’ //指定元素<br>, type: ‘date’<br>, max: endTime<br>, min: minTime<br>, trigger: ‘click’ //采用click弹出<br>, done: function (value, date, endDate) {<br>   ….<br>},<br>ready: function(date){<br>   …..<br>});</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### 判断复选框是否选中(获取复选框的值)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>data.elem.checked</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### 设置layer-alert和layer-comfirm为不可resize</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>将resize参数设置为false</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### layui表格固定表头</span><br><span class="line"></span><br><span class="line">给表格设置高度</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>table.render({<br>    elem: ‘#hourData’<br>    , data: res<br>    , height: 330<br>});</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#### 导出excel表格</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>var ins1 = table.render ({<br>    elem: ‘#demo ‘<br>    ,id: ‘test’<br>    …<br>})<br>// 将上述表格示例导出为csv文件<br>table.exportFile(ins1.config.id，data) ; // data为该实例中的任意数量的数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&#123;% asset_img note1.png %&#125;</span><br><span class="line"></span><br><span class="line">#### 导出excel表格时，去掉页面表头显示的小图标</span><br><span class="line"></span><br><span class="line">&#123;% asset_img note2.png %&#125;</span><br><span class="line"></span><br><span class="line">&#123;% asset_img note3.png %&#125;</span><br><span class="line"></span><br><span class="line">&#123;% asset_img note4.png %&#125;</span><br><span class="line"></span><br><span class="line">&gt; 点击下载时，将表格的头部图标去掉，执行了下载表格的函数之后，将表头的图标加上。</span><br><span class="line">&gt; 注意：由于表头cols是对象，指向地址，修改了，会影响全局的（例如：点击时间间隔时会拿到去掉图标的表头）</span><br><span class="line">&gt; 解决：（保留原来的不加以修改的表头数据）</span><br><span class="line"></span><br><span class="line">#### 修改重载表格时的加载图标</span><br><span class="line"></span><br><span class="line">&#123;% asset_img note5.png %&#125;</span><br><span class="line"></span><br><span class="line">- 如果只修改样式</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>  .layui-table-view .layui-table-init .layui-icon-loading{<br>        font-size: 60px;<br>        color: #666;<br>  }<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 如果不想页面显示表格加载图标</span><br><span class="line"></span><br></pre></td></tr></table></figure><br>  .layui-table-view .layui-table-init .layui-icon-loading{<br>      display: none !important;<br>  }<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#### 表格表头标题之间边框不显示</span><br><span class="line"></span><br><span class="line">&#123;% asset_img note6.png %&#125;</span><br><span class="line"></span><br><span class="line">th本来是position：relative；改为position: static；</span><br><span class="line"></span><br></pre></td></tr></table></figure><br>.layui-table td, .layui-table th{<br>    position: static\9;<br>}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### 修改了layui表格的内容，不刷新页面，只刷新表格内容，页码不刷新解决方法</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>function render_table(tabledata, cur) {<br>  ·········<br>  , page: {<br>    curr: cur<br>  }<br>  , data: tabledata<br>   ·········<br>}</p>
+<p>//获取当前页<br>var curr = $(“.layui-laypage-skip input”).val();<br>//重新渲染表格</p>
+<!-- res.data：修改数据后，重新返回渲染表格的数据 -->
+<!-- 从curr页开始渲染表格 -->
+<p>render_table(res.data, curr);</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#### layui同时清空多个表单元素的值</span><br></pre></td></tr></table></figure>
+<p>1、 form 加上 lay-filter属性  lay-filter=”group_form”<br>2、<br>$(“#cancel”).click(function() {<br>    form.val(“group_form”, {<br>      “sdk”: “”,     //单选框清空不了<br>      “name”: “”,    //输入框可以清空<br>      “sort”: “”,    //复选框清空不了<br>      “ddddd”: “”,   //下拉框可以清空<br>      “password”: “” //密码框可以清空<br>    })<br>  })</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### 将MD5定义成layui的模块</span><br><span class="line"></span><br><span class="line">[扩展一个 layui 模块](https:&#x2F;&#x2F;www.layui.com&#x2F;doc&#x2F;base&#x2F;modules.html#extend)</span><br><span class="line"></span><br><span class="line">1、在md5的js文件最后加上：</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>layui.define(function(exports){<br>  exports(‘mymd’, {});<br>});</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">2、如果mymd.js文件放在与使用它的html文件同一个目录下，在html文件中直接使用：</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>//使用拓展模块<br>layui.use([‘mymd’], function(){<br>  var mymd = layui.mymd;</p>
+<p>  mymd.hash = md5;   //md5加密方法<br>  console.log(mymd.hash(“md5加密”));<br>});</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">3、如果mymd.js文件放在与使用它的html文件不同目录下，在html文件中要在 extend 指定路径：</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>layui.extend({<br>  mymd: ‘./js/mymd’<br>})</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">再使用：</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>//使用拓展模块<br>layui.use([‘mymd’], function(){<br>  var mymd = layui.mymd;</p>
+<p>  mymd.hash = md5;   //md5加密方法<br>  console.log(mymd.hash(“md5加密”));<br>});</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### laypage</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>layui.use([‘laypage’, ‘layer’], function(){<br>  var laypage = layui.laypage<br>  ,layer = layui.layer;</p>
+<p>  //完整功能<br>  laypage.render({<br>    elem: ‘demo7’<br>    ,count: 100<br>    ,layout: [‘count’, ‘prev’, ‘page’, ‘next’, ‘limit’, ‘skip’]<br>    ,jump: function(obj){<br>      console.log(obj)<br>    }<br>  });</p>
+<p>});</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### layui日期时间段的设置，开始时间-结束时间</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>var nowTime = new Date( ).valueOf( );</p>
+<p>var start = laydate.render({<br>    elem: “#start”,<br>    min: nowTime,<br>    done: function(value, date) {<br>        endMax = end.config.max;<br>        end.config.min = date;     // 根据开始时间来设置结束时间的最小值/最大值<br>        end.config.min.month = date.month - 1;<br>    }<br>})</p>
+<p>var end = laydate.render({<br>    elem: “#end”,<br>    min：nowTime,   //  结束时间初始化的时候要设置一个值，不然开始时间的回调中，设置了也不起作用。初始化的时候就要写上nowTime这个，不然动态控制不了<br>    done: function(value, date) {</p>
+<pre><code>&#125;</code></pre>
+<p>})</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### 修改开始时间和结束时间之间的符号</span><br><span class="line"></span><br><span class="line">方法：修改laydate.js文件里面的t.range &#x3D; &quot;-&quot;为t.range &#x3D; &quot;&#x2F;&quot;</span><br><span class="line"></span><br><span class="line">修改layui&#x2F;lay&#x2F;modules&#x2F;laydate.js：</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>(t.range === !0 &amp;&amp; (t.range = ‘/‘))   改为： (t.range === !0 &amp;&amp; (t.range = ‘-‘)) </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#### laytui表格内容超过表格长度的处理</span><br><span class="line"></span><br><span class="line">当表格内容的文字长度超过表格的长度的时候，点击内容，会出现如图：</span><br><span class="line"></span><br><span class="line">&#123;% asset_img note7.png %&#125;</span><br><span class="line"></span><br><span class="line">解决方法：</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>.layui-table-tips-main{display:none}<br>.layui-table-tips-c{display:none}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">https:&#x2F;&#x2F;www.cnblogs.com&#x2F;pyspang&#x2F;p&#x2F;11164736.html</span><br><span class="line"></span><br><span class="line">https:&#x2F;&#x2F;www.cnblogs.com&#x2F;xxzb&#x2F;p&#x2F;12618226.html</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">layui分页插件，一直在调用方法的解决办法</span><br><span class="line"></span><br><span class="line">（死循环）</span><br><span class="line"></span><br><span class="line">由于每次加载时都会执行jump回调，所以初次不让它执行jump里的方法（!first）</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>laypage.render({<br>    elem: ‘demo8’<br>    , count: totalCount<br>    , layout: [‘count’, ‘prev’, ‘page’, ‘next’, ‘limit’, ‘refresh’, ‘skip’]<br>    , jump: function (obj, first) {<br>        //模拟渲染<br>        page = obj.curr;<br>        limit = obj.limit;<br>        if (!first) {<br>             //执行方法<br>        }<br>    }<br>});</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### [requriejs加载layui](https:&#x2F;&#x2F;blog.csdn.net&#x2F;radzhang&#x2F;article&#x2F;details&#x2F;84927005)</span><br><span class="line"></span><br><span class="line">#### 渲染动态表头</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>var dynamicCols = [];     //用来存放动态表头<br>var colsList = [];  //表头列表<br>$(数据返回的表头数组).each(function (i, item) {<br>    //设置表头<br>    var info = { field: item.field, title: item.title };<br>    colsList.push(info);<br>}<br>dynamicCols.push(colsList);</p>
+<p>//执行渲染<br>table.render({<br>    elem: “#demo”  //指定原始表格元素选择器（推荐id选择器）<br>    ,height: 315   //容器高度<br>    ,cols:dynamicCols     //设置表头</p>
+<pre><code>//,.....       //其他参数</code></pre>
+<p>});</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### 动态修改select框的值</span><br><span class="line"></span><br><span class="line">![动态修改select框的值](https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;winney07&#x2F;Images&#x2F;main&#x2F;Note&#x2F;layui-select.png)</span><br><span class="line"></span><br><span class="line">##### layui表格--当点击文字长度超过表格当前列宽度的时候，会出现如图所示：</span><br><span class="line"></span><br><span class="line">![超过表格当前列宽度](https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;winney07&#x2F;Images&#x2F;main&#x2F;Note&#x2F;layui-table-tips.png)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>解决方法：(使用css样式控制它隐藏)<br>.layui-table-tips-main{display:none}<br>.layui-table-tips-c{display:none}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### layui日期时间段的设置，开始时间-结束时间</span><br><span class="line"></span><br><span class="line">最小值最大值动态设置的问题</span><br><span class="line"></span><br><span class="line">![最小值最大值动态设置的问题](https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;winney07&#x2F;Images&#x2F;main&#x2F;Note&#x2F;layui-table-tips.png)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#### 动态修改复选框的选中状态</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>if ($(‘.xxxx’).attr(“checked”) === “checked”) { //判断是否选中<br>     //设置选中 注意这里使用的是prop(), 这里要是使用了attr()是无效的<br>    $(‘.xxxx’).prop(“checked”, true);<br>} else {<br>    $(‘.xxxx’).prop(“checked”, false);<br>}<br>form.render(); //重新渲染       ————————最重要的记得加上这句话———</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### [获取数据表格选中值](https:&#x2F;&#x2F;www.layui.com&#x2F;doc&#x2F;modules&#x2F;table.html#method)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<table id="activity-manage" lay-filter="packageList"></table>
 
 
-<h4 id="laytui表格内容超过表格长度的处理"><a href="#laytui表格内容超过表格长度的处理" class="headerlink" title="laytui表格内容超过表格长度的处理"></a>laytui表格内容超过表格长度的处理</h4><p>当表格内容的文字长度超过表格的长度的时候，点击内容，会出现如图：</p>
-<img src="/2020/06/24/layui-%E7%AC%94%E8%AE%B0/note7.png" class="">
+<p>var activityManage = table.render({<br>    elem: ‘#activity-manage’<br>    , id: “activityManage”<br>    , cellMinWidth: 130<br>    …..</p>
+<p>});</p>
+<p>//监听数据表格的复选框<br>table.on(‘checkbox(packageList)’, function (obj) {<br>    console.log(obj.type); //如果触发的是全选，则为：all，如果触发的是单选，则为：one<br>    console.log(obj);  // 这里的data数据只针对当前选中的那一项</p>
+<pre><code>// 选择状态 (activityManage是config里面的id)
+var checkStatus = table.checkStatus(&quot;activityManage&quot;);
+console.log(checkStatus.data) //获取选中行的数据
+console.log(checkStatus.data.length) //获取选中行数量，可作为是否有选中行的条件
+console.log(checkStatus.isAll ) //表格是否全选
+console.log(checkStatus);    // 这里的data，是当前已选中的所有数据的数组集合
+.........</code></pre>
+<p>});</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### 动态设置下拉框的值</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>//设置下拉框默认选项<br>form.val(“deviceManage”, {<br>    “os”: 2<br>});</p>
+<form class="layui-form  margin-t10" action="" lay-filter="deviceManage" id="white_device">
+    <select name="os" lay-filter="os">
+        <option value="1">iOS</option>
+        <option value="2" selected>Android</option>
+    </select>
+</form>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### 提示信息弹完再做其他操作（处理新增&#x2F;编辑页面跳转这种情况）</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+layer.msg(res.msg, {time: 1000}, function() {
+    // 可点击
+    $("#submitBtn").removeAttr("disabled");
 
-<p>解决方法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.layui-table-tips-main&#123;display:none&#125;</span><br><span class="line">.layui-table-tips-c&#123;display:none&#125;</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/pyspang/p/11164736.html">https://www.cnblogs.com/pyspang/p/11164736.html</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/xxzb/p/12618226.html">https://www.cnblogs.com/xxzb/p/12618226.html</a></p>
-<p>layui分页插件，一直在调用方法的解决办法</p>
-<p>（死循环）</p>
-<p>由于每次加载时都会执行jump回调，所以初次不让它执行jump里的方法（!first）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">laypage.render(&#123;</span><br><span class="line">    elem: &#39;demo8&#39;</span><br><span class="line">    , count: totalCount</span><br><span class="line">    , layout: [&#39;count&#39;, &#39;prev&#39;, &#39;page&#39;, &#39;next&#39;, &#39;limit&#39;, &#39;refresh&#39;, &#39;skip&#39;]</span><br><span class="line">    , jump: function (obj, first) &#123;</span><br><span class="line">        &#x2F;&#x2F;模拟渲染</span><br><span class="line">        page &#x3D; obj.curr;</span><br><span class="line">        limit &#x3D; obj.limit;</span><br><span class="line">        if (!first) &#123;</span><br><span class="line">             &#x2F;&#x2F;执行方法</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h4 id="requriejs加载layui"><a href="#requriejs加载layui" class="headerlink" title="requriejs加载layui"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/radzhang/article/details/84927005">requriejs加载layui</a></h4><h4 id="渲染动态表头"><a href="#渲染动态表头" class="headerlink" title="渲染动态表头"></a>渲染动态表头</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">var dynamicCols &#x3D; [];     &#x2F;&#x2F;用来存放动态表头</span><br><span class="line">var colsList &#x3D; [];  &#x2F;&#x2F;表头列表</span><br><span class="line">$(数据返回的表头数组).each(function (i, item) &#123;</span><br><span class="line">    &#x2F;&#x2F;设置表头</span><br><span class="line">    var info &#x3D; &#123; field: item.field, title: item.title &#125;;</span><br><span class="line">    colsList.push(info);</span><br><span class="line">&#125;</span><br><span class="line">dynamicCols.push(colsList);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;执行渲染</span><br><span class="line">table.render(&#123;</span><br><span class="line">    elem: &quot;#demo&quot;  &#x2F;&#x2F;指定原始表格元素选择器（推荐id选择器）</span><br><span class="line">    ,height: 315   &#x2F;&#x2F;容器高度</span><br><span class="line">    ,cols:dynamicCols     &#x2F;&#x2F;设置表头</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F;,.....       &#x2F;&#x2F;其他参数</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h4 id="动态修改select框的值"><a href="#动态修改select框的值" class="headerlink" title="动态修改select框的值"></a>动态修改select框的值</h4><p><img src="https://raw.githubusercontent.com/winney07/Images/main/Note/layui-select.png" alt="动态修改select框的值"></p>
-<h5 id="layui表格–当点击文字长度超过表格当前列宽度的时候，会出现如图所示："><a href="#layui表格–当点击文字长度超过表格当前列宽度的时候，会出现如图所示：" class="headerlink" title="layui表格–当点击文字长度超过表格当前列宽度的时候，会出现如图所示："></a>layui表格–当点击文字长度超过表格当前列宽度的时候，会出现如图所示：</h5><p><img src="https://raw.githubusercontent.com/winney07/Images/main/Note/layui-table-tips.png" alt="超过表格当前列宽度"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">解决方法：(使用css样式控制它隐藏)</span><br><span class="line">.layui-table-tips-main&#123;display:none&#125;</span><br><span class="line">.layui-table-tips-c&#123;display:none&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="layui日期时间段的设置，开始时间-结束时间-1"><a href="#layui日期时间段的设置，开始时间-结束时间-1" class="headerlink" title="layui日期时间段的设置，开始时间-结束时间"></a>layui日期时间段的设置，开始时间-结束时间</h4><p>最小值最大值动态设置的问题</p>
-<p><img src="https://raw.githubusercontent.com/winney07/Images/main/Note/layui-table-tips.png" alt="最小值最大值动态设置的问题"></p>
+<pre><code>if ( res.code == 1 )&#123;
+    $.form.href(&quot;&#123;:url(&#39;xy/account/role&#39;)&#125;&quot;);
+&#125;</code></pre>
+<p>});</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### 动态修改单选框的值</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>$(‘input[name=”isDiscount”][value=”0”]’).prop(‘checked’, true);<br>form.render(“radio”);</p>
+<p>// 需要用到prop(‘checked’, true);</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<p>form.val(“addpackage”, {<br>    “isDiscount”: 0<br>});</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">[xmSelect下拉多选](https:&#x2F;&#x2F;fly.layui.com&#x2F;extend&#x2F;xmSelect&#x2F;)</span><br><span class="line"></span><br><span class="line">[xm-select文档](https:&#x2F;&#x2F;maplemei.gitee.io&#x2F;xm-select&#x2F;#&#x2F;component&#x2F;install)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#### layui获取已选复选框的值</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>var arr_box = [];<br>$(‘input[type=checkbox]:checked’).each(function() {<br>  arr_box.push($(this).val());<br>});</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### 初始化表格渲染条数</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>table.init(‘data-detail’, {<br>    limit: 10 //注意：请务必确保 limit 参数（默认：10）是与你服务端限定的数据条数一致<br>    //支持所有基础参数<br>});</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#### 获取表单提交的数据</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>form.on(‘submit(formDemo)’, function(data){<br>    var param = data.field;</p>
+<p>});</p>
+<pre><code></code></pre>
 
     </div>
 
@@ -412,7 +489,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%A4%E6%96%AD%E5%A4%8D%E9%80%89%E6%A1%86%E6%98%AF%E5%90%A6%E9%80%89%E4%B8%AD-%E8%8E%B7%E5%8F%96%E5%A4%8D%E9%80%89%E6%A1%86%E7%9A%84%E5%80%BC"><span class="nav-number">1.</span> <span class="nav-text">判断复选框是否选中(获取复选框的值)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AElayer-alert%E5%92%8Clayer-comfirm%E4%B8%BA%E4%B8%8D%E5%8F%AFresize"><span class="nav-number">2.</span> <span class="nav-text">设置layer-alert和layer-comfirm为不可resize</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AF%BC%E5%87%BAexcel%E8%A1%A8%E6%A0%BC"><span class="nav-number">3.</span> <span class="nav-text">导出excel表格</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AF%BC%E5%87%BAexcel%E8%A1%A8%E6%A0%BC%E6%97%B6%EF%BC%8C%E5%8E%BB%E6%8E%89%E9%A1%B5%E9%9D%A2%E8%A1%A8%E5%A4%B4%E6%98%BE%E7%A4%BA%E7%9A%84%E5%B0%8F%E5%9B%BE%E6%A0%87"><span class="nav-number">4.</span> <span class="nav-text">导出excel表格时，去掉页面表头显示的小图标</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E9%87%8D%E8%BD%BD%E8%A1%A8%E6%A0%BC%E6%97%B6%E7%9A%84%E5%8A%A0%E8%BD%BD%E5%9B%BE%E6%A0%87"><span class="nav-number">5.</span> <span class="nav-text">修改重载表格时的加载图标</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A1%A8%E6%A0%BC%E8%A1%A8%E5%A4%B4%E6%A0%87%E9%A2%98%E4%B9%8B%E9%97%B4%E8%BE%B9%E6%A1%86%E4%B8%8D%E6%98%BE%E7%A4%BA"><span class="nav-number">6.</span> <span class="nav-text">表格表头标题之间边框不显示</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E4%BA%86layui%E8%A1%A8%E6%A0%BC%E7%9A%84%E5%86%85%E5%AE%B9%EF%BC%8C%E4%B8%8D%E5%88%B7%E6%96%B0%E9%A1%B5%E9%9D%A2%EF%BC%8C%E5%8F%AA%E5%88%B7%E6%96%B0%E8%A1%A8%E6%A0%BC%E5%86%85%E5%AE%B9%EF%BC%8C%E9%A1%B5%E7%A0%81%E4%B8%8D%E5%88%B7%E6%96%B0%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="nav-number">7.</span> <span class="nav-text">修改了layui表格的内容，不刷新页面，只刷新表格内容，页码不刷新解决方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#layui%E5%90%8C%E6%97%B6%E6%B8%85%E7%A9%BA%E5%A4%9A%E4%B8%AA%E8%A1%A8%E5%8D%95%E5%85%83%E7%B4%A0%E7%9A%84%E5%80%BC"><span class="nav-number">8.</span> <span class="nav-text">layui同时清空多个表单元素的值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B0%86MD5%E5%AE%9A%E4%B9%89%E6%88%90layui%E7%9A%84%E6%A8%A1%E5%9D%97"><span class="nav-number">9.</span> <span class="nav-text">将MD5定义成layui的模块</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#laypage"><span class="nav-number">10.</span> <span class="nav-text">laypage</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#layui%E6%97%A5%E6%9C%9F%E6%97%B6%E9%97%B4%E6%AE%B5%E7%9A%84%E8%AE%BE%E7%BD%AE%EF%BC%8C%E5%BC%80%E5%A7%8B%E6%97%B6%E9%97%B4-%E7%BB%93%E6%9D%9F%E6%97%B6%E9%97%B4"><span class="nav-number">11.</span> <span class="nav-text">layui日期时间段的设置，开始时间-结束时间</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E5%BC%80%E5%A7%8B%E6%97%B6%E9%97%B4%E5%92%8C%E7%BB%93%E6%9D%9F%E6%97%B6%E9%97%B4%E4%B9%8B%E9%97%B4%E7%9A%84%E7%AC%A6%E5%8F%B7"><span class="nav-number">12.</span> <span class="nav-text">修改开始时间和结束时间之间的符号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#laytui%E8%A1%A8%E6%A0%BC%E5%86%85%E5%AE%B9%E8%B6%85%E8%BF%87%E8%A1%A8%E6%A0%BC%E9%95%BF%E5%BA%A6%E7%9A%84%E5%A4%84%E7%90%86"><span class="nav-number">13.</span> <span class="nav-text">laytui表格内容超过表格长度的处理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#requriejs%E5%8A%A0%E8%BD%BDlayui"><span class="nav-number">14.</span> <span class="nav-text">requriejs加载layui</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B8%B2%E6%9F%93%E5%8A%A8%E6%80%81%E8%A1%A8%E5%A4%B4"><span class="nav-number">15.</span> <span class="nav-text">渲染动态表头</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E4%BF%AE%E6%94%B9select%E6%A1%86%E7%9A%84%E5%80%BC"><span class="nav-number">16.</span> <span class="nav-text">动态修改select框的值</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#layui%E8%A1%A8%E6%A0%BC%E2%80%93%E5%BD%93%E7%82%B9%E5%87%BB%E6%96%87%E5%AD%97%E9%95%BF%E5%BA%A6%E8%B6%85%E8%BF%87%E8%A1%A8%E6%A0%BC%E5%BD%93%E5%89%8D%E5%88%97%E5%AE%BD%E5%BA%A6%E7%9A%84%E6%97%B6%E5%80%99%EF%BC%8C%E4%BC%9A%E5%87%BA%E7%8E%B0%E5%A6%82%E5%9B%BE%E6%89%80%E7%A4%BA%EF%BC%9A"><span class="nav-number">16.1.</span> <span class="nav-text">layui表格–当点击文字长度超过表格当前列宽度的时候，会出现如图所示：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#layui%E6%97%A5%E6%9C%9F%E6%97%B6%E9%97%B4%E6%AE%B5%E7%9A%84%E8%AE%BE%E7%BD%AE%EF%BC%8C%E5%BC%80%E5%A7%8B%E6%97%B6%E9%97%B4-%E7%BB%93%E6%9D%9F%E6%97%B6%E9%97%B4-1"><span class="nav-number">17.</span> <span class="nav-text">layui日期时间段的设置，开始时间-结束时间</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#layui%E8%A1%A8%E6%A0%BC%E7%9A%84%E5%A4%8D%E9%80%89%E6%A1%86%E5%85%A8%E9%80%89%E5%92%8C%E5%8D%95%E9%80%89%E7%9A%84%E5%8A%9F%E8%83%BD"><span class="nav-number">1.</span> <span class="nav-text">layui表格的复选框全选和单选的功能</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -428,7 +505,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">99</span>
+          <span class="site-state-item-count">100</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

@@ -224,7 +224,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-07-12 14:56:33" itemprop="dateModified" datetime="2021-07-12T14:56:33+08:00">2021-07-12</time>
+                <time title="修改时间：2021-11-24 11:03:48" itemprop="dateModified" datetime="2021-11-24T11:03:48+08:00">2021-11-24</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -259,6 +259,11 @@
 <li>在根目录，鼠标右键，选择“Git Bash Here”</li>
 <li>启动服务：hexo s</li>
 </ol>
+<p>重装系统后，要重新安装以下两个：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i -g hexo-cli</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+
+
 <h4 id="官网"><a href="#官网" class="headerlink" title="官网"></a>官网</h4><p><a target="_blank" rel="noopener" href="https://cn.vuejs.org/v2/guide/">Vue.js</a> | <a target="_blank" rel="noopener" href="https://forum.vuejs.org/c/chinese">Vue.js社区</a> | <a target="_blank" rel="noopener" href="https://router.vuejs.org/zh/">Vue Router</a> | <a target="_blank" rel="noopener" href="https://vuex.vuejs.org/zh/installation.html">Vuex</a> | <a target="_blank" rel="noopener" href="https://cli.vuejs.org/zh/">Vue CLI</a></p>
 <h3 id="Git-指令"><a href="#Git-指令" class="headerlink" title="Git 指令"></a>Git 指令</h3><p><a target="_blank" rel="noopener" href="https://www.git-scm.com/book/zh/v2">Git指令</a> | <a target="_blank" rel="noopener" href="https://www.runoob.com/git/git-tutorial.html">Git 教程</a></p>
 <p>【码云仓库】<br>我们强烈建议所有的git仓库都有一个README, LICENSE, .gitignore文件<br>Git入门？查看 帮助 , Visual Studio / TortoiseGit / Eclipse / Xcode 下如何连接本站, 如何导入仓库</p>
@@ -271,17 +276,52 @@
 <h4 id="Markdown指令"><a href="#Markdown指令" class="headerlink" title="Markdown指令"></a><a target="_blank" rel="noopener" href="https://www.runoob.com/markdown/md-tutorial.html">Markdown指令</a></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">引入图片：</span><br><span class="line">&#123;% asset_img css1.png %&#125;</span><br><span class="line">引入链接：</span><br><span class="line">[参考的博客](https:&#x2F;&#x2F;juejin.im&#x2F;post&#x2F;5b15022ff265da6e163720c6)</span><br><span class="line">添加阅读全文按钮：</span><br><span class="line">&lt;!--more--&gt;</span><br></pre></td></tr></table></figure>
 <p><a target="_blank" rel="noopener" href="https://www.zybuluo.com/mdeditor">在线编辑markdown</a>  | <a target="_blank" rel="noopener" href="https://www.zybuluo.com/mdeditor">mdeditor</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/c46a45d177cb">node 升级版本</a></p>
-<h3 id="vscode"><a href="#vscode" class="headerlink" title="vscode"></a>vscode</h3><h5 id="配置vue模板"><a href="#配置vue模板" class="headerlink" title="配置vue模板"></a>配置vue模板</h5><ul>
+<h4 id="重装系统后"><a href="#重装系统后" class="headerlink" title="重装系统后"></a>重装系统后</h4><h5 id="1-git命令窗口要重新输入用户名"><a href="#1-git命令窗口要重新输入用户名" class="headerlink" title="1. git命令窗口要重新输入用户名"></a>1. git命令窗口要重新输入用户名</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;Github用户名&quot;       &#x2F;&#x2F;自己Github的账号名</span><br><span class="line">git config --global user.email &quot;Github邮箱&quot;        &#x2F;&#x2F;自己注册Github的邮箱地址</span><br></pre></td></tr></table></figure>
+<h5 id="2-重新设置SSH"><a href="#2-重新设置SSH" class="headerlink" title="2. 重新设置SSH"></a>2. 重新设置SSH</h5><ol>
+<li><p>在docs命令窗口，输入以下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C  &quot;Github邮箱&quot;        &#x2F;&#x2F;自己注册Github的邮箱地址</span><br></pre></td></tr></table></figure></li>
+<li><p>在C:\Users\admin\.ssh目录下（根据你自己电脑用户名，打开对应的目录）</p>
+</li>
+<li><p>找到id_rsa.pub文件</p>
+</li>
+<li><p>在GitHub个人设置中创建一个SSH Keys ，将id_rsa.pub里面的内容复制到这里面。</p>
+</li>
+<li><p>重新输入命令，即可上传文件</p>
+</li>
+</ol>
+<p><a target="_blank" rel="noopener" href="https://winney07.github.io/2018/08/01/Hexo-GitHub-Pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">生成SSH KEY</a></p>
+<h3 id="…or-create-a-new-repository-on-the-command-line"><a href="#…or-create-a-new-repository-on-the-command-line" class="headerlink" title="…or create a new repository on the command line"></a>…or create a new repository on the command line</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;# test&quot; &gt;&gt; README.md</span><br><span class="line">git init</span><br><span class="line">git add README.md</span><br><span class="line">git commit -m &quot;first commit&quot;</span><br><span class="line">git branch -M main</span><br><span class="line">git remote add origin https:&#x2F;&#x2F;github.com&#x2F;winney07&#x2F;test.git</span><br><span class="line">git push -u origin main</span><br></pre></td></tr></table></figure>
+<h3 id="…or-push-an-existing-repository-from-the-command-line"><a href="#…or-push-an-existing-repository-from-the-command-line" class="headerlink" title="…or push an existing repository from the command line"></a>…or push an existing repository from the command line</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin https:&#x2F;&#x2F;github.com&#x2F;winney07&#x2F;test.git</span><br><span class="line">git branch -M main</span><br><span class="line">git push -u origin main</span><br></pre></td></tr></table></figure>
+<h2 id="VSCode"><a href="#VSCode" class="headerlink" title="VSCode"></a>VSCode</h2><h4 id="重装电脑系统之后-Vscode命令行不能使用的解决方式"><a href="#重装电脑系统之后-Vscode命令行不能使用的解决方式" class="headerlink" title="重装电脑系统之后-Vscode命令行不能使用的解决方式"></a>重装电脑系统之后-Vscode命令行不能使用的解决方式</h4><ol>
+<li><p>以管理员身份运行</p>
+<p><img src="https://raw.githubusercontent.com/winney07/Images/main/Note/windows-powershell1.png" alt="以管理员身份运行"></p>
+</li>
+<li><p>在打开的Windows PowerShell窗口输入以下命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set-ExecutionPolicy RemoteSigned</span><br></pre></td></tr></table></figure>
+<p>如图：</p>
+<p><img src="https://raw.githubusercontent.com/winney07/Images/main/Note/windows-powershell2.png" alt="输入命令"></p>
+</li>
+</ol>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_43690438/article/details/111924336">重装系统之后-（1）-vscode命令行不能够使用的解决方式</a></p>
+<h5 id="配置vue模板"><a href="#配置vue模板" class="headerlink" title="配置vue模板"></a>配置vue模板</h5><ul>
 <li>文件——首选项——用户代码片段</li>
 <li>在出现的框中输入vue之后按回车键</li>
 <li>在出现的vue.json文件中写入以下代码</li>
 </ul>
+<h4 id="markdown命令"><a href="#markdown命令" class="headerlink" title="markdown命令"></a>markdown命令</h4><p><strong>插入图片：</strong></p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![alt text](http://path/to/img.jpg &quot;title&quot;)</span><br></pre></td></tr></table></figure>
+<p><strong>文字链接：</strong></p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[Title](你的链接地址)</span><br></pre></td></tr></table></figure>
+<p><strong>图片加链接：</strong></p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[![alt text](http://path/to/img.jpg &quot;title&quot;)](你的链接地址)</span><br></pre></td></tr></table></figure>
 <h4 id="键盘快捷键"><a href="#键盘快捷键" class="headerlink" title="键盘快捷键"></a>键盘快捷键</h4><p>回到电脑桌面</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Windows + D </span><br></pre></td></tr></table></figure>
 <p>挨个打开之前关掉的网页</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ctrl + Shift + T </span><br></pre></td></tr></table></figure>
 <p>可以让两个窗口并排显示</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Windows +  ←  或者  → </span><br></pre></td></tr></table></figure>
+<p>切换电脑运行的程序</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ctrl+Alt+Tab</span><br></pre></td></tr></table></figure>
 <p>快速锁屏 </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Windows + L</span><br></pre></td></tr></table></figure>
 <p>一次删除一个单词 </p>
@@ -376,7 +416,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-07-14 11:33:26" itemprop="dateModified" datetime="2021-07-14T11:33:26+08:00">2021-07-14</time>
+                <time title="修改时间：2021-09-27 14:56:59" itemprop="dateModified" datetime="2021-09-27T14:56:59+08:00">2021-09-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -433,7 +473,7 @@
 <th><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API">API 接口参考/MDN</a></th>
 <th><a target="_blank" rel="noopener" href="https://tool.oschina.net/apidocs">在线API文档</a></th>
 <th><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Errors">JS错误参考列表</a></th>
-<th></th>
+<th><a target="_blank" rel="noopener" href="http://javascript.ruanyifeng.com/">JavaScript 标准参考教程</a></th>
 </tr>
 </thead>
 <tbody><tr>
@@ -441,7 +481,7 @@
 <td><a target="_blank" rel="noopener" href="https://api.jquery.com/">jQuery API</a></td>
 <td><a target="_blank" rel="noopener" href="http://jquery.cuishifeng.cn/index.html">jQuery API 中文</a></td>
 <td><a target="_blank" rel="noopener" href="http://www.jq22.com/chm/jquery/">jQuery速查表</a></td>
-<td></td>
+<td><a target="_blank" rel="noopener" href="http://caibaojian.com/fedbook/">前端开发者手册</a></td>
 </tr>
 <tr>
 <td><a target="_blank" rel="noopener" href="https://www.runoob.com/">菜鸟教程</a></td>
@@ -457,6 +497,20 @@
 <td><a target="_blank" rel="noopener" href="http://c.biancheng.net/js/">JavaScript学习指南</a></td>
 <td><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/html5/html_5_form_input_types.asp">HTML5 Input 类型</a></td>
 </tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://es6.ruanyifeng.com/">ECMAScript 6入门</a></td>
+<td><a target="_blank" rel="noopener" href="http://tool.oschina.net/apidocs/apidoc?api=jquery">在线文档-jQuery</a></td>
+<td><a target="_blank" rel="noopener" href="http://www.bootcss.com/p/underscore/">Underscore.js中文文档</a></td>
+<td><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/">w3school在线教程</a></td>
+<td><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/doc/">微信官方文档</a></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/b.asp">浏览器脚本教程</a></td>
+<td><a target="_blank" rel="noopener" href="https://www.w3.org/html/ig/zh/wiki/Main_Page">W3C</a></td>
+<td><a target="_blank" rel="noopener" href="http://javascript.ruanyifeng.com/tool/requirejs.html">RequireJS和AMD规范</a></td>
+<td></td>
+<td></td>
+</tr>
 </tbody></table>
 <ul>
 <li>博客网站</li>
@@ -468,35 +522,49 @@
 <th><a target="_blank" rel="noopener" href="https://www.jspang.com/">技术胖</a></th>
 <th><a target="_blank" rel="noopener" href="https://www.jb51.net/">脚本之家</a></th>
 <th><a target="_blank" rel="noopener" href="https://github.com/happypeter">happypeter</a></th>
-<th></th>
+<th><a target="_blank" rel="noopener" href="http://www.zhangxinxu.com/">张鑫旭播客</a></th>
 </tr>
 </thead>
 <tbody><tr>
+<td><a href="www.nczonline.net">Nicholas C.Zakas（尼古拉斯泽卡斯）</a></td>
+<td><a target="_blank" rel="noopener" href="https://www.oreilly.com/">oreilly</a></td>
+<td><a target="_blank" rel="noopener" href="http://www.safaribooksonline.com/">Safari Books Online-数字图书馆</a></td>
+<td><a target="_blank" rel="noopener" href="https://rmurphey.com/">Rebecca Murphey</a></td>
+<td><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/937c6003851a">手把手教你封装JavaScript插件</a></td>
+</tr>
+<tr>
 <td><a target="_blank" rel="noopener" href="http://winney.gitee.io/">Gitee 个人博客</a></td>
 <td><a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/">阮一峰网络日志</a></td>
 <td><a target="_blank" rel="noopener" href="https://mubiaozhan.cn/">目标站</a></td>
 <td><a target="_blank" rel="noopener" href="https://github.com/happypeter/peter-vim">peter-vim</a></td>
-<td></td>
+<td><a target="_blank" rel="noopener" href="https://github.com/mqyqingfeng/Blog">冴羽的博客</a></td>
 </tr>
 <tr>
 <td><a target="_blank" rel="noopener" href="https://gitee.com/help#article-header0">Gitee 帮助中心</a></td>
 <td><a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/home.html">阮一峰的个人网站</a></td>
 <td><a target="_blank" rel="noopener" href="https://www.jianshu.com/u/379793a403c7">视觉派Pie</a></td>
 <td><a target="_blank" rel="noopener" href="https://github.com/ruanyf/weekly">科技爱好者周刊</a></td>
-<td></td>
+<td><a target="_blank" rel="noopener" href="https://www.cnblogs.com/">博客园</a></td>
 </tr>
 <tr>
 <td><a target="_blank" rel="noopener" href="https://gitee.com/help/articles/4136#article-header0">Gitee Pages</a></td>
 <td><a target="_blank" rel="noopener" href="http://www.itprobie.com/Default.html">ITPROBIE-程序员的基础教程</a></td>
 <td><a target="_blank" rel="noopener" href="https://www.imooc.com/u/2667395/articles">五月君</a></td>
-<td></td>
-<td></td>
+<td><a target="_blank" rel="noopener" href="http://blog.northpark.cn/">Northpark博客</a></td>
+<td><a target="_blank" rel="noopener" href="https://www.cnblogs.com/xiaohuochai/">博客园-xiaohuochai</a></td>
 </tr>
 <tr>
 <td><a target="_blank" rel="noopener" href="http://www.360doc.com/content/18/1220/07/6889381_803045204.shtml">javascript学习目录</a></td>
 <td><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000022736837">前端常用60余种工具方法</a></td>
 <td><a target="_blank" rel="noopener" href="https://www.vue-js.com/topic/5ecc88c10ef711364aa1f24d">前端常用工具方法</a></td>
 <td><a target="_blank" rel="noopener" href="https://www.xuebuyuan.com/">学步园</a></td>
+<td><a target="_blank" rel="noopener" href="http://www.maxzhang.com/">Max Zhang博客</a></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.cnblogs.com/xiaomili/p/7862819.html">JavaScript如何封装插件</a></td>
+<td><a target="_blank" rel="noopener" href="https://www.cnblogs.com/xiaomili/default.html?page=1">黄鹂</a></td>
+<td><a target="_blank" rel="noopener" href="https://www.cnblogs.com/chenguiya/p/5278387.html">【javascript详细说明】js封装插件的方法</a></td>
+<td><a target="_blank" rel="noopener" href="http://javascript.ruanyifeng.com/">JavaScript 标准参考教程（alpha）</a></td>
 <td></td>
 </tr>
 </tbody></table>
@@ -509,8 +577,8 @@
 <th><a target="_blank" rel="noopener" href="https://www.imooc.com/">慕课网</a></th>
 <th></th>
 <th></th>
-<th></th>
-<th></th>
+<th><a target="_blank" rel="noopener" href="http://www.icketang.com/">爱创课堂</a></th>
+<th><a target="_blank" rel="noopener" href="http://www.zhinengshe.com/">智能社</a></th>
 </tr>
 </thead>
 <tbody><tr>
@@ -586,9 +654,9 @@
 <tr>
 <td><a target="_blank" rel="noopener" href="https://github.com/backstage/backstage">backstage</a></td>
 <td><a target="_blank" rel="noopener" href="https://github.com/ant-design/ant-design-pro">ant-design-pro</a></td>
-<td></td>
-<td></td>
-<td></td>
+<td><a target="_blank" rel="noopener" href="http://www.h-ui.net/bug.shtml">兼容性及经验汇总</a></td>
+<td><a target="_blank" rel="noopener" href="http://www.bootcss.com/">Bootstrap中文网</a></td>
+<td><a target="_blank" rel="noopener" href="http://www.dedecms.com/">织梦CMS</a></td>
 </tr>
 </tbody></table>
 <ul>
@@ -599,7 +667,7 @@
 <tr>
 <th><a target="_blank" rel="noopener" href="https://www.iconfont.cn/">Iconfont</a></th>
 <th><a target="_blank" rel="noopener" href="http://sc.chinaz.com/">站长素材</a></th>
-<th><a target="_blank" rel="noopener" href="http://www.fontawesome.com.cn/">Font Awesome</a></th>
+<th><a target="_blank" rel="noopener" href="http://www.fontawesome.com.cn/">Font Awesome-字体图标</a></th>
 <th><a target="_blank" rel="noopener" href="https://icomoon.io/">IconMoon</a></th>
 <th><a target="_blank" rel="noopener" href="http://www.bootcss.com/p/font-awesome/">bootsrap 图标库</a></th>
 </tr>
@@ -618,6 +686,20 @@
 <td><a target="_blank" rel="noopener" href="http://www.cssmoban.com/">网页/网站模板</a></td>
 <td><a target="_blank" rel="noopener" href="https://www.kancloud.cn/explore">看云·广场</a></td>
 </tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://blog.csdn.net/wcqwcq123/article/details/53408789">百度云干货资源</a></td>
+<td><a target="_blank" rel="noopener" href="http://www.htmleaf.com/ziliaoku/qianduanjiaocheng/">前端教程资料库</a></td>
+<td><a target="_blank" rel="noopener" href="http://www.h-ui.net/site.shtml">IT网址导航</a></td>
+<td><a target="_blank" rel="noopener" href="http://www.icketang.com/2017/ickt_state_0713/190.html?shcss881">2018年1000集大型Web前端视频教程</a></td>
+<td><a target="_blank" rel="noopener" href="https://www.mycodes.net/154/">后台模板-网站模板</a></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://www.oreilly.com/">Safari Books Online</a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
 </tbody></table>
 <ul>
 <li>工具网站</li>
@@ -626,7 +708,7 @@
 <thead>
 <tr>
 <th><a target="_blank" rel="noopener" href="https://tool.oschina.net/">在线工具</a></th>
-<th><a target="_blank" rel="noopener" href="http://lisperator.net/uglifyjs/">UglifyJS</a></th>
+<th><a target="_blank" rel="noopener" href="http://tool.lu/">在线工具</a></th>
 <th><a target="_blank" rel="noopener" href="http://www.minifycss.com/">Minify CSS</a></th>
 <th><a target="_blank" rel="noopener" href="https://tool.chinaz.com/tools/unicode.aspx">站长工具</a></th>
 <th><a target="_blank" rel="noopener" href="http://fis.baidu.com/">FIS3-构建工具</a></th>
@@ -647,7 +729,7 @@
 <td><a target="_blank" rel="noopener" href="https://tortoisesvn.net/downloads.zh.html">下载SVN</a></td>
 </tr>
 <tr>
-<td><a target="_blank" rel="noopener" href="http://xqtesting.sxl.cn/">fiddler-小强测试品牌</a></td>
+<td><a target="_blank" rel="noopener" href="http://lisperator.net/uglifyjs/">UglifyJS</a></td>
 <td><a target="_blank" rel="noopener" href="https://excalidraw.com/">绘图/画图</a></td>
 <td><a target="_blank" rel="noopener" href="https://www.yuque.com/">语雀·笔记软件</a></td>
 <td>jest-JavaScript 测试框架<a target="_blank" rel="noopener" href="https://jestjs.io/zh-Hans/">https://jestjs.io/zh-Hans/</a></td>
@@ -664,8 +746,15 @@
 <td><a target="_blank" rel="noopener" href="http://caibaojian.com/vuepress/guide/">VuePress</a></td>
 <td><a target="_blank" rel="noopener" href="https://gitee.com/">码云-gitee</a></td>
 <td><a target="_blank" rel="noopener" href="https://colormania.en.softonic.com/">吸色工具-ColorMania</a></td>
+<td><a target="_blank" rel="noopener" href="http://naotu.baidu.com/">百度脑图</a></td>
+<td><a target="_blank" rel="noopener" href="http://share.baidu.com/">百度分享</a></td>
+</tr>
+<tr>
 <td></td>
+<td><a target="_blank" rel="noopener" href="http://xqtesting.sxl.cn/">fiddler-小强测试品牌</a></td>
 <td></td>
+<td><a target="_blank" rel="noopener" href="http://html5test.com/">HTML5test</a></td>
+<td><a target="_blank" rel="noopener" href="https://tongji.baidu.com/web/welcome/login">百度统计</a></td>
 </tr>
 </tbody></table>
 <p><a target="_blank" rel="noopener" href="https://devopshub.cn/2018/10/14/mdwiki/">使用 MDWiki 搭建个人轻博客、知识库或文档中心</a></p>
@@ -730,6 +819,13 @@
 <td><a target="_blank" rel="noopener" href="https://github.com/cubiq/iscroll">iscroll-github</a></td>
 <td><a target="_blank" rel="noopener" href="http://caibaojian.com/iscroll-5/">iscroll5 API</a></td>
 <td><a target="_blank" rel="noopener" href="http://www.htmleaf.com/ziliaoku/">jQuery之家-插件库</a></td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="http://www.bshare.cn/">bShare分享</a></td>
+<td><a target="_blank" rel="noopener" href="http://www.superslide2.com/">superslide</a></td>
+<td><a target="_blank" rel="noopener" href="http://www.jq22.com/yanshi819">Animate.css 一款强大的预设css</a></td>
+<td></td>
+<td></td>
 </tr>
 </tbody></table>
 <p>bug论坛  <a target="_blank" rel="noopener" href="https://stackoverflow.com/">stackoverflow</a> </p>
@@ -1505,7 +1601,7 @@
 <tr>
 <td><a target="_blank" rel="noopener" href="http://cha.buyiju.com/">卜易居-实用查询</a></td>
 <td><a target="_blank" rel="noopener" href="http://www.tup.tsinghua.edu.cn/index.html">清华大学出版社</a></td>
-<td></td>
+<td><a target="_blank" rel="noopener" href="https://www.zhihu.com/">知乎</a></td>
 <td></td>
 <td></td>
 </tr>
@@ -1578,8 +1674,8 @@
 </tr>
 </thead>
 <tbody><tr>
-<td></td>
-<td></td>
+<td><a target="_blank" rel="noopener" href="https://news.baidu.com/">百度新闻</a></td>
+<td><a target="_blank" rel="noopener" href="https://shixian.com/">实现网</a></td>
 <td></td>
 </tr>
 </tbody></table>
@@ -1668,6 +1764,16 @@
 <li>地理</li>
 </ul>
 <p>这里给大家总结了一份CIE官网推荐的A-level地理学习网站！不要太贴心了！</p>
+<p>【1】 ES5/词法 <a target="_blank" rel="noopener" href="https://www.w3.org/html/ig/zh/wiki/ES5/lexical">https://www.w3.org/html/ig/zh/wiki/ES5/lexical</a><br>【2】 阮一峰Javascript标准参考教程——语法概述 <a target="_blank" rel="noopener" href="https://www.w3.org/html/ig/zh/wiki/ES5/lexical">http://javascript.ruanyifeng.com/grammar/basic.html</a><br>【3】 W3School-Javascript高级教程——ECMAScript语法 <a target="_blank" rel="noopener" href="https://www.w3.org/html/ig/zh/wiki/ES5/lexical">http://www.w3school.com.cn/js/pro_js_syntax.asp</a><br>【4】《javascript权威指南(第6版)》第2章 词法结构<br>【5】《javascript高级程序设计(第3版)》第3章 基本概念<br>【6】《javascript语言精粹(修订版)》第2章 语法<br>【7】《javascript DOM编程艺术(第2版)》第2章 Javascript语法</p>
+<ol>
+<li>javascript高级程序设计【红宝书】</li>
+<li>javascript忍者秘籍</li>
+<li>你不知道的javascript 【小黄书】</li>
+<li>javascript语言精粹与编程实践【绿皮书】</li>
+<li>how javascript works</li>
+<li>javascript20年（电子八卦书）</li>
+</ol>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9tbWJpei5xcGljLmNuL21tYml6X2pwZy9aa1JkS2VuMVNJZFlOaWExcmdUZzU3TlVFYThJWllHazJqblQxcHhhazZxbnprREpUQ1RpY2FRYVlJd2ljZ2FBT1IyVWlidE9pYUxQVndpYjRmRnJmS0wyOWRpYncvNjQw?x-oss-process=image/format,png" alt="img"></p>
 <p><strong>About Geography</strong></p>
 <p><a target="_blank" rel="noopener" href="http://www.geography.about.com/">www.geography.about.com</a></p>
 <p><strong>Bennett</strong></p>
@@ -1874,7 +1980,7 @@
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/33/">33</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/34/">34</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1942,7 +2048,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">99</span>
+          <span class="site-state-item-count">100</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

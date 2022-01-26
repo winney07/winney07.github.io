@@ -28,7 +28,7 @@
 <meta property="og:description" content="layui-github layer文档 layer.comfirm弹窗按钮文字和事件 layui表格的复选框全选和单选的功能 表格需要导出的，导出时，要将自定义的复选框去除  &amp;#123; field: &#39;checkbox&#39;, title: &#39;&lt;input type&#x3D;&quot;checkbox&quot; lay-filter&#x3D;&quot;allAccountLi">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-06-24T07:41:32.000Z">
-<meta property="article:modified_time" content="2021-11-22T03:34:55.854Z">
+<meta property="article:modified_time" content="2022-01-25T08:23:55.111Z">
 <meta property="article:author" content="winney">
 <meta property="article:tag" content="layui">
 <meta name="twitter:card" content="summary">
@@ -226,7 +226,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-11-22 11:34:55" itemprop="dateModified" datetime="2021-11-22T11:34:55+08:00">2021-11-22</time>
+                <time title="修改时间：2022-01-25 16:23:55" itemprop="dateModified" datetime="2022-01-25T16:23:55+08:00">2022-01-25</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -398,14 +398,90 @@ layer.msg(res.msg, {time: 1000}, function() {
 <p>// 需要用到prop(‘checked’, true);</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
 <p>form.val(“addpackage”, {<br>    “isDiscount”: 0<br>});</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">[xmSelect下拉多选](https:&#x2F;&#x2F;fly.layui.com&#x2F;extend&#x2F;xmSelect&#x2F;)</span><br><span class="line"></span><br><span class="line">[xm-select文档](https:&#x2F;&#x2F;maplemei.gitee.io&#x2F;xm-select&#x2F;#&#x2F;component&#x2F;install)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#### layui获取已选复选框的值</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">[xmSelect下拉多选](https:&#x2F;&#x2F;fly.layui.com&#x2F;extend&#x2F;xmSelect&#x2F;)</span><br><span class="line"></span><br><span class="line">[xm-select文档](https:&#x2F;&#x2F;maplemei.gitee.io&#x2F;xm-select&#x2F;#&#x2F;component&#x2F;install)</span><br><span class="line"></span><br><span class="line">#### 接口处理完，弹出提示，提示语结束才跳转页面</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>layer.msg(res.msg, {time: 1000}, function(){<br>    // 成功-页面跳转<br>    if(res.code == 1) {<br>        $.form.href(“{:url(‘xy/account/index’)}”);<br>    }<br>});</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### layui获取已选复选框的值</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>var arr_box = [];<br>$(‘input[type=checkbox]:checked’).each(function() {<br>  arr_box.push($(this).val());<br>});</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### 初始化表格渲染条数</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>table.init(‘data-detail’, {<br>    limit: 10 //注意：请务必确保 limit 参数（默认：10）是与你服务端限定的数据条数一致<br>    //支持所有基础参数<br>});</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#### 获取表单提交的数据</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>form.on(‘submit(formDemo)’, function(data){<br>    var param = data.field;</p>
+<p><button href="javascript:;" class="layui-btn layui-btn-normal" lay-submit lay-filter="setAuthority">保存</button></p>
+<p>form.on(‘submit(setAuthority)’, function(data){<br>    var param = data.field;<br>    ……<br>});</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">注：对应的提交按钮，要添加  lay-submit  属性</span><br><span class="line"></span><br><span class="line">#### Tab的切换功能，切换事件监听等，需要依赖element模块</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>layui.use([‘element’], function () {<br>    var element = layui.element;<br>});</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### 防止表单多次提交</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>// 设置提交按钮不可点击<br>$(“#submitBtn”).attr(“disabled”, true);</p>
+<p>$(“#submitBtn”).removeAttr(“disabled”);</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>// 监听保存按钮<br>form.on(‘submit(save)’, function(data){<br>    var params = data.field;</p>
+<pre><code>// 设置提交按钮不可点击
+$(&quot;#submitBtn&quot;).attr(&quot;disabled&quot;, true);
+
+// 请求接口处理
+$.post(&#39;/xy/account/roleAdd&#39;, params, function(res)&#123;
+    layer.msg(res.msg, &#123;time: 1000&#125;, function() &#123;
+        // 可点击
+        $(&quot;#submitBtn&quot;).removeAttr(&quot;disabled&quot;);
+
+        if ( res.code == 1 )&#123;
+            $.form.href(&quot;&#123;:url(&#39;xy/account/role&#39;)&#125;&quot;);
+        &#125;
+    &#125;);
+    return false;
+&#125;);
+
+return false;</code></pre>
 <p>});</p>
-<pre><code></code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### layui表格合并行</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>// 表格合并行<br>function merge(res, names, indexs) {<br>    var data = res.data;<br>    //定位需要添加合并属性的行数<br>    var mergeIndex = 0;<br>    //这里涉及到简单的运算，mark是计算每次需要合并的格子数<br>    var mark = 1;<br>    //需要合并的列名称<br>    var columsName = names;<br>    //需要合并的列索引值<br>    var columsIndex = indexs;</p>
+<pre><code>//这里循环所有要合并的列
+for (var k = 0; k &lt; columsName.length; k++) &#123; 
+    //所有行
+    var trArr = $(&quot;.layui-table-body&gt;.layui-table&quot;).find(&quot;tr&quot;);
+    //这里循环表格当前的数据
+    for (var i = 1; i &lt; res.data.length; i++) &#123; 
+        //获取当前行的当前列
+            var tdCurArr = trArr.eq(i).find(&quot;td&quot;).eq(columsIndex[k]);
+            //获取相同列的第一列
+            var tdPreArr = trArr.eq(mergeIndex).find(&quot;td&quot;).eq(columsIndex[k]);
+        //后一行的值与前一行的值做比较，相同就需要合并
+            if (data[i][columsName[k]] === data[i-1][columsName[k]]) &#123; 
+                    mark += 1;
+                    //相同列的第一列增加rowspan属性
+                    tdPreArr.each(function () &#123;
+                            $(this).attr(&quot;rowspan&quot;, mark);
+                    &#125;);
+                    //当前行隐藏
+                    tdCurArr.each(function () &#123;
+                            $(this).css(&quot;display&quot;, &quot;none&quot;);
+                    &#125;);
+            &#125;else &#123;
+                    mergeIndex = i;
+                    //一旦前后两行的值不一样了，那么需要合并的格子数mark就需要重新计算
+                    mark = 1;
+            &#125;
+    &#125;
+    mergeIndex = 0;
+    mark = 1;
+&#125;</code></pre>
+<p>}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### layui-layer 遮罩</span><br><span class="line"></span><br><span class="line">[弹出层区域默认自带0.3透明度的黑色背景蒙层](https:&#x2F;&#x2F;www.layui.site&#x2F;doc&#x2F;modules&#x2F;layer.html#shade)</span><br><span class="line"></span><br><span class="line">[layer.load(icon, options) - 加载层](https:&#x2F;&#x2F;www.layui.site&#x2F;doc&#x2F;modules&#x2F;layer.html#shade)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>//eg1<br>var index = layer.load();<br>//eg2<br>var index = layer.load(1); //换了种风格<br>//eg3<br>var index = layer.load(2, {time: 10*1000}); //又换了种风格，并且设定最长等待10秒<br>//关闭<br>layer.close(index);  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### [layui 时间插件laydate中动态设置改变min和max值](https:&#x2F;&#x2F;blog.csdn.net&#x2F;bai_riqiang&#x2F;article&#x2F;details&#x2F;80110000)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>layui.use(‘laydate’, function(){<br>  var laydate = layui.laydate;</p>
+<p>  // 开始日期<br>  var startDate = laydate.render({<br>    elem: ‘#startDate’<br>    ,max : “2099-12-31”<br>    ,done: function(value,date){<br>      endDate.config.min ={<br>        year :date.year<br>        ,month: date.month-1<br>        ,date: date.date<br>      };<br>      // 可不加，根据需求来<br>      $(‘#endDate’)[0].focus();<br>    }<br>  });<br>  // 结束日期<br>  var endDate = laydate.render({<br>    elem: ‘#endDate ‘<br>    ,min: “1900-1-1”<br>    ,done: function (value,date) {<br>      startDate.config.max={<br>        year :date.year<br>        ,month: date.month-1<br>        ,date: date.date<br>      }<br>    }<br>  });<br>});</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### 如果想去掉表单中所有输入框的浏览器历史记录</span><br><span class="line"></span><br><span class="line">直接给form元素加上autocomplete&#x3D;&quot;off&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<form autocomplete="off"></form>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### layer弹两次</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+// 加上id-处理提示弹两次
+layer.msg('复制成功', {id: 'clipboard', time: 1000});
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">[layui表格没有数据的时候，表头没有横向滚动条](https:&#x2F;&#x2F;gitee.com&#x2F;sentsin&#x2F;layui&#x2F;issues&#x2F;I2C2CT)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+修改一下table.js源码
+that.layMain.find('tbody').html('');
+that.layHeader.css('overflow','auto');//新加的
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">[Layui数据表格显示无数据提示问题](https:&#x2F;&#x2F;blog.csdn.net&#x2F;nuomizhende45&#x2F;article&#x2F;details&#x2F;90108766)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#### layui-排序功能</span><br><span class="line"></span><br><span class="line">如果不使用layui本身的前端排序功能，需禁止：,autoSort: false &#x2F;&#x2F;禁用前端自动排序</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">使用layui表单要执行form.render(); &#x2F;&#x2F;更新全部</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+```
+
 
     </div>
 
@@ -505,7 +581,7 @@ layer.msg(res.msg, {time: 1000}, function() {
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">100</span>
+          <span class="site-state-item-count">101</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -518,7 +594,7 @@ layer.msg(res.msg, {time: 1000}, function() {
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">54</span>
+        <span class="site-state-item-count">55</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -558,7 +634,7 @@ layer.msg(res.msg, {time: 1000}, function() {
 <div class="copyright">
   
   &copy; 2015 – 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

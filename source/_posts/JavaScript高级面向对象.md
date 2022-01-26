@@ -333,3 +333,278 @@ console.log(objectA == objectB);  // true
 2. exports 是指向的 module.exports 的引用
 
 3. require() 返回的是 module.exports 而不是 exports
+
+
+
+[Javascript 面向对象(共有方法，私有方法，特权方法，静态属性和方法，静态类)示例讲解...](https://blog.csdn.net/weixin_30791095/article/details/97718955)
+
+[Javascript 面向对象(共有方法，私有方法，特权方法，静态属性和方法，静态类)示例讲解](https://www.cnblogs.com/xiongzaiqiren/p/6733985.html)
+
+#### 一，私有属性和方法
+
+私有方法：私有方法本身是可以访问类内部的所有属性(即私有属性和公有属性)，但是私有方法是不可以在类的外部被调用。 
+
+```
+ 1 <script>
+ 2     /*
+ 3     * 私有方法：私有方法本身是可以访问类内部的所有属性(即私有属性和公有属性)，但是私有方法是不可以在类的外部被调用。 
+ 4     */
+ 5     //JavaScript对象私有属性，私有方法示例
+ 6     function JSClass() {
+ 7         //私有变量只有在函数或者对象作用域范围内能访问
+ 8         var privateAttribute = "私有属性";
+ 9 
+10         function privateMethod_A() {
+11             console.log("私有方法A，" + privateAttribute);
+12         };
+13 
+14         var privateMethod_B = function () {
+15             console.log("私有方法B，" + privateAttribute);
+16         };
+17 
+18         //私有方法可以在函数作用域范围内使用。
+19         privateMethod_A();
+20         privateMethod_B();
+21         
+22         /*
+23         私有属性和方法还有个特点：都不能用this访问。
+24         下面几种是不行的：
+25         this.privateAttribute;
+26         this.privateMethod_A();
+27         this.privateMethod_B();
+28         */
+29     };
+30 
+31     /*new一个实例*/
+32     var instance = new JSClass();
+33     console.dir(instance); //instance实例访问不到私有属性及私有方法
+34 </script>
+```
+
+说明：类的构造函数里定义的function，即为私有方法；而在构造函数里用var声明的变量，也相当于是私有变量。(不过类比于c#这类强类型语言中的私有成员概念还是有区别的，比如无法在非构造函数以外的其它方法中调用) 。
+
+私有方法
+对象的私有方法和属性,外部是不可以访问的,在方法的内部不是能this调用对象的公有方法、公有属性、特权方法的。
+
+ 
+
+ 
+
+#### 二，公有属性和方法
+
+公有方法：
+
+1.公有方法是可以在类的外部被调用的，
+
+2.但是它不可以访问类的私有属性。
+
+3.公有方法必须在类的内部或者外部通过类的prototype属性添加。
+
+```
+ 1 <script>
+ 2     /*
+ 3     * 公有方法： 
+ 4 　　* 1.公有方法是可以在类的外部被调用的； 
+ 5 　　* 2.但是它不可以访问类的私有属性；
+ 6 　　* 3.公有方法必须在类的内部或者外部通过类的prototype属性添加。 
+ 7     */
+ 8     //JavaScript对象公有属性，公有方法示例
+ 9     function JSClass() {
+10         //公有变量在函数内或者实例都能访问
+11         this.publicAttribute = "公有属性";
+12 
+13         this.publicMethod_A = function () {
+14             console.log("公有方法A，" + this.publicAttribute);
+15         };
+16 
+17         //公有方法可以在类的内部添加
+18         JSClass.prototype.publicMethod_B = function () {
+19             console.log("公有方法B，" + this.publicAttribute);
+20         };
+21 
+22         //公有方法可以在函数作用域范围内使用，也可以在函索作用域范围外使用，可以被实例调用和继承
+23         this.publicMethod_A();
+24         this.publicMethod_B();
+25 
+26         /*
+27         公有属性和方法有个特点：在内部访问都必须用this访问
+28         下面几种是不行的：
+29         publicAttribute;
+30         publicMethod_A();
+31         publicMethod_B();
+32         */
+33     };
+34 
+35     //公有方法也可以在类的外部通过类的prototype属性添加
+36     JSClass.prototype.publicMethod_C = function () {
+37         console.log("公有方法C，" + this.publicAttribute);
+38     };
+39     
+40     /*new一个实例*/
+41     var instance = new JSClass();
+42     console.log("实例调用公有属性：" + instance.publicAttribute);
+43     console.log("实例调用公有方法：" + instance.publicMethod_A());
+44     console.log("实例调用公有方法：" + instance.publicMethod_B());
+45     console.dir(instance); //instance实例可以访问公有属性及方法
+46 
+47     //但是,通过实例添加公有属性是不行的
+48     //instance.prototype.publicMethod_D = function () {
+49     //    console.log("公有方法D，" + this.publicAttribute);
+50     //};
+51 
+52 </script>
+```
+
+公有方法的调用规则
+调用公有方法，我们必需先实例化对象
+公有方法中通过不this调用公有属性和特权方法，不能使用this调用静态方法和属性，必需裁通过对象本身调用，即对象名。公有方法也不能调用私有方法。
+
+ 
+
+ 
+
+#### 三，特权方法
+
+特权方法：
+
+1.特权方法是可以在类的外部被调用的，
+
+2.但是它可以访问类的私有属性，并且也是可以访问类的公有属性，可以勉强的认为它是一种特殊的公有方法。
+
+3.但是它与上面的公有方法的声明与定义方式不同。特权方法必须在类的内部声明定义。
+
+```
+ 1 <script>
+ 2     /*
+ 3     * 特权方法： 
+ 4 　　* 1.特权方法是可以在类的外部被调用的；
+ 5 　　* 2.但是它可以访问类的私有属性，并且也是可以访问类的公有属性，可以勉强的认为它是一种特殊的公有方法；
+ 6 　　* 3.但是它与上面的公有方法的声明与定义方式不同。特权方法必须在类的内部声明定义。 
+ 7     */
+ 8     //JavaScript对象特权方法示例
+ 9     function JSClass() {
+10         //私有变量只有在函数或者对象作用域范围内能访问
+11         var privateAttribute = "私有属性";
+12         //私有方法
+13         function privateMethod() {
+14             console.log("私有方法");
+15         }
+16 
+17         //通过使用this关键字定义一个特权方法
+18         this.privilegeMethod = function () {
+19             //在特权方法中可以访问私有属性和私有方法
+20             console.log("特权方法，" + privateAttribute + "," + privateMethod());
+21         };
+22     };
+23     /*new一个实例*/
+24     var instance = new JSClass();
+25     console.log("实例调用特权方法：" + instance.privilegeMethod());
+26     console.dir(instance); //instance实例可以访问公有属性及方法
+27 
+28     /*
+29     * 特权方法浏览器兼容支持性很差，避免使用！
+30     */
+31 </script>
+```
+
+特权方法的调用规则
+特权方法通过this调用公有方法、公有属性，通过对象本身调用静态方法和属性，在方法体内直接调用私有属性和私有方法。
+
+ 
+
+ 
+
+公有方法：就是所有通过该类实例化出来的对象，共同都拥有或者说都可以使用的方法。一般把共用的方法，都放在“原型对象“当中，如果放在构造函数中，会重复创建共同的方法。
+
+私有方法：不能在外部调用。
+特权方法：利用的闭包原理，即通过作用域链，让内部函数能够访问外部函数的变量对象(即该类的私有变量、私有方法)。
+
+ 
+
+#### 四，静态属性和方法
+
+静态属性和方法：
+无需实例化(即无需用new操作符实化对象)就可以调用的方法就叫静态方法。
+
+```
+ 1 <script>
+ 2     /*
+ 3     * 静态属性和方法： 
+ 4 　　* 无需实例化(即无需用new操作符实化对象)就可以调用的方法就叫静态方法。
+ 5     */
+ 6     //JavaScript对象静态属性和方法示例
+ 7     function JSClass() { };
+ 8 
+ 9     JSClass.staticAttribute = "静态属性";
+10     JSClass.staticMethod = function () {
+11         return "静态方法，" + JSClass.staticAttribute;
+12     };
+13 
+14     //无需实例化(即无需用new操作符实化对象)就可以调用的方法就叫静态方法。
+15     console.log(JSClass.staticAttribute);
+16     console.log(JSClass.staticMethod());
+17 
+18     /*new一个实例*/
+19     var instance = new JSClass();
+20     //instance.staticAttribute; //错误！
+21     //instance.staticMethod(); //错误！
+22     console.dir(instance); //instance实例不可以访问静态属性及方法
+23 </script>
+```
+
+ 
+
+静态方法的调用规则
+使用静态方法时，无需实例化对象，便可以调用，对象实例不能调用对象的静态方法，只能调用实例自身的静态属性和方法。
+
+ 
+
+#### 五，静态类
+
+静态类：
+无需实例化(即无需用new操作符实化对象)就可以调用的方法就叫静态方法，
+只包含静态属性和静态方法的类叫静态类，不能被实例化。
+
+```
+ 1 <script>
+ 2     /*
+ 3     * 静态类： 
+ 4 　　* 无需实例化(即无需用new操作符实化对象)就可以调用的方法就叫静态方法，
+ 5     * 只包含静态属性和静态方法的类叫静态类，不能被实例化。
+ 6     */
+ 7     //JavaScript对象静态类示例
+ 8     var jsStaticClass = {
+ 9         staticAttribute_A: "静态属性A",
+10         staticMethod_A: function () {
+11             //静态方法内部可以访问静态属性
+12             return "静态方法A，" + this.staticAttribute_A + "," + jsStaticClass.staticAttribute_A;
+13         }
+14     };
+15 
+16     //静态属性和方法也可以在外部定义和访问
+17     jsStaticClass.staticAttribute_B = "静态属性B";
+18     jsStaticClass.staticMethod_B = function () {
+19         //静态方法内部可以访问静态属性
+20         return "静态方法B，" + this.staticAttribute_A + "," + jsStaticClass.staticAttribute_B;
+21     };
+22 
+23 
+24     //无需实例化(即无需用new操作符实化对象)就可以调用的方法就叫静态方法。
+25     console.log(jsStaticClass.staticAttribute_A);
+26     console.log(jsStaticClass.staticAttribute_B);
+27     console.log(jsStaticClass.staticMethod_A());
+28     console.log(jsStaticClass.staticMethod_B());
+29 
+30     //var instance = new jsStaticClass(); //静态类不能被实例化！
+31 </script>
+```
+
+#### [Javascript设计模式详解](https://www.cnblogs.com/tugenhua0707/p/5198407.html)
+
+#### [【原】常用的javascript设计模式](https://www.cnblogs.com/xianyulaodi/p/5827821.html)
+
+#### [深入理解JavaScript系列（31）：设计模式之代理模式](https://www.cnblogs.com/TomXu/archive/2012/02/29/2354979.html)
+
+#### [javascript设计模式——策略模式](https://www.cnblogs.com/xiaohuochai/p/8029651.html)
+
+#### [JavaScript-原型式继承](https://www.cnblogs.com/gehaoyu/p/11804836.html)

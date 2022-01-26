@@ -8,6 +8,8 @@ categories:
 - Javascript
 ---
 
+#### [js中数组常用方法总结](https://www.cnblogs.com/jinzhou/p/9072614.html)
+
 #### 一、作用域
 
 1、当看到script标签的时候就会进入到js作用
@@ -43,7 +45,26 @@ window.onload = function () {
 )
 ```
 
+#### 判断对象是否为空
 
+```
+// 判断对象是否为空
+var obj = JSON.stringify(data);
+if(obj === '{}') {
+    console.log("对象为空");
+}else {
+    console.log("对象不为空");
+}
+
+
+或者直接判断是否具有某属性
+
+var title = data.id ? "编辑" : "新增";
+```
+
+[js判断对象是否为空对象的几种方法](https://www.cnblogs.com/jpfss/p/9105119.html)
+
+[javascript怎么判断对象是否为空？](https://m.html.cn/qa/javascript/11178.html)
 
 #### 判断某变量的值是否等于某数组中的一个元素
 
@@ -285,7 +306,17 @@ str=str.replace( /^\s*/, '');
 str=str.replace(/(\s*$)/g, "");
 ```
 
+#### [如果动态设置json对象的key](https://www.cnblogs.com/strangerqt/p/4465114.html)
 
+项目中要求动态设置json的key属性，如果按照一般的json设置方法是不行的。假如你把一个key设置为一个变量的话，那么最后js解析出来的就是key为这个变量名而不是这个变量的值。
+
+解决：通过使用
+
+var o = {};
+
+o[变量名] = 变量值
+
+再把这个变量赋值给json即可
 
 #### [用js实现模糊查询的几种方法](https://www.jianshu.com/p/4cd4f74a0b20)
 
@@ -493,6 +524,48 @@ $(本来存在的父元素).on("input propertychange","监听的元素", functio
 
 
 模拟下拉框获取不了角度，可以让它附近的文字获取焦点。   【文字是可以获取焦点的，不是文字，一般的元素获取不了焦点】
+
+#### javascript禁止页面滚动（但是ie8及以下不支持）
+
+```
+var scrollFunc=function(e){
+	e=e||window.event;
+    if (e&&e.preventDefault){
+        e.preventDefault();
+        e.stopPropagation();
+    }else{
+        e.returnvalue=false;
+        return false;
+    }
+}
+if(window.addEventListener){
+    window.addEventListener('DOMMouseScroll',scrollFunc,false);
+    window.addEventListener('mousewheel',scrollFunc,false);
+}else{
+    window.onmousewheel=scrollFunc;
+}
+```
+
+#### js数组与字符串的相互转换
+
+###### 一、数组转字符串
+
+```
+需要将数组元素用某个字符连接成字符串，示例代码如下：
+var a, b,c; 
+a = new Array(a,b,c,d,e); 
+b = a.join('-'); //a-b-c-d-e  使用-拼接数组元素
+c = a.join(''); //abcde
+```
+
+###### 二、字符串转数组
+
+```
+实现方法为将字符串按某个字符切割成若干个字符串，并以数组形式返回，示例代码如下：
+var str = 'ab+c+de';
+var a = str.split('+'); // [ab, c, de]
+var b = str.split(''); //[a, b, +, c, +, d, e]
+```
 
 #### 防止事件冒泡
 
@@ -1507,3 +1580,153 @@ getParam function(paramName) {
 document.getElementById(id).focus();
 ```
 
+#### 获取今天，昨天，明天日期
+
+自己写的函数
+
+```
+/**
+// 获取日期函数
+@param days 时间间隔天数
+       -1：昨天
+        0: 今天
+        1：明天
+@param symbol 年月日之间的分隔符
+*/
+function getDateFun(days, symbol){
+    // 当前时间
+    var now = new Date();
+    var date = now.setDate(now.getDate() + days);
+    
+    // 格式化日期
+    function format(t) {
+        var year = t.getFullYear();     // 年份
+        var month = t.getMonth() + 1;   // 月份
+        month = month < 10 ? "0" + month : month;
+        var date = t.getDate();         // 日
+        date = date < 10 ? "0" + date : date;
+
+        return year + symbol + month + symbol + date;
+    }
+
+    // 返回格式化后的日期
+    return format(new Date(date));
+}
+```
+
+#### 判断数组中是否存在某值
+
+```
+//  arr数组   value需判断的元素
+function isInArray(arr, value) {
+    for (var i = 0; i < arr.length; i++) {
+        if (value === arr[i]) {
+            return true;
+        }
+    }
+
+    return false;
+}
+```
+
+#### 数组对象减去某值
+
+```
+function removeValue(arr, val) {
+    for (var i = 0; i < arr.length; i++) {
+        if (arr[i] == val) {
+            arr.splice(i, 1);
+            break;
+        }
+    }
+}
+```
+
+#### [LayUI + js实现全选、多选、翻页勾选（LayUI数据表格 方法渲染 模式）](https://www.cnblogs.com/java-hui/p/12170230.html)
+
+
+
+[JavaScript单例模式](https://zhuanlan.zhihu.com/p/113456049)
+
+[JavaScript中常见的十五种设计模式](https://www.cnblogs.com/imwtr/p/9451129.html)
+
+
+
+[JavaScript 函数 Apply](https://www.w3school.com.cn/js/js_function_apply.asp)
+
+[JavaScript constructor 属性](https://www.w3school.com.cn/jsref/jsref_constructor_array.asp)
+
+
+
+##### 判断元素显示/隐藏，然后显示隐藏元素
+
+```
+function toggleMask() {
+    var mask = $(".main-mask");
+    if(mask.is(":hidden")) {
+        mask.show();
+    } else {
+        mask.hide();
+    }
+}
+```
+
+[js的内联和外部调用](https://www.cnblogs.com/ivuu/p/7136408.html)
+
+
+
+#### 监听手动刷新事件
+
+```
+// 监听刷新页面事件方法
+window.onbeforeunload = function(event){
+    removeItem("formData");
+};
+```
+
+#### [JS如何在数组指定位置插入元素](https://www.jb51.net/article/182300.htm)
+
+```
+// 在数组指定位置插入
+var fruits = ["Banana", "Orange", "Apple", "Mango"];
+fruits.splice(2, 0, "Lemon", "Kiwi");
+// 输出结果
+// Banana, Orange, Lemon, Kiwi, Apple, Mango
+```
+
+##### 阻止事件冒泡
+
+```
+window.event? window.event.cancelBubble = true : e.stopPropagation();
+```
+
+[JS阻止冒泡和取消默认事件(默认行为)](http://caibaojian.com/javascript-stoppropagation-preventdefault.html)
+
+当需要停止冒泡行为时，可以使用
+
+```
+function stopBubble(e) { 
+//如果提供了事件对象，则这是一个非IE浏览器 
+if ( e && e.stopPropagation ) 
+    //因此它支持W3C的stopPropagation()方法 
+    e.stopPropagation(); 
+else 
+    //否则，我们需要使用IE的方式来取消事件冒泡 
+    window.event.cancelBubble = true; 
+}
+```
+
+当需要阻止默认行为时，可以使用
+
+```
+//阻止浏览器的默认行为 
+function stopDefault( e ) { 
+    //阻止默认浏览器动作(W3C) 
+    if ( e && e.preventDefault ) 
+        e.preventDefault(); 
+    //IE中阻止函数器默认动作的方式 
+    else 
+        window.event.returnValue = false; 
+    return false; 
+}
+```

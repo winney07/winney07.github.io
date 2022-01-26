@@ -710,3 +710,82 @@ showDialog(result.msg + "<br/>测试测试测试测试测试");
 因为<br/>在text()里面不会把它当一个标签，而是把它当作字符.
 ```
 
+#### 数组里的字符串转换成数字或者把数字转换成字符串
+
+```
+var arr = [1,2,3,4,5,6,7,8,9];
+arr.map(String);   //结果： ['1','2','3','4','5','6','7','8','9'];
+
+var a = ['1','2','3','4','5','6','7','8','9'];
+a.map(Number);   //结果：[1,2,3,4,5,6,7,8,9];
+```
+
+ES6，Array.fill()函数的用法
+
+#### **onload 和 onunload 事件**
+
+onload 和 onunload 事件会在用户进入或离开页面时被触发。
+
+onload 事件可用于检测访问者的浏览器类型和浏览器版本，并基于这些信息来加载网页的正确版本。
+
+onload 和 onunload 事件可用于处理 cookie。
+
+[JavaScript中原型对象的彻底理解](https://blog.csdn.net/u012468376/article/details/53121081)
+
+[一张图理解prototype、proto和constructor的三角关系](https://www.cnblogs.com/xiaohuochai/p/5721552.html)
+
+[三张图搞懂JavaScript的原型对象与原型链](https://www.cnblogs.com/shuiyi/p/5305435.html)
+
+[一个例子让你明白原型对象和原型链](https://blog.csdn.net/kkkkkxiaofei/article/details/46474303)
+
+[浅析Javascript匿名函数与自执行函数](https://www.jb51.net/article/79238.htm)
+
+[jQuery中$(function() {});问题详解](https://www.jb51.net/article/70836.htm)
+
+[Window.sessionStorage](https://developer.mozilla.org/zh-CN/docs/Web/API/Window/sessionStorage)
+
+[深入学习JavaScript: apply call方法 详解(转)](http://blog.csdn.net/bao19901210/article/details/21614761)
+
+ [使用工厂方法创建JavaScript对象](http://www.htmleaf.com/ziliaoku/qianduanjiaocheng/201512132900.html)
+
+[javascript简写技巧](https://www.geekjc.com/post/5a0a8c9a592e38541f7703c8)
+
+[题解JavaScript作用域](https://juejin.cn/post/6844903540264009736)
+
+[学习Javascript的8张思维导图](https://segmentfault.com/a/1190000011151972)
+
+
+
+[从一个 JSON.parse 错误深入研究 JavaScript 的转义字符](https://zhuanlan.zhihu.com/p/31030352)
+
+ [JavaScript深入之执行上下文栈](https://github.com/mqyqingfeng/Blog/issues/4 )
+
+ [『多级目录结构』在移动端的交互设计](https://coffee.pmcaff.com/article/764896867122304/pmcaff?utm_source=forum&from=related)
+
+ [一篇文章带你详解 HTTP 协议（网络协议篇一）](http://www.jianshu.com/p/6e9e4156ece3 )
+
+ [一篇文章带你熟悉 TCP/IP 协议（网络协议篇二）](https://juejin.im/post/5a069b6d51882509e5432656 )
+
+ [客栈说书：CSS遮罩CSS3 mask/masks详细介绍](http://www.zhangxinxu.com/wordpress/2017/11/css-css3-mask-masks/ )
+
+ [CSS 实用 Tips](http://jartto.wang/2017/11/12/f2e-tips/ )
+
+ [懒加载和预加载](http://www.jianshu.com/p/4876a4fe7731 )
+
+[使用 JavaScript 实现分屏视觉效果](https://webdesign.tutsplus.com/tutorials/how-to-create-a-split-screen-slider-with-javascript--cms-28844 )
+
+[打造自己的JavaScript武器库](https://juejin.im/post/5a091afe6fb9a044ff30f402 )
+
+[Git分支管理](https://segmentfault.com/a/1190000011927868 )
+
+[16种方法实现水平居中垂直居中](http://louiszhai.github.io/2016/03/12/css-center/ )
+
+[手机/移动前端开发需要注意的20个要点](https://juejin.im/post/5a044fd5f265da43333ddabd )
+
+ [移动端字体放大问题的研究](https://juejin.im/post/59f678d7f265da43333dabb7 )
+
+[跨域，你需要知道的全在这里](https://juejin.im/entry/59feae9df265da43094488f6 )
+
+[10 个独特的 CSS 背景视觉效果](https://juejin.im/entry/59ffb92bf265da43040600f9 )
+
+[你不知道的14个jsvascript调试技巧](https://raygun.com/javascript-debugging-tips )

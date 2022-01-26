@@ -31,6 +31,9 @@ categories:
 将src里使用es6写的index.js编译成es5的js文件，放置到dist目录中。
 
 (因为本机使用npm安装gulp有问题，所以改为使用cnpm安装)
+
+#### [检查浏览器对ES6的支持情况](http://ruanyf.github.io/es-checker/index.cn.html)
+
 ##### 0、使用淘宝镜像安装
 {% link 使用淘宝镜像安装 https://www.xiaochao.me/seo/118.html %}
 ```bash

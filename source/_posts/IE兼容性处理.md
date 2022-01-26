@@ -123,6 +123,8 @@ $("#config_name'+index ).attr("unselectable", "on");
 
 #### 解决IE下a标签点击有虚线边框的问题
 
+参考：[解决IE下a标签点击有虚线边框的问题](https://blog.csdn.net/zhangxianya1/article/details/47128007)
+
 ```
 a:focus{outline:none;}
 ```
@@ -175,3 +177,35 @@ function deleteRow(node){
 https://datatracker.ietf.org/doc/html/rfc3696#section-2
 
 > 项目中用到cookie传递参数到服务器端，用ip localhost等访问均正常，由于项目以后要用域名访问，果断修改hosts文件，添加k_test.com进行域名映射测试，当再次通过IE浏览器打开项目后，悲剧的事情发生了，居然无法登陆，再次用ip 、 localhost访问，都正常，百思不得其解，这个问题正正纠结了一下午，试了各种测试，都没有结果，第二天一大早，灵机—动，换了个google浏览器，奇迹发生了，居然可以登陆了，然后再试IE，问题依旧，盯着域名看了半天，想起应该换个域名了，果断去掉下划线，IE能正常访问了，纠结差不多一天的问题终于得到了解决，百度了一下域名下划线，果然IE浏览器确实存在这方面的问题，虽然是一个小小的问题，但纠结了一天，确实很郁闷，谨以此告诫自己以后的人生中多注重细节。
+
+#### IE7局部滚动区域下绝对定位或相对定位元素不随滚动条滚动的bug
+
+解决方法： 
+
+如果.scrollArea{}是滚动区域，那么在样式里面加上ie7的hack：
+
+```
+.scrollArea{*position:relative;*left:0;*top:0;}
+```
+
+#### 文件上传按钮的美化
+
+> input框，type为file  
+>
+> （兼容性）页面中的上传，在ie浏览器下要双击才能打开
+
+![文件上传按钮的美化](https://raw.githubusercontent.com/winney07/Images/main/Note/%E4%B8%8A%E4%BC%A0%E6%8C%89%E9%92%AE%E7%BE%8E%E5%8C%96%E6%A0%B7%E5%BC%8F.png)
+
+![解决方法](https://raw.githubusercontent.com/winney07/Images/main/Note/%E4%B8%8A%E4%BC%A0%E6%8C%89%E9%92%AE%E7%BE%8E%E5%8C%96-%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95.png)
+
+![按钮放大](https://raw.githubusercontent.com/winney07/Images/main/Note/%E4%B8%8A%E4%BC%A0%E6%8C%89%E9%92%AE-IE%E6%94%BE%E5%A4%A7.png)
+
+![大小问题](https://raw.githubusercontent.com/winney07/Images/main/Note/%E4%B8%8A%E4%BC%A0%E6%8C%89%E9%92%AE-IE%E5%A4%A7%E5%B0%8F%E9%97%AE%E9%A2%98.png)
+
+
+
+目的是让选择文件的文字铺满该按钮，可以点击：
+
+![不铺满](https://raw.githubusercontent.com/winney07/Images/main/Note/%E4%B8%8A%E4%BC%A0%E6%8C%89%E9%92%AE-IE%E4%B8%8D%E9%93%BA%E6%BB%A1.png)
+
+![font-size导致](https://raw.githubusercontent.com/winney07/Images/main/Note/%E4%B8%8A%E4%BC%A0%E6%8C%89%E9%92%AE-IE-font-size%E5%AF%BC%E8%87%B4.png)

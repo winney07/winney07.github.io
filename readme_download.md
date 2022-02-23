@@ -1,7 +1,7 @@
 1. 克隆项目
 
    ```
-   git clone *****
+   git clone git@github.com:winney07/winney07.github.io.git
    ```
 
 2. 在下载的目录里，右键，使用git bash
@@ -18,16 +18,41 @@
    cnpm i hexo-server
    ```
 
-5. 生成public目录文件
+5. [修改Hexo文件夹下的node_modules/hexo-generator-index/lib/generator.js](https://winney07.github.io/2021/01/14/Hexo%E5%8D%9A%E6%96%87%E7%BD%AE%E9%A1%B6%EF%BC%88%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%92%E5%BA%8F%EF%BC%89/)
+
+   在`var posts = locals.posts.sort(config.index_ generator.order by);`后面添加以下代码：
+
+   ```
+   posts.data = posts.data.sort(function(a, b) {
+     if(a.top && b.top) { // 两篇文章top都有定义
+         if(a.top == b.top) return b.date - a.date; // 若top值一样则按照文章日期降序排
+         else return b.top - a.top; // 否则按照top值降序排
+     }
+     else if(a.top && !b.top) { // 以下是只有一篇文章top有定义，那么将有top的排在前面（这里用异或操作居然不行233）
+         return -1;
+     }
+     else if(!a.top && b.top) {
+         return 1;
+     }
+     else return b.date - a.date; // 都没定义按照文章日期降序排
+   });
+   ```
+
+6. 生成public目录文件
 
    ```
    hexo g
    ```
 
-6. 运行服务器
+7. 运行服务器
 
    ```
    hexo s
    ```
 
    注：如果有其他项目占用4000端口，要停掉，或者对这个项目进行端口设置。
+
+8. [报错-未处理](https://blog.csdn.net/m0_46374969/article/details/121727107)
+
+9. [报错-未处理](https://stackoverflow.com/questions/66612993/warning-accessing-non-existent-property-lineno-of-module-exports-inside-circu)
+

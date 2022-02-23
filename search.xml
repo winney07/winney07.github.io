@@ -241,91 +241,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Element-UI笔记</title>
-    <url>/2021/05/13/Element-UI%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h4 id="elementUI表格合并单元格"><a href="#elementUI表格合并单元格" class="headerlink" title="elementUI表格合并单元格"></a>elementUI表格合并单元格</h4><p>摘抄自<a href="https://www.cnblogs.com/yuwenjing0727/p/10110721.html">博客</a>，仅用于学习。</p>
-<table>
-  <tr>
-    <th>序号</th>
-    <th>工单类型</th>
-    <th>taskKey</th>
-    <th>templateUrl</th>
-    <th>操作</th>
-  </tr>
-  <tr>
-    <td rowspan="3">1</td>
-    <td rowspan="3">事件单</td>
-    <td>shijian_01</td>
-    <td>/shijian_01</td>
-    <td>编辑   删除</td>
-  </tr>
-  <tr>
-    <td>shijian_02</td>
-    <td>/shijian_02</td>
-    <td>编辑   删除</td>
-  </tr>
-  <tr>
-    <td>shijian_03</td>
-    <td>/shijian_03</td>
-    <td>编辑   删除</td>
-  </tr>
-  <tr>
-    <td rowspan="3">2</td>
-    <td rowspan="3">问题单</td>
-    <td>shijian_04</td>
-    <td>/shijian_04</td>
-    <td>编辑   删除</td>
-  </tr>
-  <tr>
-    <td>shijian_05</td>
-    <td>/shijian_05</td>
-    <td>编辑   删除</td>
-  </tr>
-  <tr>
-    <td>shijian_06</td>
-    <td>/shijian_06</td>
-    <td>编辑   删除</td>
-  </tr>
-</table>
-
-
-<p>代码附上：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div class&#x3D;&quot;&quot;&gt;</span><br><span class="line">    &lt;el-table</span><br><span class="line">        :data&#x3D;&quot;listData&quot;</span><br><span class="line">        :span-method&#x3D;&quot;objectSpanMethod&quot;</span><br><span class="line">        class&#x3D;&quot;tableArea&quot;</span><br><span class="line">        style&#x3D;&quot;width: 100%&quot;&gt;</span><br><span class="line">        &lt;el-table-column</span><br><span class="line">          prop&#x3D;&quot;type&quot;</span><br><span class="line">          label&#x3D;&quot;序号&quot;</span><br><span class="line">          align&#x3D;&quot;center&quot;</span><br><span class="line">          width&#x3D;&quot;200&quot;&#x2F;&gt;</span><br><span class="line">        &lt;el-table-column</span><br><span class="line">          prop&#x3D;&quot;sheetType&quot;</span><br><span class="line">          label&#x3D;&quot;工单类型&quot;</span><br><span class="line">          &#x2F;&gt;</span><br><span class="line">        &lt;el-table-column</span><br><span class="line">          prop&#x3D;&quot;taskKey&quot;</span><br><span class="line">          label&#x3D;&quot;taskKey&quot;</span><br><span class="line">          &#x2F;&gt;</span><br><span class="line">        &lt;el-table-column</span><br><span class="line">          prop&#x3D;&quot;templateUrl&quot;</span><br><span class="line">          label&#x3D;&quot;templateUrl&quot;</span><br><span class="line">          &#x2F;&gt;</span><br><span class="line">        &lt;el-table-column</span><br><span class="line">          label&#x3D;&quot;操作&quot;</span><br><span class="line">          &gt;</span><br><span class="line">          &lt;template slot-scope&#x3D;&quot;scope&quot;&gt;</span><br><span class="line">              &lt;el-tooltip class&#x3D;&quot;item&quot; effect&#x3D;&quot;dark&quot; content&#x3D;&quot;修改&quot; placement&#x3D;&quot;top-start&quot;&gt;</span><br><span class="line">                      &lt;i class&#x3D;&quot;el-icon-edit-outline&quot;  @click&#x3D;&quot;modify(scope)&quot; &#x2F;&gt;</span><br><span class="line">                    &lt;&#x2F;el-tooltip&gt;</span><br><span class="line">                    &lt;el-tooltip class&#x3D;&quot;item&quot; effect&#x3D;&quot;dark&quot; content&#x3D;&quot;删除&quot; placement&#x3D;&quot;top-start&quot;&gt;</span><br><span class="line">            &lt;i class&#x3D;&quot;el-icon-delete&quot; @click&#x3D;&quot;deleteData(scope)&quot; &#x2F;&gt;</span><br><span class="line">                    &lt;&#x2F;el-tooltip&gt;</span><br><span class="line">          &lt;&#x2F;template&gt;</span><br><span class="line">        &lt;&#x2F;el-table-column &gt;</span><br><span class="line">      &lt;&#x2F;el-table&gt;</span><br><span class="line">  &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">  name: &#39;myNeedDeal&#39;,</span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      rowList: [],</span><br><span class="line">      spanArr: [],</span><br><span class="line">      position: 0,</span><br><span class="line">      listData: []</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  methods: &#123;</span><br><span class="line">      queryData()&#123;&#x2F;&#x2F;查询操作</span><br><span class="line">          this.listData &#x3D; [</span><br><span class="line">              &#123;</span><br><span class="line">            id:1,</span><br><span class="line">          type:1,</span><br><span class="line">          sheetType: &quot;事件单&quot;,</span><br><span class="line">          taskKey: &quot;shijian_01&quot;,</span><br><span class="line">          templateUrl: &quot;&#x2F;shijian_01&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            id:2,</span><br><span class="line">          type:1,</span><br><span class="line">          sheetType: &quot;事件单&quot;,</span><br><span class="line">          taskKey: &quot;shijian_02&quot;,</span><br><span class="line">          templateUrl: &quot;&#x2F;shijian_02&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            id:3,</span><br><span class="line">          type:1,</span><br><span class="line">          sheetType: &quot;事件单&quot;,</span><br><span class="line">          taskKey: &quot;shijian_03&quot;,</span><br><span class="line">          templateUrl: &quot;&#x2F;shijian_04&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            id:4,</span><br><span class="line">          type:2,</span><br><span class="line">          sheetType: &quot;问题单&quot;,</span><br><span class="line">          taskKey: &quot;wenti_01&quot;,</span><br><span class="line">          templateUrl: &quot;&#x2F;wenti_01&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            id:5,</span><br><span class="line">          type:2,</span><br><span class="line">          sheetType: &quot;问题单&quot;,</span><br><span class="line">          taskKey: &quot;wenti_02&quot;,</span><br><span class="line">          templateUrl: &quot;&#x2F;wenti_02&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            id:6,</span><br><span class="line">          type:2,</span><br><span class="line">          sheetType: &quot;问题单&quot;,</span><br><span class="line">          taskKey: &quot;wenti_03&quot;,</span><br><span class="line">          templateUrl: &quot;&#x2F;wenti_03&quot;</span><br><span class="line">        &#125;</span><br><span class="line">          ];</span><br><span class="line">          this.rowspan()</span><br><span class="line">      &#125;,</span><br><span class="line">      rowspan() &#123;</span><br><span class="line">          this.listData.forEach((item,index) &#x3D;&gt; &#123;</span><br><span class="line">            if( index &#x3D;&#x3D;&#x3D; 0)&#123;</span><br><span class="line">                this.spanArr.push(1);</span><br><span class="line">                this.position &#x3D; 0;</span><br><span class="line">            &#125;else&#123;</span><br><span class="line">                if(this.listData[index].type &#x3D;&#x3D;&#x3D; this.listData[index-1].type )&#123;</span><br><span class="line">                    this.spanArr[this.position] +&#x3D; 1;</span><br><span class="line">                    this.spanArr.push(0);</span><br><span class="line">                &#125;else&#123;</span><br><span class="line">                    this.spanArr.push(1);</span><br><span class="line">                    this.position &#x3D; index;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;,</span><br><span class="line">    objectSpanMethod(&#123; row, column, rowIndex, columnIndex &#125;) &#123;  &#x2F;&#x2F;表格合并行</span><br><span class="line">        if (columnIndex &#x3D;&#x3D;&#x3D; 0) &#123;</span><br><span class="line">            const _row &#x3D; this.spanArr[rowIndex];</span><br><span class="line">            const _col &#x3D; _row&gt;0 ? 1 : 0;</span><br><span class="line">            return &#123;</span><br><span class="line">                rowspan: _row,</span><br><span class="line">                colspan: _col</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if(columnIndex &#x3D;&#x3D;&#x3D; 1)&#123;</span><br><span class="line">            const _row &#x3D; this.spanArr[rowIndex];</span><br><span class="line">            const _col &#x3D; _row&gt;0 ? 1 : 0;</span><br><span class="line">            return &#123;</span><br><span class="line">                rowspan: _row,</span><br><span class="line">                colspan: _col</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  mounted() &#123;</span><br><span class="line">    this.queryData();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line">&lt;style lang&#x3D;&quot;scss&quot; scoped&gt;</span><br><span class="line">.el-select &#123;</span><br><span class="line">  margin-right: 15px;</span><br><span class="line">&#125;</span><br><span class="line">.el-input &#123;</span><br><span class="line">  margin-right: 15px;</span><br><span class="line">  width: 200px;</span><br><span class="line">&#125;</span><br><span class="line">.tableArea &#123;</span><br><span class="line">  margin-top: 20px;</span><br><span class="line">  box-shadow: 0 0 8px 0 #aaa;</span><br><span class="line">&#125;</span><br><span class="line">i[class^&#x3D;&quot;el-icon&quot;] &#123;</span><br><span class="line">  margin-right: 5px;</span><br><span class="line">  font-size: 16px;</span><br><span class="line">  cursor: pointer;</span><br><span class="line">&#125;</span><br><span class="line">.modify_table&#123;</span><br><span class="line">    td&#123;</span><br><span class="line">        padding: 10px ;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">.item_title&#123;</span><br><span class="line">    text-align: right;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br></pre></td></tr></table></figure>
-<p>详细说明：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">:span-method&#x3D;&quot;objectSpanMethod&quot;  </span><br></pre></td></tr></table></figure>
-<p>这个是官方给定的绑定属性和对应的方法，objectSpanMethod 传入了 { row, column, rowIndex, columnIndex }</p>
-<p>row: 当前行</p>
-<p>column: 当前列</p>
-<p>rowIndex：当前行号</p>
-<p>columnIndex ：当前列号</p>
-<p>该函数可以返回一个包含两个元素的数组，第一个元素代表<code>rowspan</code>，第二个元素代表<code>colspan</code>。 也可以返回一个键名为<code>rowspan</code>和<code>colspan</code>的对象。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">this.spanArr 数组 ，返回的是相对应的行合并行数</span><br></pre></td></tr></table></figure>
-<p>这个示例打印出的this.spanArr为 [3, 0, 0, 3, 0, 0]，比如，第一个元素为3，表示第一行应该向下合并3行（即第一行的rowspan为3），第二个元素的rowspan为0，就让它“消失”。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">rowspan（）这个函数就是用来返回 this.spanArr 数组的，定义每一行的 rowspan</span><br></pre></td></tr></table></figure>
-<p>rowspan（）函数，if( index === 0)，第一行，直接先给数组push进一个1，表示自己先占一行，this.position是数组元素的位置（此时是从数组元素的第一个开始，所以this.position为0）， this.position为0意思表示的就是数组的第一个元素。</p>
-<p>当到了index为2的时候，if(this.listData[index].type === this.listData[index-1].type )，让第二行与第一行作比较，</p>
-<p>如果第二行与第一行相等的话，this.position就+1，当有n行第一行相同，this.position就为n，表示向下合并n行；第二行自己就this.spanArr.push(0)，表示第二行“消失”，因为第一行和第二行合并了啊。</p>
-<p>如果第二行与第一行不相等的话，那么this.spanArr.push(1);就让第二行自己独占一行；this.position = index意思就是把指针拿到index这行来，表示设置数组this.spanArr[this.position]的元素值，然后定义从此行开始向下合并几行（可能这句话我表述的不是很清楚你可以根据我这个示例研究下，当index为3时，this.position为3，当index为4时，第四行与第三行需要合并，那么在数组的this.position元素就要+1了，也就是this.spanArr[this.position] += 1）</p>
-<p>还有最后一句话</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const _col &#x3D; _row&gt;0 ? 1 : 0;</span><br></pre></td></tr></table></figure>
-<p>定义的这一个单元格列的合并，我们项目只合并行，不合并列；</p>
-<p>_row：代表合并行的行数，_row的值要么是1，或者更大的自然正整数，要么是0。</p>
-<p>1代表：独占一行</p>
-<p>更大的自然数：代表合并了若干行</p>
-<p>0：代表“消失”的哪那一个单元格，后面的单元格向前推一格</p>
-<p>注意：如果配合分页一起渲染数据，要在rowspan函数中，先将this.spanArr清空数组。不添加，点分页加载数据会导致表格错乱。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">rowspan() &#123;</span><br><span class="line">    this.spanArr&#x3D;[];</span><br><span class="line">    .......</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
-
-
-<p><a href="https://blog.csdn.net/weixin_33982670/article/details/91446060">elementui表格动态数据单元格合并</a></p>
-<p><a href="https://www.imooc.com/wenda/detail/522127">elementUI table合并相同数据的单元格</a></p>
-<p><a href="https://segmentfault.com/a/1190000019176628">elementUI table表格动态合并</a></p>
-]]></content>
-      <tags>
-        <tag>Element-UI</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Egret-Engine-白鹭引擎</title>
     <url>/2021/02/07/Egret-Engine-%E7%99%BD%E9%B9%AD%E5%BC%95%E6%93%8E/</url>
     <content><![CDATA[<h4 id="Egret-Engine-2D"><a href="#Egret-Engine-2D" class="headerlink" title="Egret Engine 2D"></a>Egret Engine 2D</h4><ul>
@@ -415,6 +330,91 @@ limitations under the License.</code></pre>
       </categories>
       <tags>
         <tag>Egret Engine</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Element-UI笔记</title>
+    <url>/2021/05/13/Element-UI%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h4 id="elementUI表格合并单元格"><a href="#elementUI表格合并单元格" class="headerlink" title="elementUI表格合并单元格"></a>elementUI表格合并单元格</h4><p>摘抄自<a href="https://www.cnblogs.com/yuwenjing0727/p/10110721.html">博客</a>，仅用于学习。</p>
+<table>
+  <tr>
+    <th>序号</th>
+    <th>工单类型</th>
+    <th>taskKey</th>
+    <th>templateUrl</th>
+    <th>操作</th>
+  </tr>
+  <tr>
+    <td rowspan="3">1</td>
+    <td rowspan="3">事件单</td>
+    <td>shijian_01</td>
+    <td>/shijian_01</td>
+    <td>编辑   删除</td>
+  </tr>
+  <tr>
+    <td>shijian_02</td>
+    <td>/shijian_02</td>
+    <td>编辑   删除</td>
+  </tr>
+  <tr>
+    <td>shijian_03</td>
+    <td>/shijian_03</td>
+    <td>编辑   删除</td>
+  </tr>
+  <tr>
+    <td rowspan="3">2</td>
+    <td rowspan="3">问题单</td>
+    <td>shijian_04</td>
+    <td>/shijian_04</td>
+    <td>编辑   删除</td>
+  </tr>
+  <tr>
+    <td>shijian_05</td>
+    <td>/shijian_05</td>
+    <td>编辑   删除</td>
+  </tr>
+  <tr>
+    <td>shijian_06</td>
+    <td>/shijian_06</td>
+    <td>编辑   删除</td>
+  </tr>
+</table>
+
+
+<p>代码附上：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div class&#x3D;&quot;&quot;&gt;</span><br><span class="line">    &lt;el-table</span><br><span class="line">        :data&#x3D;&quot;listData&quot;</span><br><span class="line">        :span-method&#x3D;&quot;objectSpanMethod&quot;</span><br><span class="line">        class&#x3D;&quot;tableArea&quot;</span><br><span class="line">        style&#x3D;&quot;width: 100%&quot;&gt;</span><br><span class="line">        &lt;el-table-column</span><br><span class="line">          prop&#x3D;&quot;type&quot;</span><br><span class="line">          label&#x3D;&quot;序号&quot;</span><br><span class="line">          align&#x3D;&quot;center&quot;</span><br><span class="line">          width&#x3D;&quot;200&quot;&#x2F;&gt;</span><br><span class="line">        &lt;el-table-column</span><br><span class="line">          prop&#x3D;&quot;sheetType&quot;</span><br><span class="line">          label&#x3D;&quot;工单类型&quot;</span><br><span class="line">          &#x2F;&gt;</span><br><span class="line">        &lt;el-table-column</span><br><span class="line">          prop&#x3D;&quot;taskKey&quot;</span><br><span class="line">          label&#x3D;&quot;taskKey&quot;</span><br><span class="line">          &#x2F;&gt;</span><br><span class="line">        &lt;el-table-column</span><br><span class="line">          prop&#x3D;&quot;templateUrl&quot;</span><br><span class="line">          label&#x3D;&quot;templateUrl&quot;</span><br><span class="line">          &#x2F;&gt;</span><br><span class="line">        &lt;el-table-column</span><br><span class="line">          label&#x3D;&quot;操作&quot;</span><br><span class="line">          &gt;</span><br><span class="line">          &lt;template slot-scope&#x3D;&quot;scope&quot;&gt;</span><br><span class="line">              &lt;el-tooltip class&#x3D;&quot;item&quot; effect&#x3D;&quot;dark&quot; content&#x3D;&quot;修改&quot; placement&#x3D;&quot;top-start&quot;&gt;</span><br><span class="line">                      &lt;i class&#x3D;&quot;el-icon-edit-outline&quot;  @click&#x3D;&quot;modify(scope)&quot; &#x2F;&gt;</span><br><span class="line">                    &lt;&#x2F;el-tooltip&gt;</span><br><span class="line">                    &lt;el-tooltip class&#x3D;&quot;item&quot; effect&#x3D;&quot;dark&quot; content&#x3D;&quot;删除&quot; placement&#x3D;&quot;top-start&quot;&gt;</span><br><span class="line">            &lt;i class&#x3D;&quot;el-icon-delete&quot; @click&#x3D;&quot;deleteData(scope)&quot; &#x2F;&gt;</span><br><span class="line">                    &lt;&#x2F;el-tooltip&gt;</span><br><span class="line">          &lt;&#x2F;template&gt;</span><br><span class="line">        &lt;&#x2F;el-table-column &gt;</span><br><span class="line">      &lt;&#x2F;el-table&gt;</span><br><span class="line">  &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">  name: &#39;myNeedDeal&#39;,</span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      rowList: [],</span><br><span class="line">      spanArr: [],</span><br><span class="line">      position: 0,</span><br><span class="line">      listData: []</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  methods: &#123;</span><br><span class="line">      queryData()&#123;&#x2F;&#x2F;查询操作</span><br><span class="line">          this.listData &#x3D; [</span><br><span class="line">              &#123;</span><br><span class="line">            id:1,</span><br><span class="line">          type:1,</span><br><span class="line">          sheetType: &quot;事件单&quot;,</span><br><span class="line">          taskKey: &quot;shijian_01&quot;,</span><br><span class="line">          templateUrl: &quot;&#x2F;shijian_01&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            id:2,</span><br><span class="line">          type:1,</span><br><span class="line">          sheetType: &quot;事件单&quot;,</span><br><span class="line">          taskKey: &quot;shijian_02&quot;,</span><br><span class="line">          templateUrl: &quot;&#x2F;shijian_02&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            id:3,</span><br><span class="line">          type:1,</span><br><span class="line">          sheetType: &quot;事件单&quot;,</span><br><span class="line">          taskKey: &quot;shijian_03&quot;,</span><br><span class="line">          templateUrl: &quot;&#x2F;shijian_04&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            id:4,</span><br><span class="line">          type:2,</span><br><span class="line">          sheetType: &quot;问题单&quot;,</span><br><span class="line">          taskKey: &quot;wenti_01&quot;,</span><br><span class="line">          templateUrl: &quot;&#x2F;wenti_01&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            id:5,</span><br><span class="line">          type:2,</span><br><span class="line">          sheetType: &quot;问题单&quot;,</span><br><span class="line">          taskKey: &quot;wenti_02&quot;,</span><br><span class="line">          templateUrl: &quot;&#x2F;wenti_02&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            id:6,</span><br><span class="line">          type:2,</span><br><span class="line">          sheetType: &quot;问题单&quot;,</span><br><span class="line">          taskKey: &quot;wenti_03&quot;,</span><br><span class="line">          templateUrl: &quot;&#x2F;wenti_03&quot;</span><br><span class="line">        &#125;</span><br><span class="line">          ];</span><br><span class="line">          this.rowspan()</span><br><span class="line">      &#125;,</span><br><span class="line">      rowspan() &#123;</span><br><span class="line">          this.listData.forEach((item,index) &#x3D;&gt; &#123;</span><br><span class="line">            if( index &#x3D;&#x3D;&#x3D; 0)&#123;</span><br><span class="line">                this.spanArr.push(1);</span><br><span class="line">                this.position &#x3D; 0;</span><br><span class="line">            &#125;else&#123;</span><br><span class="line">                if(this.listData[index].type &#x3D;&#x3D;&#x3D; this.listData[index-1].type )&#123;</span><br><span class="line">                    this.spanArr[this.position] +&#x3D; 1;</span><br><span class="line">                    this.spanArr.push(0);</span><br><span class="line">                &#125;else&#123;</span><br><span class="line">                    this.spanArr.push(1);</span><br><span class="line">                    this.position &#x3D; index;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;,</span><br><span class="line">    objectSpanMethod(&#123; row, column, rowIndex, columnIndex &#125;) &#123;  &#x2F;&#x2F;表格合并行</span><br><span class="line">        if (columnIndex &#x3D;&#x3D;&#x3D; 0) &#123;</span><br><span class="line">            const _row &#x3D; this.spanArr[rowIndex];</span><br><span class="line">            const _col &#x3D; _row&gt;0 ? 1 : 0;</span><br><span class="line">            return &#123;</span><br><span class="line">                rowspan: _row,</span><br><span class="line">                colspan: _col</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if(columnIndex &#x3D;&#x3D;&#x3D; 1)&#123;</span><br><span class="line">            const _row &#x3D; this.spanArr[rowIndex];</span><br><span class="line">            const _col &#x3D; _row&gt;0 ? 1 : 0;</span><br><span class="line">            return &#123;</span><br><span class="line">                rowspan: _row,</span><br><span class="line">                colspan: _col</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  mounted() &#123;</span><br><span class="line">    this.queryData();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line">&lt;style lang&#x3D;&quot;scss&quot; scoped&gt;</span><br><span class="line">.el-select &#123;</span><br><span class="line">  margin-right: 15px;</span><br><span class="line">&#125;</span><br><span class="line">.el-input &#123;</span><br><span class="line">  margin-right: 15px;</span><br><span class="line">  width: 200px;</span><br><span class="line">&#125;</span><br><span class="line">.tableArea &#123;</span><br><span class="line">  margin-top: 20px;</span><br><span class="line">  box-shadow: 0 0 8px 0 #aaa;</span><br><span class="line">&#125;</span><br><span class="line">i[class^&#x3D;&quot;el-icon&quot;] &#123;</span><br><span class="line">  margin-right: 5px;</span><br><span class="line">  font-size: 16px;</span><br><span class="line">  cursor: pointer;</span><br><span class="line">&#125;</span><br><span class="line">.modify_table&#123;</span><br><span class="line">    td&#123;</span><br><span class="line">        padding: 10px ;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">.item_title&#123;</span><br><span class="line">    text-align: right;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br></pre></td></tr></table></figure>
+<p>详细说明：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">:span-method&#x3D;&quot;objectSpanMethod&quot;  </span><br></pre></td></tr></table></figure>
+<p>这个是官方给定的绑定属性和对应的方法，objectSpanMethod 传入了 { row, column, rowIndex, columnIndex }</p>
+<p>row: 当前行</p>
+<p>column: 当前列</p>
+<p>rowIndex：当前行号</p>
+<p>columnIndex ：当前列号</p>
+<p>该函数可以返回一个包含两个元素的数组，第一个元素代表<code>rowspan</code>，第二个元素代表<code>colspan</code>。 也可以返回一个键名为<code>rowspan</code>和<code>colspan</code>的对象。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">this.spanArr 数组 ，返回的是相对应的行合并行数</span><br></pre></td></tr></table></figure>
+<p>这个示例打印出的this.spanArr为 [3, 0, 0, 3, 0, 0]，比如，第一个元素为3，表示第一行应该向下合并3行（即第一行的rowspan为3），第二个元素的rowspan为0，就让它“消失”。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">rowspan（）这个函数就是用来返回 this.spanArr 数组的，定义每一行的 rowspan</span><br></pre></td></tr></table></figure>
+<p>rowspan（）函数，if( index === 0)，第一行，直接先给数组push进一个1，表示自己先占一行，this.position是数组元素的位置（此时是从数组元素的第一个开始，所以this.position为0）， this.position为0意思表示的就是数组的第一个元素。</p>
+<p>当到了index为2的时候，if(this.listData[index].type === this.listData[index-1].type )，让第二行与第一行作比较，</p>
+<p>如果第二行与第一行相等的话，this.position就+1，当有n行第一行相同，this.position就为n，表示向下合并n行；第二行自己就this.spanArr.push(0)，表示第二行“消失”，因为第一行和第二行合并了啊。</p>
+<p>如果第二行与第一行不相等的话，那么this.spanArr.push(1);就让第二行自己独占一行；this.position = index意思就是把指针拿到index这行来，表示设置数组this.spanArr[this.position]的元素值，然后定义从此行开始向下合并几行（可能这句话我表述的不是很清楚你可以根据我这个示例研究下，当index为3时，this.position为3，当index为4时，第四行与第三行需要合并，那么在数组的this.position元素就要+1了，也就是this.spanArr[this.position] += 1）</p>
+<p>还有最后一句话</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const _col &#x3D; _row&gt;0 ? 1 : 0;</span><br></pre></td></tr></table></figure>
+<p>定义的这一个单元格列的合并，我们项目只合并行，不合并列；</p>
+<p>_row：代表合并行的行数，_row的值要么是1，或者更大的自然正整数，要么是0。</p>
+<p>1代表：独占一行</p>
+<p>更大的自然数：代表合并了若干行</p>
+<p>0：代表“消失”的哪那一个单元格，后面的单元格向前推一格</p>
+<p>注意：如果配合分页一起渲染数据，要在rowspan函数中，先将this.spanArr清空数组。不添加，点分页加载数据会导致表格错乱。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">rowspan() &#123;</span><br><span class="line">    this.spanArr&#x3D;[];</span><br><span class="line">    .......</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+
+<p><a href="https://blog.csdn.net/weixin_33982670/article/details/91446060">elementui表格动态数据单元格合并</a></p>
+<p><a href="https://www.imooc.com/wenda/detail/522127">elementUI table合并相同数据的单元格</a></p>
+<p><a href="https://segmentfault.com/a/1190000019176628">elementUI table表格动态合并</a></p>
+]]></content>
+      <tags>
+        <tag>Element-UI</tag>
       </tags>
   </entry>
   <entry>
@@ -1230,6 +1230,82 @@ limitations under the License.</code></pre>
       </tags>
   </entry>
   <entry>
+    <title>Hexo-Gitee-Pages搭建个人博客</title>
+    <url>/2020/07/07/Hexo-Gitee-Pages%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<h3 id="一、环境配置"><a href="#一、环境配置" class="headerlink" title="一、环境配置"></a>一、环境配置</h3><p>node.js  <a href="https://nodejs.org/zh-cn/" title="" target="">官网</a><br>Git   <a href="https://git-scm.com/" title="" target="">官网</a></p>
+<h3 id="二、Hexo的安装与基本命令"><a href="#二、Hexo的安装与基本命令" class="headerlink" title="二、Hexo的安装与基本命令"></a>二、Hexo的安装与基本命令</h3><h4 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h4><p>如果没有安装hexo的，只需要在目录中单击右键启动Git Bash Here，输入命令：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install -g hexo </span><br></pre></td></tr></table></figure>
+<h4 id="初始化在本地生成Hexo相关目录"><a href="#初始化在本地生成Hexo相关目录" class="headerlink" title="初始化在本地生成Hexo相关目录"></a>初始化在本地生成Hexo相关目录</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo init Note  # 初始化创建，会再桌面创建Note文件夹</span><br><span class="line">cd Note         # 进入Note目录</span><br><span class="line">npm install     # 进一步安装hexo所需文件</span><br></pre></td></tr></table></figure>
+<h4 id="Hexo三连"><a href="#Hexo三连" class="headerlink" title="Hexo三连"></a>Hexo三连</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo clean(or c)          # 清空已有hexo网站文件</span><br><span class="line">hexo generate(or g)   # 依据网页文本与新的CSS样式生成新网站文件</span><br><span class="line">hexo server(or s)     # 启动本地服务器，可以在localhost:4000查看网站修改效果</span><br></pre></td></tr></table></figure>
+<h3 id="配置Git个人信息"><a href="#配置Git个人信息" class="headerlink" title="配置Git个人信息"></a>配置Git个人信息</h3><p>Git 全局设置:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git config --global user.name &quot;Github用户名&quot;       &#x2F;&#x2F;自己Github的账号名</span><br><span class="line">git config --global user.email &quot;Github邮箱&quot;        &#x2F;&#x2F;自己注册Github的邮箱地址</span><br></pre></td></tr></table></figure>
+<p>创建 git 仓库:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mkdir test</span><br><span class="line">cd test</span><br><span class="line">git init</span><br><span class="line">touch README.md</span><br><span class="line">git add README.md</span><br><span class="line">git commit -m &quot;first commit&quot;</span><br><span class="line">git remote add origin git@gitee.com:AAAA&#x2F;AAAA.git</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
+<p>已有仓库?</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd existing_git_repo</span><br><span class="line">git remote add origin git@gitee.com:AAAA&#x2F;AAAA.git</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
+<h3 id="三、主题下载与安装"><a href="#三、主题下载与安装" class="headerlink" title="三、主题下载与安装"></a>三、主题下载与安装</h3><p>Hexo官网上提供了丰富的主题可选，你只需要打开对应的界面（<a href="https://hexo.io/themes/" rel="nofollow noreferrer" target="_blank">https://hexo.io/themes/</a>）选择喜欢的，然后点击<strong>名称</strong>跳转到<strong>GitHub</strong>仓库选择<em>下载或者克隆</em>对应的<strong>zip</strong>文件到本地，并且解压到网站目录下的<strong>themes</strong>目录即可。</p>
+<p>然后接下来，你需要修改两个配置文件：</p>
+<li>你的网站根目录下的<strong>_config.yml</strong>文件，即网站配置文件；</li>
+<li>你选择的主题的自带配置文件<strong>_config.yml</strong>，即主题样式配置文件；</li>
+
+<h4 id="生成-添加-SSH-公钥之后，测试是否连接成功"><a href="#生成-添加-SSH-公钥之后，测试是否连接成功" class="headerlink" title="生成/添加 SSH 公钥之后，测试是否连接成功:"></a>生成/添加 SSH 公钥之后，测试是否连接成功:</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssh -T git@gitee.com</span><br><span class="line"></span><br><span class="line">如果成功，会显示：</span><br><span class="line">Hi xxx! You&#39;ve successfully authenticated, but GITEE.COM does not provide shell access.</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>工作笔记</category>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo + NexT主题博客相关设置</title>
+    <url>/2018/08/02/Hexo-NexT%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2%E7%9B%B8%E5%85%B3%E8%AE%BE%E7%BD%AE/</url>
+    <content><![CDATA[<h2 id="一、添加文章版权声明功能"><a href="#一、添加文章版权声明功能" class="headerlink" title="一、添加文章版权声明功能"></a>一、添加文章版权声明功能</h2><p>打开博客目录下的主题配置文件（/themes/next/_config.yml），找到Declare license on posts 标签，进行配置：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Declare license on posts</span></span><br><span class="line">post_copyright:</span><br><span class="line">  <span class="built_in">enable</span>: <span class="literal">true</span>    <span class="comment">#激活版权声明模块</span></span><br><span class="line">  license: CC BY-NC-SA 3.0     <span class="comment">#版权许可协议</span></span><br><span class="line">  license_url: https://winney07.github.io/      <span class="comment">#声明的文章的可点击链接（域名）</span></span><br></pre></td></tr></table></figure>
+<p>配置完后，执行以下命令，在浏览器中访问，效果如图所示：<br><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Hexo-NexT%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2%E7%9B%B8%E5%85%B3%E8%AE%BE%E7%BD%AE/next-set1.png" alt="版本声明设置"></p>
+<a id="more"></a>
+<h2 id="二、设置favicon图标"><a href="#二、设置favicon图标" class="headerlink" title="二、设置favicon图标"></a>二、设置favicon图标</h2><p>1、选择一个favicon制作网站完成制作，例如：<a href="http://www.bitbug.net/" title="" target="">比特虫</a> ，制作一个16<em>16，一个32</em>32的；<br>2、两个不同尺寸大小的文件，重名为favicon-16x16-next.png和favicon-32x32-next.png；<br>2、将重命名的两个图片文件放到博客目录下的themes/next/source/images中（覆盖原来的两个默认的）<br>如图所示：<br><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Hexo-NexT%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2%E7%9B%B8%E5%85%B3%E8%AE%BE%E7%BD%AE/favicon.png" alt="设置favicon图标"></p>
+<h2 id="三、添加头像"><a href="#三、添加头像" class="headerlink" title="三、添加头像"></a>三、添加头像</h2><p>1、把想要设置的头像图片放到hexo/themes/next/source/images目录下;<br>2、在hexo/themes/next/layout/_macro目录中找到sidebar.swig文件;<br>3、在sidebar.swig文件中找到类名为：site-overview-wrap sidebar-panel sidebar-panel-active的section标签，进行如图所示的修改：<br><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Hexo-NexT%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2%E7%9B%B8%E5%85%B3%E8%AE%BE%E7%BD%AE/user-head.png" alt="添加头像"><br>效果如图所示：(若想去掉边框，可以根据头像标签的类名，全局搜索，找到对应的样式进行修改)<br><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Hexo-NexT%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2%E7%9B%B8%E5%85%B3%E8%AE%BE%E7%BD%AE/user-header.png" alt="修改头像样式"></p>
+<h2 id="四、添加友情链接"><a href="#四、添加友情链接" class="headerlink" title="四、添加友情链接"></a>四、添加友情链接</h2><p>打开主题配置文件（/themes/next/_config.yml），找到以下内容进行修改：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Blog rolls</span></span><br><span class="line">links_icon: link</span><br><span class="line">links_title: 友情链接 </span><br><span class="line"><span class="comment"># links_layout: block   //块状显示（选择了行内显示，这个要注释掉，不然会报错）</span></span><br><span class="line">links_layout: inline    //行内显示</span><br><span class="line">links:</span><br><span class="line">  小超: https://www.xiaochao.me/</span><br><span class="line">  Github: https://www.github.com</span><br></pre></td></tr></table></figure>
+<p>如图所示：<br><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Hexo-NexT%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2%E7%9B%B8%E5%85%B3%E8%AE%BE%E7%BD%AE/friend-link.png" alt="添加友情链接"></p>
+<h2 id="五、调整hexo页面宽度"><a href="#五、调整hexo页面宽度" class="headerlink" title="五、调整hexo页面宽度"></a>五、调整hexo页面宽度</h2><p>博客在浏览器上的留白太多，因此想增加文章的宽度。</p>
+<p>打开/Hexo/themes/hexo-theme-next/source//css/_variables/custom.styl 添加两行代码即可：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$main-desktop &#x3D; 1400px </span><br><span class="line">$content-desktop &#x3D; 1100px</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>工作笔记</category>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo博文置顶（自定义排序）</title>
+    <url>/2021/01/14/Hexo%E5%8D%9A%E6%96%87%E7%BD%AE%E9%A1%B6%EF%BC%88%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%92%E5%BA%8F%EF%BC%89/</url>
+    <content><![CDATA[<h4 id="Hexo博文置顶（自定义排序）"><a href="#Hexo博文置顶（自定义排序）" class="headerlink" title="Hexo博文置顶（自定义排序）"></a>Hexo博文置顶（自定义排序）</h4><blockquote>
+<p>使用的是<code>top</code>属性，<code>top</code>值越高，排序越在前，不设置<code>top</code>值得博文按照时间顺序排序。<br>修改Hexo文件夹下的node_modules/hexo-generator-index/lib/generator.js</p>
+</blockquote>
+<p>原来代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const config &#x3D; this.config;</span><br><span class="line">const posts &#x3D; locals.posts.sort(config.index_ generator.order by);</span><br><span class="line"></span><br><span class="line">sort(posts.data, (a， b) &#x3D;&gt; (b.sticky || 0) - (a.sticky || 0));</span><br><span class="line"></span><br><span class="line">const paginationDir.config.pagination_ dir || &#39;page&#39;;</span><br><span class="line">const path.config.index_ generator.path || &#39;&#39;;</span><br><span class="line"></span><br><span class="line">return pagination(path, posts, &#123;</span><br><span class="line">	perPage: config.index_ generator.per_page,</span><br><span class="line">	layout: [&#39;index&#39;, &#39;archive&#39;],</span><br><span class="line">	format: paginationDir + &#39;&#x2F;%d&#x2F;&#39;,</span><br><span class="line">	data: &#123;</span><br><span class="line">    	_index: true</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>改为：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var config &#x3D; this.config;</span><br><span class="line">var posts &#x3D; locals.posts.sort(config.index_ generator.order by);</span><br><span class="line"></span><br><span class="line">posts.data &#x3D; posts.data.sort(function(a, b) &#123;</span><br><span class="line">  if(a.top &amp;&amp; b.top) &#123; &#x2F;&#x2F; 两篇文章top都有定义</span><br><span class="line">      if(a.top &#x3D;&#x3D; b.top) return b.date - a.date; &#x2F;&#x2F; 若top值一样则按照文章日期降序排</span><br><span class="line">      else return b.top - a.top; &#x2F;&#x2F; 否则按照top值降序排</span><br><span class="line">  &#125;</span><br><span class="line">  else if(a.top &amp;&amp; !b.top) &#123; &#x2F;&#x2F; 以下是只有一篇文章top有定义，那么将有top的排在前面（这里用异或操作居然不行233）</span><br><span class="line">      return -1;</span><br><span class="line">  &#125;</span><br><span class="line">  else if(!a.top &amp;&amp; b.top) &#123;</span><br><span class="line">      return 1;</span><br><span class="line">  &#125;</span><br><span class="line">  else return b.date - a.date; &#x2F;&#x2F; 都没定义按照文章日期降序排</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">var paginationDir.config.pagination_ dir || &#39;page&#39;;</span><br><span class="line">var path.config.index_ generator.path || &#39;&#39;;</span><br><span class="line"></span><br><span class="line">return pagination(path, posts, &#123;</span><br><span class="line">	perPage: config.index_ generator.per_page,</span><br><span class="line">	layout: [&#39;index&#39;, &#39;archive&#39;],</span><br><span class="line">	format: paginationDir + &#39;&#x2F;%d&#x2F;&#39;,</span><br><span class="line">	data: &#123;</span><br><span class="line">    	_index: true</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>1、添加如下<code>javascript</code>代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">posts.data &#x3D; posts.data.sort(function(a, b) &#123;</span><br><span class="line">      if(a.top &amp;&amp; b.top) &#123; &#x2F;&#x2F; 两篇文章top都有定义</span><br><span class="line">          if(a.top &#x3D;&#x3D; b.top) return b.date - a.date; &#x2F;&#x2F; 若top值一样则按照文章日期降序排</span><br><span class="line">          else return b.top - a.top; &#x2F;&#x2F; 否则按照top值降序排</span><br><span class="line">      &#125;</span><br><span class="line">      else if(a.top &amp;&amp; !b.top) &#123; &#x2F;&#x2F; 以下是只有一篇文章top有定义，那么将有top的排在前面（这里用异或操作居然不行233）</span><br><span class="line">          return -1;</span><br><span class="line">      &#125;</span><br><span class="line">      else if(!a.top &amp;&amp; b.top) &#123;</span><br><span class="line">          return 1;</span><br><span class="line">      &#125;</span><br><span class="line">      else return b.date - a.date; &#x2F;&#x2F; 都没定义按照文章日期降序排</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+<p>2、在对应的md文件中添加top属性：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: 网站素材</span><br><span class="line">date: 2021-01-08 11:23:25</span><br><span class="line">tags:</span><br><span class="line">- 网站素材</span><br><span class="line">categories: </span><br><span class="line">- 工作笔记</span><br><span class="line">- 网站素材</span><br><span class="line">top: 102</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+<p><a href="https://blog.csdn.net/qq_32454537/article/details/79482920">参考文献</a></p>
+]]></content>
+      <categories>
+        <category>工作笔记</category>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>Element-ui</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>HTML中的特殊符号</title>
     <url>/2020/07/09/HTML%E4%B8%AD%E7%9A%84%E7%89%B9%E6%AE%8A%E7%AC%A6%E5%8F%B7/</url>
     <content><![CDATA[<p>&infin;</p>
@@ -1880,82 +1956,6 @@ limitations under the License.</code></pre>
       </categories>
       <tags>
         <tag>HTML中的特殊符号</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hexo-Gitee-Pages搭建个人博客</title>
-    <url>/2020/07/07/Hexo-Gitee-Pages%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<h3 id="一、环境配置"><a href="#一、环境配置" class="headerlink" title="一、环境配置"></a>一、环境配置</h3><p>node.js  <a href="https://nodejs.org/zh-cn/" title="" target="">官网</a><br>Git   <a href="https://git-scm.com/" title="" target="">官网</a></p>
-<h3 id="二、Hexo的安装与基本命令"><a href="#二、Hexo的安装与基本命令" class="headerlink" title="二、Hexo的安装与基本命令"></a>二、Hexo的安装与基本命令</h3><h4 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h4><p>如果没有安装hexo的，只需要在目录中单击右键启动Git Bash Here，输入命令：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install -g hexo </span><br></pre></td></tr></table></figure>
-<h4 id="初始化在本地生成Hexo相关目录"><a href="#初始化在本地生成Hexo相关目录" class="headerlink" title="初始化在本地生成Hexo相关目录"></a>初始化在本地生成Hexo相关目录</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo init Note  # 初始化创建，会再桌面创建Note文件夹</span><br><span class="line">cd Note         # 进入Note目录</span><br><span class="line">npm install     # 进一步安装hexo所需文件</span><br></pre></td></tr></table></figure>
-<h4 id="Hexo三连"><a href="#Hexo三连" class="headerlink" title="Hexo三连"></a>Hexo三连</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo clean(or c)          # 清空已有hexo网站文件</span><br><span class="line">hexo generate(or g)   # 依据网页文本与新的CSS样式生成新网站文件</span><br><span class="line">hexo server(or s)     # 启动本地服务器，可以在localhost:4000查看网站修改效果</span><br></pre></td></tr></table></figure>
-<h3 id="配置Git个人信息"><a href="#配置Git个人信息" class="headerlink" title="配置Git个人信息"></a>配置Git个人信息</h3><p>Git 全局设置:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git config --global user.name &quot;Github用户名&quot;       &#x2F;&#x2F;自己Github的账号名</span><br><span class="line">git config --global user.email &quot;Github邮箱&quot;        &#x2F;&#x2F;自己注册Github的邮箱地址</span><br></pre></td></tr></table></figure>
-<p>创建 git 仓库:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mkdir test</span><br><span class="line">cd test</span><br><span class="line">git init</span><br><span class="line">touch README.md</span><br><span class="line">git add README.md</span><br><span class="line">git commit -m &quot;first commit&quot;</span><br><span class="line">git remote add origin git@gitee.com:AAAA&#x2F;AAAA.git</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
-<p>已有仓库?</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd existing_git_repo</span><br><span class="line">git remote add origin git@gitee.com:AAAA&#x2F;AAAA.git</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
-<h3 id="三、主题下载与安装"><a href="#三、主题下载与安装" class="headerlink" title="三、主题下载与安装"></a>三、主题下载与安装</h3><p>Hexo官网上提供了丰富的主题可选，你只需要打开对应的界面（<a href="https://hexo.io/themes/" rel="nofollow noreferrer" target="_blank">https://hexo.io/themes/</a>）选择喜欢的，然后点击<strong>名称</strong>跳转到<strong>GitHub</strong>仓库选择<em>下载或者克隆</em>对应的<strong>zip</strong>文件到本地，并且解压到网站目录下的<strong>themes</strong>目录即可。</p>
-<p>然后接下来，你需要修改两个配置文件：</p>
-<li>你的网站根目录下的<strong>_config.yml</strong>文件，即网站配置文件；</li>
-<li>你选择的主题的自带配置文件<strong>_config.yml</strong>，即主题样式配置文件；</li>
-
-<h4 id="生成-添加-SSH-公钥之后，测试是否连接成功"><a href="#生成-添加-SSH-公钥之后，测试是否连接成功" class="headerlink" title="生成/添加 SSH 公钥之后，测试是否连接成功:"></a>生成/添加 SSH 公钥之后，测试是否连接成功:</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssh -T git@gitee.com</span><br><span class="line"></span><br><span class="line">如果成功，会显示：</span><br><span class="line">Hi xxx! You&#39;ve successfully authenticated, but GITEE.COM does not provide shell access.</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>工作笔记</category>
-        <category>Hexo</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hexo + NexT主题博客相关设置</title>
-    <url>/2018/08/02/Hexo-NexT%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2%E7%9B%B8%E5%85%B3%E8%AE%BE%E7%BD%AE/</url>
-    <content><![CDATA[<h2 id="一、添加文章版权声明功能"><a href="#一、添加文章版权声明功能" class="headerlink" title="一、添加文章版权声明功能"></a>一、添加文章版权声明功能</h2><p>打开博客目录下的主题配置文件（/themes/next/_config.yml），找到Declare license on posts 标签，进行配置：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Declare license on posts</span></span><br><span class="line">post_copyright:</span><br><span class="line">  <span class="built_in">enable</span>: <span class="literal">true</span>    <span class="comment">#激活版权声明模块</span></span><br><span class="line">  license: CC BY-NC-SA 3.0     <span class="comment">#版权许可协议</span></span><br><span class="line">  license_url: https://winney07.github.io/      <span class="comment">#声明的文章的可点击链接（域名）</span></span><br></pre></td></tr></table></figure>
-<p>配置完后，执行以下命令，在浏览器中访问，效果如图所示：<br><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Hexo-NexT%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2%E7%9B%B8%E5%85%B3%E8%AE%BE%E7%BD%AE/next-set1.png" alt="版本声明设置"></p>
-<a id="more"></a>
-<h2 id="二、设置favicon图标"><a href="#二、设置favicon图标" class="headerlink" title="二、设置favicon图标"></a>二、设置favicon图标</h2><p>1、选择一个favicon制作网站完成制作，例如：<a href="http://www.bitbug.net/" title="" target="">比特虫</a> ，制作一个16<em>16，一个32</em>32的；<br>2、两个不同尺寸大小的文件，重名为favicon-16x16-next.png和favicon-32x32-next.png；<br>2、将重命名的两个图片文件放到博客目录下的themes/next/source/images中（覆盖原来的两个默认的）<br>如图所示：<br><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Hexo-NexT%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2%E7%9B%B8%E5%85%B3%E8%AE%BE%E7%BD%AE/favicon.png" alt="设置favicon图标"></p>
-<h2 id="三、添加头像"><a href="#三、添加头像" class="headerlink" title="三、添加头像"></a>三、添加头像</h2><p>1、把想要设置的头像图片放到hexo/themes/next/source/images目录下;<br>2、在hexo/themes/next/layout/_macro目录中找到sidebar.swig文件;<br>3、在sidebar.swig文件中找到类名为：site-overview-wrap sidebar-panel sidebar-panel-active的section标签，进行如图所示的修改：<br><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Hexo-NexT%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2%E7%9B%B8%E5%85%B3%E8%AE%BE%E7%BD%AE/user-head.png" alt="添加头像"><br>效果如图所示：(若想去掉边框，可以根据头像标签的类名，全局搜索，找到对应的样式进行修改)<br><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Hexo-NexT%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2%E7%9B%B8%E5%85%B3%E8%AE%BE%E7%BD%AE/user-header.png" alt="修改头像样式"></p>
-<h2 id="四、添加友情链接"><a href="#四、添加友情链接" class="headerlink" title="四、添加友情链接"></a>四、添加友情链接</h2><p>打开主题配置文件（/themes/next/_config.yml），找到以下内容进行修改：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Blog rolls</span></span><br><span class="line">links_icon: link</span><br><span class="line">links_title: 友情链接 </span><br><span class="line"><span class="comment"># links_layout: block   //块状显示（选择了行内显示，这个要注释掉，不然会报错）</span></span><br><span class="line">links_layout: inline    //行内显示</span><br><span class="line">links:</span><br><span class="line">  小超: https://www.xiaochao.me/</span><br><span class="line">  Github: https://www.github.com</span><br></pre></td></tr></table></figure>
-<p>如图所示：<br><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Hexo-NexT%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2%E7%9B%B8%E5%85%B3%E8%AE%BE%E7%BD%AE/friend-link.png" alt="添加友情链接"></p>
-<h2 id="五、调整hexo页面宽度"><a href="#五、调整hexo页面宽度" class="headerlink" title="五、调整hexo页面宽度"></a>五、调整hexo页面宽度</h2><p>博客在浏览器上的留白太多，因此想增加文章的宽度。</p>
-<p>打开/Hexo/themes/hexo-theme-next/source//css/_variables/custom.styl 添加两行代码即可：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$main-desktop &#x3D; 1400px </span><br><span class="line">$content-desktop &#x3D; 1100px</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>工作笔记</category>
-        <category>Hexo</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hexo博文置顶（自定义排序）</title>
-    <url>/2021/01/14/Hexo%E5%8D%9A%E6%96%87%E7%BD%AE%E9%A1%B6%EF%BC%88%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%92%E5%BA%8F%EF%BC%89/</url>
-    <content><![CDATA[<h4 id="Hexo博文置顶（自定义排序）"><a href="#Hexo博文置顶（自定义排序）" class="headerlink" title="Hexo博文置顶（自定义排序）"></a>Hexo博文置顶（自定义排序）</h4><blockquote>
-<p>使用的是<code>top</code>属性，<code>top</code>值越高，排序越在前，不设置<code>top</code>值得博文按照时间顺序排序。<br>修改Hexo文件夹下的node_modules/hexo-generator-index/lib/generator.js</p>
-</blockquote>
-<p>原来代码：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const config &#x3D; this.config;</span><br><span class="line">const posts &#x3D; locals.posts.sort(config.index_ generator.order by);</span><br><span class="line"></span><br><span class="line">sort(posts.data, (a， b) &#x3D;&gt; (b.sticky || 0) - (a.sticky || 0));</span><br><span class="line"></span><br><span class="line">const paginationDir.config.pagination_ dir || &#39;page&#39;;</span><br><span class="line">const path.config.index_ generator.path || &#39;&#39;;</span><br><span class="line"></span><br><span class="line">return pagination(path, posts, &#123;</span><br><span class="line">	perPage: config.index_ generator.per_page,</span><br><span class="line">	layout: [&#39;index&#39;, &#39;archive&#39;],</span><br><span class="line">	format: paginationDir + &#39;&#x2F;%d&#x2F;&#39;,</span><br><span class="line">	data: &#123;</span><br><span class="line">    	_index: true</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>改为：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var config &#x3D; this.config;</span><br><span class="line">var posts &#x3D; locals.posts.sort(config.index_ generator.order by);</span><br><span class="line"></span><br><span class="line">posts.data &#x3D; posts.data.sort(function(a, b) &#123;</span><br><span class="line">  if(a.top &amp;&amp; b.top) &#123; &#x2F;&#x2F; 两篇文章top都有定义</span><br><span class="line">      if(a.top &#x3D;&#x3D; b.top) return b.date - a.date; &#x2F;&#x2F; 若top值一样则按照文章日期降序排</span><br><span class="line">      else return b.top - a.top; &#x2F;&#x2F; 否则按照top值降序排</span><br><span class="line">  &#125;</span><br><span class="line">  else if(a.top &amp;&amp; !b.top) &#123; &#x2F;&#x2F; 以下是只有一篇文章top有定义，那么将有top的排在前面（这里用异或操作居然不行233）</span><br><span class="line">      return -1;</span><br><span class="line">  &#125;</span><br><span class="line">  else if(!a.top &amp;&amp; b.top) &#123;</span><br><span class="line">      return 1;</span><br><span class="line">  &#125;</span><br><span class="line">  else return b.date - a.date; &#x2F;&#x2F; 都没定义按照文章日期降序排</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">var paginationDir.config.pagination_ dir || &#39;page&#39;;</span><br><span class="line">var path.config.index_ generator.path || &#39;&#39;;</span><br><span class="line"></span><br><span class="line">return pagination(path, posts, &#123;</span><br><span class="line">	perPage: config.index_ generator.per_page,</span><br><span class="line">	layout: [&#39;index&#39;, &#39;archive&#39;],</span><br><span class="line">	format: paginationDir + &#39;&#x2F;%d&#x2F;&#39;,</span><br><span class="line">	data: &#123;</span><br><span class="line">    	_index: true</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>1、添加如下<code>javascript</code>代码：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">posts.data &#x3D; posts.data.sort(function(a, b) &#123;</span><br><span class="line">      if(a.top &amp;&amp; b.top) &#123; &#x2F;&#x2F; 两篇文章top都有定义</span><br><span class="line">          if(a.top &#x3D;&#x3D; b.top) return b.date - a.date; &#x2F;&#x2F; 若top值一样则按照文章日期降序排</span><br><span class="line">          else return b.top - a.top; &#x2F;&#x2F; 否则按照top值降序排</span><br><span class="line">      &#125;</span><br><span class="line">      else if(a.top &amp;&amp; !b.top) &#123; &#x2F;&#x2F; 以下是只有一篇文章top有定义，那么将有top的排在前面（这里用异或操作居然不行233）</span><br><span class="line">          return -1;</span><br><span class="line">      &#125;</span><br><span class="line">      else if(!a.top &amp;&amp; b.top) &#123;</span><br><span class="line">          return 1;</span><br><span class="line">      &#125;</span><br><span class="line">      else return b.date - a.date; &#x2F;&#x2F; 都没定义按照文章日期降序排</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
-<p>2、在对应的md文件中添加top属性：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: 网站素材</span><br><span class="line">date: 2021-01-08 11:23:25</span><br><span class="line">tags:</span><br><span class="line">- 网站素材</span><br><span class="line">categories: </span><br><span class="line">- 工作笔记</span><br><span class="line">- 网站素材</span><br><span class="line">top: 102</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-<p><a href="https://blog.csdn.net/qq_32454537/article/details/79482920">参考文献</a></p>
-]]></content>
-      <categories>
-        <category>工作笔记</category>
-        <category>Hexo</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
-        <tag>Element-ui</tag>
       </tags>
   </entry>
   <entry>
@@ -2686,13 +2686,6 @@ limitations under the License.</code></pre>
       </tags>
   </entry>
   <entry>
-    <title>JavaScript思维导图-笔记</title>
-    <url>/2021/02/03/JavaScript%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE-%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<p>注：只做笔记查阅，侵权必删。</p>
-<p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/JavaScript%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE-%E7%AC%94%E8%AE%B0/yunsuanfu.gif" alt="JavaScript思维导图"><br><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/JavaScript%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE-%E7%AC%94%E8%AE%B0/shuzu.gif" alt="JavaScript思维导图"><br><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/JavaScript%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE-%E7%AC%94%E8%AE%B0/bianliang.gif" alt="JavaScript思维导图"><br><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/JavaScript%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE-%E7%AC%94%E8%AE%B0/yuju.gif" alt="JavaScript思维导图"><br><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/JavaScript%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE-%E7%AC%94%E8%AE%B0/zhengze.gif" alt="JavaScript思维导图"><br><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/JavaScript%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE-%E7%AC%94%E8%AE%B0/DOM.gif" alt="JavaScript思维导图"><br><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/JavaScript%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE-%E7%AC%94%E8%AE%B0/hanshu.gif" alt="JavaScript思维导图"><br><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/JavaScript%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE-%E7%AC%94%E8%AE%B0/zifuchuanhanshu.gif" alt="JavaScript思维导图"></p>
-]]></content>
-  </entry>
-  <entry>
     <title>JavaScript-笔记</title>
     <url>/2019/10/28/JavaScript-%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 常量 使用 全部字母大写，单词间下划线分隔 的命名方式。</span><br><span class="line">var HTML_ENTITY &#x3D; &#123;&#125;;</span><br><span class="line">&#x2F;&#x2F; 类 使用 Pascal命名法。 类名 使用 名词。</span><br><span class="line">function TextNode(options) &#123;</span><br><span class="line">    &#x2F;&#x2F;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F; 函数名 使用 动宾短语。</span><br><span class="line">function getStyle(element) &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -2817,6 +2810,13 @@ limitations under the License.</code></pre>
       <tags>
         <tag>JavaScript</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>JavaScript思维导图-笔记</title>
+    <url>/2021/02/03/JavaScript%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE-%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p>注：只做笔记查阅，侵权必删。</p>
+<p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/JavaScript%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE-%E7%AC%94%E8%AE%B0/yunsuanfu.gif" alt="JavaScript思维导图"><br><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/JavaScript%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE-%E7%AC%94%E8%AE%B0/shuzu.gif" alt="JavaScript思维导图"><br><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/JavaScript%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE-%E7%AC%94%E8%AE%B0/bianliang.gif" alt="JavaScript思维导图"><br><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/JavaScript%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE-%E7%AC%94%E8%AE%B0/yuju.gif" alt="JavaScript思维导图"><br><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/JavaScript%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE-%E7%AC%94%E8%AE%B0/zhengze.gif" alt="JavaScript思维导图"><br><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/JavaScript%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE-%E7%AC%94%E8%AE%B0/DOM.gif" alt="JavaScript思维导图"><br><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/JavaScript%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE-%E7%AC%94%E8%AE%B0/hanshu.gif" alt="JavaScript思维导图"><br><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/JavaScript%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE-%E7%AC%94%E8%AE%B0/zifuchuanhanshu.gif" alt="JavaScript思维导图"></p>
+]]></content>
   </entry>
   <entry>
     <title>JavaScript高级面向对象</title>
@@ -3633,19 +3633,6 @@ limitations under the License.</code></pre>
       </tags>
   </entry>
   <entry>
-    <title>SVN-笔记</title>
-    <url>/2021/01/18/SVN-%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h4 id="显示日志（查看更新内容）"><a href="#显示日志（查看更新内容）" class="headerlink" title="显示日志（查看更新内容）"></a>显示日志（查看更新内容）</h4><p>右键—&gt;TortoiseSVN—&gt;显示日志—&gt;查看更新下来的内容，或者对之前的代码进行比较</p>
-]]></content>
-      <categories>
-        <category>工作笔记</category>
-        <category>SVN</category>
-      </categories>
-      <tags>
-        <tag>SVN</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>TypeScript 简介</title>
     <url>/2020/11/04/TypeScript-%E7%AE%80%E4%BB%8B/</url>
     <content><![CDATA[<p><a href="https://jspang.com/detailed?id=63">【技术胖博客】</a></p>
@@ -3668,6 +3655,19 @@ limitations under the License.</code></pre>
       </categories>
       <tags>
         <tag>TypeScript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SVN-笔记</title>
+    <url>/2021/01/18/SVN-%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h4 id="显示日志（查看更新内容）"><a href="#显示日志（查看更新内容）" class="headerlink" title="显示日志（查看更新内容）"></a>显示日志（查看更新内容）</h4><p>右键—&gt;TortoiseSVN—&gt;显示日志—&gt;查看更新下来的内容，或者对之前的代码进行比较</p>
+]]></content>
+      <categories>
+        <category>工作笔记</category>
+        <category>SVN</category>
+      </categories>
+      <tags>
+        <tag>SVN</tag>
       </tags>
   </entry>
   <entry>
@@ -3843,62 +3843,6 @@ limitations under the License.</code></pre>
       </tags>
   </entry>
   <entry>
-    <title>TypeScript的联合类型</title>
-    <url>/2020/11/11/TypeScript%E7%9A%84%E8%81%94%E5%90%88%E7%B1%BB%E5%9E%8B/</url>
-    <content><![CDATA[<h4 id="联合类型和类型保护"><a href="#联合类型和类型保护" class="headerlink" title="联合类型和类型保护"></a>联合类型和类型保护</h4><blockquote>
-<h4 id="联合类型展示"><a href="#联合类型展示" class="headerlink" title="联合类型展示"></a>联合类型展示</h4></blockquote>
-<p>所谓联合类型，可以认为一个变量可能有两种或两种以上的类型。所以我们使用了联合类型，关键符号是<code>|</code>(竖线)。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">interface Waiter &#123;</span><br><span class="line">  anjiao: boolean;</span><br><span class="line">  say: () &#x3D;&gt; &#123;&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">interface Teacher &#123;</span><br><span class="line">  anjiao: boolean;</span><br><span class="line">  skill: () &#x3D;&gt; &#123;&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function judgeWho(animal: Waiter | Teacher) &#123;&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function judgeWho(animal: Waiter | Teacher) &#123;</span><br><span class="line">  animal.say();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>但这时候问题来了，如果我直接写一个这样的方法，就会报错，因为<code>judgeWho</code>不能准确的判断联合类型具体的实例是什么。</p>
-<p>这时候就需要再引出一个概念叫做<code>类型保护</code></p>
-<blockquote>
-<h4 id="类型保护-类型断言"><a href="#类型保护-类型断言" class="headerlink" title="类型保护-类型断言"></a>类型保护-类型断言</h4></blockquote>
-<p>类型断言就是通过断言的方式确定传递过来的准确值</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">interface Waiter &#123;</span><br><span class="line">  anjiao: boolean;</span><br><span class="line">  say: () &#x3D;&gt; &#123;&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">interface Teacher &#123;</span><br><span class="line">  anjiao: boolean;</span><br><span class="line">  skill: () &#x3D;&gt; &#123;&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function judgeWho(animal: Waiter | Teacher) &#123;</span><br><span class="line">  if (animal.anjiao) &#123;</span><br><span class="line">    (animal as Teacher).skill();</span><br><span class="line">  &#125;else&#123;</span><br><span class="line">    (animal as Waiter).say();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<h4 id="类型保护-in语法"><a href="#类型保护-in语法" class="headerlink" title="类型保护-in语法"></a>类型保护-in语法</h4></blockquote>
-<p>经常使用<code>in</code>语法来作类型保护，比如用<code>if</code>来判断<code>animal</code>里有没有<code>skill()</code>方法。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function judgeWhoTwo(animal: Waiter | Teacher) &#123;</span><br><span class="line">  if (&quot;skill&quot; in animal) &#123;</span><br><span class="line">    animal.skill();</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    animal.say();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这里的<code>else</code>部分能够自动判断，得益于<code>TypeScript</code>的自动判断。</p>
-<blockquote>
-<h4 id="类型保护-typeof-语法"><a href="#类型保护-typeof-语法" class="headerlink" title="类型保护-typeof 语法"></a>类型保护-typeof 语法</h4></blockquote>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function add(first: string | number, second: string | number) &#123;</span><br><span class="line">  return first + second;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这时候会报错，解决这个问题，就可以直接用type of来进行解决</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function add(first: string | number, second: string | number) &#123;</span><br><span class="line">  if (typeof first &#x3D;&#x3D;&#x3D; &quot;string&quot; || typeof second &#x3D;&#x3D;&#x3D; &quot;string&quot;) &#123;</span><br><span class="line">    return &#96;$&#123;first&#125;$&#123;second&#125;&#96;;</span><br><span class="line">  &#125;</span><br><span class="line">  return first + second;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<h4 id="类型保护-instanceof-语法"><a href="#类型保护-instanceof-语法" class="headerlink" title="类型保护-instanceof 语法"></a>类型保护-instanceof 语法</h4></blockquote>
-<p>比如现在要作类型保护的是一个对象，这时候就可以使用<code>instanceof</code>语法来作</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class NumberObj &#123;</span><br><span class="line">  count: number;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function addObj(first: object | NumberObj, second: object | NumberObj) &#123;</span><br><span class="line">  return first.count + second.count;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>报错不要紧，直接使用<code>instanceof</code>语法进行判断一下，就可以解决问题。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function addObj(first: object | NumberObj, second: object | NumberObj) &#123;</span><br><span class="line">  if (first instanceof NumberObj &amp;&amp; second instanceof NumberObj) &#123;</span><br><span class="line">    return first.count + second.count;</span><br><span class="line">  &#125;</span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="Enum-枚举类型讲解"><a href="#Enum-枚举类型讲解" class="headerlink" title="Enum 枚举类型讲解"></a>Enum 枚举类型讲解</h4><p>初级程序员写法：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getServe</span>(<span class="params">status: number</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (status === <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;massage&quot;</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (status === <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;SPA&quot;</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (status === <span class="number">2</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;dabaojian&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> result = getServe(<span class="number">0</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">`我要去<span class="subst">$&#123;result&#125;</span>`</span>);</span><br></pre></td></tr></table></figure>
-<p>中级程序员写法：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> Status = &#123;</span><br><span class="line">  MASSAGE: <span class="number">0</span>,</span><br><span class="line">  SPA: <span class="number">1</span>,</span><br><span class="line">  DABAOJIAN: <span class="number">2</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getServe</span>(<span class="params">status: any</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (status === Status.MASSAGE) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;massage&quot;</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (status === Status.SPA) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;spa&quot;</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (status === Status.DABAOJIAN) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;dabaojian&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> result = getServe(Status.SPA);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">`我要去<span class="subst">$&#123;result&#125;</span>`</span>);</span><br></pre></td></tr></table></figure>
-<p>高级程序员写法：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">enum Status &#123;</span><br><span class="line">  MASSAGE,</span><br><span class="line">  SPA,</span><br><span class="line">  DABAOJIAN,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getServe</span>(<span class="params">status: any</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (status === Status.MASSAGE) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;massage&quot;</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (status === Status.SPA) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;spa&quot;</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (status === Status.DABAOJIAN) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;dabaojian&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> result = getServe(Status.SPA);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">`我要去<span class="subst">$&#123;result&#125;</span>`</span>);</span><br></pre></td></tr></table></figure>
-<blockquote>
-<h4 id="枚举类型的对应值"><a href="#枚举类型的对应值" class="headerlink" title="枚举类型的对应值"></a>枚举类型的对应值</h4></blockquote>
-<p>你调用时传一个<code>1</code>,也会输出<code>我要去spa</code>。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> result = getServe(<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
-<p>因为枚举类型是有对应的数字值的，默认是从 0 开始的</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(Status.MASSAGE);</span><br><span class="line"><span class="built_in">console</span>.log(Status.SPA);</span><br><span class="line"><span class="built_in">console</span>.log(Status.DABAOJIAN);</span><br></pre></td></tr></table></figure>
-<p>可以看出结果就是<code>0,1,2</code>。那这时候不想默认从 0 开始，而是想从 1 开始。可以这样写。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">enum Status &#123;</span><br><span class="line">  MASSAGE = <span class="number">1</span>,</span><br><span class="line">  SPA,</span><br><span class="line">  DABAOJIAN,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<h4 id="枚举通过下标反查"><a href="#枚举通过下标反查" class="headerlink" title="枚举通过下标反查"></a>枚举通过下标反查</h4></blockquote>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(Status.MASSAGE, Status[<span class="number">1</span>]);</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>工作笔记</category>
-        <category>TypeScript</category>
-      </categories>
-      <tags>
-        <tag>TypeScript</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>TypeScript的类</title>
     <url>/2020/11/10/TypeScript%E7%9A%84%E7%B1%BB/</url>
     <content><![CDATA[<h4 id="TypeScript中类的概念和使用"><a href="#TypeScript中类的概念和使用" class="headerlink" title="TypeScript中类的概念和使用"></a>TypeScript中类的概念和使用</h4><blockquote>
@@ -4054,6 +3998,62 @@ limitations under the License.</code></pre>
 <p><code>noUnusedParameters</code>是针对于名优使用的函数的，方法和<code>noUnusedLocals：true</code>一样，小伙伴们自己尝试吧。</p>
 <h6 id="编译选项详解"><a href="#编译选项详解" class="headerlink" title="编译选项详解"></a>编译选项详解</h6><p><a href="https://www.tslang.cn/docs/handbook/compiler-options.html">编译选项</a></p>
 ]]></content>
+      <categories>
+        <category>工作笔记</category>
+        <category>TypeScript</category>
+      </categories>
+      <tags>
+        <tag>TypeScript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>TypeScript的联合类型</title>
+    <url>/2020/11/11/TypeScript%E7%9A%84%E8%81%94%E5%90%88%E7%B1%BB%E5%9E%8B/</url>
+    <content><![CDATA[<h4 id="联合类型和类型保护"><a href="#联合类型和类型保护" class="headerlink" title="联合类型和类型保护"></a>联合类型和类型保护</h4><blockquote>
+<h4 id="联合类型展示"><a href="#联合类型展示" class="headerlink" title="联合类型展示"></a>联合类型展示</h4></blockquote>
+<p>所谓联合类型，可以认为一个变量可能有两种或两种以上的类型。所以我们使用了联合类型，关键符号是<code>|</code>(竖线)。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">interface Waiter &#123;</span><br><span class="line">  anjiao: boolean;</span><br><span class="line">  say: () &#x3D;&gt; &#123;&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">interface Teacher &#123;</span><br><span class="line">  anjiao: boolean;</span><br><span class="line">  skill: () &#x3D;&gt; &#123;&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function judgeWho(animal: Waiter | Teacher) &#123;&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function judgeWho(animal: Waiter | Teacher) &#123;</span><br><span class="line">  animal.say();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>但这时候问题来了，如果我直接写一个这样的方法，就会报错，因为<code>judgeWho</code>不能准确的判断联合类型具体的实例是什么。</p>
+<p>这时候就需要再引出一个概念叫做<code>类型保护</code></p>
+<blockquote>
+<h4 id="类型保护-类型断言"><a href="#类型保护-类型断言" class="headerlink" title="类型保护-类型断言"></a>类型保护-类型断言</h4></blockquote>
+<p>类型断言就是通过断言的方式确定传递过来的准确值</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">interface Waiter &#123;</span><br><span class="line">  anjiao: boolean;</span><br><span class="line">  say: () &#x3D;&gt; &#123;&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">interface Teacher &#123;</span><br><span class="line">  anjiao: boolean;</span><br><span class="line">  skill: () &#x3D;&gt; &#123;&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function judgeWho(animal: Waiter | Teacher) &#123;</span><br><span class="line">  if (animal.anjiao) &#123;</span><br><span class="line">    (animal as Teacher).skill();</span><br><span class="line">  &#125;else&#123;</span><br><span class="line">    (animal as Waiter).say();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<h4 id="类型保护-in语法"><a href="#类型保护-in语法" class="headerlink" title="类型保护-in语法"></a>类型保护-in语法</h4></blockquote>
+<p>经常使用<code>in</code>语法来作类型保护，比如用<code>if</code>来判断<code>animal</code>里有没有<code>skill()</code>方法。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function judgeWhoTwo(animal: Waiter | Teacher) &#123;</span><br><span class="line">  if (&quot;skill&quot; in animal) &#123;</span><br><span class="line">    animal.skill();</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    animal.say();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里的<code>else</code>部分能够自动判断，得益于<code>TypeScript</code>的自动判断。</p>
+<blockquote>
+<h4 id="类型保护-typeof-语法"><a href="#类型保护-typeof-语法" class="headerlink" title="类型保护-typeof 语法"></a>类型保护-typeof 语法</h4></blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function add(first: string | number, second: string | number) &#123;</span><br><span class="line">  return first + second;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这时候会报错，解决这个问题，就可以直接用type of来进行解决</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function add(first: string | number, second: string | number) &#123;</span><br><span class="line">  if (typeof first &#x3D;&#x3D;&#x3D; &quot;string&quot; || typeof second &#x3D;&#x3D;&#x3D; &quot;string&quot;) &#123;</span><br><span class="line">    return &#96;$&#123;first&#125;$&#123;second&#125;&#96;;</span><br><span class="line">  &#125;</span><br><span class="line">  return first + second;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<h4 id="类型保护-instanceof-语法"><a href="#类型保护-instanceof-语法" class="headerlink" title="类型保护-instanceof 语法"></a>类型保护-instanceof 语法</h4></blockquote>
+<p>比如现在要作类型保护的是一个对象，这时候就可以使用<code>instanceof</code>语法来作</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class NumberObj &#123;</span><br><span class="line">  count: number;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function addObj(first: object | NumberObj, second: object | NumberObj) &#123;</span><br><span class="line">  return first.count + second.count;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>报错不要紧，直接使用<code>instanceof</code>语法进行判断一下，就可以解决问题。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function addObj(first: object | NumberObj, second: object | NumberObj) &#123;</span><br><span class="line">  if (first instanceof NumberObj &amp;&amp; second instanceof NumberObj) &#123;</span><br><span class="line">    return first.count + second.count;</span><br><span class="line">  &#125;</span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Enum-枚举类型讲解"><a href="#Enum-枚举类型讲解" class="headerlink" title="Enum 枚举类型讲解"></a>Enum 枚举类型讲解</h4><p>初级程序员写法：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getServe</span>(<span class="params">status: number</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (status === <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;massage&quot;</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (status === <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;SPA&quot;</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (status === <span class="number">2</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;dabaojian&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> result = getServe(<span class="number">0</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">`我要去<span class="subst">$&#123;result&#125;</span>`</span>);</span><br></pre></td></tr></table></figure>
+<p>中级程序员写法：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> Status = &#123;</span><br><span class="line">  MASSAGE: <span class="number">0</span>,</span><br><span class="line">  SPA: <span class="number">1</span>,</span><br><span class="line">  DABAOJIAN: <span class="number">2</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getServe</span>(<span class="params">status: any</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (status === Status.MASSAGE) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;massage&quot;</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (status === Status.SPA) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;spa&quot;</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (status === Status.DABAOJIAN) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;dabaojian&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> result = getServe(Status.SPA);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">`我要去<span class="subst">$&#123;result&#125;</span>`</span>);</span><br></pre></td></tr></table></figure>
+<p>高级程序员写法：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">enum Status &#123;</span><br><span class="line">  MASSAGE,</span><br><span class="line">  SPA,</span><br><span class="line">  DABAOJIAN,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getServe</span>(<span class="params">status: any</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (status === Status.MASSAGE) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;massage&quot;</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (status === Status.SPA) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;spa&quot;</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (status === Status.DABAOJIAN) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;dabaojian&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> result = getServe(Status.SPA);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">`我要去<span class="subst">$&#123;result&#125;</span>`</span>);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<h4 id="枚举类型的对应值"><a href="#枚举类型的对应值" class="headerlink" title="枚举类型的对应值"></a>枚举类型的对应值</h4></blockquote>
+<p>你调用时传一个<code>1</code>,也会输出<code>我要去spa</code>。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> result = getServe(<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+<p>因为枚举类型是有对应的数字值的，默认是从 0 开始的</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(Status.MASSAGE);</span><br><span class="line"><span class="built_in">console</span>.log(Status.SPA);</span><br><span class="line"><span class="built_in">console</span>.log(Status.DABAOJIAN);</span><br></pre></td></tr></table></figure>
+<p>可以看出结果就是<code>0,1,2</code>。那这时候不想默认从 0 开始，而是想从 1 开始。可以这样写。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">enum Status &#123;</span><br><span class="line">  MASSAGE = <span class="number">1</span>,</span><br><span class="line">  SPA,</span><br><span class="line">  DABAOJIAN,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<h4 id="枚举通过下标反查"><a href="#枚举通过下标反查" class="headerlink" title="枚举通过下标反查"></a>枚举通过下标反查</h4></blockquote>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(Status.MASSAGE, Status[<span class="number">1</span>]);</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>工作笔记</category>
         <category>TypeScript</category>
@@ -4762,6 +4762,27 @@ limitations under the License.</code></pre>
       </tags>
   </entry>
   <entry>
+    <title>Hello World</title>
+    <url>/2021/01/14/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html">Deployment</a></p>
+]]></content>
+      <categories>
+        <category>工作笔记</category>
+        <category>博客</category>
+      </categories>
+      <tags>
+        <tag>博客</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>gulp学习笔记</title>
     <url>/2019/07/11/gulp%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<p><a href="https://www.bilibili.com/video/av64407974?from=search&seid=17812780048673997573">前端自动化构建工具 Gulp 视频教程</a></p>
@@ -4895,27 +4916,6 @@ limitations under the License.</code></pre>
       </categories>
       <tags>
         <tag>Gulp</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/2021/01/14/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html">Deployment</a></p>
-]]></content>
-      <categories>
-        <category>工作笔记</category>
-        <category>博客</category>
-      </categories>
-      <tags>
-        <tag>博客</tag>
       </tags>
   </entry>
   <entry>
@@ -5675,13 +5675,6 @@ limitations under the License.</code></pre>
       </tags>
   </entry>
   <entry>
-    <title>七夕情人节</title>
-    <url>/2018/08/17/%E4%B8%83%E5%A4%95%E6%83%85%E4%BA%BA%E8%8A%82/</url>
-    <content><![CDATA[<p>祝大家七夕情人节快乐！ <a href="http://cms.xiaochao.me/yanyi/transition/" title="" target="">点这里前往</a></p>
-<p>拿别人的素材，自己弄了一个玩玩，是有点简单。</p>
-]]></content>
-  </entry>
-  <entry>
     <title>《Vue.js前端开发技术》</title>
     <url>/2020/06/15/%E3%80%8AVue-js%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E6%8A%80%E6%9C%AF%E3%80%8B/</url>
     <content><![CDATA[<h2 id="第1章-Vue入门"><a href="#第1章-Vue入门" class="headerlink" title="第1章 Vue入门"></a>第1章 Vue入门</h2><p>Vue.js是构建Web界面的JavaScript库，也是一个通过简洁的API提供高效数据绑定和灵活组件的系统。</p>
@@ -5776,18 +5769,11 @@ limitations under the License.</code></pre>
       </tags>
   </entry>
   <entry>
-    <title>使用cmd命令删除文件夹</title>
-    <url>/2019/12/06/%E4%BD%BF%E7%94%A8cmd%E5%91%BD%E4%BB%A4%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6%E5%A4%B9/</url>
-    <content><![CDATA[<h6 id="1、删除空文件夹"><a href="#1、删除空文件夹" class="headerlink" title="1、删除空文件夹"></a>1、删除空文件夹</h6><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rmdir 空文件夹名</span><br></pre></td></tr></table></figure>
-<h6 id="2、删除文件夹以及文件夹内所有内容（-s是删除所有子目录以及其中的内容；-q是在删除时，不提示yes-or-no）"><a href="#2、删除文件夹以及文件夹内所有内容（-s是删除所有子目录以及其中的内容；-q是在删除时，不提示yes-or-no）" class="headerlink" title="2、删除文件夹以及文件夹内所有内容（/s是删除所有子目录以及其中的内容；/q是在删除时，不提示yes or no）"></a>2、删除文件夹以及文件夹内所有内容（/s是删除所有子目录以及其中的内容；/q是在删除时，不提示yes or no）</h6><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rmdir /s/q 文件夹名</span><br></pre></td></tr></table></figure>
-<h6 id="3、删除指定盘符的文件夹-删除D盘multify文件夹下的my-multify文件夹以及子内容，并且不提示"><a href="#3、删除指定盘符的文件夹-删除D盘multify文件夹下的my-multify文件夹以及子内容，并且不提示" class="headerlink" title="3、删除指定盘符的文件夹(删除D盘multify文件夹下的my-multify文件夹以及子内容，并且不提示)"></a>3、删除指定盘符的文件夹(删除D盘multify文件夹下的my-multify文件夹以及子内容，并且不提示)</h6><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rmdir /s/q d:\multify\my-multify</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>工作笔记</category>
-        <category>常用命令</category>
-      </categories>
-      <tags>
-        <tag>常用命令</tag>
-      </tags>
+    <title>七夕情人节</title>
+    <url>/2018/08/17/%E4%B8%83%E5%A4%95%E6%83%85%E4%BA%BA%E8%8A%82/</url>
+    <content><![CDATA[<p>祝大家七夕情人节快乐！ <a href="http://cms.xiaochao.me/yanyi/transition/" title="" target="">点这里前往</a></p>
+<p>拿别人的素材，自己弄了一个玩玩，是有点简单。</p>
+]]></content>
   </entry>
   <entry>
     <title>优化JS代码的34种方法</title>
@@ -5820,6 +5806,20 @@ limitations under the License.</code></pre>
       </categories>
       <tags>
         <tag>Javascript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用cmd命令删除文件夹</title>
+    <url>/2019/12/06/%E4%BD%BF%E7%94%A8cmd%E5%91%BD%E4%BB%A4%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6%E5%A4%B9/</url>
+    <content><![CDATA[<h6 id="1、删除空文件夹"><a href="#1、删除空文件夹" class="headerlink" title="1、删除空文件夹"></a>1、删除空文件夹</h6><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rmdir 空文件夹名</span><br></pre></td></tr></table></figure>
+<h6 id="2、删除文件夹以及文件夹内所有内容（-s是删除所有子目录以及其中的内容；-q是在删除时，不提示yes-or-no）"><a href="#2、删除文件夹以及文件夹内所有内容（-s是删除所有子目录以及其中的内容；-q是在删除时，不提示yes-or-no）" class="headerlink" title="2、删除文件夹以及文件夹内所有内容（/s是删除所有子目录以及其中的内容；/q是在删除时，不提示yes or no）"></a>2、删除文件夹以及文件夹内所有内容（/s是删除所有子目录以及其中的内容；/q是在删除时，不提示yes or no）</h6><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rmdir /s/q 文件夹名</span><br></pre></td></tr></table></figure>
+<h6 id="3、删除指定盘符的文件夹-删除D盘multify文件夹下的my-multify文件夹以及子内容，并且不提示"><a href="#3、删除指定盘符的文件夹-删除D盘multify文件夹下的my-multify文件夹以及子内容，并且不提示" class="headerlink" title="3、删除指定盘符的文件夹(删除D盘multify文件夹下的my-multify文件夹以及子内容，并且不提示)"></a>3、删除指定盘符的文件夹(删除D盘multify文件夹下的my-multify文件夹以及子内容，并且不提示)</h6><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rmdir /s/q d:\multify\my-multify</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>工作笔记</category>
+        <category>常用命令</category>
+      </categories>
+      <tags>
+        <tag>常用命令</tag>
       </tags>
   </entry>
   <entry>
@@ -6039,6 +6039,42 @@ limitations under the License.</code></pre>
       </categories>
       <tags>
         <tag>css问题</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>前端插件-使用</title>
+    <url>/2021/01/27/%E5%89%8D%E7%AB%AF%E6%8F%92%E4%BB%B6-%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<p><a href="http://www.bootstrapmb.com/chajian">前端插件</a></p>
+<p><a href="http://www.bootstrapmb.com/muban">前端模板</a></p>
+<h4 id="Jquery-Upload-File"><a href="#Jquery-Upload-File" class="headerlink" title="Jquery Upload File"></a>Jquery Upload File</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;link rel&#x3D;&quot;stylesheet&quot; type&#x3D;&quot;text&#x2F;css&quot; href&#x3D;&quot;js&#x2F;jQuery-File-Upload-9.18.0&#x2F;css&#x2F;jquery.fileupload.css&quot; &#x2F;&gt;</span><br><span class="line"></span><br><span class="line">&lt;script src&#x3D;&quot;js&#x2F;jquery&#x2F;jquery.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;js&#x2F;jQuery-File-Upload-9.18.0&#x2F;js&#x2F;vendor&#x2F;jquery.ui.widget.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;js&#x2F;jQuery-File-Upload-9.18.0&#x2F;js&#x2F;jquery.iframe-transport.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;js&#x2F;jQuery-File-Upload-9.18.0&#x2F;js&#x2F;jquery.fileupload.js&quot;&gt;&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;input type&#x3D;&quot;hidden&quot; name&#x3D;&quot;game_apk&quot; &#x2F;&gt;</span><br><span class="line">&lt;span class&#x3D;&quot;btn btn-success fileinput-button&quot;&gt;</span><br><span class="line">	&lt;i class&#x3D;&quot;fa fa-plus&quot;&gt;&lt;&#x2F;i&gt;</span><br><span class="line">	&lt;span&gt;请上传apk文件&lt;&#x2F;span&gt;</span><br><span class="line"> 	 &lt;input id&#x3D;&quot;fileupload_1&quot; type&#x3D;&quot;file&quot; name&#x3D;&quot;files[]&quot; multiple&gt;</span><br><span class="line">&lt;&#x2F;span&gt;</span><br><span class="line">&lt;div id&#x3D;&quot;progress&quot;&gt;&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$(&#39;#fileupload_1&#39;).fileupload(&#123;</span><br><span class="line">    url: &quot;上传文件请求地址&quot;,</span><br><span class="line">    dataType: &#39;json&#39;,</span><br><span class="line">    done: function (e, data) &#123;</span><br><span class="line">        $.each(data.result.files, function (index, file) &#123;</span><br><span class="line">          $(&#39;:input[name&#x3D;game_apk]&#39;).val(decodeURIComponent(file.url));</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;,</span><br><span class="line">    fail: function (e, data) &#123;</span><br><span class="line">        console.log(&quot;上传失败&quot;)</span><br><span class="line">    &#125;,</span><br><span class="line">    progressall: function (e, data) &#123;</span><br><span class="line">        console.log(progress);</span><br><span class="line">        $(&quot;#progress&quot;).html(progress + &#39;%&#39;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="jquery-copy-js"><a href="#jquery-copy-js" class="headerlink" title="jquery.copy.js"></a>jquery.copy.js</h4><blockquote>
+<p>点击复制内容移动端全兼容(专治各种移动端浏览器)</p>
+</blockquote>
+<ul>
+<li>单页面一个复制</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;button id&#x3D;&quot;copy&quot;&gt;复制链接&lt;&#x2F;button&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$.copy(&#123;</span><br><span class="line">    &#x2F;&#x2F; imgUrl:&quot;success-tips.png&quot;,   &#x2F;&#x2F; 分享图标地址</span><br><span class="line">    text:&quot;复制成功&quot;, &#x2F;&#x2F;分享提示文案</span><br><span class="line">    copyUrl:&quot;复制的内容&#x2F;链接&quot;,   &#x2F;&#x2F; 自定义复制链接地址</span><br><span class="line">    tipTime:2000, 	&#x2F;&#x2F; 分享提示消失时间</span><br><span class="line">    copyId:&quot;#copy&quot;	&#x2F;&#x2F; 复制按钮id</span><br><span class="line">&#125;); </span><br></pre></td></tr></table></figure>
+<ul>
+<li>单页面多个复制链接</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var data &#x3D; [</span><br><span class="line">    &#123; &quot;url&quot;: &quot;www.baidu.com&quot; &#125;,</span><br><span class="line">    &#123; &quot;url&quot;: &quot;www.qq.com&quot; &#125;,</span><br><span class="line">    &#123; &quot;url&quot;: &quot;www.163.com&quot; &#125;</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line">$.each(data,function(i,item)&#123;</span><br><span class="line">    $(&quot;body&quot;).append(&#39;&lt;button id&#x3D;&quot;copy&#39;+i+&#39;&quot;&gt;复制链接&lt;&#x2F;button&gt;&#39;);</span><br><span class="line">    $.copy(&#123;</span><br><span class="line">        &#x2F;&#x2F; imgUrl:&quot;success-tips.png&quot;,  &#x2F;&#x2F; 分享图标地址</span><br><span class="line">        text:&quot;复制成功&quot;,  &#x2F;&#x2F; 分享提示文案</span><br><span class="line">        copyUrl:item.url,  &#x2F;&#x2F; 自定义复制链接地址</span><br><span class="line">        tipTime:2000,  &#x2F;&#x2F; 分享提示消失时间</span><br><span class="line">        copyId:&quot;#copy&quot;+i  &#x2F;&#x2F; 复制按钮id</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="mobileSelect-js-多级联动下拉菜单"><a href="#mobileSelect-js-多级联动下拉菜单" class="headerlink" title="mobileSelect.js-多级联动下拉菜单"></a>mobileSelect.js-多级联动下拉菜单</h4><p><a href="https://github.com/onlyhom/mobileSelect.js">mobileSelect.js-github</a></p>
+<h4 id="datetimepicker多次点击input日期选择器不显示"><a href="#datetimepicker多次点击input日期选择器不显示" class="headerlink" title="datetimepicker多次点击input日期选择器不显示"></a>datetimepicker多次点击input日期选择器不显示</h4><p>遇到datetimepicker多次（包括第二次点击）点击input框时日期选择器不显示，需要使用鼠标监听触发：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;*点方input框时加租监听毒件*&#x2F;</span><br><span class="line">document.getElementsByName(&#39;input的name名称&#39;)[0].addEventListener(&#39;click&#39;,myfunc)</span><br><span class="line">function myfunc(e)&#123;</span><br><span class="line">	e.currentTarget.blur();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>以上这段代码必须放在datetimepicker方法的后面。</p>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;日历</span><br><span class="line">var startDate &#x3D; $(&#39;#startDate&#39;).fdatepicker(&#123;</span><br><span class="line">	format: &quot;yyyy-mm-dd&quot;,</span><br><span class="line">	todayBtn: true</span><br><span class="line">&#125;).on(&#39;changeDate&#39;, function (ev)&#123;</span><br><span class="line">	startDate.hide();</span><br><span class="line">	$(&#39;#endDate&#39;)[0].focus();</span><br><span class="line">&#125;).data(&#39;datepicker&#39;);</span><br><span class="line"></span><br><span class="line">var endDate &#x3D; $(&#39;#endDate&#39;).fdatepicker(&#123;</span><br><span class="line">	format: &quot;yyyy-mm-dd&quot;,</span><br><span class="line">	todayBtn: true,</span><br><span class="line">&#125;).on(&#39;changeDate&#39;, function (ev)&#123;</span><br><span class="line">	endDate.hide();</span><br><span class="line">&#125;).data(&#39;datepicker&#39;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;解决输入框点击多次（包括两次）不显示的问题</span><br><span class="line">document.getElementById(&#39;startDate&#39;).addEventListener(&#39;click&#39;,myfunc);</span><br><span class="line">document.getElementById(&#39;endDate&#39;).addEventListener(&#39;click&#39;,myfunc);</span><br><span class="line">function myfunc(e)&#123;</span><br><span class="line">	e.currentTarget.blur();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="swiper"><a href="#swiper" class="headerlink" title="swiper"></a><a href="https://www.swiper.com.cn/">swiper</a></h4><h5 id="轮播图由两层效果改为三层"><a href="#轮播图由两层效果改为三层" class="headerlink" title="轮播图由两层效果改为三层"></a>轮播图由两层效果改为三层</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 加上这个样式，控制偏移量</span><br><span class="line">&lt;style&gt;</span><br><span class="line">    #certify .swiper-slide.swiper-slide-prev&#123;</span><br><span class="line">        transform: translateX(480px) scale(0.8) !important;</span><br><span class="line">    &#125;</span><br><span class="line">    #certify .swiper-slide.swiper-slide-next&#123;</span><br><span class="line">        transform: translateX(-480px) scale(0.8) !important;</span><br><span class="line">    &#125;</span><br><span class="line">    #certify .swiper-slide.swiper-slide-next + .swiper-slide&#123;</span><br><span class="line">        transform: translateX(-986px) scale(0.6) !important;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">var certifySwiper &#x3D; new Swiper(&#39;.detail&#39;, &#123;</span><br><span class="line">    watchSlidesProgress: true,</span><br><span class="line">    slidesPerView: &#39;auto&#39;,</span><br><span class="line">    centeredSlides: true,</span><br><span class="line">    loop: true,</span><br><span class="line">    loopedSlides: 5,</span><br><span class="line">    autoplay: true,</span><br><span class="line">    navigation: &#123;</span><br><span class="line">        nextEl: &#39;.swiper-button-next&#39;,</span><br><span class="line">        prevEl: &#39;.swiper-button-prev&#39;,</span><br><span class="line">    &#125;,</span><br><span class="line">    &#x2F;&#x2F; pagination: &#123;</span><br><span class="line">    &#x2F;&#x2F; 	el: &#39;.swiper-pagination&#39;,</span><br><span class="line">    &#x2F;&#x2F; 	clickable: true,</span><br><span class="line">    &#x2F;&#x2F; &#125;,</span><br><span class="line">    on: &#123;</span><br><span class="line">        progress: function (progress) &#123;</span><br><span class="line">            for (i &#x3D; 0; i &lt; this.slides.length; i++) &#123;</span><br><span class="line">                var slide &#x3D; this.slides.eq(i);</span><br><span class="line">                var slideProgress &#x3D; this.slides[i].progress;</span><br><span class="line">                modify &#x3D; 1;</span><br><span class="line">                if (Math.abs(slideProgress) &gt; 1) &#123;</span><br><span class="line">                    modify &#x3D; (Math.abs(slideProgress) - 1) * 0.3 + 1;</span><br><span class="line">                &#125;</span><br><span class="line">                translate &#x3D; slideProgress * modify * 260 + &#39;px&#39;;</span><br><span class="line">                scale &#x3D; 1 - Math.abs(slideProgress) &#x2F; 5;</span><br><span class="line">                zIndex &#x3D; 999 - Math.abs(Math.round(10 * slideProgress));</span><br><span class="line">                slide.transform(&#39;translateX(&#39; + translate + &#39;) scale(&#39; + scale + &#39;)&#39;);</span><br><span class="line">                slide.css(&#39;zIndex&#39;, zIndex);</span><br><span class="line">                slide.css(&#39;opacity&#39;, 1);</span><br><span class="line">                if (Math.abs(slideProgress) &gt; 3) &#123;</span><br><span class="line">                    slide.css(&#39;opacity&#39;, 0);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        setTransition: function (transition) &#123;</span><br><span class="line">            for (var i &#x3D; 0; i &lt; this.slides.length; i++) &#123;</span><br><span class="line">                var slide &#x3D; this.slides.eq(i)</span><br><span class="line">                slide.transition(transition);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        </span><br><span class="line">        &#x2F;&#x2F; 加上这段代码</span><br><span class="line">        slideChangeTransitionStart: function() &#123;</span><br><span class="line">            $(&quot;#certify  .swiper-slide-prev&quot;).prev(&quot;.swiper-slide&quot;).css(&#123;&quot;transform&quot;: &quot;translateX(986px) scale(0.6)&quot;&#125;);</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"> &#x2F;&#x2F; 加上这段代码</span><br><span class="line">&#x2F;&#x2F; 修改样式</span><br><span class="line">$(&quot;#certify  .swiper-slide-prev&quot;).prev(&quot;.swiper-slide&quot;).css(&#123;&quot;transform&quot;: &quot;translateX(986px) scale(0.6)&quot;&#125;);</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>工作笔记</category>
+        <category>插件</category>
+      </categories>
+      <tags>
+        <tag>插件</tag>
       </tags>
   </entry>
   <entry>
@@ -6362,42 +6398,6 @@ limitations under the License.</code></pre>
       </categories>
       <tags>
         <tag>前端规范</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>前端插件-使用</title>
-    <url>/2021/01/27/%E5%89%8D%E7%AB%AF%E6%8F%92%E4%BB%B6-%E4%BD%BF%E7%94%A8/</url>
-    <content><![CDATA[<p><a href="http://www.bootstrapmb.com/chajian">前端插件</a></p>
-<p><a href="http://www.bootstrapmb.com/muban">前端模板</a></p>
-<h4 id="Jquery-Upload-File"><a href="#Jquery-Upload-File" class="headerlink" title="Jquery Upload File"></a>Jquery Upload File</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;link rel&#x3D;&quot;stylesheet&quot; type&#x3D;&quot;text&#x2F;css&quot; href&#x3D;&quot;js&#x2F;jQuery-File-Upload-9.18.0&#x2F;css&#x2F;jquery.fileupload.css&quot; &#x2F;&gt;</span><br><span class="line"></span><br><span class="line">&lt;script src&#x3D;&quot;js&#x2F;jquery&#x2F;jquery.min.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;js&#x2F;jQuery-File-Upload-9.18.0&#x2F;js&#x2F;vendor&#x2F;jquery.ui.widget.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;js&#x2F;jQuery-File-Upload-9.18.0&#x2F;js&#x2F;jquery.iframe-transport.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;js&#x2F;jQuery-File-Upload-9.18.0&#x2F;js&#x2F;jquery.fileupload.js&quot;&gt;&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;input type&#x3D;&quot;hidden&quot; name&#x3D;&quot;game_apk&quot; &#x2F;&gt;</span><br><span class="line">&lt;span class&#x3D;&quot;btn btn-success fileinput-button&quot;&gt;</span><br><span class="line">	&lt;i class&#x3D;&quot;fa fa-plus&quot;&gt;&lt;&#x2F;i&gt;</span><br><span class="line">	&lt;span&gt;请上传apk文件&lt;&#x2F;span&gt;</span><br><span class="line"> 	 &lt;input id&#x3D;&quot;fileupload_1&quot; type&#x3D;&quot;file&quot; name&#x3D;&quot;files[]&quot; multiple&gt;</span><br><span class="line">&lt;&#x2F;span&gt;</span><br><span class="line">&lt;div id&#x3D;&quot;progress&quot;&gt;&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$(&#39;#fileupload_1&#39;).fileupload(&#123;</span><br><span class="line">    url: &quot;上传文件请求地址&quot;,</span><br><span class="line">    dataType: &#39;json&#39;,</span><br><span class="line">    done: function (e, data) &#123;</span><br><span class="line">        $.each(data.result.files, function (index, file) &#123;</span><br><span class="line">          $(&#39;:input[name&#x3D;game_apk]&#39;).val(decodeURIComponent(file.url));</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;,</span><br><span class="line">    fail: function (e, data) &#123;</span><br><span class="line">        console.log(&quot;上传失败&quot;)</span><br><span class="line">    &#125;,</span><br><span class="line">    progressall: function (e, data) &#123;</span><br><span class="line">        console.log(progress);</span><br><span class="line">        $(&quot;#progress&quot;).html(progress + &#39;%&#39;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h4 id="jquery-copy-js"><a href="#jquery-copy-js" class="headerlink" title="jquery.copy.js"></a>jquery.copy.js</h4><blockquote>
-<p>点击复制内容移动端全兼容(专治各种移动端浏览器)</p>
-</blockquote>
-<ul>
-<li>单页面一个复制</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;button id&#x3D;&quot;copy&quot;&gt;复制链接&lt;&#x2F;button&gt;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$.copy(&#123;</span><br><span class="line">    &#x2F;&#x2F; imgUrl:&quot;success-tips.png&quot;,   &#x2F;&#x2F; 分享图标地址</span><br><span class="line">    text:&quot;复制成功&quot;, &#x2F;&#x2F;分享提示文案</span><br><span class="line">    copyUrl:&quot;复制的内容&#x2F;链接&quot;,   &#x2F;&#x2F; 自定义复制链接地址</span><br><span class="line">    tipTime:2000, 	&#x2F;&#x2F; 分享提示消失时间</span><br><span class="line">    copyId:&quot;#copy&quot;	&#x2F;&#x2F; 复制按钮id</span><br><span class="line">&#125;); </span><br></pre></td></tr></table></figure>
-<ul>
-<li>单页面多个复制链接</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var data &#x3D; [</span><br><span class="line">    &#123; &quot;url&quot;: &quot;www.baidu.com&quot; &#125;,</span><br><span class="line">    &#123; &quot;url&quot;: &quot;www.qq.com&quot; &#125;,</span><br><span class="line">    &#123; &quot;url&quot;: &quot;www.163.com&quot; &#125;</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line">$.each(data,function(i,item)&#123;</span><br><span class="line">    $(&quot;body&quot;).append(&#39;&lt;button id&#x3D;&quot;copy&#39;+i+&#39;&quot;&gt;复制链接&lt;&#x2F;button&gt;&#39;);</span><br><span class="line">    $.copy(&#123;</span><br><span class="line">        &#x2F;&#x2F; imgUrl:&quot;success-tips.png&quot;,  &#x2F;&#x2F; 分享图标地址</span><br><span class="line">        text:&quot;复制成功&quot;,  &#x2F;&#x2F; 分享提示文案</span><br><span class="line">        copyUrl:item.url,  &#x2F;&#x2F; 自定义复制链接地址</span><br><span class="line">        tipTime:2000,  &#x2F;&#x2F; 分享提示消失时间</span><br><span class="line">        copyId:&quot;#copy&quot;+i  &#x2F;&#x2F; 复制按钮id</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h4 id="mobileSelect-js-多级联动下拉菜单"><a href="#mobileSelect-js-多级联动下拉菜单" class="headerlink" title="mobileSelect.js-多级联动下拉菜单"></a>mobileSelect.js-多级联动下拉菜单</h4><p><a href="https://github.com/onlyhom/mobileSelect.js">mobileSelect.js-github</a></p>
-<h4 id="datetimepicker多次点击input日期选择器不显示"><a href="#datetimepicker多次点击input日期选择器不显示" class="headerlink" title="datetimepicker多次点击input日期选择器不显示"></a>datetimepicker多次点击input日期选择器不显示</h4><p>遇到datetimepicker多次（包括第二次点击）点击input框时日期选择器不显示，需要使用鼠标监听触发：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;*点方input框时加租监听毒件*&#x2F;</span><br><span class="line">document.getElementsByName(&#39;input的name名称&#39;)[0].addEventListener(&#39;click&#39;,myfunc)</span><br><span class="line">function myfunc(e)&#123;</span><br><span class="line">	e.currentTarget.blur();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>以上这段代码必须放在datetimepicker方法的后面。</p>
-<p>例如：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;日历</span><br><span class="line">var startDate &#x3D; $(&#39;#startDate&#39;).fdatepicker(&#123;</span><br><span class="line">	format: &quot;yyyy-mm-dd&quot;,</span><br><span class="line">	todayBtn: true</span><br><span class="line">&#125;).on(&#39;changeDate&#39;, function (ev)&#123;</span><br><span class="line">	startDate.hide();</span><br><span class="line">	$(&#39;#endDate&#39;)[0].focus();</span><br><span class="line">&#125;).data(&#39;datepicker&#39;);</span><br><span class="line"></span><br><span class="line">var endDate &#x3D; $(&#39;#endDate&#39;).fdatepicker(&#123;</span><br><span class="line">	format: &quot;yyyy-mm-dd&quot;,</span><br><span class="line">	todayBtn: true,</span><br><span class="line">&#125;).on(&#39;changeDate&#39;, function (ev)&#123;</span><br><span class="line">	endDate.hide();</span><br><span class="line">&#125;).data(&#39;datepicker&#39;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;解决输入框点击多次（包括两次）不显示的问题</span><br><span class="line">document.getElementById(&#39;startDate&#39;).addEventListener(&#39;click&#39;,myfunc);</span><br><span class="line">document.getElementById(&#39;endDate&#39;).addEventListener(&#39;click&#39;,myfunc);</span><br><span class="line">function myfunc(e)&#123;</span><br><span class="line">	e.currentTarget.blur();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="swiper"><a href="#swiper" class="headerlink" title="swiper"></a><a href="https://www.swiper.com.cn/">swiper</a></h4><h5 id="轮播图由两层效果改为三层"><a href="#轮播图由两层效果改为三层" class="headerlink" title="轮播图由两层效果改为三层"></a>轮播图由两层效果改为三层</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 加上这个样式，控制偏移量</span><br><span class="line">&lt;style&gt;</span><br><span class="line">    #certify .swiper-slide.swiper-slide-prev&#123;</span><br><span class="line">        transform: translateX(480px) scale(0.8) !important;</span><br><span class="line">    &#125;</span><br><span class="line">    #certify .swiper-slide.swiper-slide-next&#123;</span><br><span class="line">        transform: translateX(-480px) scale(0.8) !important;</span><br><span class="line">    &#125;</span><br><span class="line">    #certify .swiper-slide.swiper-slide-next + .swiper-slide&#123;</span><br><span class="line">        transform: translateX(-986px) scale(0.6) !important;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">var certifySwiper &#x3D; new Swiper(&#39;.detail&#39;, &#123;</span><br><span class="line">    watchSlidesProgress: true,</span><br><span class="line">    slidesPerView: &#39;auto&#39;,</span><br><span class="line">    centeredSlides: true,</span><br><span class="line">    loop: true,</span><br><span class="line">    loopedSlides: 5,</span><br><span class="line">    autoplay: true,</span><br><span class="line">    navigation: &#123;</span><br><span class="line">        nextEl: &#39;.swiper-button-next&#39;,</span><br><span class="line">        prevEl: &#39;.swiper-button-prev&#39;,</span><br><span class="line">    &#125;,</span><br><span class="line">    &#x2F;&#x2F; pagination: &#123;</span><br><span class="line">    &#x2F;&#x2F; 	el: &#39;.swiper-pagination&#39;,</span><br><span class="line">    &#x2F;&#x2F; 	clickable: true,</span><br><span class="line">    &#x2F;&#x2F; &#125;,</span><br><span class="line">    on: &#123;</span><br><span class="line">        progress: function (progress) &#123;</span><br><span class="line">            for (i &#x3D; 0; i &lt; this.slides.length; i++) &#123;</span><br><span class="line">                var slide &#x3D; this.slides.eq(i);</span><br><span class="line">                var slideProgress &#x3D; this.slides[i].progress;</span><br><span class="line">                modify &#x3D; 1;</span><br><span class="line">                if (Math.abs(slideProgress) &gt; 1) &#123;</span><br><span class="line">                    modify &#x3D; (Math.abs(slideProgress) - 1) * 0.3 + 1;</span><br><span class="line">                &#125;</span><br><span class="line">                translate &#x3D; slideProgress * modify * 260 + &#39;px&#39;;</span><br><span class="line">                scale &#x3D; 1 - Math.abs(slideProgress) &#x2F; 5;</span><br><span class="line">                zIndex &#x3D; 999 - Math.abs(Math.round(10 * slideProgress));</span><br><span class="line">                slide.transform(&#39;translateX(&#39; + translate + &#39;) scale(&#39; + scale + &#39;)&#39;);</span><br><span class="line">                slide.css(&#39;zIndex&#39;, zIndex);</span><br><span class="line">                slide.css(&#39;opacity&#39;, 1);</span><br><span class="line">                if (Math.abs(slideProgress) &gt; 3) &#123;</span><br><span class="line">                    slide.css(&#39;opacity&#39;, 0);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        setTransition: function (transition) &#123;</span><br><span class="line">            for (var i &#x3D; 0; i &lt; this.slides.length; i++) &#123;</span><br><span class="line">                var slide &#x3D; this.slides.eq(i)</span><br><span class="line">                slide.transition(transition);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        </span><br><span class="line">        &#x2F;&#x2F; 加上这段代码</span><br><span class="line">        slideChangeTransitionStart: function() &#123;</span><br><span class="line">            $(&quot;#certify  .swiper-slide-prev&quot;).prev(&quot;.swiper-slide&quot;).css(&#123;&quot;transform&quot;: &quot;translateX(986px) scale(0.6)&quot;&#125;);</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"> &#x2F;&#x2F; 加上这段代码</span><br><span class="line">&#x2F;&#x2F; 修改样式</span><br><span class="line">$(&quot;#certify  .swiper-slide-prev&quot;).prev(&quot;.swiper-slide&quot;).css(&#123;&quot;transform&quot;: &quot;translateX(986px) scale(0.6)&quot;&#125;);</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>工作笔记</category>
-        <category>插件</category>
-      </categories>
-      <tags>
-        <tag>插件</tag>
       </tags>
   </entry>
   <entry>
@@ -7535,6 +7535,21 @@ limitations under the License.</code></pre>
       </tags>
   </entry>
   <entry>
+    <title>在Github上使用仓库存放.md笔记</title>
+    <url>/2020/07/08/%E5%9C%A8Github%E4%B8%8A%E4%BD%BF%E7%94%A8%E4%BB%93%E5%BA%93%E5%AD%98%E6%94%BE-md%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h3 id="一、在GitHub上创建一个仓库，例如：GaoShu"><a href="#一、在GitHub上创建一个仓库，例如：GaoShu" class="headerlink" title="一、在GitHub上创建一个仓库，例如：GaoShu"></a>一、在GitHub上创建一个仓库，例如：GaoShu</h3><h3 id="二、在本地新建一个存放-md笔记的文件夹GaoShu"><a href="#二、在本地新建一个存放-md笔记的文件夹GaoShu" class="headerlink" title="二、在本地新建一个存放.md笔记的文件夹GaoShu"></a>二、在本地新建一个存放.md笔记的文件夹GaoShu</h3><h3 id="三、执行git命令"><a href="#三、执行git命令" class="headerlink" title="三、执行git命令"></a>三、执行git命令</h3><p><strong>…or create a new repository on the command line</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">echo &quot;# GaoShu&quot; &gt;&gt; README.md</span><br><span class="line">git init</span><br><span class="line">git add README.md</span><br><span class="line">git commit -m &quot;first commit&quot;</span><br><span class="line">git remote add origin https:&#x2F;&#x2F;github.com&#x2F;AAAAAA&#x2F;GaoShu.git</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
+<p><strong>…or push an existing repository from the command line</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git remote add origin https:&#x2F;&#x2F;github.com&#x2F;AAAAAA&#x2F;GaoShu.git</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>工作笔记</category>
+        <category>md笔记</category>
+      </categories>
+      <tags>
+        <tag>md笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>前端资源教程</title>
     <url>/2021/01/29/%E5%89%8D%E7%AB%AF%E8%B5%84%E6%BA%90%E6%95%99%E7%A8%8B/</url>
     <content><![CDATA[<p>转自：<a href="https://cnodejs.org/topic/56ef3edd532839c33a99d00e">https://cnodejs.org/topic/56ef3edd532839c33a99d00e</a></p>
@@ -8537,18 +8552,28 @@ limitations under the License.</code></pre>
       </tags>
   </entry>
   <entry>
-    <title>在Github上使用仓库存放.md笔记</title>
-    <url>/2020/07/08/%E5%9C%A8Github%E4%B8%8A%E4%BD%BF%E7%94%A8%E4%BB%93%E5%BA%93%E5%AD%98%E6%94%BE-md%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h3 id="一、在GitHub上创建一个仓库，例如：GaoShu"><a href="#一、在GitHub上创建一个仓库，例如：GaoShu" class="headerlink" title="一、在GitHub上创建一个仓库，例如：GaoShu"></a>一、在GitHub上创建一个仓库，例如：GaoShu</h3><h3 id="二、在本地新建一个存放-md笔记的文件夹GaoShu"><a href="#二、在本地新建一个存放-md笔记的文件夹GaoShu" class="headerlink" title="二、在本地新建一个存放.md笔记的文件夹GaoShu"></a>二、在本地新建一个存放.md笔记的文件夹GaoShu</h3><h3 id="三、执行git命令"><a href="#三、执行git命令" class="headerlink" title="三、执行git命令"></a>三、执行git命令</h3><p><strong>…or create a new repository on the command line</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">echo &quot;# GaoShu&quot; &gt;&gt; README.md</span><br><span class="line">git init</span><br><span class="line">git add README.md</span><br><span class="line">git commit -m &quot;first commit&quot;</span><br><span class="line">git remote add origin https:&#x2F;&#x2F;github.com&#x2F;AAAAAA&#x2F;GaoShu.git</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
-<p><strong>…or push an existing repository from the command line</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git remote add origin https:&#x2F;&#x2F;github.com&#x2F;AAAAAA&#x2F;GaoShu.git</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>]]></content>
+    <title>在Vue项目中使用sass的配置方法</title>
+    <url>/2020/03/19/%E5%9C%A8Vue%E9%A1%B9%E7%9B%AE%E4%B8%AD%E4%BD%BF%E7%94%A8sass%E7%9A%84%E9%85%8D%E7%BD%AE%E6%96%B9%E6%B3%95/</url>
+    <content><![CDATA[<h4 id="1、安装sass的依赖包"><a href="#1、安装sass的依赖包" class="headerlink" title="1、安装sass的依赖包"></a>1、安装sass的依赖包</h4><p>sass-loader依赖于node-sass</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install sass-loader node-sass --save-dev </span><br></pre></td></tr></table></figure>
+<h4 id="2、在build文件夹下的webpack-base-conf-js的rules里面添加配置"><a href="#2、在build文件夹下的webpack-base-conf-js的rules里面添加配置" class="headerlink" title="2、在build文件夹下的webpack.base.conf.js的rules里面添加配置"></a>2、在build文件夹下的webpack.base.conf.js的rules里面添加配置</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line"> test: &#x2F;\.sass$&#x2F;,</span><br><span class="line"> loaders: [&#39;style&#39;, &#39;css&#39;, &#39;scss&#39;]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">module:&#123;</span><br><span class="line">	rules:[</span><br><span class="line">		...</span><br><span class="line">		&#123;</span><br><span class="line">			test: &#x2F;\.scss$&#x2F;,</span><br><span class="line">			loaders:[&#39;style&#39;,&#39;css&#39;,&#39;sass&#39;]</span><br><span class="line">		&#125;</span><br><span class="line">	]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="3、在APP-vue中修改style标签"><a href="#3、在APP-vue中修改style标签" class="headerlink" title="3、在APP.vue中修改style标签"></a>3、在APP.vue中修改style标签</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;style lang&#x3D;&quot;scss&quot;&gt;</span><br><span class="line">   $blue:red;</span><br><span class="line">    .common-header&#123;</span><br><span class="line">        color: $blue;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="4、运行项目"><a href="#4、运行项目" class="headerlink" title="4、运行项目"></a>4、运行项目</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
+<h5 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h5><p>如有以下报错，是版本的问题影响的：</p>
+<p>Module build failed: TypeError: this.getResolve is not a function at Object.loader 安装node-sass运行报错</p>
+<p><strong>解决方法</strong>： 选择更低版本的sass-loader</p>
+<p><strong>卸载当前版本</strong>：npm uninstall sass-loader<br><strong>安装指定版本</strong>：npm install <a href="mailto:&#x73;&#x61;&#115;&#115;&#x2d;&#x6c;&#x6f;&#97;&#100;&#101;&#x72;&#x40;&#x37;&#46;&#x33;&#46;&#x31;">&#x73;&#x61;&#115;&#115;&#x2d;&#x6c;&#x6f;&#97;&#100;&#101;&#x72;&#x40;&#x37;&#46;&#x33;&#46;&#x31;</a> –save-dev</p>
+<p>参考： <a href="https://blog.csdn.net/ze1024/article/details/100516650">安装node-sass运行报错</a></p>
+]]></content>
       <categories>
         <category>工作笔记</category>
-        <category>md笔记</category>
+        <category>Vue.js</category>
       </categories>
       <tags>
-        <tag>md笔记</tag>
+        <tag>Vue.js</tag>
       </tags>
   </entry>
   <entry>
@@ -8591,28 +8616,19 @@ limitations under the License.</code></pre>
       </tags>
   </entry>
   <entry>
-    <title>在Vue项目中使用sass的配置方法</title>
-    <url>/2020/03/19/%E5%9C%A8Vue%E9%A1%B9%E7%9B%AE%E4%B8%AD%E4%BD%BF%E7%94%A8sass%E7%9A%84%E9%85%8D%E7%BD%AE%E6%96%B9%E6%B3%95/</url>
-    <content><![CDATA[<h4 id="1、安装sass的依赖包"><a href="#1、安装sass的依赖包" class="headerlink" title="1、安装sass的依赖包"></a>1、安装sass的依赖包</h4><p>sass-loader依赖于node-sass</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install sass-loader node-sass --save-dev </span><br></pre></td></tr></table></figure>
-<h4 id="2、在build文件夹下的webpack-base-conf-js的rules里面添加配置"><a href="#2、在build文件夹下的webpack-base-conf-js的rules里面添加配置" class="headerlink" title="2、在build文件夹下的webpack.base.conf.js的rules里面添加配置"></a>2、在build文件夹下的webpack.base.conf.js的rules里面添加配置</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line"> test: &#x2F;\.sass$&#x2F;,</span><br><span class="line"> loaders: [&#39;style&#39;, &#39;css&#39;, &#39;scss&#39;]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    <title>在这里</title>
+    <url>/2018/08/02/%E5%9C%A8%E8%BF%99%E9%87%8C/</url>
+    <content><![CDATA[<p>javascript是一门充满活力、简单易用的语言，又是一门具有许多复杂微妙技术的语言。即使是经验丰富的javascript开发者，如果没有认真学习的话，也无法真正理解它们，这就是javascript的矛盾之处。由于javascript不必理解就可以使用，因此通常来说很难真正理解语言本身，这就是我们面临的挑战。不满足于只是让代码正常工作，而是想要弄清楚为什么，勇于挑战这条崎岖颠簸的少有人走的路，拥抱整个javascript</p>
 <a id="more"></a>
-
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">module:&#123;</span><br><span class="line">	rules:[</span><br><span class="line">		...</span><br><span class="line">		&#123;</span><br><span class="line">			test: &#x2F;\.scss$&#x2F;,</span><br><span class="line">			loaders:[&#39;style&#39;,&#39;css&#39;,&#39;sass&#39;]</span><br><span class="line">		&#125;</span><br><span class="line">	]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="3、在APP-vue中修改style标签"><a href="#3、在APP-vue中修改style标签" class="headerlink" title="3、在APP.vue中修改style标签"></a>3、在APP.vue中修改style标签</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;style lang&#x3D;&quot;scss&quot;&gt;</span><br><span class="line">   $blue:red;</span><br><span class="line">    .common-header&#123;</span><br><span class="line">        color: $blue;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h4 id="4、运行项目"><a href="#4、运行项目" class="headerlink" title="4、运行项目"></a>4、运行项目</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
-<h5 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h5><p>如有以下报错，是版本的问题影响的：</p>
-<p>Module build failed: TypeError: this.getResolve is not a function at Object.loader 安装node-sass运行报错</p>
-<p><strong>解决方法</strong>： 选择更低版本的sass-loader</p>
-<p><strong>卸载当前版本</strong>：npm uninstall sass-loader<br><strong>安装指定版本</strong>：npm install <a href="mailto:&#115;&#x61;&#115;&#115;&#x2d;&#108;&#111;&#x61;&#100;&#101;&#x72;&#x40;&#x37;&#x2e;&#x33;&#46;&#x31;">&#115;&#x61;&#115;&#115;&#x2d;&#108;&#111;&#x61;&#100;&#101;&#x72;&#x40;&#x37;&#x2e;&#x33;&#46;&#x31;</a> –save-dev</p>
-<p>参考： <a href="https://blog.csdn.net/ze1024/article/details/100516650">安装node-sass运行报错</a></p>
+<p>后面的内容在首页不显示，在博客首页只显示到这里</p>
+<p>javascript是一门充满活力、简单易用的语言，又是一门具有许多复杂微妙技术的语言。即使是经验丰富的javascript开发者，如果没有认真学习的话，也无法真正理解它们，这就是javascript的矛盾之处。由于javascript不必理解就可以使用，因此通常来说很难真正理解语言本身，这就是我们面临的挑战。不满足于只是让代码正常工作，而是想要弄清楚为什么，勇于挑战这条崎岖颠簸的少有人走的路，拥抱整个javascript</p>
 ]]></content>
       <categories>
         <category>工作笔记</category>
-        <category>Vue.js</category>
+        <category>博客</category>
       </categories>
       <tags>
-        <tag>Vue.js</tag>
+        <tag>博客</tag>
       </tags>
   </entry>
   <entry>
@@ -8653,22 +8669,6 @@ limitations under the License.</code></pre>
       </tags>
   </entry>
   <entry>
-    <title>在这里</title>
-    <url>/2018/08/02/%E5%9C%A8%E8%BF%99%E9%87%8C/</url>
-    <content><![CDATA[<p>javascript是一门充满活力、简单易用的语言，又是一门具有许多复杂微妙技术的语言。即使是经验丰富的javascript开发者，如果没有认真学习的话，也无法真正理解它们，这就是javascript的矛盾之处。由于javascript不必理解就可以使用，因此通常来说很难真正理解语言本身，这就是我们面临的挑战。不满足于只是让代码正常工作，而是想要弄清楚为什么，勇于挑战这条崎岖颠簸的少有人走的路，拥抱整个javascript</p>
-<a id="more"></a>
-<p>后面的内容在首页不显示，在博客首页只显示到这里</p>
-<p>javascript是一门充满活力、简单易用的语言，又是一门具有许多复杂微妙技术的语言。即使是经验丰富的javascript开发者，如果没有认真学习的话，也无法真正理解它们，这就是javascript的矛盾之处。由于javascript不必理解就可以使用，因此通常来说很难真正理解语言本身，这就是我们面临的挑战。不满足于只是让代码正常工作，而是想要弄清楚为什么，勇于挑战这条崎岖颠簸的少有人走的路，拥抱整个javascript</p>
-]]></content>
-      <categories>
-        <category>工作笔记</category>
-        <category>博客</category>
-      </categories>
-      <tags>
-        <tag>博客</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>工程化的Vue.js开发</title>
     <url>/2019/06/24/%E5%B7%A5%E7%A8%8B%E5%8C%96%E7%9A%84Vue-js%E5%BC%80%E5%8F%91/</url>
     <content><![CDATA[<p>Vue 提供一套简化开发、测试与部署的方案，不再需要花大量的时间去学习理解框架的使用概念，以及耗费大量的精力去建立复杂的自动化环境。</p>
@@ -8693,7 +8693,7 @@ limitations under the License.</code></pre>
 <h5 id="3、创建项目"><a href="#3、创建项目" class="headerlink" title="3、创建项目"></a>3、创建项目</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vue init webpack my-project</span><br></pre></td></tr></table></figure>
 <p>查看项目</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> my-project   </span><br><span class="line">npm install</span><br><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
-<h3 id="深入vue-cli的工程模板"><a href="#深入vue-cli的工程模板" class="headerlink" title="深入vue-cli的工程模板"></a>深入vue-cli的工程模板</h3><p>webpack和 webpack-simple这两个模板从文件结构上看几乎是一致的，只是一个是简化版，另一个是完全版。其实不然，webpack-simple是基于<a href="mailto:&#x57;&#101;&#x62;&#112;&#x61;&#x63;&#107;&#64;&#x32;&#46;&#49;&#x2e;&#x30;&#x2d;&#x62;&#x65;&#116;&#97;&#x2e;&#x32;&#53;">&#x57;&#101;&#x62;&#112;&#x61;&#x63;&#107;&#64;&#x32;&#46;&#49;&#x2e;&#x30;&#x2d;&#x62;&#x65;&#116;&#97;&#x2e;&#x32;&#53;</a>进行配置的版本，而 webpack模板则是基于Webpack ^1.3.2配置的。<strong>这两个版本暂时是互相不兼容的，而且使用的依赖包的版本也不一样，所以不要将webpack模板创建的项目文件结构复制到webpack-simple中进行直接的取代升级</strong>,而是需要将node_modules内安装的所有的依赖包删除，然后重新安装才有可能迁移成功，这一点是需要注意的。</p>
+<h3 id="深入vue-cli的工程模板"><a href="#深入vue-cli的工程模板" class="headerlink" title="深入vue-cli的工程模板"></a>深入vue-cli的工程模板</h3><p>webpack和 webpack-simple这两个模板从文件结构上看几乎是一致的，只是一个是简化版，另一个是完全版。其实不然，webpack-simple是基于<a href="mailto:&#87;&#x65;&#x62;&#x70;&#x61;&#99;&#x6b;&#64;&#50;&#46;&#49;&#46;&#x30;&#x2d;&#98;&#x65;&#116;&#97;&#x2e;&#x32;&#x35;">&#87;&#x65;&#x62;&#x70;&#x61;&#99;&#x6b;&#64;&#50;&#46;&#49;&#46;&#x30;&#x2d;&#98;&#x65;&#116;&#97;&#x2e;&#x32;&#x35;</a>进行配置的版本，而 webpack模板则是基于Webpack ^1.3.2配置的。<strong>这两个版本暂时是互相不兼容的，而且使用的依赖包的版本也不一样，所以不要将webpack模板创建的项目文件结构复制到webpack-simple中进行直接的取代升级</strong>,而是需要将node_modules内安装的所有的依赖包删除，然后重新安装才有可能迁移成功，这一点是需要注意的。</p>
 <h4 id="webpack-simple-模板"><a href="#webpack-simple-模板" class="headerlink" title="webpack-simple 模板"></a>webpack-simple 模板</h4><p>具体约定如下:<br>（1）  公共组件、指令、过滤器（多于三个文件以上的引用）将分别存放于src目录下的</p>
 <ul>
 <li>components;</li>
@@ -9464,6 +9464,129 @@ limitations under the License.</code></pre>
       </categories>
       <tags>
         <tag>前端</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>视频剪辑-Adobe-Pr</title>
+    <url>/2021/04/01/%E8%A7%86%E9%A2%91%E5%89%AA%E8%BE%91-Adobe-Pr/</url>
+    <content><![CDATA[<h4 id="Adobe-Premiere"><a href="#Adobe-Premiere" class="headerlink" title="Adobe Premiere"></a>Adobe Premiere</h4><h4 id="应用领域"><a href="#应用领域" class="headerlink" title="应用领域"></a>应用领域</h4><ol>
+<li>电影电视(院线电影、网络大电影、个人微电影、电视专题片)</li>
+<li>节目剪辑(综艺娱乐、人物访谈、街坊)</li>
+<li>抖音短视频( vlog、旅拍、剧情短片、炫酷视频)</li>
+<li>宣传片广告片(企业宣传片、专题片、产品广告宣传片)</li>
+<li>自媒体短视频（电影混剪、解说、音乐类、科普类等)</li>
+<li>从事专业剪辑岗位(Premiere 、Final cut 、After Effects等)</li>
+</ol>
+<p><a href="http://p4.xmyjhkj.cn/index.php?m=goods&a=details&content_id=4#">官网正版授权  软件下载</a></p>
+<p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/%E8%A7%86%E9%A2%91%E5%89%AA%E8%BE%91-Adobe-Pr/image-20210401174712668.png" alt="分辨率"></p>
+<h4 id="帧速率"><a href="#帧速率" class="headerlink" title="帧速率"></a>帧速率</h4><ol>
+<li>帧——影像动画中最小的单位,无数的帧构成了秒。</li>
+<li>一帧相当于一个画面,一秒就是由一定的帧构成。</li>
+<li>视频常用的帧数有:24帧、25帧、29.97帧以及30帧。</li>
+<li>自媒体或一般的短视频剪辑：选择25帧/秒。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>工作笔记</category>
+      </categories>
+      <tags>
+        <tag>Adobe-Pr</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>计算机常用命令</title>
+    <url>/2019/07/04/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<h4 id="命令行新建文件和文件夹"><a href="#命令行新建文件和文件夹" class="headerlink" title="命令行新建文件和文件夹"></a>命令行新建文件和文件夹</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">1.cmd           ——进去命令行提示符</span><br><span class="line">2.D:            ——去到对应的盘</span><br><span class="line">3.dir           ——查看d盘下所有目录和文件</span><br><span class="line">4.cd baidu      ——例如进去baidu文件夹目录</span><br><span class="line">5.dir           ——查看D盘baidu文件夹下的所有目录</span><br><span class="line">6.md xx         ——创建一个baidu文件夹下的xx文件夹</span><br><span class="line">7.dir           ——查看xx这个文件夹已经创建成功了</span><br><span class="line">8.cd.&gt;.babelrc  ——创建一个.babelrc的文件，<span class="built_in">cd</span>.表示为当前目录</span><br><span class="line">9.dir           ——可以看到baidu文件夹下已经生成了“.babelrc”文件</span><br><span class="line">10.EXIT         ——退出命令行提示符</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>工作笔记</category>
+        <category>常用命令</category>
+      </categories>
+      <tags>
+        <tag>常用命令</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>自定义滚动条样式，兼容IE浏览器</title>
+    <url>/2019/12/17/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%BB%9A%E5%8A%A8%E6%9D%A1%E6%A0%B7%E5%BC%8F%EF%BC%8C%E5%85%BC%E5%AE%B9IE%E6%B5%8F%E8%A7%88%E5%99%A8/</url>
+    <content><![CDATA[<p>经常写页面的同学都知道，浏览器一般自带的滚动条样式很丑，和页面风格格格不入，于是就想着是否能够改变原有滚动条样式？但实际中，其他浏览器又和IE浏览器不一样，导致兼容性不好。</p>
+<h4 id="Chrome浏览器滚动条自定义样式修改"><a href="#Chrome浏览器滚动条自定义样式修改" class="headerlink" title="Chrome浏览器滚动条自定义样式修改"></a>Chrome浏览器滚动条自定义样式修改</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">div&#123;</span><br><span class="line">  /*滚动条滑块按钮的颜色*/</span><br><span class="line">  scrollbar-face-color: <span class="comment">#134187;</span></span><br><span class="line">  /*滚动条整体颜色*/</span><br><span class="line">  scrollbar-highlight-color: <span class="comment">#134187;</span></span><br><span class="line">  /*滚动条轨道颜色*/</span><br><span class="line">  scrollbar-track-color: <span class="comment">#011433;</span></span><br><span class="line">&#125;</span><br><span class="line">/*滚动条整体部分,必须要设置*/</span><br><span class="line">::-webkit-scrollbar&#123;</span><br><span class="line">  background-color: <span class="comment">#011433;</span></span><br><span class="line">  width:10px;</span><br><span class="line">  height:10px;</span><br><span class="line">&#125;</span><br><span class="line">/*滚动条的轨道*/</span><br><span class="line">::-webkit-scrollbar-track&#123;</span><br><span class="line">  background-color: <span class="comment">#011433;</span></span><br><span class="line">  border-radius: 10px;</span><br><span class="line">&#125;</span><br><span class="line">/*滚动条的滑块按钮*/</span><br><span class="line">::-webkit-scrollbar-thumb&#123;</span><br><span class="line">  border-radius: 10px;</span><br><span class="line">  background-color: <span class="comment">#134087;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="IE浏览器滚动条自定义样式修改"><a href="#IE浏览器滚动条自定义样式修改" class="headerlink" title="IE浏览器滚动条自定义样式修改"></a>IE浏览器滚动条自定义样式修改</h4><p>在写样式之前，我们看一下IE浏览器滚动条样式设置位置参考图：<br><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%BB%9A%E5%8A%A8%E6%9D%A1%E6%A0%B7%E5%BC%8F%EF%BC%8C%E5%85%BC%E5%AE%B9IE%E6%B5%8F%E8%A7%88%E5%99%A8/ie-scrollar.png" alt="IE浏览器滚动条样式设置位置参考图"></p>
+<table>
+<thead>
+<tr>
+<th>滚动条样式</th>
+<th>支持情况</th>
+<th>支持浏览器版本</th>
+<th>可否继承</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>scrollbar-3dlight-color</td>
+<td>IE特有属性</td>
+<td>IE5.5+</td>
+<td>y</td>
+<td>设置滚动框的和滚动条箭头左上边缘的颜色</td>
+</tr>
+<tr>
+<td>scrollbar-highlight-color</td>
+<td>IE特有属性</td>
+<td>IE5.5+</td>
+<td>y</td>
+<td>设置滚动框的和滚动条箭头左上边缘的颜色</td>
+</tr>
+<tr>
+<td>scrollbar-face-color</td>
+<td>IE特有属性</td>
+<td>IE5.5+</td>
+<td>y</td>
+<td>设置滚动框和滚动条箭头的颜色</td>
+</tr>
+<tr>
+<td>scrollbar-arrow-color</td>
+<td>IE特有属性</td>
+<td>IE5.5+</td>
+<td>y</td>
+<td>设置i滚动条箭头的颜色</td>
+</tr>
+<tr>
+<td>scrollbar-shadow-color</td>
+<td>IE特有属性</td>
+<td>IE5.5+</td>
+<td>y</td>
+<td>设置滚动框的和滚动条箭头右下边缘的颜色</td>
+</tr>
+<tr>
+<td>scrollbar-dark-shadow-color</td>
+<td>IE特有属性</td>
+<td>IE5.5+</td>
+<td>y</td>
+<td>设置滚动条槽的颜色</td>
+</tr>
+<tr>
+<td>scrollbar-base-color</td>
+<td>IE特有属性</td>
+<td>IE5.5+</td>
+<td>y</td>
+<td>设置滚动条主要构成部分的颜色</td>
+</tr>
+<tr>
+<td>scrollbar-track-color</td>
+<td>IE特有属性</td>
+<td>IE5.5+</td>
+<td>y</td>
+<td>设置滚动条轨迹组成部分的颜色</td>
+</tr>
+</tbody></table>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//Ie下滚动条样式</span><br><span class="line">HTML &#123;</span><br><span class="line">  scrollbar-base-color: <span class="comment">#134087;</span></span><br><span class="line">  //scrollbar-base-color: <span class="comment">#134087;</span></span><br><span class="line">  scrollbar-3dlight-color:<span class="comment">#134087;</span></span><br><span class="line">  scrollbar-highlight-color: <span class="comment">#134087;</span></span><br><span class="line">  scrollbar-track-color: <span class="comment">#011433;</span></span><br><span class="line">  scrollbar-arrow-color: <span class="comment">#011433;</span></span><br><span class="line">  scrollbar-shadow-color:<span class="comment">#011433;</span></span><br><span class="line">  //scrollbar-dark-shadow-color: <span class="comment">#011433;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>摘抄自：<a href="https://blog.csdn.net/qq_36727756/article/details/92795170">https://blog.csdn.net/qq_36727756/article/details/92795170</a></p>
+]]></content>
+      <categories>
+        <category>工作笔记</category>
+        <category>兼容性处理</category>
+      </categories>
+      <tags>
+        <tag>兼容性处理</tag>
       </tags>
   </entry>
   <entry>
@@ -10896,129 +11019,6 @@ limitations under the License.</code></pre>
       </categories>
       <tags>
         <tag>网站素材</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>自定义滚动条样式，兼容IE浏览器</title>
-    <url>/2019/12/17/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%BB%9A%E5%8A%A8%E6%9D%A1%E6%A0%B7%E5%BC%8F%EF%BC%8C%E5%85%BC%E5%AE%B9IE%E6%B5%8F%E8%A7%88%E5%99%A8/</url>
-    <content><![CDATA[<p>经常写页面的同学都知道，浏览器一般自带的滚动条样式很丑，和页面风格格格不入，于是就想着是否能够改变原有滚动条样式？但实际中，其他浏览器又和IE浏览器不一样，导致兼容性不好。</p>
-<h4 id="Chrome浏览器滚动条自定义样式修改"><a href="#Chrome浏览器滚动条自定义样式修改" class="headerlink" title="Chrome浏览器滚动条自定义样式修改"></a>Chrome浏览器滚动条自定义样式修改</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">div&#123;</span><br><span class="line">  /*滚动条滑块按钮的颜色*/</span><br><span class="line">  scrollbar-face-color: <span class="comment">#134187;</span></span><br><span class="line">  /*滚动条整体颜色*/</span><br><span class="line">  scrollbar-highlight-color: <span class="comment">#134187;</span></span><br><span class="line">  /*滚动条轨道颜色*/</span><br><span class="line">  scrollbar-track-color: <span class="comment">#011433;</span></span><br><span class="line">&#125;</span><br><span class="line">/*滚动条整体部分,必须要设置*/</span><br><span class="line">::-webkit-scrollbar&#123;</span><br><span class="line">  background-color: <span class="comment">#011433;</span></span><br><span class="line">  width:10px;</span><br><span class="line">  height:10px;</span><br><span class="line">&#125;</span><br><span class="line">/*滚动条的轨道*/</span><br><span class="line">::-webkit-scrollbar-track&#123;</span><br><span class="line">  background-color: <span class="comment">#011433;</span></span><br><span class="line">  border-radius: 10px;</span><br><span class="line">&#125;</span><br><span class="line">/*滚动条的滑块按钮*/</span><br><span class="line">::-webkit-scrollbar-thumb&#123;</span><br><span class="line">  border-radius: 10px;</span><br><span class="line">  background-color: <span class="comment">#134087;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h4 id="IE浏览器滚动条自定义样式修改"><a href="#IE浏览器滚动条自定义样式修改" class="headerlink" title="IE浏览器滚动条自定义样式修改"></a>IE浏览器滚动条自定义样式修改</h4><p>在写样式之前，我们看一下IE浏览器滚动条样式设置位置参考图：<br><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%BB%9A%E5%8A%A8%E6%9D%A1%E6%A0%B7%E5%BC%8F%EF%BC%8C%E5%85%BC%E5%AE%B9IE%E6%B5%8F%E8%A7%88%E5%99%A8/ie-scrollar.png" alt="IE浏览器滚动条样式设置位置参考图"></p>
-<table>
-<thead>
-<tr>
-<th>滚动条样式</th>
-<th>支持情况</th>
-<th>支持浏览器版本</th>
-<th>可否继承</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>scrollbar-3dlight-color</td>
-<td>IE特有属性</td>
-<td>IE5.5+</td>
-<td>y</td>
-<td>设置滚动框的和滚动条箭头左上边缘的颜色</td>
-</tr>
-<tr>
-<td>scrollbar-highlight-color</td>
-<td>IE特有属性</td>
-<td>IE5.5+</td>
-<td>y</td>
-<td>设置滚动框的和滚动条箭头左上边缘的颜色</td>
-</tr>
-<tr>
-<td>scrollbar-face-color</td>
-<td>IE特有属性</td>
-<td>IE5.5+</td>
-<td>y</td>
-<td>设置滚动框和滚动条箭头的颜色</td>
-</tr>
-<tr>
-<td>scrollbar-arrow-color</td>
-<td>IE特有属性</td>
-<td>IE5.5+</td>
-<td>y</td>
-<td>设置i滚动条箭头的颜色</td>
-</tr>
-<tr>
-<td>scrollbar-shadow-color</td>
-<td>IE特有属性</td>
-<td>IE5.5+</td>
-<td>y</td>
-<td>设置滚动框的和滚动条箭头右下边缘的颜色</td>
-</tr>
-<tr>
-<td>scrollbar-dark-shadow-color</td>
-<td>IE特有属性</td>
-<td>IE5.5+</td>
-<td>y</td>
-<td>设置滚动条槽的颜色</td>
-</tr>
-<tr>
-<td>scrollbar-base-color</td>
-<td>IE特有属性</td>
-<td>IE5.5+</td>
-<td>y</td>
-<td>设置滚动条主要构成部分的颜色</td>
-</tr>
-<tr>
-<td>scrollbar-track-color</td>
-<td>IE特有属性</td>
-<td>IE5.5+</td>
-<td>y</td>
-<td>设置滚动条轨迹组成部分的颜色</td>
-</tr>
-</tbody></table>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//Ie下滚动条样式</span><br><span class="line">HTML &#123;</span><br><span class="line">  scrollbar-base-color: <span class="comment">#134087;</span></span><br><span class="line">  //scrollbar-base-color: <span class="comment">#134087;</span></span><br><span class="line">  scrollbar-3dlight-color:<span class="comment">#134087;</span></span><br><span class="line">  scrollbar-highlight-color: <span class="comment">#134087;</span></span><br><span class="line">  scrollbar-track-color: <span class="comment">#011433;</span></span><br><span class="line">  scrollbar-arrow-color: <span class="comment">#011433;</span></span><br><span class="line">  scrollbar-shadow-color:<span class="comment">#011433;</span></span><br><span class="line">  //scrollbar-dark-shadow-color: <span class="comment">#011433;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>摘抄自：<a href="https://blog.csdn.net/qq_36727756/article/details/92795170">https://blog.csdn.net/qq_36727756/article/details/92795170</a></p>
-]]></content>
-      <categories>
-        <category>工作笔记</category>
-        <category>兼容性处理</category>
-      </categories>
-      <tags>
-        <tag>兼容性处理</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>视频剪辑-Adobe-Pr</title>
-    <url>/2021/04/01/%E8%A7%86%E9%A2%91%E5%89%AA%E8%BE%91-Adobe-Pr/</url>
-    <content><![CDATA[<h4 id="Adobe-Premiere"><a href="#Adobe-Premiere" class="headerlink" title="Adobe Premiere"></a>Adobe Premiere</h4><h4 id="应用领域"><a href="#应用领域" class="headerlink" title="应用领域"></a>应用领域</h4><ol>
-<li>电影电视(院线电影、网络大电影、个人微电影、电视专题片)</li>
-<li>节目剪辑(综艺娱乐、人物访谈、街坊)</li>
-<li>抖音短视频( vlog、旅拍、剧情短片、炫酷视频)</li>
-<li>宣传片广告片(企业宣传片、专题片、产品广告宣传片)</li>
-<li>自媒体短视频（电影混剪、解说、音乐类、科普类等)</li>
-<li>从事专业剪辑岗位(Premiere 、Final cut 、After Effects等)</li>
-</ol>
-<p><a href="http://p4.xmyjhkj.cn/index.php?m=goods&a=details&content_id=4#">官网正版授权  软件下载</a></p>
-<p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/%E8%A7%86%E9%A2%91%E5%89%AA%E8%BE%91-Adobe-Pr/image-20210401174712668.png" alt="分辨率"></p>
-<h4 id="帧速率"><a href="#帧速率" class="headerlink" title="帧速率"></a>帧速率</h4><ol>
-<li>帧——影像动画中最小的单位,无数的帧构成了秒。</li>
-<li>一帧相当于一个画面,一秒就是由一定的帧构成。</li>
-<li>视频常用的帧数有:24帧、25帧、29.97帧以及30帧。</li>
-<li>自媒体或一般的短视频剪辑：选择25帧/秒。</li>
-</ol>
-]]></content>
-      <categories>
-        <category>工作笔记</category>
-      </categories>
-      <tags>
-        <tag>Adobe-Pr</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>计算机常用命令</title>
-    <url>/2019/07/04/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
-    <content><![CDATA[<h4 id="命令行新建文件和文件夹"><a href="#命令行新建文件和文件夹" class="headerlink" title="命令行新建文件和文件夹"></a>命令行新建文件和文件夹</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">1.cmd           ——进去命令行提示符</span><br><span class="line">2.D:            ——去到对应的盘</span><br><span class="line">3.dir           ——查看d盘下所有目录和文件</span><br><span class="line">4.cd baidu      ——例如进去baidu文件夹目录</span><br><span class="line">5.dir           ——查看D盘baidu文件夹下的所有目录</span><br><span class="line">6.md xx         ——创建一个baidu文件夹下的xx文件夹</span><br><span class="line">7.dir           ——查看xx这个文件夹已经创建成功了</span><br><span class="line">8.cd.&gt;.babelrc  ——创建一个.babelrc的文件，<span class="built_in">cd</span>.表示为当前目录</span><br><span class="line">9.dir           ——可以看到baidu文件夹下已经生成了“.babelrc”文件</span><br><span class="line">10.EXIT         ——退出命令行提示符</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>工作笔记</category>
-        <category>常用命令</category>
-      </categories>
-      <tags>
-        <tag>常用命令</tag>
       </tags>
   </entry>
   <entry>

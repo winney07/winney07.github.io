@@ -21,8 +21,7 @@ categories:
 
 [官网正版授权  软件下载](http://p4.xmyjhkj.cn/index.php?m=goods&a=details&content_id=4#)
 
-{% asset_img image-20210401174712668.png %}
-
+![分辨率](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/%E8%A7%86%E9%A2%91%E5%89%AA%E8%BE%91-Adobe-Pr/image-20210401174712668.png)
 
 
 #### 帧速率

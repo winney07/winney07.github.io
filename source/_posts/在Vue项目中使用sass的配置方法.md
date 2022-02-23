@@ -21,9 +21,18 @@ npm install sass-loader node-sass --save-dev
 }
 ```
 <!-- more -->
-如下图所示：
 
-{% asset_img rules.jpg %}
+```
+module:{
+	rules:[
+		...
+		{
+			test: /\.scss$/,
+			loaders:['style','css','sass']
+		}
+	]
+}
+```
 
 #### 3、在APP.vue中修改style标签
 

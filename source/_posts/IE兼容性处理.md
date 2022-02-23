@@ -32,7 +32,7 @@ function isIE() { //ie?
 
 #### IE浏览器固定定位（fixed）的弹窗
 
-{% asset_img ie-fixed.png %}
+![IE浏览器固定定位（fixed）的弹窗](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/IE%E5%85%BC%E5%AE%B9%E6%80%A7%E5%A4%84%E7%90%86/ie-fixed.png)
 
 解决：
 
@@ -41,7 +41,7 @@ function isIE() { //ie?
 
 #### 去除IE10中输入框和密码框的X按钮和小眼睛
 
-{% asset_img ie10-input.png %}
+![去除IE10中输入框和密码框的X按钮和小眼睛](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/IE%E5%85%BC%E5%AE%B9%E6%80%A7%E5%A4%84%E7%90%86/ie10-input.png)
 
 ```
 方法：
@@ -103,11 +103,11 @@ $("#config_name'+index ).attr("unselectable", "on");
 
 美化后的按钮，在在ie浏览器下要双击才能打开
 
-{% asset_img input-file.png %}
+![文件上传按钮-兼容性](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/IE%E5%85%BC%E5%AE%B9%E6%80%A7%E5%A4%84%E7%90%86/input-file.png)
 
-{% asset_img input-file2.png %}
+![文件上传按钮-兼容性](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/IE%E5%85%BC%E5%AE%B9%E6%80%A7%E5%A4%84%E7%90%86/input-file2.png)
 
-{% asset_img input-file3.png %}
+![文件上传按钮-兼容性](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/IE%E5%85%BC%E5%AE%B9%E6%80%A7%E5%A4%84%E7%90%86/input-file3.png)
 
 > 目的是让选择文件的文字铺满该按钮，可以点击
 

@@ -18,13 +18,15 @@ categories:
 
 1. 表格需要导出的，导出时，要将自定义的复选框去除
 
-2. ```
+2. 
+```bash
    { field: 'checkbox', title: '<input type="checkbox" lay-filter="allAccountList" lay-skin="primary">', width: 66 ,templet: function(res){
-   							return '<input type="checkbox" data-id="'+ res.id +'" lay-filter="accountList" lay-skin="primary">'
+      return '<input type="checkbox" data-id="'+ res.id +'" lay-filter="accountList" lay-skin="primary">'
    }}
-   ```
-
+  
 ```
+
+```bash
 // 监听全选复选框
 form.on('checkbox(allAccountList)', function(data){
     if(!list.length) {
@@ -75,6 +77,7 @@ form.on('checkbox(accountList)', function(data){
     form.render('checkbox');
 
 }); 
+
 ```
 
 
@@ -83,7 +86,7 @@ form.on('checkbox(accountList)', function(data){
 
 解决方法：加上，trigger: 'click' //采用click弹出
 
-```
+```bash
 laydate.render({
 elem: '#compareTime' //指定元素
 , type: 'date'
@@ -96,17 +99,18 @@ elem: '#compareTime' //指定元素
 ready: function(date){
    .....
 });
+
 ```
 
 #### 判断复选框是否选中(获取复选框的值)
 
-```
+```bash
 data.elem.checked
 ```
 
 #### 设置layer-alert和layer-comfirm为不可resize
 
-```
+```bash
 将resize参数设置为false
 ```
 
@@ -136,15 +140,88 @@ var ins1 = table.render ({
 table.exportFile(ins1.config.id，data) ; // data为该实例中的任意数量的数据
 ```
 
-{% asset_img note1.png %}
+例子：
+
+```
+// 渲染表格
+function table_list(list){
+    var cols = getIndexs();
+    console.log(cols);
+    table.render({
+        elem:"#campaigninfo_ table'
+        , page: true  // 开启分市
+        , id:"campaigninfoTable"
+        , title:”推广活动详情"
+        , cols: [cols]
+        , data: list
+    });
+};
+
+// 导出按钮
+$(".down-file").click(function() {
+    var cols = getIndexs();
+    var arr = [] ;
+    for(var i = 0; i< cols.length; i++) {
+        arr.push(cols[i].title);
+    }
+    // 导出所有数据，所以用返回的全部数据
+    table.exportFile("campaigninfoTable", list, 'xls'); // 默认导出csv, 也可以为: xls
+})
+```
 
 #### 导出excel表格时，去掉页面表头显示的小图标
 
-{% asset_img note2.png %}
+![去掉导出表格的表头显示的小图标](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/layui-%E7%AC%94%E8%AE%B0/note2.png)
 
-{% asset_img note3.png %}
+```
+var campaigninfoTable;
+// 渲染表格
+function table_list(list){
+    var cols = getIndexs();
+    // 不受影响的表头
+    var colsold = $.extend(true,[],cols);
 
-{% asset_img note4.png %}
+    campalgnintoTable = table.render( {
+        elem:'#campaigninfo_table'
+        , page: true // 开启分页
+        , cellMinwidth: 160
+        , id: "campaigninfoTable”
+        , title: "推广活动详情”
+        , cols:[colsold]
+        , data: list
+        , done: function (res, curr, count) {
+            // 表格头部样式处理
+            tableHeaderscroll(" #campaigninfo table", count);
+            // 分页的显示隐藏
+        }
+    });
+```
+
+```
+function downloadTable(tableobj, tableId, data) {
+    // 循环表头，将图标去掉(下载表格前，将图标去掉) 
+    var colsNew = table0bj.config.cols[0];
+    var colsold = $.extend(true,[] , colsNew);
+    for (var item in colsNew){
+        var title = colsNew [item]['title'];
+        if (title.index0f("</span>") > -1) {
+            var arr = colsNew[item]['title'].split("</span>");
+            colsNew[item]['title'] = arr[1];
+        }
+    }
+    
+    // 设置新表头
+    table0bj.config.cols[0] = colsNew;
+    if (data.length){
+        // 导出所有数据，所以用返回的全部数据
+        layui.table.exportFile(tableId, data,'xls'); // 默认导出csV,也可以为: xls
+        // 设置有图标表头
+        table0bi.config.cols[0] = cols0ld;
+    }else{
+        layer.msg('暂无数据');
+    }
+});
+```
 
 > 点击下载时，将表格的头部图标去掉，执行了下载表格的函数之后，将表头的图标加上。
 > 注意：由于表头cols是对象，指向地址，修改了，会影响全局的（例如：点击时间间隔时会拿到去掉图标的表头）
@@ -152,7 +229,7 @@ table.exportFile(ins1.config.id，data) ; // data为该实例中的任意数量�
 
 #### 修改重载表格时的加载图标
 
-{% asset_img note5.png %}
+![修改重载表格时的加载图标](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/layui-%E7%AC%94%E8%AE%B0/note5.png)
 
 - 如果只修改样式
 
@@ -175,7 +252,7 @@ table.exportFile(ins1.config.id，data) ; // data为该实例中的任意数量�
 
 #### 表格表头标题之间边框不显示
 
-{% asset_img note6.png %}
+**ie浏览器，layui表格的表头不显示边框**
 
 th本来是position：relative；改为position: static；
 
@@ -322,11 +399,11 @@ var end = laydate.render({
 
 #### laytui表格内容超过表格长度的处理
 
-当表格内容的文字长度超过表格的长度的时候，点击内容，会出现如图：
+当表格单元格的文字的长度超过表格当前列的宽度时，点击单元格的内容，会出现如图问题：
 
-{% asset_img note7.png %}
+![当表格单元格的文字的长度超过表格当前列的宽度时](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/layui-%E7%AC%94%E8%AE%B0/note7.png)
 
-解决方法：
+解决方法(使用css样式控制它隐藏)：
 
 ```
 .layui-table-tips-main{display:none}
@@ -385,25 +462,116 @@ table.render({
 });
 ```
 
-#### 动态修改select框的值
+#### 动态修改layui的select框的值
 
-![动态修改select框的值](https://raw.githubusercontent.com/winney07/Images/main/Note/layui-select.png)
-
-##### layui表格--当点击文字长度超过表格当前列宽度的时候，会出现如图所示：
-
-![超过表格当前列宽度](https://raw.githubusercontent.com/winney07/Images/main/Note/layui-table-tips.png)
+例如：点击表格的编辑按钮，获取当前行数据，根据不同的系统名称，在弹出的弹窗中，将系统选中
 
 ```
-解决方法：(使用css样式控制它隐藏)
-.layui-table-tips-main{display:none}
-.layui-table-tips-c{display:none}
+<form class="layui-form" lay-filter="whitelistForm">
+	<input type="text" name="whiteKey" placeholder="搜索设备名" autocomplete="off" class="layui-input">
+</form>
+
+// 点击表格的编辑按钮
+....
+else if(obj.event === 'edit') {
+	var dataValue = data.system === 'iOS' ? '1' : '2';
+	
+	// 方法一或方法二的代码
+}
+.....
 ```
+
+1. 方法一：
+
+   ```
+   form.val('whitelistForm', {'whiteKey': dataVale});
+   ```
+
+2. 方法二：
+
+   ```
+   // 首先需要使用lay-value来确定需要设置哪个元素自动选择
+   var select = 'dd [ lay-value=' +data.id + ']';
+   // 触发点击事件，实现自动选择
+   $("input[ name='system']").siblings("div.layui-form-select").find('dl').find(select).click();
+   ```
 
 #### layui日期时间段的设置，开始时间-结束时间
 
 最小值最大值动态设置的问题
 
-![最小值最大值动态设置的问题](https://raw.githubusercontent.com/winney07/Images/main/Note/layui-table-tips.png)
+```
+/* ----日期初始化-开始---- */
+$("#baseTime").val(today);
+$("#compareTime").val(adDate.getDate(-1)); // 前一天
+// 基础日期
+laydate.render({
+    elem: '#baseTime' 
+    , type: 'date'
+    , min: minTime
+    , max: today
+    , trigger: 'click' // 采用click弹出
+    , done: function (value, date, endDate) {
+      ......
+    }
+});
+
+// 对比日期
+laydate.render({
+    elem: '#compareTime' 
+    , type: 'date'
+    , min: minTime
+    , max: today
+    , trigger: 'click' // 采用click弹出
+    , done: function (value, date, endDate) {
+        .....
+    },
+    ready: function(date){
+        var y = date.year
+            , m = date.month 
+            , d = date.date; 
+
+        m = (m < 10) ? '0' + m : m; 
+        d = (d < 10) ? '0' + d : d;
+
+        // 获取输入框上一次的日期
+        compareTime =  y + '-' + m + '-' + d; 
+    }
+});
+```
+
+```
+var today = adDate.getDate(0);	// 今日(封装的一个方法)
+// 激活时间段日期选择 
+var activeTime = laydate.render({
+    elem: '#actRange'  
+    , type: 'date'
+    , range: true
+    , max: today		// 最大值为今天
+    , trigger: 'click' 	// 采用click弹出
+    , done: function (value, date, endDate) {
+        // 设置付费时间段最小日期
+        payRange.config.min = {
+            year:date.year,
+            month:date.month - 1,
+            date:date.date
+        }
+       ......
+    }
+});
+// 付费时间段选择
+var payRange = laydate.render({
+    elem: '#payRange' 
+    , type: 'date'
+    , range: true
+    , min: today
+    , max: today
+    , trigger: 'click' // 采用click弹出
+    , done: function (value, date, endDate) {
+        .....
+    }
+});
+```
 
 
 
@@ -714,19 +882,17 @@ that.layHeader.css('overflow','auto');//新加的
 
 #### layui-排序功能
 
-如果不使用layui本身的前端排序功能，需禁止：,autoSort: false //禁用前端自动排序
-
-
-
-
-
-使用layui表单要执行form.render(); //更新全部
-
-
-
-
+如果不使用layui本身的前端排序功能，需禁止：
 
 ```
+,autoSort: false // 禁用前端自动排序
+```
+
+更新全部表单元素：
 
 ```
+form.render(); 
+```
+
+
 

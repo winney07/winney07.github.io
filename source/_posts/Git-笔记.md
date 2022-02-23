@@ -36,7 +36,7 @@ OpenSSL SSL_connect: Connection was reset in connection to github.com:403
 
 #### Github创建仓库
 
-{% asset_img create.png %}
+![Github创建仓库](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Git-%E7%AC%94%E8%AE%B0/create.png)
 
 ### Git常用命令速查表
 

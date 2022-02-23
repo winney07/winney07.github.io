@@ -11,14 +11,14 @@ categories:
 ## 一、准备工作
 #### 1、安装Node.js 
 (1) 下载Node.js：{% link 官网下载地址  https://nodejs.org/en/download/ 官网下载地址 %} （这里以Windows 为例）；
-{% asset_img download.png %}
+![下载Node.js](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Hexo-GitHub-Pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/download.png)
 (2) 双击下载好的.msi文件，按下一步下一步，安装好就可以；
 (3) 在cmd命令窗口，输入下面的这个命令，如果能够显示Node.js的版本，说明安装成功了。
 
 ```bash
 node -v
 ```
-{% asset_img node-v.png %}
+![查看node版本](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Hexo-GitHub-Pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/node-v.png)
 #### 2、安装Git
 (1) 下载Git：{% link 下载地址  https://gitforwindows.org/ 官网下载地址 %} （这里以Windows 为例，我是在这里下载的） 你也可以到 {% link 官网下载  https://git-scm.com/downloads 官网下载地址 %} ；
 (2) 双击下载好的Git安装包，按下一步下一步，进行安装即可；
@@ -26,7 +26,7 @@ node -v
 ```bash
 git -version
 ```
-{% asset_img git-v.png %}
+![查看git版本](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Hexo-GitHub-Pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/git-v.png)
 (4) 想对Git有更多的了解，可以从下面几个网站学习，若你有更好的网站，也可以推荐给我：
 · 官网：{% link 点这里前往  https://git-scm.com/book/zh/v2 %} 
 ·W3Cschool:{% link 点这里前往  https://www.w3cschool.cn/git/ %} 
@@ -36,13 +36,13 @@ git -version
 #### 1、安装Hexo
 （1）在计算机中，新建一个winneyBlog文件夹，用于存放自己的博客内容。
 （2）在winneyBlog文件夹内，鼠标右键，选择Git Bash,进入到命令窗口
-{% asset_img blog-path.png %}
+![博客目录-进入命令窗口](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Hexo-GitHub-Pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/blog-path.png)
 （3）在命令窗口中，输入下面代码：
 ```bash
 npm install -g hexo-cli
 ```
 如图所示：
-{% asset_img hexo-cli.png %}
+![安装hexo-cli](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Hexo-GitHub-Pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/hexo-cli.png)
 
 #### 2、初始化Hexo 
 (1) 在命令窗口中，输入下面代码：(会在winneyBlog目录下，新建了一个hero文件夹)
@@ -50,7 +50,7 @@ npm install -g hexo-cli
 hexo init hexo
 ```
 如图所示：
-{% asset_img hexo-init.png %}
+![初始化hexo](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Hexo-GitHub-Pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/hexo-init.png)
 
 #### 3、配置Hexo
 (1) 进入hexo文件夹
@@ -66,7 +66,7 @@ npm install
 hexo generate
 ```
 如图所示：
-{% asset_img hexo-gen.png %}
+![部署形成的文件](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Hexo-GitHub-Pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/hexo-gen.png)
 
 #### 4、启动服务器
 (1) 在命令窗口执行下面代码：
@@ -74,18 +74,18 @@ hexo generate
 hexo server
 ```
 如图所示：（想要进行别的命令操作，可以按Ctrl + C停止服务器）
-{% asset_img hexo-server.png %}
+![启动服务器](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Hexo-GitHub-Pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/hexo-server.png)
 (2) 在浏览器地址栏中输入http://localhost:4000/  （默认端口是4000），如果能够看到如图所示的效果，说明初始化的Hexo博客搭建成功了。
 如图所示：
-{% asset_img hexo-blog.png %}
+![浏览器中查看博客](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Hexo-GitHub-Pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/hexo-blog.png)
 
 ## 三、将本地的 Hexo 博客部署到 GitHub Pages上
 1、新建一个仓库，仓库名为winney07.github.io（这个仓库的名称必须严格按照 username.github.io 的格式来命名）【前提是你要有一个Github账号】
 如图所示：（因为我已经创建过这个库了，所以会显示红色警告，只是后来为了截图，重新写一个同名的）
-{% asset_img hexo-git.png %}
+![创建仓库](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Hexo-GitHub-Pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/hexo-git.png)
 2、进入已经创建好的仓库（点击自己的头像，选择Your profile，点击刚创建好的那个仓库进去仓库里面），点击settings，找到GitHub Pages 选项，点击 Choose a theme 选择一个主题（可以选择也可以不选择，根据自己的需求决定是否操作这一步）
 如图所示：
-{% asset_img git-pages.png %}
+![配置Github Pages](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Hexo-GitHub-Pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/git-pages.png)
 3、配置Git个人信息，在winneyBlog目录下，鼠标右键，选择Git Bash，进入命令窗口，输入下面的命令
 ```bash
 git config --global user.name "Github用户名"       //自己Github的账号名
@@ -96,32 +96,32 @@ git config --global user.email "Github邮箱"        //自己注册Github的邮�
 ssh-keygen -t rsa -C  "Github邮箱"        //自己注册Github的邮箱地址
 ```
 如图所示：
-{% asset_img ssh-key.png %}
+![生成SSH KEY](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Hexo-GitHub-Pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/ssh-key.png)
 5、生成的SSH KEY会保存到 C:/Users/电脑名用户名/.ssh 目录中（根据你自己电脑用户名，打开对应的目录）
-{% asset_img win-user.png %}
+![SSH KEY存放目录](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Hexo-GitHub-Pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/win-user.png)
 （1）打开.ssh 这个目录，打开 id_rsa.pub 文件，复制里面的全部内容（这些内容就是密钥）
-{% asset_img user-ssh.png %}
+![打开 id_rsa.pub 文件](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Hexo-GitHub-Pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/user-ssh.png)
 6、在GitHub中添加SSH keys
 （1）打开Github，点击头像，选择Settings；
-{% asset_img set.png %}
+![设置](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Hexo-GitHub-Pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/set.png)
 （2）选择SSH and GPG keys项,点击右上角New SSH key按钮，将刚刚复制到的密钥粘贴到key输入框中，title自己给它命一个名就好
-{% asset_img add-key.png %}
+![添加ssh key 到仓库](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Hexo-GitHub-Pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/add-key.png)
 （3）最后点击Add Key，如果显示这样的界面，说明SSH KEY 配置成功：
-{% asset_img ssh-keys.png %}
+![SSH KEY 配置成功](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Hexo-GitHub-Pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/ssh-keys.png)
 7、修改全局配置文件
 （1）在hexo文件夹下，找到_config.yml文件；
 如图所示：
-{% asset_img config1.png %}
+![_config.yml文件](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Hexo-GitHub-Pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/config1.png)
 （2）复制仓库地址：
 如图所示：
-{% asset_img git-href.png %}
+![复制仓库地址](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Hexo-GitHub-Pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/git-href.png)
 （3）修改_config.yml文件里的deploy属性(目的是将本地hexo项目放到Github上)
 如图所示：
-{% asset_img deploy.png %}
+![修改_config.yml文件里的deploy属性](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Hexo-GitHub-Pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/deploy.png)
 注：【如果repository中填写的是https协议的，hexo d上传代码到Github时有下面类似错误，可以将repository改为ssh的链接】
 如图所示：
-{% asset_img deploy-error.png %}
-{% asset_img ssh-link.png %}
+![报错信息](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Hexo-GitHub-Pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/deploy-error.png)
+![使用 SSH链接](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Hexo-GitHub-Pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/ssh-link.png)
 
 8、安装hexo-deployer-git 插件，目的是将代码快速托管到Github上
 ```bash

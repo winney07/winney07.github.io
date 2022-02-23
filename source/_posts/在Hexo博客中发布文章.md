@@ -14,7 +14,7 @@ hexo new "在这里"
 ```
 （2）在博客目录下的/source/_posts/ 文件夹下，可以看到已经生成了标题为(在这里.md)的博客文件：
 如图所示：
-{% asset_img zai.png %}
+![生成的博客文件](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/%E5%9C%A8Hexo%E5%8D%9A%E5%AE%A2%E4%B8%AD%E5%8F%91%E5%B8%83%E6%96%87%E7%AB%A0/zai.png)
 （3）在（在这里.md）文件中编辑自己的博客文章即可。
 注意：Hexo 发布的文章是 Markdown 格式的文件， Markdown 基本语法的网址：{% link 点这里前往  http://www.markdown.cn/ %} 
 <!--more-->
@@ -29,13 +29,13 @@ tags:
 categories: web前端
 ```
 如图所示：
-{% asset_img zai-edit.png %}
+![博客文章-基本设置](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/%E5%9C%A8Hexo%E5%8D%9A%E5%AE%A2%E4%B8%AD%E5%8F%91%E5%B8%83%E6%96%87%E7%AB%A0/zai-edit.png)
 #### 3、启动服务器，本地测试
 ```bash
 hexo s
 ```
 如图所示：
-{% asset_img zai-page.png %}
+![查看博客文章](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/%E5%9C%A8Hexo%E5%8D%9A%E5%AE%A2%E4%B8%AD%E5%8F%91%E5%B8%83%E6%96%87%E7%AB%A0/zai-page.png)
 #### 4、添加“阅读全文”按钮
 方法一：在文章任意你想添加的位置添加<!--more-->即可
 ```bash
@@ -57,7 +57,7 @@ javascript是一门充满活力、简单易用的语言，又是一门具有许�
 后面的内容在首页不显示，只显示到<!--more-->这里
 ```
 在页面中显示的效果是：
-{% asset_img zai-more.png %}
+![阅读全文按钮-更多]](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/%E5%9C%A8Hexo%E5%8D%9A%E5%AE%A2%E4%B8%AD%E5%8F%91%E5%B8%83%E6%96%87%E7%AB%A0/zai-more.png)
 方法二：设置首页文章以摘要形式显示，打开主题配置文件，找到auto_excerpt进行修改：
 ```bash
 auto_excerpt:

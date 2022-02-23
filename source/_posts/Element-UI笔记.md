@@ -8,9 +8,52 @@ tags: Element-UI
 
 摘抄自[博客](https://www.cnblogs.com/yuwenjing0727/p/10110721.html)，仅用于学习。
 
-{% asset_img table.png %}
+<table>
+  <tr>
+    <th>序号</th>
+    <th>工单类型</th>
+    <th>taskKey</th>
+    <th>templateUrl</th>
+    <th>操作</th>
+  </tr>
+  <tr>
+    <td rowspan="3">1</td>
+    <td rowspan="3">事件单</td>
+    <td>shijian_01</td>
+    <td>/shijian_01</td>
+    <td>编辑   删除</td>
+  </tr>
+  <tr>
+    <td>shijian_02</td>
+    <td>/shijian_02</td>
+    <td>编辑   删除</td>
+  </tr>
+  <tr>
+    <td>shijian_03</td>
+    <td>/shijian_03</td>
+    <td>编辑   删除</td>
+  </tr>
+  <tr>
+    <td rowspan="3">2</td>
+    <td rowspan="3">问题单</td>
+    <td>shijian_04</td>
+    <td>/shijian_04</td>
+    <td>编辑   删除</td>
+  </tr>
+  <tr>
+    <td>shijian_05</td>
+    <td>/shijian_05</td>
+    <td>编辑   删除</td>
+  </tr>
+  <tr>
+    <td>shijian_06</td>
+    <td>/shijian_06</td>
+    <td>编辑   删除</td>
+  </tr>
+</table>
 
- 代码附上：
+
+代码附上：
 
 ```
 <template>

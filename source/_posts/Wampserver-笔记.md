@@ -16,7 +16,7 @@ categories:
 账号：root，密码为空
 ```
 
-{% asset_img note1.png %}
+![phpmyadmin默认SQL账号密码](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Wampserver-%E7%AC%94%E8%AE%B0/note1.png)
 
 #### 虚拟目录的配置 
 
@@ -108,5 +108,4 @@ listen 8081
 
 #### Apache相对路径文件的放置
 
-{% asset_img note2.png %}
-
+![Apache相对路径文件的放置](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Wampserver-%E7%AC%94%E8%AE%B0/note2.png)

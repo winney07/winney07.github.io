@@ -6,16 +6,11 @@ tags:
 
 注：只做笔记查阅，侵权必删。
 
-{% asset_img yunsuanfu.gif  %}
-
-{% asset_img shuzu.gif  %}
-
-{% asset_img bianliang.gif  %}
-
-{% asset_img yuju.gif  %}
-
-{% asset_img zhengze.gif  %}
-
-{% asset_img DOM.gif  %}
-
-{% asset_img hanshu.gif  %}
+![JavaScript思维导图](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/JavaScript%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE-%E7%AC%94%E8%AE%B0/yunsuanfu.gif)
+![JavaScript思维导图](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/JavaScript%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE-%E7%AC%94%E8%AE%B0/shuzu.gif)
+![JavaScript思维导图](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/JavaScript%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE-%E7%AC%94%E8%AE%B0/bianliang.gif)
+![JavaScript思维导图](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/JavaScript%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE-%E7%AC%94%E8%AE%B0/yuju.gif)
+![JavaScript思维导图](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/JavaScript%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE-%E7%AC%94%E8%AE%B0/zhengze.gif)
+![JavaScript思维导图](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/JavaScript%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE-%E7%AC%94%E8%AE%B0/DOM.gif)
+![JavaScript思维导图](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/JavaScript%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE-%E7%AC%94%E8%AE%B0/hanshu.gif)
+![JavaScript思维导图](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/JavaScript%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE-%E7%AC%94%E8%AE%B0/zifuchuanhanshu.gif)

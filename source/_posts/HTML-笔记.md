@@ -8,9 +8,8 @@ categories:
 - HTML
 ---
 
-{% asset_img note1.png  %}
-
-{% asset_img note2.png  %}
+![元素结构](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/HTML-%E7%AC%94%E8%AE%B0/note1.png)
+![层级结构](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/HTML-%E7%AC%94%E8%AE%B0/note2.png)
 
 1、html
 

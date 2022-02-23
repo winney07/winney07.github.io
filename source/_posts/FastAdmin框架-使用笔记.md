@@ -9,7 +9,7 @@ categories:
 ---
 
 ### 在FastAdmin动态追加bootstrap-select下拉列表
-{% asset_img css1.png %}
+
 ```
 <select data-rule="required" class="form-control selectpicker" data-live-search="true" name="row[admin_role_name]" data-url="" data-query-name=""> </select>
 

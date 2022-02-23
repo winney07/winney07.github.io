@@ -110,7 +110,7 @@ select{
 text-size-adjust: 100%;
 -webkit-text-size-adjust: 100%;
 ```
-{% asset_img css1.png %}
+![iPhone Safari浏览器字体放大](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/%E5%89%8D%E7%AB%AFCSS%E9%97%AE%E9%A2%98/css1.png)
 
 ### 去除Safari浏览器下复选框和下拉框默认样式
 
@@ -176,9 +176,9 @@ td span:hover {
 </table>
 ```
 ##### 溢出隐藏：
-{% asset_img css2.png %}
+![溢出隐藏](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/%E5%89%8D%E7%AB%AFCSS%E9%97%AE%E9%A2%98/css2.png)
 ##### 鼠标上移，换行显示全部内容：
-{% asset_img css3.png %}
+![鼠标上移，换行显示全部内容](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/%E5%89%8D%E7%AB%AFCSS%E9%97%AE%E9%A2%98/css3.png)
 
 ### css3超出宽度自动换行以及超出宽度显示...
 #### css3超出宽度自动换行，并且首行缩进2字符
@@ -257,11 +257,11 @@ textarea {resize:none;}
 
 #### 解决html页面英文和数字不自动换行，但中文就可以自动换行
 
-{% asset_img huanhang.png %}
+![处理换行](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/%E5%89%8D%E7%AB%AFCSS%E9%97%AE%E9%A2%98/huanhang.png)
 
 ###### 解决方法：添加css属性word-break: break-all;
 
-{% asset_img huanhang2.png %}
+![word-break: break-all](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/%E5%89%8D%E7%AB%AFCSS%E9%97%AE%E9%A2%98/huanhang2.png)
 
 #### 溢出的文字隐藏
 
@@ -1018,26 +1018,30 @@ css中判断[IE](https://www.baidu.com/s?wd=IE&tn=SE_PcZhidaonwhc_ngpagmjz&rsv_d
 
 #### Koala设置scss编译后的输出路径
 
-![Koala设置输出路径](https://raw.githubusercontent.com/winney07/Images/main/Note/Koala-%E8%BE%93%E5%87%BA%E8%B7%AF%E5%BE%84.png)
 
-> 1. <!--[if !IE]> 除IE外都可识别 <!--<![endif]-->
->
-> 2. <!--[if IE]> 所有的IE可识别 <![endif]-->
->
-> 3. <!--[if IE 5.0]> 只有IE5.0可以识别 <![endif]-->
->
-> 4. <!--[if IE 5]> 仅IE5.0与IE5.5可以识别 <![endif]-->
->
-> 5. <!--[if gt IE 5.0]> IE5.0以及IE5.0以上版本都可以识别 <![endif]-->
->
-> 6. <!--[if IE 6]> 仅IE6可识别 <![endif]-->
->
-> 7. <!--[if lt IE 6]> IE6以及IE6以下版本可识别 <![endif]-->
->
-> 8. <!--[if gte IE 6]> IE6以及IE6以上版本可识别 <![endif]-->
->
-> 9. <!--[if IE 7]> 仅IE7可识别 <![endif]-->
->
-> 10. <!--[if lt IE 7]> IE7以及IE7以下版本可识别 <![endif]-->
->
-> 11. <!--[if gte IE 7]> IE7以及IE7以上版本可识别 <![endif]-->
+
+#### IE兼容性处理
+
+```
+<!--[if !IE]> 除IE外都可识别 <!--<![endif]-->
+
+<!--[if IE]> 所有的IE可识别 <![endif]-->
+
+<!--[if IE 5.0]> 只有IE5.0可以识别 <![endif]-->
+
+<!--[if IE 5]> 仅IE5.0与IE5.5可以识别 <![endif]-->
+
+<!--[if gt IE 5.0]> IE5.0以及IE5.0以上版本都可以识别 <![endif]-->
+
+<!--[if IE 6]> 仅IE6可识别 <![endif]-->
+
+<!--[if lt IE 6]> IE6以及IE6以下版本可识别 <![endif]-->
+
+<!--[if gte IE 6]> IE6以及IE6以上版本可识别 <![endif]-->
+
+<!--[if IE 7]> 仅IE7可识别 <![endif]-->
+
+<!--[if lt IE 7]> IE7以及IE7以下版本可识别 <![endif]-->
+
+<!--[if gte IE 7]> IE7以及IE7以上版本可识别 <![endif]-->
+```

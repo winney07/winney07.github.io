@@ -14,13 +14,13 @@ categories:
 
 参考教程：[安装mongodb3.6之Installing MongoDB Compass...](https://blog.csdn.net/mar_ljh/article/details/79286913)
 
-{% asset_img note2.png %}
+![安装教程](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/MangoDB/note2.png)
 
 #### 环境变量配置
 
 环境变量加在“系统变量”中
 
-{% asset_img note3.png %}
+![环境变量加在“系统变量”中](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/MangoDB/note3.png)
 
 ##### [安装compass](https://docs.mongodb.com/manual/reference/program/install_compass/index.html)
 
@@ -201,7 +201,7 @@ mongorestore -h 127.0.0.1 -d testDemo D:\software\MangoDB\backup\123\company
 
 #### 数据库服务器—mongoDB
 
-{% asset_img note1.png %}
+![数据库服务器—mongoDB](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/MangoDB/note1.png)
 
 #### 安装mongodb以及设置为windows服务 详细步骤
 

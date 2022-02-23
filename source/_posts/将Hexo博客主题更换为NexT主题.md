@@ -8,7 +8,7 @@ categories:
 - Hexo
 ---
 1、{% link 下载NexT主题  https://gitforwindows.org/ %}，下载解压后，将该文件夹命名为next，把这个文件夹放置到博客目录的themes 文件夹下，如图所示：
-{% asset_img next.png %}
+![将主题的文件夹命名为next](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/%E5%B0%86Hexo%E5%8D%9A%E5%AE%A2%E4%B8%BB%E9%A2%98%E6%9B%B4%E6%8D%A2%E4%B8%BANexT%E4%B8%BB%E9%A2%98/next.png)
 想了解更多，可以查看NexT 主题使用文档： {% link 官方使用文档  http://theme-next.iissnan.com/ %}
 <!--more-->
 2、修改主配置文件_config.yml（hexo目录下的_config.yml文件），将theme属性修改为next，如下所示：
@@ -24,7 +24,7 @@ hexo server
 ```
 4、打开主题配置文件 _config.yml
 如图所示：
-{% asset_img next-config.png %}
+![打开主题配置文件 _config.yml](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/%E5%B0%86Hexo%E5%8D%9A%E5%AE%A2%E4%B8%BB%E9%A2%98%E6%9B%B4%E6%8D%A2%E4%B8%BANexT%E4%B8%BB%E9%A2%98/next-config.png)
 5、在主题配置文件 _config.yml中将scheme设置为 Pisces（Hexo默认样式是Muse，根据你自己的喜好选择你想要设置的样式，这里以Pisces为例）
 ```bash
 # ---------------------------------------------------------------
@@ -81,7 +81,7 @@ hexo new page 'about'
 ```
 （3）可以在hexo/source目录下看到创建的3个文件夹
 如图所示：
-{% asset_img source.png %}
+![在hexo/source目录下看到创建的3个文件夹](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/%E5%B0%86Hexo%E5%8D%9A%E5%AE%A2%E4%B8%BB%E9%A2%98%E6%9B%B4%E6%8D%A2%E4%B8%BANexT%E4%B8%BB%E9%A2%98/source.png)
 9、每一个分类菜单都生成了一个 index.md 初始文件（在刚创建的文件夹目录下），默认包含了 title 和 date 字段，我们需要给每一 index.md 文件添加上 type 字段
 如下所示：
 ```bash
@@ -130,7 +130,7 @@ local_search:
 ```
 11、执行命令hexo s，本地预览我们的博客页面，发现刚才的配置已经完成
 如图所示：
-{% asset_img winney-blog.png %}
+![预览本地博客页面](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/%E5%B0%86Hexo%E5%8D%9A%E5%AE%A2%E4%B8%BB%E9%A2%98%E6%9B%B4%E6%8D%A2%E4%B8%BANexT%E4%B8%BB%E9%A2%98/winney-blog.png)
 12、在命令窗口，输入以下命令，将修改后的本地hexo项目托管到GitHub上
 ```bash
 hexo clean && hexo g && hexo d

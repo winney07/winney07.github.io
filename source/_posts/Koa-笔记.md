@@ -168,7 +168,7 @@ app.listen(3000, ()=>{
 
 #### 添加扩展程序成功后，在页面中可以看到json格式的数据
 
-{% asset_img note1.png %}
+![谷歌浏览器添加查看json格式数据的扩展](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Koa-%E7%AC%94%E8%AE%B0/note1.png)
 
 
 

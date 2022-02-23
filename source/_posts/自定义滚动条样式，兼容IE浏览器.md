@@ -40,8 +40,18 @@ div{
 #### IE浏览器滚动条自定义样式修改
 
 在写样式之前，我们看一下IE浏览器滚动条样式设置位置参考图：
-{% asset_img ie-scrollar.png %}
-{% asset_img ie-scrollar2.png %}
+![IE浏览器滚动条样式设置位置参考图](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%BB%9A%E5%8A%A8%E6%9D%A1%E6%A0%B7%E5%BC%8F%EF%BC%8C%E5%85%BC%E5%AE%B9IE%E6%B5%8F%E8%A7%88%E5%99%A8/ie-scrollar.png)
+
+| 滚动条样式                  | 支持情况   | 支持浏览器版本 | 可否继承 | 描述                                   |
+| --------------------------- | ---------- | -------------- | -------- | -------------------------------------- |
+| scrollbar-3dlight-color     | IE特有属性 | IE5.5+         | y        | 设置滚动框的和滚动条箭头左上边缘的颜色 |
+| scrollbar-highlight-color   | IE特有属性 | IE5.5+         | y        | 设置滚动框的和滚动条箭头左上边缘的颜色 |
+| scrollbar-face-color        | IE特有属性 | IE5.5+         | y        | 设置滚动框和滚动条箭头的颜色           |
+| scrollbar-arrow-color       | IE特有属性 | IE5.5+         | y        | 设置i滚动条箭头的颜色                  |
+| scrollbar-shadow-color      | IE特有属性 | IE5.5+         | y        | 设置滚动框的和滚动条箭头右下边缘的颜色 |
+| scrollbar-dark-shadow-color | IE特有属性 | IE5.5+         | y        | 设置滚动条槽的颜色                     |
+| scrollbar-base-color        | IE特有属性 | IE5.5+         | y        | 设置滚动条主要构成部分的颜色           |
+| scrollbar-track-color       | IE特有属性 | IE5.5+         | y        | 设置滚动条轨迹组成部分的颜色           |
 
 ```bash
 //Ie下滚动条样式

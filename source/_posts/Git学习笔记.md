@@ -17,10 +17,22 @@ git的通用操作流程如下图（来源于网络）
 #### 主要涉及到四个关键点：
 
 1. 工作区：本地电脑存放项目文件的地方，比如learnGitProject文件夹；
+
 2. 暂存区（Index/Stage）：在使用git管理项目文件的时候，其本地的项目文件会多出一个.git的文件夹，将这个.git文件夹称之为版本库。其中.git文件夹中包含了两个部分，一个是暂存区（Index或者Stage）,顾名思义就是暂时存放文件的地方，通常使用add命令将工作区的文件添加到暂存区里；
+
 3. 本地仓库：.git文件夹里还包括git自动创建的master分支，并且将HEAD指针指向master分支。使用commit命令可以将暂存区中的文件添加到本地仓库中；
 
-![img](../images/clip_image002.jpg)![img](../images/clip_image003-1613723213909.png)
+   在`Git/RybyDemo/grit/.git/refs/heads` 目录中修改master:
+
+   ```
+   ebdec5ff037c7368b2b1827fadc66741d1ed14ed
+   ```
+
+   修改`HEAD`:
+
+   ```
+   ref:refs/heads/master
+   ```
 
 1. 远程仓库：不是在本地仓库中，项目代码在远程git服务器上，比如项目放在github上，就是一个远程仓库，通常使用clone命令将远程仓库拷贝到本地仓库中，开发后推送到远程仓库中即可；
 

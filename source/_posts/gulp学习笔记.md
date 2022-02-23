@@ -153,7 +153,7 @@ gulp.task('js', function() {
 //注册默认任务
 // gulp.task('default', ['js'])
 ```
-{% asset_img 1.png %}
+![报错信息](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/gulp%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/1.png)
 gulp4中创建的任务是一个异步的javascript函数——一个接受错误第一次回调或返回stream, promise, event emitter, child process, 或 observable观察的函数。
 {% link gulp运行报错：Task function must be specified必须指定任务函数 http://www.xinran001.com/frontend/47.html %}
 
@@ -208,7 +208,7 @@ gulp css
 ##### 执行任务异步，任务之间解决依赖关系
 使用gulp.task('default', ['js', 'less', 'css']);
 报错：
-{% asset_img 2.png %}
+![报错信息](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/gulp%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/2.png)
 原因：
 gulp.task 移除了三参数语法，现在不能使用数组来指定一个任务的依赖。gulp 4.0 加入了 gulp.series 和 gulp.parallel 来实现任务的串行化和并行化。
 不要用Gulp3的方式指定依赖任务，你需要使用gulp.series和gulp.parallel，因为gulp任务现在只有两个参数。
@@ -224,7 +224,7 @@ gulp.task('default', gulp.parallel('js', 'less', 'css', function () {
 }));
 ```
 报错：
-{% asset_img 3.png %}
+![报错信息](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/gulp%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/3.png)
 {% link 参考gulp4 Sample gulpfile.js https://www.npmjs.com/package/gulp4%}
 最终将任务改为：
 ```bash
@@ -235,13 +235,13 @@ gulp.task('default', build);
 ```bash
 gulp 
 ```
-{% asset_img 4.png %}
+![运行gulp](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/gulp%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/4.png)
 在目录中生成dist目录，里面有这3个任务生成的文件。
 注：如果gulp任务中，去掉return，也可以完成任务，但是任务变成同步执行。
 return能保证任务是异步执行的，在任务执行完成后，会在gulp中释放掉。效率高
 
 less执行的任务比较多，也许less还没执行完，就执行到css任务了。
-{% asset_img 5.png %}
+![less还没执行完，就执行到css任务](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/gulp%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/5.png)
 所以要保证执行css任务时，less任务已经执行完了。（添加一个任务数组参数）
 3.0**这样写：
 ```bash
@@ -259,7 +259,7 @@ var build = gulp.series('less', gulp.parallel('js', 'css', 'html'));
 gulp.task('default', build);
 ```
 结果：（css任务在less任务完成之后再执行）
-{% asset_img 6.png %}
+![css任务在less任务完成之后再执行](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/gulp%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/6.png)
 ### 压缩html
 ```bash
 cnpm install gulp-htmlmin --save-dev
@@ -277,9 +277,9 @@ gulp.task('html', function() {
 })
 ```
 src/index.html:
-{% asset_img 7.png %}
+![运行结果](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/gulp%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/7.png)
 压缩之后dist/index.html:
-{% asset_img 8.png %}
+![运行结果](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/gulp%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/8.png)
 原因：
 原html文件引入的css文件路径不对：
 ```bash

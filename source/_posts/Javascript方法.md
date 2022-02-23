@@ -81,15 +81,16 @@ alert(IsInArray(test,2));//false
 alert(IsInArray(test,-1));//true
 ```
 需求：
-{% asset_img inarr.png %}
+
+在后台的某些模块中，不显示表头的游戏下拉筛选框：
 
 ```
-//当前页URL
+// 当前页URL
 var page = window.location.hash.split("?")[0];
-//当前模块值
+// 当前模块值
 var this_module = page.split("/")[2];
 （判断连接中是否是这几个模块下的链接）
-//需要去掉游戏选择下拉框的模块
+// 需要去掉游戏选择下拉框的模块
 var moduleArr = ["app","channel","agent","config","white_list","account"];
 
 // 判断模块值是否等于数组中的其中一个
@@ -768,30 +769,25 @@ var res = datas.filter(function (data) {
 ```
 var searchList = [];
 searchList = list.filter(function(item) {
-  var flag = (item.name.indexOf(txt) > -1) || (item.key.indexOf(txt)  >-1) || 		 (item.account_id.indexOf(txt)  >-1) || (item.user_name.indexOf(txt)  >-1) || (item.user_id.indexOf(txt)  >-1);					
+  var flag = (item.name.indexOf(txt) > -1) || (item.key.indexOf(txt)  >-1) || (item.account_id.indexOf(txt)  >-1) || (item.user_name.indexOf(txt)  >-1) || (item.user_id.indexOf(txt)  >-1);					
    return flag;
 });
 ```
-
-{% asset_img filter.png %}
 
 #### 处理textarea换行数据
 
 先使用换行符“\n"截取，然后用"~"获取
 
-{% asset_img br.png %}
+![处理textarea换行数据](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Javascript%E6%96%B9%E6%B3%95/br.png)
 
 #### 火狐浏览器，报ev is undefined
 
-获取当前操作对象时，要记得传参
+- 获取当前操作对象时，要记得传参
 
-封装函数加上参数e
+- 封装函数加上事件参数e
 
-{% asset_img ev1.png %}
+- 调用时加上事件参数e
 
-调用时加上参数e
-
-{% asset_img ev2.png %}
 
 #### 搜索框——实时匹配
 

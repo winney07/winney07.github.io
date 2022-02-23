@@ -35,7 +35,8 @@ data(){
 ```
 <!-- more -->
 **效果如图所示：**
-{% asset_img nav1.png %}
+
+![路由](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Vue-js-Element-UI%E5%AF%BC%E8%88%AA%E5%86%99%E6%B3%95/nav1.png)
 
 【参考】： [VUE elementUi导航写法](https://blog.csdn.net/weixin_42488404/article/details/83414761)
 
@@ -98,13 +99,14 @@ items:[
 ]
 ```
 **效果如图所示：**
-{% asset_img nav2.png %}
+![导航栏跳转路由](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Vue-js-Element-UI%E5%AF%BC%E8%88%AA%E5%86%99%E6%B3%95/nav2.png)
 
 【参考】： [Vue框架Element UI教程-导航栏跳转路由（五）](https://www.jianshu.com/p/e24c37fb9e64)
 
 #### 方法三（当前目录下的多个子页面选中时的高亮问题）：
-{% asset_img nav3.png %}
-{% asset_img nav4.png %}
+
+![当前目录下的多个子页面选中时的高亮问题](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Vue-js-Element-UI%E5%AF%BC%E8%88%AA%E5%86%99%E6%B3%95/nav3.png)
+![当前目录下的多个子页面选中时的高亮问题](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Vue-js-Element-UI%E5%AF%BC%E8%88%AA%E5%86%99%E6%B3%95/nav4.png)
 
 **router/index.js文件的路由配置（特别关注activeMenu、apiActiveMenu的配置）：**
 

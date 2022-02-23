@@ -9,12 +9,63 @@ categories:
 ---
 腾讯课堂学习笔记
 
-{% asset_img 1.png %}
-<!--more-->
-{% asset_img 2.png %}
-{% asset_img 3.png %}
-{% asset_img 4.png %}
-{% asset_img 5.png %}
+## ES6·历史
+
+> 1990年底，欧洲核能研究组织(CERN) 科学家Tim Berners-Lee，在全世界最大的电脑网络——互联网的基础上，发明了万维网(World Wide Web)
+>
+> 1992年底，美国国家超级电脑应用中心(NCSA) 开始开发一个独立的浏览器， 叫做Mosaic。 这是人类历史上第一个浏览器，从此网页可以在图形界面的窗口浏览。
+>
+> 
+>
+> 1994年10月，NCSA的一个主要程序员Marc Andreessen联合风险投资家Jim Clark，成立了Mosaic通信公司(Mosaic Communications)，不久后改名为Netscape。这家公司的方向，就是在Mosaic的基础上，开发面向普通用户的新一 代的浏览器Netscape Navigator。
+>
+> 1994年12月，Navigator发布 了1.0版，市场份额一举超过90%。
+>
+> 
+>
+> 1995年
+> Netscape公司雇佣了程序员Brendan Eich开发这种网页脚本语言。Brendan Eich只用了10天，就设计完成了这种语言的第一版。
+> 基本语法：借鉴C语言和Java语言。
+> 数据结构：借鉴Java语言， 包括将值分成原始值和对象两大类。
+> 函数的用法：将函数当作第一等公民，并引入闭包。
+> 原型继承模型：借鉴Self语 言。
+> 正则表达式：借鉴Perl语言 。
+> 字符串和数组处理：借鉴Python语言.
+>
+> Netscape公司的这种浏览器脚本语言，最初名字叫做Mocha, 1995年9月 改为LiveScript。12月，Netscape公 司与Sun公司(Java语 言的发明者和所有者)达成协议，后者允许将这种语言叫做JavaScript。这样一来， Netscape公 司可以借助Java语言的声势，而Sun公司则将自己的影响力扩展到了浏览器。
+>
+> 为了保持简单，这种脚本语言缺少一些关键的功能，比如块级作用域、模块、子类型(subtyping) 等等，但是可以利用现有功能找出解决办法。这种功能的不足，对于其他语言，你需要学习语言的各种功能，JavaScript,你需要学习各种解决问题的模式。而且由于来源多样，从一开始就注定，JavaScript的编程 风格是函数式编程和面向对象编程的一种混合体。
+
+
+
+
+
+- 1996年3月， Navigator 2.0浏览器正式内置了JavaScript脚本语言。
+
+- 1996年8月，微软模仿JavaScript开发了一种相近的语言，取名为JScript (JavaScript是Netscape的注册商标，微软不能用)，首先内置于IE 3.0。网景公司面临丧失浏览器脚本语言的主导权的局面。
+
+- 1996年11月，网景公司决定将JavaScript提交给国际标准化组织ECMA，希望JavaScript能够成为国际标准，以此抵抗微软。
+
+- 1997年7月，ECMA组织发布262号标准文件(ECMA-262) 的第一版，规定了浏览器脚本语
+  言的标准，并将这种语言称为ECMAScript。这个版本就是ECMAScript 1.0版。
+
+- 1998年6月， ECMAScript 2.0版发布。
+
+- 1999年12月，ECMAScript 3.0版发布，成为JavaScript的通行标准， 得到了广泛支持。
+
+- 2007年10月， ECMAScript 4.0版草案发布，被各大厂商抵制，和谐了
+
+- 2009年12月，ECMAScript 5.0版正式发布。
+
+- 2011年6月， ECMAscript 5.1版发布，并且成为IOS国际标准（IOS/IEC 16262：2011）。
+
+- 2013年12月， ECMAScript 6草案发布。然后是12个月的讨论期，听取各方反馈。
+
+- 2014年12月，ECMAScript6发布正式版本
+
+- 浏览器支持情况：http://kangax.github.io/compat-table/es6/
+
+  
 
 {% link 查看浏览器支持ES6的情况 http://kangax.github.io/compat-table/es6/ %}
 
@@ -92,7 +143,10 @@ console.log(a);
 cnpm run build
 ```
 
+
+
 #### gulp
+
 {% link Gulp中文网 https://www.gulpjs.com.cn/ %}
 ##### 安装gulp
 ```bash

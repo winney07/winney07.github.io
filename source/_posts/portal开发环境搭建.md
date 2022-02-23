@@ -239,7 +239,7 @@ Gulp.js是一个自动化构建工具，开发者可以使用它在项目开发�
 
 2.3、当然我们可以手动新建这个配置文件，但是作为一名有志青年，我们应该使用更为效率的方法：命令提示符执行**cnpm init**
 
-{% asset_img note1.png %}
+![手动新建这个配置文件](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/portal%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/note1.png)
 
 2.4、查看package.json帮助文档，命令提示符执行**cnpm help package.json**
 
@@ -251,7 +251,7 @@ Gulp.js是一个自动化构建工具，开发者可以使用它在项目开发�
 
 3.2、本示例以gulp-less为例（编译less文件），命令提示符执行`**cnpm install gulp-less --save-dev**`；
 
-{% asset_img note2.png %}
+![编译less文件](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/portal%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/note2.png)
 
 3.3、将会安装在node_modules的gulp-less目录下，该目录下有一个gulp-less的使用帮助文档README.md；
 

@@ -157,7 +157,59 @@ created() {
 
 ```
 ### 如何将element-ui中的表格和分页器连接起来
-{% asset_img vue01.png %}
-{% asset_img vue02.png %}
-{% asset_img vue03.png %}
-{% asset_img vue04.png %}
+
+```
+<el-table 
+    :data="tableData.slice((query.pageIndex - 1)*query.pageSize, query.pageIndex * query.pageSize)"
+    border
+    class="table"
+    ref="multipleTable"
+    header-cell-class-name="table-header"
+    @selection-change="handleSelectionChange"
+>
+	<el-table-column type="selection" width="55" align="center"></el-table-column>
+    <el-table-column prop="id" label="ID" width="55" align="center"></el-table-column>
+    <el-table-column prop="name" label="用户名" ></el-table-column>
+    <el-table-column label="账户余额" >
+    	<template slot-scope="scope">￥{{scope.row.money}}</template>
+    </el-table-column>
+</el-table>
+
+<div class="pagination" >
+    <el-pagination
+        background
+        @size-change="handleSizeChange"
+        @current-change="handleCurrentchange"
+        :current-page="query.pageIndex"
+        :page-sizes="[10, 15, 20, 30]"
+        :page-size="query.pageSize
+        layout="total, sizes, prev, pager, next, jumper"
+        :total="pageTotal">
+    </el-pagination>
+</div> 
+
+
+export default{
+	name :'basetable',
+    data() {
+        return (
+            query:{
+                address:'',
+                name:'',
+                pageIndex:1,   // 当前页
+                pageSize: 10,	// 每页显示条数
+                tableData: [],
+             }
+        }
+     },
+     // 分页导航
+     handleCurrentChange(val) {
+        this.$set(this.query,'pageIndex', val);
+        this.getData();
+     },
+     handleSizeChange(val) {
+        this.$set(this.query,'pageSize', val);
+        this.getData();
+     }
+}
+```

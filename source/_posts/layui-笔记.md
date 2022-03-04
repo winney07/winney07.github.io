@@ -573,6 +573,51 @@ var payRange = laydate.render({
 });
 ```
 
+#### 文件上传
+
+##### upload模块
+
+多次上传同一文件，不弹报错信息
+
+> 场景：1.选择错误格式的文件（a.jpg），弹出错误提示”文件格式不对“；2.再次选择a.jpg，就不弹错误提示；
+>
+> 3.在1的基础上，选择其他文件(b.jpg)，会弹错误提示
+
+解决：需要清空file中的value值。如果值是一样的（也就是选择同一个文件），不会执行判断，所以弹出错误提示时，需要将它的value值清空
+
+```
+// 重新上传签名文件按钮
+upload.render({ //允许上传的文件后缀
+    elem: '#uploadSign'
+    , url: ''
+    , accept: 'file' //普通文件
+    , auto: false
+    , bindAction: '#uploadFile'
+    // , exts: 'keystore|jks' //只允许上传文件 （这样写会调用layui本身的文件上传错误提示）
+    // , size: 1024 //限制文件大小，单位 KB
+    , done: function(res){
+        // 成功回调
+    }
+    ,choose: function(obj){
+        obj.preview(function(index, file, result){
+            var suffix = file.name.split(".")[1]	// 文件后缀
+                , want_type = (suffix === 'keystore' || suffix === 'jks')	// 只允许上传文件的格式
+                , want_size = file.size <= 1024 * 1024		// 文件最大大小
+                , flag = want_type && want_size	// 是否符合上传条件
+                , error_msg = !want_type ? '上传的签名文件的格式不对' : (!want_size ? '签名文件不能超过1.00MB' : ''); // 错误提示
+
+            if(flag) {
+                obj.upload(index, file); // 满足条件调用上传方法
+            } else {
+                layer.msg(error_msg, {time: 1000});
+                // 清空file中的值(避免多次上传同一文件，不弹错误提示)
+                $('input[name="file"]').val('');
+            }
+        });
+    }
+});
+```
+
 
 
 #### 动态修改复选框的选中状态

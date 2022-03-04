@@ -8,6 +8,58 @@ categories:
 - Javascript
 ---
 
+#### new Date()方法
+
+```
+new Date().toDateString()
+Wed Mar 02 2020
+```
+
+```
+new Date().toLocaleDateString()
+2020/3/2
+```
+
+```
+new Date().toLocaleTimeString()
+17:50:21
+```
+
+```
+new Date().toLocaleString();
+2020/3/2 17:46:52
+```
+
+```
+new Date().toTimeString()
+17:50:59 GMT+0800 (中国标准时间)
+```
+
+```
+new Date().toUTCString()
+Wed, 02 Mar 2020 09:51:30 GMT
+```
+
+#### [forEach()](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach)
+
+```
+var arr = [1, 2, 3, 4, 5];
+
+arr.forEach(function (item) {
+    if (item === 3) {
+        return;		// ---->3的元素跳过
+    }
+    console.log(item);
+});
+// 输出结果：
+1
+2
+4
+5
+```
+
+
+
 #### [js中数组常用方法总结](https://www.cnblogs.com/jinzhou/p/9072614.html)
 
 #### 一、作用域

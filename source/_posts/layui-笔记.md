@@ -896,3 +896,32 @@ form.render();
 
 
 
+#### 扩展一个模板
+
+```
+ /**扩展一个模块**/      
+layui.define(function(exports){ 
+  var obj = {
+    hello: function(str){
+      alert('Hello '+ (str||'mymod'));
+    },
+
+  };
+
+  // 输出接口
+  exports('mymod', obj);
+});
+
+
+layui.extend({
+  mod2: 'http://192.168.0.59/mymod/' // {/}的意思即代表采用自有路径，即不跟随 base 路径
+});
+
+// 使用拓展模块
+layui.use(['mymod'], function(){
+  var mymod = layui.mymod;
+
+  mymod.hello('World!'); //弹出 Hello World!
+});
+```
+

@@ -14,7 +14,7 @@ categories:
 
 在VSCode中搜'ES7'，选择‘ES7 React/Redux/GraphQL/React-Native snippets’
 
-在新建的.jsx/.js文件中
+在新建的`.jsx/.js`文件中
 
 1. 输入`rcc`，快速生成class component：
 
@@ -104,7 +104,7 @@ categories:
 
 #### 快速注释
 
-在vscode中，.jsx文件中，选中要注释的文字，按 CTRL + shift + /
+在vscode中，`.jsx`文件中，选中要注释的文字，按` CTRL + shift + /`
 
 ```
 {/* 提取组件 */}
@@ -184,7 +184,7 @@ key 会传递信息给 React ，但不会传递给你的组件。如果你的组
 return <div>内容</div>
 ```
 
-返回多个html标签，换行写更清晰，使用return()
+返回多个html标签，换行写更清晰，使用`return()`
 
 ```
 return(
@@ -198,7 +198,7 @@ return(
 
 
 
-> 组件，含有return，会返回react或null
+> 组件，含有return，会返回react或`null`
 >
 > 函数组件，可以从参数props中拿到属性
 >
@@ -206,7 +206,7 @@ return(
 >
 > props的属性名==组件传进来的属性名 
 >
-> {}中可以写JavaScript代码，如果是对象，需要{{a:1,b:2}}
+> `{}`中可以写JavaScript代码，如果是对象，需要`{{a:1,b:2}}`
 >
 > map函数，自带return
 >

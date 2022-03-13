@@ -193,6 +193,106 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2019/07/04/ECMAScript-6%E7%AE%80%E4%BB%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="winney">
+      <meta itemprop="description" content="Doing is better than saying.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="winney">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/07/04/ECMAScript-6%E7%AE%80%E4%BB%8B/" class="post-title-link" itemprop="url">ECMAScript 6简介</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-07-04 16:00:29" itemprop="dateCreated datePublished" datetime="2019-07-04T16:00:29+08:00">2019-07-04</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-01-28 16:28:31" itemprop="dateModified" datetime="2021-01-28T16:28:31+08:00">2021-01-28</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/%E9%98%AE%E4%B8%80%E5%B3%B0-ES6/" itemprop="url" rel="index"><span itemprop="name">阮一峰-ES6</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <a href="http://es6.ruanyifeng.com/" title="" target="">阮一峰-ECMAScript 6</a> 
+
+<p>ECMAScript 6.0（以下简称 ES6）。2015 年 6 月正式发布</p>
+<h4 id="ES6-与-ECMAScript-2015-的关系"><a href="#ES6-与-ECMAScript-2015-的关系" class="headerlink" title="ES6 与 ECMAScript 2015 的关系"></a>ES6 与 ECMAScript 2015 的关系</h4><p>ES6 的第一个版本，就这样在 2015 年 6 月发布了，正式名称就是《ECMAScript 2015 标准》（简称 ES2015）。<br>ES6 既是一个历史名词，也是一个泛指，含义是 5.1 版以后的 JavaScript 的下一代标准，涵盖了 ES2015、ES2016、ES2017 等等，而 ES2015 则是正式名称，特指该年发布的正式版本的语言标准。本书中提到 ES6 的地方，一般是指 ES2015 标准，但有时也是泛指“下一代 JavaScript 语言”。</p>
+<h4 id="部署进度"><a href="#部署进度" class="headerlink" title="部署进度"></a>部署进度</h4><p>各大浏览器的最新版本，对 ES6 的支持可以查看<a href="http://kangax.github.io/compat-table/es6/" title="" target="">点这里前往</a><br>Node 是 JavaScript 的服务器运行环境（runtime）。</p>
+<h4 id="Babel转码器"><a href="#Babel转码器" class="headerlink" title="Babel转码器"></a>Babel转码器</h4><h5 id="1、安装Babel"><a href="#1、安装Babel" class="headerlink" title="1、安装Babel"></a>1、安装Babel</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev @babel/core</span><br></pre></td></tr></table></figure>
+<h5 id="2、配置文件-babelrc"><a href="#2、配置文件-babelrc" class="headerlink" title="2、配置文件.babelrc"></a>2、配置文件.babelrc</h5><p>（使用命令行创建.babelrc文件）<br>Babel 的配置文件是.babelrc，存放在项目的根目录下。使用 Babel 的第一步，就是配置这个文件。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">&quot;presets&quot;</span>: [],</span><br><span class="line">    <span class="string">&quot;plugins&quot;</span>: []</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3、presets字段设定转码规则，官方提供以下的规则集，你可以根据需要安装。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 最新转码规则</span></span><br><span class="line">npm install --save-dev @babel/preset-env</span><br><span class="line"></span><br><span class="line"><span class="comment"># react 转码规则</span></span><br><span class="line">npm install --save-dev @babel/preset-react</span><br></pre></td></tr></table></figure>
+<p>4、然后，将这些规则加入.babelrc。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">&quot;presets&quot;</span>: [</span><br><span class="line">      <span class="string">&quot;@babel/env&quot;</span>,</span><br><span class="line">      <span class="string">&quot;@babel/preset-react&quot;</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="string">&quot;plugins&quot;</span>: []</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意，以下所有 Babel 工具和模块的使用，都必须先写好.babelrc。</p>
+<h5 id="命令行转码"><a href="#命令行转码" class="headerlink" title="命令行转码"></a>命令行转码</h5><p>Babel 提供命令行工具@babel/cli，用于命令行转码。<br>5、安装命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev @babel/cli</span><br></pre></td></tr></table></figure>
+<p>基本用法如下:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 转码结果输出到标准输出</span></span><br><span class="line">npx babel example.js</span><br><span class="line"></span><br><span class="line"><span class="comment"># 转码结果写入一个文件</span></span><br><span class="line"><span class="comment"># --out-file 或 -o 参数指定输出文件</span></span><br><span class="line">npx babel example.js --out-file compiled.js</span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line">npx babel example.js -o compiled.js</span><br><span class="line"></span><br><span class="line"><span class="comment"># 整个目录转码</span></span><br><span class="line"><span class="comment"># --out-dir 或 -d 参数指定输出目录</span></span><br><span class="line">npx babel src --out-dir lib</span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line">npx babel src -d lib</span><br><span class="line"></span><br><span class="line"><span class="comment"># -s 参数生成source map文件</span></span><br><span class="line">npx babel src -d lib -s</span><br></pre></td></tr></table></figure>
+<p>6、如：npx babel es6.js -o es5.js</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var obj1 &#x3D; &#123;name: &#39;yangyanyi&#39;&#125;;</span><br><span class="line">var obj2 &#x3D; &#123;name: &#39;yangyanyi&#39;&#125;;</span><br><span class="line"></span><br><span class="line">console.log(obj1 &#x3D;&#x3D; obj2);  &#x2F;&#x2F;因为指向的地址不一样</span><br><span class="line"></span><br><span class="line">var obj3 &#x3D; &#123;age: 12&#125;;</span><br><span class="line">var obj4 &#x3D; obj3;</span><br><span class="line"></span><br><span class="line">console.log(obj3 &#x3D;&#x3D; obj4);  &#x2F;&#x2F;指向同一个地址</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 包装类</span><br><span class="line">&#x2F;&#x2F; 自动创建的基本包装类型的对象，则只存在于一行代码的执行瞬间，然后立即被销毁</span><br><span class="line">var s1 &#x3D; &#39;some text&#39;;</span><br><span class="line">s1.color &#x3D; &#39;red&#39;;</span><br><span class="line">console.log(s1.color);  &#x2F;&#x2F;undefined</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;使用new操作符创建的引用类型的实例，在执行流离开当前作用域之前都一直保存在内存中。</span><br><span class="line">var s2 &#x3D; new String(&#39;some text&#39;);</span><br><span class="line">s2.color &#x3D; &#39;red&#39;;</span><br><span class="line">console.log(s2.color);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;可以通过new操作符显式创建包装对象</span><br><span class="line">&#x2F;&#x2F;两种方式显式创建包装类型的方式：</span><br><span class="line">&#x2F;&#x2F;Object方式</span><br><span class="line">var a &#x3D; new Object(&#39;abc&#39;);</span><br><span class="line">&#x2F;&#x2F;构造函数方式</span><br><span class="line">var a &#x3D; new String(&#39;abc&#39;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 常常使用“逻辑或运算符”给省略的参数设置一个合理的默认值</span><br><span class="line"></span><br><span class="line">function add(x, y) &#123;</span><br><span class="line">    y &#x3D; y || 2;</span><br><span class="line">    console.log(x, y);</span><br><span class="line">&#125;</span><br><span class="line">add(1);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">let [a, b, c] &#x3D; [1, 2, 3];</span><br><span class="line">console.log(a, b, c);</span><br><span class="line"></span><br><span class="line">let [x, , y] &#x3D; [1, 2, 3];</span><br><span class="line">console.log(x, y);</span><br><span class="line"></span><br><span class="line">let[head, ...tail] &#x3D; [1, 2, 3, 4];</span><br><span class="line">console.log(head, tail);</span><br><span class="line"></span><br><span class="line">let [q, w, ...e] &#x3D; [&#39;a&#39;];</span><br><span class="line">console.log(q, w, e);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; let [foo] &#x3D; &#123;&#125;;  &#x2F;&#x2F;报错</span><br><span class="line"></span><br><span class="line">let [l, m, n] &#x3D; new Set([&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]);</span><br><span class="line">console.log(l, m, n);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; ES6内部使用严格相等运算符（&#x3D;&#x3D;&#x3D;），判断一个位置是否有值。所以只有当一个数组成员严格等于undefined，默认值才会成效</span><br><span class="line"></span><br><span class="line">let [x &#x3D; 1] &#x3D;[undefined];</span><br><span class="line"></span><br><span class="line">let [ y &#x3D; 1] &#x3D; [null];</span><br><span class="line"></span><br><span class="line">console.log(x, y);  &#x2F;&#x2F;1  null   </span><br><span class="line">&#x2F;&#x2F; 原因：因为null不严格等于undefined，所以默认值不会生效</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 对象的结构赋值            </span><br><span class="line">let  &#123; foo, bar &#125; &#x3D; &#123; foo: &#39;aaa&#39;, bar: &quot;bbb&quot;&#125;;</span><br><span class="line">console.log(foo, bar);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 不是按照顺序，是根据键名</span><br><span class="line">let &#123; bbb, aaa &#125; &#x3D; &#123; aaa: &#39;aaa&#39;, bbb: &#39;bbbb&#39;&#125;;</span><br><span class="line">console.log(aaa, bbb);</span><br><span class="line"></span><br><span class="line">let &#123; baz &#125; &#x3D; &#123; bnv:&#39;bnv&#39;, kjl: &#39;kjl&#39;&#125;;</span><br><span class="line">console.log(baz);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 当变量名与属性名不一致，必须写成下面这样</span><br><span class="line">let &#123; foo: baz &#125; &#x3D; &#123; foo: &#39;aaa&#39;, bar: &#39;bbb&#39;&#125;;</span><br><span class="line">console.log(baz);</span><br><span class="line"></span><br><span class="line">let obj &#x3D; &#123; first: &#39;hello&#39;, last: &#39;world&#39;&#125;;</span><br><span class="line">let &#123; first: f, last: l&#125; &#x3D; obj;</span><br><span class="line">console.log(f, l);</span><br><span class="line"></span><br><span class="line">let &#123; foo: baz &#125; &#x3D; &#123; foo: &#39;aaa&#39;, bar: &#39;bbb&#39;&#125;;</span><br><span class="line">console.log(baz, foo);    &#x2F;&#x2F;foo is not defined</span><br><span class="line">&#x2F;&#x2F; 原因：foo是匹配的模式，baz才是变量。真正被赋值的是变量baz，而不是模式foo</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2019/07/02/%E9%A1%B5%E9%9D%A2%E7%9A%84%E5%8C%BA%E5%9D%97%E5%8C%96%E4%B8%8E%E7%BB%84%E4%BB%B6%E7%9A%84%E5%B0%81%E8%A3%85/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -637,92 +737,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2019/06/24/%E5%B7%A5%E7%A8%8B%E5%8C%96%E7%9A%84Vue-js%E5%BC%80%E5%8F%91/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="winney">
-      <meta itemprop="description" content="Doing is better than saying.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="winney">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/06/24/%E5%B7%A5%E7%A8%8B%E5%8C%96%E7%9A%84Vue-js%E5%BC%80%E5%8F%91/" class="post-title-link" itemprop="url">工程化的Vue.js开发</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-06-24 11:34:45" itemprop="dateCreated datePublished" datetime="2019-06-24T11:34:45+08:00">2019-06-24</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-01-28 15:03:57" itemprop="dateModified" datetime="2022-01-28T15:03:57+08:00">2022-01-28</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/Vue2-js/" itemprop="url" rel="index"><span itemprop="name">Vue2.js</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Vue 提供一套简化开发、测试与部署的方案，不再需要花大量的时间去学习理解框架的使用概念，以及耗费大量的精力去建立复杂的自动化环境。</p>
-<h3 id="脚手架-vue-cli"><a href="#脚手架-vue-cli" class="headerlink" title="脚手架 vue-cli"></a>脚手架 vue-cli</h3><p>这个工具可以让一个简单的命令行工具快速地构建一个足以支撑实际项目开发的Vue环境。 vue-cli的存在将项目环境的初始化工作与复杂度降到最低。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/06/24/%E5%B7%A5%E7%A8%8B%E5%8C%96%E7%9A%84Vue-js%E5%BC%80%E5%8F%91/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -794,20 +808,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">104</span>
+          <span class="site-state-item-count">105</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">51</span>
+        <span class="site-state-item-count">52</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">56</span>
+        <span class="site-state-item-count">57</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

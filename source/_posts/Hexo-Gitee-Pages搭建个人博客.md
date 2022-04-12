@@ -68,3 +68,7 @@ ssh -T git@gitee.com
 Hi xxx! You've successfully authenticated, but GITEE.COM does not provide shell access.
 
 ```
+
+#### 图片路径设置
+
+![图片路径设置](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Hexo-Gitee-Pages%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/images-set.png)

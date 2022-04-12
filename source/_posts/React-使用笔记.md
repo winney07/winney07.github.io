@@ -215,3 +215,81 @@ return(
 > key在某个循环中保证唯一性就好，不用在整个页面中保证唯一性
 >
 > 避免key使用索引index，特别是反序操作的情况。 因为会重新渲染，导致性能变差。使用id等唯一性属性
+
+
+
+### 四、引入路由
+
+依赖包分间接依赖包和直接依赖包
+
+```
+cnpm i react-router-dom
+```
+
+在pages目录中，创建路由组件
+
+#### [React Router---看这里的最新用法](https://reactrouter.com/)
+
+[React Router中文文档](http://react-guide.github.io/react-router-cn/docs/API.html)
+
+#### [react-router-dom使用指南](https://zhuanlan.zhihu.com/p/431389907)
+
+v6文档：https://reactrouter.com
+
+v5文档：https://v5.reactrouter.com/web/guides/quick-start
+
+```
+// 入口文件index.js
+import React from "react";
+import ReactDOM from "react-dom"
+import { BrowserRouter } from "react-router-dom";
+import App from './App'
+
+ReactDOM.render(
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>,
+    document.getElementById("root")
+);
+```
+
+```
+// 应用的根组件App.js
+import React, {Component} from "react";
+import {Routes, Route } from "react-router-dom";
+import "./App.less";
+
+import Login from "./pages/login/Login";
+import Admin from "./pages/admin/Admin";
+
+export default class App extends Component {
+    render() {
+        return (
+            <Routes>
+                <Route path="/login" element={<Login />}></Route>
+                <Route path="/" element={<Admin />}></Route>
+            </Routes>
+        )
+    }
+}
+```
+
+#### 重定向
+
+```
+import { Navigate } from 'react-router-dom';
+function A(){
+    return (
+        <Navigate to="/b" />
+    )
+}
+```
+
+#### 引入antd样式
+
+App.css
+
+```
+@import '~antd/dist/antd.css';
+```
+

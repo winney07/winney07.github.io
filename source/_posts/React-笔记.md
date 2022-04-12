@@ -261,3 +261,9 @@ The user is <b>{isLoggedIn ? 'currently' : 'not'}</b> logged in.
 **state 只能由拥有它们的组件进行更改**
 
 state在哪个组件，修改state的方法就在哪个组件
+
+
+
+#### **[生命周期图谱](https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)**
+
+#### [组件的生命周期](https://zh-hans.reactjs.org/docs/react-component.html)

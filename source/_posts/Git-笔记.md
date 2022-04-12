@@ -501,3 +501,15 @@ git commit -m "复习"
 git checkout master
 ```
 
+#### [解决pre -commit hook failed (add --no-verify)的问题](https://www.jianshu.com/p/aac394600727)
+
+```
+cd .git
+
+rm hooks/pre-commit
+```
+
+
+
+git commit 不单保存了当前的版本号还保存了他的父版本号
+

@@ -970,3 +970,7 @@ layui.use(['mymod'], function(){
 });
 ```
 
+#### [layui文件上传组件“请求上传接口出现异常”问题解决方案](https://wenku.baidu.com/view/00753c55f142336c1eb91a37f111f18583d00cd2.html)
+
+#### [layui上传错误请求上传接口出现异常解决方案](http://www.45fan.com/article.php?aid=20090321166392158778851636)
+

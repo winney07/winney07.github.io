@@ -216,3 +216,7 @@ v-bind
 ```
 
 #### 计算属性
+
+#### Object侦测
+
+![Object侦测](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Vue2-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/Object%E4%BE%A6%E6%B5%8B.png)

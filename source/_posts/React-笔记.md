@@ -267,3 +267,114 @@ state在哪个组件，修改state的方法就在哪个组件
 #### **[生命周期图谱](https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)**
 
 #### [组件的生命周期](https://zh-hans.reactjs.org/docs/react-component.html)
+
+
+
+#### React权限菜单设计
+
+[React项目配置6(前后端分离如何控制用户权限)](https://blog.csdn.net/oKeYue/article/details/79092903)
+
+[(源码开放) React + webpack3 多页面应用 及 常见问题解答](https://blog.csdn.net/oKeYue/article/details/81130922?spm=1001.2014.3001.5502)
+
+##### [10分钟快速搭建React权限菜单设计](https://www.csdn.net/tags/NtDaIg3sMDg5MTktYmxvZwO0O0OO0O0O.html)
+
+##### [React 组件权限控制的实现](https://www.jb51.net/article/237335.htm)
+
+
+
+[React的React.FC与React.Component的初步认识](https://blog.csdn.net/qq_18913129/article/details/105491090)
+
+[useMemo和useEffect有什么区别？怎么使用useMemo](https://www.jianshu.com/p/94ace269414d)
+
+[useMemo 使用指南](https://zhuanlan.zhihu.com/p/411190859)
+
+[react-hooks中的一些懵逼点](https://blog.csdn.net/weixin_33782386/article/details/88610257)
+
+> `useEffect`只能在`DOM`更新后再触发再去控制
+>
+> `memo`是在`DOM`更新前触发的，就像官方所说的，类比生命周期就是[shouldComponentUpdate](https://links.jianshu.com/go?to=https%3A%2F%2Fzh-hans.reactjs.org%2Fdocs%2Fhooks-faq.html%23how-do-lifecycle-methods-correspond-to-hooks)
+
+> 在前端开发的过程中，我们需要缓存一些内容，以避免在需渲染过程中因大量不必要的耗时计算而导致的性能问题。为此 React 提供了一些方法可以帮助我们去实现数据的缓存，useMemo 就是其中之一
+
+
+
+#### React Hooks
+
+[React Hooks 解析（上）：基础](https://segmentfault.com/a/1190000018928587)
+
+[React Hooks 解析（下）：进阶](https://segmentfault.com/a/1190000018950566)
+
+[useCallback](https://www.jianshu.com/p/be8fb469d507)
+
+
+
+> 解释这个 Hook 之前先理解下什么是副作用。网络请求、订阅某个模块或者 DOM 操作都是副作用的例子，Effect Hook 是专门用来处理副作用的。正常情况下，在`Function Component`的函数体中，是不建议写副作用代码的，否则容易出 bug。
+
+> 在绝大多数情况下，`useEffect`Hook 是更好的选择。唯一例外的就是需要根据新的 UI 来进行 DOM 操作的场景。`useLayoutEffect`会保证在页面渲染前执行，也就是说页面渲染出来的是最终的效果。如果使用`useEffect`，页面很可能因为渲染了 2 次而出现抖动。
+
+##### useContext
+
+```
+function HeaderBar() {
+  const user = useContext(CurrentUser);
+  const notifications = useContext(Notifications);
+
+  return (
+    <header>
+      Welcome back, {user.name}!
+      You have {notifications.length} notifications.
+    </header>
+  );
+}
+```
+
+##### useReducer
+
+`useReducer`的用法跟 Redux 非常相似，当 state 的计算逻辑比较复杂又或者需要根据以前的值来计算时，使用这个 Hook 比`useState`会更好。
+
+##### useCallback
+
+```javascript
+function Foo() {
+  const [count, setCount] = useState(0);
+
+  const memoizedHandleClick = useCallback(
+    () => console.log(`Click happened with dependency: ${count}`), [count],
+  ); 
+  return <Button onClick={memoizedHandleClick}>Click Me</Button>;
+}
+```
+
+> `useCallback`缓存的是方法的引用，而`useMemo`缓存的则是方法的返回值。使用场景是减少不必要的子组件渲染：
+
+##### useRef
+
+```
+function() {
+  const myRef = useRef(null);
+
+  useEffect(() => {
+    myRef.current.focus();
+  }, [])
+  
+  return <input ref={myRef} type="text" />;
+}
+```
+
+> `useRef`返回一个普通 JS 对象，可以将任意数据存到`current`属性里面，就像使用实例化对象的`this`一样。另外一个使用场景是获取 previous props 或 previous state
+
+##### 自定义 Hook
+
+> 自定义 Hook 的命名有讲究，必须以`use`开头，在里面可以调用其它的 Hook。入参和返回值都可以根据需要自定义，没有特殊的约定。使用也像普通的函数调用一样，Hook 里面其它的 Hook（如`useEffect`）会自动在合适的时候调用
+
+
+
+#### [Effect Hook](https://zh-hans.reactjs.org/docs/hooks-overview.html#effect-hook)
+
+> 在 React 组件中执行过**数据获取、订阅或者手动修改过 DOM**。我们统一把这些操作称为“**副作用**”，或者简称为“作用”。
+>
+> `useEffect` 就是一个 Effect Hook，给函数组件增加了操作副作用的能力。它跟 class 组件中的 `componentDidMount`、`componentDidUpdate` 和 `componentWillUnmount` 具有相同的用途，只不过被合并成了一个 API。（我们会在[使用 Effect Hook](https://zh-hans.reactjs.org/docs/hooks-effect.html) 里展示对比 `useEffect` 和这些方法的例子。）
+
+
+
+#### [Hook概览](https://zh-hans.reactjs.org/docs/hooks-overview.html#effect-hook)

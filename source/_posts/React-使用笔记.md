@@ -8,6 +8,12 @@ categories:
 - React
 ---
 
+
+
+[React Dom Examples](https://codesandbox.io/examples/package/react-dom)
+
+[React Examples](https://codesandbox.io/examples/package/react)
+
 #### VSCode扩展
 
 ##### 生成react代码片段-ES7
@@ -230,6 +236,8 @@ cnpm i react-router-dom
 
 #### [React Router---看这里的最新用法](https://reactrouter.com/)
 
+[react-router-----Github](https://github.com/remix-run/react-router)
+
 [React Router中文文档](http://react-guide.github.io/react-router-cn/docs/API.html)
 
 #### [react-router-dom使用指南](https://zhuanlan.zhihu.com/p/431389907)
@@ -293,3 +301,65 @@ App.css
 @import '~antd/dist/antd.css';
 ```
 
+#### [React中StrictMode严格模式](https://blog.csdn.net/wu_xianqiang/article/details/113521191)
+
+StrictMode 是一个用来检查项目中潜在问题的工具。与 [Fragment](https://so.csdn.net/so/search?q=Fragment&spm=1001.2101.3001.7020) 一样，StrictMode 不会渲染任何可见的 UI。它为其后代元素触发额外的检查和警告。
+
+StrictMode 目前有助于：
+
+1、识别不安全的生命周期
+2、关于使用过时字符串 ref API 的警告
+3、关于使用废弃的 findDOMNode 方法的警告
+4、检测意外的副作用
+5、检测过时的 context API
+
+
+
+#### React Router
+
+[API接口](http://react-guide.github.io/react-router-cn/docs/API.html)
+
+[词汇表](http://react-guide.github.io/react-router-cn/docs/Glossary.html)
+
+##### [获取 URL 参数](http://react-guide.github.io/react-router-cn/docs/Introduction.html)
+
+比如你访问 `/foo?bar=baz`，你可以通过访问 `this.props.location.query.bar` 从 Route 组件中获得 `"baz"` 的值。
+
+```
+React.render((
+  <Router>
+    <Route path="/" component={App}>
+      <Route path="about" component={About} />
+      <Route path="inbox" component={Inbox}>
+        <Route path="messages/:id" component={Message} />
+      </Route>
+    </Route>
+  </Router>
+), document.body)
+```
+
+通过上面的配置，这个应用知道如何渲染下面四个 URL：
+
+| URL                   | 组件                      |
+| --------------------- | ------------------------- |
+| `/`                   | `App`                     |
+| `/about`              | `App -> About`            |
+| `/inbox`              | `App -> Inbox`            |
+| `/inbox/messages/:id` | `App -> Inbox -> Message` |
+
+
+
+#### [createRoot](https://reactjs.org/blog/2022/03/08/react-18-upgrade-guide.html#updates-to-client-rendering-apis)
+
+```
+// Before
+import { render } from 'react-dom';
+const container = document.getElementById('app');
+render(<App tab="home" />, container);
+
+// After
+import { createRoot } from 'react-dom/client';
+const container = document.getElementById('app');
+const root = createRoot(container);
+root.render(<App tab="home" />);
+```

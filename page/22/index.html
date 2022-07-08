@@ -193,7 +193,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/10/TypeScript%E7%9A%84%E6%8E%A5%E5%8F%A3Interface/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/12/TypeScript%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4-Namespace/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -207,7 +207,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/11/10/TypeScript%E7%9A%84%E6%8E%A5%E5%8F%A3Interface/" class="post-title-link" itemprop="url">初识接口Interface</a>
+            <a href="/2020/11/12/TypeScript%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4-Namespace/" class="post-title-link" itemprop="url">TypeScript命名空间-Namespace</a>
         </h2>
 
         <div class="post-meta">
@@ -217,14 +217,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-11-10 10:44:44" itemprop="dateCreated datePublished" datetime="2020-11-10T10:44:44+08:00">2020-11-10</time>
+              <time title="创建时间：2020-11-12 10:37:53" itemprop="dateCreated datePublished" datetime="2020-11-12T10:37:53+08:00">2020-11-12</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-01-12 17:59:47" itemprop="dateModified" datetime="2021-01-12T17:59:47+08:00">2021-01-12</time>
+                <time title="修改时间：2021-01-12 18:00:12" itemprop="dateModified" datetime="2021-01-12T18:00:12+08:00">2021-01-12</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -251,201 +251,332 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">const screenResume&#x3D; (name: string,age: number,bust:number)&#x3D;&gt;&#123;</span><br><span class="line">	age &lt; 24 &amp;&amp; bust &gt;&#x3D;90 &amp;&amp; console.log(name+&#39;进入面试&#39;)</span><br><span class="line">	age &gt;&#x3D; 24 || bust &lt;90 &amp;&amp; console.log(name+&#39;你被淘汰&#39;)</span><br><span class="line">&#125;</span><br><span class="line">const getResume &#x3D; (name : string, age : number, bust: number)&#x3D;&gt;&#123;</span><br><span class="line">	console.log(name+&#39;年龄是&#39;+age)</span><br><span class="line">	console.log(name+&#39;胸围是&#39;+bust)</span><br><span class="line">&#125;</span><br><span class="line">screenResume(&#39;大脚&#39;,18,94)</span><br><span class="line">getResume(&#39;大脚&quot;,18,94)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h4 id="定义接口"><a href="#定义接口" class="headerlink" title="定义接口"></a>定义接口</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">interface Girl &#123;</span><br><span class="line">	name: string;</span><br><span class="line">	age : number;</span><br><span class="line">	bust: number;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">const girl&#x3D;&#123;</span><br><span class="line">	name:&#39;大脚&quot;,</span><br><span class="line">	age: 18,</span><br><span class="line">	bust: 94</span><br><span class="line">&#125;</span><br><span class="line">const screenResume&#x3D; (girl : Girl)&#x3D;&gt;&#123;</span><br><span class="line">	girl.age &lt; 24 &amp;&amp; girl.bust &gt;&#x3D;90 &amp;&amp; console.log( girl.name+&#39;进入面试&#39;)</span><br><span class="line">	girl.age &gt;&#x3D; 24 || girl.bust &lt;90 &amp;&amp; console.log( girl.name+&#39;你被淘汰&quot;)</span><br><span class="line">&#125;</span><br><span class="line">const getResume &#x3D; (girl:Girl)&#x3D;&gt;&#123;</span><br><span class="line">	console.log(girl.name+&#39;年龄是&#39;+girl.age)</span><br><span class="line">	console.log(girl.name+ &#39;胸围是&#39;+girl.bust)</span><br><span class="line">&#125;</span><br><span class="line">screenResume(girl)</span><br><span class="line">getResume(girl)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h5 id="可选值的定义："><a href="#可选值的定义：" class="headerlink" title="可选值的定义："></a>可选值的定义：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">age ?: number (age可有可没有)</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">interface Girl &#123;</span><br><span class="line">	name: string;</span><br><span class="line">	age : number;</span><br><span class="line">	bust: number;</span><br><span class="line">	waistline ?: number;</span><br><span class="line">&#125;</span><br><span class="line">这样写不会报错：</span><br><span class="line">const getResume &#x3D; (girl:Girl)&#x3D;&gt;&#123;</span><br><span class="line">	console.log(girl.name+&#39;年龄是&#39;+girl.age)</span><br><span class="line">	console.log(girl.name+&#39;胸围是&#39;+girl.bust)</span><br><span class="line">	girl.waistline &amp;&amp; console.log(girl.name+&#39;腰围是:&#39;+girl.waistline )</span><br><span class="line">&#125;</span><br><span class="line">输出的内容还是跟原来一样</span><br><span class="line"></span><br><span class="line">如果将girl改为：</span><br><span class="line">const girl&#x3D;&#123;</span><br><span class="line">	name:&#39;大脚&quot;,</span><br><span class="line">	age: 18,</span><br><span class="line">	bust: 94,</span><br><span class="line">	waistline: 21</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">再输出打印，就会将waistline打印出来</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h5 id="定义一个可以加任何属性"><a href="#定义一个可以加任何属性" class="headerlink" title="定义一个可以加任何属性"></a>定义一个可以加任何属性</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[propname:string]: any;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">interface Girl &#123;</span><br><span class="line">	name: string;</span><br><span class="line">	age : number;</span><br><span class="line">	bust: number;</span><br><span class="line">	waistline ?: number;</span><br><span class="line">	[propname:string]: any;</span><br><span class="line">&#125;</span><br><span class="line">const girl&#x3D;&#123;</span><br><span class="line">	name: &quot;大脚&quot;,</span><br><span class="line">	age: 18,</span><br><span class="line">	bust:94,</span><br><span class="line">	waistline: 21,</span><br><span class="line">	sex:&#39;女’</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h5 id="添加方法："><a href="#添加方法：" class="headerlink" title="添加方法："></a>添加方法：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">interface Girl &#123;</span><br><span class="line">	name: string;</span><br><span class="line">	age : number;</span><br><span class="line">	bust: number;</span><br><span class="line">	waistline ?: number;</span><br><span class="line">	[propname:string]: any;</span><br><span class="line">	say(): string;</span><br><span class="line">&#125;</span><br><span class="line">const girl&#x3D;&#123;</span><br><span class="line">	name:&#39;大脚&quot;，</span><br><span class="line">	age: 18,</span><br><span class="line">	bust:94,</span><br><span class="line">	waistline: 21,</span><br><span class="line">	sex: &#39;女&#39;，</span><br><span class="line">	say()&#123;</span><br><span class="line">		return &quot;欢迎光临，红浪漫洗浴!!”</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h5 id="接口和类的约束"><a href="#接口和类的约束" class="headerlink" title="接口和类的约束"></a>接口和类的约束</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">class xiaojieJie implements Girl&#123;</span><br><span class="line">	name&#x3D;&quot;刘英&quot;</span><br><span class="line">	age&#x3D;18</span><br><span class="line">	bust&#x3D;90</span><br><span class="line">	say()&#123;</span><br><span class="line">		return &quot;欢迎光临,红浪漫洗浴!!&quot;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;	</span><br></pre></td></tr></table></figure>
-<h5 id="接口间的继承"><a href="#接口间的继承" class="headerlink" title="接口间的继承"></a>接口间的继承</h5>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/09/%E5%85%83%E7%BB%84%E7%9A%84%E4%BD%BF%E7%94%A8%E5%92%8C%E7%B1%BB%E5%9E%8B%E7%BA%A6%E6%9D%9F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="winney">
-      <meta itemprop="description" content="Doing is better than saying.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="winney">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/11/09/%E5%85%83%E7%BB%84%E7%9A%84%E4%BD%BF%E7%94%A8%E5%92%8C%E7%B1%BB%E5%9E%8B%E7%BA%A6%E6%9D%9F/" class="post-title-link" itemprop="url">元组的使用和类型约束</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-11-09 11:35:27" itemprop="dateCreated datePublished" datetime="2020-11-09T11:35:27+08:00">2020-11-09</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-01-12 17:54:37" itemprop="dateModified" datetime="2021-01-12T17:54:37+08:00">2021-01-12</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/TypeScript/" itemprop="url" rel="index"><span itemprop="name">TypeScript</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h6 id="类型约束"><a href="#类型约束" class="headerlink" title="类型约束"></a>类型约束</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; const xiaojiejie : (string | number)[] &#x3D; [ &#39;dajiao &#39; , &#39;teacher &#39;, 28]</span><br></pre></td></tr></table></figure>
-<h5 id="元组的写法"><a href="#元组的写法" class="headerlink" title="元组的写法"></a>元组的写法</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const xiaojiejie : [string,string,number] &#x3D; [ &#39;dajiao&#39; , &#39;teacher&#39;,28]</span><br></pre></td></tr></table></figure>
-<h5 id="CSV（现在很少用）"><a href="#CSV（现在很少用）" class="headerlink" title="CSV（现在很少用）"></a>CSV（现在很少用）</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const xiaojiejies : [string, string, number][] &#x3D;[</span><br><span class="line">	[ &#39;dajiao &#39; , &#39;teacher&quot; ,28],</span><br><span class="line">	[ &#39;liuying&quot; , &#39;teacher&#39; ,18],</span><br><span class="line">	[ &quot; cuihua &#39; , &#39;teacher&quot; ,22]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/06/TypeScript%E9%9D%99%E6%80%81%E7%B1%BB%E5%9E%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="winney">
-      <meta itemprop="description" content="Doing is better than saying.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="winney">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/11/06/TypeScript%E9%9D%99%E6%80%81%E7%B1%BB%E5%9E%8B/" class="post-title-link" itemprop="url">TypeScript静态类型</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-11-06 11:22:40" itemprop="dateCreated datePublished" datetime="2020-11-06T11:22:40+08:00">2020-11-06</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-01-12 18:00:01" itemprop="dateModified" datetime="2021-01-12T18:00:01+08:00">2021-01-12</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/TypeScript/" itemprop="url" rel="index"><span itemprop="name">TypeScript</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="TypeScript-静态类型"><a href="#TypeScript-静态类型" class="headerlink" title="TypeScript 静态类型"></a>TypeScript 静态类型</h4><h5 id="TypeScript-最主要的特点就是可以定义静态类型"><a href="#TypeScript-最主要的特点就是可以定义静态类型" class="headerlink" title="TypeScript 最主要的特点就是可以定义静态类型"></a>TypeScript 最主要的特点就是可以定义静态类型</h5><p>Static Typing  (一旦定义了就不可以再改变了)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let count : number &#x3D; 1;   (一旦定义了是number，就是number，不能改变类型。)</span><br><span class="line">count.后面可以跟number的所有方法</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">interface XiaojieJie &#123;</span><br><span class="line">    uname: string, </span><br><span class="line">    age: number</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const xiaohong : XiaojieJie &#x3D; &#123;</span><br><span class="line">    uname: &#39;小红&#39;, </span><br><span class="line">    age: 18</span><br><span class="line">&#125;</span><br><span class="line">console.log(xiaohong.age) </span><br></pre></td></tr></table></figure>
-<h4 id="基础静态类型和对象静态类型"><a href="#基础静态类型和对象静态类型" class="headerlink" title="基础静态类型和对象静态类型"></a>基础静态类型和对象静态类型</h4><h5 id="基础静态类型"><a href="#基础静态类型" class="headerlink" title="基础静态类型"></a>基础静态类型</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const count0 : number &#x3D; 918;</span><br><span class="line">const myName : string &#x3D; &#39;jspang&#39;;</span><br><span class="line">&#x2F;&#x2F; null , undefinde , booLean, void, symboL</span><br></pre></td></tr></table></figure>
-<h5 id="对象静态类型"><a href="#对象静态类型" class="headerlink" title="对象静态类型"></a>对象静态类型</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const xiaojieJie: &#123;</span><br><span class="line">    name : string,</span><br><span class="line">    age : number </span><br><span class="line">&#125; &#x3D; &#123;</span><br><span class="line">    name : &#39;大脚&#39;,</span><br><span class="line">    age:18</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const xiaojiejie : string [] &#x3D; [&quot;小红&quot;, &quot;小林&quot;, &quot;小星星&quot;]</span><br><span class="line"></span><br><span class="line">class Person&#123;&#125;</span><br><span class="line">const dajiao : Person &#x3D; new Person();</span><br></pre></td></tr></table></figure>
-<p>定义一个函数，返回值必须是字符串：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const jianXiaoJieJie :()&#x3D;&gt;string &#x3D;()&#x3D;&gt;&#123;return &#39;大脚&#39;&#125;</span><br><span class="line">&#x2F;&#x2F;对象类型，数组类型，类类型，函数类型</span><br></pre></td></tr></table></figure>
-<h4 id="类型注解和类型推断"><a href="#类型注解和类型推断" class="headerlink" title="类型注解和类型推断"></a>类型注解和类型推断</h4><h5 id="类型注解-type-annotation"><a href="#类型注解-type-annotation" class="headerlink" title="类型注解 - type annotation"></a>类型注解 - type annotation</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">let count : number ;</span><br><span class="line"></span><br><span class="line">function getTotal(one : number , two : number)&#123;</span><br><span class="line">	return one + two</span><br><span class="line">&#125;</span><br><span class="line">const total &#x3D; getTotal(1,2);</span><br></pre></td></tr></table></figure>
-
-
-<h5 id="类型推断-type-inference"><a href="#类型推断-type-inference" class="headerlink" title="类型推断 - type inference"></a>类型推断 - type inference</h5><h4 id="函数参数和返回类型的注解"><a href="#函数参数和返回类型的注解" class="headerlink" title="函数参数和返回类型的注解"></a>函数参数和返回类型的注解</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function getTotal(one : number , two : number)&#123;</span><br><span class="line">	return one + two +&#39;&#39;</span><br><span class="line">&#125;</span><br><span class="line">const total &#x3D; getTotal(1,2);  (会有错误提示) （定义的是number类型，返回的是string类型）</span><br><span class="line"></span><br><span class="line">解决方法：对返回做注解</span><br><span class="line">function getTotal(one : number , two : number): number&#123;</span><br><span class="line">	return one + two +&#39;&#39;  (这样写，编辑器就会有错误的提示)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">改正：</span><br><span class="line">function getTotal(one : number , two : number): number&#123;</span><br><span class="line">	return one + two </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h6 id="void："><a href="#void：" class="headerlink" title="void："></a>void：</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function sayHe1lo(): void&#123;</span><br><span class="line">	console.log(&#39;Hello worid&#39;)</span><br><span class="line">	return &quot;&quot;;(如果在函数中，任何地方有return就会报错，就会很直观的知道);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h6 id="never："><a href="#never：" class="headerlink" title="never："></a>never：</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">抛出异常：</span><br><span class="line">function errorFuntion() : never&#123;</span><br><span class="line">	throw new Error()</span><br><span class="line">	console.log(&quot;Hello world&quot;)</span><br><span class="line">&#125;</span><br><span class="line">或者死循环：</span><br><span class="line">function forNever() : never&#123;</span><br><span class="line">	while(true)&#123;&#125;</span><br><span class="line">	console.log( &#39;Hello world &#39;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function add(&#123;one ,two&#125; : &#123;one : number ,two : number&#125; )&#123;</span><br><span class="line">	return one + two</span><br><span class="line">&#125;</span><br><span class="line">const total &#x3D; add(fone: 1,two:2&#125;); </span><br><span class="line"></span><br><span class="line">function getNumber(&#123;one&#125; : &#123;one : number&#125;)&#123;</span><br><span class="line">	return one</span><br><span class="line">&#125;</span><br><span class="line">const one &#x3D; getNumber(&#123;one: 1&#125;)</span><br></pre></td></tr></table></figure>
-<h4 id="数组类型注解的方法"><a href="#数组类型注解的方法" class="headerlink" title="数组类型注解的方法"></a>数组类型注解的方法</h4><h5 id="类型推断"><a href="#类型推断" class="headerlink" title="类型推断"></a>类型推断</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const numberArr &#x3D; [1,2,3]</span><br><span class="line">(鼠标放上去，能够看到推断出是number类型)</span><br></pre></td></tr></table></figure>
-<h5 id="类型注释"><a href="#类型注释" class="headerlink" title="类型注释"></a>类型注释</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const numberArr : number[] &#x3D; [1,2,3];</span><br><span class="line">const stringArr : string[] &#x3D; [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;];</span><br><span class="line">const undefinedArr : undefined[] &#x3D; [undefined, undefined];</span><br><span class="line">const arr : (number | string)[] &#x3D; [1, &#39;string&#39;, 2];</span><br></pre></td></tr></table></figure>
-<h5 id="对象数组"><a href="#对象数组" class="headerlink" title="对象数组"></a>对象数组</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const xiaojiejies :&#123;name : string, age:number&#125;[] &#x3D;[</span><br><span class="line">	&#123;name: &#39;刘英&#39;, age: 18&#125;,</span><br><span class="line">	&#123;name : &#39;谢大脚&quot;, age: 28&#125;,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-<h6 id="其他形式写法："><a href="#其他形式写法：" class="headerlink" title="其他形式写法："></a>其他形式写法：</h6><ol>
-<li><h6 id="type-alias-类型别名"><a href="#type-alias-类型别名" class="headerlink" title="type alias 类型别名"></a>type alias 类型别名</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">type Lady &#x3D; &#123;name: string,age: number&#125;</span><br><span class="line">const xiaojiejies : Lady[] [</span><br><span class="line">	&#123;name:&#39;刘英&#39;, age: 18&#125;,</span><br><span class="line">	&#123;name : &#39;谢大脚&quot; , age:28&#125;,</span><br><span class="line">]</span><br></pre></td></tr></table></figure></li>
-<li><h6 id="类"><a href="#类" class="headerlink" title="类"></a>类</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">class Madam &#123;</span><br><span class="line">	name: string ;</span><br><span class="line">	age : number;</span><br><span class="line">&#125;</span><br><span class="line">const xiaojiejies : Madam[] &#x3D; [</span><br><span class="line">	&#123;name: &#39;刘英&#39;, age: 18&#125;,</span><br><span class="line">	&#123;name: &#39;谢大脚&quot;, age: 28&#125;,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-
-
-</li>
+          <h4 id="初识命名空间-Namespace"><a href="#初识命名空间-Namespace" class="headerlink" title="初识命名空间-Namespace"></a>初识命名空间-Namespace</h4><p>以前的课程都是通过<code>Node</code>来运行代码的，这节课为了有更好的演示效果，我们要在浏览器中运行代码。这就要求我们重新创建一个项目，直接在桌面上建立一个文件夹<code>TSWeb</code>。</p>
+<blockquote>
+<h4 id="搭建浏览器开发环境步骤"><a href="#搭建浏览器开发环境步骤" class="headerlink" title="搭建浏览器开发环境步骤"></a>搭建浏览器开发环境步骤</h4></blockquote>
+<ol>
+<li>建立好文件夹后，打开 VSCode，把文件夹拉到编辑器当中，然后打开终端，运行<code>npm init -y</code>,创建<code>package.json</code>文件。</li>
+<li>生成文件后，我们接着在终端中运行<code>tsc -init</code>,生成<code>tsconfig.json</code>文件。</li>
+<li>新建<code>src</code>和<code>build</code>文件夹，再建一个<code>index.html</code>文件。</li>
+<li>在<code>src</code>目录下，新建一个<code>page.ts</code>文件，这就是我们要编写的<code>ts</code>文件了。</li>
+<li>配置<code>tsconfig.json</code>文件，设置<code>outDir</code>和<code>rootDir</code>(在 15 行左右)，也就是设置需要编译的文件目录，和编译好的文件目录。</li>
+<li>然后编写<code>index.html</code>，引入<code>&lt;script src=&quot;./build/page.js&quot;&gt;&lt;/script&gt;</code>,当让我们现在还没有<code>page.js</code>文件。</li>
+<li>编写<code>page.ts</code>文件，加入一句输出<code>console.log(&#39;jspang.com&#39;)</code>,再在控制台输入<code>tsc</code>,就会生成<code>page.js</code>文件</li>
+<li>再到浏览器中查看<code>index.html</code>文件，如果按<code>F12</code>可以看到<code>jspang.com</code>，说明我们的搭建正常了。</li>
 </ol>
-<h4 id="元组的使用和类型约束"><a href="#元组的使用和类型约束" class="headerlink" title="元组的使用和类型约束"></a>元组的使用和类型约束</h4><h5 id="类型约束"><a href="#类型约束" class="headerlink" title="类型约束"></a>类型约束</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; const xiaojiejie : (string | number)[] &#x3D; [ &#39;dajiao &#39; , &#39;teacher &#39;, 28]</span><br></pre></td></tr></table></figure>
-<h5 id="元组的写法"><a href="#元组的写法" class="headerlink" title="元组的写法"></a>元组的写法</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const xiaojiejie : [string,string,number] &#x3D; [ &#39;dajiao&#39; , &#39;teacher&#39;,28]</span><br></pre></td></tr></table></figure>
-<h5 id="CSV（现在很少用）"><a href="#CSV（现在很少用）" class="headerlink" title="CSV（现在很少用）"></a>CSV（现在很少用）</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const xiaojiejies : [string, string, number][] &#x3D;[</span><br><span class="line">	[ &#39;dajiao &#39; , &#39;teacher&quot; ,28],</span><br><span class="line">	[ &#39;liuying&quot; , &#39;teacher&#39; ,18],</span><br><span class="line">	[ &quot; cuihua &#39; , &#39;teacher&quot; ,22]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;./build/page.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<h4 id="没有命名空间时的问题"><a href="#没有命名空间时的问题" class="headerlink" title="没有命名空间时的问题"></a>没有命名空间时的问题</h4></blockquote>
+<p>为了你更好的理解，先写一下这样代码，用类的形式在<code>index.html</code>中实现<code>header</code>,<code>content</code>和<code>Footer</code>部分，类似我们常说的模板。</p>
+<p>在<code>page.ts</code>文件里，写出下面的代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Header</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> elem = <span class="built_in">document</span>.createElement(<span class="string">&quot;div&quot;</span>);</span><br><span class="line">    elem.innerText = <span class="string">&quot;This is Header&quot;</span>;</span><br><span class="line">    <span class="built_in">document</span>.body.appendChild(elem);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Content</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> elem = <span class="built_in">document</span>.createElement(<span class="string">&quot;div&quot;</span>);</span><br><span class="line">    elem.innerText = <span class="string">&quot;This is Content&quot;</span>;</span><br><span class="line">    <span class="built_in">document</span>.body.appendChild(elem);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Footer</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> elem = <span class="built_in">document</span>.createElement(<span class="string">&quot;div&quot;</span>);</span><br><span class="line">    elem.innerText = <span class="string">&quot;This is Footer&quot;</span>;</span><br><span class="line">    <span class="built_in">document</span>.body.appendChild(elem);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Page</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">new</span> Header();</span><br><span class="line">    <span class="keyword">new</span> Content();</span><br><span class="line">    <span class="keyword">new</span> Footer();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>写完后我们用<code>tsc</code>进行编译一次，然后修改<code>index.html</code>文件，在<code>&lt;body&gt;</code>标签里引入<code>&lt;script&gt;</code>标签，并实例化<code>Page</code>，代码如下:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;script&gt;<span class="keyword">new</span> Page();&lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+<p>这时候再到浏览器进行预览，就可以看到对应的页面被展现出来了。看起来没有什么问题，但是有经验的程序员就会发现，这样写全部都是全局变量（通过查看<code>./build/page.js</code>文件可以看出全部都是<code>var</code>声明的变量）。<strong>过多的全局变量会让我们代码变的不可维护。</strong></p>
+<p>这时候你在浏览器的控制台(<code>Console</code>)中，分别输入<code>Header</code>、<code>Content</code>、<code>Footer</code>和<code>Page</code>都时可以拿到对应的变量的,说明他们全都是全局变量。</p>
+<p>其实你理想的是，只要有<code>Page</code>这个全局变量就足够了，剩下的可以模块化封装起来，不暴露到全局。</p>
+<blockquote>
+<h4 id="命名空间的使用"><a href="#命名空间的使用" class="headerlink" title="命名空间的使用"></a>命名空间的使用</h4></blockquote>
+<p><code>命名空间</code>这个语法，很类似编程中常说的模块化思想，比如<code>webpack</code>打包时，每个模块有自己的环境，不会污染其他模块,不会有全局变量产生。命名空间就跟这个很类似，注意这里是类似，而不是相同。</p>
+<p>命名空间声明的关键词是<code>namespace</code> 比如声明一个<code>namespace Home</code>,需要暴露出去的类，可以使用<code>export</code>关键词，这样只有暴漏出去的类是全局的，其他的不会再生成全局污染了。修改后的代码如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">namespace Home &#123;</span><br><span class="line">  <span class="class"><span class="keyword">class</span> <span class="title">Header</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="title">constructor</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">      <span class="keyword">const</span> elem = <span class="built_in">document</span>.createElement(<span class="string">&quot;div&quot;</span>);</span><br><span class="line">      elem.innerText = <span class="string">&quot;This is Header&quot;</span>;</span><br><span class="line">      <span class="built_in">document</span>.body.appendChild(elem);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="class"><span class="keyword">class</span> <span class="title">Content</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="title">constructor</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">      <span class="keyword">const</span> elem = <span class="built_in">document</span>.createElement(<span class="string">&quot;div&quot;</span>);</span><br><span class="line">      elem.innerText = <span class="string">&quot;This is Content&quot;</span>;</span><br><span class="line">      <span class="built_in">document</span>.body.appendChild(elem);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="class"><span class="keyword">class</span> <span class="title">Footer</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="title">constructor</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">      <span class="keyword">const</span> elem = <span class="built_in">document</span>.createElement(<span class="string">&quot;div&quot;</span>);</span><br><span class="line">      elem.innerText = <span class="string">&quot;This is Footer&quot;</span>;</span><br><span class="line">      <span class="built_in">document</span>.body.appendChild(elem);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">Page</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="title">constructor</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">      <span class="keyword">new</span> Header();</span><br><span class="line">      <span class="keyword">new</span> Content();</span><br><span class="line">      <span class="keyword">new</span> Footer();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>TS 代码写完后，再到<code>index.html</code>文件中进行修改，用命名空间的形式进行调用，就可以正常了。 写完后，记得用<code>tsc</code>编译一下，当然你也可以使用<code>tsc -w</code>进行监视了，只要有改变就会进行重新编译。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Home.Page();</span><br></pre></td></tr></table></figure>
+<p>现在再到浏览器中进行查看，可以看到现在就只有<code>Home.Page</code>是在控制台可以得到的，其他的<code>Home.Header</code>…这些都是得不到的，说明只有<code>Home.Page</code>是全局的，其他的都是模块化私有的。</p>
+<p>这就是 TypeScript 给我们提供的类似模块化开发的语法，它的好处就是让全局变量减少了很多，实现了基本的封装，减少了全局变量的污染。</p>
+<h4 id="深入命名空间-Namespace"><a href="#深入命名空间-Namespace" class="headerlink" title="深入命名空间-Namespace"></a>深入命名空间-Namespace</h4><blockquote>
+<h4 id="用命名空间实现组件化"><a href="#用命名空间实现组件化" class="headerlink" title="用命名空间实现组件化"></a>用命名空间实现组件化</h4></blockquote>
+<p>在<code>src</code>目录下新建一个文件<code>components.ts</code>，编写代码如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">namespace Components &#123;</span><br><span class="line">  <span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">Header</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="title">constructor</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">      <span class="keyword">const</span> elem = <span class="built_in">document</span>.createElement(<span class="string">&quot;div&quot;</span>);</span><br><span class="line">      elem.innerText = <span class="string">&quot;This is Header&quot;</span>;</span><br><span class="line">      <span class="built_in">document</span>.body.appendChild(elem);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">Content</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="title">constructor</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">      <span class="keyword">const</span> elem = <span class="built_in">document</span>.createElement(<span class="string">&quot;div&quot;</span>);</span><br><span class="line">      elem.innerText = <span class="string">&quot;This is Content&quot;</span>;</span><br><span class="line">      <span class="built_in">document</span>.body.appendChild(elem);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">Footer</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="title">constructor</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">      <span class="keyword">const</span> elem = <span class="built_in">document</span>.createElement(<span class="string">&quot;div&quot;</span>);</span><br><span class="line">      elem.innerText = <span class="string">&quot;This is Footer&quot;</span>;</span><br><span class="line">      <span class="built_in">document</span>.body.appendChild(elem);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里需要注意的是，我每个类(<code>class</code>)都使用了<code>export</code>导出，导出后就可以在<code>page.ts</code>中使用这些组件了。比如这样使用-代码如下。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">namespace Home &#123;</span><br><span class="line">  <span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">Page</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="title">constructor</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">      <span class="keyword">new</span> Components.Header();</span><br><span class="line">      <span class="keyword">new</span> Components.Content();</span><br><span class="line">      <span class="keyword">new</span> Components.Footer();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这时候你可以使用<code>tsc</code>进行重新编译，但在预览时，你会发现还是会报错，找不到<code>Components</code>,想解决这个问题，我们必须要在<code>index.html</code>里进行引入<code>components.js</code>文件。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">&quot;./build/page.js&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line">&lt;script src=<span class="string">&quot;./build/components.js&quot;</span>&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<h4 id="多文件编译成一个文件"><a href="#多文件编译成一个文件" class="headerlink" title="多文件编译成一个文件"></a>多文件编译成一个文件</h4></blockquote>
+<p>直接打开<code>tsconfig.json</code>文件，然后找到<code>outFile</code>配置项，这个就是用来生成一个文件的设置，但是如果设置了它，就不再支持<code>&quot;module&quot;:&quot;commonjs&quot;</code>设置了，我们需要把它改成<code>&quot;module&quot;:&quot;amd&quot;</code>,然后在去掉对应的<code>outFile</code>注释，设置成下面的样子。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;outFile&quot;</span>: <span class="string">&quot;./build/page.js&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>配置好后，删除掉<code>build</code>下的<code>js</code>文件，然后用<code>tsc</code>进行再次编译。</p>
+<p>然后删掉<code>index.html</code>文件中的<code>component.js</code>,在浏览器里还是可以正常运行的。</p>
+<blockquote>
+<h4 id="子命名空间"><a href="#子命名空间" class="headerlink" title="子命名空间"></a>子命名空间</h4></blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">namespace Components &#123;</span><br><span class="line">  <span class="keyword">export</span> namespace SubComponents &#123;</span><br><span class="line">    <span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;&#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">//someting ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>写完后在控制台再次编辑<code>tsc</code>，然后你在浏览器中也是可以查到这个命名空间的<code>Components.SubComponents.Test</code>(需要刷新页面后才会显示)。</p>
+<h4 id="TypeScript-如何使用-import-语法"><a href="#TypeScript-如何使用-import-语法" class="headerlink" title="TypeScript 如何使用 import 语法"></a>TypeScript 如何使用 import 语法</h4><blockquote>
+<h4 id="修改-components-ts-文件"><a href="#修改-components-ts-文件" class="headerlink" title="修改 components.ts 文件"></a>修改 components.ts 文件</h4></blockquote>
+<p>现在去掉<code>components.ts</code>里的<code>namespace</code>命名空间代码，写成 <code>ES6</code> 的 <code>export</code> 导出模式。代码如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">Header</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> elem = <span class="built_in">document</span>.createElement(<span class="string">&quot;div&quot;</span>);</span><br><span class="line">    elem.innerText = <span class="string">&quot;This is Header&quot;</span>;</span><br><span class="line">    <span class="built_in">document</span>.body.appendChild(elem);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">Content</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> elem = <span class="built_in">document</span>.createElement(<span class="string">&quot;div&quot;</span>);</span><br><span class="line">    elem.innerText = <span class="string">&quot;This is Content&quot;</span>;</span><br><span class="line">    <span class="built_in">document</span>.body.appendChild(elem);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">Footer</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> elem = <span class="built_in">document</span>.createElement(<span class="string">&quot;div&quot;</span>);</span><br><span class="line">    elem.innerText = <span class="string">&quot;This is Footer&quot;</span>;</span><br><span class="line">    <span class="built_in">document</span>.body.appendChild(elem);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>现在三个类就都已经用<code>export</code>导出了，也就是说可以实现用<code>import</code>进行引入了。</p>
+<blockquote>
+<h4 id="修改-page-ts-文件"><a href="#修改-page-ts-文件" class="headerlink" title="修改 page.ts 文件"></a>修改 page.ts 文件</h4></blockquote>
+<p>来到<code>page.ts</code>文件，去掉<code>namespace</code>命名空间对应的代码，然后使用 <code>import</code> 语法进行导入<code>Header</code>、<code>Content</code>和<code>Footer</code>,代码如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Header, Content, Footer &#125; <span class="keyword">from</span> <span class="string">&quot;./components&quot;</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">Page</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">new</span> Header();</span><br><span class="line">    <span class="keyword">new</span> Content();</span><br><span class="line">    <span class="keyword">new</span> Footer();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>现在看起来确实和工作中写的代码非常类似了。这时候可以使用<code>tsc</code>进行编译。然后可以看到编译好的代码都是<code>define</code>开头的(这是 amd 规范的代码，不能直接在浏览器中运行，可以在 Node 中直接运行)，这种代码在浏览器中是没办法被直接运行的，需要其他库(<code>require.js</code>)的支持。</p>
+<blockquote>
+<h4 id="引入-require-js"><a href="#引入-require-js" class="headerlink" title="引入 require.js"></a>引入 require.js</h4></blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">&quot;https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.js&quot;</span>&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>这时候就可以解析<code>define</code>这样的语法了。然后把<code>page.ts</code>中加入<code>default</code>关键字，如果不加是没办法直接引用到的。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Header, Content, Footer &#125; <span class="keyword">from</span> <span class="string">&quot;./components&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">Page</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">new</span> Header();</span><br><span class="line">    <span class="keyword">new</span> Content();</span><br><span class="line">    <span class="keyword">new</span> Footer();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这时候再用<code>tsc</code>进行编译一下，你会发现还是又问题。因为使用<code>export default</code>这种形式的语法，需要在<code>html</code>里用<code>require</code>来进行引入。</p>
+<blockquote>
+<h4 id="require-方式引入"><a href="#require-方式引入" class="headerlink" title="require 方式引入"></a>require 方式引入</h4></blockquote>
+<p>因为你已经加入了<code>require.js</code>这个库，所以现在可以直接在代码中使用<code>require</code>了。具体代码如下</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    <span class="built_in">require</span>([<span class="string">&quot;page&quot;</span>], <span class="function"><span class="keyword">function</span> (<span class="params">page</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">new</span> page.default();</span><br><span class="line">    &#125;);</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+<p>当我们有了<code>webpack</code>和<code>Parcel</code>的时候就不会这么麻烦，这些都交给打包工具来处理就好了。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/11/TypeScript%E6%B3%9B%E5%9E%8B-%E9%9A%BE%E7%82%B9/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="winney">
+      <meta itemprop="description" content="Doing is better than saying.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="winney">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/11/11/TypeScript%E6%B3%9B%E5%9E%8B-%E9%9A%BE%E7%82%B9/" class="post-title-link" itemprop="url">TypeScript函数泛型-难点</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-11-11 17:37:35" itemprop="dateCreated datePublished" datetime="2020-11-11T17:37:35+08:00">2020-11-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-01-12 17:59:58" itemprop="dateModified" datetime="2021-01-12T17:59:58+08:00">2021-01-12</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/TypeScript/" itemprop="url" rel="index"><span itemprop="name">TypeScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="TypeScript-函数泛型-难点"><a href="#TypeScript-函数泛型-难点" class="headerlink" title="TypeScript 函数泛型-难点"></a>TypeScript 函数泛型-难点</h4><blockquote>
+<h4 id="编写一个联合类型-Demo"><a href="#编写一个联合类型-Demo" class="headerlink" title="编写一个联合类型 Demo"></a>编写一个联合类型 Demo</h4></blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">join</span>(<span class="params">first: string | number, second: string | number</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;first&#125;</span><span class="subst">$&#123;second&#125;</span>`</span>;</span><br><span class="line">&#125;</span><br><span class="line">join(<span class="string">&quot;jspang&quot;</span>, <span class="string">&quot;.com&quot;</span>);</span><br></pre></td></tr></table></figure>
+<p>那现在所学的知识就完成不了啦，所以需要学习<code>泛型</code>来解决这个问题。</p>
+<blockquote>
+<h4 id="初始泛型概念-generic"><a href="#初始泛型概念-generic" class="headerlink" title="初始泛型概念-generic"></a>初始泛型概念-generic</h4></blockquote>
+<blockquote>
+<p>泛型：[generic - 通用、泛指的意思],那最简单的理解，泛型就是泛指的类型。</p>
+</blockquote>
+<p>泛型的定义使用<code>&lt;&gt;</code>（尖角号）进行定义的</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">join</span>&lt;<span class="title">JSPang</span>&gt;(<span class="params">first: JSPang, second: JSPang</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;first&#125;</span><span class="subst">$&#123;second&#125;</span>`</span>;</span><br><span class="line">&#125;</span><br><span class="line">join &lt; string &gt; (<span class="string">&quot;jspang&quot;</span>, <span class="string">&quot;.com&quot;</span>);</span><br></pre></td></tr></table></figure>
+<p>如果要是<code>number</code>类型，就直接在调用方法的时候进行更改就可以了。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">join &lt; number &gt; (<span class="number">1</span>, <span class="number">2</span>);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<h4 id="泛型中数组的使用"><a href="#泛型中数组的使用" class="headerlink" title="泛型中数组的使用"></a>泛型中数组的使用</h4></blockquote>
+<p>如果传递过来的值要求是数字，如何用泛型进行定义那?两种方法，第一种是直接使用<code>[]</code>，第二种是使用<code>Array&lt;泛型&gt;</code>。形式不一样，其他的都一样。</p>
+<p>第一种写法：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFun</span>&lt;<span class="title">ANY</span>&gt;(<span class="params">params: ANY[]</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> params;</span><br><span class="line">&#125;</span><br><span class="line">myFun &lt; string &gt; [<span class="string">&quot;123&quot;</span>, <span class="string">&quot;456&quot;</span>];</span><br></pre></td></tr></table></figure>
+<p>第二种写法：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFun</span>&lt;<span class="title">ANY</span>&gt;(<span class="params">params: <span class="built_in">Array</span>&lt;ANY&gt;</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> params;</span><br><span class="line">&#125;</span><br><span class="line">myFun &lt; string &gt; [<span class="string">&quot;123&quot;</span>, <span class="string">&quot;456&quot;</span>];</span><br></pre></td></tr></table></figure>
+<p>在工作中，我们经常使用<code>&lt;T&gt;</code>来作泛型的表示</p>
+<blockquote>
+<h4 id="多个泛型的定义"><a href="#多个泛型的定义" class="headerlink" title="多个泛型的定义"></a>多个泛型的定义</h4></blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">join</span>&lt;<span class="title">T</span>, <span class="title">P</span>&gt;(<span class="params">first: T, second: P</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;first&#125;</span><span class="subst">$&#123;second&#125;</span>`</span>;</span><br><span class="line">&#125;</span><br><span class="line">join &lt; number, string &gt; (<span class="number">1</span>, <span class="string">&quot;2&quot;</span>);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<h4 id="泛型的类型推断"><a href="#泛型的类型推断" class="headerlink" title="泛型的类型推断"></a>泛型的类型推断</h4></blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">join</span>&lt;<span class="title">T</span>, <span class="title">P</span>&gt;(<span class="params">first: T, second: P</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;first&#125;</span><span class="subst">$&#123;second&#125;</span>`</span>;</span><br><span class="line">&#125;</span><br><span class="line">join(<span class="number">1</span>, <span class="string">&quot;2&quot;</span>);</span><br></pre></td></tr></table></figure>
+<p>不建议大量使用类型推断，这会让你的代码易读和健壮性都会下降</p>
+<h4 id="TypeScript-类中泛型-难点"><a href="#TypeScript-类中泛型-难点" class="headerlink" title="TypeScript 类中泛型-难点"></a>TypeScript 类中泛型-难点</h4><blockquote>
+<h4 id="编写一个基本类"><a href="#编写一个基本类" class="headerlink" title="编写一个基本类"></a>编写一个基本类</h4></blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SelectGirl</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">private girls: string[]</span>)</span> &#123;&#125;</span><br><span class="line">  getGirl(index: number): string &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.girls[index];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> selectGirl = <span class="keyword">new</span> SelectGirl([<span class="string">&quot;大脚&quot;</span>, <span class="string">&quot;刘英&quot;</span>, <span class="string">&quot;晓红&quot;</span>]);</span><br><span class="line"><span class="built_in">console</span>.log(selectGirl.getGirl(<span class="number">1</span>));</span><br></pre></td></tr></table></figure>
+<p>在 TypeScript 中，编写复杂代码的时候，会经常使用泛型。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SelectGirl</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">private girls: string[] | number[]</span>)</span> &#123;&#125;</span><br><span class="line">  getGirl(index: number): string | number &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.girls[index];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<h4 id="初始类的泛型"><a href="#初始类的泛型" class="headerlink" title="初始类的泛型"></a>初始类的泛型</h4></blockquote>
+<p>用<code>&lt;&gt;</code>编写</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SelectGirl</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">private girls: T[]</span>)</span> &#123;&#125;</span><br><span class="line">  getGirl(index: number): T &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.girls[index];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> selectGirl = <span class="keyword">new</span> SelectGirl([<span class="string">&quot;大脚&quot;</span>, <span class="string">&quot;刘英&quot;</span>, <span class="string">&quot;晓红&quot;</span>]);</span><br><span class="line"><span class="built_in">console</span>.log(selectGirl.getGirl(<span class="number">1</span>));</span><br></pre></td></tr></table></figure>
+<p>这时候代码并不报错，也使用了泛型，但是在实例化对象的时候，TypeScript 是通过类型推断出来的。这种方法并不好，所以还是需要在实例化对象的时候，对泛型的值进行确定，比如是<code>string</code>类型，就这样写。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> selectGirl = <span class="keyword">new</span> SelectGirl() &lt; string &gt; [<span class="string">&quot;大脚&quot;</span>, <span class="string">&quot;刘英&quot;</span>, <span class="string">&quot;晓红&quot;</span>];</span><br></pre></td></tr></table></figure>
+<blockquote>
+<h4 id="泛型中的继承"><a href="#泛型中的继承" class="headerlink" title="泛型中的继承"></a>泛型中的继承</h4></blockquote>
+<p>现在需求又变了，要求返回是一个对象中的<code>name</code>,也就是下面的代码要改成这个样子。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> <span class="built_in">this</span>.girls[index].name;</span><br></pre></td></tr></table></figure>
+<p>现在的代码一定时报错的，但是这时候还要求我们这么做，意思就是说传递过来的值必须是一个对象类型的，里边还要有<code>name</code>属性。这时候就要用到继承了，我用接口的方式来实现。写一个<code>Girl</code>的接口，每个接口里都要有 name 属性。代码如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">interface Girl &#123;</span><br><span class="line">  name: string;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>有了接口后用<code>extends</code>关键字实现泛型继承，代码如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SelectGirl</span>&lt;<span class="title">T</span> <span class="keyword">extends</span> <span class="title">Girl</span>&gt; </span>&#123;</span><br><span class="line"> ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这句代码的意思是泛型里必须有一个<code>name</code>属性，因为它继承了<code>Girl</code>接口。</p>
+<p>现在程序还是报错的，因为我们<code>getGirl</code>方法的返回类型还不对，这时候应该是一个<code>string</code>类型才对，所以代码应该改为下面的样子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">interface Girl &#123;</span><br><span class="line">  name: string;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SelectGirl</span>&lt;<span class="title">T</span> <span class="keyword">extends</span> <span class="title">Girl</span>&gt; </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">private girls: T[]</span>)</span> &#123;&#125;</span><br><span class="line">  getGirl(index: number): string &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.girls[index].name;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> selectGirl = <span class="keyword">new</span> SelectGirl([</span><br><span class="line">  &#123; <span class="attr">name</span>: <span class="string">&quot;大脚&quot;</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">name</span>: <span class="string">&quot;刘英&quot;</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">name</span>: <span class="string">&quot;晓红&quot;</span> &#125;,</span><br><span class="line">]);</span><br><span class="line"><span class="built_in">console</span>.log(selectGirl.getGirl(<span class="number">1</span>));</span><br></pre></td></tr></table></figure>
+<blockquote>
+<h4 id="泛型约束"><a href="#泛型约束" class="headerlink" title="泛型约束"></a>泛型约束</h4></blockquote>
+<p>现在的泛型可以是任意类型，可以是对象、字符串、布尔、数字都是可以的。但你现在要求这个泛型必须是<code>string</code>或者<code>number</code>类型。我们还是拿上面的例子，不过把代码改为最初的样子。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SelectGirl</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">private girls: T[]</span>)</span> &#123;&#125;</span><br><span class="line">  getGirl(index: number): T &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.girls[index];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> selectGirl = <span class="keyword">new</span> SelectGirl&lt;string&gt;([<span class="string">&quot;大脚&quot;</span>, <span class="string">&quot;刘英&quot;</span>, <span class="string">&quot;晓红&quot;</span>]);</span><br><span class="line"><span class="built_in">console</span>.log(selectGirl.getGirl(<span class="number">1</span>));</span><br></pre></td></tr></table></figure>
+<p>然后进行约束，这时候还是可以使用关键字<code>extends</code>来进行约束，把代码改成下面的样子。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SelectGirl</span>&lt;<span class="title">T</span> <span class="keyword">extends</span> <span class="title">number</span> | <span class="title">string</span>&gt; </span>&#123;</span><br><span class="line">  <span class="comment">//.....</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/11/TypeScript%E7%9A%84%E8%81%94%E5%90%88%E7%B1%BB%E5%9E%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="winney">
+      <meta itemprop="description" content="Doing is better than saying.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="winney">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/11/11/TypeScript%E7%9A%84%E8%81%94%E5%90%88%E7%B1%BB%E5%9E%8B/" class="post-title-link" itemprop="url">TypeScript的联合类型</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-11-11 15:43:27" itemprop="dateCreated datePublished" datetime="2020-11-11T15:43:27+08:00">2020-11-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-01-12 17:59:54" itemprop="dateModified" datetime="2021-01-12T17:59:54+08:00">2021-01-12</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/TypeScript/" itemprop="url" rel="index"><span itemprop="name">TypeScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="联合类型和类型保护"><a href="#联合类型和类型保护" class="headerlink" title="联合类型和类型保护"></a>联合类型和类型保护</h4><blockquote>
+<h4 id="联合类型展示"><a href="#联合类型展示" class="headerlink" title="联合类型展示"></a>联合类型展示</h4></blockquote>
+<p>所谓联合类型，可以认为一个变量可能有两种或两种以上的类型。所以我们使用了联合类型，关键符号是<code>|</code>(竖线)。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">interface Waiter &#123;</span><br><span class="line">  anjiao: boolean;</span><br><span class="line">  say: () &#x3D;&gt; &#123;&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">interface Teacher &#123;</span><br><span class="line">  anjiao: boolean;</span><br><span class="line">  skill: () &#x3D;&gt; &#123;&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function judgeWho(animal: Waiter | Teacher) &#123;&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function judgeWho(animal: Waiter | Teacher) &#123;</span><br><span class="line">  animal.say();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>但这时候问题来了，如果我直接写一个这样的方法，就会报错，因为<code>judgeWho</code>不能准确的判断联合类型具体的实例是什么。</p>
+<p>这时候就需要再引出一个概念叫做<code>类型保护</code></p>
+<blockquote>
+<h4 id="类型保护-类型断言"><a href="#类型保护-类型断言" class="headerlink" title="类型保护-类型断言"></a>类型保护-类型断言</h4></blockquote>
+<p>类型断言就是通过断言的方式确定传递过来的准确值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">interface Waiter &#123;</span><br><span class="line">  anjiao: boolean;</span><br><span class="line">  say: () &#x3D;&gt; &#123;&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">interface Teacher &#123;</span><br><span class="line">  anjiao: boolean;</span><br><span class="line">  skill: () &#x3D;&gt; &#123;&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function judgeWho(animal: Waiter | Teacher) &#123;</span><br><span class="line">  if (animal.anjiao) &#123;</span><br><span class="line">    (animal as Teacher).skill();</span><br><span class="line">  &#125;else&#123;</span><br><span class="line">    (animal as Waiter).say();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<h4 id="类型保护-in语法"><a href="#类型保护-in语法" class="headerlink" title="类型保护-in语法"></a>类型保护-in语法</h4></blockquote>
+<p>经常使用<code>in</code>语法来作类型保护，比如用<code>if</code>来判断<code>animal</code>里有没有<code>skill()</code>方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function judgeWhoTwo(animal: Waiter | Teacher) &#123;</span><br><span class="line">  if (&quot;skill&quot; in animal) &#123;</span><br><span class="line">    animal.skill();</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    animal.say();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里的<code>else</code>部分能够自动判断，得益于<code>TypeScript</code>的自动判断。</p>
+<blockquote>
+<h4 id="类型保护-typeof-语法"><a href="#类型保护-typeof-语法" class="headerlink" title="类型保护-typeof 语法"></a>类型保护-typeof 语法</h4></blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function add(first: string | number, second: string | number) &#123;</span><br><span class="line">  return first + second;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这时候会报错，解决这个问题，就可以直接用type of来进行解决</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function add(first: string | number, second: string | number) &#123;</span><br><span class="line">  if (typeof first &#x3D;&#x3D;&#x3D; &quot;string&quot; || typeof second &#x3D;&#x3D;&#x3D; &quot;string&quot;) &#123;</span><br><span class="line">    return &#96;$&#123;first&#125;$&#123;second&#125;&#96;;</span><br><span class="line">  &#125;</span><br><span class="line">  return first + second;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<h4 id="类型保护-instanceof-语法"><a href="#类型保护-instanceof-语法" class="headerlink" title="类型保护-instanceof 语法"></a>类型保护-instanceof 语法</h4></blockquote>
+<p>比如现在要作类型保护的是一个对象，这时候就可以使用<code>instanceof</code>语法来作</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">class NumberObj &#123;</span><br><span class="line">  count: number;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function addObj(first: object | NumberObj, second: object | NumberObj) &#123;</span><br><span class="line">  return first.count + second.count;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>报错不要紧，直接使用<code>instanceof</code>语法进行判断一下，就可以解决问题。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function addObj(first: object | NumberObj, second: object | NumberObj) &#123;</span><br><span class="line">  if (first instanceof NumberObj &amp;&amp; second instanceof NumberObj) &#123;</span><br><span class="line">    return first.count + second.count;</span><br><span class="line">  &#125;</span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Enum-枚举类型讲解"><a href="#Enum-枚举类型讲解" class="headerlink" title="Enum 枚举类型讲解"></a>Enum 枚举类型讲解</h4><p>初级程序员写法：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getServe</span>(<span class="params">status: number</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (status === <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;massage&quot;</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (status === <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;SPA&quot;</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (status === <span class="number">2</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;dabaojian&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> result = getServe(<span class="number">0</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">`我要去<span class="subst">$&#123;result&#125;</span>`</span>);</span><br></pre></td></tr></table></figure>
+<p>中级程序员写法：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Status = &#123;</span><br><span class="line">  MASSAGE: <span class="number">0</span>,</span><br><span class="line">  SPA: <span class="number">1</span>,</span><br><span class="line">  DABAOJIAN: <span class="number">2</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getServe</span>(<span class="params">status: any</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (status === Status.MASSAGE) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;massage&quot;</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (status === Status.SPA) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;spa&quot;</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (status === Status.DABAOJIAN) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;dabaojian&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> result = getServe(Status.SPA);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">`我要去<span class="subst">$&#123;result&#125;</span>`</span>);</span><br></pre></td></tr></table></figure>
+<p>高级程序员写法：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">enum Status &#123;</span><br><span class="line">  MASSAGE,</span><br><span class="line">  SPA,</span><br><span class="line">  DABAOJIAN,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getServe</span>(<span class="params">status: any</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (status === Status.MASSAGE) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;massage&quot;</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (status === Status.SPA) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;spa&quot;</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (status === Status.DABAOJIAN) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;dabaojian&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> result = getServe(Status.SPA);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">`我要去<span class="subst">$&#123;result&#125;</span>`</span>);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<h4 id="枚举类型的对应值"><a href="#枚举类型的对应值" class="headerlink" title="枚举类型的对应值"></a>枚举类型的对应值</h4></blockquote>
+<p>你调用时传一个<code>1</code>,也会输出<code>我要去spa</code>。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> result = getServe(<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+<p>因为枚举类型是有对应的数字值的，默认是从 0 开始的</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(Status.MASSAGE);</span><br><span class="line"><span class="built_in">console</span>.log(Status.SPA);</span><br><span class="line"><span class="built_in">console</span>.log(Status.DABAOJIAN);</span><br></pre></td></tr></table></figure>
+<p>可以看出结果就是<code>0,1,2</code>。那这时候不想默认从 0 开始，而是想从 1 开始。可以这样写。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">enum Status &#123;</span><br><span class="line">  MASSAGE = <span class="number">1</span>,</span><br><span class="line">  SPA,</span><br><span class="line">  DABAOJIAN,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<h4 id="枚举通过下标反查"><a href="#枚举通过下标反查" class="headerlink" title="枚举通过下标反查"></a>枚举通过下标反查</h4></blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(Status.MASSAGE, Status[<span class="number">1</span>]);</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -463,7 +594,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/21/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><span class="page-number current">22</span><a class="page-number" href="/page/23/">23</a><span class="space">&hellip;</span><a class="page-number" href="/page/36/">36</a><a class="extend next" rel="next" href="/page/23/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/21/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><span class="page-number current">22</span><a class="page-number" href="/page/23/">23</a><span class="space">&hellip;</span><a class="page-number" href="/page/38/">38</a><a class="extend next" rel="next" href="/page/23/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -531,7 +662,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">108</span>
+          <span class="site-state-item-count">112</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -544,7 +675,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">60</span>
+        <span class="site-state-item-count">63</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

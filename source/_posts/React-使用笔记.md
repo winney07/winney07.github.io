@@ -14,6 +14,10 @@ categories:
 
 [React Examples](https://codesandbox.io/examples/package/react)
 
+[Create React App 中文文档](https://create-react-app.bootcss.com/)
+
+[Create React App](https://create-react-app.dev/)
+
 #### VSCode扩展
 
 ##### 生成react代码片段-ES7
@@ -363,3 +367,19 @@ const container = document.getElementById('app');
 const root = createRoot(container);
 root.render(<App tab="home" />);
 ```
+
+#### [轮播图-swiper](https://swiperjs.com/get-started)
+
+```
+npm install swiper
+
+
+// import Swiper JS
+import Swiper from 'swiper';
+// import Swiper styles
+import 'swiper/css';
+
+const swiper = new Swiper(...);
+```
+
+[Swiper React Components](https://swiperjs.com/react)

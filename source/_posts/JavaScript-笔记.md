@@ -730,6 +730,20 @@ onload 事件可用于检测访问者的浏览器类型和浏览器版本，并�
 
 onload 和 onunload 事件可用于处理 cookie。
 
+
+
+![image-20220705154829046](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/JavaScript-%E7%AC%94%E8%AE%B0/image-20220705154829046.png)
+
+#### [滑动时报错[Intervention\] Unable to preventDefault inside passive event listener due to target being treated as passive. See ](https://www.cnblogs.com/emma-zhao/p/10699330.html)
+
+搜索`mousewheel`件，在后面加上`{passive: false}`
+
+```
+ addEvent("mousewheel", wheel, {passive: false});
+```
+
+
+
 [JavaScript中原型对象的彻底理解](https://blog.csdn.net/u012468376/article/details/53121081)
 
 [一张图理解prototype、proto和constructor的三角关系](https://www.cnblogs.com/xiaohuochai/p/5721552.html)

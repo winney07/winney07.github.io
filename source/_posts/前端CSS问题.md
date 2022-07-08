@@ -7,6 +7,27 @@ categories:
 - 工作笔记
 - css问题
 ---
+
+
+#### 修改滚动条样式
+
+```
+/* 滚动条样式 */
+::-webkit-scrollbar{
+  width: 2px;
+  height: 5px;
+  position: absolute;
+}
+::-webkit-scrollbar-thumb{
+  background-color: #fff;
+}
+::-webkit-scrollbar-track{
+  background-color: #001529;
+}
+```
+
+
+
 ##### html5 video在固定的宽度和高度内铺满
 
 一般是视频的缩略图或者视频需要铺满我们固定的区域。

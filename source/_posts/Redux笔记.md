@@ -257,6 +257,12 @@ console.log(store.getState())
 
 
 
+
+
+#### 异步处理
+
+![异步](https://redux.js.org/assets/images/ReduxAsyncDataFlowDiagram-d97ff38a0f4da0f327163170ccc13e80.gif)
+
 #### 总结
 
 - Redux 是一个管理全局应用状态的库
@@ -816,4 +822,16 @@ serviceWorker.unregister();
 
       {/* </Routes> */}
 ```
+
+
+
+#### [React Redux](https://react-redux.js.org/)
+
+
+
+#### [redux-persist](https://github.com/rt2zz/redux-persist)
+
+[Use with Redux-Persist](https://redux-toolkit.js.org/usage/usage-guide#use-with-redux-persist)
+
+#### [Redux Toolkit--使用教程](https://redux-toolkit.js.org/tutorials/quick-start)
 

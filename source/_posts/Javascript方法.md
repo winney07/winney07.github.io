@@ -1778,3 +1778,22 @@ function stopDefault( e ) {
     return false; 
 }
 ```
+
+#### [JS 删除数组中某个元素的几种方式](https://blog.csdn.net/Li_dengke/article/details/105249837)
+
+#### 删除数组最后两个元素
+
+```
+arr.slice(0, -2)
+```
+
+#### 删除数组最后一个元素
+
+```
+arr.slice(0, -1)
+```
+
+```
+arr.pop()
+```
+

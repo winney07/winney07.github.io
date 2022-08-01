@@ -9,6 +9,23 @@ categories:
 ---
 
 
+
+[html页面在苹果手机内，safari浏览器，微信中滑动不流畅问题解决方案](https://www.cnblogs.com/autoXingJY/p/11576469.html)
+
+[iPhone mobile safari fixed 元素滚动慢的问题处理](https://blog.csdn.net/weixin_30896511/article/details/98370605)
+
+[html页面在苹果手机内，safari浏览器，微信中滑动不流畅问题解决方案](http://www.wjhsh.net/autoXingJY-p-11576469.html)
+
+
+
+#### CSS控制字体自动转换成大写字母
+
+```
+text-transform: uppercase;
+```
+
+
+
 #### 修改滚动条样式
 
 ```

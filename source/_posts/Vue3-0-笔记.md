@@ -13,7 +13,28 @@ tags:
 - vue3+ts项目系列第2篇**[《TypeScript 语法汇总》](https://link.zhihu.com/?target=https%3A//lianpf.github.io/posts/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/03.ts%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/)**
 - vue3+ts项目系列第3篇**[《vue3组合式api及重要属性变更》](https://link.zhihu.com/?target=https%3A//lianpf.github.io/posts/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/07.vue3%E7%BB%84%E5%90%88%E5%BC%8Fapi%E5%8F%8A%E9%87%8D%E8%A6%81%E5%B1%9E%E6%80%A7%E5%8F%98%E6%9B%B4/)**
 
+
+
+#### [vue3+vite的项目如何将打包后的绝对路径改为相对路径](https://blog.csdn.net/zy21131437/article/details/125861170)
+
+在vue3+vite的项目中，配置文件名为 **`vite.config.js`**，如果没有就在[根目录](https://so.csdn.net/so/search?q=根目录&spm=1001.2101.3001.7020)下新建一个，文件名固定为：**`vite.config.js`**，然后在里面加上base属性，设置值为 `"./"`，如下：
+
+```
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+
+// https://vitejs.dev/config/
+export default defineConfig({
+  plugins: [vue()],
+  base: './'
+})
+```
+
+如果不是用Vite的，[vue cli3.x打包后如何修改生成的静态资源的目录和路径](
+
 #### 仅限 TypeScript 的功能
+
+[Ant Design Pro](https://preview.pro.ant.design/dashboard/analysis)
 
 #### [#](https://v3.cn.vuejs.org/api/sfc-script-setup.html#仅限类型的-props-emit-声明)仅限类型的 props/emit 声明
 
@@ -45,11 +66,143 @@ tags:
 
 #### 安装Vue Language Features (Volar)插件
 
-
+[vue3 学习笔记 (五)——vue3 的 setup 如何实现响应式功能？](https://blog.csdn.net/weixin_43880397/article/details/121464597)
 
 ### [防抖和节流](https://v3.cn.vuejs.org/guide/data-methods.html#%E9%98%B2%E6%8A%96%E5%92%8C%E8%8A%82%E6%B5%81)
 
 Vue 没有内置支持防抖和节流，但可以使用 [Lodash](https://lodash.com/) 等库来实现
+
+#### setup语法糖处理异步-响应式数组数据
+
+```
+let data = reactive([]);
+
+api.get('/apps/getapps').then(res => {
+    if(res.code === 1) {
+        console.log(res.data)
+        data.push(...res.data)
+    }
+})
+```
+
+#### [Vue3 数据响应式](https://blog.csdn.net/hx_1551/article/details/124623872)
+
+在vue3中一般返回的数据是不响应的，如果需要响应式需要在定义时声明
+方法1：reactive（）：
+    定义：reactive（）是一个函数，可以用来定义复杂数据类型完成响应式
+    案例：
+
+```
+<div>{{userInfo.name}}</div>
+//4，结果打印Cat
+<button @click="userNameUpdate"><button>
+<script lang='setup'>
+//1，引用reactive
+import {reactive} from 'vue'
+//2，定义响应式对象
+const userInfo = reactive({
+    name:''
+})
+//3，点击改变响应式对象中name的值
+const userNameUpdate = ()=>{
+    userInfo.name = "Cat"
+}
+</script>
+```
+
+方法2：toRef（）：
+    定义：当我们在渲染数据时，不希望用到前缀时，可以使用组合toRef（）
+       toRef（）是函数，**转换响应式对象**中的某个属性为单独响应式数据，他们之间依然相互绑定
+    案例：
+
+```
+<div>{{name}}</div>
+//先打印Vue2
+<button @click='nameUpdata'>修改</button>
+//点击后打印Vue3
+<script lang='setup'>
+//1，引用reactive，toRef
+import {reactive,toRef} from 'vue'
+//2，定义响应式对象
+const userInfo = reactive({
+    name:'Vue2'
+})
+//3，定义单独响应式变量
+const name = toRef(userInfo,'name')
+//4，点击修改name值
+const nameUpdata = ()=>{
+    name.value = 'Vue3'
+}
+</script>
+```
+
+方法3：toRefs（）：
+    定义：可以定义转换响应式对象中所有属性为响应式数据，通常用于结构reactive定义的对象，转换响应式对象中所有属性（也可以是一部分）为单独响应式数据，对象成为普通对象，且数据关联
+    案例：
+
+```
+
+<div>姓名：{{name}}</div>
+<div>年龄：{{age}}</div>
+<button @click = 'upData'>修改信息</button>
+<script lang='setup'>
+//1，引用reactive、toRefs
+import {reactive,toRefs} from 'vue'
+//2，定义响应式对象
+const userInfo = reactive({
+    name:'张三',
+    age:'23'
+})
+//3，定义转换单独响应式数据
+const {name,age} =toRefs(userInfo)
+//4，修改数据事件
+const upData = () =>{
+    name.value = '李四'
+    age.value = '24'
+} 
+</script>
+
+```
+
+方法4：ref（）：
+        定义：ref（）是一个函数，用来定义简单类型数据响应式
+        注意：
+                1）在修改值和获取值时需要用.value
+                2）在渲染数据时可以省略.value
+        案例：
+
+```
+
+<div>{{name}}</div>
+<button @click="upData">修改</button>
+<script lang='setup'>
+//1，引用ref
+import {ref} from 'vue'
+//2，定义响应式变量
+const name = ref('vue2')
+//3，修改数据事件
+const upData = ()=>{
+    name.value = 'vue3'
+    conslot.log(name.value)
+}
+</script>
+```
+
+#### [vue中数组的七个响应式方法](https://www.csdn.net/tags/OtDaEg4sMjUxMTUtYmxvZwO0O0OO0O0O.html)
+
+#### [antd Select组件placeholder不显示解决办法和原因](https://blog.csdn.net/GMLGDJ/article/details/122754487)
+
+ <Select
+        placeholder="placeholder"
+        // value={undefined} //显示
+        value=''  // 不显示
+      // value={null}  // 不显示
+      >
+        <Option value="lucy">Lucy</Option>
+      </Select>
+解决办法：placeholder不显示是因为设置了value值为"或者null，把value值设为undefined就可以了
+
+原因：placeholder是当前组件值为空时显示的替换文本，只有值为空的时候才会显示。当组件绑定了value后，值不再是空，即时初始化值为""或null也视为有值，所以placeholder自然就不会显示。
 
 
 
@@ -378,3 +531,106 @@ const antIconsList: any = antIcons; // 重新赋值定义类型 避免后续遍�
 <component :is="antIconsList[item.meta.icon]" />
 ```
 
+#### [vue 3 的复制功能 vue-clipboard3](https://www.jianshu.com/p/c3fb60e8eccb)
+
+#### 组件-国际化-中文
+
+[Vue+antd 国际化--默认英文改成中文](https://blog.51cto.com/u_15316082/3209711)
+
+[Vue 解决 Warning: [antdv: LocaleProvider\] `LocaleProvider` is deprecated. Please use `locale` .....](https://blog.csdn.net/zz00008888/article/details/112895429)
+
+```plain
+import zh_CN from "ant-design-vue/lib/locale-provider/zh_CN";
+
+<a-config-provider :locale="zh_CN">
+  <div id="app">
+    <router-view></router-view>
+  </div>
+</a-config-provider>
+```
+
+- 原因：在使用 ant-design-for-vue 国际化的时候，LocaleProvider 已弃用，需要换成 ConfigProvider。
+- 解决：把` <a-locale-provider>` 标签换成 `<a-config-provider>` 标签即可
+
+
+
+[antd-vue实现导出excel](http://www.manongjc.com/detail/24-fqjxxougfxbdcin.html)
+
+[antd-vue实现导出excel](http://t.zoukankan.com/llive-p-14880959.html)
+
+[Vue3将数据导出为Excel—公司偷学技术的第1天](https://cloud.tencent.com/developer/article/2047844)、
+
+### [导出表格-js-table2excel](https://www.npmjs.com/package/js-table2excel)
+
+```plain
+npm install js-table2excel
+```
+
+#### 可以设置表格的单元格的宽高和类型
+
+```plain
+const column = [
+    {
+        title: 'Name',
+        key: 'name',
+        type: 'text'
+    },
+    {
+        title: 'Pic',
+        key: 'pic',
+        type: 'image',
+        width: 80,
+        height: 50
+    }
+]
+const data = [
+    {
+        name: 'xiao',
+        age: '18',
+        pic: ''
+    },
+    {
+        name: 'jie',
+        age: '18',
+        pic: ''
+    }
+]
+const excelName = 'boy'
+ 
+table2excel(column, data, excelName)
+```
+
+#### 报错处理
+
+引入`import table2excel from 'js-table2excel'`，在`js-table2excel`上会有以下警告：
+
+```plain
+无法找到模块“js-table2excel”的声明文件。“H:/Gitee/Vue3_demo/vue3-app-manage/node_modules/_js-table2excel@1.0.3@js-table2excel/index.js”隐式拥有 "any" 类型。
+  尝试使用 `npm i --save-dev @types/js-table2excel` (如果存在)，或者添加一个包含 `declare module 'js-table2excel';` 的新声明(.d.ts)文件
+```
+
+#### [已安装对应模块，但报无法找到模块“XXX”的声明文件的解决方案](https://www.cnblogs.com/feibiubiu/p/12603807.html)
+
+#### 解决方法：
+
+在src目录下，新建`shime-vue.d.ts`文件，在里面进行声明：
+
+```plain
+declare module 'js-table2excel';
+```
+
+#### [vue3网络请求到的数据为proxy对象时，如何获取值](https://www.bilibili.com/read/cv12282506)
+
+
+
+## [将proxy对象转为普通数组-toRaw](https://v3.cn.vuejs.org/api/basic-reactivity.html#toraw)
+
+注意：`toRaw`的时候，要加上`.value`
+
+```plain
+const selectedRowsArr = ref<DataType[]>([]);
+
+const list = toRaw(selectedRowsArr.value);  // 这个就是普通数组
+```
+
+#### [13个开发常用的Vue UI组件库](https://www.jianshu.com/p/f98a14effc81)

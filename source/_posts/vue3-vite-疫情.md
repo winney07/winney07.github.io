@@ -1072,10 +1072,86 @@ yAxis: {
 
 
 
+### 打包上线
+
+[关于vue3.0 + vite + ts 打包的坑](https://blog.csdn.net/qq_37656005/article/details/119818759)
+
+[记一次 vue-tsc 引起的错误](https://www.modb.pro/db/114083)
+
+打包报错：
+
+将package.json的
+
+```
+"build": "vue-tsc --noEmit && vite build",
+```
+
+改为
+
+```
+"build": "vite build",
+```
+
+##### [vue3.0+vite+ts项目搭建-分环境打包(四)](https://www.shuzhiduo.com/A/nAJvZxqGJr/)
+
+[rollup.js](https://rollupjs.org/guide/en/#outputmanualchunks  )
+
+
+
 [ECharts y轴（yAxis）](https://blog.csdn.net/weixin_45536484/article/details/120041748)
 
 备注：完整代码在`Gitee`中` Vue3_demo/vue3-vite-yiqing`
 
-
-
 备注：获取疫情数据的接口：https://c.m.163.com/api/ug/api/wuhan/app/data/list-total?t=330415245809
+
+
+
+[解决vue本地环境跨域请求正常，版本打包后跨域代理不起作用，请求不到数据的方法](https://cloud.tencent.com/developer/article/1620882)
+
+[vue项目打包后请求地址错误/打包后跨域操作](https://www.qb5200.com/article/164553.html)
+
+[**vite 打包后本地不能访问**](https://blog.csdn.net/weixin_43110440/article/details/124882324)
+
+[vue3+vite项目配置axios及跨域](https://www.it610.com/article/1506847191577198592.htm)
+
+#### [VITE+VUE3 跨域环境变量配置](https://blog.csdn.net/xm2395939/article/details/125140690?app_version=5.7.0&csdn_share_tail=%7B%22type%22%3A%22blog%22%2C%22rType%22%3A%22article%22%2C%22rId%22%3A%22125140690%22%2C%22source%22%3A%22winney07%22%7D&ctrtid=shInB&utm_source=app)
+
+[神坑——后端允许了跨域但是前端（vue3+vite+axios）仍然提示跨域](https://blog.csdn.net/lsjweiyi/article/details/124645896)
+
+
+
+#### [axios封装请求](https://www.it610.com/article/1506847191577198592.htm)
+
+#### [使用vite如何配置跨域，以及环境配置](https://blog.csdn.net/jch923798729/article/details/123658250)
+
+[vue部署Linux上 跨域问题](https://blog.csdn.net/m0_62152730/article/details/125082425)
+
+```
+
+var http = axios.create({
+  timeout: 1000 * 20,
+  baseURL: import.meta.env.DEV? '': import.meta.env.VITE_BASE_URL
+})
+```
+
+
+
+```
+server: {
+  port: 4000, // 设置服务启动端口号
+  open: true, // 设置服务启动时是否自动打开浏览器
+  cors: true, // 允许跨域
+
+  // 设置代理，根据我们项目实际情况配置
+  proxy: {
+    '/api': {
+      target: env.VITE_BASE_URL, // 环境变量
+      changeOrigin: true,
+      secure: false,
+      rewrite: (path) => path.replace('/api/', '')
+    }
+  }
+}
+```
+
+https://blog.csdn.net/m0_62152730?type=blog

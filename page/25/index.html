@@ -193,6 +193,96 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/04/TypeScript-%E7%AE%80%E4%BB%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="winney">
+      <meta itemprop="description" content="Doing is better than saying.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="winney">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/11/04/TypeScript-%E7%AE%80%E4%BB%8B/" class="post-title-link" itemprop="url">TypeScript 简介</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-11-04 15:43:11" itemprop="dateCreated datePublished" datetime="2020-11-04T15:43:11+08:00">2020-11-04</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-01-12 17:59:44" itemprop="dateModified" datetime="2021-01-12T17:59:44+08:00">2021-01-12</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/TypeScript/" itemprop="url" rel="index"><span itemprop="name">TypeScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a target="_blank" rel="noopener" href="https://jspang.com/detailed?id=63">【技术胖博客】</a></p>
+<h6 id="Demo1-ts"><a href="#Demo1-ts" class="headerlink" title="Demo1.ts"></a>Demo1.ts</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function jspang() </span><br><span class="line">&#123; </span><br><span class="line">    let web: string &#x3D; &quot;Hello world&quot; </span><br><span class="line">    console.log (web)</span><br><span class="line">&#125;</span><br><span class="line">jspang()</span><br></pre></td></tr></table></figure>
+
+
+<h5 id="初步运行"><a href="#初步运行" class="headerlink" title="初步运行"></a>初步运行</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">node Demo.ts</span><br><span class="line"></span><br><span class="line">会出现报错：</span><br><span class="line">SyntaxError: Unexpected token &#39;:&#39;</span><br><span class="line">表示异常，不支持这个东西。</span><br></pre></td></tr></table></figure>
+<p>输入以下语句来转ts为js：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tsc Demo1.ts</span><br></pre></td></tr></table></figure>
+<p>如果出现：<br> 无法将“tsc”项识别为 cmdlet、函数、脚本文件或可运行程序的名称。请检查名称的拼写，如果包括路径，请确保路径正确，然后再试一次。</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/vickylinj/p/12228773.html">参考</a>  则：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">npm install typescript -g</span><br><span class="line">cnpm install typescript -g</span><br><span class="line"></span><br><span class="line">再次运行即可：</span><br><span class="line">tsc Demo1.ts</span><br><span class="line">node Demo1.js</span><br></pre></td></tr></table></figure>
+<p>每次都这样的操作比较麻烦，可以全局安装ts-node</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install -g ts-node </span><br></pre></td></tr></table></figure>
+<p>即可直接输入以下语句执行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ts-node Demo1.ts</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/04/Clipboard%E7%9A%84%E4%BD%BF%E7%94%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -378,80 +468,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/07/26/%E5%BE%AE%E4%BF%A1%E5%BC%80%E5%8F%91/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="winney">
-      <meta itemprop="description" content="Doing is better than saying.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="winney">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/07/26/%E5%BE%AE%E4%BF%A1%E5%BC%80%E5%8F%91/" class="post-title-link" itemprop="url">微信开发</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-07-26 17:06:55" itemprop="dateCreated datePublished" datetime="2020-07-26T17:06:55+08:00">2020-07-26</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-07-26 18:17:54" itemprop="dateModified" datetime="2022-07-26T18:17:54+08:00">2022-07-26</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/doc/">微信官网文档</a></p>
-<p><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/community/homepage">微信开放社区</a></p>
-<p><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/doc/offiaccount/Getting_Started/Overview.html">微信公众号-开发文档</a></p>
-<p><a target="_blank" rel="noopener" href="https://github.com/Tencent/weui">weui-ui框架</a></p>
-<p><a target="_blank" rel="noopener" href="https://weui.io/">WeUI体验官网</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.kancloud.cn/ywfwj2008/weui/274290">WeUI中文文档</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.zcool.com.cn/article/ZODQ2Mzg0.html">移动端设计规范和方法汇总</a></p>
-<p><a target="_blank" rel="noopener" href="http://www.uishe.cn/153001.html">超全面的移动端UI 设计规范整理汇总</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.uisdc.com/mobile-ui-design-specifications">超全面的移动端UI 设计规范整理汇总</a></p>
-<p>使用flex布局</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -523,7 +539,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">115</span>
+          <span class="site-state-item-count">116</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -536,7 +552,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">67</span>
+        <span class="site-state-item-count">68</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

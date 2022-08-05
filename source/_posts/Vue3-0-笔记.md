@@ -15,6 +15,54 @@ tags:
 
 
 
+#### vite + vue3 + ts 富文本编辑器
+
+[vite + vue3 + ts 安装 tinymce 富文本编辑器](https://www.lanmper.cn/vue/t9834.html)
+
+[tinymce](https://github.com/tinymce/tinymce)
+
+[tiny官网](https://www.tiny.cloud/)
+
+**[tinymce-vue](https://github.com/tinymce/tinymce-vue)**
+
+[文档](https://www.tiny.cloud/docs/quick-start/)
+
+[tiny中文文档](http://tinymce.ax-z.cn/)
+
+
+
+[在vue中的使用](http://tinymce.ax-z.cn/integrations/integrate-index.php)
+
+[Vue中的使用-官网](https://www.tiny.cloud/docs/integrations/vue/)
+
+#### 1.安装
+
+[Vue3项目的安装](https://www.tiny.cloud/docs/tinymce/6/vue-pm/)
+
+```
+npm install --save tinymce "@tinymce/tinymce-vue@^4"
+```
+
+`注：此应用包共有两个目录文件：*tinymce*和*@tinymce*。以后若需要卸载的话，可以直接删除这两个目录文件`
+
+#### 2.安装汉化语言包
+
+[语言包下载列表](https://www.tiny.cloud/get-tiny/language-packages/)，选择*Chinese Simplified*，解压得到*zh-Hans.js*文件。
+
+然后，在`/node_modules/tinymce`下，新建设目录*langs*，把*zh-Hans.js*复制过去。注意：langs 目录必须与 themes，处于同等目录下，否则不起作用。
+
+
+
+[vue富文本编辑器](https://blog.csdn.net/m0_46850900/article/details/112500444?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522165969109816782395347116%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=165969109816782395347116&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-112500444-null-null.142^v39^pc_rank_v37,185^v2^control&utm_term=vue%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8&spm=1018.2226.3001.4187)
+
+[最好用的 7 款 Vue 3 富文本编辑器](https://blog.csdn.net/weixin_48201324/article/details/122632208?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522165969109816782395347116%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=165969109816782395347116&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_click~default-4-122632208-null-null.142^v39^pc_rank_v37,185^v2^control&utm_term=vue%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8&spm=1018.2226.3001.4187)
+
+[vue实现富文本编辑器(附图)-vue-quill-editor](https://blog.csdn.net/w1418899532/article/details/100867223?ops_request_misc=&request_id=&biz_id=102&utm_term=vue%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-3-100867223.142^v39^pc_rank_v37,185^v2^control&spm=1018.2226.3001.4187)
+
+[在vuecli3.0+中使用tinymce及实现多图上传，文件上传，公式编辑等功能](https://www.cnblogs.com/huihuihero/p/13877589.html)
+
+
+
 #### [vue3+vite的项目如何将打包后的绝对路径改为相对路径](https://blog.csdn.net/zy21131437/article/details/125861170)
 
 在vue3+vite的项目中，配置文件名为 **`vite.config.js`**，如果没有就在[根目录](https://so.csdn.net/so/search?q=根目录&spm=1001.2101.3001.7020)下新建一个，文件名固定为：**`vite.config.js`**，然后在里面加上base属性，设置值为 `"./"`，如下：
@@ -623,7 +671,7 @@ declare module 'js-table2excel';
 
 
 
-## [将proxy对象转为普通数组-toRaw](https://v3.cn.vuejs.org/api/basic-reactivity.html#toraw)
+#### [将proxy对象转为普通数组-toRaw](https://v3.cn.vuejs.org/api/basic-reactivity.html#toraw)
 
 注意：`toRaw`的时候，要加上`.value`
 

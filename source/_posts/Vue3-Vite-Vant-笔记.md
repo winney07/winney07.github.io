@@ -117,7 +117,7 @@ https://github.com/amfe/lib-flexible
 
 > 由于`viewport`单位得到众多浏览器的兼容，`lib-flexible`这个过渡方案已经可以放弃使用，不管是现在的版本还是以前的版本，都存有一定的问题。建议大家开始使用`viewport`来替代此方。
 
-#### [Viewport 布局](https://vant-contrib.gitee.io/vant/#/zh-CN/advanced-usage#viewport-bu-ju)
+#### [Viewport 布局](https://vant-contrib.gitee.io/vant/#/zh-CN/advanced-usage#viewport-bu-ju)—推荐
 
 ```
 npm install postcss-px-to-viewport --save-dev
@@ -125,7 +125,7 @@ npm install postcss-px-to-viewport --save-dev
 
 #### viewport布局的相关配置
 
-在根目录添加`postcss.config.js`
+在项目根目录添加`postcss.config.cjs`
 
 ```
 // postcss.config.js
@@ -193,3 +193,199 @@ var data = Mock.mock({
  console.log(data);
 ```
 
+[vue项目，svn提交代码时忽略node_modules文件夹提交](https://www.jianshu.com/p/d8ca41e9bce4)
+
+
+
+#### 使用less
+
+```
+cnpm i less less-loader -D
+```
+
+##### 使用
+
+```
+<style lang='less' scoped>
+
+</style>
+```
+
+
+
+#### 在main.ts中引入reset.less
+
+```
+import './assets/css/reset.less'
+```
+
+#### reset.less
+
+```
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	// font-size: 100%;
+	// font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+```
+
+#### 配置手机可访问本地电脑项目
+
+[Vite 使用本地ip+localhost访问服务](http://www.manongjc.com/detail/29-saiyfskdbsqqcmz.html)
+
+使用vite新建的项目默认访问链接：http://127.0.0.1:5173/
+
+1. 修改`vite.config.js`文件，添加`server`配置
+
+   ```
+   server: {
+       host: '0.0.0.0',
+       port: 8888,
+       open: true
+   },
+   ```
+
+   ```
+   export default defineConfig({
+     plugins: [vue()],
+     base:'./',    // 处理打包后放正式环境的相对路径的问题
+     server: {		// 处理使用本地ip访问页面
+       host: '0.0.0.0',
+       port: 8888,
+       open: true
+     },
+   })
+   ```
+
+2. 若使用手机访问本地ip页面，访问不成功（显示“服务器已停用”）。即要将本地电脑的防火墙“关闭”即可。[手机和电脑连接同一wifi,手机访问不了电脑起的项目](https://blog.csdn.net/zoepriselife316/article/details/117957732)
+
+   电脑的“设置”——“网络和共享中心”——“Windows Defender 防火墙”（左下角）——“启用或关闭Windows Defender 防火墙”（左侧）——选择“关闭”（专用网络和公用网络都关闭）
+
+   注意：使用完，最好重新“启用”防火墙。
+
+[vite.config.js之resolve.alias配置](https://www.jianshu.com/p/dd26cae7d7b2)
+
+
+
+#### [vue实现动态改变title](https://www.dianjilingqu.com/161326.html)
+
+
+
+#### [自定义主题颜色](https://vant-contrib.gitee.io/vant/#/zh-CN/config-provider#zi-ding-yi-css-bian-liang)
+
+1.
+
+```
+ import { ConfigProvider } from 'vant';
+```
+
+2.
+
+```
+<van-config-provider :theme-vars="themeVars">
+    <van-nav-bar
+    title="红包活动"
+    left-arrow
+    @click-left="onClickLeft"
+    />
+</van-config-provider>
+```
+
+3.
+
+```
+const themeVars = {
+    navBarBackgroundColor: '#555',
+    navBarTitleTextColor: '#fff',
+    navBarIconColor: '#fff',
+};
+```
+
+> 原来：background: var(--van-nav-bar-background-color);
+>
+> 自定义写法：navBarBackgroundColor，会转换成--van-nav-bar-background-color
+
+
+
+#### [样式覆盖报错处理](https://blog.csdn.net/m0_51431448/article/details/123003864)
+
+```
+[@vue/compiler-sfc] the >>> and /deep/ combinators have been deprecated. Use :deep() instead.
+```
+
+在Vue2中 我们经常使用 **>>>** 或 **/deep/** 样式穿透 修改[elementui](https://so.csdn.net/so/search?q=elementui&spm=1001.2101.3001.7020)里面的样式
+
+但是Vue3中 弃用了 **>>>** 和 **/deep/** 使用 **:deep()** 代替
+
+```
+/deep/ .van-cell__title{
+    span{
+        font-weight: bold;
+    }
+}
+ /deep/ .van-cell__left-icon{
+    color: red;
+    font-size: 30px;
+}
+```
+
+改为：
+
+```
+:deep(.van-cell__title){
+    span{
+        font-weight: bold;
+    }
+}
+:deep(.van-cell__left-icon){
+    color: red;
+    font-size: 30px;
+}
+```
+
+
+
+[活动规则背景图](http://136pic.com/muban/16118575.html)

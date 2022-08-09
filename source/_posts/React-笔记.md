@@ -10,6 +10,18 @@ categories:
 
 
 
+
+
+#### [创建应用](https://zh-hans.reactjs.org/docs/create-a-new-react-app.html#create-react-app)
+
+```
+npx create-react-app my-app
+cd my-app
+npm start
+```
+
+
+
 react使用Apifox的项目案例，可参考`Gitee/ad_manage_react`项目
 
 json-server的使用，可参考`全球新闻发布系统项目`

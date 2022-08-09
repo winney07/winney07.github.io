@@ -386,6 +386,376 @@ const themeVars = {
 }
 ```
 
+#### [路由配置](https://router.vuejs.org/installation.html)
+
+1.安装
+
+```
+npm install vue-router@4
+```
+
+2.src目录中新建router目录，新建index.ts
+
+```
+import {createRouter, createWebHashHistory} from 'vue-router'
+import RedPacket from '../pages/redPacket/index.vue';
+import Withdraw from '../pages/Withdraw/index.vue'
+
+const routes = [
+    { 
+        path: '/',
+        component: RedPacket,
+        meta: {
+            title: '红包活动'
+        }
+    },
+    { 
+        path: '/withdraw',
+        component: Withdraw,
+        meta: {
+            title: '提现'
+        }
+    },
+]
+
+const router = createRouter({
+    history: createWebHashHistory(),
+    routes, 
+})
+
+export default router;
+```
+
+3.修改mian.ts
+
+```
+import router from './router';
+
+app.use(router);
+```
+
+4.App.vue
+
+```
+<template>
+   <router-view></router-view>
+</template>
+```
+
+#### 动态修改页面Title
+
+```
+router.beforeEach((to, from) => {
+    // 动态修改页面title
+    if (to.meta.title) {
+        document.title = to.meta.title  as string;
+    }
+})
+```
+
+#### 页面跳转组件-router-link
+
+```
+<router-link to="/withdraw">
+    <van-button color="#fe8124" plain size="small"> 
+    提现
+    </van-button>
+</router-link> 
+```
+
+#### 自定义主题放在App.vue
+
+```
+<script setup lang="ts">
+import { ConfigProvider } from 'vant';
+// 自定义主题颜色
+  const themeVars = {
+      navBarBackgroundColor: '#555',
+      navBarTitleTextColor: '#fff',
+      navBarIconColor: '#fff',
+      cellHorizontalPadding: '8px'
+  };
+</script>
+
+<template>
+  <div>
+    <van-config-provider :theme-vars="themeVars">
+      <router-view></router-view>
+    </van-config-provider>
+  </div>
+</template>
+
+<style  scoped>
+
+</style>
+```
+
+#### 父子组件传值-defineProps
+
+参考：[vue3：语法糖内的defineProps及defineEmits、defineExpose](https://blog.csdn.net/skyblacktoday/article/details/120879677)
+
+属性：
+
+1.
+
+```
+const props =  defineProps({
+    title: String,
+})
+```
+
+2. 采用ts专有声明，无默认值
+
+```
+const props =  defineProps<{ // 采用ts专有声明，无默认值
+    title: string,
+}>()
+```
+
+3. 采用ts专有声明，有默认值
+
+```
+interface Props {
+    title?: string
+}
+const props = withDefaults(defineProps<Props>(), {
+    title: '首页',
+})
+```
+
+
+
+##### 子组件：
+
+```
+<van-nav-bar
+    :title="props.title"
+    left-arrow
+    @click-left="onClickLeft"
+/>
+
+const props =  defineProps({
+    title: String,
+})
+或带默认值
+const props =  defineProps({
+    title: {
+        type: String,
+        default: '红包活动'
+    }
+})
+```
+
+##### 父组件：
+
+```
+<!-- 顶部导航 -->
+<TopNav :title="'提现'"/>
+
+
+<!-- 顶部导航 -->
+<TopNav :title="'红包活动'"/>
+```
+
+`注意：如果传值是字符串要加上单引号(:title="'红包活动'")，否则不生效`
+
+##### 或使用变量：
+
+```
+import { ref } from 'vue';
+const title = ref('红包活动')
+
+<!-- 顶部导航 -->
+<TopNav :title="title"/>
+```
+
+#### 子组件传父组件-defineEmits
+
+##### 子组件：
+
+```
+<van-nav-bar
+    left-arrow
+    :right-text="props.rightText"
+    @click-right="onClickRight"
+/>
+const $emit = defineEmits(['navRightClick'])
+// 导航栏右侧按钮点击
+const onClickRight = () => {
+    $emit('navRightClick')
+};
+
+const props =  defineProps({
+    rightText: String
+})
+```
+
+##### 父组件：
+
+```
+ <TopNav :title="'提现'" :rightText="'提现明细'" @navRightClick="handleRightClick"/>
+```
+
+```
+const handleRightClick = () => {
+    console.log("点击右侧按钮")
+}
+```
+
+#### 编程式路由跳转
+
+```
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
+const handleRightClick = () => {
+     router.push('/')
+}
+```
+
+#### 导航栏父子传值-也可改为插槽的用法
+
+##### 子组件：
+
+```
+<van-nav-bar
+    :title="props.title"
+    left-arrow
+    @click-left="onClickLeft"
+>
+   <template #right>
+        <slot></slot>
+    </template>
+</van-nav-bar>
+```
+
+不能写：
+
+```
+<van-nav-bar
+    :title="props.title"
+    left-arrow
+    @click-left="onClickLeft"
+>
+    <slot></slot>      // 这样写不起作用
+</van-nav-bar>
+```
+
+##### 父组件：
+
+```
+<TopNav :title="'提现'">
+   <router-link to="/withdraw/detail">红包明细</router-link>
+</TopNav>
+```
+
+或：
+
+```
+<TopNav :title="'提现'">
+   <span @click="handleRightClick">红包明细</span>
+</TopNav>
+
+
+const router = useRouter()
+const handleRightClick = () => {
+    console.log('跳转')
+     router.push('/withdraw/detail')
+}
+```
+
+
+
+
+
+#### Vite热更新的开启
+
+vite.config.ts：
+
+```
+server: {
+    hmr: true,    // 开启热更新
+}
+```
+
+参考：[vite热更新（vue3）](https://blog.csdn.net/weixin_45369499/article/details/125158995)   | [Vite 是如何做热更新的](https://blog.csdn.net/wanglaotou88/article/details/124708297)
+
+`项目的热更新存在延迟，每次都要重启项目`
+
+做了以上配置还是不起作用：
+
+原因：组件引入的路径大小写写错
+
+```
+import Withdraw from '../pages/Withdraw/index.vue';
+```
+
+解决：将`Withdraw`改为`withdraw`即可
+
+```
+import Withdraw from '../pages/withdraw/index.vue';
+```
+
+参考：[Vue Vite热更新不起作用的正确解决办法](https://www.jb51.net/article/240873.htm)
+
+> 提示：文件夹名称严格注意大小写
+>
+> router 路由中名称 和文件夹(目录), 文件名需要保证大小写一致
+
+
+
+
+
 
 
 [活动规则背景图](http://136pic.com/muban/16118575.html)
+
+#### [‘v-model’ directives require no argument](https://blog.csdn.net/weixin_48952990/article/details/125387578)
+
+解决方法：
+解决方法：
+在VScode中，打开 “文件>首选项>设置” 找到右侧用户设置
+搜索vetur.validation,找到下面这句
+
+```
+"vetur.validation.template": true  
+```
+
+
+将true改成false
+
+//如果没有可以直接添加该句 （将检查关闭）
+
+```
+"vetur.validation.template": false
+```
+
+#### [vue3：复制功能（vue-clipboard3）](https://blog.csdn.net/qq_40745143/article/details/123688798)
+
+```
+npm install --save vue-clipboard3
+```
+
+```
+import useClipboard from 'vue-clipboard3'
+import { Toast } from 'vant';
+import 'vant/es/toast/style';
+
+// 复制绑定码
+const { toClipboard } = useClipboard()
+const copy = async (val:string) => {
+   try {
+      await toClipboard(val)
+      console.log('Copied to clipboard')
+      Toast.success('复制成功');
+   } catch (e) {
+      console.error(e)
+   }
+   show.value = false;  // 关闭弹窗
+}
+```
+
+```
+ <van-button color="#fe7c1a" @click="copy('bcJcB9')">复制并前往绑定</van-button>
+```
+

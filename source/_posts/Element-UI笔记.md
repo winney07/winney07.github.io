@@ -4,7 +4,31 @@ date: 2021-05-13 11:36:28
 tags: Element-UI
 ---
 
-#### elementUI表格合并单元格
+#### 安装
+
+```javascript
+cnpm i element-ui -S
+```
+
+#### 引入element-ui
+
+在 main.js 中写入以下内容（完整引入）：
+
+```javascript
+import Vue from 'vue';
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
+import App from './App.vue';
+
+Vue.use(ElementUI);
+
+new Vue({
+  el: '#app',
+  render: h => h(App)
+});
+```
+
+#### ElementUI表格合并单元格
 
 摘抄自[博客](https://www.cnblogs.com/yuwenjing0727/p/10110721.html)，仅用于学习。
 
@@ -294,3 +318,94 @@ rowspan() {
 [elementUI table合并相同数据的单元格](https://www.imooc.com/wenda/detail/522127)
 
 [elementUI table表格动态合并](https://segmentfault.com/a/1190000019176628)
+
+
+
+### slot的使用
+
+##### slots
+
+| 事件名称 | 说明     |
+| -------- | -------- |
+| title    | 标题内容 |
+| content  | 内容     |
+
+```javascript
+<el-page-header @back="goBack" content="管理">
+  <div slot="title">修改标题</div>
+	<div slot="content">修改内容</div>
+</el-page-header>
+```
+
+#### [解决引用Element UI 导致弹出多个message消息提示的问题](https://www.cnblogs.com/cndarren/p/14691315.html)
+
+#### [改造elementui的穿梭框，让他直接点击选项就穿梭到另一个框](https://blog.csdn.net/yangmiemie120/article/details/100736154)
+
+
+
+#### [element-ui change事件传值](https://blog.csdn.net/qq_15601471/article/details/89048951)
+
+```javascript
+@change="handleSelect($event)"
+
+handleSelect(event) {
+  console.log(event)
+},
+```
+
+#### [vue使用elementUI表单的获取select,checkbox的value值](https://blog.csdn.net/weixin_43834855/article/details/108817517)
+
+```javascript
+ <el-checkbox
+  v-for="game in gameData"
+  :label="game.id"
+  :key="game.id"
+  :data-id="game.id"
+  :data-group="game.group_id">
+  {{game.name}}</el-checkbox>
+
+// 把想要的value值放在label中，将需要显示的内容放在 <el-checkbox>标签之间
+<el-checkbox :label="想要获取的value值">{{显示的内容值}}</el-checkbox>
+```
+
+checkbox的获取可以通过label来获得，将原来的label写在<el-checkbox>{名称}</>中，因为elementUI获取绑定的是label，
+即<el-checkbox label=[value]>[label]</>
+
+
+
+事件传多参数
+
+```javascript
+<ul class="ul-list txt-left">
+  <li
+    v-for="(game, index) in checkedData"
+    :label="game.id"
+    :key="game.id"
+     @click="chooseGame(index, game.id)"
+    :class = "isactive == index ? 'blue-txt' : '' " 
+    class="active">
+    {{game.name}}</li>
+</ul>
+
+isactive: 0,
+  
+chooseGame(index, id) {
+  this.isactive = index
+  this.thisGameChannels = this.allGameChannels[id]
+},
+```
+
+### [Element ui el-row el-col里面高度不一致的问题](https://blog.csdn.net/sinat_33255495/article/details/114366877)
+
+```javascript
+<el-row type="flex">
+  <el-col>
+	<textarea autocomplete="off" class="el-textarea__inner" style="min-height: 33.2333px;"></textarea>
+ </el-col>
+  <el-col>test<br>test</el-col>
+</el-row>
+```
+
+用饿了吗el-row，el-col布局页面的时候会因为el-col的内容高度不统一，造成布局混乱，解决方案就是在el-row中添加type="flex"。
+
+注意：里面的内容要有设定的高度，不然加上flex也无效。

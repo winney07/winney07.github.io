@@ -608,3 +608,229 @@ console.log(objectA == objectB);  // true
 #### [javascript设计模式——策略模式](https://www.cnblogs.com/xiaohuochai/p/8029651.html)
 
 #### [JavaScript-原型式继承](https://www.cnblogs.com/gehaoyu/p/11804836.html)
+
+
+
+![img](https://raw.githubusercontent.com/winney07/Images/main/Note/yuque_mind.jpeg)
+
+1. 对象字面量形式
+
+```javascript
+var p= {
+  name: "cj",
+  work: function (){
+  	console.log ( "working. . .");
+  }
+};
+```
+
+键值的方式，之间用逗号隔开，对象有属性和方法
+
+1. get set 型属性
+
+```javascript
+var p= {
+  name: "cj",
+  work: function () {
+  	console.log( "working. . ." );
+  },
+  _age: 18,   // 这个初始值有可能是负数
+  get age(){
+  	return this._age;
+  },
+  set age(val){
+    if(val < 0 || val >150){
+      throw new Error( " invalid value" );
+    }else{
+      this._age = val;
+    }
+  },
+  address:{
+  	home: "jiating",
+    office: "office"
+  }
+};
+console.log(p.name);
+```
+
+1. 创建可写的属性
+
+```javascript
+var p = new Object();
+
+p.yy = 100;
+```
+
+当writable没有写上去的时候，默认是false，这种方式创建的属性不可写
+
+```javascript
+// get, set, writable, enuerable, configurable, value
+Object.defineProperties(p,{
+  salary:{
+  	value: 1000,
+    writable: false    // 默认是不可写
+  },
+  gender:{
+  	value:true
+  	height:{
+  		get: function(){
+  			return 180},
+  		set: function(val){
+  			console.log(val);
+		}
+});
+```
+
+1. 将对象的全部属性列出来
+
+```javascript
+Object.defineProperties(p,{
+  name: 'cj',
+  work: '工作',
+  _age: 18,
+  age: 18,
+  salary:{
+  	value: 1000,
+    writable: false    // 默认是不可写
+  },
+  gender:{
+  	value:true
+  },
+  height:{
+    get: function(){
+      return 180},
+    set: function(val){
+      console.log(val);
+  }
+});
+Object.keys(p)
+
+输出结果：["name", "work", "_age", "age"]
+```
+
+1. 判断对象是否有某个属性
+
+```javascript
+"name" in p;    // true
+
+p.hasOwnProperty("name")    // true
+```
+
+1. 删除属性
+
+```javascript
+delete p.name   // true
+```
+
+**构造器：constructor （对象默认属性）**
+
+把构造器理解成一个模具，就是一个东西做出来，是在模具的基础上做的
+
+两种方法创建的对象是一样的
+
+```javascript
+var o = {};
+
+var o1 = new Object();
+```
+
+是对象才会有constructor
+
+```javascript
+a.constructor
+```
+
+**typeof**
+
+```javascript
+typeof 1;      // number
+typeof true;	 // boolean"
+var f=function(){};
+typeof f;				// function
+```
+
+**是不是某个构造器的实例：instance of**
+
+```javascript
+var o = {};
+o instanceof Object;   // true
+
+o instanceof o.constructor;   // true
+
+o.name = "函数"
+```
+
+**构造器是一个函数**
+
+```javascript
+var o1 = o.constructor();
+o1.name     // undefined
+```
+
+因为o的构造是object，所以是相当于，new Object创建一个对象o1，而不是把o赋给o1，所以o1里面是没有name这个属性的
+
+判断对象是否相等
+
+```javascript
+o1 = o; 
+o1 === o;   // true  把o赋给o1，所以相等
+
+var o2 = o.constructor();
+o2 == o;    // false  o是一个对象，o2是另外一个对象。是创建两个不同的对象，不是把O赋给O2
+```
+
+**对象工厂创建对象：**
+
+这种方法创建会有一个缺点就是，如果有比较多相同的属性的时候，就会浪费内存
+
+创建两个不一样的对象
+
+```javascript
+function PersonFactory(pname, page){
+  return {
+  	name: pname,
+    age: page
+  }
+}
+
+var p1 = PersonFactory("cj",22);
+var p2 = PersonFactory("david",33);
+```
+
+把一个函数当做一个类来使用时候，它的首字母是大写
+
+```javascript
+function Person() {
+	
+}
+
+var p = new Person();
+```
+
+**构造器函数创建对象（伪类创建对象） 构造器函数，添加成员的时候，要用this**
+
+```javascript
+function Person(){
+	var age1 = 30;		 // 这样添加属性，是添加不了的
+  this.age = 22;     // 给该对象添加属性的时候，需要用this
+  this.name = "aa"
+}
+```
+
+有共同东西的，可以这样写：
+
+```javascript
+Person.prototype.headCount = 1;
+var p = new Person();
+var p1 = new Person();
+```
+
+p的构造器是Person，而Person的prototype是一个对象，这个对象的headCount属性
+
+
+
+只有函数才有prototype属性，prototype指向的是一个对象
+
+共同的属性放在prototype指向的对象里面，例如：headCount
+
+对象都有constructor

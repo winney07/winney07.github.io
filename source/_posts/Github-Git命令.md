@@ -831,7 +831,42 @@ VERSION 参数标记着修正版本。你可以从 [BASENAME]开始，[BASENAME]
 git flow hotfix finish VERSION
 ```
 
+- #### Git
 
+- - 有人说是这3个单词的缩写
+
+  - - global 全局
+    - information 信息
+    - track 跟踪器
+
+  - 版本控制工具
+
+- 
+
+- #### Github
+
+- - Git和Linux之父，Linus
+
+  - Github让Git变得更易用
+
+  - 官网
+
+  - - 浏览器中使用
+
+    - - commit（当前版本）
+      - 在提交版本的时候，还保存了父版本号，parent
+
+  - 客户端
+
+  - 客户端操作
+
+  - - 简单分支操作
+
+    - - master分支（一般是放到服务器跑的代码）。master分支是默认分支，是不可以被删除的。
+      - 例如创建idea分支，用于开发测试性代码是非常方便的，不会对原来分支的有影响。
+      - 当前分支是不能被删除的，要想删除idea分支，就要切换到其他分支，然后删除idea分支
+      - 如果只想删除github上的idea分支，本地的idea分支不删除的话，选择unpublic，而不是使用delete，如果使用delete，就会将本地和github的都删除。
+      - 可以在github修改默认分支，不是master，但一般不做这样的修改。
 
 ##### Commands
 

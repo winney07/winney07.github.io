@@ -1878,3 +1878,51 @@ $(".singleGame").on("change", "select.game-select", function () {
 })
 ```
 
+
+
+#### JS高级进阶（作用域，闭包，递归，this关键字）
+
+```
+//理解闭包
+function setup(x) {
+    var i =0 ;
+    return function() {
+        console.log(i);
+        return x[i++];
+    }
+}
+
+var next = setup(['a', 'b', 'c']);
+console.log(next());    //i 输出 0  返回 a
+console.log(next());    //i 输出 1  返回 b
+console.log(next());    //i 输出 2  返回 c
+
+//自调用
+var fun = (function setup(x) {
+    var i =0 ;
+    return function() {
+        console.log(i);
+        return x[i++];
+    }
+}(['a', 'b', 'c']));   //传参
+
+console.log(fun);   //输出返回的函数体
+console.log(fun()); //i 输出 0  返回 a
+
+//递归  自己调自己   (用递归很容易写成死循环)
+function fact(num) {
+    if(num <= 1) {
+        return 1;
+    }else{
+        return num * fact(num - 1);
+        // 执行过程：
+        // 4*f(3);
+        // 4*3*f(2);
+        // 4*3*2*f(1);
+        // 4*3*2*1;
+    }
+}
+
+console.log(fact(4));   //24
+```
+

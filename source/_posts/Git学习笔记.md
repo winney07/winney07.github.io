@@ -526,4 +526,139 @@ $ git archive
 
  
 
- 
+###  Git-W3C
+
+[Git教程](https://www.w3cschool.cn/git/git-tutorial.html)
+
+**window平台下， 下载网址：**https://gitforwindows.org/
+
+安装完之后，在电脑 开始，输入 git 找到 Git Bash
+
+### 查看git安装目录
+
+有时候需要知道Git在电脑中的安装位置，这里简单介绍下:
+
+- **Mac平台**:在命令行中输入which git, 就会显示git的安装位置了;
+- **Windows平台**:打开cmd,输入where git就会显示git的安装路径了.
+
+
+
+查看git的安装所在目录：
+
+```javascript
+where git
+```
+
+### 用户信息
+
+配置个人的用户名称和电子邮件地址：
+
+```javascript
+git config --global user.name "w3c"
+git config --global user.email w3c@w3cschool.cn 
+```
+
+如果用了 --global 选项，那么更改的配置文件就是位于你用户主目录下的那个，以后你所有的项目都会默认使用这里配置的用户信息。
+
+如果要在某个特定的项目中使用其他名字或者电邮，只要去掉 --global 选项重新配置即可，新的设定保存在当前项目的 .git/config 文件里。
+
+
+
+### 查看配置信息
+
+要检查已有的配置信息，可以使用 git config --list 命令：
+
+```javascript
+git config --list
+```
+
+可以直接查阅某个环境变量的设定，只要把特定的名字跟在后面即可，像这样：
+
+```javascript
+git config user.name 
+```
+
+
+
+### Git 工作流程
+
+一般工作流程如下：
+
+- 克隆 Git 资源作为工作目录。
+- 在克隆的资源上添加或修改文件。
+- 如果其他人修改了，你可以更新资源。
+- 在提交前查看修改。
+- 提交修改。
+- 在修改完成后，如果发现错误，可以撤回提交并再次修改并提交。
+
+![img](https://cdn.nlark.com/yuque/0/2021/png/5378426/1625735948386-2d856f3e-28c4-444f-b636-66e4a3f90d2b.png)
+
+------
+
+### Git 工作区、暂存区和版本库
+
+- **工作区：**就是你在电脑里能看到的目录。
+- **暂存区：**英文叫stage, 或index。一般存放在"git目录"下的index文件（.git/index）中，所以我们把暂存区有时也叫作索引（index）。
+- **版本库：**工作区有一个隐藏目录.git，这个不算工作区，而是Git的版本库。
+
+![img](https://cdn.nlark.com/yuque/0/2021/png/5378426/1625735948884-5d823c71-5984-442e-97fe-ea336d058dc3.png)
+
+图中左侧为工作区，右侧为版本库。在版本库中标记为 "index" 的区域是暂存区（stage, index），标记为 "master" 的是 master 分支所代表的目录树。
+
+图中我们可以看出此时 "HEAD" 实际是指向 master 分支的一个"游标"。所以图示的命令中出现 HEAD 的地方可以用 master 来替换。
+
+图中的 objects 标识的区域为 Git 的对象库，实际位于 ".git/objects" 目录下，里面包含了创建的各种对象及内容。
+
+当对工作区修改（或新增）的文件执行 "git add" 命令时，暂存区的目录树被更新，同时工作区修改（或新增）的文件内容被写入到对象库中的一个新的对象中，而该对象的ID被记录在暂存区的文件索引中。
+
+当执行提交操作（git commit）时，暂存区的目录树写到版本库（对象库）中，master 分支会做相应的更新。即 master 指向的目录树就是提交时暂存区的目录树。
+
+当执行 "git reset HEAD" 命令时，暂存区的目录树会被重写，被 master 分支指向的目录树所替换，但是工作区不受影响。
+
+当执行 "git rm --cached " 命令时，会直接从暂存区删除文件，工作区则不做出改变。
+
+当执行 "git checkout ." 或者 "git checkout -- " 命令时，会用暂存区全部或指定的文件替换工作区的文件。这个操作很危险，会清除工作区中未添加到暂存区的改动。
+
+当执行 "git checkout HEAD ." 或者 "git checkout HEAD " 命令时，会用 HEAD 指向的 master 分支中的全部或者部分文件替换暂存区和以及工作区中的文件。这个命令也是极具危险性的，因为不但会清除工作区中未提交的改动，也会清除暂存区中未提交的改动。
+
+------
+
+### Git 创建仓库
+
+使用您当前目录作为Git仓库，我们只需使它初始化。
+
+初始化：
+
+```javascript
+git init
+```
+
+使用我们指定的目录作为Git仓库：
+
+```javascript
+git init winneyGit(指定的目录名称)
+```
+
+执行完这命令，在目录下新建一个winneyGit文件夹
+
+
+
+### 从现有仓库克隆
+
+克隆仓库的命令格式为：
+
+```javascript
+git clone [url]
+```
+
+比如，要克隆 Ruby 语言的 Git 代码仓库 Grit，可以用下面的命令：
+
+```javascript
+git clone git://github.com/schacon/grit.git 
+```
+
+执行该命令后，会在当前目录下创建一个名为grit的目录，其中包含一个 .git 的目录，用于保存下载下来的所有版本记录。如果要自己定义要新建的项目目录名称，可以在上面的命令末尾指定新的名字：
+
+```javascript
+git clone git://github.com/schacon/grit.git mygrit
+```

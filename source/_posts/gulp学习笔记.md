@@ -15,6 +15,17 @@ categories:
 
 {% link Gulp https://gulpjs.com/%}
 {% link Gulp插件 https://gulpjs.com/plugins/%}
+
+在百度网盘，Gulp-master、gulp-demo-master、gulp-book-master中有相关使用教程。
+
+[gulp-官网](https://www.gulpjs.com.cn/)
+
+[gulp-github](https://github.com/gulpjs/gulp)
+
+[gulp-book](https://github.com/winney07/gulp-book)
+
+[gulp-book](https://github.com/nimoc/gulp-book)
+
 gulp是与grunt功能类似的<b>**前端项目构建**</b>，工具，也是基于nodejs的自动<b>任务运行器</b>
 能自动化地完成JavaScript/coffee/sass/less/html/image/css等文件的合并、压缩、检查、监听文件变化、浏览器自动刷新、测试等任务。
 gulp更高效（异步多任务）、更易于使用，插件高质量
@@ -541,3 +552,527 @@ spa.js is OK.
 ```
 
 [JSCS：验证JavaScript代码](https://www.w3cschool.cn/intellij_idea_doc/intellij_idea_doc-cpvt2z2y.html)
+
+
+
+
+
+[gulp 入门指南](https://github.com/nimoc/gulp-book)
+
+[Gulp编译、合并、压缩，以及Browsersync实时刷新教程](https://blog.csdn.net/beverley__/article/details/55213235)
+
+
+
+https://www.xiaochao.me/seo/118.html
+
+https://www.xiaochao.me/seo/119.html
+
+https://www.xiaochao.me/seo/120.html
+
+
+
+小超的博客复制过来的：
+
+### gulp的安装
+
+gulp是依赖于node.js的开放，安装前，请先去node.js官网下载，安装完成后，就开始了以下的操作
+
+安装全局的npm (因为npm是国外的，在这，由于公司的网速，特别卡，坑了我几天了，安装一个npm需要2天，电脑还是不关机的情况下，后来放弃了，就选择了淘宝镜像的。
+
+cnpm，安装方法，可参考一下淘宝的镜像https://npm.taobao.org/ )，在接下来的文章中，我会与淘宝镜像的命令进行说明
+
+
+
+使用淘宝镜像安装：npm，可直接安装gulp,node.js自动安装有npm，不需要引用
+
+```javascript
+npm install -g cnpm --registry=https://registry.npm.taobao.org
+```
+
+gulp安装：如果是npm，—下请不要再开头加c ，加了就不关我的事了，在这里-g代表全局变量声明
+
+```javascript
+cnpm install -g gulp
+```
+
+
+
+安装完全局后，接下来，就开始了gulp的使用了，先创建自己的项目文件，在这里，因为我是用window的，如果是linux我也不做过多的讲解了，等有机会在服务器上折腾一个gulp的时候
+
+进入E盘，在选中的项目中创建一个文件，window用户用md , linux用户用mkdir，在命令行上输入
+
+```javascript
+md gulp-xiaochao
+```
+
+cd,进入目录后，在开始前，我们先创建一个叫package.json文件的文件，先位置好相关的依赖，在这里也可以直接输入
+
+```javascript
+cnpm init
+```
+
+进行相关的配置，在这里面会问我们—些问题，版本号和说明什么的，如果喜欢折腾可以填写，全部回车也可以，没有太大的影响，在填写完后，会自动的在文件夹下看见一个叫package.json，当打开文件就会看见，刚刚配置好的说明。回到命令行工具，开始安装gulp，在这里注意—下，前面是全局，要加-g说明，现在是安装在局部，就不需要加上，但是要加上的是--save-dev,这表示写入刚刚创建的
+
+package.json的文件夹里，如下：
+
+```javascript
+cnpm install gulp --save-dev
+```
+
+当创建好了gulp，目录文件上，会多出了一个node_modules文件夹，打开package,json文件，可以看到上面写着相应的版本号，为了测试他是遵循我的依赖文件走的，我就删除了这个node_modules,然后再从新安装了一下，这次，我不加gulp
+
+```javascript
+cnpm install --save-dev
+```
+
+安装后，会发现目录里面被删除的node_modules文件又回来了，解释一下，因为在配置文件package.json已经写入了gulp，所以在安装的时候，这里是可以自动安装回来的，说到这，aulp的安装就结束了
+
+
+
+#### gulpfile.js：
+
+```javascript
+// 获取gulp
+var gulp = require('gulp');
+// 获取gulp-uglify模块(用于压缩js文件)
+var uglify = require('gulp-uglify');
+// 压缩js
+// 在命令使用gulp script启动此任务
+	gulp.task('script', function(){
+ 		// 1.我到文件
+		gulp.src('js/*.js')
+    		// 2.压缩js
+				.pipe(uglify())
+    		// 3.另存压缩后的文件
+				.pipe(gulp.dest('dist/js'))
+})
+
+
+// 注意：1.要加"task"；2.连写，后面不加分号；3.pipe的英文不要写错
+```
+
+
+
+### 环境搭建
+
+#### 1.1 环境运行环境nodejs
+
+- 使用gulp 自动化编译scss. js 等
+- 使用bower管理依赖插件,
+- 使用requirejs 作为模块加载器,
+- 使用bootstrap css 作为样式框架
+- 依赖jquery,jquery-ui 两个库
+
+
+
+#### 1.2 项目目录
+
+- node_rodules 为依赖模块文件
+- .bowerrc 为 bower配置文件，包含模块安装目录配置
+- bower. json 为 bower配置文件，包含依赖模块等
+- gulpfile.js 为 gulp 任务配置文件
+- package.json为程序配置文件，包含npm 依赖模块等
+- Lib 为 bower.json  dependencies 中的依赖文件
+
+
+
+node.js开发环境搭建
+
+[node.js官网](https: //nodejs.org/en/download/)
+
+
+
+### bower的使用
+
+使用了bower的项目都会在目录下有一个bowex..ison.文件。在该文件同级目录下，使用如下命令即可安装相关依赖库。
+
+```javascript
+bower install
+```
+
+注：bower下载安装依赖库实际上是使用git进行下载。对于linux系统，由于默认都有安装git，所以一般没问题。但是windows系统一般没有git。在 windows系统下需要确定安装了git客户端，建议使用同捆的git bash 命令什来执行bowerinstall命令。或者把git目录加入windows的环境变量中,再在命令行中执行bowerinstall命令。（）
+
+使用 bower安装某个特定类库，例如： jquery 
+
+
+
+#### 1. 安装
+
+先装全局，然后在对应文件夹中打开git CMD，做以下操作：
+
+1. 在对应的文件夹中，查看是否安装了bower
+2. 生成.bowerrc文件
+3. 在.bowerrc文件中写出安装bower的文件夹目录
+
+```javascript
+{
+	“directory”: "lib"
+}
+```
+
+#### 2.生成bower.json文件
+
+在window下的CMD命令窗口，以管理员的身份，去到对应的目录，运行  bower init    其他需要输入的信息，可以选择都是默认也可以选择自己写
+
+#### 3.安装其他依赖插件
+
+```javascript
+bower install jquery bootstrap require jquery-ui --save-dev
+```
+
+加上--save-dev，在bower.json文件中会写入相关信息：
+
+```javascript
+"devDependencies": {
+  "jquery": "^3.3.1",
+  "bootstrap": "^4.0.0",
+	"requirejs": "^2.3.5",
+	"jquery-ui": "^1.12.1"
+}
+```
+
+### gulp-自动化操作
+
+#### 全局安装gulp
+
+Gulpjs是一个自动化构建工具，开发者可以使用它在项目开发过程中自动执行常见任务，gulp,js 是基于node.js构建的，利用node.js 的威力，可以快速构建项目
+
+1. 说明：全局安装gulp 目的是为了通过她执行gulp 任务 ;
+2. 安装：命令提示符执行cnpm install gulp -g; 
+
+#### 生成package.json
+
+先写好gulpfile.js文件再执行cnpm init命令：
+
+```javascript
+cnpm init
+```
+
+#### 本地安装gulp
+
+```javascript
+cnpm install gulp-connect --save-dev
+
+cnpm install gulp --save-dev
+```
+
+#### 运行
+
+```javascript
+gulp
+```
+
+#### Sass文件处理
+
+```javascript
+gulp sass
+```
+
+#### 把gulp-connect改为gulp-webserver
+
+```javascript
+cnpm install gulp-webserver --save-dev
+```
+
+
+
+报错：
+
+```javascript
+Uncaught Error: Script error for "popper.js", needed by: bootstrap
+// 不知道什么原因导致的
+```
+
+#### 解决报错
+
+在project\lib\bootstrap\assets\js\vendor中复制一份popper.min.js改名为popper.js，放在project目录下
+
+
+
+[Javascript模块化编程（三）：require.js的用法](http://www.ruanyifeng.com/blog/2012/11/require_js.html)
+
+
+
+### AMD与CMD的区别
+
+- AMD：requirejs     先加载所有的依赖      加载完才能使用
+- CMD：seajs		延迟加载			   需要谁，加载谁
+
+#### AMD
+
+```javascript
+define(['a', 'b', 'c'], function(a, b, c){
+		....
+})
+```
+
+#### CMD
+
+```javascript
+define(function (){
+var a= require('a');
+    a.info();
+var b = require('b');
+    b.info2();
+})
+```
+
+
+
+#### gulpfile.js的配置
+
+```
+var gulp = require('gulp'),
+    $ = require('gulp-load-plugins')();
+ 
+var app = {
+    srcPath: 'src/',
+    devPath: 'dist/'
+};
+ 
+gulp.task('js',function(){
+    return gulp.src(app.srcPath + '/*.js',{base:app.srcPath})
+        .pipe($.plumber())
+        .pipe($.babel({
+            　presets: ['es2015']
+        }))
+        .pipe(gulp.dest(app.devPath));
+});
+gulp.task('html',function(){
+    return gulp.src(app.srcPath + '/*.html',{base:app.srcPath})
+        .pipe(gulp.dest(app.devPath));
+});
+ 
+gulp.task('clean',function(){
+    return gulp.src(app.devPath)
+        .pipe($.clean());
+});
+ 
+//浏览器同步
+gulp.task('webserve',function(){
+    return gulp.src(app.devPath)
+        .pipe($.webserver({
+            livereload: true, //开启gulp-livereload
+            open: true,
+            port: 2333 //浏览器端口
+        }));
+});
+ 
+// 监听
+gulp.task('watch',function(){
+    gulp.watch(app.srcPath + '/*.js', ['js']);
+    gulp.watch(app.srcPath + '**/*.html', ['html']);
+});
+
+gulp.task('build',['js', 'html']);
+
+//定义gulp默认任务
+gulp.task('default',['build','watch'], function () {
+    return gulp.src(app.devPath)
+        .pipe($.webserver({
+            livereload: true, //开启gulp-livereload
+            open: true,
+            port: 2333 //浏览器端口
+        }));
+});
+var gulp        = require("gulp")
+var browserSync = require("browser-sync").create()
+var babel       = require("gulp-babel")
+//修改完之后，刷新页面
+var reload       = browserSync.reload
+
+gulp.task('js', function(){
+    return gulp.src('src/index.js')
+               .pipe(gulp.dest('dist'))
+               .pipe(babel({
+                　presets: ['es2015']
+                }))
+               .pipe(reload({stream:true}))
+})
+
+gulp.task("default", function() {
+    browserSync.init({
+        server:{
+            baseDir: './'
+        },
+        port:'8089'
+    });
+    gulp.watch('src/*.js',['js'])
+})
+var gulp = require('gulp');
+// 调用 .create() 意味着你得到一个唯一的实例并允许您创建多个服务器或代理。
+var browserSync = require('browser-sync').create();
+// 定义一个任务，任务的名字，该任务所要执行的一些操作
+gulp.task('watch', function() {
+// 启动Browsersync服务。这将启动一个服务器，代理服务器（proxy）或静态服务器（server）
+browserSync.init({
+    // 设置监听的文件，以gulpfile.js所在的根目录为起点，如果不在根目录要加上路径，单个文件就用字符串，多个文件就用数组
+    files: ["*.html", "css/*.css", "src/*.js", "dist/*.js"],
+    // 启动静态服务器，默认监听3000端口，设置启动时打开的index.html的路径
+    server: {
+        baseDir: "./"
+    },
+    // 在不同浏览器上镜像点击、滚动和表单，即所有浏览器都会同步
+    ghostMode: {
+        clicks: true,
+        scroll: true
+    },
+    // 更改控制台日志前缀
+    logPrefix: "learning browser-sync in gulp",
+    // 设置监听时打开的浏览器，下面的设置会同时打开chrome, firefox和IE
+    // browser: ["chrome", "firefox", "iexplore"],
+    // 设置服务器监听的端口号
+    port: 8089
+  });
+});
+
+gulp.task("default", function() {
+    browserSync.init({
+        server:{
+            baseDir: './'
+        },
+        port:'8089'
+    });
+    
+})
+```
+
+
+
+
+
+#### Gulp-demo
+
+```
+│  gulpfile.js      
+│  index.html       
+│  package.json     
+│  
+├─dist
+│  │  index.html    
+│  │
+│  ├─css
+│  │      build.min.css
+│  │
+│  └─js
+│          build.js
+│          build.min.js
+│
+└─src
+    ├─css
+    │      test1.css
+    │      test2.css
+    │      test3.css
+    │
+    ├─js
+    │      test1.js
+    │      test2.js
+    │
+    └─less
+            test3.less
+gulpfile.js
+var gulp = require('gulp');
+var $ = require('gulp-load-plugins')();
+
+// var concat = require('gulp-concat');
+// var uglify = require('gulp-uglify');
+// var rename = require('gulp-rename');
+// var less = require('gulp-less');
+// var cssClean = require('gulp-clean-css');
+// var htmlMin = require('gulp-htmlmin');
+// var livereload = require('gulp-livereload');
+// var connect = require('gulp-connect');
+
+var open = require('open');
+//注册任务
+// gulp.task('任务名', function() {
+//     //配置任务的操作
+// })
+
+//注册合并压缩js的任务
+gulp.task('js', function() {
+    //如果js目录（包括子目录）的所有js文件，需要加上/**/，
+    //不加，只代表js目录下的所有js文件
+    // gulp.src("src/js/**/*.js") 
+    
+    return gulp.src("src/js/*.js")             //找到目标原文件，将数据读取到gulp的内存中
+               .pipe($.concat('build.js'))       //临时合并文件
+               .pipe(gulp.dest('dist/js/'))    // 临时输出文件到本地
+               .pipe($.uglify())                 //压缩文件
+               .pipe($.rename({suffix: '.min'}))  //重命名
+               .pipe(gulp.dest('dist/js/'))     //输出压缩文件
+               .pipe($.livereload())              //实时刷新
+               .pipe($.connect.reload())
+});
+
+//注册转换less的任务
+gulp.task('less', function() {
+    return gulp.src("src/less/*.less")
+               .pipe($.less())            //编译less文件为css文件
+               .pipe(gulp.dest('src/css/'))
+               .pipe($.livereload())              //实时刷新
+               .pipe($.connect.reload())
+});
+
+//注册合并压缩css文件
+gulp.task('css', ['less'],function() {
+    return gulp.src("src/css/*.css")
+               .pipe($.concat('build.css'))
+               .pipe($.rename({suffix: '.min'}))
+               .pipe($.cleanCss({compatibility: 'ie8'}))
+               .pipe(gulp.dest('dist/css/'))
+               .pipe($.livereload())              //实时刷新
+               .pipe($.connect.reload())
+});
+//注册压缩html任务
+gulp.task('html', function() {
+    return gulp.src('index.html')
+               .pipe($.htmlmin({collapseWhitespace: true}))
+               .pipe(gulp.dest('dist/'))
+               .pipe($.livereload())              //实时刷新
+               .pipe($.connect.reload())
+});
+
+//注册监视任务(半自动)
+gulp.task('watch', ['default'], function() {
+    //开启监听
+    livereload.listen();
+
+    //确认监听的目标以及绑定相应的任务
+    gulp.watch('src/js/*.js', ['js']);
+    gulp.watch(['src/css/*.css', 'src/less/*.less'], ['css']);
+    gulp.watch('*.html',  ['html']);
+})
+
+//注册监视任务（全自动）
+gulp.task('server', ['default'],function() {
+    //配置服务器的选项
+    $.connect.server({
+        root: 'dist/',
+        livereload: true,     //实时刷新
+        port: 5000
+    })
+    
+    //open可以自动打开指定的链接
+    open('http://localhost:5000/');
+
+    //确认监听的目标以及绑定相应的任务
+    gulp.watch('src/js/*.js', ['js']);
+    gulp.watch(['src/css/*.css', 'src/less/*.less'], ['css']);
+    gulp.watch('*.html',  ['html']);
+});
+
+// 如果执行每个任务都要gulp ***敲一次命令行，是不方便的，所以把任务放到默认任务里面
+//注册默认任务
+// gulp 4.0.2不能这样写
+// gulp.task('default', ['js', 'less', 'css']);
+
+// gulp.task('default', gulp.parallel('js', 'less', 'css', function () {
+//     // Build the website.
+// }));
+
+// var build = gulp.series('less', gulp.parallel('js', 'css', 'html'));
+// gulp.task('default', build);
+gulp.task('default', ['js', 'less', 'css', 'html']);
+```
+

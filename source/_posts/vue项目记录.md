@@ -213,3 +213,183 @@ export default{
      }
 }
 ```
+
+#### 在vue项目中使用sass的配置方法
+
+##### 1、安装sass的依赖包
+
+`sass-loader依赖于node-sass`
+
+```
+npm install sass-loader node-sass --save-dev
+```
+
+##### 2、在build文件夹下的webpack.base.conf.js的rules里面添加配置
+
+```
+{
+ test: /\.sass$/,
+ loaders: ['style', 'css', 'scss']
+}
+```
+
+如下图所示：
+
+
+
+##### 3、在APP.vue中修改style标签
+
+```
+<style lang="scss">
+   $blue:red;
+    .common-header{
+        color: $blue;
+    }
+</style>
+```
+
+##### 4、运行项目
+
+```
+npm run dev
+```
+
+##### `注意：`
+
+如有以下报错，是版本的问题影响的：
+
+`Module build failed: TypeError: this.getResolve is not a function at Object.loader 安装node-sass运行报错`
+
+- **解决方法**： 选择更低版本的sass-loader
+- **卸载当前版本**：npm uninstall sass-loader
+- **安装指定版本**：npm install sass-loader[@7.3.1 ]() --save-dev 
+
+参考： [安装node-sass运行报错](https://blog.csdn.net/ze1024/article/details/100516650)
+
+#### Vue项目设置每个页面的title
+
+##### 1、在项目目录下安装vue-wechat-title
+
+```
+cnpm i vue-wechat-title --save-dev
+```
+
+##### 2、在main.js中 使用vue-wechat-title
+
+```
+Vue.use(require('vue-wechat-title'))     //实例化参数
+```
+
+##### 3、在router的配置中设置
+
+```
+{
+      path: '/home',
+      name: 'Home',
+      component: Home,
+      meta: {
+        title: '主页'       //页面标题
+      }
+ }
+```
+
+##### 4、在每个vue页面中加入 
+
+```
+ <div class="content content-box">
+      <div v-wechat-title="$route.meta.title"></div>
+</div>
+```
+
+###### 【参考】： [vue项目设置每个页面的title](https://www.cnblogs.com/itgezhu/p/10817502.html)
+
+#### Vue.js + ElementUI导航写法
+
+##### 方法一（基本的）：
+
+> ElementUI导航通常会和vue-router一起使用，所以与官网的示例的写法不太一样。具体写法如下:
+
+```plain
+<el-menu :default-active="$route.path" class="el-menu-vertical-demo" router>
+   <el-menu-item v-for="item in items" :index="item.src">{{item.name}}            
+   </el-menu-item>
+ </el-menu>
+```
+
+**data里则是正常的数据即可：**
+
+```plain
+data(){
+      return{
+        items:[
+          {src:'/gameinfo/index',name:'基本信息'},
+          {src:'/gameversion/index',name:'版本管理'},
+          {src:'/gameplatform/index',name:'渠道管理'},
+          {src:'/gameproduct/index',name:'充值产品'},
+          {src:'/gameplugin/index',name:'插件管理'}
+        ]
+      }
+    }
+```
+
+【参考】： [VUE elementUi导航写法](https://blog.csdn.net/weixin_42488404/article/details/83414761)
+
+##### 方法二(加上图标的)：
+
+```plain
+<el-menu :default-active="$route.path" class="el-menu-vertical-demo" router>
+    <el-menu-item v-for="(item, i) in items" :key="i" :index="item.path">
+        <template>
+            <i :class="item.icon"></i>
+            <span slot="title"> {{ item.title }}</span>
+        </template>          
+    </el-menu-item>
+</el-menu>
+```
+
+**data里面**：
+
+```plain
+items:[
+    { 
+        path:'/gameinfo/index',
+        title:'基本信息',
+        icon:'iconfont icon-info'
+    },
+    { 
+        path:'/gameversion/index',
+        title:'版本管理',
+        icon:'iconfont icon-version'
+    },
+    { 
+        path:'/gameplatform/index',
+        title:'渠道管理',
+        icon:'iconfont icon-channel'
+    },
+    { 
+        path:'/gameproduct/index',
+        title:'充值产品',
+        icon:'iconfont icon-recharge'
+    },
+    { 
+        path:'/gameplugin/index',
+        title:'插件管理',
+        icon:'el-icon-cpu'
+    },
+    { 
+        path:'/package/index',
+        title:'打包管理',
+        icon:'iconfont icon-packageKit'
+    },
+    { 
+        path:'/order/index',
+        title:'订单查询',
+        icon:'iconfont icon-orderQuery'
+    },
+    { 
+        path:'/gameinfo/index',
+        title:'切换至ios',
+        icon:'iconfont icon-android'
+    },
+]
+```

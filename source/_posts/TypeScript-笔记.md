@@ -11,3 +11,18 @@ categories:
 [Typescript-官网](https://www.typescriptlang.org/)
 
 [TypeScript 中文手册](https://typescript.bootcss.com/)
+
+
+
+安装
+
+```
+cnpm insatll -g typescript 
+```
+
+查看版本
+
+```
+tsc -v
+```
+

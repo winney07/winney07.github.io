@@ -746,16 +746,443 @@ onload 和 onunload 事件可用于处理 cookie。
 
 #### 防抖和节流
 
+###### [防抖与节流](https://www.jianshu.com/p/4616adf56ed8)
+
 防抖、节流、去重、深浅拷贝、数组扁平化、乱序、柯里化
 
 > 我们在平时开发的时候，会有很多场景会频繁触发事件，比如说搜索框实时发请求onmousemove,resize,onscroll等等，有些时候，我们并不能或者不想频繁触发事件
 >
 
+#### JavaScript兼容
+
+`IE浏览器没有console方法 `
+
+如果代码中写了console.log()，在IE浏览器会报错。所以测试完之后，`要把console.log的代码注释掉`。
+
+![img](https://raw.githubusercontent.com/winney07/Images/main/Note/yuque_mind2.jpeg)
+
+一个函数可以访问到它外部的成员，这个函数就可以称为闭包函数。
+
+一个函数在另外一个函数里面定义，那这个函数就可以访问父函数里面的成员。那么这个函数（内部那个函数）就称为闭包函数。
+
+```javascript
+function f1(){
+	var a = 10;
+  var b = 20;
+  function f2() {
+    console.log(a);
+  }
+  f2();
+}
+f1();
+```
+
+f2引用了自由变量的函数，它引用了父函数的自由变量。f2是闭包函数
+
+不同的浏览器有不同的处理法：
+
+```javascript
+Closure Variables
+a:10
+b:20
+f2: function f2(){}
+
+或
+closure
+a:10
+function f1(){
+	var a = 10;
+  var b = 20;
+ 	return function f2() {
+    console.log(a);
+  }
+}
+var result = f1();
+result();
+
+// result相当于f2，它已经离开了创造它的环境了
+```
+
+![img](https://raw.githubusercontent.com/winney07/Images/main/Note/yuque_mind3.jpeg)
+
+f2跳出了f1，但是f2的作用域还是f1的词法环境
+
+**没有调用，不出现闭包：**
+
+```javascript
+function f1(){
+	var m = 10;
+  function f2(){
+		console.log("asdf");
+  }
+	f2();
+}
+f1();
+```
+
+**调用父级的父级的变量，会出现闭包：**
+
+```javascript
+function f1(){
+	var m= 10;
+  function f2(){
+		var n = 20;
+    function f3(){
+			console.log(m);
+		}
+		f3();
+  }
+	f2();
+}
+f1();
+```
+
+**闭包创建的时机：**
+
+在f2被执行的时候，在预处理阶段，已经把f3放到它的词法环境。即在读取f3里面的代码，扫描里面的代码的过程（这个过程叫词法分析阶段），已经创建了闭包。（因为识别到它调用了父级的父级的变量） 因为这个过程是对字符串代码分析的阶段，所以它是静态的，所以称为静态的作用域。
 
 
 
+**闭包的本质是它形成了一个作用域链**
 
 
+
+**变量自加：（使用闭包减少全局变量）**
+
+1. 全局变量的做法
+
+```javascript
+var a = 10;
+function add(){
+	a++;
+  alert(a);
+}
+add();
+add();
+```
+
+1. 闭包的做法
+
+```javascript
+function f() {
+	var a = 10;
+  return function() {
+  	a++;
+    alert(a);
+  }
+}
+var result = f();
+result();
+result();
+```
+
+做一个基数加上1到max所有值的和，例如max=4，即基数+（1+2+3+4）这个功能，
+
+一般的方法：传两个参数，add(base，max)
+
+```javascript
+function add (base,max){
+	
+}
+function f(){
+	var num = 1;
+  function g(){
+  	alert(num);
+  }
+  num++;
+  g();
+}
+f();
+```
+
+g的scope等于f的词法环境，闭包生成的时候，num是1，但是g没有执行，后面num++，num是2，当g执行时，num是2了。所以说引用，不是复制。
+
+**每调用一个函数时，会创建一个新的词法环境：**
+
+```javascript
+function f(){
+	var num = 1;
+ 	return function(){
+    num++;
+  	alert(num);
+  }
+}
+
+var result1 = f();
+result1();    // 2
+result1();		// 3
+
+var result2 = f();
+result2();		// 2
+result2();		// 3
+```
+
+**全局变量**
+
+每次输出都是4，因为i是全局的，当点击执行的时候，i己经是4了：
+
+```javascript
+<div id="1">1</div>
+<div id="2">2</div>
+<div id="3">3</div>
+
+for(var i = 1; i<= 3; i++){
+	var ele = document.getElementById(i);
+  ele.onclick = function(){
+  	alert(i);
+  }
+}
+```
+
+i是全局变量：
+
+```javascript
+<div id="1">1</div>
+<div id="2">2</div>
+<div id="3">3</div>
+
+var i;
+for(i = 1; i<= 3; i++){
+	var ele = document.getElementById(i);
+  ele.onclick = function(){
+  	alert(i);
+  }
+}
+```
+
+当i等于1的时候，匿名函数立即执行，就把i传到id中，每次调用生成一个闭包·所以每点一个会弹出对应的i：
+
+```javascript
+<div id="1">1</div>
+<div id="2">2</div>
+<div id="3">3</div>
+
+var i;
+for(i = 1; i<= 3; i++){
+	var ele = document.getElementById(i);
+  ele.onclick = (function(id){   // id为形参
+  	return function() {
+    	alert(id);
+    }
+  })(i);		// i为实参
+}
+```
+
+![img](https://raw.githubusercontent.com/winney07/Images/main/Note/yuque_mind4.jpeg)
+
+```javascript
+alert(a);				// undefined
+alert(b);				// undefined
+alert(c);				// c is not definded
+alert(d)				// d也没有定义，因为它的作用域
+
+var a = 1;
+if(false){
+	var b= 2;
+}else {
+	c = 3;
+}
+function f(){
+	var d =4;
+}
+```
+
+块作用域：
+
+```javascript
+for(var i = 0; i < 3; i++){
+
+}
+alert(i);    // 3
+```
+
+函数作用域：
+
+```javascript
+function f(){
+	var x
+	function g(){
+    
+  }
+}
+```
+
+js没有动态作用域
+
+```javascript
+function f(){
+	alert(x);
+}
+function f1(){
+	var x = 5;
+  f();
+}
+function f2(){
+	var x = 6;
+  f();
+}
+f1();     // Uncaught ReferenceError: x is not defined
+```
+
+静态作用域：
+
+```javascript
+var x = 100;
+function f() {
+	alert(x);
+}
+
+function f1() {
+	var x = 5;
+  f();   // 当f被执行的时候，它会在它自己的词法环境里找x，因为在预处理阶段，有x= 100，所以会弹出100
+}
+
+function f2() {
+	var x = 6;
+  f();
+}
+
+f1();
+// 声明f时，预处理阶段，词法环境
+f  [[scope]]  ==  lexicalEnv   == window
+function f() {
+	alert(x);
+}
+
+function f1(){
+	var x = 5;
+  f();   // 真正执行的时候le   -> f.[[scope]]   == window
+}
+
+function f2(){
+	var x = 6;
+  f();
+}
+
+// 当f被执行时，先进去里面找有没有x，如果没有就找它自己本身的词法环境（即window），如果还是找不到x，
+那就报错。因为在f1和f2里面定义的变量没有在它的词法环境中。
+```
+
+词法环境（le）
+
+```javascript
+function f(){   	// scope == window
+	var x = 100;		// le{x = 100}  ——> f.[[scope]]
+  function g(){		// g.[[scope]] == f.le
+  	// le -> g.[[scope]]
+  }
+  g();
+}
+
+// g.le -> g.[[scope]] -> f.le  -> f.[[scope]] == window
+```
+
+创建函数的方式
+
+```javascript
+function f(){
+  ....
+}
+var f = function (){
+  ....
+}
+var f = function x(argument){
+  ....
+}
+var f = new Function("", "alert(x)")
+
+// var f = new Function(函数参数, 函数体)
+```
+
+例如：
+
+```javascript
+function f(){
+	var x = 100;
+  var g = function() {
+  	alert(x);     // 100
+  }
+  g();
+}
+f();
+```
+
+每次创建一个函数，它会形成一个新的作用域，会跟它的父形成一个链条。用new Function创建的函数的作用域永远指向的是全局，而不是他的父。
+
+**g的作用域等于f的词法环境：**
+
+```javascript
+function f(){    //scope = window
+	var x = 100;
+  var g = function() {   // g.scope = f.le
+  	alert(x);     // 100
+  }
+  g(); 
+ // 预处理阶段，x和g放到window的词法环境，当运行g的时候，它在它自己的词法环境找不到x，
+  	然后就往父级找，找到x为100.
+}
+f();
+```
+
+g的作用域是window：
+
+用这种方法创建的g函数，g的作用域就是window，而window中没有x，所以是not defined。
+
+```javascript
+function f() {
+	var x= 100;
+	// g.[[scope]] = window
+	var g = new Function("", "alert(x)");
+  g();   //  Uncaught ReferenceError: x is not defined
+}
+f();
+```
+
+g的作用域指向window：
+
+```javascript
+var x = 12;
+function f() {
+	var x= 100;
+	// g.[[scope]] = window
+	var g = new Function("", "alert(x)");
+  g();   // 12   因为g的作用域指向window
+}
+f();
+```
+
+大量使用全局变量，有可能导致冲突，很难调试，很难把问题找出来
+
+```javascript
+var a = 1;
+var b = 2;
+f1(){}
+f2(){}
+```
+
+如果f1和f2想用同一个变量，应该不能在它们单独的函数里定义。一般我会想到用全局变量，但是用全局变量有一个弊端就是，如果引用的js文件比较多，命名一样的话，出了间题，难调试，不容易找出问题等等
+
+**把变量放在一个匿名函数里面，那样外部就访问不了这些变量，起到一个信息隐藏的作用，把a，b，f都隐藏起来了。**
+
+```javascript
+function() {
+	var a = 5;
+  var b = 6;
+  function f(){
+  	alert(a);    // 在f的作用域可以访问到a
+  }
+}
+a;   // 访问不了a
+(function(){
+	var a = 5;
+  var b = 6;
+  function f() {   // 写在一个匿名函数里面
+  	alert(a);
+  }
+  window.f = f;    // 因为在外部是不能访问到a,b的，要想访问到，要加这句代码
+})();
+f();
+```
 
 [JavaScript中原型对象的彻底理解](https://blog.csdn.net/u012468376/article/details/53121081)
 
@@ -816,3 +1243,6 @@ onload 和 onunload 事件可用于处理 cookie。
 [10 个独特的 CSS 背景视觉效果](https://juejin.im/entry/59ffb92bf265da43040600f9 )
 
 [你不知道的14个jsvascript调试技巧](https://raygun.com/javascript-debugging-tips )
+
+
+

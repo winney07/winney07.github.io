@@ -682,3 +682,87 @@ const list = toRaw(selectedRowsArr.value);  // 这个就是普通数组
 ```
 
 #### [13个开发常用的Vue UI组件库](https://www.jianshu.com/p/f98a14effc81)
+
+
+
+#### [vue跳转页面的几种方法(推荐)](https://www.jb51.net/article/183611.htm)
+
+1. router-link跳转
+
+   ```
+   <!-- 直接跳转 -->
+   <router-link to='/testDemo'>
+    <button>点击跳转2</button>
+   </router-link>
+     
+   <!-- 带参数跳转 -->
+   <router-link :to="{path:'testDemo',query:{setid:123456}}">
+    <button>点击跳转1</button>
+   </router-link>
+     
+   <router-link :to="{name:'testDemo',params:{setid:1111222}}">
+    <button>点击跳转3</button>
+   </router-link>
+   ```
+
+2. this.$router.push()
+
+   ```
+   this.$router.push('/testDemo');
+   ```
+
+   element-ui下拉菜单的事件监听@command做页面跳转
+
+   ```
+   <el-dropdown class="ml15" @command="handleCommand">
+       <span class="el-dropdown-link">
+           <!-- <i class="el-icon-user-solid"></i> -->
+           <el-button icon="el-icon-user-solid" circle size="mini"></el-button>
+       </span>
+       <el-dropdown-menu slot="dropdown">
+           <el-dropdown-item command="/user/updatepass">修改密码</el-dropdown-item>
+           <el-dropdown-item command="/login">退出登录</el-dropdown-item>
+       </el-dropdown-menu>
+   </el-dropdown>
+   
+   handleCommand(command) {
+     console.log(command)
+     this.$router.push(command)
+   }
+   ```
+
+   获取当前路由—this.$route.path
+
+   ```
+   this.$route.path
+   
+   if(this.$route.path!='/Home'){
+         this.$router.push({
+             path:'/Home',
+         })
+     }
+   ```
+
+   
+
+#### vue项目中引入本地json文件
+
+```
+const appsId = require('@/utils/appsId.json');
+```
+
+appsId.json文件：
+
+```
+{
+    "1": "未分类", 
+    "2": "哈哈哈项目", 
+    "3": "测试模块", 
+    "4": "呵呵呵项目", 
+    "5": "好啊好啊项目", 
+    "6": "哈哈哈哈哈项目", 
+}
+```
+
+在服务器上跑node服务，配置mongodb啊，你本地怎么运行的，服务器就怎么运行，只不过服务器上的node服务也好nginx也好，读取的是打包压缩后的静态项目资源，`服务器也就是可以通过外网ip访问的的一台电脑`
+

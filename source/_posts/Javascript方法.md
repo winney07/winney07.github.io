@@ -8,6 +8,24 @@ categories:
 - Javascript
 ---
 
+#### 删除对象某个属性
+
+```
+var obj={
+    name: 'zhagnsan',
+    age: 19 
+}
+delete obj.name //true
+```
+
+#### 数组对象按照某个属性排序
+
+```
+group.sort(function(a, b){return Number(a.year) - Number(b.year)});
+```
+
+
+
 #### [js获取当前时间(昨天、今天、明天)](https://www.cnblogs.com/menxiaojin/p/13753525.html)
 
 #### 获取时间戳-valueOf()

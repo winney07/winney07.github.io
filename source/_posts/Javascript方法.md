@@ -8,6 +8,14 @@ categories:
 - Javascript
 ---
 
+#### [js获取当前时间(昨天、今天、明天)](https://www.cnblogs.com/menxiaojin/p/13753525.html)
+
+#### 获取时间戳-valueOf()
+
+```
+var d = new Date().valueOf();
+```
+
 #### new Date()方法
 
 ```
@@ -39,6 +47,33 @@ new Date().toTimeString()
 new Date().toUTCString()
 Wed, 02 Mar 2020 09:51:30 GMT
 ```
+
+#### 实现倒计时功能
+
+```
+// 倒计时功能
+var div = document.getElementById("showtime");
+setInterval (function () {
+    div.innerHTML = showtime();
+}, 1000); 
+
+var showtime = function () {
+    var nowTime = new Date(),  // 获取当前时间
+        endTime = new Date("2022/8/20");  // 定义结束时间
+    var time = endTime.getTime() - nowTime.getTime(),  // 距离结束时间的毫秒数
+        d = Math.floor(time/(1000*60*60*24)),  // 计算天数
+        h = Math.floor(time/(1000*60*60)%24),  // 计算小时数
+        m = Math.floor(time/(1000*60)%60),  // 计算分钟数
+        s = Math.floor(time/1000%60);  // 计算秒数
+
+    h = h > 10 ? h : "0" + h;    
+    m = m > 10 ? m : "0" + m;
+    s = s > 10 ? s : "0" + s;
+    return d + "天" + h + ":" + m + ":" + s;  //返回倒计时的字符串
+}
+```
+
+
 
 #### [forEach()](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach)
 
@@ -1795,5 +1830,33 @@ arr.slice(0, -1)
 
 ```
 arr.pop()
+```
+
+
+
+#### 瀑布流的实现
+
+[pinterest](https://www.pinterest.com/)
+
+#### JQuery动态添加元素方法
+
+| append()       | 在父级最后追加一个子元素                 |
+| -------------- | ---------------------------------------- |
+| appendTo()     | 在父级最后追加一个子元素                 |
+| prepend()      | 在父级最前面追加一个子元素               |
+| prependTo()    | 在父级最前面追加一个子元素               |
+| after()        | 在当前元素之后追加（是同级关系）         |
+| before()       | 在当前元素之前追加（是同级关系）         |
+| insertAfter()  | 将元素追加到指定对象的后面（是同级关系   |
+| insertBefore() | 将元素追加到指定对象的前面（是同级关系） |
+| appendChild()  | 在节点的最后追加子元素                   |
+
+#### 监听动态生成的元素
+
+```
+// 监听下拉框改变事件
+$(".singleGame").on("change", "select.game-select", function () {
+	.....
+})
 ```
 

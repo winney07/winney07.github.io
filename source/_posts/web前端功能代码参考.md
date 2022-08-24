@@ -556,8 +556,6 @@ arr.map(function(item) {
 不可以有小数：^100$|^(\d|[1-9]\d)$
 ```
 
-
-
 #### 动态设置表格padding
 
 ```
@@ -572,19 +570,18 @@ function setTablePdRight() {
 }
 ```
 
-
-
 #### 模拟环形进度条
 
-circle-progress.js
+`circle-progress.js`
 
 ```
-// 模拟环形进度条
+// 创建模拟环形进度条
+// 导出文件过程中-网络请求卡顿/接口pending状态下的交互效果（假进度-只提供用户交互）
 var canvas = new EnableCircle({
-    id:'le-canvas',
-    value: 96,
+    id:'le-canvas',		// 被渲染元素的canvas的ID
+    value: 96,			// 最大值
     target: 'primary',
-    lineWidth: 10,
+    lineWidth: 10,		// 环形宽度
     lineCap: 'round',
 });
 ```
@@ -592,7 +589,7 @@ var canvas = new EnableCircle({
 #### 判断是否为PC端
 
 ```
-//判断是否为PC端
+// 判断是否为PC端
 function IsPC() {
 	var userAgentInfo = navigator.userAgent;
 	var Agents = ["Android", "iPhone",

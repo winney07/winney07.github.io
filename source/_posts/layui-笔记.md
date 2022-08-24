@@ -974,3 +974,39 @@ layui.use(['mymod'], function(){
 
 #### [layui上传错误请求上传接口出现异常解决方案](http://www.45fan.com/article.php?aid=20090321166392158778851636)
 
+
+
+#### 解决LAYUI数据表格中嵌套下拉框显示问题
+
+[layui学习——数据表格嵌套下拉列表，并实现动态更新](https://www.cnblogs.com/xmcwm/p/14373853.html)
+
+[解决layui数据表格中嵌套下拉框显示问题](https://wenku.baidu.com/view/ecb57ee05cbfc77da26925c52cc58bd6318693d2.html)
+
+[Layui数据表格中使用下拉选框被遮挡的解决方法，要在表格渲染中操作](https://blog.lanluo.cn/10990)
+
+```
+// 表格渲染
+table.render({
+    elem: '#groupTable'
+    , limit: 10
+    , cols: [[
+        { type: 'numbers', title: '序号', width: 100 }
+        , { title: '下拉框', minWidth: 140 , templet: function (res) {
+            var selectStr = '<select name="test">';
+            for(var i = 0; i< 10; i ++) {
+                selectStr += '<option value="' + i+ '">' + i+ '</option>'
+            }
+            selectStr += '</select>'
+            return selectStr;
+        } }
+    ]]
+    , page: {
+        curr: this_curr
+    }
+    , data: list
+    , done: function (res, curr, count) {
+        $(".layui-table-body, .layui-table-box, .layui-table-cell").css('overflow', 'visible')
+    }
+});
+```
+

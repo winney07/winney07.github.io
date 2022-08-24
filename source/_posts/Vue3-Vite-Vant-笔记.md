@@ -1,6 +1,6 @@
 ---
 title: Vue3-Vite-Vant-笔记
-date: 2022-08-03 16:50:58
+date: 2021-11-03 16:50:58
 tags:
 - Vue3
 - Vite
@@ -17,7 +17,7 @@ tags:
 
 [vite+vue3+ts+eslint编写移动端rem自适应](https://www.proyy.com/6956431101141352485.html#toc_3)
 
-
+[flex布局: 一行显示固定个数，换行展示](https://blog.csdn.net/weixin_52827704/article/details/123914911)
 
 #### 创建项目
 
@@ -101,6 +101,26 @@ Vant 中有个别组件是以函数的形式提供的，包括 `Toast`，`Dialog
 </template>
 ```
 
+#### 移动端适配写法-设计稿尺寸（750*1624px）
+
+[移动端设计规范和方法汇总](https://www.zcool.com.cn/article/ZODQ2Mzg0.html)
+
+##### 一、rem写法
+
+1.
+
+```
+html, body{
+    font-size: 0.13333333vw;
+}
+```
+
+2.元素在750宽的设计稿中，多少px，就写多少rem
+
+##### 二、viewport插件的写法
+
+元素在750宽的设计稿中，`*px`，就写`*/2px`  (要除以2)
+
 
 
 #### [Rem适配](https://vant-contrib.gitee.io/vant/#/zh-CN/advanced-usage#liu-lan-qi-gua-pei)
@@ -117,7 +137,7 @@ https://github.com/amfe/lib-flexible
 
 > 由于`viewport`单位得到众多浏览器的兼容，`lib-flexible`这个过渡方案已经可以放弃使用，不管是现在的版本还是以前的版本，都存有一定的问题。建议大家开始使用`viewport`来替代此方。
 
-#### [Viewport 布局](https://vant-contrib.gitee.io/vant/#/zh-CN/advanced-usage#viewport-bu-ju)—推荐
+#### [Viewport 布局](https://vant-contrib.gitee.io/vant/#/zh-CN/advanced-usage#viewport-bu-ju)—推荐—本项目使用
 
 ```
 npm install postcss-px-to-viewport --save-dev
@@ -146,56 +166,6 @@ a '.js' file extension and 'H:\Gitee\Vue3_demo\vue3-vite-vant\package.json' cont
 ```
 
 解决：1.将`postcss.config.js`改为`postcss.config.cjs` ;  2.重启服务
-
-
-
-### mock数据
-
-[mockjs介绍](https://www.jianshu.com/p/d812ce349265)
-
-https://github.com/nuysoft/Mock/wiki/Getting-Started
-
-[mock官网](http://mockjs.com/)
-
-[mock示例](http://mockjs.com/examples.html)
-
-```
-npm install mockjs --save-dev
-```
-
-使用示例：
-
-```
-import Mock from 'mockjs'
-
-// 定义数据类型
-var data = Mock.mock({
-  // 20条数据
-  "data|20": [{
-    // 商品种类
-    "goodsClass": "女装",
-    // 商品Id
-    "goodsId|+1": 1,
-    //商品名称
-    "goodsName": "@ctitle(10)",
-    //商品地址
-    "goodsAddress": "@county(true)",
-    //商品等级评价★
-    "goodsStar|1-5": "★",
-    //商品图片
-    "goodsImg": "@Image('100x100','@color','小甜甜')",
-    //商品售价
-    "goodsSale|30-500": 30
-
-  }]
-})
-// 输出结果随机生成的数据（node index.js）
- console.log(data);
-```
-
-[vue项目，svn提交代码时忽略node_modules文件夹提交](https://www.jianshu.com/p/d8ca41e9bce4)
-
-
 
 #### 使用less
 
@@ -302,11 +272,15 @@ table {
 
 2. 若使用手机访问本地ip页面，访问不成功（显示“服务器已停用”）。即要将本地电脑的防火墙“关闭”即可。[手机和电脑连接同一wifi,手机访问不了电脑起的项目](https://blog.csdn.net/zoepriselife316/article/details/117957732)
 
-   电脑的“设置”——“网络和共享中心”——“Windows Defender 防火墙”（左下角）——“启用或关闭Windows Defender 防火墙”（左侧）——选择“关闭”（专用网络和公用网络都关闭）
+   2.1电脑的“设置”——“网络和共享中心”——“Windows Defender 防火墙”（左下角）——“启用或关闭Windows Defender 防火墙”（左侧）——选择“关闭”（专用网络和公用网络都关闭）
 
-   注意：使用完，最好重新“启用”防火墙。
+   `注意：使用完，最好重新“启用”防火墙。`
+   
+   2.2 如果手机连接的当前wifi那里的`HTTP代理`-`配置代理`是开启的，将其关闭
 
 [vite.config.js之resolve.alias配置](https://www.jianshu.com/p/dd26cae7d7b2)
+
+
 
 
 
@@ -702,14 +676,6 @@ import Withdraw from '../pages/withdraw/index.vue';
 >
 > router 路由中名称 和文件夹(目录), 文件名需要保证大小写一致
 
-
-
-
-
-
-
-[活动规则背景图](http://136pic.com/muban/16118575.html)
-
 #### [‘v-model’ directives require no argument](https://blog.csdn.net/weixin_48952990/article/details/125387578)
 
 解决方法：
@@ -757,5 +723,449 @@ const copy = async (val:string) => {
 
 ```
  <van-button color="#fe7c1a" @click="copy('bcJcB9')">复制并前往绑定</van-button>
+```
+
+#### 
+
+#### [页面布局](https://vant-contrib.gitee.io/vant/#/zh-CN/col)
+
+![layout布局](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Vue3-Vite-Vant-%E7%AC%94%E8%AE%B0/note1.png)
+
+
+
+左右有padding，元素之间间距相等（加`gutter="15"`），元素宽度一样(`span="6"`)，换行（每行相加够24）
+
+```
+<van-row justify="space-between" gutter="15">
+    <van-col span="6" class="active">
+        <van-button type="primary" size="small">2元</van-button>
+    </van-col>
+    <van-col span="6">
+        <van-button type="primary" size="small">5元</van-button>
+    </van-col>
+    <van-col span="6">
+        <van-button type="primary" size="small">10元</van-button>
+    </van-col>
+    <van-col span="6">
+        <van-button type="primary" size="small">2元</van-button>
+    </van-col>
+
+    <van-col span="6">
+        <van-button type="primary" size="small">2元</van-button>
+    </van-col>
+    <van-col span="6">
+        <van-button type="primary" size="small">2元</van-button>
+    </van-col>
+    <van-col span="6">
+        <van-button type="primary" size="small">2元</van-button>
+    </van-col>
+    <van-col span="6">
+        <van-button type="primary" size="small">2元</van-button>
+    </van-col>
+</van-row>
+```
+
+`注：这样写，按钮看起来还是不平均配分,因没有给按钮设置宽度（width: 100%;`
+
+```
+.van-button{
+    width: 100%;
+    border-radius: 5px;
+    margin-bottom: 18px;
+    background-color: #ffd898;
+    border-color: #ffd898;
+}
+.active{
+    .van-button{
+        background-color: #ffab22;
+        border-color: #ffab22;
+    }
+}
+```
+
+#### 动态绑定class
+
+`:class`
+
+```
+:class="{active: amount === i.amount}
+```
+
+### mock数据
+
+1. vite-plugin-mock
+2. mockjs
+3. axios
+
+[mockjs介绍](https://www.jianshu.com/p/d812ce349265)
+
+https://github.com/nuysoft/Mock/wiki/Getting-Started
+
+[mock官网](http://mockjs.com/)
+
+[mock示例](http://mockjs.com/examples.html)
+
+#### 步骤：
+
+##### 1.安装
+
+```
+npm i vite-plugin-mock mockjs  -D
+```
+
+**[vite-plugin-mock](https://github.com/vbenjs/vite-plugin-mock)**
+
+[使用](https://github.com/vbenjs/vite-plugin-mock#usage)
+
+##### 2.在vite.config.ts中引入
+
+```
+import { viteMockServe } from 'vite-plugin-mock'
+
+plugins: [
+  vue(),
+  viteMockServe({
+    // default
+    mockPath: 'mock',
+  }),
+],
+```
+
+##### 3.在项目根目录新建mock目录-mock/index.ts：
+
+[示例](https://github.com/vbenjs/vite-plugin-mock#mock-file-example)
+
+```
+// test.ts
+import { MockMethod } from 'vite-plugin-mock'
+export default [
+  {
+    url: '/api/get',
+    method: 'get',
+    response: ({ query }) => {
+      return {
+        code: 0,
+        data: {
+          name: 'vben',
+        },
+      }
+    },
+  },
+  {
+    url: '/api/post',
+    method: 'post',
+    timeout: 2000,
+    response: {
+      code: 0,
+      data: {
+        name: 'vben',
+      },
+    },
+  },
+  {
+    url: '/api/text',
+    method: 'post',
+    rawResponse: async (req, res) => {
+      let reqbody = ''
+      await new Promise((resolve) => {
+        req.on('data', (chunk) => {
+          reqbody += chunk
+        })
+        req.on('end', () => resolve(undefined))
+      })
+      res.setHeader('Content-Type', 'text/plain')
+      res.statusCode = 200
+      res.end(`hello, ${reqbody}`)
+    },
+  },
+] as MockMethod[]
+```
+
+##### 4.安装axios
+
+```
+npm i axios
+```
+
+##### 5.使用
+
+```
+import axios from 'axios'
+
+async function fn() {
+  const { data } = await axios.get('/api/get')
+  console.log(data);
+}
+fn()
+```
+
+##### 6.使用mock来模拟更多数据
+
+##### 7.将mock模拟的数据放到接口返回中
+
+mock/index.ts：
+
+```
+// test.ts
+import { MockMethod } from 'vite-plugin-mock'
+import Mock from 'mockjs'
+var list = Mock.mock({
+  // 20条数据
+  "data|20": [{
+    // 商品种类
+    "goodsClass": "女装",
+    // 商品Id
+    "goodsId|+1": 1,
+    //商品名称
+    "goodsName": "@ctitle(10)",
+    //商品地址
+    "goodsAddress": "@county(true)",
+    //商品等级评价★
+    "goodsStar|1-5": "★",
+    //商品图片
+    "goodsImg": "@Image('100x100','@color','小甜甜')",
+    //商品售价
+    "goodsSale|30-500": 30
+
+  }]
+})
+export default [
+  {
+    url: '/api/get',
+    method: 'get',
+    response: ({ query }) => {
+      return {
+        code: 0,
+        data: list
+      }
+    },
+  },
+  },
+] as MockMethod[]
+```
+
+使用示例：
+
+```
+import Mock from 'mockjs'
+
+// 定义数据类型
+var data = Mock.mock({
+  // 20条数据
+  "data|20": [{
+    // 商品种类
+    "goodsClass": "女装",
+    // 商品Id
+    "goodsId|+1": 1,
+    //商品名称
+    "goodsName": "@ctitle(10)",
+    //商品地址
+    "goodsAddress": "@county(true)",
+    //商品等级评价★
+    "goodsStar|1-5": "★",
+    //商品图片
+    "goodsImg": "@Image('100x100','@color','小甜甜')",
+    //商品售价
+    "goodsSale|30-500": 30
+
+  }]
+})
+// 输出结果随机生成的数据（node index.js）
+ console.log(data);
+```
+
+[vue项目，svn提交代码时忽略node_modules文件夹提交](https://www.jianshu.com/p/d8ca41e9bce4)
+
+##### 8.将数据和接口方法分开
+
+mock/data.ts：
+
+```
+import Mock from 'mockjs'
+
+// mock的数据
+// 金额列表
+export const amountList = Mock.mock({
+    // 20条数据
+    "amountList": [{
+      "amount": 2,
+      "amountId": 0,
+    },
+]
+})
+```
+
+mock/index.ts：
+
+```
+import { MockMethod } from 'vite-plugin-mock'
+import { amountList } from './data.js'
+
+export default [
+    {
+      url: '/api/getAmountList',
+      method: 'get',
+      response: ({ query }) => {
+        return {
+          code: 0,
+          data: amountList,
+        }
+      },
+    },
+] as MockMethod[]
+```
+
+#### reactive的做法
+
+```
+// reactive的做法
+import { reactive, toRefs } from 'vue';
+const userinfo = reactive({
+    name: '',
+    level: 0,
+    server_area: ''
+})
+const {name, level, server_area} = toRefs(userinfo)
+axios.get('/api/getUserInfo').then(res => {
+    const { name, level, server_area } =  res.data.data.userInfo
+    userinfo.name = name;
+    userinfo.level = level;
+    userinfo.server_area = server_area;
+})
+```
+
+#### ref的做法
+
+```
+import { ref } from 'vue';
+// ref的做法
+const name = ref('');
+const server_area = ref('');
+const level = ref(0)
+axios.get('/api/getUserInfo').then(res => {
+    const userinfo = res.data.data.userInfo;
+    name.value = userinfo.name;
+    level.value = userinfo.level;
+    server_area.value = userinfo.server_area;
+})
+```
+
+#### 枚举的使用-enum
+
+```
+// 枚举
+enum HbType {
+    '等级红包' = 1,
+    '充值红包' ,
+    '高级红包' ,
+}
+enum HbIcon {
+    'src/assets/images/hb_level.png' = 1,
+    'src/assets/images/hb_charge.png' ,
+    'src/assets/images/hb_senior.png' ,
+}
+```
+
+##### 数据
+
+```
+// 红包数据
+// type:1 --等级红包
+// type:2 --充值红包
+// type:3 --高级红包
+export const hbData = Mock.mock({
+    hbData: {
+        total: 300.00,
+        list: [{
+            id: 10001,
+            type: 1,
+            amount: 50,
+        },{
+            id: 10001,
+            type: 2,
+            amount: 100,
+        },{
+            id: 10001,
+            type: 3,
+            amount: 150,
+        }]
+    }
+})
+```
+
+##### 页面
+
+```
+import axios from 'axios';
+import { ref } from 'vue'
+
+const hbList = ref([]);
+axios.get('/api/getHbData').then(res => {
+    hbList.value.push(...res.data.data.hbData.list);
+    console.log(hbList)
+})
+
+// 结构
+<van-cell 
+    class="withdraw-li"
+    :title="'+ ' + i.amount +'元'"
+    :label="HbType[i.type]"
+    center 
+    v-for="i in hbList"
+    :key="i.id"
+>  
+    <template #icon>
+        <img :src="HbIcon[i.type]" class="red-packet" alt="">
+    </template>
+    <template #value>
+        <router-link to="/withdraw">提现 &gt;</router-link>
+    </template>
+</van-cell>
+```
+
+
+
+#### 解决报错信息
+
+控制台报以下警告信息：
+
+```
+Added non-passive event listener to a scroll-blocking ‘touchstart‘ event. Consider marking event...
+```
+
+解决：
+
+```
+// 安装插件
+npm install -S default-passive-events
+// 在main.js引入
+import 'default-passive-events'
+```
+
+[参考](https://blog.csdn.net/yjl13598765406/article/details/125496865)
+
+
+
+#### 打包报错
+
+`注意： 写v-for循环时，要对循环的列表进行判断，以免数据还没有返回就进行渲染，获取不到值`
+
+```
+ <div class="content" v-if="list.length > 0">
+ </div>
+```
+
+`Property 'id' does not exist on type 'never'.`
+
+解决：加上类型限制
+
+```
+ interface List {
+    amount: number;
+    date: string
+    id: number
+    type: number
+ }
+ const list = ref<List[]>([])
 ```
 

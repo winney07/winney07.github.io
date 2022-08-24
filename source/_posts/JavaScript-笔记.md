@@ -8,6 +8,8 @@ categories:
 - JavaScript
 ---
 
+#### [underscorejs中文网](https://www.underscore-js.com/)
+
 ```
 // 常量 使用 全部字母大写，单词间下划线分隔 的命名方式。
 var HTML_ENTITY = {};
@@ -741,6 +743,17 @@ onload 和 onunload 事件可用于处理 cookie。
 ```
  addEvent("mousewheel", wheel, {passive: false});
 ```
+
+#### 防抖和节流
+
+防抖、节流、去重、深浅拷贝、数组扁平化、乱序、柯里化
+
+> 我们在平时开发的时候，会有很多场景会频繁触发事件，比如说搜索框实时发请求onmousemove,resize,onscroll等等，有些时候，我们并不能或者不想频繁触发事件
+>
+
+
+
+
 
 
 

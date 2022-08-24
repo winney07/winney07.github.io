@@ -1083,3 +1083,19 @@ css中判断[IE](https://www.baidu.com/s?wd=IE&tn=SE_PcZhidaonwhc_ngpagmjz&rsv_d
 
 <!--[if gte IE 7]> IE7以及IE7以上版本可识别 <![endif]-->
 ```
+
+#### placeholder
+
+```
+textarea[name='test']::-webkit-input-placeholder::after {
+    display:block;
+    content:"Line 2\A Line 3";
+    color: red;
+}
+
+textarea[name='test']::-webkit-input-placeholder::before {
+    color:#666;
+    content:"Line 1\A Line 2\A Line 3\A";
+}
+```
+

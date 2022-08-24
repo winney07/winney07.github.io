@@ -74,3 +74,9 @@ https://jingyan.baidu.com/article/6dad5075383c3fa123e36ec3.html
 ##### VSCode编辑器字体大小设置
 
 "settings"——“文本编辑器”——常用设置——Editor：Font Size（这里设置为20）
+
+#### VSCode如何用浏览器预览运行html文件
+
+在”扩展“中搜索”view in browser“——右键点击html文件，选择View In Browser
+
+`view in browser`已废弃， 换成"open in browser"

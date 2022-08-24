@@ -10,6 +10,8 @@ categories:
 
 
 
+#### [疫情实时大数据报告](https://voice.baidu.com/act/newpneumonia/newpneumonia/?from=osari_wangmeng#tab4)—React项目
+
 [React Dom Examples](https://codesandbox.io/examples/package/react-dom)
 
 [React Examples](https://codesandbox.io/examples/package/react)

@@ -90,3 +90,13 @@ Markdown本身不支持单元格合并
 -空格[空格]空格aaaa
 ```
 
+### markdown编辑软件
+
+- Typora（收费了）
+- 在VSCode中，安装Typora扩展（Edit markdown like typora in vscode.），还不错。跟Typora真的挺像的。
+
+### markdown自动生成器
+
+##### [docsify](https://docsify.js.org/#/)
+
+#### 语雀

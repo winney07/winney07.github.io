@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="1、设置配置文件 方法一：在根目录中新建vue.config.js文件  1234567891011121314151617181920module.exports &#x3D; &amp;#123;    runtimeCompiler: true,    devServer: &amp;#123;        proxy: &amp;#123;            &#x2F;&#x2F; 匹配请求路径中的字符，            &#x2F;&#x2F;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue项目处理跨域请求">
+<meta property="og:url" content="http://example.com/2020/12/14/vue%E9%A1%B9%E7%9B%AE%E5%A4%84%E7%90%86%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82/index.html">
+<meta property="og:site_name" content="winney">
+<meta property="og:description" content="1、设置配置文件 方法一：在根目录中新建vue.config.js文件  1234567891011121314151617181920module.exports &#x3D; &amp;#123;    runtimeCompiler: true,    devServer: &amp;#123;        proxy: &amp;#123;            &#x2F;&#x2F; 匹配请求路径中的字符，            &#x2F;&#x2F;">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-12-14T03:42:51.000Z">
+<meta property="article:modified_time" content="2022-08-24T10:09:23.329Z">
+<meta property="article:author" content="winney">
+<meta property="article:tag" content="Vue.js">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2020/12/14/vue%E9%A1%B9%E7%9B%AE%E5%A4%84%E7%90%86%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Vue项目处理跨域请求 | winney</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">winney</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">It is never too old to learn.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <img alt="winney" src="/images/blog-head.jpg">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/14/vue%E9%A1%B9%E7%9B%AE%E5%A4%84%E7%90%86%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="winney">
+      <meta itemprop="description" content="Doing is better than saying.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="winney">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Vue项目处理跨域请求
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-12-14 11:42:51" itemprop="dateCreated datePublished" datetime="2020-12-14T11:42:51+08:00">2020-12-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-08-24 18:09:23" itemprop="dateModified" datetime="2022-08-24T18:09:23+08:00">2022-08-24</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/Vue-js/" itemprop="url" rel="index"><span itemprop="name">Vue.js</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h4 id="1、设置配置文件"><a href="#1、设置配置文件" class="headerlink" title="1、设置配置文件"></a>1、设置配置文件</h4><ul>
+<li>方法一：在根目录中新建vue.config.js文件</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">module.exports = &#123;</span><br><span class="line">    runtimeCompiler: true,</span><br><span class="line">    devServer: &#123;</span><br><span class="line">        proxy: &#123;</span><br><span class="line">            // 匹配请求路径中的字符，</span><br><span class="line">            // 如果符合就用这个代理对象代理本次请求，路径为target的网址，</span><br><span class="line">            // changeOrigin为是否跨域，</span><br><span class="line">            // 如果不想始终传递这个前缀，可以重写路径</span><br><span class="line">            // pathRewrite为是否将指定字符串转换一个再发过去。</span><br><span class="line">            &#x27;/api&#x27;: &#123;</span><br><span class="line">              target: &#x27;http://ttapi.research.itcast.cn/&#x27;,</span><br><span class="line">                ws: true,</span><br><span class="line">                changeOrigin: true,</span><br><span class="line">                pathRewrite: &#123;</span><br><span class="line">                    &#x27;^/api&#x27;: &#x27;&#x27;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>方法二：在根目录中，新建config&gt;index.js文件</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">module.exports = &#123;</span><br><span class="line">    dev: &#123;</span><br><span class="line">        proxyTable: &#123;</span><br><span class="line">            &#x27;/api&#x27;: &#123;</span><br><span class="line">              target: &#x27;http://ttapi.research.itcast.cn/&#x27;, // 接口的域名</span><br><span class="line">              secure: false, // 如果是https接口，需要配置这个参数</span><br><span class="line">              changeOrigin: true, // 如果接口跨域，需要进行这个参数配置</span><br><span class="line">              pathRewrite: &#123;</span><br><span class="line">                &#x27;^/api&#x27;: &#x27;&#x27; // &#x27;/api/a/user&#x27; ==&#x27;localhost:8080/user&#x27;</span><br><span class="line">              &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="2、axios请求方法的写法："><a href="#2、axios请求方法的写法：" class="headerlink" title="2、axios请求方法的写法："></a>2、axios请求方法的写法：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">axios.get(&#x27;http://ttapi.research.itcast.cn/app/v1_0/comments&#x27;, &#123;</span><br><span class="line">    params: &#123;</span><br><span class="line">        type: &#x27;a&#x27;,</span><br><span class="line">        source: this.source,</span><br><span class="line">        offset: this.offset,</span><br><span class="line">        limit: this.limit</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line">.then(function (response) &#123;</span><br><span class="line">    console.log(&#x27;response&#x27;)</span><br><span class="line">    console.log(response)</span><br><span class="line">&#125;)</span><br><span class="line">.catch(function (error) &#123;</span><br><span class="line">    console.log(error)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="name属性是父组件传过来的，除了数组，对象，其他都不允许修改"><a href="#name属性是父组件传过来的，除了数组，对象，其他都不允许修改" class="headerlink" title="name属性是父组件传过来的，除了数组，对象，其他都不允许修改"></a>name属性是父组件传过来的，除了数组，对象，其他都不允许修改</h4><blockquote>
+<p> props里面的数据，除了数组，对象，其他都不允许修改，所以不能用于页面元素的v-model属性中，因为v-model是双向绑定的</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;van-field</span><br><span class="line">   v-model=&quot;localName&quot;</span><br><span class="line">   ...</span><br><span class="line">/&gt;</span><br><span class="line"> props: &#123;</span><br><span class="line">     name: &#123;</span><br><span class="line">         type: String,</span><br><span class="line">         required: true</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;,</span><br><span class="line"> </span><br><span class="line">data () &#123;</span><br><span class="line">  return &#123;</span><br><span class="line">      localName: this.name</span><br><span class="line">  &#125;</span><br><span class="line"> &#125;,</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="当传递给子组件的数据既要使用又要修改，这种情况下我们可以使用v-model简写："><a href="#当传递给子组件的数据既要使用又要修改，这种情况下我们可以使用v-model简写：" class="headerlink" title="当传递给子组件的数据既要使用又要修改，这种情况下我们可以使用v-model简写："></a>当传递给子组件的数据既要使用又要修改，这种情况下我们可以使用v-model简写：</h4><p>例如：父组件的name</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">:name=&quot;user.name&quot;</span><br><span class="line">@update-name=&quot;user.name=$event&quot;</span><br></pre></td></tr></table></figure>
+
+<p>修改为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">v-model=&quot;user.name&quot;</span><br></pre></td></tr></table></figure>
+
+<p>子组件也要跟着修改：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">props: &#123;</span><br><span class="line">    value: &#123;</span><br><span class="line">        type: String,</span><br><span class="line">        required: true</span><br><span class="line">    &#125;</span><br><span class="line">&#125;,</span><br><span class="line"></span><br><span class="line">this.$emit(&#x27;input&#x27;, this.localName)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>v-model=”user.name”</p>
+<p>默认传递一个名字叫value的数据：    ：value=”user.name”</p>
+<p>默认监听input事件:      @input=”user.name=$event”</p>
+<p>v-model的本质还是父子组件通信，它仅仅是简化了父组件的使用，子组件还是按照原来那样使用</p>
+</blockquote>
+<p>注：在同一个子组件传递中，v-model只能使用一次</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">这样是错误的：</span><br><span class="line">&lt;update-name</span><br><span class="line">    v-model=&quot;user.name&quot;</span><br><span class="line">    v-model=&quot;user.photo&quot;</span><br><span class="line">/&gt;</span><br></pre></td></tr></table></figure>
+
+<h5 id="在同一个子组件传递中，v-model只能使用一次，如果有多个数据需要保持同步，使用-sync修饰符"><a href="#在同一个子组件传递中，v-model只能使用一次，如果有多个数据需要保持同步，使用-sync修饰符" class="headerlink" title="在同一个子组件传递中，v-model只能使用一次，如果有多个数据需要保持同步，使用.sync修饰符"></a>在同一个子组件传递中，v-model只能使用一次，如果有多个数据需要保持同步，使用.sync修饰符</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;update-name</span><br><span class="line">    v-model=&quot;user.name&quot;</span><br><span class="line">    :gender.sync=&quot;user.photo&quot;</span><br><span class="line">/&gt;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注：我们一般把最常用的数据设计为v-model绑定，把不太常用的数据设计为.sync</p>
+</blockquote>
+<h4 id="销毁组件的一种方法："><a href="#销毁组件的一种方法：" class="headerlink" title="销毁组件的一种方法："></a>销毁组件的一种方法：</h4><p>1、加上v-if来控制渲染</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;update-name</span><br><span class="line">    v-if=&quot;isEditNameShow&quot;</span><br><span class="line">    v-model=&quot;user.name&quot;</span><br><span class="line">    @close=&quot;isEditNameShow=false&quot;</span><br><span class="line">/&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="在Vue中操作DOM，要给该元素添加ref属性"><a href="#在Vue中操作DOM，要给该元素添加ref属性" class="headerlink" title="在Vue中操作DOM，要给该元素添加ref属性"></a>在Vue中操作DOM，要给该元素添加ref属性</h4><p>例如：点击头像，选择图片来修改头像</p>
+<p>1、给input  file添加ref属性</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;file&quot; hidden ref=&quot;file&quot;&gt;</span><br><span class="line">&lt;van-cell title=&quot;头像&quot; is-link center @click=&quot;$refs.file.click()&quot;&gt;</span><br><span class="line">    &lt;van-image</span><br><span class="line">        width=&quot;30&quot;</span><br><span class="line">        height=&quot;30&quot;</span><br><span class="line">        round fit=&quot;cover&quot;</span><br><span class="line">        :src=&quot;user.photo&quot;</span><br><span class="line">    /&gt;</span><br><span class="line">&lt;/van-cell&gt;</span><br></pre></td></tr></table></figure>
+
+<p>2、控制选择的文件类型：accept属性</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;file&quot; hidden ref=&quot;file&quot; accept=&quot;image/*&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>3、监听文件的change事件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;input</span><br><span class="line">    type=&quot;file&quot;</span><br><span class="line">    hidden</span><br><span class="line">    ref=&quot;file&quot;</span><br><span class="line">    accept=&quot;image/*&quot;</span><br><span class="line">    @change=&quot;onFileChange&quot;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+
+<p>4、解决选择相同文件不触发change事件,手动清空file的value值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">onFileChange() &#123;</span><br><span class="line">    ....</span><br><span class="line">    </span><br><span class="line">     // 手动清空file的value值</span><br><span class="line">     this.$refs.file.value = &#x27;&#x27;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>5、展示弹出层，在弹出层预览图片</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">onFileChange() &#123;</span><br><span class="line">     // 展示弹出层</span><br><span class="line">     this.isEditPhotoShow = true</span><br><span class="line"></span><br><span class="line">    //  在弹出层预览选择的图片</span><br><span class="line">    const blod = window.URL.createObjectURL(this.$refs.file.files[0])</span><br><span class="line">    this.previewImage = blod</span><br><span class="line"></span><br><span class="line">     // 手动清空file的value值</span><br><span class="line">     this.$refs.file.value = &#x27;&#x27;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<p>6、父传，子收。并展示预览图片</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">父传：</span><br><span class="line">&lt;update-photo</span><br><span class="line">    :image=&quot;previewImage&quot;</span><br><span class="line">/&gt;</span><br><span class="line">子收：</span><br><span class="line"> props: &#123;</span><br><span class="line">     image: &#123;</span><br><span class="line">         type: String,</span><br><span class="line">         required: true</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;,</span><br><span class="line"> </span><br><span class="line">&lt;div class=&quot;update-photo&quot;&gt;</span><br><span class="line">     &lt;img :src=&quot;image&quot;&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<p>7、修改父子组件传值的文件格式</p>
+<blockquote>
+<p>如果Content-Type  要求是 multipart/form-data，则一定要提交FormData数据对象，专门用于文件上传的，不能提交{}对象，没用</p>
+</blockquote>
+<p>所以要修改父组件传过来子组件的文件格式，保留原来的文件格式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">父组件：</span><br><span class="line">onFileChange() &#123;</span><br><span class="line">    ....</span><br><span class="line">    const blod = this.$refs.file.files[0]</span><br><span class="line">    this.previewImage = blod</span><br><span class="line">	....</span><br><span class="line"> &#125;</span><br><span class="line"> </span><br><span class="line">&lt;update-photo</span><br><span class="line">    :file=&quot;previewImage&quot;</span><br><span class="line">    @close=&quot;isEditPhotoShow=false&quot;</span><br><span class="line">/&gt;</span><br><span class="line">子组件：</span><br><span class="line"> props: &#123;</span><br><span class="line">     file: &#123;</span><br><span class="line">        //  type: String,</span><br><span class="line">         required: true</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;,</span><br><span class="line"> data () &#123;</span><br><span class="line">  return &#123;</span><br><span class="line">      image: window.URL.createObjectURL(this.file)</span><br><span class="line">  &#125;</span><br><span class="line"> &#125;,</span><br></pre></td></tr></table></figure>
+
+<p>8、处理接口传参</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 文件格式处理</span><br><span class="line"> const fd = new FormData()</span><br><span class="line"> fd.append(&#x27;photo&#x27;, this.file)</span><br><span class="line"> // photo为参数名，this.file为参数值</span><br><span class="line"></span><br><span class="line"> await updateUserPhoto(fd)</span><br></pre></td></tr></table></figure>
+
+<p>9、处理图片裁切，使用 <a target="_blank" rel="noopener" href="https://github.com/fengyuanchen/cropperjs">cropperjs</a>  这个跟vue没有关系，其他项目也可以使用） 也可以在<a target="_blank" rel="noopener" href="https://github.com/vuejs/awesome-vue">Awesome</a> 中搜crop找裁切工具</p>
+<ul>
+<li>1、安装</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install cropperjs</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>2、引入</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import &#x27;cropperjs/dist/cropper.css&#x27;</span><br><span class="line">import Cropper from &#x27;cropperjs&#x27;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>3、使用：放在mounted里面</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;img :src=&quot;image&quot; ref=&quot;image&quot;&gt;</span><br><span class="line"></span><br><span class="line">mounted() &#123;</span><br><span class="line">    const image = this.$refs.image</span><br><span class="line">    const cropper = new Cropper(image, &#123;</span><br><span class="line">        viewMode: 1,</span><br><span class="line">        dragMode: &#x27;move&#x27;,</span><br><span class="line">        aspectRatio: 1,</span><br><span class="line">        // autoCropArea: 1,</span><br><span class="line">        cropBoxMovable: false,</span><br><span class="line">        cropBoxResizable: false,</span><br><span class="line">        background: false,</span><br><span class="line">        movable: true</span><br><span class="line">    &#125;)</span><br><span class="line">    console.log(cropper)</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>4、让裁切区居中显示</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">.update-photo&#123;</span><br><span class="line">    position: absolute;</span><br><span class="line">    top: 50%;</span><br><span class="line">    margin-top: -185px;</span><br><span class="line">    margin-left: -185px;</span><br><span class="line">    height: 370px;</span><br><span class="line">    left: 50%;</span><br><span class="line">    width:370px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>5、获取裁切结果，getCroppedCanvas()</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"> data () &#123;</span><br><span class="line">  return &#123;</span><br><span class="line">      image: window.URL.createObjectURL(this.file),</span><br><span class="line">      cropper: null</span><br><span class="line">  &#125;</span><br><span class="line"> &#125;,</span><br><span class="line"></span><br><span class="line">使用Promise返回一个裁切对象，用于async</span><br><span class="line"> getCroppedCanvas() &#123;</span><br><span class="line">     return new Promise(resolve =&gt; &#123;</span><br><span class="line">     // 因为cropper定义在mounted中，在这里无法使用，</span><br><span class="line">     	为了能够在这里能调用cropper，将cropper放在data中</span><br><span class="line">          this.cropper.getCroppedCanvas().toBlob((file) =&gt; &#123;</span><br><span class="line">            resolve(file)</span><br><span class="line">        &#125;)</span><br><span class="line">     &#125;)</span><br><span class="line"> &#125;,</span><br><span class="line"> </span><br><span class="line">getCroppedCanvas返回的Promise对象，在这里面使用：</span><br><span class="line">async onConfirm() &#123;</span><br><span class="line">     .....</span><br><span class="line">     const file = await this.getCroppedCanvas()</span><br><span class="line">     const img = window.URL.createObjectURL(file)</span><br><span class="line"></span><br><span class="line">    // 文件格式处理</span><br><span class="line">     const fd = new FormData()</span><br><span class="line">     fd.append(&#x27;photo&#x27;, file)</span><br><span class="line">     </span><br><span class="line">     await updateUserPhoto(fd)</span><br><span class="line"></span><br><span class="line">     this.$emit(&#x27;close&#x27;)</span><br><span class="line">     this.$emit(&#x27;update-photo&#x27;, img)</span><br><span class="line"></span><br><span class="line">     this.$toast.success(&#x27;保存成功&#x27;)</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Vue-js/" rel="tag"># Vue.js</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/12/07/%E8%B5%84%E6%BA%90%E5%BA%93/" rel="prev" title="资源库">
+      <i class="fa fa-chevron-left"></i> 资源库
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/01/08/%E7%BD%91%E7%AB%99%E6%94%B6%E9%9B%86/" rel="next" title="网站收集">
+      网站收集 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1%E3%80%81%E8%AE%BE%E7%BD%AE%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">1.</span> <span class="nav-text">1、设置配置文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2%E3%80%81axios%E8%AF%B7%E6%B1%82%E6%96%B9%E6%B3%95%E7%9A%84%E5%86%99%E6%B3%95%EF%BC%9A"><span class="nav-number">2.</span> <span class="nav-text">2、axios请求方法的写法：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#name%E5%B1%9E%E6%80%A7%E6%98%AF%E7%88%B6%E7%BB%84%E4%BB%B6%E4%BC%A0%E8%BF%87%E6%9D%A5%E7%9A%84%EF%BC%8C%E9%99%A4%E4%BA%86%E6%95%B0%E7%BB%84%EF%BC%8C%E5%AF%B9%E8%B1%A1%EF%BC%8C%E5%85%B6%E4%BB%96%E9%83%BD%E4%B8%8D%E5%85%81%E8%AE%B8%E4%BF%AE%E6%94%B9"><span class="nav-number">3.</span> <span class="nav-text">name属性是父组件传过来的，除了数组，对象，其他都不允许修改</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BD%93%E4%BC%A0%E9%80%92%E7%BB%99%E5%AD%90%E7%BB%84%E4%BB%B6%E7%9A%84%E6%95%B0%E6%8D%AE%E6%97%A2%E8%A6%81%E4%BD%BF%E7%94%A8%E5%8F%88%E8%A6%81%E4%BF%AE%E6%94%B9%EF%BC%8C%E8%BF%99%E7%A7%8D%E6%83%85%E5%86%B5%E4%B8%8B%E6%88%91%E4%BB%AC%E5%8F%AF%E4%BB%A5%E4%BD%BF%E7%94%A8v-model%E7%AE%80%E5%86%99%EF%BC%9A"><span class="nav-number">4.</span> <span class="nav-text">当传递给子组件的数据既要使用又要修改，这种情况下我们可以使用v-model简写：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9C%A8%E5%90%8C%E4%B8%80%E4%B8%AA%E5%AD%90%E7%BB%84%E4%BB%B6%E4%BC%A0%E9%80%92%E4%B8%AD%EF%BC%8Cv-model%E5%8F%AA%E8%83%BD%E4%BD%BF%E7%94%A8%E4%B8%80%E6%AC%A1%EF%BC%8C%E5%A6%82%E6%9E%9C%E6%9C%89%E5%A4%9A%E4%B8%AA%E6%95%B0%E6%8D%AE%E9%9C%80%E8%A6%81%E4%BF%9D%E6%8C%81%E5%90%8C%E6%AD%A5%EF%BC%8C%E4%BD%BF%E7%94%A8-sync%E4%BF%AE%E9%A5%B0%E7%AC%A6"><span class="nav-number">4.1.</span> <span class="nav-text">在同一个子组件传递中，v-model只能使用一次，如果有多个数据需要保持同步，使用.sync修饰符</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%94%80%E6%AF%81%E7%BB%84%E4%BB%B6%E7%9A%84%E4%B8%80%E7%A7%8D%E6%96%B9%E6%B3%95%EF%BC%9A"><span class="nav-number">5.</span> <span class="nav-text">销毁组件的一种方法：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%A8Vue%E4%B8%AD%E6%93%8D%E4%BD%9CDOM%EF%BC%8C%E8%A6%81%E7%BB%99%E8%AF%A5%E5%85%83%E7%B4%A0%E6%B7%BB%E5%8A%A0ref%E5%B1%9E%E6%80%A7"><span class="nav-number">6.</span> <span class="nav-text">在Vue中操作DOM，要给该元素添加ref属性</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="winney"
+      src="/images/header.jpg">
+  <p class="site-author-name" itemprop="name">winney</p>
+  <div class="site-description" itemprop="description">Doing is better than saying.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">127</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">55</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">75</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://www.xiaochao.me/" title="https:&#x2F;&#x2F;www.xiaochao.me&#x2F;" rel="noopener" target="_blank">小超</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://winney07.github.io/" title="https:&#x2F;&#x2F;winney07.github.io&#x2F;" rel="noopener" target="_blank">winney07</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2015 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">winney07</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

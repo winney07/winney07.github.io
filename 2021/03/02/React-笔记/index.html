@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="创建应用123npx create-react-app my-appcd my-appnpm start    react使用Apifox的项目案例，可参考Gitee&#x2F;ad_manage_react项目 json-server的使用，可参考全球新闻发布系统项目 单页面应用与页面或后续页面的任何交互，都不再需要往返 server 加载资源，即页面不会重新加载 编译器Babel 是 React 最常用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React-笔记">
+<meta property="og:url" content="http://example.com/2021/03/02/React-%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="winney">
+<meta property="og:description" content="创建应用123npx create-react-app my-appcd my-appnpm start    react使用Apifox的项目案例，可参考Gitee&#x2F;ad_manage_react项目 json-server的使用，可参考全球新闻发布系统项目 单页面应用与页面或后续页面的任何交互，都不再需要往返 server 加载资源，即页面不会重新加载 编译器Babel 是 React 最常用">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-03-02T04:00:41.000Z">
+<meta property="article:modified_time" content="2022-08-24T10:09:23.325Z">
+<meta property="article:author" content="winney">
+<meta property="article:tag" content="React">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2021/03/02/React-%E7%AC%94%E8%AE%B0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>React-笔记 | winney</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">winney</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">It is never too old to learn.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <img alt="winney" src="/images/blog-head.jpg">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/02/React-%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="winney">
+      <meta itemprop="description" content="Doing is better than saying.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="winney">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          React-笔记
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-03-02 12:00:41" itemprop="dateCreated datePublished" datetime="2021-03-02T12:00:41+08:00">2021-03-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-08-24 18:09:23" itemprop="dateModified" datetime="2022-08-24T18:09:23+08:00">2022-08-24</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/React/" itemprop="url" rel="index"><span itemprop="name">React</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h4 id="创建应用"><a href="#创建应用" class="headerlink" title="创建应用"></a><a target="_blank" rel="noopener" href="https://zh-hans.reactjs.org/docs/create-a-new-react-app.html#create-react-app">创建应用</a></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npx create-react-app my-app</span><br><span class="line">cd my-app</span><br><span class="line">npm start</span><br></pre></td></tr></table></figure>
+
+
+
+<p>react使用Apifox的项目案例，可参考<code>Gitee/ad_manage_react</code>项目</p>
+<p>json-server的使用，可参考<code>全球新闻发布系统项目</code></p>
+<h4 id="单页面应用"><a href="#单页面应用" class="headerlink" title="单页面应用"></a>单页面应用</h4><p>与页面或后续页面的任何交互，都不再需要往返 server 加载资源，即页面不会重新加载</p>
+<h4 id="编译器"><a href="#编译器" class="headerlink" title="编译器"></a>编译器</h4><p><a target="_blank" rel="noopener" href="https://babeljs.io/">Babel</a> 是 React 最常用的 compiler</p>
+<h4 id="打包工具"><a href="#打包工具" class="headerlink" title="打包工具"></a>打包工具</h4><p>常用的打包 React 应用的工具有 <a target="_blank" rel="noopener" href="https://webpack.js.org/">webpack</a> 和 <a target="_blank" rel="noopener" href="http://browserify.org/">Browserify</a>。</p>
+<h4 id="管理工具"><a href="#管理工具" class="headerlink" title="管理工具"></a>管理工具</h4><p><a target="_blank" rel="noopener" href="https://www.npmjs.com/">npm</a> 和 <a target="_blank" rel="noopener" href="https://yarnpkg.com/">Yarn</a> 是两个常用的管理 React 应用依赖的 package 管理工具</p>
+<h4 id="JSX"><a href="#JSX" class="headerlink" title="JSX"></a>JSX</h4><p>React DOM 使用 camelCase（驼峰式命名）来定义属性的名称</p>
+<h4 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h4><p>组件名称应该始终以大写字母开头（<code>&lt;Wrapper/&gt;</code> <strong>而不是</strong> <code>&lt;wrapper/&gt;</code>）</p>
+<h4 id="props"><a href="#props" class="headerlink" title="props"></a>props</h4><p><code>props</code> 是只读的。不应以任何方式修改它们</p>
+<h4 id="props-children"><a href="#props-children" class="headerlink" title="props.children"></a>props.children</h4><p>每个组件都可以获取到 <code>props.children</code>。它包含组件的开始标签和结束标签之间的内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;Welcome&gt;Hello world!&lt;/Welcome&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="state"><a href="#state" class="headerlink" title="state"></a>state</h4><p>当组件中的一些数据在某些时刻发生变化时，这时就需要使用 <code>state</code> 来跟踪状态</p>
+<p><code>state</code> 和 <code>props</code> 之间最重要的区别是：<code>props</code> 由父组件传入，而 <code>state</code> 由组件本身管理。组件不能修改 <code>props</code>，但它可以修改 <code>state</code>。</p>
+<h4 id="生命周期方法"><a href="#生命周期方法" class="headerlink" title="生命周期方法"></a><a target="_blank" rel="noopener" href="https://zh-hans.reactjs.org/docs/state-and-lifecycle.html#adding-lifecycle-methods-to-a-class">生命周期方法</a></h4><h4 id="受控组件-vs-非受控组件"><a href="#受控组件-vs-非受控组件" class="headerlink" title="受控组件 vs 非受控组件"></a><a target="_blank" rel="noopener" href="https://zh-hans.reactjs.org/docs/forms.html#controlled-components">受控组件</a> vs <a target="_blank" rel="noopener" href="https://zh-hans.reactjs.org/docs/uncontrolled-components.html">非受控组件</a></h4><h4 id="Ref"><a href="#Ref" class="headerlink" title="Ref"></a><a target="_blank" rel="noopener" href="https://zh-hans.reactjs.org/docs/refs-and-the-dom.html">Ref</a></h4><h4 id="状态提升"><a href="#状态提升" class="headerlink" title="状态提升"></a><a target="_blank" rel="noopener" href="https://zh-hans.reactjs.org/docs/lifting-state-up.html">状态提升</a></h4><h4 id="应该在-React-组件的哪个生命周期函数中发起-AJAX-请求？"><a href="#应该在-React-组件的哪个生命周期函数中发起-AJAX-请求？" class="headerlink" title="应该在 React 组件的哪个生命周期函数中发起 AJAX 请求？"></a>应该在 React 组件的哪个生命周期函数中发起 AJAX 请求？</h4><p>在 <a target="_blank" rel="noopener" href="https://zh-hans.reactjs.org/docs/react-component.html#mounting"><code>componentDidMount</code></a> 这个生命周期函数中发起 AJAX 请求</p>
+<h4 id="工具链"><a href="#工具链" class="headerlink" title="工具链"></a><a target="_blank" rel="noopener" href="https://zh-hans.reactjs.org/docs/create-a-new-react-app.html#more-flexible-toolchains">工具链</a></h4><h4 id="JSX-防止注入攻击"><a href="#JSX-防止注入攻击" class="headerlink" title="JSX 防止注入攻击"></a>JSX 防止注入攻击</h4><p>所有的内容在渲染之前都被转换成了字符串。这样可以有效地防止 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Cross-site_scripting">XSS（cross-site-scripting, 跨站脚本）</a>攻击</p>
+<h4 id="JSX-表示对象"><a href="#JSX-表示对象" class="headerlink" title="JSX 表示对象"></a>JSX 表示对象</h4><p>Babel 会把 JSX 转译成一个名为 <code>React.createElement()</code> 函数调用</p>
+<p><code>React.createElement()</code> 会预先执行一些检查，以帮助你编写无错代码，但实际上它创建了一个这样的对象：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 注意：这是简化过的结构</span><br><span class="line">const element = &#123;</span><br><span class="line">  type: &#x27;h1&#x27;,</span><br><span class="line">  props: &#123;</span><br><span class="line">    className: &#x27;greeting&#x27;,</span><br><span class="line">    children: &#x27;Hello, world!&#x27;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>这些对象被称为 “<strong>React 元素</strong>”。</p>
+<p><strong>仅使用 React 构建的应用通常只有单一的根 DOM 节点</strong>。如果你在将 React 集成进一个已有应用，那么你可以在应用中包含任意多的独立根 DOM 节点。</p>
+<p>React 元素是<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Immutable_object">不可变对象</a>。一旦被创建，你就无法更改它的子元素或者属性。一个元素就像电影的单帧：它代表了某个特定时刻的 UI。</p>
+<h4 id="组件-1"><a href="#组件-1" class="headerlink" title="组件"></a>组件</h4><p>组件，从概念上类似于 JavaScript 函数。它接受任意的入参（即 “props”），并返回用于描述页面展示内容的 React 元素。</p>
+<p>建议从组件自身的角度命名 props，而不是依赖于调用组件的上下文命名。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;Avatar user=&#123;props.author&#125; /&gt;</span><br><span class="line"></span><br><span class="line">function Avatar(props) &#123;</span><br><span class="line">  return (</span><br><span class="line">    &lt;img className=&quot;Avatar&quot;</span><br><span class="line">      src=&#123;props.user.avatarUrl&#125;</span><br><span class="line">      alt=&#123;props.user.name&#125;</span><br><span class="line">    /&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>所有 React 组件都必须像纯函数一样保护它们的 props 不被更改</strong></p>
+<h4 id="不要直接修改-State"><a href="#不要直接修改-State" class="headerlink" title="不要直接修改 State"></a>不要直接修改 State</h4><p>应该使用 <code>setState()</code></p>
+<p>构造函数是唯一可以给 <code>this.state</code> 赋值的地方</p>
+<h4 id="State-的更新可能是异步的"><a href="#State-的更新可能是异步的" class="headerlink" title="State 的更新可能是异步的"></a><a target="_blank" rel="noopener" href="https://zh-hans.reactjs.org/docs/state-and-lifecycle.html">State 的更新可能是异步的</a></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// Wrong</span><br><span class="line">this.setState(&#123;</span><br><span class="line">  counter: this.state.counter + this.props.increment,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// Correct</span><br><span class="line">this.setState((state, props) =&gt; (&#123;</span><br><span class="line">  counter: state.counter + props.increment</span><br><span class="line">&#125;));</span><br></pre></td></tr></table></figure>
+
+<h3 id="条件渲染"><a href="#条件渲染" class="headerlink" title="条件渲染"></a>条件渲染</h3><h4 id="元素变量"><a href="#元素变量" class="headerlink" title="元素变量"></a>元素变量</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;unreadMessages.length &gt; 0 &amp;&amp;</span><br><span class="line">    &lt;h2&gt;</span><br><span class="line">      You have &#123;unreadMessages.length&#125; unread messages.</span><br><span class="line">    &lt;/h2&gt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="与运算符-amp-amp"><a href="#与运算符-amp-amp" class="headerlink" title="与运算符 &amp;&amp;"></a>与运算符 &amp;&amp;</h4><p><code>true &amp;&amp; expression</code> 总是会返回 <code>expression</code>, 而 <code>false &amp;&amp; expression</code> 总是会返回 <code>false</code>。</p>
+<p>注意：下面示例中，render 方法的返回值是 <code>&lt;div&gt;0&lt;/div&gt;</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123; count &amp;&amp; &lt;h1&gt;Messages: &#123;count&#125;&lt;/h1&gt;&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="三目运算符"><a href="#三目运算符" class="headerlink" title="三目运算符"></a>三目运算符</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">The user is &lt;b&gt;&#123;isLoggedIn ? &#x27;currently&#x27; : &#x27;not&#x27;&#125;&lt;/b&gt; logged in.</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;isLoggedIn</span><br><span class="line">    ? &lt;LogoutButton onClick=&#123;this.handleLogoutClick&#125; /&gt;</span><br><span class="line">    : &lt;LoginButton onClick=&#123;this.handleLoginClick&#125; /&gt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="阻止组件渲染"><a href="#阻止组件渲染" class="headerlink" title="阻止组件渲染"></a><a target="_blank" rel="noopener" href="https://zh-hans.reactjs.org/docs/conditional-rendering.html">阻止组件渲染</a></h4><p>让 <code>render</code> 方法直接返回 <code>null</code>，而不进行任何渲染</p>
+<h4 id="受控组件"><a href="#受控组件" class="headerlink" title="受控组件"></a>受控组件</h4><p>表单元素（如<code>&lt;input&gt;</code>、 <code>&lt;textarea&gt;</code> 和 <code>&lt;select&gt;</code>）通常自己维护 state</p>
+<h4 id="文件-input-标签"><a href="#文件-input-标签" class="headerlink" title="文件 input 标签"></a>文件 input 标签</h4><p>因为它的 value 只读，所以它是 React 中的一个<strong>非受控</strong>组件</p>
+<h4 id="提交事件"><a href="#提交事件" class="headerlink" title="提交事件"></a>提交事件</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;form onSubmit=&#123;this.handleSubmit&#125;&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="组合-vs-继承"><a href="#组合-vs-继承" class="headerlink" title="组合 vs 继承"></a>组合 vs 继承</h3><h4 id="包含关系"><a href="#包含关系" class="headerlink" title="包含关系"></a>包含关系</h4><p>有些组件无法提前知晓它们子组件的具体内容。在 <code>Sidebar</code>（侧边栏）和 <code>Dialog</code>（对话框）等展现通用容器（box）的组件中特别容易遇到这种情况。</p>
+<p>我们建议这些组件使用一个特殊的 <code>children</code> prop 来将他们的子组件传递到渲染结果中：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;props.children&#125;</span><br></pre></td></tr></table></figure>
+
+<p>少数情况下，你可能需要在一个组件中预留出几个“洞”。这种情况下，我们可以不使用 <code>children</code>，而是自行约定：将所需内容传入 props，并使用相应的 prop</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;div className=&quot;SplitPane&quot;&gt;</span><br><span class="line">  &lt;div className=&quot;SplitPane-left&quot;&gt;</span><br><span class="line">    &#123;props.left&#125;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">  &lt;div className=&quot;SplitPane-right&quot;&gt;</span><br><span class="line">    &#123;props.right&#125;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="将设计好的-UI-划分为组件层级"><a href="#将设计好的-UI-划分为组件层级" class="headerlink" title="将设计好的 UI 划分为组件层级"></a><a target="_blank" rel="noopener" href="https://zh-hans.reactjs.org/docs/thinking-in-react.html">将设计好的 UI 划分为组件层级</a></h4><h4 id="编写组件步骤"><a href="#编写组件步骤" class="headerlink" title="编写组件步骤"></a>编写组件步骤</h4><ol>
+<li>第一步：将设计好的 UI 划分为组件层级</li>
+<li>第二步：用 React 创建一个静态版本</li>
+<li>第三步：确定 UI state 的最小（且完整）表示</li>
+<li>第四步：确定 state 放置的位置</li>
+<li>第五步：添加反向数据流</li>
+</ol>
+<blockquote>
+<p>通过问自己以下三个问题，你可以逐个检查相应数据是否属于 state：</p>
+<ol>
+<li>该数据是否是由父组件通过 props 传递而来的？如果是，那它应该不是 state。</li>
+<li>该数据是否随时间的推移而保持不变？如果是，那它应该也不是 state。</li>
+<li>你能否根据其他 state 或 props 计算出该数据的值？如果是，那它也不是 state。</li>
+</ol>
+<p>包含所有产品的原始列表是经由 props 传入的，所以它不是 state；搜索词和复选框的值应该是 state，因为它们随时间会发生改变且无法由其他数据计算而来；经过搜索筛选的产品列表不是 state，因为它的结果可以由产品的原始列表根据搜索词和复选框的选择计算出来。</p>
+<p>综上所述，属于 state 的有：</p>
+<ul>
+<li>用户输入的搜索词</li>
+<li>复选框是否选中的值</li>
+</ul>
+</blockquote>
+<p>哪个组件应该拥有某个 state </p>
+<ul>
+<li>找到他们的共同所有者（common owner）组件（在组件层级上高于所有需要该 state 的组件）。</li>
+</ul>
+<p><strong>state 只能由拥有它们的组件进行更改</strong></p>
+<p>state在哪个组件，修改state的方法就在哪个组件</p>
+<h4 id="生命周期图谱"><a href="#生命周期图谱" class="headerlink" title="生命周期图谱"></a><strong><a target="_blank" rel="noopener" href="https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/">生命周期图谱</a></strong></h4><h4 id="组件的生命周期"><a href="#组件的生命周期" class="headerlink" title="组件的生命周期"></a><a target="_blank" rel="noopener" href="https://zh-hans.reactjs.org/docs/react-component.html">组件的生命周期</a></h4><h4 id="React权限菜单设计"><a href="#React权限菜单设计" class="headerlink" title="React权限菜单设计"></a>React权限菜单设计</h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/oKeYue/article/details/79092903">React项目配置6(前后端分离如何控制用户权限)</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/oKeYue/article/details/81130922?spm=1001.2014.3001.5502">(源码开放) React + webpack3 多页面应用 及 常见问题解答</a></p>
+<h5 id="10分钟快速搭建React权限菜单设计"><a href="#10分钟快速搭建React权限菜单设计" class="headerlink" title="10分钟快速搭建React权限菜单设计"></a><a target="_blank" rel="noopener" href="https://www.csdn.net/tags/NtDaIg3sMDg5MTktYmxvZwO0O0OO0O0O.html">10分钟快速搭建React权限菜单设计</a></h5><h5 id="React-组件权限控制的实现"><a href="#React-组件权限控制的实现" class="headerlink" title="React 组件权限控制的实现"></a><a target="_blank" rel="noopener" href="https://www.jb51.net/article/237335.htm">React 组件权限控制的实现</a></h5><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_18913129/article/details/105491090">React的React.FC与React.Component的初步认识</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/94ace269414d">useMemo和useEffect有什么区别？怎么使用useMemo</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/411190859">useMemo 使用指南</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_33782386/article/details/88610257">react-hooks中的一些懵逼点</a></p>
+<blockquote>
+<p><code>useEffect</code>只能在<code>DOM</code>更新后再触发再去控制</p>
+<p><code>memo</code>是在<code>DOM</code>更新前触发的，就像官方所说的，类比生命周期就是<a target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=https://zh-hans.reactjs.org/docs/hooks-faq.html%23how-do-lifecycle-methods-correspond-to-hooks">shouldComponentUpdate</a></p>
+</blockquote>
+<blockquote>
+<p>在前端开发的过程中，我们需要缓存一些内容，以避免在需渲染过程中因大量不必要的耗时计算而导致的性能问题。为此 React 提供了一些方法可以帮助我们去实现数据的缓存，useMemo 就是其中之一</p>
+</blockquote>
+<h4 id="React-Hooks"><a href="#React-Hooks" class="headerlink" title="React Hooks"></a>React Hooks</h4><p><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000018928587">React Hooks 解析（上）：基础</a></p>
+<p><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000018950566">React Hooks 解析（下）：进阶</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/be8fb469d507">useCallback</a></p>
+<blockquote>
+<p>解释这个 Hook 之前先理解下什么是副作用。网络请求、订阅某个模块或者 DOM 操作都是副作用的例子，Effect Hook 是专门用来处理副作用的。正常情况下，在<code>Function Component</code>的函数体中，是不建议写副作用代码的，否则容易出 bug。</p>
+</blockquote>
+<blockquote>
+<p>在绝大多数情况下，<code>useEffect</code>Hook 是更好的选择。唯一例外的就是需要根据新的 UI 来进行 DOM 操作的场景。<code>useLayoutEffect</code>会保证在页面渲染前执行，也就是说页面渲染出来的是最终的效果。如果使用<code>useEffect</code>，页面很可能因为渲染了 2 次而出现抖动。</p>
+</blockquote>
+<h5 id="useContext"><a href="#useContext" class="headerlink" title="useContext"></a>useContext</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function HeaderBar() &#123;</span><br><span class="line">  const user = useContext(CurrentUser);</span><br><span class="line">  const notifications = useContext(Notifications);</span><br><span class="line"></span><br><span class="line">  return (</span><br><span class="line">    &lt;header&gt;</span><br><span class="line">      Welcome back, &#123;user.name&#125;!</span><br><span class="line">      You have &#123;notifications.length&#125; notifications.</span><br><span class="line">    &lt;/header&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="useReducer"><a href="#useReducer" class="headerlink" title="useReducer"></a>useReducer</h5><p><code>useReducer</code>的用法跟 Redux 非常相似，当 state 的计算逻辑比较复杂又或者需要根据以前的值来计算时，使用这个 Hook 比<code>useState</code>会更好。</p>
+<h5 id="useCallback"><a href="#useCallback" class="headerlink" title="useCallback"></a>useCallback</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Foo</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> [count, setCount] = <span class="title function_">useState</span>(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> memoizedHandleClick = <span class="title function_">useCallback</span>(</span><br><span class="line">    <span class="function">() =&gt;</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`Click happened with dependency: <span class="subst">$&#123;count&#125;</span>`</span>), [count],</span><br><span class="line">  ); </span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">Button</span> <span class="attr">onClick</span>=<span class="string">&#123;memoizedHandleClick&#125;</span>&gt;</span>Click Me<span class="tag">&lt;/<span class="name">Button</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>useCallback</code>缓存的是方法的引用，而<code>useMemo</code>缓存的则是方法的返回值。使用场景是减少不必要的子组件渲染：</p>
+</blockquote>
+<h5 id="useRef"><a href="#useRef" class="headerlink" title="useRef"></a>useRef</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function() &#123;</span><br><span class="line">  const myRef = useRef(null);</span><br><span class="line"></span><br><span class="line">  useEffect(() =&gt; &#123;</span><br><span class="line">    myRef.current.focus();</span><br><span class="line">  &#125;, [])</span><br><span class="line">  </span><br><span class="line">  return &lt;input ref=&#123;myRef&#125; type=&quot;text&quot; /&gt;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>useRef</code>返回一个普通 JS 对象，可以将任意数据存到<code>current</code>属性里面，就像使用实例化对象的<code>this</code>一样。另外一个使用场景是获取 previous props 或 previous state</p>
+</blockquote>
+<h5 id="自定义-Hook"><a href="#自定义-Hook" class="headerlink" title="自定义 Hook"></a>自定义 Hook</h5><blockquote>
+<p>自定义 Hook 的命名有讲究，必须以<code>use</code>开头，在里面可以调用其它的 Hook。入参和返回值都可以根据需要自定义，没有特殊的约定。使用也像普通的函数调用一样，Hook 里面其它的 Hook（如<code>useEffect</code>）会自动在合适的时候调用</p>
+</blockquote>
+<h4 id="Effect-Hook"><a href="#Effect-Hook" class="headerlink" title="Effect Hook"></a><a target="_blank" rel="noopener" href="https://zh-hans.reactjs.org/docs/hooks-overview.html#effect-hook">Effect Hook</a></h4><blockquote>
+<p>在 React 组件中执行过<strong>数据获取、订阅或者手动修改过 DOM</strong>。我们统一把这些操作称为“<strong>副作用</strong>”，或者简称为“作用”。</p>
+<p><code>useEffect</code> 就是一个 Effect Hook，给函数组件增加了操作副作用的能力。它跟 class 组件中的 <code>componentDidMount</code>、<code>componentDidUpdate</code> 和 <code>componentWillUnmount</code> 具有相同的用途，只不过被合并成了一个 API。（我们会在<a target="_blank" rel="noopener" href="https://zh-hans.reactjs.org/docs/hooks-effect.html">使用 Effect Hook</a> 里展示对比 <code>useEffect</code> 和这些方法的例子。）</p>
+</blockquote>
+<h4 id="Hook概览"><a href="#Hook概览" class="headerlink" title="Hook概览"></a><a target="_blank" rel="noopener" href="https://zh-hans.reactjs.org/docs/hooks-overview.html#effect-hook">Hook概览</a></h4>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/React/" rel="tag"># React</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/02/20/Vue2-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" rel="prev" title="Vue2-基础知识">
+      <i class="fa fa-chevron-left"></i> Vue2-基础知识
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/03/02/React-%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/" rel="next" title="React-使用笔记">
+      React-使用笔记 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E5%BA%94%E7%94%A8"><span class="nav-number">1.</span> <span class="nav-text">创建应用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8D%95%E9%A1%B5%E9%9D%A2%E5%BA%94%E7%94%A8"><span class="nav-number">2.</span> <span class="nav-text">单页面应用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BC%96%E8%AF%91%E5%99%A8"><span class="nav-number">3.</span> <span class="nav-text">编译器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%89%93%E5%8C%85%E5%B7%A5%E5%85%B7"><span class="nav-number">4.</span> <span class="nav-text">打包工具</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7"><span class="nav-number">5.</span> <span class="nav-text">管理工具</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JSX"><span class="nav-number">6.</span> <span class="nav-text">JSX</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%84%E4%BB%B6"><span class="nav-number">7.</span> <span class="nav-text">组件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#props"><span class="nav-number">8.</span> <span class="nav-text">props</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#props-children"><span class="nav-number">9.</span> <span class="nav-text">props.children</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#state"><span class="nav-number">10.</span> <span class="nav-text">state</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E6%96%B9%E6%B3%95"><span class="nav-number">11.</span> <span class="nav-text">生命周期方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%97%E6%8E%A7%E7%BB%84%E4%BB%B6-vs-%E9%9D%9E%E5%8F%97%E6%8E%A7%E7%BB%84%E4%BB%B6"><span class="nav-number">12.</span> <span class="nav-text">受控组件 vs 非受控组件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Ref"><span class="nav-number">13.</span> <span class="nav-text">Ref</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%8A%B6%E6%80%81%E6%8F%90%E5%8D%87"><span class="nav-number">14.</span> <span class="nav-text">状态提升</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BA%94%E8%AF%A5%E5%9C%A8-React-%E7%BB%84%E4%BB%B6%E7%9A%84%E5%93%AA%E4%B8%AA%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%87%BD%E6%95%B0%E4%B8%AD%E5%8F%91%E8%B5%B7-AJAX-%E8%AF%B7%E6%B1%82%EF%BC%9F"><span class="nav-number">15.</span> <span class="nav-text">应该在 React 组件的哪个生命周期函数中发起 AJAX 请求？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B7%A5%E5%85%B7%E9%93%BE"><span class="nav-number">16.</span> <span class="nav-text">工具链</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JSX-%E9%98%B2%E6%AD%A2%E6%B3%A8%E5%85%A5%E6%94%BB%E5%87%BB"><span class="nav-number">17.</span> <span class="nav-text">JSX 防止注入攻击</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JSX-%E8%A1%A8%E7%A4%BA%E5%AF%B9%E8%B1%A1"><span class="nav-number">18.</span> <span class="nav-text">JSX 表示对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%84%E4%BB%B6-1"><span class="nav-number">19.</span> <span class="nav-text">组件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8D%E8%A6%81%E7%9B%B4%E6%8E%A5%E4%BF%AE%E6%94%B9-State"><span class="nav-number">20.</span> <span class="nav-text">不要直接修改 State</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#State-%E7%9A%84%E6%9B%B4%E6%96%B0%E5%8F%AF%E8%83%BD%E6%98%AF%E5%BC%82%E6%AD%A5%E7%9A%84"><span class="nav-number">21.</span> <span class="nav-text">State 的更新可能是异步的</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9D%A1%E4%BB%B6%E6%B8%B2%E6%9F%93"><span class="nav-number"></span> <span class="nav-text">条件渲染</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%83%E7%B4%A0%E5%8F%98%E9%87%8F"><span class="nav-number">1.</span> <span class="nav-text">元素变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8E%E8%BF%90%E7%AE%97%E7%AC%A6-amp-amp"><span class="nav-number">2.</span> <span class="nav-text">与运算符 &amp;&amp;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%89%E7%9B%AE%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">3.</span> <span class="nav-text">三目运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%98%BB%E6%AD%A2%E7%BB%84%E4%BB%B6%E6%B8%B2%E6%9F%93"><span class="nav-number">4.</span> <span class="nav-text">阻止组件渲染</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%97%E6%8E%A7%E7%BB%84%E4%BB%B6"><span class="nav-number">5.</span> <span class="nav-text">受控组件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%87%E4%BB%B6-input-%E6%A0%87%E7%AD%BE"><span class="nav-number">6.</span> <span class="nav-text">文件 input 标签</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8F%90%E4%BA%A4%E4%BA%8B%E4%BB%B6"><span class="nav-number">7.</span> <span class="nav-text">提交事件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%84%E5%90%88-vs-%E7%BB%A7%E6%89%BF"><span class="nav-number"></span> <span class="nav-text">组合 vs 继承</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8C%85%E5%90%AB%E5%85%B3%E7%B3%BB"><span class="nav-number">1.</span> <span class="nav-text">包含关系</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B0%86%E8%AE%BE%E8%AE%A1%E5%A5%BD%E7%9A%84-UI-%E5%88%92%E5%88%86%E4%B8%BA%E7%BB%84%E4%BB%B6%E5%B1%82%E7%BA%A7"><span class="nav-number">2.</span> <span class="nav-text">将设计好的 UI 划分为组件层级</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BC%96%E5%86%99%E7%BB%84%E4%BB%B6%E6%AD%A5%E9%AA%A4"><span class="nav-number">3.</span> <span class="nav-text">编写组件步骤</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%9B%BE%E8%B0%B1"><span class="nav-number">4.</span> <span class="nav-text">生命周期图谱</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%84%E4%BB%B6%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="nav-number">5.</span> <span class="nav-text">组件的生命周期</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#React%E6%9D%83%E9%99%90%E8%8F%9C%E5%8D%95%E8%AE%BE%E8%AE%A1"><span class="nav-number">6.</span> <span class="nav-text">React权限菜单设计</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#10%E5%88%86%E9%92%9F%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BAReact%E6%9D%83%E9%99%90%E8%8F%9C%E5%8D%95%E8%AE%BE%E8%AE%A1"><span class="nav-number">6.1.</span> <span class="nav-text">10分钟快速搭建React权限菜单设计</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#React-%E7%BB%84%E4%BB%B6%E6%9D%83%E9%99%90%E6%8E%A7%E5%88%B6%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="nav-number">6.2.</span> <span class="nav-text">React 组件权限控制的实现</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#React-Hooks"><span class="nav-number">7.</span> <span class="nav-text">React Hooks</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#useContext"><span class="nav-number">7.1.</span> <span class="nav-text">useContext</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#useReducer"><span class="nav-number">7.2.</span> <span class="nav-text">useReducer</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#useCallback"><span class="nav-number">7.3.</span> <span class="nav-text">useCallback</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#useRef"><span class="nav-number">7.4.</span> <span class="nav-text">useRef</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89-Hook"><span class="nav-number">7.5.</span> <span class="nav-text">自定义 Hook</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Effect-Hook"><span class="nav-number">8.</span> <span class="nav-text">Effect Hook</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Hook%E6%A6%82%E8%A7%88"><span class="nav-number">9.</span> <span class="nav-text">Hook概览</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="winney"
+      src="/images/header.jpg">
+  <p class="site-author-name" itemprop="name">winney</p>
+  <div class="site-description" itemprop="description">Doing is better than saying.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">127</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">55</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">75</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://www.xiaochao.me/" title="https:&#x2F;&#x2F;www.xiaochao.me&#x2F;" rel="noopener" target="_blank">小超</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://winney07.github.io/" title="https:&#x2F;&#x2F;winney07.github.io&#x2F;" rel="noopener" target="_blank">winney07</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2015 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">winney07</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

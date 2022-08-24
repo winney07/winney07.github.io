@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="Egret Engine 2D  第一天：掌握TypeScript的独有概念，掌握Egret Engine 2D # 显示对象部分  第二天：掌握Egret Engine 2D # 显示容器部分  第三天：掌握Egret Engine 2D #矢量绘图部分  第四天：掌握Egret Engine 2D #遮罩部分  第五天：掌握Egret Engine 2D #碰撞检测部分  第六天：掌握Egre">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Egret-Engine-白鹭引擎">
+<meta property="og:url" content="http://example.com/2021/02/07/Egret-Engine-%E7%99%BD%E9%B9%AD%E5%BC%95%E6%93%8E/index.html">
+<meta property="og:site_name" content="winney">
+<meta property="og:description" content="Egret Engine 2D  第一天：掌握TypeScript的独有概念，掌握Egret Engine 2D # 显示对象部分  第二天：掌握Egret Engine 2D # 显示容器部分  第三天：掌握Egret Engine 2D #矢量绘图部分  第四天：掌握Egret Engine 2D #遮罩部分  第五天：掌握Egret Engine 2D #碰撞检测部分  第六天：掌握Egre">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-02-07T06:22:56.000Z">
+<meta property="article:modified_time" content="2022-08-24T10:09:23.322Z">
+<meta property="article:author" content="winney">
+<meta property="article:tag" content="Egret Engine">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2021/02/07/Egret-Engine-%E7%99%BD%E9%B9%AD%E5%BC%95%E6%93%8E/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Egret-Engine-白鹭引擎 | winney</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">winney</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">It is never too old to learn.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <img alt="winney" src="/images/blog-head.jpg">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/07/Egret-Engine-%E7%99%BD%E9%B9%AD%E5%BC%95%E6%93%8E/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="winney">
+      <meta itemprop="description" content="Doing is better than saying.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="winney">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Egret-Engine-白鹭引擎
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-02-07 14:22:56" itemprop="dateCreated datePublished" datetime="2021-02-07T14:22:56+08:00">2021-02-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-08-24 18:09:23" itemprop="dateModified" datetime="2022-08-24T18:09:23+08:00">2022-08-24</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/Egret-Engine/" itemprop="url" rel="index"><span itemprop="name">Egret Engine</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h4 id="Egret-Engine-2D"><a href="#Egret-Engine-2D" class="headerlink" title="Egret Engine 2D"></a>Egret Engine 2D</h4><ul>
+<li><input checked="" disabled="" type="checkbox"> 第一天：掌握TypeScript的独有概念，掌握<a target="_blank" rel="noopener" href="https://github.com/LinLshare/egret_demo/tree/master/day01_display_object/src">Egret Engine 2D # 显示对象部分</a></li>
+<li><input checked="" disabled="" type="checkbox"> 第二天：掌握<a target="_blank" rel="noopener" href="https://github.com/LinLshare/egret_demo/tree/master/day02_display_container/src">Egret Engine 2D # 显示容器部分</a></li>
+<li><input checked="" disabled="" type="checkbox"> 第三天：掌握<a target="_blank" rel="noopener" href="https://github.com/LinLshare/egret_demo/tree/master/day03_vector_drawing/src">Egret Engine 2D #矢量绘图部分</a></li>
+<li><input checked="" disabled="" type="checkbox"> 第四天：掌握<a target="_blank" rel="noopener" href="https://github.com/LinLshare/egret_demo/tree/master/day04_shade/src">Egret Engine 2D #遮罩部分</a></li>
+<li><input checked="" disabled="" type="checkbox"> 第五天：掌握<a target="_blank" rel="noopener" href="https://github.com/LinLshare/egret_demo/tree/master/day05_collision_detection/src">Egret Engine 2D #碰撞检测部分</a></li>
+<li><input checked="" disabled="" type="checkbox"> 第六天：掌握<a target="_blank" rel="noopener" href="https://github.com/LinLshare/egret_demo/tree/master/day06_text/src">Egret Engine 2D #文本部分</a></li>
+<li><input checked="" disabled="" type="checkbox"> 第七天：掌握<a target="_blank" rel="noopener" href="https://github.com/LinLshare/egret_demo/tree/master/day07_event_mechanism/src">Egret Engin 2D #事件机制部分</a></li>
+<li><input checked="" disabled="" type="checkbox"> 第八天：掌握<a target="_blank" rel="noopener" href="https://github.com/LinLshare/egret_demo/tree/master/day08_network/src">Egret Engine 2D #网络部分</a></li>
+<li><input checked="" disabled="" type="checkbox"> 第九天：掌握<a target="_blank" rel="noopener" href="https://github.com/LinLshare/egret_demo/tree/master/day09_bitmap_texture/src">Egret Engine 2D #位图纹理部分</a></li>
+<li><input checked="" disabled="" type="checkbox"> 第十天：掌握<a target="_blank" rel="noopener" href="https://github.com/LinLshare/egret_demo/tree/master/day10_mixed_mode/src">Egret Engine 2D #混合模式部分</a></li>
+<li><input checked="" disabled="" type="checkbox"> 第十一天：掌握<a target="_blank" rel="noopener" href="https://github.com/LinLshare/egret_demo/tree/master/day11_filter_effect/src">Egret Engine 2D #滤镜部分</a></li>
+<li><input checked="" disabled="" type="checkbox"> 第十二天：掌握<a target="_blank" rel="noopener" href="https://github.com/LinLshare/egret_demo/tree/master/day12_time_controll/src">Egret Engine 2D #时间控制部分</a></li>
+<li><input checked="" disabled="" type="checkbox"> 第十三天：掌握<a target="_blank" rel="noopener" href="https://github.com/LinLshare/egret_demo/tree/master/day13_multimedia/src">Egret Engine 2D #多媒体部分</a></li>
+<li><input checked="" disabled="" type="checkbox"> 第十四天：掌握<a target="_blank" rel="noopener" href="https://github.com/LinLshare/egret_demo/tree/master/day14_render_mode/src">Egret Engine 2D #渲染模式部分</a></li>
+<li><input checked="" disabled="" type="checkbox"> 第十五天：掌握<a target="_blank" rel="noopener" href="https://github.com/LinLshare/egret_demo/tree/master/day15_screen_adaptation/src">Egret Engine 2D #屏幕适配部分</a></li>
+<li><input checked="" disabled="" type="checkbox"> 第十六天：掌握<a target="_blank" rel="noopener" href="https://github.com/LinLshare/egret_demo/tree/master/day16_debug/src">Egret Engine 2D #调试部分</a></li>
+<li><input checked="" disabled="" type="checkbox"> 第十七天：掌握<a target="_blank" rel="noopener" href="https://github.com/LinLshare/egret_demo/tree/master/day17_call_js/src">Egret Engine 2D #调用原生JS</a></li>
+<li><input disabled="" type="checkbox"> <del>第十八天：掌握<a target="_blank" rel="noopener" href="http://developer.egret.com/cn/github/egret-docs/Engine2D/native/horizontalScreen/index.html">Egret Engine 2D #原生支持与打包发布部分</a></del></li>
+</ul>
+<h4 id="EUI库"><a href="#EUI库" class="headerlink" title="EUI库"></a>EUI库</h4><ul>
+<li><input checked="" disabled="" type="checkbox"> 第十九天：掌握<a target="_blank" rel="noopener" href="https://github.com/LinLshare/egret_demo/tree/master/day19_eui_get_start/src">Egret Engine # EUI库 # 入门</a></li>
+<li><input checked="" disabled="" type="checkbox"> 第二十天：掌握<a target="_blank" rel="noopener" href="https://github.com/LinLshare/egret_demo/tree/master/day20_exml/src">Egret Engine # EUI库 # EXML基本语法</a></li>
+<li><input checked="" disabled="" type="checkbox"> 第二十一天：掌握<a target="_blank" rel="noopener" href="https://github.com/LinLshare/egret_demo/tree/master/day21_skin/src">Egret Engine # EUI库 # 皮肤</a></li>
+<li><input checked="" disabled="" type="checkbox"> 第二十二天：掌握<a target="_blank" rel="noopener" href="https://github.com/LinLshare/egret_demo/tree/master/day22_auto_layout/src">Egret Engine # EUI库 # 自动布局</a></li>
+<li><input checked="" disabled="" type="checkbox"> 第二十三天：掌握<a target="_blank" rel="noopener" href="https://github.com/LinLshare/egret_demo/tree/master/day23_use_layout/src">Egret Engine # EUI库 # 使用布局类</a></li>
+<li><input checked="" disabled="" type="checkbox"> 第二十四天：掌握<a target="_blank" rel="noopener" href="https://github.com/LinLshare/egret_demo/tree/master/day24_controls/src">Egret Engine # EUI库 # 控件</a></li>
+<li><input checked="" disabled="" type="checkbox"> 第二十五天：掌握<a target="_blank" rel="noopener" href="https://github.com/LinLshare/egret_demo/tree/master/day25_container/src">Egret Engine # EUI库 # 容器</a></li>
+<li><input checked="" disabled="" type="checkbox"> 第二十六天：掌握<a target="_blank" rel="noopener" href="https://github.com/LinLshare/egret_demo/tree/master/day26_data_collection/src">Egret Engine # EUI库 # 数据集合</a></li>
+<li><input disabled="" type="checkbox"> <del>第二十七天：掌握<a target="_blank" rel="noopener" href="http://developer.egret.com/cn/github/egret-docs/extension/EUI/advancedSkills/tool/index.html">Egret Engine # EUI库 # 进阶技巧</a></del></li>
+</ul>
+<h4 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h4><ul>
+<li><input disabled="" type="checkbox"> <del>第二十八天：<a target="_blank" rel="noopener" href="https://github.com/LinLshare/egret_demo/tree/master/day28_elimination_game/src">消除类游戏开发</a></del></li>
+<li><input checked="" disabled="" type="checkbox"> 第二十九天：<a target="_blank" rel="noopener" href="https://github.com/LinLshare/egret_demo/tree/master/day29_new_begin/src">新的开始</a></li>
+<li><input checked="" disabled="" type="checkbox"> 第三十天：<a target="_blank" rel="noopener" href="https://github.com/LinLshare/egret_demo/tree/master/day30_simple_math_test/src">狐狸计算题小游戏</a></li>
+</ul>
+<h2 id="TypeScript-和-JavaScript学习站"><a href="#TypeScript-和-JavaScript学习站" class="headerlink" title="TypeScript 和 JavaScript学习站"></a>TypeScript 和 JavaScript学习站</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/25421196">TypeScript 和 JavaScript 的区别？ – 知乎</a></li>
+<li><a target="_blank" rel="noopener" href="https://zhongsp.gitbooks.io/typescript-handbook/content/">TypeScript Handbook（中文版）– gitbooks</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.kancloud.cn/kancloud/javascript-style-guide/43119">Airbnb JavaScript 代码规范（ES6）</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000">JavaScript教程 – 廖雪峰的官方网站</a> </li>
+<li><a target="_blank" rel="noopener" href="http://es6.ruanyifeng.com/">ECMAScript 6 入门 – 阮一峰</a></li>
+<li><a target="_blank" rel="noopener" href="http://justineo.github.io/singles/writing-modular-js/">使用 AMD、CommonJS 及 ES Harmony 编写模块化的 JavaScript</a></li>
+<li><a target="_blank" rel="noopener" href="http://blog.csdn.net/u010019717/article/details/50443970">Visual Studio Code之常备快捷键 –CSDN</a></li>
+<li><a target="_blank" rel="noopener" href="http://developer.egret.com/cn/github/egret-docs/Wing/editor/code/index.html">Egret Wing编辑器快捷键</a></li>
+</ul>
+<h2 id="白鹭引擎学习站"><a href="#白鹭引擎学习站" class="headerlink" title="白鹭引擎学习站"></a>白鹭引擎学习站</h2><ul>
+<li><a target="_blank" rel="noopener" href="http://developer.egret.com/cn/github/egret-docs/Engine2D/getStarted/helloWorld/index.html">Egret Engine 2D Get Started  – egret.com</a></li>
+<li><a target="_blank" rel="noopener" href="http://yuedu.baidu.com/ebook/bb0631226f1aff00bfd51e08"><strong>Egret 引擎基础入门</strong></a></li>
+<li><a target="_blank" rel="noopener" href="http://developer.egret.com/cn/github/egret-docs/extension/threes/instructions/index.html">Egret 扩展库</a></li>
+<li><a target="_blank" rel="noopener" href="http://developer.egret.com/cn/example/egret2d/index.html#010-disp-basic">教学示例 –白鹭开发者中心</a></li>
+<li><a target="_blank" rel="noopener" href="http://developer.egret.com/cn/github/egret-docs/Engine2D/debug/performanceOptimization/index.html">Egret 最佳实战</a></li>
+</ul>
+<h2 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h2><ul>
+<li><a target="_blank" rel="noopener" href="http://developer.egret.com/cn/github/egret-docs/tools/TextureMerger/manual/index.html">Texture Merger</a>：Texture Merger 可将零散纹理拼合为整图，同时也可以解析SWF、GIF动画，导出可供Egret使用的配置文件</li>
+<li><a target="_blank" rel="noopener" href="http://www.pcgeshi.com/">格式工厂</a>：用于多媒体文件的格式转换</li>
+<li><a target="_blank" rel="noopener" href="http://developer.egret.com/cn/github/egret-docs/Wing/update/update400/index.html">Egret Wing 4.0.0</a>：EgretWing是Egret团队基于VSCode开发的编辑器</li>
+<li><a target="_blank" rel="noopener" href="https://code.visualstudio.com/">VS Code</a>：微软开源的支持多种编程语言的轻量级代码编辑器</li>
+<li><a target="_blank" rel="noopener" href="https://gifcam.en.softonic.com/download">GifCam</a>：轻巧实用的Gif录制工具</li>
+</ul>
+<h2 id="第三方库与素材"><a href="#第三方库与素材" class="headerlink" title="第三方库与素材"></a>第三方库与素材</h2><ul>
+<li><a target="_blank" rel="noopener" href="http://t.egret.com/">Egret素材商城</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.dilyblog.com/eger/">H5游戏解决方案eger</a></li>
+</ul>
+<h2 id="开源实战项目"><a href="#开源实战项目" class="headerlink" title="开源实战项目"></a>开源实战项目</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/f111fei/2048egret">2048小游戏</a></li>
+</ul>
+<h2 id="License"><a href="#License" class="headerlink" title="License"></a>License</h2><pre><code>Copyright 2017 Lshare
+
+Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+</code></pre>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Egret-Engine/" rel="tag"># Egret Engine</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/02/05/JS%E6%A8%A1%E5%9D%97%E5%8C%96/" rel="prev" title="JS模块化">
+      <i class="fa fa-chevron-left"></i> JS模块化
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/02/08/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/" rel="next" title="前端开发代码规范">
+      前端开发代码规范 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Egret-Engine-2D"><span class="nav-number">1.</span> <span class="nav-text">Egret Engine 2D</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#EUI%E5%BA%93"><span class="nav-number">2.</span> <span class="nav-text">EUI库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9E%E6%88%98"><span class="nav-number">3.</span> <span class="nav-text">实战</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TypeScript-%E5%92%8C-JavaScript%E5%AD%A6%E4%B9%A0%E7%AB%99"><span class="nav-number"></span> <span class="nav-text">TypeScript 和 JavaScript学习站</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%99%BD%E9%B9%AD%E5%BC%95%E6%93%8E%E5%AD%A6%E4%B9%A0%E7%AB%99"><span class="nav-number"></span> <span class="nav-text">白鹭引擎学习站</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7"><span class="nav-number"></span> <span class="nav-text">开发工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93%E4%B8%8E%E7%B4%A0%E6%9D%90"><span class="nav-number"></span> <span class="nav-text">第三方库与素材</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E6%BA%90%E5%AE%9E%E6%88%98%E9%A1%B9%E7%9B%AE"><span class="nav-number"></span> <span class="nav-text">开源实战项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#License"><span class="nav-number"></span> <span class="nav-text">License</span></a></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="winney"
+      src="/images/header.jpg">
+  <p class="site-author-name" itemprop="name">winney</p>
+  <div class="site-description" itemprop="description">Doing is better than saying.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">127</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">55</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">75</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://www.xiaochao.me/" title="https:&#x2F;&#x2F;www.xiaochao.me&#x2F;" rel="noopener" target="_blank">小超</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://winney07.github.io/" title="https:&#x2F;&#x2F;winney07.github.io&#x2F;" rel="noopener" target="_blank">winney07</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2015 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">winney07</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="Vue 提供一套简化开发、测试与部署的方案，不再需要花大量的时间去学习理解框架的使用概念，以及耗费大量的精力去建立复杂的自动化环境。 脚手架 vue-cli这个工具可以让一个简单的命令行工具快速地构建一个足以支撑实际项目开发的Vue环境。 vue-cli的存在将项目环境的初始化工作与复杂度降到最低。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="工程化的Vue.js开发">
+<meta property="og:url" content="http://example.com/2019/06/24/%E5%B7%A5%E7%A8%8B%E5%8C%96%E7%9A%84Vue-js%E5%BC%80%E5%8F%91/index.html">
+<meta property="og:site_name" content="winney">
+<meta property="og:description" content="Vue 提供一套简化开发、测试与部署的方案，不再需要花大量的时间去学习理解框架的使用概念，以及耗费大量的精力去建立复杂的自动化环境。 脚手架 vue-cli这个工具可以让一个简单的命令行工具快速地构建一个足以支撑实际项目开发的Vue环境。 vue-cli的存在将项目环境的初始化工作与复杂度降到最低。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-06-24T03:34:45.000Z">
+<meta property="article:modified_time" content="2022-08-24T10:09:23.332Z">
+<meta property="article:author" content="winney">
+<meta property="article:tag" content="《Vue2实践揭秘》">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2019/06/24/%E5%B7%A5%E7%A8%8B%E5%8C%96%E7%9A%84Vue-js%E5%BC%80%E5%8F%91/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>工程化的Vue.js开发 | winney</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">winney</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">It is never too old to learn.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <img alt="winney" src="/images/blog-head.jpg">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2019/06/24/%E5%B7%A5%E7%A8%8B%E5%8C%96%E7%9A%84Vue-js%E5%BC%80%E5%8F%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="winney">
+      <meta itemprop="description" content="Doing is better than saying.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="winney">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          工程化的Vue.js开发
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-06-24 11:34:45" itemprop="dateCreated datePublished" datetime="2019-06-24T11:34:45+08:00">2019-06-24</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-08-24 18:09:23" itemprop="dateModified" datetime="2022-08-24T18:09:23+08:00">2022-08-24</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/Vue2-js/" itemprop="url" rel="index"><span itemprop="name">Vue2.js</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>Vue 提供一套简化开发、测试与部署的方案，不再需要花大量的时间去学习理解框架的使用概念，以及耗费大量的精力去建立复杂的自动化环境。</p>
+<h3 id="脚手架-vue-cli"><a href="#脚手架-vue-cli" class="headerlink" title="脚手架 vue-cli"></a>脚手架 vue-cli</h3><p>这个工具可以让一个简单的命令行工具快速地构建一个足以支撑实际项目开发的Vue环境。 vue-cli的存在将项目环境的初始化工作与复杂度降到最低。</p>
+<span id="more"></span>
+<h5 id="1、安装vue-cli"><a href="#1、安装vue-cli" class="headerlink" title="1、安装vue-cli"></a>1、安装vue-cli</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm i vue-cli -g</span><br><span class="line"></span><br><span class="line">(希望能在本机的任意目录下创建项目，那就得将它安装到node.js的全局运行目录下)</span><br></pre></td></tr></table></figure>
+<h5 id="2、使用vue-cli初始化项目"><a href="#2、使用vue-cli初始化项目" class="headerlink" title="2、使用vue-cli初始化项目"></a>2、使用vue-cli初始化项目</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vue   ——   查看帮助文件</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vue list  ——   查看有哪些官方模板可用</span><br><span class="line"></span><br><span class="line">（这些官方模板存在的意义在于提供强大的项目构建能力，用户可以尽可能快地进行开发。）</span><br></pre></td></tr></table></figure>
+<hr>
+<p>将list指令的输出结果翻译一下,就可以清楚地了解这些官方模板应用于哪些使用场景:</p>
+<ul>
+<li>browserify—拥有高级功能的Browserify + vueify 用于正式开发;</li>
+<li>browserify-simple——拥有基础功能的 Browserify + vueify用于快速原型开发;</li>
+<li>simple—适用于单页应用开发的最小化配置;</li>
+<li>webpack——拥有高级功能的webpack + vue-loader用于正式开发;</li>
+<li>webpack-simple—拥有基础功能的webpack + vue-loader用于快速原型开发。</li>
+</ul>
+<p>browserify的模板做得比较简陋，就算是用于正式开发还是会有些不足，配置的是Karma+Jasmine的单元测试框架，而browserify属于比较老旧的构建工具，估计官方提供这两个模板页是出于对经常使用browserify 的开发人员提供一个熟悉环境的考虑。到了正式的项目开发时，我们还是会走上 webpack的道路。</p>
+<p><strong>所以我建议初学者可以跳过 browserify 的两个模板，直接使用webpack的两个模板。首先 webpack-simple正如其名，配置了最简单的可直接支持ES6的Vue.js编译环境</strong>，可以应对那些要求时间短，结构相对简单的小型应用。如果对所有环境工具都非常熟悉，开发者也可以由这个模板入手，为项目底板定制更适应自身开发要求的环境。</p>
+<p>其次，<strong>webpack模板是一个非常赞的脚手架</strong>，将其分析透彻之后，就会知道Vue的官方开发团队在其中花了很大的功夫，将上文所叙述的开发、测试与生产环境做了非常完善的配置，从最大程度上简化了由于工具而引入项目的复杂度，也降低了开发人员对工具的学习成本，这个模板也将是本书中讲述的重点。</p>
+<hr>
+<h5 id="3、创建项目"><a href="#3、创建项目" class="headerlink" title="3、创建项目"></a>3、创建项目</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vue init webpack my-project</span><br></pre></td></tr></table></figure>
+
+<p>查看项目</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> my-project   </span><br><span class="line">npm install</span><br><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
+
+<h3 id="深入vue-cli的工程模板"><a href="#深入vue-cli的工程模板" class="headerlink" title="深入vue-cli的工程模板"></a>深入vue-cli的工程模板</h3><p>webpack和 webpack-simple这两个模板从文件结构上看几乎是一致的，只是一个是简化版，另一个是完全版。其实不然，webpack-simple是基于<a href="mailto:&#x57;&#101;&#x62;&#x70;&#x61;&#x63;&#107;&#64;&#x32;&#x2e;&#x31;&#x2e;&#48;&#x2d;&#x62;&#101;&#x74;&#97;&#x2e;&#x32;&#53;">&#x57;&#101;&#x62;&#x70;&#x61;&#x63;&#107;&#64;&#x32;&#x2e;&#x31;&#x2e;&#48;&#x2d;&#x62;&#101;&#x74;&#97;&#x2e;&#x32;&#53;</a>进行配置的版本，而 webpack模板则是基于Webpack ^1.3.2配置的。<strong>这两个版本暂时是互相不兼容的，而且使用的依赖包的版本也不一样，所以不要将webpack模板创建的项目文件结构复制到webpack-simple中进行直接的取代升级</strong>,而是需要将node_modules内安装的所有的依赖包删除，然后重新安装才有可能迁移成功，这一点是需要注意的。</p>
+<h4 id="webpack-simple-模板"><a href="#webpack-simple-模板" class="headerlink" title="webpack-simple 模板"></a>webpack-simple 模板</h4><p>具体约定如下:<br>（1）  公共组件、指令、过滤器（多于三个文件以上的引用）将分别存放于src目录下的</p>
+<ul>
+<li>components;</li>
+<li>directives;</li>
+<li>filters 。</li>
+</ul>
+<p>（2）以使用场景命名 Vue的页面文件。<br>（3）当页面文件具有私有组件、指令和过滤器时，则建立一个与页面同名的目录，页面文件更名为index.vue，将页面与相关的依赖文件放在一起。<br>（4）目录由全小写的名词、动名词或分词命名，由两个以上的词组成，以“-”进行分隔。<br>（5）Vue文件统一以大驼峰命名法命名，仅入口文件index.vue采用小写。<br>（6）测试文件一律以测试目标文件名.spec.js命名。<br>（7）资源文件一律以小写字符命名，由两个以上的词组成，以“-”进行分隔。</p>
+<h4 id="webpack模板"><a href="#webpack模板" class="headerlink" title="webpack模板"></a>webpack模板</h4><p>bulid——存放用于编译用的webpack配置与相关的辅助工具代码；<br>config——存放三大环境配置文件，用于设定环境变量和必要的路径信息；<br>test——存放E2E测试与单元测试文件以及相关的配置文件；<br>static——存放项目所需要的其他静态资源文件；<br>dist——存放运行npm run build 指令的生产环境输出文件，可直接部署到服务器对应的静态资源文件夹内，该文件夹只有在运行build之后才会生成。</p>
+<h4 id="构建工具"><a href="#构建工具" class="headerlink" title="构建工具"></a>构建工具</h4><h5 id="1、编译开发环境"><a href="#1、编译开发环境" class="headerlink" title="1、编译开发环境"></a>1、编译开发环境</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
+<p>这个指令的配置是在 package.,json 的 script属性中设置的，实质上它是由npm来引导执行入口程序dev-server.js完成以下的加载过程：</p>
+<ol>
+<li>加载环境变量</li>
+<li>合并webpack配置</li>
+<li>配置热加载</li>
+<li>配置代理服务</li>
+<li>配置回退支持</li>
+<li>配置静态资源</li>
+<li>加载开发服务器</li>
+</ol>
+<h6 id="加载环境变量"><a href="#加载环境变量" class="headerlink" title="加载环境变量"></a>加载环境变量</h6><p>该环节从config目录加载index.js和 dev.env.js两个模块，准备开发调试环境所必需的-些目录和全局变量。</p>
+<h6 id="合并webpack配置"><a href="#合并webpack配置" class="headerlink" title="合并webpack配置"></a>合并webpack配置</h6><p>在 build目录下一共有三个webpack的配置文件:</p>
+<ul>
+<li>webpack.base.conf.js——公用的基本webpack配置;</li>
+<li>webpack.dev.conf.js—开发环境专用的 webpack配置项;</li>
+<li>webpack.prod.conf.js——生产环境专用的 webpack配置项。</li>
+</ul>
+<p>这里使用了一个叫 webpack-merge的包来进行两个 webpack配置之间的合并，这个环节就是通过这个包将webpack.base.conf.js和 webpack.dev.conf.js合并成最终的webpack配置。<br>请记住这几个配置文件，在下面的章节中我们会对这些配置的内容进行调整。</p>
+<h6 id="配置热加载"><a href="#配置热加载" class="headerlink" title="配置热加载"></a>配置热加载</h6><p>热加载是一个非常棒的功能，这个功能启用后的效果就是:当开发环境被启动并进入调试模式后，一旦我们修改了任意地方的源代码，浏览器中对应的内容就会被自动刷新，而无须手工对浏览器进行刷新的操作，这个配置将是我们做页面布局或者功能调整时的一大臂助。</p>
+<h6 id="配置代理服务器"><a href="#配置代理服务器" class="headerlink" title="配置代理服务器"></a>配置代理服务器</h6><p>这个环境是为我们的代码增加一个模拟的服务端做准备，有了它的存在，我们就可以在没有后端程序支持的情况下，直接模拟远程服务器执行的一些请求的效果。例如，向服务器发出一个 HTTP GET /api/books/的请求,那么我们就可以利用代理服务器将这一请求截获下来，然后返回一组这个 API应该执行成功的返回结果，这样我们的前端程序运行起来的效果就与接入了服务端后的效果是一致的了。我们将这一技术称为服务模拟，在后面的章节中会具体介绍这一技术。</p>
+<h6 id="加载开发服务器"><a href="#加载开发服务器" class="headerlink" title="加载开发服务器"></a>加载开发服务器</h6><p>启动一个Express的 Web服务器，将上述各个环境中配置好的模块进行加载，并使程序能通过浏览器进行访问。<br>以上就是npm run dev的完整执行思路。</p>
+<h5 id="2、编译生产环境"><a href="#2、编译生产环境" class="headerlink" title="2、编译生产环境"></a>2、编译生产环境</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run build</span><br></pre></td></tr></table></figure>
+<h3 id="Vue工程化的webpack配置与基本用法"><a href="#Vue工程化的webpack配置与基本用法" class="headerlink" title="Vue工程化的webpack配置与基本用法"></a>Vue工程化的webpack配置与基本用法</h3><p>webpack是一个模块打包的工具，它的作用是把互相依赖的模块处理成静态资源，如下图所示。</p>
+<p><a target="_blank" rel="noopener" href="https://webpack.docschina.org/">模块依赖—–&gt;静态资源</a></p>
+<h3 id="webpack的特点"><a href="#webpack的特点" class="headerlink" title="webpack的特点"></a>webpack的特点</h3><h4 id="代码分割"><a href="#代码分割" class="headerlink" title="代码分割"></a>代码分割</h4><p>在 webpack的依赖树里有两种类型的依赖:同步依赖和异步依赖。异步依赖会成为一个代码分割点，并且组成一个新的代码块。在代码块组成的树被优化之后，每个代码块都会保存在一个单独的文件里。</p>
+<h4 id="加载器"><a href="#加载器" class="headerlink" title="加载器"></a>加载器</h4><p>webpack原生是只能处理JavaScript的，而加载器的作用是把其他的代码转换成JavaScript代码，这样一来所有种类的代码都能组成一个模块，也就是说，我们可以在代码内通过import将 webpack打包的资源以模块的方式引入到程序中。</p>
+<p>以下是Vue项目中常用到的加载器（它们都是以NPM库形式提供的)：</p>
+<ul>
+<li>vue-loader——用于加载与编译*.vue文件;</li>
+<li>vue-style-loader——用于加载.vue文件中的样式;</li>
+<li>style-loader——用于将样式直接插入到页面的<code>&lt;style&gt;</code>内;</li>
+<li>css-loader——用于加载*.css样式表文件;*</li>
+<li>less-loader——用于编译与加载.less文件(需要依赖于less库);</li>
+<li>babel-loader—用于将ES6编译成为浏览器兼容的ES5;</li>
+<li>file-loader——用于直接加载文件;</li>
+<li>url-loader—用于加载URL指定的文件，多用于字体与图片的加载;</li>
+<li>json-loader——用于加载*.json文件为JS 实例。</li>
+</ul>
+<h4 id="智能解析"><a href="#智能解析" class="headerlink" title="智能解析"></a>智能解析</h4><p>webpack的智能解析器能处理几乎所有的第三方库，它甚至允许依赖里出现这样的表达式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">require(&quot;./components/&quot;+ name + &quot;.vue&quot;)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>这一点恰恰是browserify不能做到的。</p>
+</blockquote>
+<p>它能处理大多数的模块系统，比如说CommonJS和AMD。</p>
+<h4 id="插件系统"><a href="#插件系统" class="headerlink" title="插件系统"></a>插件系统</h4><p>webpack有丰富的插件系统，大多数内部的功能都是基于这个插件系统的。这也使得我们可以定制 webpack，把它打造成能满足我们需求的工具，并且把自己做的插件开源出去。</p>
+<h3 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h3><p>（webpack的打包依赖于它的一个重要配置文件webpack.config.js）</p>
+<h5 id="样式表引用"><a href="#样式表引用" class="headerlink" title="样式表引用"></a>样式表引用</h5><p>某些页面或者组件可能具有特定的样式定义，这些样式对于其他页面说是冗余的，我们只希望这些组件在应用时才自动加载这些特定的样式、</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import Vue form <span class="string">&#x27;vue&#x27;</span></span><br><span class="line">//...省略</span><br><span class="line">//引用指定的样式源文件</span><br><span class="line">import <span class="string">&#x27;./app/assets/less/dark.less&#x27;</span></span><br><span class="line"><span class="built_in">export</span> default &#123;</span><br><span class="line">    // ...省略</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>(需要在webpack的配置中加入less-loader)</p>
+<h5 id="字体的引用"><a href="#字体的引用" class="headerlink" title="字体的引用"></a>字体的引用</h5><h4 id="用别名取代路径引用"><a href="#用别名取代路径引用" class="headerlink" title="用别名取代路径引用"></a>用别名取代路径引用</h4><p>在项目开发过程中有可能有许多包是没有放在npm 上的，有一些较老的可能还依然只存在于bower 上，某些甚至在 bower与 npm上都找不到，而不得不通过下载的方式在项目内引用，这样一来我们的代码可能通过require就得在代码内引用一段很长的文件路径，如下所示。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import Selector from &#x27;../ ../bower_components/bootstrap-select/dist/js/select&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>这种包的引用方式明显违反了CommonJS的编程规范，对于这些长路径，甚至还具有“…””这些相对路径搜索的定义,我们可以通过webpack 的resolve配置项来解决.就以select这个组件为例，在 webpack.base.config.js中加入以下的这个别名的定义：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">module.exports =&#123;</span><br><span class="line">    entry:&#123; ... &#125;,</span><br><span class="line">    output: &#123; ﹒. . &#125;,</span><br><span class="line">    module:&#123; ...&#125;,</span><br><span class="line">    resolve: &#123;</span><br><span class="line">        extensions:[&#x27;&#x27;,&#x27;·js&#x27;],</span><br><span class="line">        alias:&#123;</span><br><span class="line">            &#x27;bs-select&#x27;:&#x27;bower_components/bootstrap-select/dist/js/select.js&#x27;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>有了这个定义以后，我们就可以将上面那个长引用改为下面的写法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import Selector from &#x27;bs-select&#x27;;</span><br></pre></td></tr></table></figure>
+
+<p>绝对不要让路径引用进入到我们的代码，因为这是代码的“癌症”,一旦开始植入并生长起来，以前的代码将难以维护！</p>
+<h4 id="配置多入口程序"><a href="#配置多入口程序" class="headerlink" title="配置多入口程序"></a>配置多入口程序</h4><p>不单只有一个入口，例如：前台提供最终用户使用（<a target="_blank" rel="noopener" href="http://domain.com/index),%E5%90%8E%E5%8F%B0%E6%8F%90%E4%BE%9B%E7%BB%99%E7%99%BB%E5%BD%95%E7%94%A8%E6%88%B7%E4%BD%BF%E7%94%A8%EF%BC%88http://domain.com/admin/)%EF%BC%8C%E9%82%A3%E4%B9%88%E8%87%AA%E7%84%B6%E9%9C%80%E8%A6%81%E5%A4%9A%E4%B8%AA%E4%B8%8Emain.js%E7%B1%BB%E4%BC%BC%E7%9A%84%E7%A8%8B%E5%BA%8F%E5%85%A5%E5%8F%A3%E3%80%82">http://domain.com/index),后台提供给登录用户使用（http://domain.com/admin/)，那么自然需要多个与main.js类似的程序入口。</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">首先在build/webpack.base.conf.js配置文件中的entry配置属性上加上新的入口文件：</span><br><span class="line">module.exports = &#123;</span><br><span class="line">    entry: &#123;</span><br><span class="line">        app: <span class="string">&#x27;./src/main.js&#x27;</span>,</span><br><span class="line">        admin: <span class="string">&#x27;./src/admin-main.js&#x27;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    // ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>（其他相关设置，需要用到时参考书上内容)</p>
+<h4 id="基于Karma-Phantom-Mocha-Sinon-Chai的单元测试环境"><a href="#基于Karma-Phantom-Mocha-Sinon-Chai的单元测试环境" class="headerlink" title="基于Karma + Phantom + Mocha + Sinon + Chai的单元测试环境"></a>基于Karma + Phantom + Mocha + Sinon + Chai的单元测试环境</h4><h4 id="基于Nightwatch的端到端测试环境"><a href="#基于Nightwatch的端到端测试环境" class="headerlink" title="基于Nightwatch的端到端测试环境"></a>基于Nightwatch的端到端测试环境</h4>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E3%80%8AVue2%E5%AE%9E%E8%B7%B5%E6%8F%AD%E7%A7%98%E3%80%8B/" rel="tag"># 《Vue2实践揭秘》</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/06/19/vue-js-%E5%9F%BA%E6%9C%AC%E7%8E%AF%E5%A2%83/" rel="prev" title="vue.js 基本环境">
+      <i class="fa fa-chevron-left"></i> vue.js 基本环境
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/06/27/%E8%B7%AF%E7%94%B1%E4%B8%8E%E9%A1%B5%E9%9D%A2%E9%97%B4%E5%AF%BC%E8%88%AA/" rel="next" title="路由与页面间导航">
+      路由与页面间导航 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%84%9A%E6%89%8B%E6%9E%B6-vue-cli"><span class="nav-number">1.</span> <span class="nav-text">脚手架 vue-cli</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1%E3%80%81%E5%AE%89%E8%A3%85vue-cli"><span class="nav-number">1.0.1.</span> <span class="nav-text">1、安装vue-cli</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2%E3%80%81%E4%BD%BF%E7%94%A8vue-cli%E5%88%9D%E5%A7%8B%E5%8C%96%E9%A1%B9%E7%9B%AE"><span class="nav-number">1.0.2.</span> <span class="nav-text">2、使用vue-cli初始化项目</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3%E3%80%81%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE"><span class="nav-number">1.0.3.</span> <span class="nav-text">3、创建项目</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%B1%E5%85%A5vue-cli%E7%9A%84%E5%B7%A5%E7%A8%8B%E6%A8%A1%E6%9D%BF"><span class="nav-number">2.</span> <span class="nav-text">深入vue-cli的工程模板</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#webpack-simple-%E6%A8%A1%E6%9D%BF"><span class="nav-number">2.1.</span> <span class="nav-text">webpack-simple 模板</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#webpack%E6%A8%A1%E6%9D%BF"><span class="nav-number">2.2.</span> <span class="nav-text">webpack模板</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7"><span class="nav-number">2.3.</span> <span class="nav-text">构建工具</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1%E3%80%81%E7%BC%96%E8%AF%91%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83"><span class="nav-number">2.3.1.</span> <span class="nav-text">1、编译开发环境</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%8A%A0%E8%BD%BD%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="nav-number">2.3.1.1.</span> <span class="nav-text">加载环境变量</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%90%88%E5%B9%B6webpack%E9%85%8D%E7%BD%AE"><span class="nav-number">2.3.1.2.</span> <span class="nav-text">合并webpack配置</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E7%83%AD%E5%8A%A0%E8%BD%BD"><span class="nav-number">2.3.1.3.</span> <span class="nav-text">配置热加载</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E4%BB%A3%E7%90%86%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">2.3.1.4.</span> <span class="nav-text">配置代理服务器</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%8A%A0%E8%BD%BD%E5%BC%80%E5%8F%91%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">2.3.1.5.</span> <span class="nav-text">加载开发服务器</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2%E3%80%81%E7%BC%96%E8%AF%91%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83"><span class="nav-number">2.3.2.</span> <span class="nav-text">2、编译生产环境</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Vue%E5%B7%A5%E7%A8%8B%E5%8C%96%E7%9A%84webpack%E9%85%8D%E7%BD%AE%E4%B8%8E%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">Vue工程化的webpack配置与基本用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#webpack%E7%9A%84%E7%89%B9%E7%82%B9"><span class="nav-number">4.</span> <span class="nav-text">webpack的特点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E5%88%86%E5%89%B2"><span class="nav-number">4.1.</span> <span class="nav-text">代码分割</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8A%A0%E8%BD%BD%E5%99%A8"><span class="nav-number">4.2.</span> <span class="nav-text">加载器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%99%BA%E8%83%BD%E8%A7%A3%E6%9E%90"><span class="nav-number">4.3.</span> <span class="nav-text">智能解析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8F%92%E4%BB%B6%E7%B3%BB%E7%BB%9F"><span class="nav-number">4.4.</span> <span class="nav-text">插件系统</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95"><span class="nav-number">5.</span> <span class="nav-text">基本用法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%A0%B7%E5%BC%8F%E8%A1%A8%E5%BC%95%E7%94%A8"><span class="nav-number">5.0.1.</span> <span class="nav-text">样式表引用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AD%97%E4%BD%93%E7%9A%84%E5%BC%95%E7%94%A8"><span class="nav-number">5.0.2.</span> <span class="nav-text">字体的引用</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%A8%E5%88%AB%E5%90%8D%E5%8F%96%E4%BB%A3%E8%B7%AF%E5%BE%84%E5%BC%95%E7%94%A8"><span class="nav-number">5.1.</span> <span class="nav-text">用别名取代路径引用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E5%A4%9A%E5%85%A5%E5%8F%A3%E7%A8%8B%E5%BA%8F"><span class="nav-number">5.2.</span> <span class="nav-text">配置多入口程序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8EKarma-Phantom-Mocha-Sinon-Chai%E7%9A%84%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83"><span class="nav-number">5.3.</span> <span class="nav-text">基于Karma + Phantom + Mocha + Sinon + Chai的单元测试环境</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8ENightwatch%E7%9A%84%E7%AB%AF%E5%88%B0%E7%AB%AF%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83"><span class="nav-number">5.4.</span> <span class="nav-text">基于Nightwatch的端到端测试环境</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="winney"
+      src="/images/header.jpg">
+  <p class="site-author-name" itemprop="name">winney</p>
+  <div class="site-description" itemprop="description">Doing is better than saying.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">127</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">55</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">75</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://www.xiaochao.me/" title="https:&#x2F;&#x2F;www.xiaochao.me&#x2F;" rel="noopener" target="_blank">小超</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://winney07.github.io/" title="https:&#x2F;&#x2F;winney07.github.io&#x2F;" rel="noopener" target="_blank">winney07</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2015 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">winney07</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

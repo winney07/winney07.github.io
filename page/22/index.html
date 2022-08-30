@@ -193,6 +193,453 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/14/Git-%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="winney">
+      <meta itemprop="description" content="Doing is better than saying.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="winney">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/01/14/Git-%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">Git-笔记</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-01-14 14:47:55" itemprop="dateCreated datePublished" datetime="2021-01-14T14:47:55+08:00">2021-01-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-08-24 18:09:23" itemprop="dateModified" datetime="2022-08-24T18:09:23+08:00">2022-08-24</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/Git/" itemprop="url" rel="index"><span itemprop="name">Git</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="提交到远程仓库报错"><a href="#提交到远程仓库报错" class="headerlink" title="提交到远程仓库报错"></a>提交到远程仓库报错</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">OpenSSL SSL_connect: Connection was reset in connection to github.com:443</span><br><span class="line"> </span><br><span class="line"> 或</span><br><span class="line"> </span><br><span class="line">OpenSSL SSL_connect: Connection was reset in connection to github.com:403</span><br></pre></td></tr></table></figure>
+
+<p>解决方法，将.git/config：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[remote &quot;origin&quot;]</span><br><span class="line">	url = https://github.com/winney07/winney07.github.io.git</span><br></pre></td></tr></table></figure>
+
+<p>改为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[remote &quot;origin&quot;]</span><br><span class="line">	url = git@github.com:winney07/winney07.github.io.git</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="Github创建仓库"><a href="#Github创建仓库" class="headerlink" title="Github创建仓库"></a>Github创建仓库</h4><p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Git-%E7%AC%94%E8%AE%B0/create.png" alt="Github创建仓库"></p>
+<h3 id="Git常用命令速查表"><a href="#Git常用命令速查表" class="headerlink" title="Git常用命令速查表"></a>Git常用命令速查表</h3><h4 id="创建版本库"><a href="#创建版本库" class="headerlink" title="创建版本库"></a>创建版本库</h4><ol>
+<li><p>克隆远程版本库</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone &lt;url&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>初始化本地版本库</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h4 id="修改和提交"><a href="#修改和提交" class="headerlink" title="修改和提交"></a>修改和提交</h4><ol>
+<li><p>查看状态</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看变更内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>跟踪所有改动过的文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>跟踪指定的文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add &lt;file&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>文件改名</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git mv &lt;old&gt; &lt;new&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rm &lt;file&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>停止跟踪文件但不删除</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rm --cached &lt;file&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>提交所有更新过的文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m &quot;commit message&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改最后一次提交</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit --amend</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<h4 id="查看提交历史"><a href="#查看提交历史" class="headerlink" title="查看提交历史"></a>查看提交历史</h4><ol>
+<li><p>查看提交历史</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看指定文件的提交历史</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log -p &lt;file&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>以列表方式查看指定文件的提交历史</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git blame &lt;file&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<h4 id="撤销"><a href="#撤销" class="headerlink" title="撤销"></a>撤销</h4><ol>
+<li><p>撤销工作目录中所有未提交文件的修改内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard HEAD</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>撤销指定的未提交文件的修改内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout HEAD &lt;file&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>撤销指定的提交</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git revert &lt;commit&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<h4 id="分支与标签"><a href="#分支与标签" class="headerlink" title="分支与标签"></a>分支与标签</h4><ol>
+<li><p>显示所有本地分支</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>切换到指定分支或标签</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout &lt;branch/tag&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建新分支</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch &lt;new-branch&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除本地分支</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -d &lt;branch&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>列出所有本地标签</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>给予最新提交创建标签</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag &lt;tagname&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除标签</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag -d &lt;tagname&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<h4 id="合并与衍合"><a href="#合并与衍合" class="headerlink" title="合并与衍合"></a>合并与衍合</h4><ol>
+<li><p>合并指定分支到当前分支</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge &lt;branch&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>衍合指定分支到当前分支</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase &lt;branch&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<h4 id="远程操作"><a href="#远程操作" class="headerlink" title="远程操作"></a>远程操作</h4><ol>
+<li><p>查看远程版本库信息</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote -v</span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>查看指定远程版本库信息</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote show &lt;remote&gt;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>添加远程版本库</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add &lt;remote&gt; &lt;url&gt;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>从远程库获取代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git fetch &lt;remote&gt;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>下载代码及快速合并</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull &lt;remote&gt; &lt;branch&gt;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>上传代码及快速合并</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push &lt;remote&gt; &lt;branch&gt;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>删除远程分支或标签</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull &lt;remote&gt; : &lt;branch/tag-name&gt;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>上传所有标签</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push --tags</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<h3 id="管理分支"><a href="#管理分支" class="headerlink" title="管理分支"></a>管理分支</h3><h4 id="1、查看本地分支"><a href="#1、查看本地分支" class="headerlink" title="1、查看本地分支"></a>1、查看本地分支</h4><p>使用 git branch命令，如下：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>git branch</span><br><span class="line">* master</span><br></pre></td></tr></table></figure>
+
+<p>*<strong>标识的是你当前所在的分支。</strong></p>
+<h4 id="2、查看远程分支"><a href="#2、查看远程分支" class="headerlink" title="2、查看远程分支"></a>2、查看远程分支</h4><p>命令如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -r</span><br></pre></td></tr></table></figure>
+
+<h4 id="3、查看所有分支"><a href="#3、查看所有分支" class="headerlink" title="3、查看所有分支"></a>3、查看所有分支</h4><p>命令如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -a</span><br></pre></td></tr></table></figure>
+
+<h4 id="2、本地创建新的分支"><a href="#2、本地创建新的分支" class="headerlink" title="2、本地创建新的分支"></a>2、本地创建新的分支</h4><p>命令如下：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch <span class="selector-attr">[branch name]</span></span><br></pre></td></tr></table></figure>
+
+<p>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch save</span><br></pre></td></tr></table></figure>
+
+<h4 id="3、切换到新的分支"><a href="#3、切换到新的分支" class="headerlink" title="3、切换到新的分支"></a>3、切换到新的分支</h4><p>命令如下：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout <span class="selector-attr">[branch name]</span></span><br></pre></td></tr></table></figure>
+
+<p>例如：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>git checkout save</span><br></pre></td></tr></table></figure>
+
+<h4 id="4、创建-切换分支"><a href="#4、创建-切换分支" class="headerlink" title="4、创建+切换分支"></a>4、创建+切换分支</h4><p>创建分支的同时切换到该分支上，命令如下：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -<span class="selector-tag">b</span> <span class="selector-attr">[branch name]</span></span><br></pre></td></tr></table></figure>
+
+<p>git checkout -b [branch name] 的效果相当于以下两步操作：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git branch <span class="selector-attr">[branch name]</span></span><br><span class="line">git checkout <span class="selector-attr">[branch name]</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="5、将新分支推送到github"><a href="#5、将新分支推送到github" class="headerlink" title="5、将新分支推送到github"></a>5、将新分支推送到github</h4><p>命令如下：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin <span class="selector-attr">[branch name]</span></span><br></pre></td></tr></table></figure>
+
+<p>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin save</span><br></pre></td></tr></table></figure>
+
+<h4 id="6、删除本地分支"><a href="#6、删除本地分支" class="headerlink" title="6、删除本地分支"></a>6、删除本地分支</h4><p>命令如下：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -d <span class="selector-attr">[branch name]</span></span><br></pre></td></tr></table></figure>
+
+<p>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -d save</span><br></pre></td></tr></table></figure>
+
+<h4 id="7、删除github远程分支"><a href="#7、删除github远程分支" class="headerlink" title="7、删除github远程分支"></a>7、删除github远程分支</h4><p>命令如下：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin :[branch name]</span><br></pre></td></tr></table></figure>
+
+<p>分支名前的冒号代表删除。<br> 例如：</p>
+<p>git push origin :save</p>
+<h4 id="查看配置信息"><a href="#查看配置信息" class="headerlink" title="查看配置信息"></a>查看配置信息</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --list</span><br></pre></td></tr></table></figure>
+
+<h4 id="查看状态"><a href="#查看状态" class="headerlink" title="查看状态"></a>查看状态</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure>
+
+<h4 id="提交工作区文件到暂存区"><a href="#提交工作区文件到暂存区" class="headerlink" title="提交工作区文件到暂存区"></a>提交工作区文件到暂存区</h4><ol>
+<li><p>提交工作区中所有文件到暂存区</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>提交工作区中指定文件到暂存区</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add &lt;file1&gt; &lt;file2&gt; </span><br></pre></td></tr></table></figure>
+</li>
+<li><p>提交工作区中某个文件夹中所有文件到暂存区</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add [dir]</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h4 id="提交到本地仓库"><a href="#提交到本地仓库" class="headerlink" title="提交到本地仓库"></a>提交到本地仓库</h4><ol>
+<li><p>将暂存区中的文件提交到本地仓库中，即打上新版本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m &quot;commit_info&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将所有已经使用git管理过的文件暂存后一并提交，跳过add到暂存区的过程</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -a -m “commit_info”</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>提交文件时，发现漏掉几个文件，或者注释写错了，可以撤销上一次提交</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit --amend</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h4 id="查看本地仓库关联的远程仓库"><a href="#查看本地仓库关联的远程仓库" class="headerlink" title="查看本地仓库关联的远程仓库"></a>查看本地仓库关联的远程仓库</h4><ol>
+<li><p>查看本地仓库关联的远程仓库</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看远程仓库的url地址</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote -v</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<h4 id="解决git-pull后本地写的代码没了的问题"><a href="#解决git-pull后本地写的代码没了的问题" class="headerlink" title="解决git pull后本地写的代码没了的问题"></a>解决git pull后本地写的代码没了的问题</h4><p>第一步：git reflog</p>
+<p>第二步：git reset –hard HEAD@{n}   (HEAD:为版本号，就前面那一串数字，n是你要回退到的引用位置)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard 84ef223</span><br></pre></td></tr></table></figure>
+
+<h4 id="创建分支，回退到某个版本"><a href="#创建分支，回退到某个版本" class="headerlink" title="创建分支，回退到某个版本"></a>创建分支，回退到某个版本</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git branch pagination 96ba9b3</span><br><span class="line">git branch 分支名称 版本号</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>如果为了测试原来的代码，将它回退到某个版本，但是为了不影响当前分支里面的内容，创建一个新的分支。  如果git branch 分支名称，不加版本号，会在当前版本下创建分支。   如果需要回退到某个版本，需要在创建分支的时候加上版本号。</p>
+</blockquote>
+<p>如果要切换回原来的分支(master)，要先对新创建的分支(pagination)的内容提交，这个提交只会提交到pagination分支里面，不会影响到master分支</p>
+<p>提交：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m &quot;复习&quot;</span><br></pre></td></tr></table></figure>
+
+<p>切换：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout master</span><br></pre></td></tr></table></figure>
+
+<h4 id="解决pre-commit-hook-failed-add-–no-verify-的问题"><a href="#解决pre-commit-hook-failed-add-–no-verify-的问题" class="headerlink" title="解决pre -commit hook failed (add –no-verify)的问题"></a><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/aac394600727">解决pre -commit hook failed (add –no-verify)的问题</a></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd .git</span><br><span class="line"></span><br><span class="line">rm hooks/pre-commit</span><br></pre></td></tr></table></figure>
+
+
+
+<p>git commit 不单保存了当前的版本号还保存了他的父版本号</p>
+<h4 id="查看命令："><a href="#查看命令：" class="headerlink" title="查看命令："></a>查看命令：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git / git help</span><br></pre></td></tr></table></figure>
+
+<h4 id="查看所有命令："><a href="#查看所有命令：" class="headerlink" title="查看所有命令："></a>查看所有命令：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git help -a</span><br></pre></td></tr></table></figure>
+
+<h4 id="查看使用手册："><a href="#查看使用手册：" class="headerlink" title="查看使用手册："></a>查看使用手册：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git help -g</span><br></pre></td></tr></table></figure>
+
+<h4 id="查看某个命令的详细使用："><a href="#查看某个命令的详细使用：" class="headerlink" title="查看某个命令的详细使用："></a>查看某个命令的详细使用：</h4><p>如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git help add</span><br></pre></td></tr></table></figure>
+
+<p>按Q可以退出</p>
+<p><code>.git</code>是做版本控制的，如果想去除，直接删了这个目录。</p>
+<p>是隐藏文件，在mac 用<code>open .git</code>打开（在.git的上层目录）</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/14/Hexo%E5%8D%9A%E6%96%87%E7%BD%AE%E9%A1%B6%EF%BC%88%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%92%E5%BA%8F%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="winney">
+      <meta itemprop="description" content="Doing is better than saying.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="winney">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/01/14/Hexo%E5%8D%9A%E6%96%87%E7%BD%AE%E9%A1%B6%EF%BC%88%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%92%E5%BA%8F%EF%BC%89/" class="post-title-link" itemprop="url">Hexo博文置顶（自定义排序）</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-01-14 11:55:19" itemprop="dateCreated datePublished" datetime="2021-01-14T11:55:19+08:00">2021-01-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-08-24 18:09:23" itemprop="dateModified" datetime="2022-08-24T18:09:23+08:00">2022-08-24</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="Hexo博文置顶（自定义排序）"><a href="#Hexo博文置顶（自定义排序）" class="headerlink" title="Hexo博文置顶（自定义排序）"></a>Hexo博文置顶（自定义排序）</h4><blockquote>
+<p>使用的是<code>top</code>属性，<code>top</code>值越高，排序越在前，不设置<code>top</code>值得博文按照时间顺序排序。<br>修改Hexo文件夹下的node_modules/hexo-generator-index/lib/generator.js</p>
+</blockquote>
+<p>原来代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">const config = this.config;</span><br><span class="line">const posts = locals.posts.sort(config.index_ generator.order by);</span><br><span class="line"></span><br><span class="line">sort(posts.data, (a， b) =&gt; (b.sticky || 0) - (a.sticky || 0));</span><br><span class="line"></span><br><span class="line">const paginationDir.config.pagination_ dir || &#x27;page&#x27;;</span><br><span class="line">const path.config.index_ generator.path || &#x27;&#x27;;</span><br><span class="line"></span><br><span class="line">return pagination(path, posts, &#123;</span><br><span class="line">	perPage: config.index_ generator.per_page,</span><br><span class="line">	layout: [&#x27;index&#x27;, &#x27;archive&#x27;],</span><br><span class="line">	format: paginationDir + &#x27;/%d/&#x27;,</span><br><span class="line">	data: &#123;</span><br><span class="line">    	_index: true</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>改为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">var config = this.config;</span><br><span class="line">var posts = locals.posts.sort(config.index_ generator.order by);</span><br><span class="line"></span><br><span class="line">posts.data = posts.data.sort(function(a, b) &#123;</span><br><span class="line">  if(a.top &amp;&amp; b.top) &#123; // 两篇文章top都有定义</span><br><span class="line">      if(a.top == b.top) return b.date - a.date; // 若top值一样则按照文章日期降序排</span><br><span class="line">      else return b.top - a.top; // 否则按照top值降序排</span><br><span class="line">  &#125;</span><br><span class="line">  else if(a.top &amp;&amp; !b.top) &#123; // 以下是只有一篇文章top有定义，那么将有top的排在前面（这里用异或操作居然不行233）</span><br><span class="line">      return -1;</span><br><span class="line">  &#125;</span><br><span class="line">  else if(!a.top &amp;&amp; b.top) &#123;</span><br><span class="line">      return 1;</span><br><span class="line">  &#125;</span><br><span class="line">  else return b.date - a.date; // 都没定义按照文章日期降序排</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">var paginationDir.config.pagination_ dir || &#x27;page&#x27;;</span><br><span class="line">var path.config.index_ generator.path || &#x27;&#x27;;</span><br><span class="line"></span><br><span class="line">return pagination(path, posts, &#123;</span><br><span class="line">	perPage: config.index_ generator.per_page,</span><br><span class="line">	layout: [&#x27;index&#x27;, &#x27;archive&#x27;],</span><br><span class="line">	format: paginationDir + &#x27;/%d/&#x27;,</span><br><span class="line">	data: &#123;</span><br><span class="line">    	_index: true</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>1、添加如下<code>javascript</code>代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">posts.data = posts.data.sort(function(a, b) &#123;</span><br><span class="line">      if(a.top &amp;&amp; b.top) &#123; // 两篇文章top都有定义</span><br><span class="line">          if(a.top == b.top) return b.date - a.date; // 若top值一样则按照文章日期降序排</span><br><span class="line">          else return b.top - a.top; // 否则按照top值降序排</span><br><span class="line">      &#125;</span><br><span class="line">      else if(a.top &amp;&amp; !b.top) &#123; // 以下是只有一篇文章top有定义，那么将有top的排在前面（这里用异或操作居然不行233）</span><br><span class="line">          return -1;</span><br><span class="line">      &#125;</span><br><span class="line">      else if(!a.top &amp;&amp; b.top) &#123;</span><br><span class="line">          return 1;</span><br><span class="line">      &#125;</span><br><span class="line">      else return b.date - a.date; // 都没定义按照文章日期降序排</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+
+<p>2、在对应的md文件中添加top属性：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: 网站素材</span><br><span class="line">date: 2021-01-08 11:23:25</span><br><span class="line">tags:</span><br><span class="line">- 网站素材</span><br><span class="line">categories: </span><br><span class="line">- 工作笔记</span><br><span class="line">- 网站素材</span><br><span class="line">top: 102</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_32454537/article/details/79482920">参考文献</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/13/%E6%B7%B1%E5%85%A5%E8%A7%A3%E8%AF%BBES6%E7%B3%BB%E5%88%97-%E5%85%A818%E8%AE%B2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -528,288 +975,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/13/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="winney">
-      <meta itemprop="description" content="Doing is better than saying.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="winney">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/01/13/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="post-title-link" itemprop="url">正则表达式</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-01-13 11:16:27" itemprop="dateCreated datePublished" datetime="2021-01-13T11:16:27+08:00">2021-01-13</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-08-24 18:09:23" itemprop="dateModified" datetime="2022-08-24T18:09:23+08:00">2022-08-24</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="正则表达式示例"><a href="#正则表达式示例" class="headerlink" title="正则表达式示例"></a><a target="_blank" rel="noopener" href="https://c.runoob.com/front-end/854/">正则表达式示例</a></h4><p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/note1.png" alt="正则表达式-思维导图"></p>
-<h4 id="最全的常用正则表达式大全-校验数字-字符-号码等"><a href="#最全的常用正则表达式大全-校验数字-字符-号码等" class="headerlink" title="最全的常用正则表达式大全(校验数字,字符,号码等)"></a><a target="_blank" rel="noopener" href="https://www.cnblogs.com/yoyowin/p/12208917.html">最全的常用正则表达式大全(校验数字,字符,号码等)</a></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var reg = /^[\u4e00-\u9fffa-zA-Z]&#123;1,15&#125;$/;</span><br><span class="line">if(!reg.test(value)) &#123;</span><br><span class="line">  callback(new Error(&#x27;请输入15个以内的字符&#x27;));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<h4 id="用户名、密码等15个常用的js正则表达式"><a href="#用户名、密码等15个常用的js正则表达式" class="headerlink" title="用户名、密码等15个常用的js正则表达式"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41465646/article/details/108105076">用户名、密码等15个常用的js正则表达式</a></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 用户名正则，4到16位（字母，数字，下划线，减号）  </span><br><span class="line">var uPattern = /^[a-zA-Z0-9_-]&#123;4,16&#125;$/;  </span><br><span class="line">//输出 true  </span><br><span class="line">console.log(uPattern.test(&quot;iFat3&quot;)); </span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">if(!/^[A-Za-z0-9@*_-\u4E00-\u9FA5]&#123;1,20&#125;$/.test(params.name)) &#123;</span><br><span class="line">    layer.msg(&#x27;姓名请输入20位字符以内的中英文或数字或@*_-&#x27;, &#123;time: 1000&#125;);</span><br><span class="line">    return false;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<h3 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h3><p>date（日期格式不正确）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/^(\d&#123;4&#125;)[-\/](\d&#123;1&#125;|0\d&#123;1&#125;|1[0-2])([-\/](\d&#123;1&#125;|0\d&#123;1&#125;|[1-2][0-9]|3[0-1]))*$/</span><br></pre></td></tr></table></figure>
-
-<p>email（邮箱格式不正确）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]&#123;2,4&#125;)+$/</span><br></pre></td></tr></table></figure>
-
-<p>identity（请输入正确的身份证号）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/(^\d&#123;15&#125;$)|(^\d&#123;17&#125;(x|X|\d)$)/</span><br></pre></td></tr></table></figure>
-
-<p>phone（请输入正确的手机号）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/^1\d&#123;10&#125;$/</span><br></pre></td></tr></table></figure>
-
-<p>required（必填项不能为空）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/[\S]+/</span><br></pre></td></tr></table></figure>
-
-<p>url（链接格式不正确）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/(^#)|(^http(s*):\/\/[^\s]+\.[^\s]+)/</span><br></pre></td></tr></table></figure>
-
-<p>请输入数字/小数点</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>最多只能输入两位小数</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>判断是否为数字</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">isNaN(Number(money))</span><br></pre></td></tr></table></figure>
-
-<p>只能输入百分比正则（数字+%）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>判断是否是非数字值</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">isNaN()</span><br><span class="line"></span><br><span class="line">例如：isNaN(Number(money))</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>如果参数值为 NaN 或字符串、对象、undefined等非数字值则返回 true, 否则返回 false。</p>
-</blockquote>
-<p>正浮点数正则表达式</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/^(\d+)(\.\d+)?$/.test()</span><br><span class="line"></span><br><span class="line">例如：/^(\d+)(\.\d+)?$/.test(money)</span><br></pre></td></tr></table></figure>
-
-<p>url正则表达式</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/^http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w-.\/?%&amp;=]*)?$/</span><br><span class="line"></span><br><span class="line">/^((ht|f)tps?):\/\/[\w\-]+(\.[\w\-]+)+([\w\-\.,@?^=%&amp;:\/~\+#]*[\w\-\@?^=%&amp;\/~\+#])?$/</span><br></pre></td></tr></table></figure>
-
-<p>0-100的正整数</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/^(?:0|[1-9][0-9]?|100)$/</span><br></pre></td></tr></table></figure>
-
-<p>数字/小大写字母/（30个字以内）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/^[A-Za-z0-9]&#123;1,30&#125;$/</span><br></pre></td></tr></table></figure>
-
-<p>只能输入汉字（30个字以内）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/^[\u4e00-\u9fa5]&#123;1,30&#125;$/</span><br></pre></td></tr></table></figure>
-
-<p>不能输入汉字</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/^[^\u4e00-\u9fa5]&#123;0,&#125;$/</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">中文字符：[\u4e00-\u9fa5]</span><br><span class="line">双字节字符：[^\x00-\xff]</span><br><span class="line">空白行：\s</span><br><span class="line">Email地址：\w[-\w.+]*@([A-Za-z0-9][-A-Za-z0-9]+\.)+[A-Za-z]&#123;2,14&#125;</span><br><span class="line">网址URL：^((https|http|ftp|rtsp|mms)?:\/\/)[^\s]+</span><br><span class="line">手机（国内）：0?(13|14|15|17|18|19)[0-9]&#123;9&#125;</span><br><span class="line">电话号码（国内）：[0-9-()（）]&#123;7,18&#125;</span><br><span class="line">负浮点数：-([1-9]\d*.\d*|0.\d*[1-9]\d*)</span><br><span class="line">匹配整数：-?[1-9]\d*</span><br><span class="line">正浮点数：[1-9]\d*.\d*|0.\d*[1-9]\d*</span><br><span class="line">腾讯QQ号：[1-9]([0-9]&#123;5,11&#125;)</span><br><span class="line">邮政编码：\d&#123;6&#125;</span><br><span class="line">IP：(25[0-5]|2[0-4]\d|[0-1]\d&#123;2&#125;|[1-9]?\d)\.(25[0-5]|2[0-4]\d|[0-1]\d&#123;2&#125;|[1-9]?\d)\.(25[0-5]|2[0-4]\d|[0-1]\d&#123;2&#125;|[1-9]?\d)\.(25[0-5]|2[0-4]\d|[0-1]\d&#123;2&#125;|[1-9]?\d)</span><br><span class="line">身份证号：\d&#123;17&#125;[\d|x]|\d&#123;15&#125;</span><br><span class="line">格式日期：\d&#123;4&#125;(\-|\/|.)\d&#123;1,2&#125;\1\d&#123;1,2&#125;</span><br><span class="line">正整数：[1-9]\d*</span><br><span class="line">负整数：-[1-9]\d*</span><br><span class="line">用户名：[A-Za-z0-9_\-\u4e00-\u9fa5]+</span><br></pre></td></tr></table></figure>
-
-<p>JavaScript代码：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var pattern = /[\u4e00-\u9fa5]/,</span><br><span class="line">	str = &#x27;&#x27;;</span><br><span class="line">console.log(pattern.test(str));</span><br></pre></td></tr></table></figure>
-
-<h4 id="用户名—3-12位字符（大小写字母或数字）"><a href="#用户名—3-12位字符（大小写字母或数字）" class="headerlink" title="用户名—3-12位字符（大小写字母或数字）"></a>用户名—3-12位字符（大小写字母或数字）</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/^[A-Za-z0-9_]&#123;3,12&#125;$/</span><br></pre></td></tr></table></figure>
-
-<h4 id="用户密码—6-16位"><a href="#用户密码—6-16位" class="headerlink" title="用户密码—6-16位"></a>用户密码—6-16位</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/^[A-Za-z0-9!@#$%^&amp;*()&lt;&gt;,.?-_+=`~]&#123;6,16&#125;$/</span><br></pre></td></tr></table></figure>
-
-<h4 id="昵称"><a href="#昵称" class="headerlink" title="昵称"></a>昵称</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/^[a-zA-Z\u4e00-\u9fa5]&#123;1,10&#125;$/</span><br></pre></td></tr></table></figure>
-
-<h4 id="身份证"><a href="#身份证" class="headerlink" title="身份证"></a>身份证</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/^[1-9]\d&#123;5&#125;(19|20)\d&#123;2&#125;[01]\d[0123]\d\d&#123;3&#125;[xX\d]$/</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/08/%E5%85%8D%E8%B4%B9API%E6%8E%A5%E5%8F%A3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="winney">
-      <meta itemprop="description" content="Doing is better than saying.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="winney">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/01/08/%E5%85%8D%E8%B4%B9API%E6%8E%A5%E5%8F%A3/" class="post-title-link" itemprop="url">免费API接口</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-01-08 17:16:26" itemprop="dateCreated datePublished" datetime="2021-01-08T17:16:26+08:00">2021-01-08</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-08-24 18:09:23" itemprop="dateModified" datetime="2022-08-24T18:09:23+08:00">2022-08-24</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/%E5%85%8D%E8%B4%B9API%E6%8E%A5%E5%8F%A3/" itemprop="url" rel="index"><span itemprop="name">免费API接口</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>1、音乐电台接口：</p>
-<p><a target="_blank" rel="noopener" href="https://api.apiopen.top/musicBroadcasting">https://api.apiopen.top/musicBroadcasting</a></p>
-<p>2、音乐电台详情接口：</p>
-<p><a target="_blank" rel="noopener" href="https://api.apiopen.top/musicBroadcastingDetails?channelname=public_tuijian_spring">https://api.apiopen.top/musicBroadcastingDetails?channelname=public_tuijian_spring</a></p>
-<p>3、音乐排行榜接口：</p>
-<p><a target="_blank" rel="noopener" href="https://api.apiopen.top/musicRankings">https://api.apiopen.top/musicRankings</a></p>
-<p>4、音乐排行榜详情接口：</p>
-<p><a target="_blank" rel="noopener" href="https://api.apiopen.top/musicRankingsDetails?type=1">https://api.apiopen.top/musicRankingsDetails?type=1</a></p>
-<p>5、每日视频推荐接口：</p>
-<p><a target="_blank" rel="noopener" href="https://api.apiopen.top/todayVideo">https://api.apiopen.top/todayVideo</a></p>
-<p>6、视频大纲获取接口：</p>
-<p><a target="_blank" rel="noopener" href="https://api.apiopen.top/videoHomeTab">https://api.apiopen.top/videoHomeTab</a></p>
-<p>7、视频分类推荐接口：</p>
-<p><a target="_blank" rel="noopener" href="https://api.apiopen.top/videoCategory">https://api.apiopen.top/videoCategory</a></p>
-<p><a target="_blank" rel="noopener" href="https://api.apiopen.top/videoCategoryDetails?id=14">https://api.apiopen.top/videoCategoryDetails?id=14</a></p>
-<p>9、根据ID推荐接口：</p>
-<p><a target="_blank" rel="noopener" href="https://api.apiopen.top/videoRecommend?id=127398">https://api.apiopen.top/videoRecommend?id=127398</a></p>
-<p>10、新闻接口：</p>
-<p><a target="_blank" rel="noopener" href="https://www.apiopen.top/journalismApi">https://www.apiopen.top/journalismApi</a></p>
-<p>11、随机推荐热门段子（包含文字、图片、GIF、视频）：</p>
-<p><a target="_blank" rel="noopener" href="https://www.apiopen.top/satinApi?type=1&amp;page=1">https://www.apiopen.top/satinApi?type=1&amp;page=1</a></p>
-<p>12、随机推荐热门段子【神评版本】（包含文字、图片、GIF、视频）：</p>
-<p><a target="_blank" rel="noopener" href="https://www.apiopen.top/satinGodApi?type=1&amp;page=1">https://www.apiopen.top/satinGodApi?type=1&amp;page=1</a></p>
-<p>13、随机推荐热门段子【神评版本】评论列表：</p>
-<p><a target="_blank" rel="noopener" href="https://www.apiopen.top/satinCommentApi?id=27610708&amp;page=1">https://www.apiopen.top/satinCommentApi?id=27610708&amp;page=1</a></p>
-<p>14、热门小说推荐：</p>
-<p><a target="_blank" rel="noopener" href="https://www.apiopen.top/novelApi">https://www.apiopen.top/novelApi</a></p>
-<p>15、小说搜索接口：</p>
-<p><a target="_blank" rel="noopener" href="https://www.apiopen.top/novelSearchApi?name=%E7%9B%97%E5%A2%93%E7%AC%94%E8%AE%B0">https://www.apiopen.top/novelSearchApi?name=盗墓笔记</a></p>
-<p>16、小说详情接口：</p>
-<p><a target="_blank" rel="noopener" href="https://www.apiopen.top/novelInfoApi?name=%E7%9B%97%E5%A2%93%E7%AC%94%E8%AE%B0">https://www.apiopen.top/novelInfoApi?name=盗墓笔记</a></p>
-<p>17、天气获取接口：</p>
-<p><a target="_blank" rel="noopener" href="https://www.apiopen.top/weatherApi?city=%E4%B8%8A%E6%B5%B7">https://www.apiopen.top/weatherApi?city=%E4%B8%8A%E6%B5%B7</a></p>
-<p>18、美图获取接口：</p>
-<p><a target="_blank" rel="noopener" href="https://www.apiopen.top/meituApi?page=1">https://www.apiopen.top/meituApi?page=1</a></p>
-<p>19、个性网名获取接口：</p>
-<p><a target="_blank" rel="noopener" href="https://www.apiopen.top/femaleNameApi?page=1">https://www.apiopen.top/femaleNameApi?page=1</a></p>
-<p>20、用户注册接口：</p>
-<p><a target="_blank" rel="noopener" href="https://www.apiopen.top/createUser?key=00d91e8e0cca2b76f515926a36db68f5&amp;phone=13594347817&amp;passwd=123654">https://www.apiopen.top/createUser?key=00d91e8e0cca2b76f515926a36db68f5&amp;phone=13594347817&amp;passwd=123654</a></p>
-<p>文章摘自：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/79463188">开放的免费API接口总结</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/21/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><span class="page-number current">22</span><a class="page-number" href="/page/23/">23</a><span class="space">&hellip;</span><a class="page-number" href="/page/43/">43</a><a class="extend next" rel="next" href="/page/23/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/21/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><span class="page-number current">22</span><a class="page-number" href="/page/23/">23</a><span class="space">&hellip;</span><a class="page-number" href="/page/44/">44</a><a class="extend next" rel="next" href="/page/23/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -877,7 +1046,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">127</span>
+          <span class="site-state-item-count">130</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -890,7 +1059,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">75</span>
+        <span class="site-state-item-count">76</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

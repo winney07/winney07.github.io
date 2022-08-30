@@ -193,6 +193,185 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/10/TypeScript%E7%9A%84%E6%8E%A5%E5%8F%A3Interface/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="winney">
+      <meta itemprop="description" content="Doing is better than saying.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="winney">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/11/10/TypeScript%E7%9A%84%E6%8E%A5%E5%8F%A3Interface/" class="post-title-link" itemprop="url">初识接口Interface</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-11-10 10:44:44" itemprop="dateCreated datePublished" datetime="2020-11-10T10:44:44+08:00">2020-11-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-08-24 18:09:23" itemprop="dateModified" datetime="2022-08-24T18:09:23+08:00">2022-08-24</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/TypeScript/" itemprop="url" rel="index"><span itemprop="name">TypeScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">const screenResume= (name: string,age: number,bust:number)=&gt;&#123;</span><br><span class="line">	age &lt; 24 &amp;&amp; bust &gt;=90 &amp;&amp; console.log(name+&#x27;进入面试&#x27;)</span><br><span class="line">	age &gt;= 24 || bust &lt;90 &amp;&amp; console.log(name+&#x27;你被淘汰&#x27;)</span><br><span class="line">&#125;</span><br><span class="line">const getResume = (name : string, age : number, bust: number)=&gt;&#123;</span><br><span class="line">	console.log(name+&#x27;年龄是&#x27;+age)</span><br><span class="line">	console.log(name+&#x27;胸围是&#x27;+bust)</span><br><span class="line">&#125;</span><br><span class="line">screenResume(&#x27;大脚&#x27;,18,94)</span><br><span class="line">getResume(&#x27;大脚&quot;,18,94)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="定义接口"><a href="#定义接口" class="headerlink" title="定义接口"></a>定义接口</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">interface Girl &#123;</span><br><span class="line">	name: string;</span><br><span class="line">	age : number;</span><br><span class="line">	bust: number;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">const girl=&#123;</span><br><span class="line">	name:&#x27;大脚&quot;,</span><br><span class="line">	age: 18,</span><br><span class="line">	bust: 94</span><br><span class="line">&#125;</span><br><span class="line">const screenResume= (girl : Girl)=&gt;&#123;</span><br><span class="line">	girl.age &lt; 24 &amp;&amp; girl.bust &gt;=90 &amp;&amp; console.log( girl.name+&#x27;进入面试&#x27;)</span><br><span class="line">	girl.age &gt;= 24 || girl.bust &lt;90 &amp;&amp; console.log( girl.name+&#x27;你被淘汰&quot;)</span><br><span class="line">&#125;</span><br><span class="line">const getResume = (girl:Girl)=&gt;&#123;</span><br><span class="line">	console.log(girl.name+&#x27;年龄是&#x27;+girl.age)</span><br><span class="line">	console.log(girl.name+ &#x27;胸围是&#x27;+girl.bust)</span><br><span class="line">&#125;</span><br><span class="line">screenResume(girl)</span><br><span class="line">getResume(girl)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h5 id="可选值的定义："><a href="#可选值的定义：" class="headerlink" title="可选值的定义："></a>可选值的定义：</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">age ?: number (age可有可没有)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">interface Girl &#123;</span><br><span class="line">	name: string;</span><br><span class="line">	age : number;</span><br><span class="line">	bust: number;</span><br><span class="line">	waistline ?: number;</span><br><span class="line">&#125;</span><br><span class="line">这样写不会报错：</span><br><span class="line">const getResume = (girl:Girl)=&gt;&#123;</span><br><span class="line">	console.log(girl.name+&#x27;年龄是&#x27;+girl.age)</span><br><span class="line">	console.log(girl.name+&#x27;胸围是&#x27;+girl.bust)</span><br><span class="line">	girl.waistline &amp;&amp; console.log(girl.name+&#x27;腰围是:&#x27;+girl.waistline )</span><br><span class="line">&#125;</span><br><span class="line">输出的内容还是跟原来一样</span><br><span class="line"></span><br><span class="line">如果将girl改为：</span><br><span class="line">const girl=&#123;</span><br><span class="line">	name:&#x27;大脚&quot;,</span><br><span class="line">	age: 18,</span><br><span class="line">	bust: 94,</span><br><span class="line">	waistline: 21</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">再输出打印，就会将waistline打印出来</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h5 id="定义一个可以加任何属性"><a href="#定义一个可以加任何属性" class="headerlink" title="定义一个可以加任何属性"></a>定义一个可以加任何属性</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[propname:string]: any;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">interface Girl &#123;</span><br><span class="line">	name: string;</span><br><span class="line">	age : number;</span><br><span class="line">	bust: number;</span><br><span class="line">	waistline ?: number;</span><br><span class="line">	[propname:string]: any;</span><br><span class="line">&#125;</span><br><span class="line">const girl=&#123;</span><br><span class="line">	name: &quot;大脚&quot;,</span><br><span class="line">	age: 18,</span><br><span class="line">	bust:94,</span><br><span class="line">	waistline: 21,</span><br><span class="line">	sex:&#x27;女’</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h5 id="添加方法："><a href="#添加方法：" class="headerlink" title="添加方法："></a>添加方法：</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">interface Girl &#123;</span><br><span class="line">	name: string;</span><br><span class="line">	age : number;</span><br><span class="line">	bust: number;</span><br><span class="line">	waistline ?: number;</span><br><span class="line">	[propname:string]: any;</span><br><span class="line">	say(): string;</span><br><span class="line">&#125;</span><br><span class="line">const girl=&#123;</span><br><span class="line">	name:&#x27;大脚&quot;，</span><br><span class="line">	age: 18,</span><br><span class="line">	bust:94,</span><br><span class="line">	waistline: 21,</span><br><span class="line">	sex: &#x27;女&#x27;，</span><br><span class="line">	say()&#123;</span><br><span class="line">		return &quot;欢迎光临，红浪漫洗浴!!”</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h5 id="接口和类的约束"><a href="#接口和类的约束" class="headerlink" title="接口和类的约束"></a>接口和类的约束</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">class xiaojieJie implements Girl&#123;</span><br><span class="line">	name=&quot;刘英&quot;</span><br><span class="line">	age=18</span><br><span class="line">	bust=90</span><br><span class="line">	say()&#123;</span><br><span class="line">		return &quot;欢迎光临,红浪漫洗浴!!&quot;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;	</span><br></pre></td></tr></table></figure>
+
+<h5 id="接口间的继承"><a href="#接口间的继承" class="headerlink" title="接口间的继承"></a>接口间的继承</h5>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/09/%E5%85%83%E7%BB%84%E7%9A%84%E4%BD%BF%E7%94%A8%E5%92%8C%E7%B1%BB%E5%9E%8B%E7%BA%A6%E6%9D%9F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="winney">
+      <meta itemprop="description" content="Doing is better than saying.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="winney">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/11/09/%E5%85%83%E7%BB%84%E7%9A%84%E4%BD%BF%E7%94%A8%E5%92%8C%E7%B1%BB%E5%9E%8B%E7%BA%A6%E6%9D%9F/" class="post-title-link" itemprop="url">元组的使用和类型约束</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-11-09 11:35:27" itemprop="dateCreated datePublished" datetime="2020-11-09T11:35:27+08:00">2020-11-09</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-08-24 18:09:23" itemprop="dateModified" datetime="2022-08-24T18:09:23+08:00">2022-08-24</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/TypeScript/" itemprop="url" rel="index"><span itemprop="name">TypeScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h6 id="类型约束"><a href="#类型约束" class="headerlink" title="类型约束"></a>类型约束</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">// const xiaojiejie : (string | number)[] = [ &#x27;dajiao &#x27; , &#x27;teacher &#x27;, 28]</span><br></pre></td></tr></table></figure>
+
+<h5 id="元组的写法"><a href="#元组的写法" class="headerlink" title="元组的写法"></a>元组的写法</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const xiaojiejie : [string,string,number] = [ &#x27;dajiao&#x27; , &#x27;teacher&#x27;,28]</span><br></pre></td></tr></table></figure>
+
+<h5 id="CSV（现在很少用）"><a href="#CSV（现在很少用）" class="headerlink" title="CSV（现在很少用）"></a>CSV（现在很少用）</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const xiaojiejies : [string, string, number][] =[</span><br><span class="line">	[ &#x27;dajiao &#x27; , &#x27;teacher&quot; ,28],</span><br><span class="line">	[ &#x27;liuying&quot; , &#x27;teacher&#x27; ,18],</span><br><span class="line">	[ &quot; cuihua &#x27; , &#x27;teacher&quot; ,22]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/06/TypeScript%E9%9D%99%E6%80%81%E7%B1%BB%E5%9E%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -308,188 +487,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/04/TypeScript-%E7%AE%80%E4%BB%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="winney">
-      <meta itemprop="description" content="Doing is better than saying.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="winney">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/11/04/TypeScript-%E7%AE%80%E4%BB%8B/" class="post-title-link" itemprop="url">TypeScript 简介</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-11-04 15:43:11" itemprop="dateCreated datePublished" datetime="2020-11-04T15:43:11+08:00">2020-11-04</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-08-24 18:09:23" itemprop="dateModified" datetime="2022-08-24T18:09:23+08:00">2022-08-24</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/TypeScript/" itemprop="url" rel="index"><span itemprop="name">TypeScript</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><a target="_blank" rel="noopener" href="https://jspang.com/detailed?id=63">【技术胖博客】</a></p>
-<h6 id="Demo1-ts"><a href="#Demo1-ts" class="headerlink" title="Demo1.ts"></a>Demo1.ts</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function jspang() </span><br><span class="line">&#123; </span><br><span class="line">    let web: string = &quot;Hello world&quot; </span><br><span class="line">    console.log (web)</span><br><span class="line">&#125;</span><br><span class="line">jspang()</span><br></pre></td></tr></table></figure>
-
-
-
-<h5 id="初步运行"><a href="#初步运行" class="headerlink" title="初步运行"></a>初步运行</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">node Demo.ts</span><br><span class="line"></span><br><span class="line">会出现报错：</span><br><span class="line">SyntaxError: Unexpected token &#x27;:&#x27;</span><br><span class="line">表示异常，不支持这个东西。</span><br></pre></td></tr></table></figure>
-
-<p>输入以下语句来转ts为js：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tsc Demo1.ts</span><br></pre></td></tr></table></figure>
-<p>如果出现：<br> 无法将“tsc”项识别为 cmdlet、函数、脚本文件或可运行程序的名称。请检查名称的拼写，如果包括路径，请确保路径正确，然后再试一次。</p>
-<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/vickylinj/p/12228773.html">参考</a>  则：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">npm install typescript -g</span><br><span class="line">cnpm install typescript -g</span><br><span class="line"></span><br><span class="line">再次运行即可：</span><br><span class="line">tsc Demo1.ts</span><br><span class="line">node Demo1.js</span><br></pre></td></tr></table></figure>
-<p>每次都这样的操作比较麻烦，可以全局安装ts-node</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install -g ts-node </span><br></pre></td></tr></table></figure>
-<p>即可直接输入以下语句执行：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ts-node Demo1.ts</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/04/Clipboard%E7%9A%84%E4%BD%BF%E7%94%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="winney">
-      <meta itemprop="description" content="Doing is better than saying.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="winney">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/11/04/Clipboard%E7%9A%84%E4%BD%BF%E7%94%A8/" class="post-title-link" itemprop="url">Clipboard的使用</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-11-04 14:44:28" itemprop="dateCreated datePublished" datetime="2020-11-04T14:44:28+08:00">2020-11-04</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-08-24 18:09:23" itemprop="dateModified" datetime="2022-08-24T18:09:23+08:00">2022-08-24</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/Clipboard/" itemprop="url" rel="index"><span itemprop="name">Clipboard</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="如果存在clipboard-先将它销毁"><a href="#如果存在clipboard-先将它销毁" class="headerlink" title="如果存在clipboard,先将它销毁"></a>如果存在clipboard,先将它销毁</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if(clipboard) &#123;</span><br><span class="line">    clipboard.destroy();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="Clipboard官网使用教程"><a href="#Clipboard官网使用教程" class="headerlink" title="Clipboard官网使用教程"></a><a target="_blank" rel="noopener" href="http://www.clipboardjs.cn/">Clipboard官网使用教程</a></h5><h5 id="复制成功和复制失败的提示"><a href="#复制成功和复制失败的提示" class="headerlink" title="复制成功和复制失败的提示"></a>复制成功和复制失败的提示</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">var u = navigator.userAgent;</span><br><span class="line">clipboard.on(&#x27;success&#x27;, function(e) &#123;</span><br><span class="line">    layer.msg(&#x27;复制成功&#x27;, &#123;time: 1000&#125;);</span><br><span class="line">    e.clearSelection();</span><br><span class="line">&#125;);</span><br><span class="line">clipboard.on(&#x27;error&#x27;, function(e) &#123;</span><br><span class="line">    if(u.indexOf(&#x27;UCBrowser&#x27;) &gt; -1)&#123;</span><br><span class="line">        layer.msg(&#x27;您的浏览器不支持，请长按内容手动复制！&#x27;, &#123;time: 1000&#125;);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        layer.msg(&#x27;复制失败&#x27;, &#123;time: 1000&#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<h5 id="如果提示信息弹两次"><a href="#如果提示信息弹两次" class="headerlink" title="如果提示信息弹两次"></a>如果提示信息弹两次</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">自己写一个copySuccessTip提示信息</span><br><span class="line">$(&quot;.copySuccessTip&quot;).addClass(&quot;mymove&quot;);</span><br><span class="line">setTimeout(function() &#123;</span><br><span class="line">    $(&quot;.copySuccessTip&quot;).removeClass(&quot;mymove&quot;);</span><br><span class="line">&#125;,1000);</span><br></pre></td></tr></table></figure>
-
-<h4 id="解决clipboard复制弹多次提示的问题"><a href="#解决clipboard复制弹多次提示的问题" class="headerlink" title="解决clipboard复制弹多次提示的问题"></a>解决clipboard复制弹多次提示的问题</h4><p>1、使用destroy（在单页面里面，回来页面，如果存在这个对象，就删除。）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">// 如果存在clipboard，先将它销毁</span><br><span class="line">if(clipboard)&#123;</span><br><span class="line">	clipboard.destroy();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var clipboard =new ClipboardJS(&#x27;.copyBtn&#x27;, &#123;</span><br><span class="line">	text: function(trigger)&#123;</span><br><span class="line">		var txt = $(trigger).data( &quot;clipboard-text&quot;);</span><br><span class="line">		return txt;		//	返回需要复制的内容</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">var u = navigator.userAgent;</span><br><span class="line"></span><br><span class="line">clipboard.on(&#x27;success&#x27;, function(e)&#123;</span><br><span class="line">	layer.msg(&#x27;复制成功&#x27;);</span><br><span class="line">	e.clearselection();</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">clipboard.on(&#x27;error&#x27;, function(e) &#123;</span><br><span class="line">	if(u.indexOf(&quot;UCBrowser&quot;) &gt;-1)&#123;</span><br><span class="line">		layer.msg(&#x27;您的浏览器不支持，请长按内容手动复制!&#x27;);</span><br><span class="line">	&#125;else &#123;</span><br><span class="line">		layer.msg(&#x27;复制失败&#x27;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>2、换成setTimeout，不用layer.msg（copySuccessTip的样式模拟layer.msg的样式即可）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">clipboard.on(&#x27;success&#x27;, function(e)&#123;</span><br><span class="line">	$(&#x27;.copySuccessTip&#x27;).show();</span><br><span class="line">	</span><br><span class="line">	setTimeout(function()&#123;</span><br><span class="line">		$(&#x27;.copySuccessTip&#x27;).hide();</span><br><span class="line">	&#125;, 1000);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/25/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><span class="page-number current">26</span><a class="page-number" href="/page/27/">27</a><span class="space">&hellip;</span><a class="page-number" href="/page/43/">43</a><a class="extend next" rel="next" href="/page/27/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/25/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><span class="page-number current">26</span><a class="page-number" href="/page/27/">27</a><span class="space">&hellip;</span><a class="page-number" href="/page/44/">44</a><a class="extend next" rel="next" href="/page/27/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -557,7 +558,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">127</span>
+          <span class="site-state-item-count">130</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -570,7 +571,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">75</span>
+        <span class="site-state-item-count">76</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

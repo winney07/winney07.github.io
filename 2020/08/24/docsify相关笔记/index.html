@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="官网文档安装1npm i docsify-cli -g  初始化项目1docsify init .&#x2F;docs  本地预览1docsify serve docs  添加左侧导航栏-loadSidebar: true 修改docs&#x2F;index.html 12345window.$docsify &#x3D; &amp;#123;  loadSidebar: true,  &#x2F;&#x2F; 开启左侧导航栏  name: &amp;#x27;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="docsify相关笔记">
+<meta property="og:url" content="http://example.com/2020/08/24/docsify%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="winney">
+<meta property="og:description" content="官网文档安装1npm i docsify-cli -g  初始化项目1docsify init .&#x2F;docs  本地预览1docsify serve docs  添加左侧导航栏-loadSidebar: true 修改docs&#x2F;index.html 12345window.$docsify &#x3D; &amp;#123;  loadSidebar: true,  &#x2F;&#x2F; 开启左侧导航栏  name: &amp;#x27;">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-08-24T12:47:32.000Z">
+<meta property="article:modified_time" content="2022-08-24T13:42:20.107Z">
+<meta property="article:author" content="winney">
+<meta property="article:tag" content="工作笔记">
+<meta property="article:tag" content="docsify">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2020/08/24/docsify%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>docsify相关笔记 | winney</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">winney</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">It is never too old to learn.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <img alt="winney" src="/images/blog-head.jpg">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/08/24/docsify%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="winney">
+      <meta itemprop="description" content="Doing is better than saying.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="winney">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          docsify相关笔记
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-08-24 20:47:32" itemprop="dateCreated datePublished" datetime="2020-08-24T20:47:32+08:00">2020-08-24</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-08-24 21:42:20" itemprop="dateModified" datetime="2022-08-24T21:42:20+08:00">2022-08-24</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h4 id="官网文档"><a href="#官网文档" class="headerlink" title="官网文档"></a><a target="_blank" rel="noopener" href="https://docsify.js.org/#/zh-cn/quickstart">官网文档</a></h4><h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i docsify-cli -g</span><br></pre></td></tr></table></figure>
+
+<h4 id="初始化项目"><a href="#初始化项目" class="headerlink" title="初始化项目"></a>初始化项目</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docsify init ./docs</span><br></pre></td></tr></table></figure>
+
+<h4 id="本地预览"><a href="#本地预览" class="headerlink" title="本地预览"></a>本地预览</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docsify serve docs</span><br></pre></td></tr></table></figure>
+
+<h4 id="添加左侧导航栏-loadSidebar-true"><a href="#添加左侧导航栏-loadSidebar-true" class="headerlink" title="添加左侧导航栏-loadSidebar: true"></a>添加左侧导航栏-loadSidebar: true</h4><ol>
+<li><p>修改docs/index.html</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">window.$docsify = &#123;</span><br><span class="line">  loadSidebar: true,  // 开启左侧导航栏</span><br><span class="line">  name: &#x27;&#x27;,</span><br><span class="line">  repo: &#x27;&#x27;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在根目录(docs)中，新建<code>_sidebar.md</code>文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">* 常用网址     // 分组名</span><br><span class="line"></span><br><span class="line">  * [Vue](website/vue.md)   // 链接到对应文件</span><br><span class="line">* 收藏博客</span><br><span class="line"></span><br><span class="line">  * [javascript](blogs/javascript.md)</span><br><span class="line">* 常用软件</span><br><span class="line"></span><br><span class="line">  * [web前端](software/web.md)</span><br><span class="line">* 笔记</span><br><span class="line"></span><br><span class="line">  [web前端](software/web.md)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>新建对应的文件（如：<code>website/vue.md</code> 【新建website目录，新建vue.md】）</p>
+</li>
+</ol>
+<h4 id="添加搜索功能"><a href="#添加搜索功能" class="headerlink" title="添加搜索功能"></a>添加搜索功能</h4><ol>
+<li><p>修改<code>window.$docsify</code>（在<code>docs/index.html</code>）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">window.$docsify = &#123;</span><br><span class="line">    loadSidebar: true,</span><br><span class="line">    name: &#x27;&#x27;,</span><br><span class="line">    repo: &#x27;&#x27;,</span><br><span class="line">    search: &#123;   // 添加</span><br><span class="line">        noData: &#123;</span><br><span class="line">          &#x27;/&#x27;: &#x27;无匹配结果&#x27;</span><br><span class="line">        &#125;,</span><br><span class="line">        paths: &#x27;auto&#x27;,</span><br><span class="line">        placeholder: &#123;</span><br><span class="line">          &#x27;/&#x27;: &#x27;搜索&#x27;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加<code>search.min.js</code>插件（在<code>docs/index.html</code>）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=&quot;//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel=&quot;stylesheet&quot; href=&quot;//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/sidebar.min.css&quot; /&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<h4 id="配置参考"><a href="#配置参考" class="headerlink" title="配置参考"></a>配置参考</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;title&gt;工作文档&lt;/title&gt;</span><br><span class="line">  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge,chrome=1&quot; /&gt;</span><br><span class="line">  &lt;meta name=&quot;description&quot; content=&quot;Description&quot;&gt;</span><br><span class="line">  &lt;link rel=&quot;shortcut icon&quot; href=&quot;./favicon.ico&quot; /&gt;</span><br><span class="line">  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0, minimum-scale=1.0&quot;&gt;</span><br><span class="line">  &lt;link rel=&quot;stylesheet&quot; href=&quot;//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css&quot;&gt;</span><br><span class="line">  &lt;link rel=&quot;stylesheet&quot; href=&quot;//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/sidebar.min.css&quot; /&gt;</span><br><span class="line">  &lt;link rel=&quot;stylesheet&quot; href=&quot;//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/sidebar-folder.min.css&quot; /&gt;</span><br><span class="line">  &lt;style&gt;</span><br><span class="line">    a&#123;</span><br><span class="line">      text-decoration: none;</span><br><span class="line">    &#125;</span><br><span class="line">    a:hover&#123;</span><br><span class="line">      text-decoration: underline;</span><br><span class="line">    &#125;</span><br><span class="line">    .sidebar ul li a&#123;</span><br><span class="line">      /* color: #0088CC !important; */</span><br><span class="line">      font-weight: normal;</span><br><span class="line">    &#125;</span><br><span class="line">    .content td a, .content p a&#123;</span><br><span class="line">      font-weight: normal;</span><br><span class="line">    &#125;</span><br><span class="line">    .markdown-section blockquote p&#123;</span><br><span class="line">      font-weight: normal;</span><br><span class="line">    &#125;</span><br><span class="line">    .markdown-section h5&#123;</span><br><span class="line">      font-size: 1.05rem;</span><br><span class="line">      margin-top: 0.5rem;</span><br><span class="line">      margin-bottom: 1rem;</span><br><span class="line">    &#125;</span><br><span class="line">    .markdown-section hr&#123;</span><br><span class="line">      margin: 2em 0 0.5rem;</span><br><span class="line">    &#125;</span><br><span class="line">    .sidebar-nav ul:not(.app-sub-sidebar)&gt;li.folder::before&#123;</span><br><span class="line">      display: none;</span><br><span class="line">    &#125;</span><br><span class="line">    .sidebar-nav ul:not(.app-sub-sidebar)&gt;li.file::before&#123;</span><br><span class="line">      background: none;</span><br><span class="line">    &#125;</span><br><span class="line">    .sidebar-nav ul:not(.app-sub-sidebar)&gt;li::before&#123;</span><br><span class="line">      content: &quot;-&quot;;</span><br><span class="line">      top: -1px;</span><br><span class="line">      left: -10px;</span><br><span class="line">      width: 10px;</span><br><span class="line">      height: 10px;</span><br><span class="line">    &#125;</span><br><span class="line">    .sidebar-nav ul:not(.app-sub-sidebar)&gt;li.open::before&#123;</span><br><span class="line">      transform: none;</span><br><span class="line">    &#125;</span><br><span class="line">    .markdown-section p&#123;</span><br><span class="line">      margin: 0;</span><br><span class="line">    &#125;</span><br><span class="line">    .markdown-section th&#123;</span><br><span class="line">      background-color: #f8f8f8;</span><br><span class="line">      color: #909399;</span><br><span class="line">    &#125;</span><br><span class="line">    .markdown-section pre&#123;</span><br><span class="line">      padding: 0 0.6rem;</span><br><span class="line">      margin: 0.6em 0;</span><br><span class="line">    &#125;</span><br><span class="line">    .markdown-section pre&gt;code&#123;</span><br><span class="line">      padding: 0.4rem 5px;</span><br><span class="line">    &#125;</span><br><span class="line">    .markdown-section code, .markdown-section output:after, .markdown-section pre&#123;</span><br><span class="line">      font-family: &#x27;Source Sans Pro,Helvetica Neue,Arial,sans-serif&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">    /* .sidebar&#123;</span><br><span class="line">      width: 200px;</span><br><span class="line">    &#125;</span><br><span class="line">    .sidebar-toggle&#123;</span><br><span class="line">      width: 184px;</span><br><span class="line">    &#125;</span><br><span class="line">    .content&#123;</span><br><span class="line">      left: 200px;</span><br><span class="line">    &#125;</span><br><span class="line">    .markdown-section&#123;</span><br><span class="line">      max-width: 90%;</span><br><span class="line">    &#125; */</span><br><span class="line">  &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;div id=&quot;app&quot;&gt;&lt;/div&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    window.$docsify = &#123;</span><br><span class="line">      // name: &#x27;工作文档&#x27;,</span><br><span class="line">      auto2top: true,</span><br><span class="line">      repo: &#x27;&#x27;,</span><br><span class="line">      loadSidebar: true,</span><br><span class="line">      sidebarDisplayLevel: 0,</span><br><span class="line">      // subMaxLevel: 2,</span><br><span class="line">      alias: &#123;</span><br><span class="line">        &#x27;/.*/_sidebar.md&#x27;: &#x27;/_sidebar.md&#x27;</span><br><span class="line">      &#125;,</span><br><span class="line">      search: &#123;</span><br><span class="line">          noData: &#123;</span><br><span class="line">            &#x27;/&#x27;: &#x27;无匹配结果&#x27;</span><br><span class="line">          &#125;,</span><br><span class="line">          paths: &#x27;auto&#x27;,</span><br><span class="line">          placeholder: &#123;</span><br><span class="line">            &#x27;/&#x27;: &#x27;搜索&#x27;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">  &lt;!-- Docsify v4 --&gt;</span><br><span class="line">  &lt;script src=&quot;//cdn.jsdelivr.net/npm/docsify@4&quot;&gt;&lt;/script&gt;</span><br><span class="line">  &lt;script src=&quot;//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">  &lt;script src=&quot;//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/docsify-sidebar-collapse.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">  &lt;script src=&quot;//cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" rel="tag"># 工作笔记</a>
+              <a href="/tags/docsify/" rel="tag"># docsify</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/08/24/Node-js%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/" rel="prev" title="Node.js相关笔记">
+      <i class="fa fa-chevron-left"></i> Node.js相关笔记
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/11/04/Clipboard%E7%9A%84%E4%BD%BF%E7%94%A8/" rel="next" title="Clipboard的使用">
+      Clipboard的使用 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%98%E7%BD%91%E6%96%87%E6%A1%A3"><span class="nav-number">1.</span> <span class="nav-text">官网文档</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">2.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E9%A1%B9%E7%9B%AE"><span class="nav-number">3.</span> <span class="nav-text">初始化项目</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%AC%E5%9C%B0%E9%A2%84%E8%A7%88"><span class="nav-number">4.</span> <span class="nav-text">本地预览</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E5%B7%A6%E4%BE%A7%E5%AF%BC%E8%88%AA%E6%A0%8F-loadSidebar-true"><span class="nav-number">5.</span> <span class="nav-text">添加左侧导航栏-loadSidebar: true</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E6%90%9C%E7%B4%A2%E5%8A%9F%E8%83%BD"><span class="nav-number">6.</span> <span class="nav-text">添加搜索功能</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E5%8F%82%E8%80%83"><span class="nav-number">7.</span> <span class="nav-text">配置参考</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="winney"
+      src="/images/header.jpg">
+  <p class="site-author-name" itemprop="name">winney</p>
+  <div class="site-description" itemprop="description">Doing is better than saying.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">130</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">55</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">76</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://www.xiaochao.me/" title="https:&#x2F;&#x2F;www.xiaochao.me&#x2F;" rel="noopener" target="_blank">小超</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://winney07.github.io/" title="https:&#x2F;&#x2F;winney07.github.io&#x2F;" rel="noopener" target="_blank">winney07</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2015 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">winney07</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

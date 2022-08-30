@@ -193,6 +193,330 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/06/10/docsify/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="winney">
+      <meta itemprop="description" content="Doing is better than saying.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="winney">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/06/10/docsify/" class="post-title-link" itemprop="url">docsify</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-06-10 11:00:09" itemprop="dateCreated datePublished" datetime="2021-06-10T11:00:09+08:00">2021-06-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-08-24 18:09:23" itemprop="dateModified" datetime="2022-08-24T18:09:23+08:00">2022-08-24</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="docsify"><a href="#docsify" class="headerlink" title="docsify"></a>docsify</h4><p><a target="_blank" rel="noopener" href="https://docsify.js.org/#/zh-cn/">docsify中文文档</a></p>
+<p>摘自<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/4883e95aa903">视觉派pie</a> 、<a target="_blank" rel="noopener" href="https://www.imooc.com/article/287154">Docsify快速搭建个人博客</a></p>
+<blockquote>
+<p>文档网站生成工具、快速搭建个人博客</p>
+</blockquote>
+<blockquote>
+<p>docsify 是一个动态生成文档网站的工具。不同于 GitBook、Hexo 的地方是它不会将 <code>.md</code> 转成 <code>.html</code> 文件，所有转换工作都是在运行时进行。</p>
+<p>这将非常实用，如果只是需要快速的搭建一个小型的文档网站，或者不想因为生成的一堆 <code>.html</code> 文件“污染” commit 记录，只需要创建一个 <code>index.html</code> 就可以开始写文档而且直接部署在<a target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=https://docsify.js.org/%23/zh-cn/deploy">GitHub Pages</a>。</p>
+</blockquote>
+<h4 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h4><ul>
+<li>无需构建，写完文档直接发布</li>
+<li>容易使用并且轻量 (~19kB gzipped)</li>
+<li>智能的全文搜索</li>
+<li>提供多套主题</li>
+<li>丰富的 API</li>
+<li>支持 Emoji</li>
+<li>兼容 IE10+</li>
+<li>支持 SSR (<a target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=https://github.com/docsifyjs/docsify-ssr-demo">example</a>)</li>
+</ul>
+<h4 id="生成文档的工具："><a href="#生成文档的工具：" class="headerlink" title="生成文档的工具："></a>生成文档的工具：</h4><p>阿里的语雀、DokuWiki、MDwiki、HDwiki</p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/84b46b67031d">使用Typora+docsify+GitHub Pages搭建团队知识库</a></p>
+<h5 id="文档案例"><a href="#文档案例" class="headerlink" title="文档案例"></a>文档案例</h5><p><a target="_blank" rel="noopener" href="https://hanxueqing.github.io/Douban-Movie/#/?id=%E4%BD%BF%E7%94%A8vue%E5%85%A8%E5%AE%B6%E6%A1%B6nodejs%E6%90%AD%E5%BB%BA%E7%9A%84%E5%B0%8F%E5%9E%8B%E5%85%A8%E6%A0%88%E9%A1%B9%E7%9B%AE">使用Vue全家桶+Node.js搭建的小型全栈项目</a></p>
+<h5 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h5><p>全局安装<code>docsify-cli</code>工具，可以方便地创建及在本地预览生成的文档。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i docsify-cli -g</span><br></pre></td></tr></table></figure>
+
+<h5 id="初始化项目"><a href="#初始化项目" class="headerlink" title="初始化项目"></a>初始化项目</h5><p>如果想在项目的 <code>./docs</code> 目录里写文档，直接通过 <code>init</code> 初始化项目。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docsify init ./docs</span><br></pre></td></tr></table></figure>
+
+<h5 id="本地预览"><a href="#本地预览" class="headerlink" title="本地预览"></a>本地预览</h5><p>通过运行 <code>docsify serve</code> 启动一个本地服务器，可以方便地实时预览效果。默认访问地址 <a target="_blank" rel="noopener" href="http://localhost:3000/">http://localhost:3000</a> </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docsify serve docs</span><br></pre></td></tr></table></figure>
+
+<h5 id="定制侧边栏"><a href="#定制侧边栏" class="headerlink" title="定制侧边栏"></a>定制侧边栏</h5><ol>
+<li><p>在项目根目录（与index.html同目录）创建<code>_sidebar.md</code>文件</p>
+</li>
+<li><p>配置 <code>loadSidebar</code> 选项</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">window.$docsify = &#123;</span><br><span class="line">   loadSidebar: true</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>编辑<code>_sidebar.md</code> 文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- docs/_sidebar.md --&gt;</span><br><span class="line"></span><br><span class="line">* [首页](zh-cn/)</span><br><span class="line">* [指南](zh-cn/guide)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置 <code>alias</code> 避免不必要的回退过程 （即访问非根目录的页面时，会报<code>_sidebar.md</code>文件是404)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">window.$docsify = &#123;</span><br><span class="line">    loadSidebar: true,</span><br><span class="line">    alias: &#123;</span><br><span class="line">      &#x27;/.*/_sidebar.md&#x27;: &#x27;/_sidebar.md&#x27;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+</li>
+</ol>
+<h4 id="docsify-侧边栏目录扩展"><a href="#docsify-侧边栏目录扩展" class="headerlink" title="docsify 侧边栏目录扩展"></a><a target="_blank" rel="noopener" href="https://www.cnblogs.com/baby123/p/14361402.html">docsify 侧边栏目录扩展</a></h4><p>官方文档没有介绍左侧目录的折叠问题，可以使用这个开源：</p>
+<p>git地址 <a target="_blank" rel="noopener" href="https://github.com/iPeng6/docsify-sidebar-collapse">https://github.com/iPeng6/docsify-sidebar-collapse</a></p>
+<p>代码如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel=&quot;stylesheet&quot; href=&quot;//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/sidebar.min.css&quot; /&gt;</span><br><span class="line">&lt;link rel=&quot;stylesheet&quot; href=&quot;//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/sidebar-folder.min.css&quot; /&gt;</span><br><span class="line"></span><br><span class="line">&lt;script src=&quot;//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/docsify-sidebar-collapse.min.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>使用sidebarDisplayLevel设置默认折叠的层级：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">window.$docsify = &#123;</span><br><span class="line">      sidebarDisplayLevel: 1,   // 如果想收起的是第一层级，设置为0</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后根据自己需求修改样式。</p>
+<h4 id="侧边栏三层级配置"><a href="#侧边栏三层级配置" class="headerlink" title="侧边栏三层级配置"></a>侧边栏三层级配置</h4><p>参考<a target="_blank" rel="noopener" href="https://cpury.com/1408.html">docsify侧边栏折叠</a></p>
+<p>_sidebar.md：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">* 项目</span><br><span class="line">    * [管理后台](project/manage.md)</span><br><span class="line">        * [新广告后台](project/ad_admin.md)</span><br><span class="line">        * [纳米盒应用后台2.0](project/AppManage2.0.md)</span><br><span class="line">        * [纳米盒管理后台](project/manage_new.md)</span><br><span class="line">        * [黄豆芽办公系统](project/ai.huangdouya.com.md)</span><br><span class="line">        * [黄豆芽sdk运营后台](project/hanteng-manage.vxinyou.com.md)</span><br><span class="line">        * [切支付](project/check_pay.md)</span><br></pre></td></tr></table></figure>
+
+<p>manage.md：（里面写什么都可以）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">## 新广告后台</span><br><span class="line">## 纳米盒应用后台2.0</span><br><span class="line">## 纳米盒管理后台</span><br><span class="line">## 黄豆芽办公系统</span><br><span class="line">## 黄豆芽sdk运营后台</span><br><span class="line">## 切支付</span><br></pre></td></tr></table></figure>
+
+<h4 id="添加代码高亮"><a href="#添加代码高亮" class="headerlink" title="添加代码高亮"></a>添加代码高亮</h4><p>引入js文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=&quot;//cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>参考<a target="_blank" rel="noopener" href="https://docsify.js.org/#/zh-cn/language-highlight">代码高亮</a></p>
+<p>写代码的时候要加上bash</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">​```bash</span><br><span class="line">echo &quot;hello&quot;</span><br><span class="line">​```</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="加入搜索功能"><a href="#加入搜索功能" class="headerlink" title="加入搜索功能"></a>加入搜索功能</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=&quot;//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">search: &#123;</span><br><span class="line">    noData: &#123;</span><br><span class="line">      &#x27;/&#x27;: &#x27;没有结果!&#x27;</span><br><span class="line">    &#125;,</span><br><span class="line">    paths: &#x27;auto&#x27;,</span><br><span class="line">    placeholder: &#123;</span><br><span class="line">      &#x27;/&#x27;: &#x27;搜索&#x27;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="部署到服务器"><a href="#部署到服务器" class="headerlink" title="部署到服务器"></a>部署到服务器</h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_34568812/article/details/112002961">如何把 Docsify 文档部署到服务器?</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/84b46b67031d">使用Typora+docsify+GitHub Pages搭建团队知识库</a></p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904115466682375">使用docsify 写开源文档+部署到云服务器</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/05/13/Element-UI%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="winney">
+      <meta itemprop="description" content="Doing is better than saying.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="winney">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/05/13/Element-UI%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">Element-UI笔记</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-05-13 11:36:28" itemprop="dateCreated datePublished" datetime="2021-05-13T11:36:28+08:00">2021-05-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-08-24 18:09:23" itemprop="dateModified" datetime="2022-08-24T18:09:23+08:00">2022-08-24</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm i element-ui -S</span><br></pre></td></tr></table></figure>
+
+<h4 id="引入element-ui"><a href="#引入element-ui" class="headerlink" title="引入element-ui"></a>引入element-ui</h4><p>在 main.js 中写入以下内容（完整引入）：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">Vue</span> <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">ElementUI</span> <span class="keyword">from</span> <span class="string">&#x27;element-ui&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;element-ui/lib/theme-chalk/index.css&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">App</span> <span class="keyword">from</span> <span class="string">&#x27;./App.vue&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">ElementUI</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> <span class="title class_">Vue</span>(&#123;</span><br><span class="line">  <span class="attr">el</span>: <span class="string">&#x27;#app&#x27;</span>,</span><br><span class="line">  <span class="attr">render</span>: <span class="function"><span class="params">h</span> =&gt;</span> <span class="title function_">h</span>(<span class="title class_">App</span>)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h4 id="ElementUI表格合并单元格"><a href="#ElementUI表格合并单元格" class="headerlink" title="ElementUI表格合并单元格"></a>ElementUI表格合并单元格</h4><p>摘抄自<a target="_blank" rel="noopener" href="https://www.cnblogs.com/yuwenjing0727/p/10110721.html">博客</a>，仅用于学习。</p>
+<table>
+  <tr>
+    <th>序号</th>
+    <th>工单类型</th>
+    <th>taskKey</th>
+    <th>templateUrl</th>
+    <th>操作</th>
+  </tr>
+  <tr>
+    <td rowspan="3">1</td>
+    <td rowspan="3">事件单</td>
+    <td>shijian_01</td>
+    <td>/shijian_01</td>
+    <td>编辑   删除</td>
+  </tr>
+  <tr>
+    <td>shijian_02</td>
+    <td>/shijian_02</td>
+    <td>编辑   删除</td>
+  </tr>
+  <tr>
+    <td>shijian_03</td>
+    <td>/shijian_03</td>
+    <td>编辑   删除</td>
+  </tr>
+  <tr>
+    <td rowspan="3">2</td>
+    <td rowspan="3">问题单</td>
+    <td>shijian_04</td>
+    <td>/shijian_04</td>
+    <td>编辑   删除</td>
+  </tr>
+  <tr>
+    <td>shijian_05</td>
+    <td>/shijian_05</td>
+    <td>编辑   删除</td>
+  </tr>
+  <tr>
+    <td>shijian_06</td>
+    <td>/shijian_06</td>
+    <td>编辑   删除</td>
+  </tr>
+</table>
+
+
+<p>代码附上：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div class=&quot;&quot;&gt;</span><br><span class="line">    &lt;el-table</span><br><span class="line">        :data=&quot;listData&quot;</span><br><span class="line">        :span-method=&quot;objectSpanMethod&quot;</span><br><span class="line">        class=&quot;tableArea&quot;</span><br><span class="line">        style=&quot;width: 100%&quot;&gt;</span><br><span class="line">        &lt;el-table-column</span><br><span class="line">          prop=&quot;type&quot;</span><br><span class="line">          label=&quot;序号&quot;</span><br><span class="line">          align=&quot;center&quot;</span><br><span class="line">          width=&quot;200&quot;/&gt;</span><br><span class="line">        &lt;el-table-column</span><br><span class="line">          prop=&quot;sheetType&quot;</span><br><span class="line">          label=&quot;工单类型&quot;</span><br><span class="line">          /&gt;</span><br><span class="line">        &lt;el-table-column</span><br><span class="line">          prop=&quot;taskKey&quot;</span><br><span class="line">          label=&quot;taskKey&quot;</span><br><span class="line">          /&gt;</span><br><span class="line">        &lt;el-table-column</span><br><span class="line">          prop=&quot;templateUrl&quot;</span><br><span class="line">          label=&quot;templateUrl&quot;</span><br><span class="line">          /&gt;</span><br><span class="line">        &lt;el-table-column</span><br><span class="line">          label=&quot;操作&quot;</span><br><span class="line">          &gt;</span><br><span class="line">          &lt;template slot-scope=&quot;scope&quot;&gt;</span><br><span class="line">              &lt;el-tooltip class=&quot;item&quot; effect=&quot;dark&quot; content=&quot;修改&quot; placement=&quot;top-start&quot;&gt;</span><br><span class="line">                      &lt;i class=&quot;el-icon-edit-outline&quot;  @click=&quot;modify(scope)&quot; /&gt;</span><br><span class="line">                    &lt;/el-tooltip&gt;</span><br><span class="line">                    &lt;el-tooltip class=&quot;item&quot; effect=&quot;dark&quot; content=&quot;删除&quot; placement=&quot;top-start&quot;&gt;</span><br><span class="line">            &lt;i class=&quot;el-icon-delete&quot; @click=&quot;deleteData(scope)&quot; /&gt;</span><br><span class="line">                    &lt;/el-tooltip&gt;</span><br><span class="line">          &lt;/template&gt;</span><br><span class="line">        &lt;/el-table-column &gt;</span><br><span class="line">      &lt;/el-table&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">  name: &#x27;myNeedDeal&#x27;,</span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      rowList: [],</span><br><span class="line">      spanArr: [],</span><br><span class="line">      position: 0,</span><br><span class="line">      listData: []</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  methods: &#123;</span><br><span class="line">      queryData()&#123;//查询操作</span><br><span class="line">          this.listData = [</span><br><span class="line">              &#123;</span><br><span class="line">            id:1,</span><br><span class="line">          type:1,</span><br><span class="line">          sheetType: &quot;事件单&quot;,</span><br><span class="line">          taskKey: &quot;shijian_01&quot;,</span><br><span class="line">          templateUrl: &quot;/shijian_01&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            id:2,</span><br><span class="line">          type:1,</span><br><span class="line">          sheetType: &quot;事件单&quot;,</span><br><span class="line">          taskKey: &quot;shijian_02&quot;,</span><br><span class="line">          templateUrl: &quot;/shijian_02&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            id:3,</span><br><span class="line">          type:1,</span><br><span class="line">          sheetType: &quot;事件单&quot;,</span><br><span class="line">          taskKey: &quot;shijian_03&quot;,</span><br><span class="line">          templateUrl: &quot;/shijian_04&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            id:4,</span><br><span class="line">          type:2,</span><br><span class="line">          sheetType: &quot;问题单&quot;,</span><br><span class="line">          taskKey: &quot;wenti_01&quot;,</span><br><span class="line">          templateUrl: &quot;/wenti_01&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            id:5,</span><br><span class="line">          type:2,</span><br><span class="line">          sheetType: &quot;问题单&quot;,</span><br><span class="line">          taskKey: &quot;wenti_02&quot;,</span><br><span class="line">          templateUrl: &quot;/wenti_02&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            id:6,</span><br><span class="line">          type:2,</span><br><span class="line">          sheetType: &quot;问题单&quot;,</span><br><span class="line">          taskKey: &quot;wenti_03&quot;,</span><br><span class="line">          templateUrl: &quot;/wenti_03&quot;</span><br><span class="line">        &#125;</span><br><span class="line">          ];</span><br><span class="line">          this.rowspan()</span><br><span class="line">      &#125;,</span><br><span class="line">      rowspan() &#123;</span><br><span class="line">          this.listData.forEach((item,index) =&gt; &#123;</span><br><span class="line">            if( index === 0)&#123;</span><br><span class="line">                this.spanArr.push(1);</span><br><span class="line">                this.position = 0;</span><br><span class="line">            &#125;else&#123;</span><br><span class="line">                if(this.listData[index].type === this.listData[index-1].type )&#123;</span><br><span class="line">                    this.spanArr[this.position] += 1;</span><br><span class="line">                    this.spanArr.push(0);</span><br><span class="line">                &#125;else&#123;</span><br><span class="line">                    this.spanArr.push(1);</span><br><span class="line">                    this.position = index;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;,</span><br><span class="line">    objectSpanMethod(&#123; row, column, rowIndex, columnIndex &#125;) &#123;  //表格合并行</span><br><span class="line">        if (columnIndex === 0) &#123;</span><br><span class="line">            const _row = this.spanArr[rowIndex];</span><br><span class="line">            const _col = _row&gt;0 ? 1 : 0;</span><br><span class="line">            return &#123;</span><br><span class="line">                rowspan: _row,</span><br><span class="line">                colspan: _col</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if(columnIndex === 1)&#123;</span><br><span class="line">            const _row = this.spanArr[rowIndex];</span><br><span class="line">            const _col = _row&gt;0 ? 1 : 0;</span><br><span class="line">            return &#123;</span><br><span class="line">                rowspan: _row,</span><br><span class="line">                colspan: _col</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  mounted() &#123;</span><br><span class="line">    this.queryData();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;style lang=&quot;scss&quot; scoped&gt;</span><br><span class="line">.el-select &#123;</span><br><span class="line">  margin-right: 15px;</span><br><span class="line">&#125;</span><br><span class="line">.el-input &#123;</span><br><span class="line">  margin-right: 15px;</span><br><span class="line">  width: 200px;</span><br><span class="line">&#125;</span><br><span class="line">.tableArea &#123;</span><br><span class="line">  margin-top: 20px;</span><br><span class="line">  box-shadow: 0 0 8px 0 #aaa;</span><br><span class="line">&#125;</span><br><span class="line">i[class^=&quot;el-icon&quot;] &#123;</span><br><span class="line">  margin-right: 5px;</span><br><span class="line">  font-size: 16px;</span><br><span class="line">  cursor: pointer;</span><br><span class="line">&#125;</span><br><span class="line">.modify_table&#123;</span><br><span class="line">    td&#123;</span><br><span class="line">        padding: 10px ;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">.item_title&#123;</span><br><span class="line">    text-align: right;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+<p>详细说明：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:span-method=&quot;objectSpanMethod&quot;  </span><br></pre></td></tr></table></figure>
+
+<p>这个是官方给定的绑定属性和对应的方法，objectSpanMethod 传入了 { row, column, rowIndex, columnIndex }</p>
+<p>row: 当前行</p>
+<p>column: 当前列</p>
+<p>rowIndex：当前行号</p>
+<p>columnIndex ：当前列号</p>
+<p>该函数可以返回一个包含两个元素的数组，第一个元素代表<code>rowspan</code>，第二个元素代表<code>colspan</code>。 也可以返回一个键名为<code>rowspan</code>和<code>colspan</code>的对象。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.spanArr 数组 ，返回的是相对应的行合并行数</span><br></pre></td></tr></table></figure>
+
+<p>这个示例打印出的this.spanArr为 [3, 0, 0, 3, 0, 0]，比如，第一个元素为3，表示第一行应该向下合并3行（即第一行的rowspan为3），第二个元素的rowspan为0，就让它“消失”。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rowspan（）这个函数就是用来返回 this.spanArr 数组的，定义每一行的 rowspan</span><br></pre></td></tr></table></figure>
+
+<p>rowspan（）函数，if( index === 0)，第一行，直接先给数组push进一个1，表示自己先占一行，this.position是数组元素的位置（此时是从数组元素的第一个开始，所以this.position为0）， this.position为0意思表示的就是数组的第一个元素。</p>
+<p>当到了index为2的时候，if(this.listData[index].type === this.listData[index-1].type )，让第二行与第一行作比较，</p>
+<p>如果第二行与第一行相等的话，this.position就+1，当有n行第一行相同，this.position就为n，表示向下合并n行；第二行自己就this.spanArr.push(0)，表示第二行“消失”，因为第一行和第二行合并了啊。</p>
+<p>如果第二行与第一行不相等的话，那么this.spanArr.push(1);就让第二行自己独占一行；this.position = index意思就是把指针拿到index这行来，表示设置数组this.spanArr[this.position]的元素值，然后定义从此行开始向下合并几行（可能这句话我表述的不是很清楚你可以根据我这个示例研究下，当index为3时，this.position为3，当index为4时，第四行与第三行需要合并，那么在数组的this.position元素就要+1了，也就是this.spanArr[this.position] += 1）</p>
+<p>还有最后一句话</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const _col = _row&gt;0 ? 1 : 0;</span><br></pre></td></tr></table></figure>
+
+<p>定义的这一个单元格列的合并，我们项目只合并行，不合并列；</p>
+<p>_row：代表合并行的行数，_row的值要么是1，或者更大的自然正整数，要么是0。</p>
+<p>1代表：独占一行</p>
+<p>更大的自然数：代表合并了若干行</p>
+<p>0：代表“消失”的哪那一个单元格，后面的单元格向前推一格</p>
+<p>注意：如果配合分页一起渲染数据，要在rowspan函数中，先将this.spanArr清空数组。不添加，点分页加载数据会导致表格错乱。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">rowspan() &#123;</span><br><span class="line">    this.spanArr=[];</span><br><span class="line">    .......</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+
+
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_33982670/article/details/91446060">elementui表格动态数据单元格合并</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.imooc.com/wenda/detail/522127">elementUI table合并相同数据的单元格</a></p>
+<p><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000019176628">elementUI table表格动态合并</a></p>
+<h3 id="slot的使用"><a href="#slot的使用" class="headerlink" title="slot的使用"></a>slot的使用</h3><h5 id="slots"><a href="#slots" class="headerlink" title="slots"></a>slots</h5><table>
+<thead>
+<tr>
+<th>事件名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>title</td>
+<td>标题内容</td>
+</tr>
+<tr>
+<td>content</td>
+<td>内容</td>
+</tr>
+</tbody></table>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;el-page-header @back=<span class="string">&quot;goBack&quot;</span> content=<span class="string">&quot;管理&quot;</span>&gt;</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">slot</span>=<span class="string">&quot;title&quot;</span>&gt;</span>修改标题<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">	<span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">slot</span>=<span class="string">&quot;content&quot;</span>&gt;</span>修改内容<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&lt;/el-page-header&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="解决引用Element-UI-导致弹出多个message消息提示的问题"><a href="#解决引用Element-UI-导致弹出多个message消息提示的问题" class="headerlink" title="解决引用Element UI 导致弹出多个message消息提示的问题"></a><a target="_blank" rel="noopener" href="https://www.cnblogs.com/cndarren/p/14691315.html">解决引用Element UI 导致弹出多个message消息提示的问题</a></h4><h4 id="改造elementui的穿梭框，让他直接点击选项就穿梭到另一个框"><a href="#改造elementui的穿梭框，让他直接点击选项就穿梭到另一个框" class="headerlink" title="改造elementui的穿梭框，让他直接点击选项就穿梭到另一个框"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yangmiemie120/article/details/100736154">改造elementui的穿梭框，让他直接点击选项就穿梭到另一个框</a></h4><h4 id="element-ui-change事件传值"><a href="#element-ui-change事件传值" class="headerlink" title="element-ui change事件传值"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_15601471/article/details/89048951">element-ui change事件传值</a></h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@change=<span class="string">&quot;handleSelect($event)&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="title function_">handleSelect</span>(<span class="params">event</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(event)</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<h4 id="vue使用elementUI表单的获取select-checkbox的value值"><a href="#vue使用elementUI表单的获取select-checkbox的value值" class="headerlink" title="vue使用elementUI表单的获取select,checkbox的value值"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43834855/article/details/108817517">vue使用elementUI表单的获取select,checkbox的value值</a></h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"> &lt;el-checkbox</span><br><span class="line">  v-<span class="keyword">for</span>=<span class="string">&quot;game in gameData&quot;</span></span><br><span class="line">  :label=<span class="string">&quot;game.id&quot;</span></span><br><span class="line">  :key=<span class="string">&quot;game.id&quot;</span></span><br><span class="line">  :data-id=<span class="string">&quot;game.id&quot;</span></span><br><span class="line">  :data-group=<span class="string">&quot;game.group_id&quot;</span>&gt;</span><br><span class="line">  &#123;&#123;game.<span class="property">name</span>&#125;&#125;&lt;/el-checkbox&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 把想要的value值放在label中，将需要显示的内容放在 &lt;el-checkbox&gt;标签之间</span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">el-checkbox</span> <span class="attr">:label</span>=<span class="string">&quot;想要获取的value值&quot;</span>&gt;</span>&#123;&#123;显示的内容值&#125;&#125;<span class="tag">&lt;/<span class="name">el-checkbox</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<p>checkbox的获取可以通过label来获得，将原来的label写在<el-checkbox>{名称}&lt;/&gt;中，因为elementUI获取绑定的是label，<br>即<el-checkbox label=[value]>[label]&lt;/&gt;</p>
+<p>事件传多参数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul <span class="keyword">class</span>=<span class="string">&quot;ul-list txt-left&quot;</span>&gt;</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">li</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">    <span class="attr">v-for</span>=<span class="string">&quot;(game, index) in checkedData&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">    <span class="attr">:label</span>=<span class="string">&quot;game.id&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">    <span class="attr">:key</span>=<span class="string">&quot;game.id&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">     @<span class="attr">click</span>=<span class="string">&quot;chooseGame(index, game.id)&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">    <span class="attr">:class</span> = <span class="string">&quot;isactive == index ? &#x27;blue-txt&#x27; : &#x27;&#x27; &quot;</span> </span></span></span><br><span class="line"><span class="tag"><span class="language-xml">    <span class="attr">class</span>=<span class="string">&quot;active&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    &#123;&#123;game.name&#125;&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line">&lt;/ul&gt;</span><br><span class="line"></span><br><span class="line"><span class="attr">isactive</span>: <span class="number">0</span>,</span><br><span class="line">  </span><br><span class="line"><span class="title function_">chooseGame</span>(<span class="params">index, id</span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">isactive</span> = index</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">thisGameChannels</span> = <span class="variable language_">this</span>.<span class="property">allGameChannels</span>[id]</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<h3 id="Element-ui-el-row-el-col里面高度不一致的问题"><a href="#Element-ui-el-row-el-col里面高度不一致的问题" class="headerlink" title="Element ui el-row el-col里面高度不一致的问题"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/sinat_33255495/article/details/114366877">Element ui el-row el-col里面高度不一致的问题</a></h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;el-row type=<span class="string">&quot;flex&quot;</span>&gt;</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">el-col</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">	<span class="tag">&lt;<span class="name">textarea</span> <span class="attr">autocomplete</span>=<span class="string">&quot;off&quot;</span> <span class="attr">class</span>=<span class="string">&quot;el-textarea__inner&quot;</span> <span class="attr">style</span>=<span class="string">&quot;min-height: 33.2333px;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">textarea</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"> <span class="tag">&lt;/<span class="name">el-col</span>&gt;</span></span></span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">el-col</span>&gt;</span>test<span class="tag">&lt;<span class="name">br</span>&gt;</span>test<span class="tag">&lt;/<span class="name">el-col</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">el-row</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<p>用饿了吗el-row，el-col布局页面的时候会因为el-col的内容高度不统一，造成布局混乱，解决方案就是在el-row中添加type=”flex”。</p>
+<p>注意：里面的内容要有设定的高度，不然加上flex也无效。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/24/yarn%E7%AC%94%E8%AE%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -312,394 +636,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/12/Redux%E7%AC%94%E8%AE%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="winney">
-      <meta itemprop="description" content="Doing is better than saying.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="winney">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/04/12/Redux%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">Redux笔记</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-04-12 14:24:57" itemprop="dateCreated datePublished" datetime="2021-04-12T14:24:57+08:00">2021-04-12</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-08-24 18:09:23" itemprop="dateModified" datetime="2022-08-24T18:09:23+08:00">2022-08-24</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Redux/" itemprop="url" rel="index"><span itemprop="name">Redux</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><a target="_blank" rel="noopener" href="https://github.com/reduxjs">Redux-Github</a></p>
-<p><a target="_blank" rel="noopener" href="https://redux.js.org/">Redux-官网</a></p>
-<p><a target="_blank" rel="noopener" href="http://cn.redux.js.org/">Redux 中文官网</a></p>
-<p><a target="_blank" rel="noopener" href="https://react-redux.js.org/">React Redux</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.redux.org.cn/">Redux 中文文档</a></p>
-<p><a target="_blank" rel="noopener" href="https://redux-toolkit-cn.netlify.app/">Redux工具包-中文文档</a></p>
-<p><a target="_blank" rel="noopener" href="https://redux-toolkit.js.org/">Redux Toolkit</a></p>
-<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/103420294">七步搞定React Redux</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_57218747/article/details/118070930">React-Redux</a></p>
-<p><a target="_blank" rel="noopener" href="https://baijiahao.baidu.com/s?id=1707122824099613498&wfr=spider&for=pc">「HearLing」React学习之路-redux、react-redux</a></p>
-<p><a target="_blank" rel="noopener" href="http://cn.redux.js.org/introduction/learning-resources">学习资源</a></p>
-<p><a target="_blank" rel="noopener" href="https://github.com/reduxjs/redux.git">示例</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/9dcfa43d4e5a">Redux（基本用法）</a></p>
-<p><strong><a target="_blank" rel="noopener" href="https://github.com/reduxjs/rtk-convert-todos-example">使用Redux工具包的示例—-rtk-convert-todos-example</a></strong></p>
-<p>Redux 有很好的<a target="_blank" rel="noopener" href="https://link.jianshu.com/?t=http://redux.js.org/">文档</a>，还有配套的小视频（<a target="_blank" rel="noopener" href="https://link.jianshu.com/?t=https://egghead.io/courses/getting-started-with-redux">前30集</a>，<a target="_blank" rel="noopener" href="https://link.jianshu.com/?t=https://egghead.io/courses/building-react-applications-with-idiomatic-redux">后30集</a>）</p>
-<h4 id="createStore-reducer-preloadedState-enhancer"><a href="#createStore-reducer-preloadedState-enhancer" class="headerlink" title="createStore(reducer, [preloadedState], [enhancer])"></a><a target="_blank" rel="noopener" href="http://cn.redux.js.org/api/createstore">createStore(reducer, [preloadedState], [enhancer])</a></h4><p><code>reducer</code> <em>(Function)</em>: 接收两个参数，分别是当前的 state 树和要处理的 <a target="_blank" rel="noopener" href="http://cn.redux.js.org/understanding/thinking-in-redux/glossary#action">action</a>，返回新的 <a target="_blank" rel="noopener" href="http://cn.redux.js.org/understanding/thinking-in-redux/glossary#state">state 树</a></p>
-<p> Reducer 必须是<strong>纯函数</strong></p>
-<p><strong>不要在 reducer 中调用 API 接口请求</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">import &#123; createStore &#125; from &#x27;redux&#x27;</span><br><span class="line"></span><br><span class="line">function todos(state = [], action) &#123;</span><br><span class="line">  switch (action.type) &#123;</span><br><span class="line">    case &#x27;ADD_TODO&#x27;:</span><br><span class="line">      return state.concat([action.text])</span><br><span class="line">    default:</span><br><span class="line">      return state</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let store = createStore(todos, [&#x27;Use Redux&#x27;])</span><br><span class="line"></span><br><span class="line">store.dispatch(&#123;</span><br><span class="line">  type: &#x27;ADD_TODO&#x27;,</span><br><span class="line">  text: &#x27;Read the docs&#x27;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">console.log(store.getState())</span><br><span class="line">// [ &#x27;Use Redux&#x27;, &#x27;Read the docs&#x27; ]</span><br></pre></td></tr></table></figure>
-
-<h4 id="小贴士"><a href="#小贴士" class="headerlink" title="小贴士#"></a>小贴士<a target="_blank" rel="noopener" href="http://cn.redux.js.org/api/createstore#%E5%B0%8F%E8%B4%B4%E5%A3%AB">#</a></h4><ul>
-<li>应用中不要创建多个 store！相反，使用 <a target="_blank" rel="noopener" href="http://cn.redux.js.org/api/combinereducers"><code>combineReducers</code></a> 来把多个 reducer 创建成一个根 reducer。</li>
-<li>Redux state 通常是普通 JS 对象或者数组。</li>
-<li>如果 state 是普通对象，永远不要修改它！比如，reducer 里不要使用 <code>Object.assign(state, newData)</code>，应该使用 <code>Object.assign(&#123;&#125;, state, newData)</code>。这样才不会覆盖旧的 <code>state</code>。如果可以的话，也可以使用 <a target="_blank" rel="noopener" href="http://cn.redux.js.org/recipes/using-object-spread-operator">对象拓展操作符（object spread spread operator</a> 特性中的 <code>return &#123; ...state, ...newData &#125;</code>。</li>
-<li>对于服务端运行的同构应用，为每一个请求创建一个 store 实例，以此让 store 相隔离。dispatch 一系列请求数据的 action 到 store 实例上，等待请求完成后再在服务端渲染应用。</li>
-<li>当 store 创建后，Redux 会 dispatch 一个 action 到 reducer 上，来用初始的 state 来填充 store。你不需要处理这个 action。但要记住，如果第一个参数也就是传入的 state 是 <code>undefined</code> 的话，reducer 应该返回初始的 state 值。</li>
-<li>要使用多个 store 增强器的时候，你可能需要使用 <a target="_blank" rel="noopener" href="http://cn.redux.js.org/api/compose">compose</a></li>
-</ul>
-<h4 id="combineReducers-reducers"><a href="#combineReducers-reducers" class="headerlink" title="combineReducers(reducers)"></a><a target="_blank" rel="noopener" href="http://cn.redux.js.org/api/combinereducers/">combineReducers(reducers)</a></h4><p><code>combineReducers</code> 辅助函数的作用是，把一个由多个不同 reducer 函数作为 value 的 object，合并成一个最终的 reducer 函数，然后就可以对这个 reducer 调用 <a target="_blank" rel="noopener" href="http://cn.redux.js.org/api/createstore"><code>createStore</code></a> 方</p>
-<h5 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h5><p><code>reducers/todos.js</code></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">export default function todos(state = [], action) &#123;</span><br><span class="line">  switch (action.type) &#123;</span><br><span class="line">    case &#x27;ADD_TODO&#x27;:</span><br><span class="line">      return state.concat([action.text])</span><br><span class="line">    default:</span><br><span class="line">      return state</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><code>reducers/counter.js</code></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">export default function counter(state = 0, action) &#123;</span><br><span class="line">  switch (action.type) &#123;</span><br><span class="line">    case &#x27;INCREMENT&#x27;:</span><br><span class="line">      return state + 1</span><br><span class="line">    case &#x27;DECREMENT&#x27;:</span><br><span class="line">      return state - 1</span><br><span class="line">    default:</span><br><span class="line">      return state</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><code>reducers/index.js</code></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import &#123; combineReducers &#125; from &#x27;redux&#x27;</span><br><span class="line">import todos from &#x27;./todos&#x27;</span><br><span class="line">import counter from &#x27;./counter&#x27;</span><br><span class="line"></span><br><span class="line">export default combineReducers(&#123;</span><br><span class="line">  todos,</span><br><span class="line">  counter</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<p><code>App.js</code></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">import &#123; createStore &#125; from &#x27;redux&#x27;</span><br><span class="line">import reducer from &#x27;./reducers/index&#x27;</span><br><span class="line"></span><br><span class="line">let store = createStore(reducer)</span><br><span class="line">console.log(store.getState())</span><br><span class="line">// &#123;</span><br><span class="line">//   counter: 0,</span><br><span class="line">//   todos: []</span><br><span class="line">// &#125;</span><br><span class="line"></span><br><span class="line">store.dispatch(&#123;</span><br><span class="line">  type: &#x27;ADD_TODO&#x27;,</span><br><span class="line">  text: &#x27;Use Redux&#x27;</span><br><span class="line">&#125;)</span><br><span class="line">console.log(store.getState())</span><br><span class="line">// &#123;</span><br><span class="line">//   counter: 0,</span><br><span class="line">//   todos: [ &#x27;Use Redux&#x27; ]</span><br><span class="line">// &#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="Store"><a href="#Store" class="headerlink" title="Store"></a><a target="_blank" rel="noopener" href="http://cn.redux.js.org/api/store/#store-%E6%96%B9%E6%B3%95">Store</a></h4><h4 id="Store-1"><a href="#Store-1" class="headerlink" title="Store"></a><a target="_blank" rel="noopener" href="http://cn.redux.js.org/tutorials/essentials/part-1-overview-concepts#store">Store</a></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import &#123; configureStore &#125; from &#x27;@reduxjs/toolkit&#x27;</span><br><span class="line"></span><br><span class="line">const store = configureStore(&#123; reducer: counterReducer &#125;)</span><br><span class="line"></span><br><span class="line">console.log(store.getState())</span><br><span class="line">// &#123;value: 0&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<h4 id="Action"><a href="#Action" class="headerlink" title="Action"></a>Action</h4><p>Action 是把数据传入 store 的惟一途径，所以任何数据，无论来自 UI 事件，网络回调或者是其它资源如 WebSockets，最终都应该以 action 的形式被 dispatch</p>
-<p><a target="_blank" rel="noopener" href="http://cn.redux.js.org/tutorials/essentials/part-1-overview-concepts#action"><strong>action</strong></a> 是一个具有 <code>type</code> 字段的普通 JavaScript 对象。<strong>你可以将 action 视为描述应用程序中发生了什么的事件</strong>.</p>
-<p><code>type</code> 字段是一个字符串，给这个 action 一个描述性的名字，比如<code>&quot;todos/todoAdded&quot;</code>。我们通常把那个类型的字符串写成“域/事件名称”，其中第一部分是这个 action 所属的特征或类别，第二部分是发生的具体事情。</p>
-<p>action 对象可以有其他字段，其中包含有关发生的事情的附加信息。按照惯例，我们将该信息放在名为 <code>payload</code> 的字段中。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const addTodoAction = &#123;</span><br><span class="line">  type: &#x27;todos/todoAdded&#x27;,</span><br><span class="line">  payload: &#x27;Buy milk&#x27;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><a target="_blank" rel="noopener" href="http://cn.redux.js.org/tutorials/essentials/part-1-overview-concepts#action-creator"><strong>action creator</strong></a> 是一个创建并返回一个 action 对象的函数。它的作用是让你不必每次都手动编写 action 对象：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const addTodo = text =&gt; &#123;</span><br><span class="line">  return &#123;</span><br><span class="line">    type: &#x27;todos/todoAdded&#x27;,</span><br><span class="line">    payload: text</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="Reducer"><a href="#Reducer" class="headerlink" title="Reducer"></a><a target="_blank" rel="noopener" href="http://cn.redux.js.org/tutorials/essentials/part-1-overview-concepts#reducer">Reducer</a></h4><p><strong>reducer</strong> 是一个函数，接收当前的 <code>state</code> 和一个 <code>action</code> 对象，必要时决定如何更新状态，并返回新状态。函数签名是：<code>(state, action) =&gt; newState</code>。 <strong>你可以将 reducer 视为一个事件监听器，它根据接收到的 action（事件）类型处理事件。</strong></p>
-<ul>
-<li>禁止任何异步逻辑、依赖随机值或导致其他“副作用”的代码</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">const initialState = &#123; value: 0 &#125;</span><br><span class="line"></span><br><span class="line">function counterReducer(state = initialState, action) &#123;</span><br><span class="line">  // 检查 reducer 是否关心这个 action</span><br><span class="line">  if (action.type === &#x27;counter/increment&#x27;) &#123;</span><br><span class="line">    // 如果是，复制 `state`</span><br><span class="line">    return &#123;</span><br><span class="line">      ...state,</span><br><span class="line">      // 使用新值更新 state 副本</span><br><span class="line">      value: state.value + 1</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  // 返回原来的 state 不变</span><br><span class="line">  return state</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="Dispatch"><a href="#Dispatch" class="headerlink" title="Dispatch"></a><a target="_blank" rel="noopener" href="http://cn.redux.js.org/tutorials/essentials/part-1-overview-concepts#dispatch">Dispatch</a></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">store.dispatch(&#123; type: &#x27;counter/increment&#x27; &#125;)</span><br><span class="line"></span><br><span class="line">console.log(store.getState())</span><br></pre></td></tr></table></figure>
-
-<p>我们通常调用 action creator 来调用 action：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">const increment = () =&gt; &#123;</span><br><span class="line">  return &#123;</span><br><span class="line">    type: &#x27;counter/increment&#x27;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">store.dispatch(increment())</span><br><span class="line"></span><br><span class="line">console.log(store.getState())</span><br><span class="line">// &#123;value: 2&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="Redux-数据流"><a href="#Redux-数据流" class="headerlink" title="Redux 数据流"></a><a target="_blank" rel="noopener" href="http://cn.redux.js.org/tutorials/essentials/part-1-overview-concepts#redux-%E6%95%B0%E6%8D%AE%E6%B5%81">Redux 数据流</a></h3><p>初始启动：</p>
-<ul>
-<li>使用最顶层的 root reducer 函数创建 Redux store</li>
-</ul>
-<p><img src="http://cn.redux.js.org/assets/images/ReduxDataFlowDiagram-49fa8c3968371d9ef6f2a1486bd40a26.gif" alt="动画的方式来表达数据流更新"></p>
-<h4 id="异步处理"><a href="#异步处理" class="headerlink" title="异步处理"></a>异步处理</h4><p><img src="https://redux.js.org/assets/images/ReduxAsyncDataFlowDiagram-d97ff38a0f4da0f327163170ccc13e80.gif" alt="异步"></p>
-<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><ul>
-<li>Redux 是一个管理全局应用状态的库<ul>
-<li>Redux 通常与 React-Redux 库一起使用，把 Redux 和 React 集成在一起</li>
-<li>Redux Toolkit 是编写 Redux 逻辑的推荐方式</li>
-</ul>
-</li>
-<li>Redux 使用 “单向数据流”<ul>
-<li>State 描述了应用程序在某个时间点的状态，UI 基于该状态渲染</li>
-<li>当应用程序中发生某些事情时：<ul>
-<li>UI dispatch 一个 action</li>
-<li>store 调用 reducer，随后根据发生的事情来更新 state</li>
-<li>store 通知 UI state 发生了变化</li>
-</ul>
-</li>
-<li>UI 基于新 state 重新渲染</li>
-</ul>
-</li>
-<li>Redux 有这几种类型的代码<ul>
-<li><em>Action</em> 是有 <code>type</code> 字段的纯对象，描述发生了什么</li>
-<li><em>Reducer</em> 是纯函数，基于先前的 state 和 action 来计算新的 state</li>
-<li>每当 dispatch 一个 action 后，<em>store</em> 就会调用 root reducer</li>
-</ul>
-</li>
-</ul>
-<h4 id="applyMiddleware-…middleware"><a href="#applyMiddleware-…middleware" class="headerlink" title="applyMiddleware(…middleware)"></a><a target="_blank" rel="noopener" href="http://cn.redux.js.org/api/applymiddleware/">applyMiddleware(…middleware)</a></h4><p><a target="_blank" rel="noopener" href="https://github.com/reduxjs/redux-thunk">redux-thunk</a></p>
-<p><a target="_blank" rel="noopener" href="https://redux.js.org/usage/writing-logic-thunks">Writing Logic with Thunks</a></p>
-<p>Middleware 是一个组合 <a target="_blank" rel="noopener" href="http://cn.redux.js.org/understanding/thinking-in-redux/glossary/#dispatching-function">dispatch 函数</a> 的高阶函数，返回一个新的 dispatch 函数，通常将<a target="_blank" rel="noopener" href="http://cn.redux.js.org/understanding/thinking-in-redux/glossary/#%E5%BC%82%E6%AD%A5-action">异步 action</a> 转换成 action</p>
-<h3 id="subscribe-listener"><a href="#subscribe-listener" class="headerlink" title="subscribe(listener)"></a><a target="_blank" rel="noopener" href="http://cn.redux.js.org/api/store#subscribelistener">subscribe(listener)</a></h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_40119412/article/details/120811920">Redux学习篇:关于store.subscribe()监听方法与取消监听的认识</a></p>
-<blockquote>
-<p>Store 允许使用store.subscribe方法设置<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E7%9B%91%E5%90%AC&spm=1001.2101.3001.7020">监听</a>函数，一旦 State 发生变化，就自动执行这个函数。</p>
-<p>store.subscribe方法返回一个函数，调用这个函数就可以解除监听</p>
-</blockquote>
-<h2 id="计数器示例应用程序"><a href="#计数器示例应用程序" class="headerlink" title="计数器示例应用程序"></a>计数器示例应用程序</h2><p>本项目使用 <a target="_blank" rel="noopener" href="https://github.com/reduxjs/cra-template-redux">Create-React-App 的官方 Redux 模板</a> 创建。开箱即用，它已经配置了标准的 Redux 应用程序结构，使用 <a target="_blank" rel="noopener" href="https://redux-toolkit.js.org/">Redux Toolkit</a> 创建 Redux 存储和逻辑，以及 <a target="_blank" rel="noopener" href="https://react-redux.js.org/">React-Redux</a> 将 Redux 存储和 React 组件连接在一起。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx create-react-app redux-essentials-example --template redux</span><br></pre></td></tr></table></figure>
-
-<h4 id="react-redux"><a href="#react-redux" class="headerlink" title="react-redux"></a>react-redux</h4><p><strong><a target="_blank" rel="noopener" href="https://baijiahao.baidu.com/s?id=1707122824099613498&wfr=spider&for=pc">react-redux</a>发布了新的版本，与之前的contextAPI分离，提供对hooks的支持，那这不就更香了新的redux带来的改变</strong></p>
-<ol>
-<li><strong>「不再需要使用」</strong>mapStateToProps，mapDispatchToProps和connect来维护单独的container组件和UI组件，而是在组件中直接使用redux提供的hooks,读取redux中的state。</li>
-<li>可以将任何现有的自定义<strong>「hooks与redux集成」</strong>，而不是将通过hooks创建的state，作为参数传递给其他hooks</li>
-</ol>
-<ul>
-<li><p><strong>「useSelector：」</strong> 用于从Redux存储的state中提取值并订阅该state。</p>
-</li>
-<li><p><strong>「useDispatch：」</strong> 除了读取store中的state，还能dispatch actions更新store中的state。</p>
-</li>
-<li><p><strong>「useStore：」</strong> 用于获取创建的store实例</p>
-</li>
-</ul>
-<h4 id="useSelector"><a href="#useSelector" class="headerlink" title="useSelector"></a><a target="_blank" rel="noopener" href="http://cn.redux.js.org/tutorials/fundamentals/part-5-ui-react/#reading-state-from-the-store-with-useselector">useSelector</a></h4><p><span style="color:red">使用useSelector、useDispatch等HooksApi替代connect，减少模板代码。</span></p>
-<p><code>useSelector</code> accepts a single function, which we call a <strong>selector</strong> function. <strong>A selector is a function that takes the entire Redux store state as its argument, reads some value from the state, and returns that result</strong>.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const selectTodos = state =&gt; state.todos</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const selectTotalCompletedTodos = state =&gt; &#123;</span><br><span class="line">  const completedTodos = state.todos.filter(todo =&gt; todo.completed)</span><br><span class="line">  return completedTodos.length</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">import React from &#x27;react&#x27;</span><br><span class="line">import &#123; useSelector &#125; from &#x27;react-redux&#x27;</span><br><span class="line">import TodoListItem from &#x27;./TodoListItem&#x27;</span><br><span class="line"></span><br><span class="line">const selectTodos = state =&gt; state.todos</span><br><span class="line"></span><br><span class="line">const TodoList = () =&gt; &#123;</span><br><span class="line">  const todos = useSelector(selectTodos)</span><br><span class="line"></span><br><span class="line">  // since `todos` is an array, we can loop over it</span><br><span class="line">  const renderedListItems = todos.map(todo =&gt; &#123;</span><br><span class="line">    return &lt;TodoListItem key=&#123;todo.id&#125; todo=&#123;todo&#125; /&gt;</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  return &lt;ul className=&quot;todo-list&quot;&gt;&#123;renderedListItems&#125;&lt;/ul&gt;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export default TodoList</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>useSelector 自动为我们订阅了 Redux 存储！ 这样，任何时候分派一个动作，它都会立即再次调用它的选择器函数。 如果选择器返回的值与上次运行时相比发生了变化，useSelector 将强制我们的组件使用新数据重新渲染。 我们所要做的就是在我们的组件中调用 useSelector() 一次，它会为我们完成剩下的工作</p>
-</blockquote>
-<p>还值得注意的是，我们不必将选择器函数编写为单独的变量。您可以直接在 useSelector 调用中编写选择器函数</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const todos = useSelector(state =&gt; state.todos)</span><br></pre></td></tr></table></figure>
-
-<h4 id="useDispatch"><a href="#useDispatch" class="headerlink" title="useDispatch"></a><a target="_blank" rel="noopener" href="http://cn.redux.js.org/tutorials/fundamentals/part-5-ui-react/#dispatching-actions-with-usedispatch">useDispatch</a></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123; useState &#125; from &#x27;react&#x27;</span><br><span class="line">import &#123; useDispatch &#125; from &#x27;react-redux&#x27;</span><br><span class="line"></span><br><span class="line">const Header = () =&gt; &#123;</span><br><span class="line">  const [text, setText] = useState(&#x27;&#x27;)</span><br><span class="line">  const dispatch = useDispatch()</span><br><span class="line"></span><br><span class="line">  const handleChange = e =&gt; setText(e.target.value)</span><br><span class="line"></span><br><span class="line">  const handleKeyDown = e =&gt; &#123;</span><br><span class="line">    const trimmedText = e.target.value.trim()</span><br><span class="line">    // If the user pressed the Enter key:</span><br><span class="line">    if (e.key === &#x27;Enter&#x27; &amp;&amp; trimmedText) &#123;</span><br><span class="line">      // Dispatch the &quot;todo added&quot; action with this text</span><br><span class="line">      dispatch(&#123; type: &#x27;todos/todoAdded&#x27;, payload: trimmedText &#125;)</span><br><span class="line">      // And clear out the text input</span><br><span class="line">      setText(&#x27;&#x27;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  return (</span><br><span class="line">    &lt;input</span><br><span class="line">      type=&quot;text&quot;</span><br><span class="line">      placeholder=&quot;What needs to be done?&quot;</span><br><span class="line">      autoFocus=&#123;true&#125;</span><br><span class="line">      value=&#123;text&#125;</span><br><span class="line">      onChange=&#123;handleChange&#125;</span><br><span class="line">      onKeyDown=&#123;handleKeyDown&#125;</span><br><span class="line">    /&gt;</span><br><span class="line">  )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export default Header</span><br></pre></td></tr></table></figure>
-
-<p>hook 是一个 JS 函数，所以它不能自动从 store.js 中自动导入 store</p>
-<p>We do this by <strong>rendering a <code>&lt;Provider&gt;</code> component around our entire <code>&lt;App&gt;</code>, and passing the Redux store as a prop to <code>&lt;Provider&gt;</code></strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">import React from &#x27;react&#x27;</span><br><span class="line">import ReactDOM from &#x27;react-dom&#x27;</span><br><span class="line">import &#123; Provider &#125; from &#x27;react-redux&#x27;</span><br><span class="line"></span><br><span class="line">import App from &#x27;./App&#x27;</span><br><span class="line">import store from &#x27;./store&#x27;</span><br><span class="line"></span><br><span class="line">ReactDOM.render(</span><br><span class="line">  // Render a `&lt;Provider&gt;` around the entire `&lt;App&gt;`,</span><br><span class="line">  // and pass the Redux store to as a prop</span><br><span class="line">  &lt;React.StrictMode&gt;</span><br><span class="line">    &lt;Provider store=&#123;store&#125;&gt;</span><br><span class="line">      &lt;App /&gt;</span><br><span class="line">    &lt;/Provider&gt;</span><br><span class="line">  &lt;/React.StrictMode&gt;,</span><br><span class="line">  document.getElementById(&#x27;root&#x27;)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-
-<p>React-Redux 与 React 结合使用的关键部分：</p>
-<ul>
-<li>Call the <code>useSelector</code> hook to read data in React components</li>
-<li>Call the <code>useDispatch</code> hook to dispatch actions in React components</li>
-<li>Put <code>&lt;Provider store=&#123;store&#125;&gt;</code> around your entire <code>&lt;App&gt;</code> component so that other components can talk to the store</li>
-</ul>
-<h3 id="Global-State-Component-State-and-Forms"><a href="#Global-State-Component-State-and-Forms" class="headerlink" title="Global State, Component State, and Forms"></a>Global State, Component State, and Forms</h3><p><a target="_blank" rel="noopener" href="http://cn.redux.js.org/tutorials/fundamentals/part-5-ui-react/#react-redux-patterns">在 React + Redux 应用程序中，你的全局状态应该放在 Redux 存储中，而你的本地状态应该留在 React 组件中</a>：</p>
-<ul>
-<li>Do other parts of the application care about this data?</li>
-<li>Do you need to be able to create further derived data based on this original data?</li>
-<li>Is the same data being used to drive multiple components?</li>
-<li>Is there value to you in being able to restore this state to a given point in time (ie, time travel debugging)?</li>
-<li>Do you want to cache the data (ie, use what’s in state if it’s already there instead of re-requesting it)?</li>
-<li>Do you want to keep this data consistent while hot-reloading UI components (which may lose their internal state when swapped)?</li>
-</ul>
-<p><strong>Most form state probably shouldn’t be kept in Redux</strong></p>
-<h3 id="Using-Multiple-Selectors-in-a-Component"><a href="#Using-Multiple-Selectors-in-a-Component" class="headerlink" title="Using Multiple Selectors in a Component"></a><a target="_blank" rel="noopener" href="http://cn.redux.js.org/tutorials/fundamentals/part-5-ui-react/#using-multiple-selectors-in-a-component">Using Multiple Selectors in a Component</a></h3><p><strong>We can call <code>useSelector</code> multiple times within one component</strong>. In fact, this is actually a good idea - <strong>each call to <code>useSelector</code> should always return the smallest amount of state possible</strong></p>
-<h3 id="Redux-Toolkit"><a href="#Redux-Toolkit" class="headerlink" title="Redux Toolkit"></a><a target="_blank" rel="noopener" href="https://redux-toolkit.js.org/"><strong>Redux Toolkit</strong></a></h3><h4 id="Redux-Toolkit-是什么？"><a href="#Redux-Toolkit-是什么？" class="headerlink" title="Redux Toolkit 是什么？"></a><a target="_blank" rel="noopener" href="http://cn.redux.js.org/redux-toolkit/overview/#redux-toolkit-%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F">Redux Toolkit 是什么？</a></h4><blockquote>
-<p>简化最常见场景下的 Redux 开发，包括配置 store、定义 reducer，不可变的更新逻辑、甚至可以立即创建整个状态的 “切片 slice”，而无需手动编写任何 action creator 或者 action type。它还包括使用最广泛的 Redux 插件，例如 Redux Thunk 用于异步逻辑，而 Reselect 用于编写选择器 selector 函数，因此你可以立即使用它们。</p>
-</blockquote>
-<h4 id="createSlice"><a href="#createSlice" class="headerlink" title="createSlice"></a><a target="_blank" rel="noopener" href="https://redux-toolkit.js.org/api/createSlice">createSlice</a></h4><p>接受一组化 reducer 函数，一个 slice 切片名和初始状态 initial state，并自动生成具有相应 action creator 和 action type 的 slice reducer</p>
-<h5 id="nanoid"><a href="#nanoid" class="headerlink" title="nanoid"></a>nanoid</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import &#123; nanoid &#125; from &#x27;@reduxjs/toolkit&#x27;</span><br><span class="line"></span><br><span class="line">const id = nanoid()</span><br></pre></td></tr></table></figure>
-
-<p><code>createSlice</code> will return an object that looks like：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    name : string,</span><br><span class="line">    reducer : ReducerFunction,</span><br><span class="line">    actions : Record&lt;string, ActionCreator&gt;,</span><br><span class="line">    caseReducers: Record&lt;string, CaseReducer&gt;.</span><br><span class="line">    getInitialState: () =&gt; State</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  name: &quot;todos&quot;,</span><br><span class="line">  reducer: (state, action) =&gt; newState,</span><br><span class="line">  actions: &#123;</span><br><span class="line">    addTodo: (payload) =&gt; (&#123;type: &quot;todos/addTodo&quot;, payload&#125;),</span><br><span class="line">    toggleTodo: (payload) =&gt; (&#123;type: &quot;todos/toggleTodo&quot;, payload&#125;)</span><br><span class="line">  &#125;,</span><br><span class="line">  caseReducers: &#123;</span><br><span class="line">    addTodo: (state, action) =&gt; newState,</span><br><span class="line">    toggleTodo: (state, action) =&gt; newState,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h5 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line">import &#123; createSlice, createAction &#125; from &#x27;@reduxjs/toolkit&#x27;</span><br><span class="line">import &#123; createStore, combineReducers &#125; from &#x27;redux&#x27;</span><br><span class="line"></span><br><span class="line">const incrementBy = createAction(&#x27;incrementBy&#x27;)</span><br><span class="line">const decrementBy = createAction(&#x27;decrementBy&#x27;)</span><br><span class="line"></span><br><span class="line">const counter = createSlice(&#123;</span><br><span class="line">  name: &#x27;counter&#x27;,</span><br><span class="line">  initialState: 0,</span><br><span class="line">  reducers: &#123;</span><br><span class="line">    increment: (state) =&gt; state + 1,</span><br><span class="line">    decrement: (state) =&gt; state - 1,</span><br><span class="line">    multiply: &#123;</span><br><span class="line">      reducer: (state, action) =&gt; state * action.payload,</span><br><span class="line">      prepare: (value) =&gt; (&#123; payload: value || 2 &#125;), // fallback if the payload is a falsy value</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">  // &quot;builder callback API&quot;, recommended for TypeScript users</span><br><span class="line">  extraReducers: (builder) =&gt; &#123;</span><br><span class="line">    builder.addCase(incrementBy, (state, action) =&gt; &#123;</span><br><span class="line">      return state + action.payload</span><br><span class="line">    &#125;)</span><br><span class="line">    builder.addCase(decrementBy, (state, action) =&gt; &#123;</span><br><span class="line">      return state - action.payload</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">const user = createSlice(&#123;</span><br><span class="line">  name: &#x27;user&#x27;,</span><br><span class="line">  initialState: &#123; name: &#x27;&#x27;, age: 20 &#125;,</span><br><span class="line">  reducers: &#123;</span><br><span class="line">    setUserName: (state, action) =&gt; &#123;</span><br><span class="line">      state.name = action.payload // mutate the state all you want with immer</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">  // &quot;map object API&quot;</span><br><span class="line">  extraReducers: &#123;</span><br><span class="line">    [counter.actions.increment]: (</span><br><span class="line">      state,</span><br><span class="line">      action /* action will be inferred as &quot;any&quot;, as the map notation does not contain type information */</span><br><span class="line">    ) =&gt; &#123;</span><br><span class="line">      state.age += 1</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">const reducer = combineReducers(&#123;</span><br><span class="line">  counter: counter.reducer,</span><br><span class="line">  user: user.reducer,</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">const store = createStore(reducer)</span><br><span class="line"></span><br><span class="line">store.dispatch(counter.actions.increment())</span><br><span class="line">// -&gt; &#123; counter: 1, user: &#123;name : &#x27;&#x27;, age: 21&#125; &#125;</span><br><span class="line">store.dispatch(counter.actions.increment())</span><br><span class="line">// -&gt; &#123; counter: 2, user: &#123;name: &#x27;&#x27;, age: 22&#125; &#125;</span><br><span class="line">store.dispatch(counter.actions.multiply(3))</span><br><span class="line">// -&gt; &#123; counter: 6, user: &#123;name: &#x27;&#x27;, age: 22&#125; &#125;</span><br><span class="line">store.dispatch(counter.actions.multiply())</span><br><span class="line">// -&gt; &#123; counter: 12, user: &#123;name: &#x27;&#x27;, age: 22&#125; &#125;</span><br><span class="line">console.log(`$&#123;counter.actions.decrement&#125;`)</span><br><span class="line">// -&gt; &quot;counter/decrement&quot;</span><br><span class="line">store.dispatch(user.actions.setUserName(&#x27;eric&#x27;))</span><br><span class="line">// -&gt; &#123; counter: 12, user: &#123; name: &#x27;eric&#x27;, age: 22&#125; &#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="createAction"><a href="#createAction" class="headerlink" title="createAction"></a><a target="_blank" rel="noopener" href="https://redux-toolkit.js.org/api/createAction">createAction</a></h4><p>创建actions的原先做法：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">const INCREMENT = &#x27;counter/increment&#x27;</span><br><span class="line"></span><br><span class="line">function increment(amount) &#123;</span><br><span class="line">  return &#123;</span><br><span class="line">    type: INCREMENT,</span><br><span class="line">    payload: amount,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const action = increment(3)</span><br><span class="line">// &#123; type: &#x27;counter/increment&#x27;, payload: 3 &#125;</span><br></pre></td></tr></table></figure>
-
-<p>The <code>createAction</code> helper combines these two declarations into one. It takes an action type and returns an action creator for that type. The action creator can be called either without arguments or with a <code>payload</code> to be attached to the action. Also, the action creator overrides <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/toString">toString()</a> so that the action type becomes its string representation.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">import &#123; createAction &#125; from &#x27;@reduxjs/toolkit&#x27;</span><br><span class="line"></span><br><span class="line">const increment = createAction(&#x27;counter/increment&#x27;)</span><br><span class="line"></span><br><span class="line">let action = increment()</span><br><span class="line">// &#123; type: &#x27;counter/increment&#x27; &#125;</span><br><span class="line"></span><br><span class="line">action = increment(3)</span><br><span class="line">// returns &#123; type: &#x27;counter/increment&#x27;, payload: 3 &#125;</span><br><span class="line"></span><br><span class="line">console.log(increment.toString())</span><br><span class="line">// &#x27;counter/increment&#x27;</span><br><span class="line"></span><br><span class="line">console.log(`The action type is: $&#123;increment&#125;`)</span><br><span class="line">// &#x27;The action type is: counter/increment&#x27;</span><br></pre></td></tr></table></figure>
-
-
-
-<p><code>createAction</code> accepts an optional second argument: a “prepare callback” that will be used to construct the payload value.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">import &#123; createAction, nanoid &#125; from &#x27;@reduxjs/toolkit&#x27;</span><br><span class="line"></span><br><span class="line">const addTodo = createAction(&#x27;todos/add&#x27;, function prepare(text) &#123;</span><br><span class="line">  return &#123;</span><br><span class="line">    payload: &#123;</span><br><span class="line">      text,</span><br><span class="line">      id: nanoid(),</span><br><span class="line">      createdAt: new Date().toISOString(),</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">console.log(addTodo(&#x27;Write more docs&#x27;))</span><br><span class="line">/**</span><br><span class="line"> * &#123;</span><br><span class="line"> *   type: &#x27;todos/add&#x27;,</span><br><span class="line"> *   payload: &#123;</span><br><span class="line"> *     text: &#x27;Write more docs&#x27;,</span><br><span class="line"> *     id: &#x27;4AJvwMSWEHCchcWYga3dj&#x27;,</span><br><span class="line"> *     createdAt: &#x27;2019-10-03T07:53:36.581Z&#x27;</span><br><span class="line"> *   &#125;</span><br><span class="line"> * &#125;</span><br><span class="line"> **/</span><br></pre></td></tr></table></figure>
-
-<h4 id="Usage-with-createReducer"><a href="#Usage-with-createReducer" class="headerlink" title="Usage with createReducer()"></a><a target="_blank" rel="noopener" href="https://redux-toolkit.js.org/api/createAction">Usage with createReducer()</a></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import &#123; createAction, createReducer &#125; from &#x27;@reduxjs/toolkit&#x27;</span><br><span class="line"></span><br><span class="line">const increment = createAction(&#x27;counter/increment&#x27;)</span><br><span class="line">const decrement = createAction(&#x27;counter/decrement&#x27;)</span><br><span class="line"></span><br><span class="line">const counterReducer = createReducer(0, (builder) =&gt; &#123;</span><br><span class="line">  builder.addCase(increment, (state, action) =&gt; state + action.payload)</span><br><span class="line">  builder.addCase(decrement, (state, action) =&gt; state - action.payload)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<h4 id="builder-addCase"><a href="#builder-addCase" class="headerlink" title="builder.addCase"></a><a target="_blank" rel="noopener" href="https://redux-toolkit.js.org/api/createReducer#builderaddcase">builder.addCase</a></h4><h4 id="Parameters"><a href="#Parameters" class="headerlink" title="Parameters"></a>Parameters</h4><ul>
-<li><strong>actionCreator</strong> Either a plain action type string, or an action creator generated by <a target="_blank" rel="noopener" href="https://redux-toolkit.js.org/api/createAction"><code>createAction</code></a> that can be used to determine the action type.</li>
-<li><strong>reducer</strong> The actual case reducer function.</li>
-</ul>
-<h4 id="createReducer"><a href="#createReducer" class="headerlink" title="createReducer()"></a><a target="_blank" rel="noopener" href="https://redux-toolkit.js.org/api/createReducer">createReducer()</a></h4><p>Redux <a target="_blank" rel="noopener" href="https://redux.js.org/basics/reducers">reducers</a> are often implemented using a <code>switch</code> statement, with one <code>case</code> for every handled action type</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">const initialState = &#123; value: 0 &#125;</span><br><span class="line"></span><br><span class="line">function counterReducer(state = initialState, action) &#123;</span><br><span class="line">  switch (action.type) &#123;</span><br><span class="line">    case &#x27;increment&#x27;:</span><br><span class="line">      return &#123; ...state, value: state.value + 1 &#125;</span><br><span class="line">    case &#x27;decrement&#x27;:</span><br><span class="line">      return &#123; ...state, value: state.value - 1 &#125;</span><br><span class="line">    case &#x27;incrementByAmount&#x27;:</span><br><span class="line">      return &#123; ...state, value: state.value + action.payload &#125;</span><br><span class="line">    default:</span><br><span class="line">      return state</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>With <code>createReducer</code>, your reducers instead look like:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">import &#123; createAction, createReducer &#125; from &#x27;@reduxjs/toolkit&#x27;</span><br><span class="line"></span><br><span class="line">const increment = createAction(&#x27;counter/increment&#x27;)</span><br><span class="line">const decrement = createAction(&#x27;counter/decrement&#x27;)</span><br><span class="line">const incrementByAmount = createAction(&#x27;counter/incrementByAmount&#x27;)</span><br><span class="line"></span><br><span class="line">const initialState = &#123; value: 0 &#125;</span><br><span class="line"></span><br><span class="line">const counterReducer = createReducer(initialState, (builder) =&gt; &#123;</span><br><span class="line">  builder</span><br><span class="line">    .addCase(increment, (state, action) =&gt; &#123;</span><br><span class="line">      state.value++</span><br><span class="line">    &#125;)</span><br><span class="line">    .addCase(decrement, (state, action) =&gt; &#123;</span><br><span class="line">      state.value--</span><br><span class="line">    &#125;)</span><br><span class="line">    .addCase(incrementByAmount, (state, action) =&gt; &#123;</span><br><span class="line">      state.value += action.payload</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<h5 id="Parameters-1"><a href="#Parameters-1" class="headerlink" title="Parameters"></a>Parameters</h5><ul>
-<li><p><strong>initialState</strong> <code>State | (() =&gt; State)</code>:</p>
-</li>
-<li><p><strong>builderCallback</strong> <code>(builder: Builder) =&gt; void</code>      <code> builder.addCase(actionCreatorOrType, reducer)</code></p>
-</li>
-</ul>
-<h4 id="configureStore"><a href="#configureStore" class="headerlink" title="configureStore"></a><a target="_blank" rel="noopener" href="https://redux-toolkit.js.org/api/configureStore">configureStore</a></h4><h4 id="getDefaultMiddleware"><a href="#getDefaultMiddleware" class="headerlink" title="getDefaultMiddleware"></a><a target="_blank" rel="noopener" href="https://redux-toolkit.js.org/api/getDefaultMiddleware">getDefaultMiddleware</a></h4><p><a target="_blank" rel="noopener" href="https://redux-toolkit-cn.netlify.app/tutorials/intermediate-tutorial">Redux工具包-使用教程</a></p>
-<h4 id="Store数据-持久化"><a href="#Store数据-持久化" class="headerlink" title="Store数据-持久化"></a>Store数据-持久化</h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_47077674/article/details/122617851?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522165025080216782246469362%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fall.%2522%257D&request_id=165025080216782246469362&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~first_rank_ecpm_v1~rank_v31_ecpm-1-122617851.142%5Ev9%5Econtrol,157%5Ev4%5Econtrol&utm_term=%E5%A6%82%E4%BD%95%E5%9C%A8React%E4%B8%AD%E5%AE%9E%E7%8E%B0%E5%85%A8%E5%B1%80%E6%95%B0%E6%8D%AE%E7%9A%84%E7%8A%B6%E6%80%81%E6%8C%81%E4%B9%85%E5%8C%96&spm=1018.2226.3001.4187">如何在React中实现全局数据的状态持久化？一篇文章让你看懂状态持久化</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/59a85632d781">react-几步搞定redux-persist-持久化存储</a></p>
-<h5 id="src-app-RootReducers-js"><a href="#src-app-RootReducers-js" class="headerlink" title="src/app/RootReducers.js"></a>src/app/RootReducers.js</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import &#123; combineReducers &#125; from &quot;@reduxjs/toolkit&quot;;</span><br><span class="line">import userReducer from &quot;../reducers/userSlice&quot;;</span><br><span class="line"></span><br><span class="line">export default combineReducers(&#123;</span><br><span class="line">    user: userReducer</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<h5 id="src-app-store-js"><a href="#src-app-store-js" class="headerlink" title="src/app/store.js"></a>src/app/store.js</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">import &#123; configureStore &#125; from &#x27;@reduxjs/toolkit&#x27;;</span><br><span class="line">import &#123; persistStore, persistReducer &#125; from &#x27;redux-persist&#x27;;</span><br><span class="line">import storage from &#x27;redux-persist/lib/storage&#x27;;</span><br><span class="line">import rootReducer from &#x27;./RootReducers&#x27;;</span><br><span class="line"></span><br><span class="line">const persistConfig = &#123;</span><br><span class="line">  key: &#x27;root&#x27;,</span><br><span class="line">  storage</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const persistedReducer = persistReducer(</span><br><span class="line">  persistConfig,</span><br><span class="line">  rootReducer</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">export const store = configureStore(&#123;</span><br><span class="line">  reducer: persistedReducer,</span><br><span class="line">  middleware: (getDefaultMiddleware) =&gt;</span><br><span class="line">    getDefaultMiddleware(&#123;</span><br><span class="line">      serializableCheck: false,</span><br><span class="line">    &#125;),</span><br><span class="line">&#125;)</span><br><span class="line">export const persistor = persistStore(store)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h5 id="src-index-js"><a href="#src-index-js" class="headerlink" title="src/index.js"></a>src/index.js</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">import React from &#x27;react&#x27;;</span><br><span class="line">import &#123; Provider &#125; from &#x27;react-redux&#x27;;</span><br><span class="line">import &#123; BrowserRouter &#125; from &#x27;react-router-dom&#x27;</span><br><span class="line">import &#x27;./index.css&#x27;;</span><br><span class="line">import App from &#x27;./App&#x27;;</span><br><span class="line">import * as serviceWorker from &#x27;./serviceWorker&#x27;;</span><br><span class="line">import &#123; store, persistor &#125; from &#x27;./app/store&#x27;;</span><br><span class="line">import &#123; PersistGate &#125; from &quot;redux-persist/integration/react&quot;</span><br><span class="line"></span><br><span class="line">import &#123; createRoot &#125; from &#x27;react-dom/client&#x27;;</span><br><span class="line">const container = document.getElementById(&#x27;root&#x27;);</span><br><span class="line">const root = createRoot(container);</span><br><span class="line">root.render(</span><br><span class="line">    &lt;React.StrictMode&gt;</span><br><span class="line">        &lt;Provider store=&#123;store&#125;&gt;</span><br><span class="line">            &lt;PersistGate loading=&#123;null&#125; persistor=&#123;persistor&#125;&gt;</span><br><span class="line">                &lt;BrowserRouter&gt;</span><br><span class="line">                    &lt;App/&gt;</span><br><span class="line">                &lt;/BrowserRouter&gt;</span><br><span class="line">            &lt;/PersistGate&gt;</span><br><span class="line">    &lt;/Provider&gt;</span><br><span class="line">    &lt;/React.StrictMode&gt;</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">// If you want your app to work offline and load faster, you can change</span><br><span class="line">// unregister() to register() below. Note this comes with some pitfalls.</span><br><span class="line">// Learn more about service workers: https://bit.ly/CRA-PWA</span><br><span class="line">serviceWorker.unregister();</span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;/* &lt;Routes&gt;</span><br><span class="line">        &lt;Route path=&quot;/&quot; element=&#123;&lt;Container/&gt;&#125; /&gt;</span><br><span class="line">        &lt;Route path=&quot;/login&quot; element=&#123;&lt;Login /&gt;&#125; /&gt;</span><br><span class="line">        &lt;Route path=&quot;/home&quot; element=&#123;&lt;Home /&gt;&#125;&gt;</span><br><span class="line">          &lt;Route path=&quot;/home/:id&quot; element=&#123;&lt;Home /&gt;&#125; /&gt;</span><br><span class="line">        &lt;/Route&gt; */&#125;</span><br><span class="line">        &#123;/* &lt;Route path=&quot;/product&quot; element=&#123;&lt;Container /&gt;&#125;&gt;</span><br><span class="line">          &lt;Route path=&quot;/product/add&quot; element=&#123;&lt;AddProduct /&gt;&#125; /&gt;</span><br><span class="line">          &lt;Route path=&quot;/product/edit/:id&quot; element=&#123;&lt;EditProduct /&gt;&#125; /&gt;</span><br><span class="line">        &lt;/Route&gt; */&#125;</span><br><span class="line"></span><br><span class="line">      &#123;/* &lt;/Routes&gt; */&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="React-Redux"><a href="#React-Redux" class="headerlink" title="React Redux"></a><a target="_blank" rel="noopener" href="https://react-redux.js.org/">React Redux</a></h4><h4 id="redux-persist"><a href="#redux-persist" class="headerlink" title="redux-persist"></a><a target="_blank" rel="noopener" href="https://github.com/rt2zz/redux-persist">redux-persist</a></h4><p><a target="_blank" rel="noopener" href="https://redux-toolkit.js.org/usage/usage-guide#use-with-redux-persist">Use with Redux-Persist</a></p>
-<h4 id="Redux-Toolkit–使用教程"><a href="#Redux-Toolkit–使用教程" class="headerlink" title="Redux Toolkit–使用教程"></a><a target="_blank" rel="noopener" href="https://redux-toolkit.js.org/tutorials/quick-start">Redux Toolkit–使用教程</a></h4>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/01/%E8%A7%86%E9%A2%91%E5%89%AA%E8%BE%91-Adobe-Pr/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="winney">
-      <meta itemprop="description" content="Doing is better than saying.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="winney">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/04/01/%E8%A7%86%E9%A2%91%E5%89%AA%E8%BE%91-Adobe-Pr/" class="post-title-link" itemprop="url">视频剪辑-Adobe-Pr</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-04-01 17:24:46" itemprop="dateCreated datePublished" datetime="2021-04-01T17:24:46+08:00">2021-04-01</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-08-24 18:09:23" itemprop="dateModified" datetime="2022-08-24T18:09:23+08:00">2022-08-24</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="Adobe-Premiere"><a href="#Adobe-Premiere" class="headerlink" title="Adobe Premiere"></a>Adobe Premiere</h4><h4 id="应用领域"><a href="#应用领域" class="headerlink" title="应用领域"></a>应用领域</h4><ol>
-<li>电影电视(院线电影、网络大电影、个人微电影、电视专题片)</li>
-<li>节目剪辑(综艺娱乐、人物访谈、街坊)</li>
-<li>抖音短视频( vlog、旅拍、剧情短片、炫酷视频)</li>
-<li>宣传片广告片(企业宣传片、专题片、产品广告宣传片)</li>
-<li>自媒体短视频（电影混剪、解说、音乐类、科普类等)</li>
-<li>从事专业剪辑岗位(Premiere 、Final cut 、After Effects等)</li>
-</ol>
-<p><a target="_blank" rel="noopener" href="http://p4.xmyjhkj.cn/index.php?m=goods&a=details&content_id=4#">官网正版授权  软件下载</a></p>
-<p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/%E8%A7%86%E9%A2%91%E5%89%AA%E8%BE%91-Adobe-Pr/image-20210401174712668.png" alt="分辨率"></p>
-<h4 id="帧速率"><a href="#帧速率" class="headerlink" title="帧速率"></a>帧速率</h4><ol>
-<li>帧——影像动画中最小的单位,无数的帧构成了秒。</li>
-<li>一帧相当于一个画面,一秒就是由一定的帧构成。</li>
-<li>视频常用的帧数有:24帧、25帧、29.97帧以及30帧。</li>
-<li>自媒体或一般的短视频剪辑：选择25帧/秒。</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/8/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/43/">43</a><a class="extend next" rel="next" href="/page/10/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/8/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/44/">44</a><a class="extend next" rel="next" href="/page/10/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -767,7 +707,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">127</span>
+          <span class="site-state-item-count">130</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -780,7 +720,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">75</span>
+        <span class="site-state-item-count">76</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

@@ -193,6 +193,390 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/12/Redux%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="winney">
+      <meta itemprop="description" content="Doing is better than saying.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="winney">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/04/12/Redux%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">Redux笔记</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-04-12 14:24:57" itemprop="dateCreated datePublished" datetime="2021-04-12T14:24:57+08:00">2021-04-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-08-24 18:09:23" itemprop="dateModified" datetime="2022-08-24T18:09:23+08:00">2022-08-24</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Redux/" itemprop="url" rel="index"><span itemprop="name">Redux</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a target="_blank" rel="noopener" href="https://github.com/reduxjs">Redux-Github</a></p>
+<p><a target="_blank" rel="noopener" href="https://redux.js.org/">Redux-官网</a></p>
+<p><a target="_blank" rel="noopener" href="http://cn.redux.js.org/">Redux 中文官网</a></p>
+<p><a target="_blank" rel="noopener" href="https://react-redux.js.org/">React Redux</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.redux.org.cn/">Redux 中文文档</a></p>
+<p><a target="_blank" rel="noopener" href="https://redux-toolkit-cn.netlify.app/">Redux工具包-中文文档</a></p>
+<p><a target="_blank" rel="noopener" href="https://redux-toolkit.js.org/">Redux Toolkit</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/103420294">七步搞定React Redux</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_57218747/article/details/118070930">React-Redux</a></p>
+<p><a target="_blank" rel="noopener" href="https://baijiahao.baidu.com/s?id=1707122824099613498&wfr=spider&for=pc">「HearLing」React学习之路-redux、react-redux</a></p>
+<p><a target="_blank" rel="noopener" href="http://cn.redux.js.org/introduction/learning-resources">学习资源</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/reduxjs/redux.git">示例</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/9dcfa43d4e5a">Redux（基本用法）</a></p>
+<p><strong><a target="_blank" rel="noopener" href="https://github.com/reduxjs/rtk-convert-todos-example">使用Redux工具包的示例—-rtk-convert-todos-example</a></strong></p>
+<p>Redux 有很好的<a target="_blank" rel="noopener" href="https://link.jianshu.com/?t=http://redux.js.org/">文档</a>，还有配套的小视频（<a target="_blank" rel="noopener" href="https://link.jianshu.com/?t=https://egghead.io/courses/getting-started-with-redux">前30集</a>，<a target="_blank" rel="noopener" href="https://link.jianshu.com/?t=https://egghead.io/courses/building-react-applications-with-idiomatic-redux">后30集</a>）</p>
+<h4 id="createStore-reducer-preloadedState-enhancer"><a href="#createStore-reducer-preloadedState-enhancer" class="headerlink" title="createStore(reducer, [preloadedState], [enhancer])"></a><a target="_blank" rel="noopener" href="http://cn.redux.js.org/api/createstore">createStore(reducer, [preloadedState], [enhancer])</a></h4><p><code>reducer</code> <em>(Function)</em>: 接收两个参数，分别是当前的 state 树和要处理的 <a target="_blank" rel="noopener" href="http://cn.redux.js.org/understanding/thinking-in-redux/glossary#action">action</a>，返回新的 <a target="_blank" rel="noopener" href="http://cn.redux.js.org/understanding/thinking-in-redux/glossary#state">state 树</a></p>
+<p> Reducer 必须是<strong>纯函数</strong></p>
+<p><strong>不要在 reducer 中调用 API 接口请求</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">import &#123; createStore &#125; from &#x27;redux&#x27;</span><br><span class="line"></span><br><span class="line">function todos(state = [], action) &#123;</span><br><span class="line">  switch (action.type) &#123;</span><br><span class="line">    case &#x27;ADD_TODO&#x27;:</span><br><span class="line">      return state.concat([action.text])</span><br><span class="line">    default:</span><br><span class="line">      return state</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let store = createStore(todos, [&#x27;Use Redux&#x27;])</span><br><span class="line"></span><br><span class="line">store.dispatch(&#123;</span><br><span class="line">  type: &#x27;ADD_TODO&#x27;,</span><br><span class="line">  text: &#x27;Read the docs&#x27;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">console.log(store.getState())</span><br><span class="line">// [ &#x27;Use Redux&#x27;, &#x27;Read the docs&#x27; ]</span><br></pre></td></tr></table></figure>
+
+<h4 id="小贴士"><a href="#小贴士" class="headerlink" title="小贴士#"></a>小贴士<a target="_blank" rel="noopener" href="http://cn.redux.js.org/api/createstore#%E5%B0%8F%E8%B4%B4%E5%A3%AB">#</a></h4><ul>
+<li>应用中不要创建多个 store！相反，使用 <a target="_blank" rel="noopener" href="http://cn.redux.js.org/api/combinereducers"><code>combineReducers</code></a> 来把多个 reducer 创建成一个根 reducer。</li>
+<li>Redux state 通常是普通 JS 对象或者数组。</li>
+<li>如果 state 是普通对象，永远不要修改它！比如，reducer 里不要使用 <code>Object.assign(state, newData)</code>，应该使用 <code>Object.assign(&#123;&#125;, state, newData)</code>。这样才不会覆盖旧的 <code>state</code>。如果可以的话，也可以使用 <a target="_blank" rel="noopener" href="http://cn.redux.js.org/recipes/using-object-spread-operator">对象拓展操作符（object spread spread operator</a> 特性中的 <code>return &#123; ...state, ...newData &#125;</code>。</li>
+<li>对于服务端运行的同构应用，为每一个请求创建一个 store 实例，以此让 store 相隔离。dispatch 一系列请求数据的 action 到 store 实例上，等待请求完成后再在服务端渲染应用。</li>
+<li>当 store 创建后，Redux 会 dispatch 一个 action 到 reducer 上，来用初始的 state 来填充 store。你不需要处理这个 action。但要记住，如果第一个参数也就是传入的 state 是 <code>undefined</code> 的话，reducer 应该返回初始的 state 值。</li>
+<li>要使用多个 store 增强器的时候，你可能需要使用 <a target="_blank" rel="noopener" href="http://cn.redux.js.org/api/compose">compose</a></li>
+</ul>
+<h4 id="combineReducers-reducers"><a href="#combineReducers-reducers" class="headerlink" title="combineReducers(reducers)"></a><a target="_blank" rel="noopener" href="http://cn.redux.js.org/api/combinereducers/">combineReducers(reducers)</a></h4><p><code>combineReducers</code> 辅助函数的作用是，把一个由多个不同 reducer 函数作为 value 的 object，合并成一个最终的 reducer 函数，然后就可以对这个 reducer 调用 <a target="_blank" rel="noopener" href="http://cn.redux.js.org/api/createstore"><code>createStore</code></a> 方</p>
+<h5 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h5><p><code>reducers/todos.js</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">export default function todos(state = [], action) &#123;</span><br><span class="line">  switch (action.type) &#123;</span><br><span class="line">    case &#x27;ADD_TODO&#x27;:</span><br><span class="line">      return state.concat([action.text])</span><br><span class="line">    default:</span><br><span class="line">      return state</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>reducers/counter.js</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">export default function counter(state = 0, action) &#123;</span><br><span class="line">  switch (action.type) &#123;</span><br><span class="line">    case &#x27;INCREMENT&#x27;:</span><br><span class="line">      return state + 1</span><br><span class="line">    case &#x27;DECREMENT&#x27;:</span><br><span class="line">      return state - 1</span><br><span class="line">    default:</span><br><span class="line">      return state</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>reducers/index.js</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import &#123; combineReducers &#125; from &#x27;redux&#x27;</span><br><span class="line">import todos from &#x27;./todos&#x27;</span><br><span class="line">import counter from &#x27;./counter&#x27;</span><br><span class="line"></span><br><span class="line">export default combineReducers(&#123;</span><br><span class="line">  todos,</span><br><span class="line">  counter</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p><code>App.js</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">import &#123; createStore &#125; from &#x27;redux&#x27;</span><br><span class="line">import reducer from &#x27;./reducers/index&#x27;</span><br><span class="line"></span><br><span class="line">let store = createStore(reducer)</span><br><span class="line">console.log(store.getState())</span><br><span class="line">// &#123;</span><br><span class="line">//   counter: 0,</span><br><span class="line">//   todos: []</span><br><span class="line">// &#125;</span><br><span class="line"></span><br><span class="line">store.dispatch(&#123;</span><br><span class="line">  type: &#x27;ADD_TODO&#x27;,</span><br><span class="line">  text: &#x27;Use Redux&#x27;</span><br><span class="line">&#125;)</span><br><span class="line">console.log(store.getState())</span><br><span class="line">// &#123;</span><br><span class="line">//   counter: 0,</span><br><span class="line">//   todos: [ &#x27;Use Redux&#x27; ]</span><br><span class="line">// &#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Store"><a href="#Store" class="headerlink" title="Store"></a><a target="_blank" rel="noopener" href="http://cn.redux.js.org/api/store/#store-%E6%96%B9%E6%B3%95">Store</a></h4><h4 id="Store-1"><a href="#Store-1" class="headerlink" title="Store"></a><a target="_blank" rel="noopener" href="http://cn.redux.js.org/tutorials/essentials/part-1-overview-concepts#store">Store</a></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import &#123; configureStore &#125; from &#x27;@reduxjs/toolkit&#x27;</span><br><span class="line"></span><br><span class="line">const store = configureStore(&#123; reducer: counterReducer &#125;)</span><br><span class="line"></span><br><span class="line">console.log(store.getState())</span><br><span class="line">// &#123;value: 0&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h4 id="Action"><a href="#Action" class="headerlink" title="Action"></a>Action</h4><p>Action 是把数据传入 store 的惟一途径，所以任何数据，无论来自 UI 事件，网络回调或者是其它资源如 WebSockets，最终都应该以 action 的形式被 dispatch</p>
+<p><a target="_blank" rel="noopener" href="http://cn.redux.js.org/tutorials/essentials/part-1-overview-concepts#action"><strong>action</strong></a> 是一个具有 <code>type</code> 字段的普通 JavaScript 对象。<strong>你可以将 action 视为描述应用程序中发生了什么的事件</strong>.</p>
+<p><code>type</code> 字段是一个字符串，给这个 action 一个描述性的名字，比如<code>&quot;todos/todoAdded&quot;</code>。我们通常把那个类型的字符串写成“域/事件名称”，其中第一部分是这个 action 所属的特征或类别，第二部分是发生的具体事情。</p>
+<p>action 对象可以有其他字段，其中包含有关发生的事情的附加信息。按照惯例，我们将该信息放在名为 <code>payload</code> 的字段中。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const addTodoAction = &#123;</span><br><span class="line">  type: &#x27;todos/todoAdded&#x27;,</span><br><span class="line">  payload: &#x27;Buy milk&#x27;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="http://cn.redux.js.org/tutorials/essentials/part-1-overview-concepts#action-creator"><strong>action creator</strong></a> 是一个创建并返回一个 action 对象的函数。它的作用是让你不必每次都手动编写 action 对象：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const addTodo = text =&gt; &#123;</span><br><span class="line">  return &#123;</span><br><span class="line">    type: &#x27;todos/todoAdded&#x27;,</span><br><span class="line">    payload: text</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Reducer"><a href="#Reducer" class="headerlink" title="Reducer"></a><a target="_blank" rel="noopener" href="http://cn.redux.js.org/tutorials/essentials/part-1-overview-concepts#reducer">Reducer</a></h4><p><strong>reducer</strong> 是一个函数，接收当前的 <code>state</code> 和一个 <code>action</code> 对象，必要时决定如何更新状态，并返回新状态。函数签名是：<code>(state, action) =&gt; newState</code>。 <strong>你可以将 reducer 视为一个事件监听器，它根据接收到的 action（事件）类型处理事件。</strong></p>
+<ul>
+<li>禁止任何异步逻辑、依赖随机值或导致其他“副作用”的代码</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">const initialState = &#123; value: 0 &#125;</span><br><span class="line"></span><br><span class="line">function counterReducer(state = initialState, action) &#123;</span><br><span class="line">  // 检查 reducer 是否关心这个 action</span><br><span class="line">  if (action.type === &#x27;counter/increment&#x27;) &#123;</span><br><span class="line">    // 如果是，复制 `state`</span><br><span class="line">    return &#123;</span><br><span class="line">      ...state,</span><br><span class="line">      // 使用新值更新 state 副本</span><br><span class="line">      value: state.value + 1</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  // 返回原来的 state 不变</span><br><span class="line">  return state</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Dispatch"><a href="#Dispatch" class="headerlink" title="Dispatch"></a><a target="_blank" rel="noopener" href="http://cn.redux.js.org/tutorials/essentials/part-1-overview-concepts#dispatch">Dispatch</a></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">store.dispatch(&#123; type: &#x27;counter/increment&#x27; &#125;)</span><br><span class="line"></span><br><span class="line">console.log(store.getState())</span><br></pre></td></tr></table></figure>
+
+<p>我们通常调用 action creator 来调用 action：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">const increment = () =&gt; &#123;</span><br><span class="line">  return &#123;</span><br><span class="line">    type: &#x27;counter/increment&#x27;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">store.dispatch(increment())</span><br><span class="line"></span><br><span class="line">console.log(store.getState())</span><br><span class="line">// &#123;value: 2&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Redux-数据流"><a href="#Redux-数据流" class="headerlink" title="Redux 数据流"></a><a target="_blank" rel="noopener" href="http://cn.redux.js.org/tutorials/essentials/part-1-overview-concepts#redux-%E6%95%B0%E6%8D%AE%E6%B5%81">Redux 数据流</a></h3><p>初始启动：</p>
+<ul>
+<li>使用最顶层的 root reducer 函数创建 Redux store</li>
+</ul>
+<p><img src="http://cn.redux.js.org/assets/images/ReduxDataFlowDiagram-49fa8c3968371d9ef6f2a1486bd40a26.gif" alt="动画的方式来表达数据流更新"></p>
+<h4 id="异步处理"><a href="#异步处理" class="headerlink" title="异步处理"></a>异步处理</h4><p><img src="https://redux.js.org/assets/images/ReduxAsyncDataFlowDiagram-d97ff38a0f4da0f327163170ccc13e80.gif" alt="异步"></p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><ul>
+<li>Redux 是一个管理全局应用状态的库<ul>
+<li>Redux 通常与 React-Redux 库一起使用，把 Redux 和 React 集成在一起</li>
+<li>Redux Toolkit 是编写 Redux 逻辑的推荐方式</li>
+</ul>
+</li>
+<li>Redux 使用 “单向数据流”<ul>
+<li>State 描述了应用程序在某个时间点的状态，UI 基于该状态渲染</li>
+<li>当应用程序中发生某些事情时：<ul>
+<li>UI dispatch 一个 action</li>
+<li>store 调用 reducer，随后根据发生的事情来更新 state</li>
+<li>store 通知 UI state 发生了变化</li>
+</ul>
+</li>
+<li>UI 基于新 state 重新渲染</li>
+</ul>
+</li>
+<li>Redux 有这几种类型的代码<ul>
+<li><em>Action</em> 是有 <code>type</code> 字段的纯对象，描述发生了什么</li>
+<li><em>Reducer</em> 是纯函数，基于先前的 state 和 action 来计算新的 state</li>
+<li>每当 dispatch 一个 action 后，<em>store</em> 就会调用 root reducer</li>
+</ul>
+</li>
+</ul>
+<h4 id="applyMiddleware-…middleware"><a href="#applyMiddleware-…middleware" class="headerlink" title="applyMiddleware(…middleware)"></a><a target="_blank" rel="noopener" href="http://cn.redux.js.org/api/applymiddleware/">applyMiddleware(…middleware)</a></h4><p><a target="_blank" rel="noopener" href="https://github.com/reduxjs/redux-thunk">redux-thunk</a></p>
+<p><a target="_blank" rel="noopener" href="https://redux.js.org/usage/writing-logic-thunks">Writing Logic with Thunks</a></p>
+<p>Middleware 是一个组合 <a target="_blank" rel="noopener" href="http://cn.redux.js.org/understanding/thinking-in-redux/glossary/#dispatching-function">dispatch 函数</a> 的高阶函数，返回一个新的 dispatch 函数，通常将<a target="_blank" rel="noopener" href="http://cn.redux.js.org/understanding/thinking-in-redux/glossary/#%E5%BC%82%E6%AD%A5-action">异步 action</a> 转换成 action</p>
+<h3 id="subscribe-listener"><a href="#subscribe-listener" class="headerlink" title="subscribe(listener)"></a><a target="_blank" rel="noopener" href="http://cn.redux.js.org/api/store#subscribelistener">subscribe(listener)</a></h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_40119412/article/details/120811920">Redux学习篇:关于store.subscribe()监听方法与取消监听的认识</a></p>
+<blockquote>
+<p>Store 允许使用store.subscribe方法设置<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E7%9B%91%E5%90%AC&spm=1001.2101.3001.7020">监听</a>函数，一旦 State 发生变化，就自动执行这个函数。</p>
+<p>store.subscribe方法返回一个函数，调用这个函数就可以解除监听</p>
+</blockquote>
+<h2 id="计数器示例应用程序"><a href="#计数器示例应用程序" class="headerlink" title="计数器示例应用程序"></a>计数器示例应用程序</h2><p>本项目使用 <a target="_blank" rel="noopener" href="https://github.com/reduxjs/cra-template-redux">Create-React-App 的官方 Redux 模板</a> 创建。开箱即用，它已经配置了标准的 Redux 应用程序结构，使用 <a target="_blank" rel="noopener" href="https://redux-toolkit.js.org/">Redux Toolkit</a> 创建 Redux 存储和逻辑，以及 <a target="_blank" rel="noopener" href="https://react-redux.js.org/">React-Redux</a> 将 Redux 存储和 React 组件连接在一起。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx create-react-app redux-essentials-example --template redux</span><br></pre></td></tr></table></figure>
+
+<h4 id="react-redux"><a href="#react-redux" class="headerlink" title="react-redux"></a>react-redux</h4><p><strong><a target="_blank" rel="noopener" href="https://baijiahao.baidu.com/s?id=1707122824099613498&wfr=spider&for=pc">react-redux</a>发布了新的版本，与之前的contextAPI分离，提供对hooks的支持，那这不就更香了新的redux带来的改变</strong></p>
+<ol>
+<li><strong>「不再需要使用」</strong>mapStateToProps，mapDispatchToProps和connect来维护单独的container组件和UI组件，而是在组件中直接使用redux提供的hooks,读取redux中的state。</li>
+<li>可以将任何现有的自定义<strong>「hooks与redux集成」</strong>，而不是将通过hooks创建的state，作为参数传递给其他hooks</li>
+</ol>
+<ul>
+<li><p><strong>「useSelector：」</strong> 用于从Redux存储的state中提取值并订阅该state。</p>
+</li>
+<li><p><strong>「useDispatch：」</strong> 除了读取store中的state，还能dispatch actions更新store中的state。</p>
+</li>
+<li><p><strong>「useStore：」</strong> 用于获取创建的store实例</p>
+</li>
+</ul>
+<h4 id="useSelector"><a href="#useSelector" class="headerlink" title="useSelector"></a><a target="_blank" rel="noopener" href="http://cn.redux.js.org/tutorials/fundamentals/part-5-ui-react/#reading-state-from-the-store-with-useselector">useSelector</a></h4><p><span style="color:red">使用useSelector、useDispatch等HooksApi替代connect，减少模板代码。</span></p>
+<p><code>useSelector</code> accepts a single function, which we call a <strong>selector</strong> function. <strong>A selector is a function that takes the entire Redux store state as its argument, reads some value from the state, and returns that result</strong>.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const selectTodos = state =&gt; state.todos</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const selectTotalCompletedTodos = state =&gt; &#123;</span><br><span class="line">  const completedTodos = state.todos.filter(todo =&gt; todo.completed)</span><br><span class="line">  return completedTodos.length</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">import React from &#x27;react&#x27;</span><br><span class="line">import &#123; useSelector &#125; from &#x27;react-redux&#x27;</span><br><span class="line">import TodoListItem from &#x27;./TodoListItem&#x27;</span><br><span class="line"></span><br><span class="line">const selectTodos = state =&gt; state.todos</span><br><span class="line"></span><br><span class="line">const TodoList = () =&gt; &#123;</span><br><span class="line">  const todos = useSelector(selectTodos)</span><br><span class="line"></span><br><span class="line">  // since `todos` is an array, we can loop over it</span><br><span class="line">  const renderedListItems = todos.map(todo =&gt; &#123;</span><br><span class="line">    return &lt;TodoListItem key=&#123;todo.id&#125; todo=&#123;todo&#125; /&gt;</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  return &lt;ul className=&quot;todo-list&quot;&gt;&#123;renderedListItems&#125;&lt;/ul&gt;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export default TodoList</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>useSelector 自动为我们订阅了 Redux 存储！ 这样，任何时候分派一个动作，它都会立即再次调用它的选择器函数。 如果选择器返回的值与上次运行时相比发生了变化，useSelector 将强制我们的组件使用新数据重新渲染。 我们所要做的就是在我们的组件中调用 useSelector() 一次，它会为我们完成剩下的工作</p>
+</blockquote>
+<p>还值得注意的是，我们不必将选择器函数编写为单独的变量。您可以直接在 useSelector 调用中编写选择器函数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const todos = useSelector(state =&gt; state.todos)</span><br></pre></td></tr></table></figure>
+
+<h4 id="useDispatch"><a href="#useDispatch" class="headerlink" title="useDispatch"></a><a target="_blank" rel="noopener" href="http://cn.redux.js.org/tutorials/fundamentals/part-5-ui-react/#dispatching-actions-with-usedispatch">useDispatch</a></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123; useState &#125; from &#x27;react&#x27;</span><br><span class="line">import &#123; useDispatch &#125; from &#x27;react-redux&#x27;</span><br><span class="line"></span><br><span class="line">const Header = () =&gt; &#123;</span><br><span class="line">  const [text, setText] = useState(&#x27;&#x27;)</span><br><span class="line">  const dispatch = useDispatch()</span><br><span class="line"></span><br><span class="line">  const handleChange = e =&gt; setText(e.target.value)</span><br><span class="line"></span><br><span class="line">  const handleKeyDown = e =&gt; &#123;</span><br><span class="line">    const trimmedText = e.target.value.trim()</span><br><span class="line">    // If the user pressed the Enter key:</span><br><span class="line">    if (e.key === &#x27;Enter&#x27; &amp;&amp; trimmedText) &#123;</span><br><span class="line">      // Dispatch the &quot;todo added&quot; action with this text</span><br><span class="line">      dispatch(&#123; type: &#x27;todos/todoAdded&#x27;, payload: trimmedText &#125;)</span><br><span class="line">      // And clear out the text input</span><br><span class="line">      setText(&#x27;&#x27;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  return (</span><br><span class="line">    &lt;input</span><br><span class="line">      type=&quot;text&quot;</span><br><span class="line">      placeholder=&quot;What needs to be done?&quot;</span><br><span class="line">      autoFocus=&#123;true&#125;</span><br><span class="line">      value=&#123;text&#125;</span><br><span class="line">      onChange=&#123;handleChange&#125;</span><br><span class="line">      onKeyDown=&#123;handleKeyDown&#125;</span><br><span class="line">    /&gt;</span><br><span class="line">  )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export default Header</span><br></pre></td></tr></table></figure>
+
+<p>hook 是一个 JS 函数，所以它不能自动从 store.js 中自动导入 store</p>
+<p>We do this by <strong>rendering a <code>&lt;Provider&gt;</code> component around our entire <code>&lt;App&gt;</code>, and passing the Redux store as a prop to <code>&lt;Provider&gt;</code></strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">import React from &#x27;react&#x27;</span><br><span class="line">import ReactDOM from &#x27;react-dom&#x27;</span><br><span class="line">import &#123; Provider &#125; from &#x27;react-redux&#x27;</span><br><span class="line"></span><br><span class="line">import App from &#x27;./App&#x27;</span><br><span class="line">import store from &#x27;./store&#x27;</span><br><span class="line"></span><br><span class="line">ReactDOM.render(</span><br><span class="line">  // Render a `&lt;Provider&gt;` around the entire `&lt;App&gt;`,</span><br><span class="line">  // and pass the Redux store to as a prop</span><br><span class="line">  &lt;React.StrictMode&gt;</span><br><span class="line">    &lt;Provider store=&#123;store&#125;&gt;</span><br><span class="line">      &lt;App /&gt;</span><br><span class="line">    &lt;/Provider&gt;</span><br><span class="line">  &lt;/React.StrictMode&gt;,</span><br><span class="line">  document.getElementById(&#x27;root&#x27;)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p>React-Redux 与 React 结合使用的关键部分：</p>
+<ul>
+<li>Call the <code>useSelector</code> hook to read data in React components</li>
+<li>Call the <code>useDispatch</code> hook to dispatch actions in React components</li>
+<li>Put <code>&lt;Provider store=&#123;store&#125;&gt;</code> around your entire <code>&lt;App&gt;</code> component so that other components can talk to the store</li>
+</ul>
+<h3 id="Global-State-Component-State-and-Forms"><a href="#Global-State-Component-State-and-Forms" class="headerlink" title="Global State, Component State, and Forms"></a>Global State, Component State, and Forms</h3><p><a target="_blank" rel="noopener" href="http://cn.redux.js.org/tutorials/fundamentals/part-5-ui-react/#react-redux-patterns">在 React + Redux 应用程序中，你的全局状态应该放在 Redux 存储中，而你的本地状态应该留在 React 组件中</a>：</p>
+<ul>
+<li>Do other parts of the application care about this data?</li>
+<li>Do you need to be able to create further derived data based on this original data?</li>
+<li>Is the same data being used to drive multiple components?</li>
+<li>Is there value to you in being able to restore this state to a given point in time (ie, time travel debugging)?</li>
+<li>Do you want to cache the data (ie, use what’s in state if it’s already there instead of re-requesting it)?</li>
+<li>Do you want to keep this data consistent while hot-reloading UI components (which may lose their internal state when swapped)?</li>
+</ul>
+<p><strong>Most form state probably shouldn’t be kept in Redux</strong></p>
+<h3 id="Using-Multiple-Selectors-in-a-Component"><a href="#Using-Multiple-Selectors-in-a-Component" class="headerlink" title="Using Multiple Selectors in a Component"></a><a target="_blank" rel="noopener" href="http://cn.redux.js.org/tutorials/fundamentals/part-5-ui-react/#using-multiple-selectors-in-a-component">Using Multiple Selectors in a Component</a></h3><p><strong>We can call <code>useSelector</code> multiple times within one component</strong>. In fact, this is actually a good idea - <strong>each call to <code>useSelector</code> should always return the smallest amount of state possible</strong></p>
+<h3 id="Redux-Toolkit"><a href="#Redux-Toolkit" class="headerlink" title="Redux Toolkit"></a><a target="_blank" rel="noopener" href="https://redux-toolkit.js.org/"><strong>Redux Toolkit</strong></a></h3><h4 id="Redux-Toolkit-是什么？"><a href="#Redux-Toolkit-是什么？" class="headerlink" title="Redux Toolkit 是什么？"></a><a target="_blank" rel="noopener" href="http://cn.redux.js.org/redux-toolkit/overview/#redux-toolkit-%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F">Redux Toolkit 是什么？</a></h4><blockquote>
+<p>简化最常见场景下的 Redux 开发，包括配置 store、定义 reducer，不可变的更新逻辑、甚至可以立即创建整个状态的 “切片 slice”，而无需手动编写任何 action creator 或者 action type。它还包括使用最广泛的 Redux 插件，例如 Redux Thunk 用于异步逻辑，而 Reselect 用于编写选择器 selector 函数，因此你可以立即使用它们。</p>
+</blockquote>
+<h4 id="createSlice"><a href="#createSlice" class="headerlink" title="createSlice"></a><a target="_blank" rel="noopener" href="https://redux-toolkit.js.org/api/createSlice">createSlice</a></h4><p>接受一组化 reducer 函数，一个 slice 切片名和初始状态 initial state，并自动生成具有相应 action creator 和 action type 的 slice reducer</p>
+<h5 id="nanoid"><a href="#nanoid" class="headerlink" title="nanoid"></a>nanoid</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import &#123; nanoid &#125; from &#x27;@reduxjs/toolkit&#x27;</span><br><span class="line"></span><br><span class="line">const id = nanoid()</span><br></pre></td></tr></table></figure>
+
+<p><code>createSlice</code> will return an object that looks like：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    name : string,</span><br><span class="line">    reducer : ReducerFunction,</span><br><span class="line">    actions : Record&lt;string, ActionCreator&gt;,</span><br><span class="line">    caseReducers: Record&lt;string, CaseReducer&gt;.</span><br><span class="line">    getInitialState: () =&gt; State</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  name: &quot;todos&quot;,</span><br><span class="line">  reducer: (state, action) =&gt; newState,</span><br><span class="line">  actions: &#123;</span><br><span class="line">    addTodo: (payload) =&gt; (&#123;type: &quot;todos/addTodo&quot;, payload&#125;),</span><br><span class="line">    toggleTodo: (payload) =&gt; (&#123;type: &quot;todos/toggleTodo&quot;, payload&#125;)</span><br><span class="line">  &#125;,</span><br><span class="line">  caseReducers: &#123;</span><br><span class="line">    addTodo: (state, action) =&gt; newState,</span><br><span class="line">    toggleTodo: (state, action) =&gt; newState,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line">import &#123; createSlice, createAction &#125; from &#x27;@reduxjs/toolkit&#x27;</span><br><span class="line">import &#123; createStore, combineReducers &#125; from &#x27;redux&#x27;</span><br><span class="line"></span><br><span class="line">const incrementBy = createAction(&#x27;incrementBy&#x27;)</span><br><span class="line">const decrementBy = createAction(&#x27;decrementBy&#x27;)</span><br><span class="line"></span><br><span class="line">const counter = createSlice(&#123;</span><br><span class="line">  name: &#x27;counter&#x27;,</span><br><span class="line">  initialState: 0,</span><br><span class="line">  reducers: &#123;</span><br><span class="line">    increment: (state) =&gt; state + 1,</span><br><span class="line">    decrement: (state) =&gt; state - 1,</span><br><span class="line">    multiply: &#123;</span><br><span class="line">      reducer: (state, action) =&gt; state * action.payload,</span><br><span class="line">      prepare: (value) =&gt; (&#123; payload: value || 2 &#125;), // fallback if the payload is a falsy value</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">  // &quot;builder callback API&quot;, recommended for TypeScript users</span><br><span class="line">  extraReducers: (builder) =&gt; &#123;</span><br><span class="line">    builder.addCase(incrementBy, (state, action) =&gt; &#123;</span><br><span class="line">      return state + action.payload</span><br><span class="line">    &#125;)</span><br><span class="line">    builder.addCase(decrementBy, (state, action) =&gt; &#123;</span><br><span class="line">      return state - action.payload</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">const user = createSlice(&#123;</span><br><span class="line">  name: &#x27;user&#x27;,</span><br><span class="line">  initialState: &#123; name: &#x27;&#x27;, age: 20 &#125;,</span><br><span class="line">  reducers: &#123;</span><br><span class="line">    setUserName: (state, action) =&gt; &#123;</span><br><span class="line">      state.name = action.payload // mutate the state all you want with immer</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">  // &quot;map object API&quot;</span><br><span class="line">  extraReducers: &#123;</span><br><span class="line">    [counter.actions.increment]: (</span><br><span class="line">      state,</span><br><span class="line">      action /* action will be inferred as &quot;any&quot;, as the map notation does not contain type information */</span><br><span class="line">    ) =&gt; &#123;</span><br><span class="line">      state.age += 1</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">const reducer = combineReducers(&#123;</span><br><span class="line">  counter: counter.reducer,</span><br><span class="line">  user: user.reducer,</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">const store = createStore(reducer)</span><br><span class="line"></span><br><span class="line">store.dispatch(counter.actions.increment())</span><br><span class="line">// -&gt; &#123; counter: 1, user: &#123;name : &#x27;&#x27;, age: 21&#125; &#125;</span><br><span class="line">store.dispatch(counter.actions.increment())</span><br><span class="line">// -&gt; &#123; counter: 2, user: &#123;name: &#x27;&#x27;, age: 22&#125; &#125;</span><br><span class="line">store.dispatch(counter.actions.multiply(3))</span><br><span class="line">// -&gt; &#123; counter: 6, user: &#123;name: &#x27;&#x27;, age: 22&#125; &#125;</span><br><span class="line">store.dispatch(counter.actions.multiply())</span><br><span class="line">// -&gt; &#123; counter: 12, user: &#123;name: &#x27;&#x27;, age: 22&#125; &#125;</span><br><span class="line">console.log(`$&#123;counter.actions.decrement&#125;`)</span><br><span class="line">// -&gt; &quot;counter/decrement&quot;</span><br><span class="line">store.dispatch(user.actions.setUserName(&#x27;eric&#x27;))</span><br><span class="line">// -&gt; &#123; counter: 12, user: &#123; name: &#x27;eric&#x27;, age: 22&#125; &#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="createAction"><a href="#createAction" class="headerlink" title="createAction"></a><a target="_blank" rel="noopener" href="https://redux-toolkit.js.org/api/createAction">createAction</a></h4><p>创建actions的原先做法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">const INCREMENT = &#x27;counter/increment&#x27;</span><br><span class="line"></span><br><span class="line">function increment(amount) &#123;</span><br><span class="line">  return &#123;</span><br><span class="line">    type: INCREMENT,</span><br><span class="line">    payload: amount,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const action = increment(3)</span><br><span class="line">// &#123; type: &#x27;counter/increment&#x27;, payload: 3 &#125;</span><br></pre></td></tr></table></figure>
+
+<p>The <code>createAction</code> helper combines these two declarations into one. It takes an action type and returns an action creator for that type. The action creator can be called either without arguments or with a <code>payload</code> to be attached to the action. Also, the action creator overrides <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/toString">toString()</a> so that the action type becomes its string representation.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">import &#123; createAction &#125; from &#x27;@reduxjs/toolkit&#x27;</span><br><span class="line"></span><br><span class="line">const increment = createAction(&#x27;counter/increment&#x27;)</span><br><span class="line"></span><br><span class="line">let action = increment()</span><br><span class="line">// &#123; type: &#x27;counter/increment&#x27; &#125;</span><br><span class="line"></span><br><span class="line">action = increment(3)</span><br><span class="line">// returns &#123; type: &#x27;counter/increment&#x27;, payload: 3 &#125;</span><br><span class="line"></span><br><span class="line">console.log(increment.toString())</span><br><span class="line">// &#x27;counter/increment&#x27;</span><br><span class="line"></span><br><span class="line">console.log(`The action type is: $&#123;increment&#125;`)</span><br><span class="line">// &#x27;The action type is: counter/increment&#x27;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><code>createAction</code> accepts an optional second argument: a “prepare callback” that will be used to construct the payload value.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">import &#123; createAction, nanoid &#125; from &#x27;@reduxjs/toolkit&#x27;</span><br><span class="line"></span><br><span class="line">const addTodo = createAction(&#x27;todos/add&#x27;, function prepare(text) &#123;</span><br><span class="line">  return &#123;</span><br><span class="line">    payload: &#123;</span><br><span class="line">      text,</span><br><span class="line">      id: nanoid(),</span><br><span class="line">      createdAt: new Date().toISOString(),</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">console.log(addTodo(&#x27;Write more docs&#x27;))</span><br><span class="line">/**</span><br><span class="line"> * &#123;</span><br><span class="line"> *   type: &#x27;todos/add&#x27;,</span><br><span class="line"> *   payload: &#123;</span><br><span class="line"> *     text: &#x27;Write more docs&#x27;,</span><br><span class="line"> *     id: &#x27;4AJvwMSWEHCchcWYga3dj&#x27;,</span><br><span class="line"> *     createdAt: &#x27;2019-10-03T07:53:36.581Z&#x27;</span><br><span class="line"> *   &#125;</span><br><span class="line"> * &#125;</span><br><span class="line"> **/</span><br></pre></td></tr></table></figure>
+
+<h4 id="Usage-with-createReducer"><a href="#Usage-with-createReducer" class="headerlink" title="Usage with createReducer()"></a><a target="_blank" rel="noopener" href="https://redux-toolkit.js.org/api/createAction">Usage with createReducer()</a></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import &#123; createAction, createReducer &#125; from &#x27;@reduxjs/toolkit&#x27;</span><br><span class="line"></span><br><span class="line">const increment = createAction(&#x27;counter/increment&#x27;)</span><br><span class="line">const decrement = createAction(&#x27;counter/decrement&#x27;)</span><br><span class="line"></span><br><span class="line">const counterReducer = createReducer(0, (builder) =&gt; &#123;</span><br><span class="line">  builder.addCase(increment, (state, action) =&gt; state + action.payload)</span><br><span class="line">  builder.addCase(decrement, (state, action) =&gt; state - action.payload)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="builder-addCase"><a href="#builder-addCase" class="headerlink" title="builder.addCase"></a><a target="_blank" rel="noopener" href="https://redux-toolkit.js.org/api/createReducer#builderaddcase">builder.addCase</a></h4><h4 id="Parameters"><a href="#Parameters" class="headerlink" title="Parameters"></a>Parameters</h4><ul>
+<li><strong>actionCreator</strong> Either a plain action type string, or an action creator generated by <a target="_blank" rel="noopener" href="https://redux-toolkit.js.org/api/createAction"><code>createAction</code></a> that can be used to determine the action type.</li>
+<li><strong>reducer</strong> The actual case reducer function.</li>
+</ul>
+<h4 id="createReducer"><a href="#createReducer" class="headerlink" title="createReducer()"></a><a target="_blank" rel="noopener" href="https://redux-toolkit.js.org/api/createReducer">createReducer()</a></h4><p>Redux <a target="_blank" rel="noopener" href="https://redux.js.org/basics/reducers">reducers</a> are often implemented using a <code>switch</code> statement, with one <code>case</code> for every handled action type</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">const initialState = &#123; value: 0 &#125;</span><br><span class="line"></span><br><span class="line">function counterReducer(state = initialState, action) &#123;</span><br><span class="line">  switch (action.type) &#123;</span><br><span class="line">    case &#x27;increment&#x27;:</span><br><span class="line">      return &#123; ...state, value: state.value + 1 &#125;</span><br><span class="line">    case &#x27;decrement&#x27;:</span><br><span class="line">      return &#123; ...state, value: state.value - 1 &#125;</span><br><span class="line">    case &#x27;incrementByAmount&#x27;:</span><br><span class="line">      return &#123; ...state, value: state.value + action.payload &#125;</span><br><span class="line">    default:</span><br><span class="line">      return state</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>With <code>createReducer</code>, your reducers instead look like:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">import &#123; createAction, createReducer &#125; from &#x27;@reduxjs/toolkit&#x27;</span><br><span class="line"></span><br><span class="line">const increment = createAction(&#x27;counter/increment&#x27;)</span><br><span class="line">const decrement = createAction(&#x27;counter/decrement&#x27;)</span><br><span class="line">const incrementByAmount = createAction(&#x27;counter/incrementByAmount&#x27;)</span><br><span class="line"></span><br><span class="line">const initialState = &#123; value: 0 &#125;</span><br><span class="line"></span><br><span class="line">const counterReducer = createReducer(initialState, (builder) =&gt; &#123;</span><br><span class="line">  builder</span><br><span class="line">    .addCase(increment, (state, action) =&gt; &#123;</span><br><span class="line">      state.value++</span><br><span class="line">    &#125;)</span><br><span class="line">    .addCase(decrement, (state, action) =&gt; &#123;</span><br><span class="line">      state.value--</span><br><span class="line">    &#125;)</span><br><span class="line">    .addCase(incrementByAmount, (state, action) =&gt; &#123;</span><br><span class="line">      state.value += action.payload</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h5 id="Parameters-1"><a href="#Parameters-1" class="headerlink" title="Parameters"></a>Parameters</h5><ul>
+<li><p><strong>initialState</strong> <code>State | (() =&gt; State)</code>:</p>
+</li>
+<li><p><strong>builderCallback</strong> <code>(builder: Builder) =&gt; void</code>      <code> builder.addCase(actionCreatorOrType, reducer)</code></p>
+</li>
+</ul>
+<h4 id="configureStore"><a href="#configureStore" class="headerlink" title="configureStore"></a><a target="_blank" rel="noopener" href="https://redux-toolkit.js.org/api/configureStore">configureStore</a></h4><h4 id="getDefaultMiddleware"><a href="#getDefaultMiddleware" class="headerlink" title="getDefaultMiddleware"></a><a target="_blank" rel="noopener" href="https://redux-toolkit.js.org/api/getDefaultMiddleware">getDefaultMiddleware</a></h4><p><a target="_blank" rel="noopener" href="https://redux-toolkit-cn.netlify.app/tutorials/intermediate-tutorial">Redux工具包-使用教程</a></p>
+<h4 id="Store数据-持久化"><a href="#Store数据-持久化" class="headerlink" title="Store数据-持久化"></a>Store数据-持久化</h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_47077674/article/details/122617851?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522165025080216782246469362%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fall.%2522%257D&request_id=165025080216782246469362&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~first_rank_ecpm_v1~rank_v31_ecpm-1-122617851.142%5Ev9%5Econtrol,157%5Ev4%5Econtrol&utm_term=%E5%A6%82%E4%BD%95%E5%9C%A8React%E4%B8%AD%E5%AE%9E%E7%8E%B0%E5%85%A8%E5%B1%80%E6%95%B0%E6%8D%AE%E7%9A%84%E7%8A%B6%E6%80%81%E6%8C%81%E4%B9%85%E5%8C%96&spm=1018.2226.3001.4187">如何在React中实现全局数据的状态持久化？一篇文章让你看懂状态持久化</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/59a85632d781">react-几步搞定redux-persist-持久化存储</a></p>
+<h5 id="src-app-RootReducers-js"><a href="#src-app-RootReducers-js" class="headerlink" title="src/app/RootReducers.js"></a>src/app/RootReducers.js</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import &#123; combineReducers &#125; from &quot;@reduxjs/toolkit&quot;;</span><br><span class="line">import userReducer from &quot;../reducers/userSlice&quot;;</span><br><span class="line"></span><br><span class="line">export default combineReducers(&#123;</span><br><span class="line">    user: userReducer</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h5 id="src-app-store-js"><a href="#src-app-store-js" class="headerlink" title="src/app/store.js"></a>src/app/store.js</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">import &#123; configureStore &#125; from &#x27;@reduxjs/toolkit&#x27;;</span><br><span class="line">import &#123; persistStore, persistReducer &#125; from &#x27;redux-persist&#x27;;</span><br><span class="line">import storage from &#x27;redux-persist/lib/storage&#x27;;</span><br><span class="line">import rootReducer from &#x27;./RootReducers&#x27;;</span><br><span class="line"></span><br><span class="line">const persistConfig = &#123;</span><br><span class="line">  key: &#x27;root&#x27;,</span><br><span class="line">  storage</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const persistedReducer = persistReducer(</span><br><span class="line">  persistConfig,</span><br><span class="line">  rootReducer</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">export const store = configureStore(&#123;</span><br><span class="line">  reducer: persistedReducer,</span><br><span class="line">  middleware: (getDefaultMiddleware) =&gt;</span><br><span class="line">    getDefaultMiddleware(&#123;</span><br><span class="line">      serializableCheck: false,</span><br><span class="line">    &#125;),</span><br><span class="line">&#125;)</span><br><span class="line">export const persistor = persistStore(store)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h5 id="src-index-js"><a href="#src-index-js" class="headerlink" title="src/index.js"></a>src/index.js</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">import React from &#x27;react&#x27;;</span><br><span class="line">import &#123; Provider &#125; from &#x27;react-redux&#x27;;</span><br><span class="line">import &#123; BrowserRouter &#125; from &#x27;react-router-dom&#x27;</span><br><span class="line">import &#x27;./index.css&#x27;;</span><br><span class="line">import App from &#x27;./App&#x27;;</span><br><span class="line">import * as serviceWorker from &#x27;./serviceWorker&#x27;;</span><br><span class="line">import &#123; store, persistor &#125; from &#x27;./app/store&#x27;;</span><br><span class="line">import &#123; PersistGate &#125; from &quot;redux-persist/integration/react&quot;</span><br><span class="line"></span><br><span class="line">import &#123; createRoot &#125; from &#x27;react-dom/client&#x27;;</span><br><span class="line">const container = document.getElementById(&#x27;root&#x27;);</span><br><span class="line">const root = createRoot(container);</span><br><span class="line">root.render(</span><br><span class="line">    &lt;React.StrictMode&gt;</span><br><span class="line">        &lt;Provider store=&#123;store&#125;&gt;</span><br><span class="line">            &lt;PersistGate loading=&#123;null&#125; persistor=&#123;persistor&#125;&gt;</span><br><span class="line">                &lt;BrowserRouter&gt;</span><br><span class="line">                    &lt;App/&gt;</span><br><span class="line">                &lt;/BrowserRouter&gt;</span><br><span class="line">            &lt;/PersistGate&gt;</span><br><span class="line">    &lt;/Provider&gt;</span><br><span class="line">    &lt;/React.StrictMode&gt;</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">// If you want your app to work offline and load faster, you can change</span><br><span class="line">// unregister() to register() below. Note this comes with some pitfalls.</span><br><span class="line">// Learn more about service workers: https://bit.ly/CRA-PWA</span><br><span class="line">serviceWorker.unregister();</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;/* &lt;Routes&gt;</span><br><span class="line">        &lt;Route path=&quot;/&quot; element=&#123;&lt;Container/&gt;&#125; /&gt;</span><br><span class="line">        &lt;Route path=&quot;/login&quot; element=&#123;&lt;Login /&gt;&#125; /&gt;</span><br><span class="line">        &lt;Route path=&quot;/home&quot; element=&#123;&lt;Home /&gt;&#125;&gt;</span><br><span class="line">          &lt;Route path=&quot;/home/:id&quot; element=&#123;&lt;Home /&gt;&#125; /&gt;</span><br><span class="line">        &lt;/Route&gt; */&#125;</span><br><span class="line">        &#123;/* &lt;Route path=&quot;/product&quot; element=&#123;&lt;Container /&gt;&#125;&gt;</span><br><span class="line">          &lt;Route path=&quot;/product/add&quot; element=&#123;&lt;AddProduct /&gt;&#125; /&gt;</span><br><span class="line">          &lt;Route path=&quot;/product/edit/:id&quot; element=&#123;&lt;EditProduct /&gt;&#125; /&gt;</span><br><span class="line">        &lt;/Route&gt; */&#125;</span><br><span class="line"></span><br><span class="line">      &#123;/* &lt;/Routes&gt; */&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="React-Redux"><a href="#React-Redux" class="headerlink" title="React Redux"></a><a target="_blank" rel="noopener" href="https://react-redux.js.org/">React Redux</a></h4><h4 id="redux-persist"><a href="#redux-persist" class="headerlink" title="redux-persist"></a><a target="_blank" rel="noopener" href="https://github.com/rt2zz/redux-persist">redux-persist</a></h4><p><a target="_blank" rel="noopener" href="https://redux-toolkit.js.org/usage/usage-guide#use-with-redux-persist">Use with Redux-Persist</a></p>
+<h4 id="Redux-Toolkit–使用教程"><a href="#Redux-Toolkit–使用教程" class="headerlink" title="Redux Toolkit–使用教程"></a><a target="_blank" rel="noopener" href="https://redux-toolkit.js.org/tutorials/quick-start">Redux Toolkit–使用教程</a></h4>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/01/%E8%A7%86%E9%A2%91%E5%89%AA%E8%BE%91-Adobe-Pr/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="winney">
+      <meta itemprop="description" content="Doing is better than saying.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="winney">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/04/01/%E8%A7%86%E9%A2%91%E5%89%AA%E8%BE%91-Adobe-Pr/" class="post-title-link" itemprop="url">视频剪辑-Adobe-Pr</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-04-01 17:24:46" itemprop="dateCreated datePublished" datetime="2021-04-01T17:24:46+08:00">2021-04-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-08-24 18:09:23" itemprop="dateModified" datetime="2022-08-24T18:09:23+08:00">2022-08-24</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="Adobe-Premiere"><a href="#Adobe-Premiere" class="headerlink" title="Adobe Premiere"></a>Adobe Premiere</h4><h4 id="应用领域"><a href="#应用领域" class="headerlink" title="应用领域"></a>应用领域</h4><ol>
+<li>电影电视(院线电影、网络大电影、个人微电影、电视专题片)</li>
+<li>节目剪辑(综艺娱乐、人物访谈、街坊)</li>
+<li>抖音短视频( vlog、旅拍、剧情短片、炫酷视频)</li>
+<li>宣传片广告片(企业宣传片、专题片、产品广告宣传片)</li>
+<li>自媒体短视频（电影混剪、解说、音乐类、科普类等)</li>
+<li>从事专业剪辑岗位(Premiere 、Final cut 、After Effects等)</li>
+</ol>
+<p><a target="_blank" rel="noopener" href="http://p4.xmyjhkj.cn/index.php?m=goods&a=details&content_id=4#">官网正版授权  软件下载</a></p>
+<p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/%E8%A7%86%E9%A2%91%E5%89%AA%E8%BE%91-Adobe-Pr/image-20210401174712668.png" alt="分辨率"></p>
+<h4 id="帧速率"><a href="#帧速率" class="headerlink" title="帧速率"></a>帧速率</h4><ol>
+<li>帧——影像动画中最小的单位,无数的帧构成了秒。</li>
+<li>一帧相当于一个画面,一秒就是由一定的帧构成。</li>
+<li>视频常用的帧数有:24帧、25帧、29.97帧以及30帧。</li>
+<li>自媒体或一般的短视频剪辑：选择25帧/秒。</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/02/React-%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -390,361 +774,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/02/React-%E7%AC%94%E8%AE%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="winney">
-      <meta itemprop="description" content="Doing is better than saying.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="winney">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/03/02/React-%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">React-笔记</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-03-02 12:00:41" itemprop="dateCreated datePublished" datetime="2021-03-02T12:00:41+08:00">2021-03-02</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-08-24 18:09:23" itemprop="dateModified" datetime="2022-08-24T18:09:23+08:00">2022-08-24</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/React/" itemprop="url" rel="index"><span itemprop="name">React</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="创建应用"><a href="#创建应用" class="headerlink" title="创建应用"></a><a target="_blank" rel="noopener" href="https://zh-hans.reactjs.org/docs/create-a-new-react-app.html#create-react-app">创建应用</a></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npx create-react-app my-app</span><br><span class="line">cd my-app</span><br><span class="line">npm start</span><br></pre></td></tr></table></figure>
-
-
-
-<p>react使用Apifox的项目案例，可参考<code>Gitee/ad_manage_react</code>项目</p>
-<p>json-server的使用，可参考<code>全球新闻发布系统项目</code></p>
-<h4 id="单页面应用"><a href="#单页面应用" class="headerlink" title="单页面应用"></a>单页面应用</h4><p>与页面或后续页面的任何交互，都不再需要往返 server 加载资源，即页面不会重新加载</p>
-<h4 id="编译器"><a href="#编译器" class="headerlink" title="编译器"></a>编译器</h4><p><a target="_blank" rel="noopener" href="https://babeljs.io/">Babel</a> 是 React 最常用的 compiler</p>
-<h4 id="打包工具"><a href="#打包工具" class="headerlink" title="打包工具"></a>打包工具</h4><p>常用的打包 React 应用的工具有 <a target="_blank" rel="noopener" href="https://webpack.js.org/">webpack</a> 和 <a target="_blank" rel="noopener" href="http://browserify.org/">Browserify</a>。</p>
-<h4 id="管理工具"><a href="#管理工具" class="headerlink" title="管理工具"></a>管理工具</h4><p><a target="_blank" rel="noopener" href="https://www.npmjs.com/">npm</a> 和 <a target="_blank" rel="noopener" href="https://yarnpkg.com/">Yarn</a> 是两个常用的管理 React 应用依赖的 package 管理工具</p>
-<h4 id="JSX"><a href="#JSX" class="headerlink" title="JSX"></a>JSX</h4><p>React DOM 使用 camelCase（驼峰式命名）来定义属性的名称</p>
-<h4 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h4><p>组件名称应该始终以大写字母开头（<code>&lt;Wrapper/&gt;</code> <strong>而不是</strong> <code>&lt;wrapper/&gt;</code>）</p>
-<h4 id="props"><a href="#props" class="headerlink" title="props"></a>props</h4><p><code>props</code> 是只读的。不应以任何方式修改它们</p>
-<h4 id="props-children"><a href="#props-children" class="headerlink" title="props.children"></a>props.children</h4><p>每个组件都可以获取到 <code>props.children</code>。它包含组件的开始标签和结束标签之间的内容</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;Welcome&gt;Hello world!&lt;/Welcome&gt;</span><br></pre></td></tr></table></figure>
-
-<h4 id="state"><a href="#state" class="headerlink" title="state"></a>state</h4><p>当组件中的一些数据在某些时刻发生变化时，这时就需要使用 <code>state</code> 来跟踪状态</p>
-<p><code>state</code> 和 <code>props</code> 之间最重要的区别是：<code>props</code> 由父组件传入，而 <code>state</code> 由组件本身管理。组件不能修改 <code>props</code>，但它可以修改 <code>state</code>。</p>
-<h4 id="生命周期方法"><a href="#生命周期方法" class="headerlink" title="生命周期方法"></a><a target="_blank" rel="noopener" href="https://zh-hans.reactjs.org/docs/state-and-lifecycle.html#adding-lifecycle-methods-to-a-class">生命周期方法</a></h4><h4 id="受控组件-vs-非受控组件"><a href="#受控组件-vs-非受控组件" class="headerlink" title="受控组件 vs 非受控组件"></a><a target="_blank" rel="noopener" href="https://zh-hans.reactjs.org/docs/forms.html#controlled-components">受控组件</a> vs <a target="_blank" rel="noopener" href="https://zh-hans.reactjs.org/docs/uncontrolled-components.html">非受控组件</a></h4><h4 id="Ref"><a href="#Ref" class="headerlink" title="Ref"></a><a target="_blank" rel="noopener" href="https://zh-hans.reactjs.org/docs/refs-and-the-dom.html">Ref</a></h4><h4 id="状态提升"><a href="#状态提升" class="headerlink" title="状态提升"></a><a target="_blank" rel="noopener" href="https://zh-hans.reactjs.org/docs/lifting-state-up.html">状态提升</a></h4><h4 id="应该在-React-组件的哪个生命周期函数中发起-AJAX-请求？"><a href="#应该在-React-组件的哪个生命周期函数中发起-AJAX-请求？" class="headerlink" title="应该在 React 组件的哪个生命周期函数中发起 AJAX 请求？"></a>应该在 React 组件的哪个生命周期函数中发起 AJAX 请求？</h4><p>在 <a target="_blank" rel="noopener" href="https://zh-hans.reactjs.org/docs/react-component.html#mounting"><code>componentDidMount</code></a> 这个生命周期函数中发起 AJAX 请求</p>
-<h4 id="工具链"><a href="#工具链" class="headerlink" title="工具链"></a><a target="_blank" rel="noopener" href="https://zh-hans.reactjs.org/docs/create-a-new-react-app.html#more-flexible-toolchains">工具链</a></h4><h4 id="JSX-防止注入攻击"><a href="#JSX-防止注入攻击" class="headerlink" title="JSX 防止注入攻击"></a>JSX 防止注入攻击</h4><p>所有的内容在渲染之前都被转换成了字符串。这样可以有效地防止 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Cross-site_scripting">XSS（cross-site-scripting, 跨站脚本）</a>攻击</p>
-<h4 id="JSX-表示对象"><a href="#JSX-表示对象" class="headerlink" title="JSX 表示对象"></a>JSX 表示对象</h4><p>Babel 会把 JSX 转译成一个名为 <code>React.createElement()</code> 函数调用</p>
-<p><code>React.createElement()</code> 会预先执行一些检查，以帮助你编写无错代码，但实际上它创建了一个这样的对象：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 注意：这是简化过的结构</span><br><span class="line">const element = &#123;</span><br><span class="line">  type: &#x27;h1&#x27;,</span><br><span class="line">  props: &#123;</span><br><span class="line">    className: &#x27;greeting&#x27;,</span><br><span class="line">    children: &#x27;Hello, world!&#x27;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>这些对象被称为 “<strong>React 元素</strong>”。</p>
-<p><strong>仅使用 React 构建的应用通常只有单一的根 DOM 节点</strong>。如果你在将 React 集成进一个已有应用，那么你可以在应用中包含任意多的独立根 DOM 节点。</p>
-<p>React 元素是<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Immutable_object">不可变对象</a>。一旦被创建，你就无法更改它的子元素或者属性。一个元素就像电影的单帧：它代表了某个特定时刻的 UI。</p>
-<h4 id="组件-1"><a href="#组件-1" class="headerlink" title="组件"></a>组件</h4><p>组件，从概念上类似于 JavaScript 函数。它接受任意的入参（即 “props”），并返回用于描述页面展示内容的 React 元素。</p>
-<p>建议从组件自身的角度命名 props，而不是依赖于调用组件的上下文命名。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;Avatar user=&#123;props.author&#125; /&gt;</span><br><span class="line"></span><br><span class="line">function Avatar(props) &#123;</span><br><span class="line">  return (</span><br><span class="line">    &lt;img className=&quot;Avatar&quot;</span><br><span class="line">      src=&#123;props.user.avatarUrl&#125;</span><br><span class="line">      alt=&#123;props.user.name&#125;</span><br><span class="line">    /&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>所有 React 组件都必须像纯函数一样保护它们的 props 不被更改</strong></p>
-<h4 id="不要直接修改-State"><a href="#不要直接修改-State" class="headerlink" title="不要直接修改 State"></a>不要直接修改 State</h4><p>应该使用 <code>setState()</code></p>
-<p>构造函数是唯一可以给 <code>this.state</code> 赋值的地方</p>
-<h4 id="State-的更新可能是异步的"><a href="#State-的更新可能是异步的" class="headerlink" title="State 的更新可能是异步的"></a><a target="_blank" rel="noopener" href="https://zh-hans.reactjs.org/docs/state-and-lifecycle.html">State 的更新可能是异步的</a></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// Wrong</span><br><span class="line">this.setState(&#123;</span><br><span class="line">  counter: this.state.counter + this.props.increment,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// Correct</span><br><span class="line">this.setState((state, props) =&gt; (&#123;</span><br><span class="line">  counter: state.counter + props.increment</span><br><span class="line">&#125;));</span><br></pre></td></tr></table></figure>
-
-<h3 id="条件渲染"><a href="#条件渲染" class="headerlink" title="条件渲染"></a>条件渲染</h3><h4 id="元素变量"><a href="#元素变量" class="headerlink" title="元素变量"></a>元素变量</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;unreadMessages.length &gt; 0 &amp;&amp;</span><br><span class="line">    &lt;h2&gt;</span><br><span class="line">      You have &#123;unreadMessages.length&#125; unread messages.</span><br><span class="line">    &lt;/h2&gt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="与运算符-amp-amp"><a href="#与运算符-amp-amp" class="headerlink" title="与运算符 &amp;&amp;"></a>与运算符 &amp;&amp;</h4><p><code>true &amp;&amp; expression</code> 总是会返回 <code>expression</code>, 而 <code>false &amp;&amp; expression</code> 总是会返回 <code>false</code>。</p>
-<p>注意：下面示例中，render 方法的返回值是 <code>&lt;div&gt;0&lt;/div&gt;</code></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123; count &amp;&amp; &lt;h1&gt;Messages: &#123;count&#125;&lt;/h1&gt;&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="三目运算符"><a href="#三目运算符" class="headerlink" title="三目运算符"></a>三目运算符</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">The user is &lt;b&gt;&#123;isLoggedIn ? &#x27;currently&#x27; : &#x27;not&#x27;&#125;&lt;/b&gt; logged in.</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;isLoggedIn</span><br><span class="line">    ? &lt;LogoutButton onClick=&#123;this.handleLogoutClick&#125; /&gt;</span><br><span class="line">    : &lt;LoginButton onClick=&#123;this.handleLoginClick&#125; /&gt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="阻止组件渲染"><a href="#阻止组件渲染" class="headerlink" title="阻止组件渲染"></a><a target="_blank" rel="noopener" href="https://zh-hans.reactjs.org/docs/conditional-rendering.html">阻止组件渲染</a></h4><p>让 <code>render</code> 方法直接返回 <code>null</code>，而不进行任何渲染</p>
-<h4 id="受控组件"><a href="#受控组件" class="headerlink" title="受控组件"></a>受控组件</h4><p>表单元素（如<code>&lt;input&gt;</code>、 <code>&lt;textarea&gt;</code> 和 <code>&lt;select&gt;</code>）通常自己维护 state</p>
-<h4 id="文件-input-标签"><a href="#文件-input-标签" class="headerlink" title="文件 input 标签"></a>文件 input 标签</h4><p>因为它的 value 只读，所以它是 React 中的一个<strong>非受控</strong>组件</p>
-<h4 id="提交事件"><a href="#提交事件" class="headerlink" title="提交事件"></a>提交事件</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;form onSubmit=&#123;this.handleSubmit&#125;&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="组合-vs-继承"><a href="#组合-vs-继承" class="headerlink" title="组合 vs 继承"></a>组合 vs 继承</h3><h4 id="包含关系"><a href="#包含关系" class="headerlink" title="包含关系"></a>包含关系</h4><p>有些组件无法提前知晓它们子组件的具体内容。在 <code>Sidebar</code>（侧边栏）和 <code>Dialog</code>（对话框）等展现通用容器（box）的组件中特别容易遇到这种情况。</p>
-<p>我们建议这些组件使用一个特殊的 <code>children</code> prop 来将他们的子组件传递到渲染结果中：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;props.children&#125;</span><br></pre></td></tr></table></figure>
-
-<p>少数情况下，你可能需要在一个组件中预留出几个“洞”。这种情况下，我们可以不使用 <code>children</code>，而是自行约定：将所需内容传入 props，并使用相应的 prop</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;div className=&quot;SplitPane&quot;&gt;</span><br><span class="line">  &lt;div className=&quot;SplitPane-left&quot;&gt;</span><br><span class="line">    &#123;props.left&#125;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">  &lt;div className=&quot;SplitPane-right&quot;&gt;</span><br><span class="line">    &#123;props.right&#125;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
-
-<h4 id="将设计好的-UI-划分为组件层级"><a href="#将设计好的-UI-划分为组件层级" class="headerlink" title="将设计好的 UI 划分为组件层级"></a><a target="_blank" rel="noopener" href="https://zh-hans.reactjs.org/docs/thinking-in-react.html">将设计好的 UI 划分为组件层级</a></h4><h4 id="编写组件步骤"><a href="#编写组件步骤" class="headerlink" title="编写组件步骤"></a>编写组件步骤</h4><ol>
-<li>第一步：将设计好的 UI 划分为组件层级</li>
-<li>第二步：用 React 创建一个静态版本</li>
-<li>第三步：确定 UI state 的最小（且完整）表示</li>
-<li>第四步：确定 state 放置的位置</li>
-<li>第五步：添加反向数据流</li>
-</ol>
-<blockquote>
-<p>通过问自己以下三个问题，你可以逐个检查相应数据是否属于 state：</p>
-<ol>
-<li>该数据是否是由父组件通过 props 传递而来的？如果是，那它应该不是 state。</li>
-<li>该数据是否随时间的推移而保持不变？如果是，那它应该也不是 state。</li>
-<li>你能否根据其他 state 或 props 计算出该数据的值？如果是，那它也不是 state。</li>
-</ol>
-<p>包含所有产品的原始列表是经由 props 传入的，所以它不是 state；搜索词和复选框的值应该是 state，因为它们随时间会发生改变且无法由其他数据计算而来；经过搜索筛选的产品列表不是 state，因为它的结果可以由产品的原始列表根据搜索词和复选框的选择计算出来。</p>
-<p>综上所述，属于 state 的有：</p>
-<ul>
-<li>用户输入的搜索词</li>
-<li>复选框是否选中的值</li>
-</ul>
-</blockquote>
-<p>哪个组件应该拥有某个 state </p>
-<ul>
-<li>找到他们的共同所有者（common owner）组件（在组件层级上高于所有需要该 state 的组件）。</li>
-</ul>
-<p><strong>state 只能由拥有它们的组件进行更改</strong></p>
-<p>state在哪个组件，修改state的方法就在哪个组件</p>
-<h4 id="生命周期图谱"><a href="#生命周期图谱" class="headerlink" title="生命周期图谱"></a><strong><a target="_blank" rel="noopener" href="https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/">生命周期图谱</a></strong></h4><h4 id="组件的生命周期"><a href="#组件的生命周期" class="headerlink" title="组件的生命周期"></a><a target="_blank" rel="noopener" href="https://zh-hans.reactjs.org/docs/react-component.html">组件的生命周期</a></h4><h4 id="React权限菜单设计"><a href="#React权限菜单设计" class="headerlink" title="React权限菜单设计"></a>React权限菜单设计</h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/oKeYue/article/details/79092903">React项目配置6(前后端分离如何控制用户权限)</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/oKeYue/article/details/81130922?spm=1001.2014.3001.5502">(源码开放) React + webpack3 多页面应用 及 常见问题解答</a></p>
-<h5 id="10分钟快速搭建React权限菜单设计"><a href="#10分钟快速搭建React权限菜单设计" class="headerlink" title="10分钟快速搭建React权限菜单设计"></a><a target="_blank" rel="noopener" href="https://www.csdn.net/tags/NtDaIg3sMDg5MTktYmxvZwO0O0OO0O0O.html">10分钟快速搭建React权限菜单设计</a></h5><h5 id="React-组件权限控制的实现"><a href="#React-组件权限控制的实现" class="headerlink" title="React 组件权限控制的实现"></a><a target="_blank" rel="noopener" href="https://www.jb51.net/article/237335.htm">React 组件权限控制的实现</a></h5><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_18913129/article/details/105491090">React的React.FC与React.Component的初步认识</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/94ace269414d">useMemo和useEffect有什么区别？怎么使用useMemo</a></p>
-<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/411190859">useMemo 使用指南</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_33782386/article/details/88610257">react-hooks中的一些懵逼点</a></p>
-<blockquote>
-<p><code>useEffect</code>只能在<code>DOM</code>更新后再触发再去控制</p>
-<p><code>memo</code>是在<code>DOM</code>更新前触发的，就像官方所说的，类比生命周期就是<a target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=https://zh-hans.reactjs.org/docs/hooks-faq.html%23how-do-lifecycle-methods-correspond-to-hooks">shouldComponentUpdate</a></p>
-</blockquote>
-<blockquote>
-<p>在前端开发的过程中，我们需要缓存一些内容，以避免在需渲染过程中因大量不必要的耗时计算而导致的性能问题。为此 React 提供了一些方法可以帮助我们去实现数据的缓存，useMemo 就是其中之一</p>
-</blockquote>
-<h4 id="React-Hooks"><a href="#React-Hooks" class="headerlink" title="React Hooks"></a>React Hooks</h4><p><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000018928587">React Hooks 解析（上）：基础</a></p>
-<p><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000018950566">React Hooks 解析（下）：进阶</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/be8fb469d507">useCallback</a></p>
-<blockquote>
-<p>解释这个 Hook 之前先理解下什么是副作用。网络请求、订阅某个模块或者 DOM 操作都是副作用的例子，Effect Hook 是专门用来处理副作用的。正常情况下，在<code>Function Component</code>的函数体中，是不建议写副作用代码的，否则容易出 bug。</p>
-</blockquote>
-<blockquote>
-<p>在绝大多数情况下，<code>useEffect</code>Hook 是更好的选择。唯一例外的就是需要根据新的 UI 来进行 DOM 操作的场景。<code>useLayoutEffect</code>会保证在页面渲染前执行，也就是说页面渲染出来的是最终的效果。如果使用<code>useEffect</code>，页面很可能因为渲染了 2 次而出现抖动。</p>
-</blockquote>
-<h5 id="useContext"><a href="#useContext" class="headerlink" title="useContext"></a>useContext</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function HeaderBar() &#123;</span><br><span class="line">  const user = useContext(CurrentUser);</span><br><span class="line">  const notifications = useContext(Notifications);</span><br><span class="line"></span><br><span class="line">  return (</span><br><span class="line">    &lt;header&gt;</span><br><span class="line">      Welcome back, &#123;user.name&#125;!</span><br><span class="line">      You have &#123;notifications.length&#125; notifications.</span><br><span class="line">    &lt;/header&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h5 id="useReducer"><a href="#useReducer" class="headerlink" title="useReducer"></a>useReducer</h5><p><code>useReducer</code>的用法跟 Redux 非常相似，当 state 的计算逻辑比较复杂又或者需要根据以前的值来计算时，使用这个 Hook 比<code>useState</code>会更好。</p>
-<h5 id="useCallback"><a href="#useCallback" class="headerlink" title="useCallback"></a>useCallback</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Foo</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> [count, setCount] = <span class="title function_">useState</span>(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> memoizedHandleClick = <span class="title function_">useCallback</span>(</span><br><span class="line">    <span class="function">() =&gt;</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`Click happened with dependency: <span class="subst">$&#123;count&#125;</span>`</span>), [count],</span><br><span class="line">  ); </span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">Button</span> <span class="attr">onClick</span>=<span class="string">&#123;memoizedHandleClick&#125;</span>&gt;</span>Click Me<span class="tag">&lt;/<span class="name">Button</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p><code>useCallback</code>缓存的是方法的引用，而<code>useMemo</code>缓存的则是方法的返回值。使用场景是减少不必要的子组件渲染：</p>
-</blockquote>
-<h5 id="useRef"><a href="#useRef" class="headerlink" title="useRef"></a>useRef</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function() &#123;</span><br><span class="line">  const myRef = useRef(null);</span><br><span class="line"></span><br><span class="line">  useEffect(() =&gt; &#123;</span><br><span class="line">    myRef.current.focus();</span><br><span class="line">  &#125;, [])</span><br><span class="line">  </span><br><span class="line">  return &lt;input ref=&#123;myRef&#125; type=&quot;text&quot; /&gt;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p><code>useRef</code>返回一个普通 JS 对象，可以将任意数据存到<code>current</code>属性里面，就像使用实例化对象的<code>this</code>一样。另外一个使用场景是获取 previous props 或 previous state</p>
-</blockquote>
-<h5 id="自定义-Hook"><a href="#自定义-Hook" class="headerlink" title="自定义 Hook"></a>自定义 Hook</h5><blockquote>
-<p>自定义 Hook 的命名有讲究，必须以<code>use</code>开头，在里面可以调用其它的 Hook。入参和返回值都可以根据需要自定义，没有特殊的约定。使用也像普通的函数调用一样，Hook 里面其它的 Hook（如<code>useEffect</code>）会自动在合适的时候调用</p>
-</blockquote>
-<h4 id="Effect-Hook"><a href="#Effect-Hook" class="headerlink" title="Effect Hook"></a><a target="_blank" rel="noopener" href="https://zh-hans.reactjs.org/docs/hooks-overview.html#effect-hook">Effect Hook</a></h4><blockquote>
-<p>在 React 组件中执行过<strong>数据获取、订阅或者手动修改过 DOM</strong>。我们统一把这些操作称为“<strong>副作用</strong>”，或者简称为“作用”。</p>
-<p><code>useEffect</code> 就是一个 Effect Hook，给函数组件增加了操作副作用的能力。它跟 class 组件中的 <code>componentDidMount</code>、<code>componentDidUpdate</code> 和 <code>componentWillUnmount</code> 具有相同的用途，只不过被合并成了一个 API。（我们会在<a target="_blank" rel="noopener" href="https://zh-hans.reactjs.org/docs/hooks-effect.html">使用 Effect Hook</a> 里展示对比 <code>useEffect</code> 和这些方法的例子。）</p>
-</blockquote>
-<h4 id="Hook概览"><a href="#Hook概览" class="headerlink" title="Hook概览"></a><a target="_blank" rel="noopener" href="https://zh-hans.reactjs.org/docs/hooks-overview.html#effect-hook">Hook概览</a></h4>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/20/Vue2-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="winney">
-      <meta itemprop="description" content="Doing is better than saying.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="winney">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/02/20/Vue2-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="post-title-link" itemprop="url">Vue2-基础知识</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-02-20 10:56:26" itemprop="dateCreated datePublished" datetime="2021-02-20T10:56:26+08:00">2021-02-20</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-08-24 18:09:23" itemprop="dateModified" datetime="2022-08-24T18:09:23+08:00">2022-08-24</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/%E3%80%8AVue2%E5%AE%9E%E8%B7%B5%E6%8F%AD%E7%A7%98%E3%80%8B/" itemprop="url" rel="index"><span itemprop="name">《Vue2实践揭秘》</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="找相关资源"><a href="#找相关资源" class="headerlink" title="找相关资源"></a>找相关资源</h4><p>vue.js官网的资源列表中的<a target="_blank" rel="noopener" href="https://github.com/vuejs/awesome-vue">awesome -vue</a>里面</p>
-<h4 id="vue特点"><a href="#vue特点" class="headerlink" title="vue特点"></a>vue特点</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">一个Vue实例必须与一个页面元素绑定</span><br><span class="line"></span><br><span class="line">*.vue是Vue.js特有的文件格式，表示的就是一个Vue组件，被称为单页式组件</span><br><span class="line"></span><br><span class="line">Vue2具有很高的兼容性，我们也可以用&quot;.js&quot;文件来单纯地定义组件的逻辑，</span><br><span class="line">甚至可以使用React 的JSX格式的组件（需要babel-plugin-transform-vue-jsx支持）</span><br><span class="line"></span><br><span class="line">注： 从Vue2开始，组件模板必须且只能有一个顶层元素，如果在组件模板内设置多个顶层元素将会引发编译异常。</span><br></pre></td></tr></table></figure>
-
-<h4 id="单页组件由一下三部分组成："><a href="#单页组件由一下三部分组成：" class="headerlink" title="单页组件由一下三部分组成："></a>单页组件由一下三部分组成：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;&lt;/template&gt; ——视图模板</span><br><span class="line">&lt;style&gt;&lt;/style&gt; ——组件样式表</span><br><span class="line">&lt;script&gt;&lt;/script&gt; ——组件定义</span><br></pre></td></tr></table></figure>
-
-<h4 id="data使用函数返回是为了可以具有更高的灵活性"><a href="#data使用函数返回是为了可以具有更高的灵活性" class="headerlink" title="data使用函数返回是为了可以具有更高的灵活性"></a>data使用函数返回是为了可以具有更高的灵活性</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">export default &#123;</span><br><span class="line">  name: &#x27;&#x27;,</span><br><span class="line">  data() &#123; </span><br><span class="line">    return &#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="使用less（直接使用CSS语法来编写样式表，代码量大）"><a href="#使用less（直接使用CSS语法来编写样式表，代码量大）" class="headerlink" title="使用less（直接使用CSS语法来编写样式表，代码量大）"></a>使用less（直接使用CSS语法来编写样式表，代码量大）</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">npm i less style-loader css-loader less-loader -D</span><br><span class="line"></span><br><span class="line">在/assets/中添加一个todos.less文件，并在App.vue的组件定义内引入less样式表</span><br><span class="line"></span><br><span class="line">import &#x27;./assets/todo.less&#x27;</span><br><span class="line"></span><br><span class="line">注：通过import将样式文件导入是一种全局性的做法，也就是说，在每一个页面内的</span><br><span class="line">&lt;head&gt;&lt;/head&gt;中都会有一个样式表，这样做的缺点是很容易导致样式冲突。如果希</span><br><span class="line">望样式表仅应用于当前组件，可以使用&lt;style scoped&gt;&lt;/style&gt;，然后用css的</span><br><span class="line">@import导入样式表：</span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line">    @import &#x27;./assets/todos.less&#x27;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
-
-<h4 id="注：如果在元素属性中不加上”-”-Vue认为是向这个属性赋上字符串值而不是Vue组件上定义的属性引用！"><a href="#注：如果在元素属性中不加上”-”-Vue认为是向这个属性赋上字符串值而不是Vue组件上定义的属性引用！" class="headerlink" title="注：如果在元素属性中不加上”:”,Vue认为是向这个属性赋上字符串值而不是Vue组件上定义的属性引用！"></a>注：如果在元素属性中不加上”:”,Vue认为是向这个属性赋上字符串值而不是Vue组件上定义的属性引用！</h4><p>注：无论是绑定的是样式类还是样式属性，:class和:style表达式内一定是一个JSON对象。<br>如： :class=”{‘btn’: true}”     :style=”{‘color’: ‘red’}”<br>:class的JSON对象的值一定是布尔型的，true表示加上样式，false表示移除样式类。<br>:style的JSON对象则像是一个样式配置项，key声明属性名，value则是样式属性的具体值。</p>
-<h4 id="时间格式化专用的包——moment-js"><a href="#时间格式化专用的包——moment-js" class="headerlink" title="时间格式化专用的包——moment.js"></a>时间格式化专用的包——moment.js</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">npm i moment -S</span><br><span class="line"></span><br><span class="line">引入moment,并设定moment的区域为中国</span><br><span class="line">import moment from &#x27;moment&#x27;</span><br><span class="line">import &#x27;moment/locale/zh-cn&#x27;</span><br><span class="line">moment.locale(&#x27;zh-cn&#x27;)</span><br><span class="line"></span><br><span class="line">加入date的过滤器</span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">    //省略.....</span><br><span class="line">    filters: &#123;</span><br><span class="line">        date(val) &#123;</span><br><span class="line">            return moment(val).calendar()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">在模板上应用过滤器</span><br><span class="line">&lt;time&gt; &#123;&#123; todo.created | date&#125;&#125;&lt;/time&gt;</span><br><span class="line"></span><br><span class="line">注：在所有的过滤器中是没有this引用的，过滤器内的this是一个undefined的值，所以要在过滤器内尝试引用组件实例内的变量或方法，否则会引发空值引用的异常。</span><br></pre></td></tr></table></figure>
-
-<p>参考《vue2实践揭秘》</p>
-<h4 id="邂逅-Vue-js"><a href="#邂逅-Vue-js" class="headerlink" title="邂逅 Vue.js"></a>邂逅 Vue.js</h4><h5 id="为什么学Vuejs？"><a href="#为什么学Vuejs？" class="headerlink" title="为什么学Vuejs？"></a>为什么学Vuejs？</h5><p>项目需求、公司要求</p>
-<h5 id="简单认识一下Vuejs"><a href="#简单认识一下Vuejs" class="headerlink" title="简单认识一下Vuejs"></a>简单认识一下Vuejs</h5><ul>
-<li><p>渐进式框架        </p>
-</li>
-<li><p>vuejs全家桶：Core + Vue + router + Vuex            </p>
-</li>
-<li><p>特点和常见高级功能</p>
-<ul>
-<li><p>解耦视图和数据</p>
-</li>
-<li><p>可复用的组件</p>
-</li>
-<li><p>前端路由技术</p>
-</li>
-<li><p>状态管理</p>
-</li>
-<li><p>虚拟DOM</p>
-</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>学习Vuejs的前提<pre><code>- 从零学习Vue开发，不需要angular，react基础，甚至jQuery经验
-</code></pre>
-<ul>
-<li>具备一定的HTML，CSS，Javascript基础</li>
-</ul>
-</li>
-</ul>
-<h4 id="Vue-js安装"><a href="#Vue-js安装" class="headerlink" title="Vue.js安装"></a>Vue.js安装</h4><p>一、直接CDN引入</p>
-<p>1、开发环境版本，包含了有帮助的命令行警告</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=&quot;https://cdn.jsdelivr.net/npm/vue/dist/vue.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
-<p>2、生产环境版本，优化了尺寸和速度</p>
-<pre><code>&lt;script src=&quot;https://cdn.jsdelivr.net/npm/vue@2.6.0&quot;&gt;&lt;/script&gt;    
-</code></pre>
-<p>二、下载和引入</p>
-<p>1、开发环境</p>
-<p><a target="_blank" rel="noopener" href="https://cn.vuejs.org/js/vue.js">https://cn.vuejs.org/js/vue.js</a><br>2、生产环境<br><a target="_blank" rel="noopener" href="https://cn.vuejs.org/js/vue.min.js">https://cn.vuejs.org/js/vue.min.js</a></p>
-<p>三、NPM安装<br>最新稳定版</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install vue</span><br></pre></td></tr></table></figure>
-
-<h4 id="Hello-Vuejs"><a href="#Hello-Vuejs" class="headerlink" title="Hello Vuejs"></a>Hello Vuejs</h4><p>响应式（当数据发生改变的时候，界面内容发生改变）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const app = new Vue(&#123;</span><br><span class="line">     el: &#x27;#app&#x27;,</span><br><span class="line">     data: &#123;</span><br><span class="line">     &#125;,</span><br><span class="line">    methods: &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<p>案例：计数器<br>v-on:click简写： @click</p>
-<h4 id="Vue中的MVVM"><a href="#Vue中的MVVM" class="headerlink" title="Vue中的MVVM"></a>Vue中的MVVM</h4><h4 id="创建Vue实例传入的options"><a href="#创建Vue实例传入的options" class="headerlink" title="创建Vue实例传入的options"></a>创建Vue实例传入的options</h4><ul>
-<li>el</li>
-<li>data（组件当中data必须是一个函数）</li>
-<li>methods</li>
-<li>函数与方法的区别</li>
-</ul>
-<h4 id="Vue的生命周期"><a href="#Vue的生命周期" class="headerlink" title="Vue的生命周期"></a>Vue的生命周期</h4><h4 id="模板语法"><a href="#模板语法" class="headerlink" title="模板语法"></a>模板语法</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">缩进2个空格更合适也可以缩进4个空格</span><br><span class="line"></span><br><span class="line">mustache语法中，不仅仅可以直接写变量，也可以写简单的表达式</span><br><span class="line">1：&#123;&#123;firstName + &#x27; &#x27; + lastName&#125;&#125;</span><br><span class="line">2：&#123;&#123;firstName&#125;&#125;  &#123;&#123;lastName&#125;&#125;</span><br><span class="line"></span><br><span class="line">v-once（不想响应式显示内容时）</span><br><span class="line"></span><br><span class="line">v-html（显示标签内容）	</span><br><span class="line"></span><br><span class="line">v-text</span><br><span class="line"></span><br><span class="line">v-pre（原封不动显示该内容）</span><br><span class="line"></span><br><span class="line">v-cloak（数据没有加载出来时，不显示&#123;&#123;&#125;&#125;）</span><br><span class="line"></span><br><span class="line">v-bind</span><br><span class="line"></span><br><span class="line">- 动态绑定属性</span><br><span class="line">- v-bind:src  简写： ：src</span><br><span class="line">- 动态绑定class类名</span><br><span class="line">  :class=&quot;&#123;active: isActive, line: isLine&#125;&quot;</span><br><span class="line">- 动态绑定style</span><br></pre></td></tr></table></figure>
-
-<h4 id="计算属性"><a href="#计算属性" class="headerlink" title="计算属性"></a>计算属性</h4><h4 id="Object侦测"><a href="#Object侦测" class="headerlink" title="Object侦测"></a>Object侦测</h4><p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Vue2-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/Object%E4%BE%A6%E6%B5%8B.png" alt="Object侦测"></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/9/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/43/">43</a><a class="extend next" rel="next" href="/page/11/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/9/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/44/">44</a><a class="extend next" rel="next" href="/page/11/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -812,7 +845,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">127</span>
+          <span class="site-state-item-count">130</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -825,7 +858,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">75</span>
+        <span class="site-state-item-count">76</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

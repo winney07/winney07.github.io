@@ -84,9 +84,9 @@ var showtime = function () {
         m = Math.floor(time/(1000*60)%60),  // 计算分钟数
         s = Math.floor(time/1000%60);  // 计算秒数
 
-    h = h > 10 ? h : "0" + h;    
-    m = m > 10 ? m : "0" + m;
-    s = s > 10 ? s : "0" + s;
+    h = h < 10 ? "0" + h : h;
+    m = m < 10 ? "0" + m : m;
+    s = s < 10 ? "0" + s : s;
     return d + "天" + h + ":" + m + ":" + s;  //返回倒计时的字符串
 }
 ```

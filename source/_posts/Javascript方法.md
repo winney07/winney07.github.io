@@ -77,7 +77,8 @@ setInterval (function () {
 
 var showtime = function () {
     var nowTime = new Date(),  // 获取当前时间
-        endTime = new Date("2022/8/20");  // 定义结束时间
+        // endTime = new Date("2022/8/20");  // 定义结束时间  
+        endTime = new Date("2022/8/20 23:59:59");  // 定义结束具体时间——即8月21凌晨结束
     var time = endTime.getTime() - nowTime.getTime(),  // 距离结束时间的毫秒数
         d = Math.floor(time/(1000*60*60*24)),  // 计算天数
         h = Math.floor(time/(1000*60*60)%24),  // 计算小时数

@@ -130,3 +130,7 @@ https://jingyan.baidu.com/article/6dad5075383c3fa123e36ec3.html
 
 </style>
 ```
+
+#### 插件
+
+open in browser：在默认浏览器打开

@@ -1,9 +1,8 @@
 ---
 title: Sublime Text相关笔记
-date: 2022-08-24 16:36:46
+date: 2019-08-24 16:36:46
 tags:
-- 
-- 
+- Sublime Text
 ---
 
 

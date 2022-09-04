@@ -193,7 +193,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/05/JS%E6%A8%A1%E5%9D%97%E5%8C%96/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/27/%E5%89%8D%E7%AB%AF%E6%8F%92%E4%BB%B6-%E4%BD%BF%E7%94%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -207,7 +207,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/02/05/JS%E6%A8%A1%E5%9D%97%E5%8C%96/" class="post-title-link" itemprop="url">JS模块化</a>
+            <a href="/2021/01/27/%E5%89%8D%E7%AB%AF%E6%8F%92%E4%BB%B6-%E4%BD%BF%E7%94%A8/" class="post-title-link" itemprop="url">前端插件-使用</a>
         </h2>
 
         <div class="post-meta">
@@ -217,7 +217,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-02-05 14:22:52" itemprop="dateCreated datePublished" datetime="2021-02-05T14:22:52+08:00">2021-02-05</time>
+              <time title="创建时间：2021-01-27 14:50:55" itemprop="dateCreated datePublished" datetime="2021-01-27T14:50:55+08:00">2021-01-27</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
@@ -236,7 +236,7 @@
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/%E6%8F%92%E4%BB%B6/" itemprop="url" rel="index"><span itemprop="name">插件</span></a>
                 </span>
             </span>
 
@@ -251,619 +251,75 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="1-课程目标"><a href="#1-课程目标" class="headerlink" title="1. 课程目标"></a>1. 课程目标</h1><pre><code>1. 理解模块与模块化
-2. 了解各种模块化规范及其实现
-3. 区别各个模块化规范之间的区别
-4. 掌握基于CommonJS和ES6模块化规范的编码
-</code></pre>
-<h1 id="2-模块化的理解"><a href="#2-模块化的理解" class="headerlink" title="2. 模块化的理解"></a>2. 模块化的理解</h1><h2 id="1-什么是模块"><a href="#1-什么是模块" class="headerlink" title="1). 什么是模块?"></a>1). 什么是模块?</h2><pre><code>将一个复杂的程序依据一定的规则(规范)封装成几个块(文件), 并进行组合在一起
-块的内部数据/实现是私有的, 只是向外部暴露一些接口(方法)与外部其它模块通信
-</code></pre>
-<h2 id="2-一个模块的组成"><a href="#2-一个模块的组成" class="headerlink" title="2). 一个模块的组成"></a>2). 一个模块的组成</h2><pre><code>私有的数据---&gt;内部的变量
-私有的行为(操作数据)---&gt;内部的函数
-向外暴露n个行为
-</code></pre>
-<h2 id="3-模块化"><a href="#3-模块化" class="headerlink" title="3). 模块化"></a>3). 模块化</h2><pre><code>描述一种特别的编码项目JS的方式: 以模块为单元一个一个编写的
-模块化的项目: JS编码时是按照模块一个一个编码的
-</code></pre>
-<h2 id="4-模块化的进化过程"><a href="#4-模块化的进化过程" class="headerlink" title="4). 模块化的进化过程"></a>4). 模块化的进化过程</h2><pre><code>1. 全局function模式: 
-    编码: 全局变量/函数
-    问题: 污染全局命名空间, 容易引起命名冲突/数据不安全
-2. namespace模式: 
-    编码: 将数据/行为封装到对象中
-    解决: 命名冲突(减少了全局变量)
-    问题: 数据不安全(外部可以直接修改模块内部的数据)
-3. IIFE模式/增强
-    IIFE: 立即调用函数表达式---&gt;匿名函数自调用
-    编码: 将数据和行为封装到一个函数内部, 通过给window添加属性来向外暴露接口
-    引入依赖: 通过函数形参来引入依赖模块
-        (function(window, module2)&#123;
-            var data = &#39;atguigu&#39;
-            function foo() &#123;
-               module2.xxx()
-               console.log(&#39;foo()&#39;+data)
-            &#125;
-            function bar() &#123;
-               console.log(&#39;bar()&#39;+data)
-            &#125;
-            
-            window.module = &#123;foo&#125;
-        &#125;)(window, module2)
-</code></pre>
-<h1 id="3-模块化规范"><a href="#3-模块化规范" class="headerlink" title="3. 模块化规范"></a>3. 模块化规范</h1><h2 id="1-常见的模块化规范"><a href="#1-常见的模块化规范" class="headerlink" title="1). 常见的模块化规范"></a>1). 常见的模块化规范</h2><pre><code>1. CommonJS
-2. AMD
-3. CMD
-4. ES6
-</code></pre>
-<h2 id="2-CommonJS-掌握"><a href="#2-CommonJS-掌握" class="headerlink" title="2). CommonJS(掌握)"></a>2). CommonJS(掌握)</h2><pre><code>1. 实现
-    服务器端: Node.js
-    浏览器端: Browserify
-2. 基本语法:
-    定义暴露模块: exports
-        exports.xxx = value
-        module.exports = value
-      引入模块: require
-        var module = require(&#39;模块名/模块相对路径&#39;)
-3. 引入模块发生在什么时候?
-    Node: 运行时, 动态同步引入
-    Browserify: 在运行前对模块进行编译打包的处理(已经将依赖的模块包含进来了), 
-              运行的是打包生成的js, 运行时不存在需要再从远程引入依赖模块
-</code></pre>
-<h2 id="3-AMD-了解"><a href="#3-AMD-了解" class="headerlink" title="3). AMD(了解)"></a>3). AMD(了解)</h2><pre><code>1. 实现
-    浏览器端: require.js(常称:requireJS)
-2. 基本语法
-    定义暴露模块: 
-        define([依赖模块名], function()&#123;
-          return 模块
-        &#125;)
-    引入模块: 
-        require([&#39;模块1&#39;, &#39;模块2&#39;], function(m1, m2)&#123;
-          //使用m1与m2
-        &#125;)
-    配置: 
-        //配置
-        require.config(&#123;
-          //基本路径
-          baseUrl: &#39;src/&#39;,
-          //映射: 模块标识名: 路径
-          paths: &#123;
-            //自定义模块
-            &#39;a&#39;: &#39;modules/a&#39;,  // 不能加后缀
-            &#39;b&#39;: &#39;modules/b&#39;,
-            //第三方库
-            &#39;jquery&#39;: &#39;libs/jquery-1.10.1&#39;,
-          &#125;
-        &#125;)
-</code></pre>
-<h2 id="4-CMD-了解"><a href="#4-CMD-了解" class="headerlink" title="4). CMD(了解)"></a>4). CMD(了解)</h2><pre><code>1. 实现
-    浏览器端: sea.js(常称:seaJS)
-2.基本语法
-    定义暴露模块: 
-        define(function(require, module, exports)&#123;
-          通过require()引入依赖模块
-          通过module/exports来暴露模块
-          exports.xxx = value
-        &#125;)
-    使用模块:
-        seajs.use([&#39;模块1&#39;, &#39;模块2&#39;])
-</code></pre>
-<h2 id="5-ES6-掌握"><a href="#5-ES6-掌握" class="headerlink" title="5). ES6(掌握)"></a>5). ES6(掌握)</h2><pre><code>1. ES6内置了模块化的实现
-2. 基本语法
-    * 定义暴露模块: export
-        默认暴露(暴露一个数据): 
-            export default 对象
-        一般暴露(暴露多个数据): 
-            export const a = value1
-            export let b = value2
-            
-            const c = value1
-            let d = value2
-            export &#123;c, d&#125;
-          
-    * 引入使用模块: import
-        引入default模块:
-              import xxx  from &#39;模块路径/模块名&#39;
-        引入一般模块
-              import &#123;a, b&#125; from &#39;模块路径/模块名&#39;
-              import * as module1 from &#39;模块路径/模块名&#39;
-3. 问题: 
-    所有浏览器还不能直接识别ES6模块化的语法  
-4. 解决:
-    使用webpack编译打包
-</code></pre>
-<h1 id="4-详细教程"><a href="#4-详细教程" class="headerlink" title="4. 详细教程"></a>4. 详细教程</h1><ul>
-<li><a href="%E6%95%99%E7%A8%8B/01_%E6%A8%A1%E5%9D%97%E5%8C%96%E8%BF%9B%E5%8C%96%E5%8F%B2.md">01_模块化进化史</a></li>
-<li><a href="%E6%95%99%E7%A8%8B/02_CommonJS%E8%A7%84%E8%8C%83_Node.md">02_CommonJS规范_Node</a></li>
-<li><a href="%E6%95%99%E7%A8%8B/03_CommonJS%E8%A7%84%E8%8C%83_Browserify.md">03_CommonJS规范_Browserify</a></li>
-<li><a href="%E6%95%99%E7%A8%8B/04_AMD%E8%A7%84%E8%8C%83_RequireJS.md">04_AMD规范_RequireJS</a></li>
-<li><a href="%E6%95%99%E7%A8%8B/05_CMD%E8%A7%84%E8%8C%83_SeaJS.md">05_CMD规范_SeaJS</a></li>
-<li><a href="%E6%95%99%E7%A8%8B/06_ES6%E6%A8%A1%E5%9D%97%E5%8C%96_Webpack.md">06_ES6模块化_Webpack</a></li>
-</ul>
-<h2 id="JS模块化"><a href="#JS模块化" class="headerlink" title="JS模块化"></a>JS模块化</h2><ul>
-<li><p>模块化的理解</p>
-<blockquote>
-<p>当项目功能越来越多，代码量便也会越来越多，后期的维护难度会增大，此时在JS方面就会考虑使用模块化规范去管理。<br>最流行的commonjs, AMD, ES6、CMD规范。</p>
+          <p><a target="_blank" rel="noopener" href="http://www.bootstrapmb.com/chajian">前端插件</a></p>
+<p><a target="_blank" rel="noopener" href="http://www.bootstrapmb.com/muban">前端模板</a></p>
+<h4 id="Jquery-Upload-File"><a href="#Jquery-Upload-File" class="headerlink" title="Jquery Upload File"></a>Jquery Upload File</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;js/jQuery-File-Upload-9.18.0/css/jquery.fileupload.css&quot; /&gt;</span><br><span class="line"></span><br><span class="line">&lt;script src=&quot;js/jquery/jquery.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;js/jQuery-File-Upload-9.18.0/js/vendor/jquery.ui.widget.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;js/jQuery-File-Upload-9.18.0/js/jquery.iframe-transport.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;js/jQuery-File-Upload-9.18.0/js/jquery.fileupload.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;hidden&quot; name=&quot;game_apk&quot; /&gt;</span><br><span class="line">&lt;span class=&quot;btn btn-success fileinput-button&quot;&gt;</span><br><span class="line">	&lt;i class=&quot;fa fa-plus&quot;&gt;&lt;/i&gt;</span><br><span class="line">	&lt;span&gt;请上传apk文件&lt;/span&gt;</span><br><span class="line"> 	 &lt;input id=&quot;fileupload_1&quot; type=&quot;file&quot; name=&quot;files[]&quot; multiple&gt;</span><br><span class="line">&lt;/span&gt;</span><br><span class="line">&lt;div id=&quot;progress&quot;&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">$(&#x27;#fileupload_1&#x27;).fileupload(&#123;</span><br><span class="line">    url: &quot;上传文件请求地址&quot;,</span><br><span class="line">    dataType: &#x27;json&#x27;,</span><br><span class="line">    done: function (e, data) &#123;</span><br><span class="line">        $.each(data.result.files, function (index, file) &#123;</span><br><span class="line">          $(&#x27;:input[name=game_apk]&#x27;).val(decodeURIComponent(file.url));</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;,</span><br><span class="line">    fail: function (e, data) &#123;</span><br><span class="line">        console.log(&quot;上传失败&quot;)</span><br><span class="line">    &#125;,</span><br><span class="line">    progressall: function (e, data) &#123;</span><br><span class="line">        console.log(progress);</span><br><span class="line">        $(&quot;#progress&quot;).html(progress + &#x27;%&#x27;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h4 id="jquery-copy-js"><a href="#jquery-copy-js" class="headerlink" title="jquery.copy.js"></a>jquery.copy.js</h4><blockquote>
+<p>点击复制内容移动端全兼容(专治各种移动端浏览器)</p>
 </blockquote>
-</li>
-<li><p>什么是模块?</p>
 <ul>
-<li>将一个复杂的程序依据一定的规则(规范)封装成几个块(文件), 并进行组合在一起</li>
-<li>块的内部数据/实现是私有的, 只是向外部暴露一些接口(方法)与外部其它模块通信</li>
+<li>单页面一个复制</li>
 </ul>
-</li>
-<li><p>一个模块的组成</p>
-<ul>
-<li>数据—&gt;内部的属性</li>
-<li>操作数据的行为—&gt;内部的函数</li>
-</ul>
-</li>
-<li><p>模块化</p>
-<ul>
-<li>编码时是按照模块一个一个编码的, 整个项目就是一个模块化的项目</li>
-</ul>
-</li>
-<li><p>模块化的进化过程</p>
-<ul>
-<li><p>全局function模式 : </p>
-<ul>
-<li>编码: 全局变量/函数</li>
-<li>问题: 污染全局命名空间, 容易引起命名冲突/数据不安全</li>
-</ul>
-</li>
-<li><p>namespace模式 : </p>
-<ul>
-<li>编码: 将数据/行为封装到对象中</li>
-<li>解决: 命名冲突(减少了全局变量)</li>
-<li>问题: 数据不安全(外部可以直接修改模块内部的数据)</li>
-</ul>
-</li>
-<li><p>IIFE模式/增强</p>
-<ul>
-<li><p>IIFE : 立即调用函数表达式—&gt;匿名函数自调用</p>
-</li>
-<li><p>编码: 将数据和行为封装到一个函数内部, 通过给window添加属性来向外暴露接口</p>
-</li>
-<li><p>引入依赖: 通过函数形参来引入依赖模块</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">(function(window, module2)&#123;</span><br><span class="line">  var data = &#x27;atguigu.com&#x27;</span><br><span class="line">  function foo() &#123;</span><br><span class="line">     module2.xxx()</span><br><span class="line">     console.log(&#x27;foo()&#x27;+data)</span><br><span class="line">  &#125;</span><br><span class="line">  function bar() &#123;</span><br><span class="line">     console.log(&#x27;bar()&#x27;+data)</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  window.module = &#123;foo&#125;</span><br><span class="line">&#125;)(window, module2)</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>模块化规范</p>
-<ul>
-<li><p>CommonJS</p>
-<ul>
-<li><p>Node.js : 服务器端</p>
-</li>
-<li><p>Browserify : 浏览器端    也称为js的打包工具</p>
-</li>
-<li><p>基本语法:</p>
-<ul>
-<li><p>定义暴露模块 : exports</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">exports.xxx = value</span><br><span class="line">module.exports = value</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;button id=&quot;copy&quot;&gt;复制链接&lt;/button&gt;</span><br></pre></td></tr></table></figure>
 
-<p>引入模块 : require</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var module = require(&#x27;模块名/模块相对路径&#x27;)</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>引入模块发生在什么时候?</p>
-<ul>
-<li>Node : 运行时, 动态同步引入</li>
-<li>Browserify : 在运行前对模块进行编译/转译/打包的处理(已经将依赖的模块包含进来了), <pre><code>运行的是打包生成的js, 运行时不存在需要再从远程引入依赖模块
-</code></pre>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>AMD : 浏览器端</p>
-<ul>
-<li><p>require.js</p>
-</li>
-<li><p>基本语法</p>
-<ul>
-<li><p>定义暴露模块: define([依赖模块名], function(){return 模块对象})</p>
-</li>
-<li><p>引入模块: require([‘模块1’, ‘模块2’, ‘模块3’], function(m1, m2){//使用模块对象})</p>
-</li>
-<li><p>配置: </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">require.config(&#123;</span><br><span class="line">  //基本路径</span><br><span class="line">  baseUrl : &#x27;js/&#x27;,</span><br><span class="line">  //标识名称与路径的映射</span><br><span class="line">  paths : &#123;</span><br><span class="line">    &#x27;模块1&#x27; : &#x27;modules/模块1&#x27;,</span><br><span class="line">    &#x27;模块2&#x27; : &#x27;modules/模块2&#x27;,</span><br><span class="line">    &#x27;angular&#x27; : &#x27;libs/angular&#x27;,</span><br><span class="line">    &#x27;angular-messages&#x27; : &#x27;libs/angular-messages&#x27;</span><br><span class="line">  &#125;,</span><br><span class="line">  //非AMD的模块</span><br><span class="line">  shim : &#123;</span><br><span class="line">    &#x27;angular&#x27; : &#123;</span><br><span class="line">        exports : &#x27;angular&#x27;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#x27;angular-messages&#x27; : &#123;</span><br><span class="line">        exports : &#x27;angular-messages&#x27;,</span><br><span class="line">        deps : [&#x27;angular&#x27;]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>CMD : 浏览器端</p>
-<ul>
-<li><p>sea.js</p>
-</li>
-<li><p>基本语法</p>
-<ul>
-<li><p>定义暴露模块: </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">define(function(require, module, exports)&#123;</span><br><span class="line">  通过require引入依赖模块</span><br><span class="line">  通过module/exports来暴露模块</span><br><span class="line">  exports.xxx = value</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>使用模块seajs.use([‘模块1’, ‘模块2’])</p>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>ES6</p>
-<ul>
-<li><p>ES6内置了模块化的实现</p>
-</li>
-<li><p>基本语法</p>
-<ul>
-<li><p>定义暴露模块 : export</p>
-<ul>
-<li><p>暴露一个对象: </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export default 对象</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>暴露多个: </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">export var xxx = value1</span><br><span class="line">export let yyy = value2</span><br><span class="line"></span><br><span class="line">var xxx = value1</span><br><span class="line">let yyy = value2</span><br><span class="line">export &#123;xxx, yyy&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>引入使用模块 : import</p>
-<ul>
-<li><p>default模块:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import xxx  from &#x27;模块路径/模块名&#x27;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>其它模块</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import &#123;xxx, yyy&#125; from &#x27;模块路径/模块名&#x27;</span><br><span class="line">import * as module1 from &#x27;模块路径/模块名&#x27;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>问题: 所有浏览器还不能直接识别ES6模块化的语法  </p>
-</li>
-<li><p>解决:</p>
-<ul>
-<li>使用Babel将ES6—&gt;ES5(使用了CommonJS) —-浏览器还不能直接支行</li>
-<li>使用Browserify—&gt;打包处理—-浏览器可以运行</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="模块化进化史教程"><a href="#模块化进化史教程" class="headerlink" title="模块化进化史教程"></a>模块化进化史教程</h2><ol>
-<li>全局function模式</li>
-</ol>
-<ul>
-<li><p>module1.js</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//数据</span><br><span class="line">let data = &#x27;atguigu.com&#x27;</span><br><span class="line"></span><br><span class="line">//操作数据的函数</span><br><span class="line">function foo() &#123;</span><br><span class="line">  console.log(`foo() $&#123;data&#125;`)</span><br><span class="line">&#125;</span><br><span class="line">function bar() &#123;</span><br><span class="line">  console.log(`bar() $&#123;data&#125;`)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>module2.js</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let data2 = &#x27;other data&#x27;</span><br><span class="line"></span><br><span class="line">function foo() &#123;  //与另一个模块中的函数冲突了</span><br><span class="line">  console.log(`foo() $&#123;data2&#125;`)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>test1.html</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;module1.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;module2.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line"></span><br><span class="line">  let data = &quot;修改后的数据&quot;</span><br><span class="line">  foo()</span><br><span class="line">  bar()</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>说明:</p>
-<ul>
-<li>全局函数模式: 将不同的功能封装成不同的全局函数</li>
-<li>问题: Global被污染了, 很容易引起命名冲突</li>
-</ul>
-</li>
-</ul>
-<ol start="2">
-<li>namespace模式</li>
-</ol>
-<ul>
-<li><p>module1.js</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">let myModule = &#123;</span><br><span class="line">  data: &#x27;atguigu.com&#x27;,</span><br><span class="line">  foo() &#123;</span><br><span class="line">    console.log(`foo() $&#123;this.data&#125;`)</span><br><span class="line">  &#125;,</span><br><span class="line">  bar() &#123;</span><br><span class="line">    console.log(`bar() $&#123;this.data&#125;`)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>module2.js</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">let myModule2 = &#123;</span><br><span class="line">  data: &#x27;atguigu.com2222&#x27;,</span><br><span class="line">  foo() &#123;</span><br><span class="line">    console.log(`foo() $&#123;this.data&#125;`)</span><br><span class="line">  &#125;,</span><br><span class="line">  bar() &#123;</span><br><span class="line">    console.log(`bar() $&#123;this.data&#125;`)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>test2.html</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;module2.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;module22.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">  myModule.foo()</span><br><span class="line">  myModule.bar()</span><br><span class="line"></span><br><span class="line">  myModule2.foo()</span><br><span class="line">  myModule2.bar()</span><br><span class="line"></span><br><span class="line">  myModule.data = &#x27;other data&#x27; //能直接修改模块内部的数据</span><br><span class="line">  myModule.foo()</span><br><span class="line"></span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>说明</p>
-<ul>
-<li>namespace模式: 简单对象封装</li>
-<li>作用: 减少了全局变量</li>
-<li>问题: 不安全</li>
-</ul>
-</li>
-</ul>
-<ol start="3">
-<li>IIFE模式</li>
-</ol>
-<ul>
-<li><p>module3.js</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">(function (window) &#123;</span><br><span class="line">  //数据</span><br><span class="line">  let data = &#x27;atguigu.com&#x27;</span><br><span class="line"></span><br><span class="line">  //操作数据的函数</span><br><span class="line">  function foo() &#123; //用于暴露有函数</span><br><span class="line">    console.log(`foo() $&#123;data&#125;`)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  function bar() &#123;//用于暴露有函数</span><br><span class="line">    console.log(`bar() $&#123;data&#125;`)</span><br><span class="line">    otherFun() //内部调用</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  function otherFun() &#123; //内部私有的函数</span><br><span class="line">    console.log(&#x27;otherFun()&#x27;)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  //暴露行为</span><br><span class="line">  window.myModule = &#123;foo, bar&#125;</span><br><span class="line">&#125;)(window)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>test3.html</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;module3.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">  myModule.foo()</span><br><span class="line">  myModule.bar()</span><br><span class="line">  //myModule.otherFun()  //myModule.otherFun is not a function</span><br><span class="line">  console.log(myModule.data) //undefined 不能访问模块内部数据</span><br><span class="line">  myModule.data = &#x27;xxxx&#x27; //不是修改的模块内部的data</span><br><span class="line">  myModule.foo() //没有改变</span><br><span class="line"></span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>说明:</p>
-<ul>
-<li>IIFE模式: 匿名函数自调用(闭包)</li>
-<li>IIFE : immediately-invoked function expression(立即调用函数表达式)</li>
-<li>作用: 数据是私有的, 外部只能通过暴露的方法操作</li>
-<li>问题: 如果当前这个模块依赖另一个模块怎么办?</li>
-</ul>
-</li>
-</ul>
-<ol start="4">
-<li>IIFE模式增强</li>
-</ol>
-<ul>
-<li><p>引入jquery到项目中</p>
-</li>
-<li><p>module4.js</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">(function (window, $) &#123;</span><br><span class="line">  //数据</span><br><span class="line">  let data = &#x27;atguigu.com&#x27;</span><br><span class="line"></span><br><span class="line">  //操作数据的函数</span><br><span class="line">  function foo() &#123; //用于暴露有函数</span><br><span class="line">    console.log(`foo() $&#123;data&#125;`)</span><br><span class="line">    $(&#x27;body&#x27;).css(&#x27;background&#x27;, &#x27;red&#x27;)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  function bar() &#123;//用于暴露有函数</span><br><span class="line">    console.log(`bar() $&#123;data&#125;`)</span><br><span class="line">    otherFun() //内部调用</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  function otherFun() &#123; //内部私有的函数</span><br><span class="line">    console.log(&#x27;otherFun()&#x27;)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  //暴露行为</span><br><span class="line">  window.myModule = &#123;foo, bar&#125;</span><br><span class="line">&#125;)(window, jQuery)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>test4.html</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;jquery-1.10.1.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;module4.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">  myModule.foo()</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>说明</p>
-<ul>
-<li>IIFE模式增强 : 引入依赖</li>
-<li>这就是现代模块实现的基石</li>
-</ul>
-</li>
-</ul>
-<ol start="5">
-<li>页面加载多个js的问题</li>
-</ol>
-<ul>
-<li><p>页面:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;module1.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;module2.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;module3.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;module4.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>说明</p>
-<ul>
-<li>一个页面需要引入多个js文件</li>
-<li>问题:<ul>
-<li>请求过多</li>
-<li>依赖模糊</li>
-<li>难以维护</li>
-</ul>
-</li>
-<li>这些问题可以通过现代模块化编码和项目构建来解决</li>
-</ul>
-</li>
-</ul>
-<h2 id="Node-js模块化教程"><a href="#Node-js模块化教程" class="headerlink" title="Node.js模块化教程"></a>Node.js模块化教程</h2><ol>
-<li><p>下载安装node.js</p>
-</li>
-<li><p>创建项目结构</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">|-modules</span><br><span class="line">  |-module1.js</span><br><span class="line">  |-module2.js</span><br><span class="line">  |-module3.js</span><br><span class="line">|-app.js</span><br><span class="line">|-package.json</span><br><span class="line">  &#123;</span><br><span class="line">    &quot;name&quot;: &quot;commonJS-node&quot;,</span><br><span class="line">    &quot;version&quot;: &quot;1.0.0&quot;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>下载第三方模块</p>
-</li>
-</ol>
-<ul>
-<li>npm install uniq –save</li>
-</ul>
-<ol start="4">
-<li>模块化编码</li>
-</ol>
-<ul>
-<li><p>module1.js</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">module.exports = &#123;</span><br><span class="line">  foo() &#123;</span><br><span class="line">    console.log(&#x27;moudle1 foo()&#x27;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>module2.js</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">module.exports = function () &#123;</span><br><span class="line">  console.log(&#x27;module2()&#x27;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>module3.js</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">exports.foo = function () &#123;</span><br><span class="line">  console.log(&#x27;module3 foo()&#x27;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">exports.bar = function () &#123;</span><br><span class="line">  console.log(&#x27;module3 bar()&#x27;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>app.js </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">  1. 定义暴露模块:</span><br><span class="line">    module.exports = value;</span><br><span class="line">    exports.xxx = value;</span><br><span class="line">  2. 引入模块:</span><br><span class="line">    var module = require(模块名或模块路径);</span><br><span class="line"> */</span><br><span class="line">&quot;use strict&quot;;</span><br><span class="line">//引用模块</span><br><span class="line">let module1 = require(&#x27;./modules/module1&#x27;)</span><br><span class="line">let module2 = require(&#x27;./modules/module2&#x27;)</span><br><span class="line">let module3 = require(&#x27;./modules/module3&#x27;)</span><br><span class="line"></span><br><span class="line">let uniq = require(&#x27;uniq&#x27;)</span><br><span class="line">let fs = require(&#x27;fs&#x27;)</span><br><span class="line"></span><br><span class="line">//使用模块</span><br><span class="line">module1.foo()</span><br><span class="line">module2()</span><br><span class="line">module3.foo()</span><br><span class="line">module3.bar()</span><br><span class="line"></span><br><span class="line">console.log(uniq([1, 3, 1, 4, 3]))</span><br><span class="line"></span><br><span class="line">fs.readFile(&#x27;app.js&#x27;, function (error, data) &#123;</span><br><span class="line">  console.log(data.toString())</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<ol start="5">
-<li>通过node运行app.js</li>
-</ol>
-<ul>
-<li>命令: node app.js</li>
-<li>工具: 右键–&gt;运行</li>
-</ul>
-<h2 id="Browserify模块化使用教程"><a href="#Browserify模块化使用教程" class="headerlink" title="Browserify模块化使用教程"></a>Browserify模块化使用教程</h2><ol>
-<li><p>创建项目结构</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">|-js</span><br><span class="line">  |-dist //打包生成文件的目录</span><br><span class="line">  |-src //源码所在的目录</span><br><span class="line">    |-module1.js</span><br><span class="line">    |-module2.js</span><br><span class="line">    |-module3.js</span><br><span class="line">    |-app.js //应用主源文件</span><br><span class="line">|-index.html</span><br><span class="line">|-package.json</span><br><span class="line">  &#123;</span><br><span class="line">    &quot;name&quot;: &quot;browserify-test&quot;,</span><br><span class="line">    &quot;version&quot;: &quot;1.0.0&quot;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>下载browserify</p>
-</li>
-</ol>
-<ul>
-<li>全局: npm install browserify -g</li>
-<li>局部: npm install browserify –save-dev</li>
-</ul>
-<ol start="3">
-<li>定义模块代码</li>
-</ol>
-<ul>
-<li><p>module1.js</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">module.exports = &#123;</span><br><span class="line">  foo() &#123;</span><br><span class="line">    console.log(&#x27;moudle1 foo()&#x27;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>module2.js</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">module.exports = function () &#123;</span><br><span class="line">  console.log(&#x27;module2()&#x27;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>module3.js</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">exports.foo = function () &#123;</span><br><span class="line">  console.log(&#x27;module3 foo()&#x27;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">exports.bar = function () &#123;</span><br><span class="line">  console.log(&#x27;module3 bar()&#x27;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>app.js (应用的主js)</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">//引用模块</span><br><span class="line">let module1 = require(&#x27;./module1&#x27;)</span><br><span class="line">let module2 = require(&#x27;./module2&#x27;)</span><br><span class="line">let module3 = require(&#x27;./module3&#x27;)</span><br><span class="line"></span><br><span class="line">let uniq = require(&#x27;uniq&#x27;)</span><br><span class="line"></span><br><span class="line">//使用模块</span><br><span class="line">module1.foo()</span><br><span class="line">module2()</span><br><span class="line">module3.foo()</span><br><span class="line">module3.bar()</span><br><span class="line"></span><br><span class="line">console.log(uniq([1, 3, 1, 4, 3]))</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>打包处理js:</p>
-<ul>
-<li>browserify js/src/app.js -o js/dist/bundle.js</li>
-</ul>
-</li>
-<li><p>页面使用引入:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;js/dist/bundle.js&quot;&gt;&lt;/script&gt; </span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$.copy(&#123;</span><br><span class="line">    // imgUrl:&quot;success-tips.png&quot;,   // 分享图标地址</span><br><span class="line">    text:&quot;复制成功&quot;, //分享提示文案</span><br><span class="line">    copyUrl:&quot;复制的内容/链接&quot;,   // 自定义复制链接地址</span><br><span class="line">    tipTime:2000, 	// 分享提示消失时间</span><br><span class="line">    copyId:&quot;#copy&quot;	// 复制按钮id</span><br><span class="line">&#125;); </span><br></pre></td></tr></table></figure>
 
-</li>
-</ul>
-<h2 id="require-js使用教程"><a href="#require-js使用教程" class="headerlink" title="require.js使用教程"></a>require.js使用教程</h2><ol>
-<li>下载require.js, 并引入</li>
-</ol>
 <ul>
-<li>官网: <a target="_blank" rel="noopener" href="http://www.requirejs.cn/">http://www.requirejs.cn/</a></li>
-<li>github : <a target="_blank" rel="noopener" href="https://github.com/requirejs/requirejs">https://github.com/requirejs/requirejs</a></li>
-<li>将require.js导入项目: js/libs/require.js </li>
+<li>单页面多个复制链接</li>
 </ul>
-<ol start="2">
-<li><p>创建项目结构</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">|-js</span><br><span class="line">  |-libs</span><br><span class="line">    |-require.js</span><br><span class="line">  |-modules</span><br><span class="line">    |-alerter.js</span><br><span class="line">    |-dataService.js</span><br><span class="line">  |-main.js</span><br><span class="line">|-index.html</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>定义require.js的模块代码</p>
-</li>
-</ol>
-<ul>
-<li><p>dataService.js</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">define(function () &#123;</span><br><span class="line">  let msg = &#x27;atguigu.com&#x27;</span><br><span class="line"></span><br><span class="line">  function getMsg() &#123;</span><br><span class="line">    return msg.toUpperCase()</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  return &#123;getMsg&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>alerter.js</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">define([&#x27;dataService&#x27;, &#x27;jquery&#x27;], function (dataService, $) &#123;</span><br><span class="line">  let name = &#x27;Tom2&#x27;</span><br><span class="line"></span><br><span class="line">  function showMsg() &#123;</span><br><span class="line">    $(&#x27;body&#x27;).css(&#x27;background&#x27;, &#x27;gray&#x27;)</span><br><span class="line">    alert(dataService.getMsg() + &#x27;, &#x27; + name)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  return &#123;showMsg&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<ol start="4">
-<li><p>应用主(入口)js: main.js</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">(function () &#123;</span><br><span class="line">  //配置</span><br><span class="line">  require.config(&#123;</span><br><span class="line">    //基本路径</span><br><span class="line">    baseUrl: &quot;js/&quot;,</span><br><span class="line">    //模块标识名与模块路径映射</span><br><span class="line">    paths: &#123;</span><br><span class="line">      &quot;alerter&quot;: &quot;modules/alerter&quot;,</span><br><span class="line">      &quot;dataService&quot;: &quot;modules/dataService&quot;,</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">  //引入使用模块</span><br><span class="line">  require( [&#x27;alerter&#x27;], function(alerter) &#123;</span><br><span class="line">    alerter.showMsg()</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)()</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>页面使用模块:</p>
-<script data-main="js/main" src="js/libs/require.js"></script>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">var data = [</span><br><span class="line">    &#123; &quot;url&quot;: &quot;www.baidu.com&quot; &#125;,</span><br><span class="line">    &#123; &quot;url&quot;: &quot;www.qq.com&quot; &#125;,</span><br><span class="line">    &#123; &quot;url&quot;: &quot;www.163.com&quot; &#125;</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line">$.each(data,function(i,item)&#123;</span><br><span class="line">    $(&quot;body&quot;).append(&#x27;&lt;button id=&quot;copy&#x27;+i+&#x27;&quot;&gt;复制链接&lt;/button&gt;&#x27;);</span><br><span class="line">    $.copy(&#123;</span><br><span class="line">        // imgUrl:&quot;success-tips.png&quot;,  // 分享图标地址</span><br><span class="line">        text:&quot;复制成功&quot;,  // 分享提示文案</span><br><span class="line">        copyUrl:item.url,  // 自定义复制链接地址</span><br><span class="line">        tipTime:2000,  // 分享提示消失时间</span><br><span class="line">        copyId:&quot;#copy&quot;+i  // 复制按钮id</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
-</li>
-</ol>
-<hr>
-<ol start="6">
-<li>使用第三方基于require.js的框架(jquery)</li>
-</ol>
-<ul>
-<li><p>将jquery的库文件导入到项目: </p>
-<ul>
-<li>js/libs/jquery-1.10.1.js</li>
-</ul>
-</li>
-<li><p>在main.js中配置jquery路径</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">paths: &#123;</span><br><span class="line">          &#x27;jquery&#x27;: &#x27;libs/jquery-1.10.1&#x27;</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在alerter.js中使用jquery</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">define([&#x27;dataService&#x27;, &#x27;jquery&#x27;], function (dataService, $) &#123;</span><br><span class="line">    var name = &#x27;xfzhang&#x27;</span><br><span class="line">    function showMsg() &#123;</span><br><span class="line">        $(&#x27;body&#x27;).css(&#123;background : &#x27;red&#x27;&#125;)</span><br><span class="line">        alert(name + &#x27; &#x27;+dataService.getMsg())</span><br><span class="line">    &#125;</span><br><span class="line">    return &#123;showMsg&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="mobileSelect-js-多级联动下拉菜单"><a href="#mobileSelect-js-多级联动下拉菜单" class="headerlink" title="mobileSelect.js-多级联动下拉菜单"></a>mobileSelect.js-多级联动下拉菜单</h4><p><a target="_blank" rel="noopener" href="https://github.com/onlyhom/mobileSelect.js">mobileSelect.js-github</a></p>
+<h4 id="datetimepicker多次点击input日期选择器不显示"><a href="#datetimepicker多次点击input日期选择器不显示" class="headerlink" title="datetimepicker多次点击input日期选择器不显示"></a>datetimepicker多次点击input日期选择器不显示</h4><p>遇到datetimepicker多次（包括第二次点击）点击input框时日期选择器不显示，需要使用鼠标监听触发：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">/*点方input框时加租监听毒件*/</span><br><span class="line">document.getElementsByName(&#x27;input的name名称&#x27;)[0].addEventListener(&#x27;click&#x27;,myfunc)</span><br><span class="line">function myfunc(e)&#123;</span><br><span class="line">	e.currentTarget.blur();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-</li>
-</ul>
-<hr>
-<ol start="7">
-<li>使用第三方不基于require.js的框架(angular/angular-messages)</li>
-</ol>
-<ul>
-<li><p>将angular.js和angular-messages.js导入项目</p>
-<ul>
-<li>js/libs/angular.js</li>
-<li>js/libs/angular-messages.js</li>
-</ul>
-</li>
-<li><p>在main.js中配置</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">(function () &#123;</span><br><span class="line">  require.config(&#123;</span><br><span class="line">    //基本路径</span><br><span class="line">    baseUrl: &quot;js/&quot;,</span><br><span class="line">    //模块标识名与模块路径映射</span><br><span class="line">    paths: &#123;</span><br><span class="line">      //第三方库</span><br><span class="line">      &#x27;jquery&#x27; : &#x27;libs/jquery-1.10.1&#x27;,</span><br><span class="line">      &#x27;angular&#x27; : &#x27;libs/angular&#x27;,</span><br><span class="line">      &#x27;angular-messages&#x27; : &#x27;libs/angular-messages&#x27;,</span><br><span class="line">      //自定义模块</span><br><span class="line">      &quot;alerter&quot;: &quot;modules/alerter&quot;,</span><br><span class="line">      &quot;dataService&quot;: &quot;modules/dataService&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    /*</span><br><span class="line">     配置不兼容AMD的模块</span><br><span class="line">     exports : 指定导出的模块名</span><br><span class="line">     deps  : 指定所有依赖的模块的数组</span><br><span class="line">     */</span><br><span class="line">    shim: &#123;</span><br><span class="line">      &#x27;angular&#x27; : &#123;</span><br><span class="line">        exports : &#x27;angular&#x27;</span><br><span class="line">      &#125;,</span><br><span class="line">      &#x27;angular-messages&#x27; : &#123;</span><br><span class="line">        exports : &#x27;angular-messages&#x27;,</span><br><span class="line">        deps : [&#x27;angular&#x27;]</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">  //引入使用模块</span><br><span class="line">  require( [&#x27;alerter&#x27;, &#x27;angular&#x27;, &#x27;angular-messages&#x27;], function(alerter, angular) &#123;</span><br><span class="line">    alerter.showMsg()</span><br><span class="line">    angular.module(&#x27;myApp&#x27;, [&#x27;ngMessages&#x27;])</span><br><span class="line">    angular.bootstrap(document,[&quot;myApp&quot;])</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)()</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>页面:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;form name=&quot;myForm&quot;&gt;</span><br><span class="line">  用户名: &lt;input type=&quot;text&quot; name=&quot;username&quot; ng-model=&quot;username&quot; ng-required=&quot;true&quot;&gt;</span><br><span class="line">  &lt;div style=&quot;color: red;&quot; ng-show=&quot;myForm.username.$dirty&amp;&amp;myForm.username.$invalid&quot;&gt;用户名是必须的&lt;/div&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
+<p>以上这段代码必须放在datetimepicker方法的后面。</p>
+<p>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">//日历</span><br><span class="line">var startDate = $(&#x27;#startDate&#x27;).fdatepicker(&#123;</span><br><span class="line">	format: &quot;yyyy-mm-dd&quot;,</span><br><span class="line">	todayBtn: true</span><br><span class="line">&#125;).on(&#x27;changeDate&#x27;, function (ev)&#123;</span><br><span class="line">	startDate.hide();</span><br><span class="line">	$(&#x27;#endDate&#x27;)[0].focus();</span><br><span class="line">&#125;).data(&#x27;datepicker&#x27;);</span><br><span class="line"></span><br><span class="line">var endDate = $(&#x27;#endDate&#x27;).fdatepicker(&#123;</span><br><span class="line">	format: &quot;yyyy-mm-dd&quot;,</span><br><span class="line">	todayBtn: true,</span><br><span class="line">&#125;).on(&#x27;changeDate&#x27;, function (ev)&#123;</span><br><span class="line">	endDate.hide();</span><br><span class="line">&#125;).data(&#x27;datepicker&#x27;);</span><br><span class="line"></span><br><span class="line">//解决输入框点击多次（包括两次）不显示的问题</span><br><span class="line">document.getElementById(&#x27;startDate&#x27;).addEventListener(&#x27;click&#x27;,myfunc);</span><br><span class="line">document.getElementById(&#x27;endDate&#x27;).addEventListener(&#x27;click&#x27;,myfunc);</span><br><span class="line">function myfunc(e)&#123;</span><br><span class="line">	e.currentTarget.blur();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-</li>
-</ul>
-<h2 id="sea-js简单使用教程"><a href="#sea-js简单使用教程" class="headerlink" title="sea.js简单使用教程"></a>sea.js简单使用教程</h2><ol>
-<li>下载sea.js, 并引入</li>
-</ol>
-<ul>
-<li>官网: <a target="_blank" rel="noopener" href="http://seajs.org/">http://seajs.org/</a></li>
-<li>github : <a target="_blank" rel="noopener" href="https://github.com/seajs/seajs">https://github.com/seajs/seajs</a></li>
-<li>将sea.js导入项目: js/libs/sea.js </li>
-</ul>
-<ol start="2">
-<li><p>创建项目结构</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">|-js</span><br><span class="line">  |-libs</span><br><span class="line">    |-sea.js</span><br><span class="line">  |-modules</span><br><span class="line">    |-module1.js</span><br><span class="line">    |-module2.js</span><br><span class="line">    |-module3.js</span><br><span class="line">    |-module4.js</span><br><span class="line">    |-main.js</span><br><span class="line">|-index.html</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>定义sea.js的模块代码</p>
-</li>
-</ol>
-<ul>
-<li><p>module1.js</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">define(function (require, exports, module) &#123;</span><br><span class="line">  //内部变量数据</span><br><span class="line">  var data = &#x27;atguigu.com&#x27;</span><br><span class="line">  //内部函数</span><br><span class="line">  function show() &#123;</span><br><span class="line">    console.log(&#x27;module1 show() &#x27; + data)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  //向外暴露</span><br><span class="line">  exports.show = show</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>module2.js</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">define(function (require, exports, module) &#123;</span><br><span class="line">  module.exports = &#123;</span><br><span class="line">    msg: &#x27;I Will Back&#x27;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>module3.js</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">define(function (require, exports, module) &#123;</span><br><span class="line">  const API_KEY = &#x27;abc123&#x27;</span><br><span class="line">  exports.API_KEY = API_KEY</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>module4.js</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">define(function (require, exports, module) &#123;</span><br><span class="line">  //引入依赖模块(同步)</span><br><span class="line">  var module2 = require(&#x27;./module2&#x27;)</span><br><span class="line"></span><br><span class="line">  function show() &#123;</span><br><span class="line">    console.log(&#x27;module4 show() &#x27; + module2.msg)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  exports.show = show</span><br><span class="line">  //引入依赖模块(异步)</span><br><span class="line">  require.async(&#x27;./module3&#x27;, function (m3) &#123;</span><br><span class="line">    console.log(&#x27;异步引入依赖模块3  &#x27; + m3.API_KEY)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>main.js : 主(入口)模块</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">define(function (require) &#123;</span><br><span class="line">  var m1 = require(&#x27;./module1&#x27;)</span><br><span class="line">  var m4 = require(&#x27;./module4&#x27;)</span><br><span class="line">  m1.show()</span><br><span class="line">  m4.show()</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<ol start="4">
-<li><p>index.html:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--</span><br><span class="line">使用seajs:</span><br><span class="line">  1. 引入sea.js库</span><br><span class="line">  2. 如何定义导出模块 :</span><br><span class="line">    define()</span><br><span class="line">    exports</span><br><span class="line">    module.exports</span><br><span class="line">  3. 如何依赖模块:</span><br><span class="line">    require()</span><br><span class="line">  4. 如何使用模块:</span><br><span class="line">    seajs.use()</span><br><span class="line">--&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;js/libs/sea.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">  seajs.use(&#x27;./js/modules/main&#x27;)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="swiper"><a href="#swiper" class="headerlink" title="swiper"></a><a target="_blank" rel="noopener" href="https://www.swiper.com.cn/">swiper</a></h4><h5 id="轮播图由两层效果改为三层"><a href="#轮播图由两层效果改为三层" class="headerlink" title="轮播图由两层效果改为三层"></a>轮播图由两层效果改为三层</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line">// 加上这个样式，控制偏移量</span><br><span class="line">&lt;style&gt;</span><br><span class="line">    #certify .swiper-slide.swiper-slide-prev&#123;</span><br><span class="line">        transform: translateX(480px) scale(0.8) !important;</span><br><span class="line">    &#125;</span><br><span class="line">    #certify .swiper-slide.swiper-slide-next&#123;</span><br><span class="line">        transform: translateX(-480px) scale(0.8) !important;</span><br><span class="line">    &#125;</span><br><span class="line">    #certify .swiper-slide.swiper-slide-next + .swiper-slide&#123;</span><br><span class="line">        transform: translateX(-986px) scale(0.6) !important;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">var certifySwiper = new Swiper(&#x27;.detail&#x27;, &#123;</span><br><span class="line">    watchSlidesProgress: true,</span><br><span class="line">    slidesPerView: &#x27;auto&#x27;,</span><br><span class="line">    centeredSlides: true,</span><br><span class="line">    loop: true,</span><br><span class="line">    loopedSlides: 5,</span><br><span class="line">    autoplay: true,</span><br><span class="line">    navigation: &#123;</span><br><span class="line">        nextEl: &#x27;.swiper-button-next&#x27;,</span><br><span class="line">        prevEl: &#x27;.swiper-button-prev&#x27;,</span><br><span class="line">    &#125;,</span><br><span class="line">    // pagination: &#123;</span><br><span class="line">    // 	el: &#x27;.swiper-pagination&#x27;,</span><br><span class="line">    // 	clickable: true,</span><br><span class="line">    // &#125;,</span><br><span class="line">    on: &#123;</span><br><span class="line">        progress: function (progress) &#123;</span><br><span class="line">            for (i = 0; i &lt; this.slides.length; i++) &#123;</span><br><span class="line">                var slide = this.slides.eq(i);</span><br><span class="line">                var slideProgress = this.slides[i].progress;</span><br><span class="line">                modify = 1;</span><br><span class="line">                if (Math.abs(slideProgress) &gt; 1) &#123;</span><br><span class="line">                    modify = (Math.abs(slideProgress) - 1) * 0.3 + 1;</span><br><span class="line">                &#125;</span><br><span class="line">                translate = slideProgress * modify * 260 + &#x27;px&#x27;;</span><br><span class="line">                scale = 1 - Math.abs(slideProgress) / 5;</span><br><span class="line">                zIndex = 999 - Math.abs(Math.round(10 * slideProgress));</span><br><span class="line">                slide.transform(&#x27;translateX(&#x27; + translate + &#x27;) scale(&#x27; + scale + &#x27;)&#x27;);</span><br><span class="line">                slide.css(&#x27;zIndex&#x27;, zIndex);</span><br><span class="line">                slide.css(&#x27;opacity&#x27;, 1);</span><br><span class="line">                if (Math.abs(slideProgress) &gt; 3) &#123;</span><br><span class="line">                    slide.css(&#x27;opacity&#x27;, 0);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        setTransition: function (transition) &#123;</span><br><span class="line">            for (var i = 0; i &lt; this.slides.length; i++) &#123;</span><br><span class="line">                var slide = this.slides.eq(i)</span><br><span class="line">                slide.transition(transition);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        </span><br><span class="line">        // 加上这段代码</span><br><span class="line">        slideChangeTransitionStart: function() &#123;</span><br><span class="line">            $(&quot;#certify  .swiper-slide-prev&quot;).prev(&quot;.swiper-slide&quot;).css(&#123;&quot;transform&quot;: &quot;translateX(986px) scale(0.6)&quot;&#125;);</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"> // 加上这段代码</span><br><span class="line">// 修改样式</span><br><span class="line">$(&quot;#certify  .swiper-slide-prev&quot;).prev(&quot;.swiper-slide&quot;).css(&#123;&quot;transform&quot;: &quot;translateX(986px) scale(0.6)&quot;&#125;);</span><br></pre></td></tr></table></figure>
 
-</li>
-</ol>
-<h2 id="ES6-Babel-Browserify使用教程"><a href="#ES6-Babel-Browserify使用教程" class="headerlink" title="ES6-Babel-Browserify使用教程"></a>ES6-Babel-Browserify使用教程</h2><ol>
-<li><p>定义package.json文件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;name&quot; : &quot;es6-babel-browserify&quot;,</span><br><span class="line">  &quot;version&quot; : &quot;1.0.0&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>安装babel-cli, babel-preset-es2015和browserify</p>
-</li>
-</ol>
-<ul>
-<li>npm install babel-cli browserify -g<ul>
-<li>npm install babel-preset-es2015 –save-dev </li>
-</ul>
-</li>
-</ul>
-<ol start="3">
-<li><p>定义.babelrc文件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"> &quot;presets&quot;: [&quot;es2015&quot;]</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>编码</p>
-</li>
-</ol>
-<ul>
-<li><p>js/src/module1.js</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">export function foo() &#123;</span><br><span class="line">  console.log(&#x27;module1 foo()&#x27;);</span><br><span class="line">&#125;</span><br><span class="line">export let bar = function () &#123;</span><br><span class="line">  console.log(&#x27;module1 bar()&#x27;);</span><br><span class="line">&#125;</span><br><span class="line">export const DATA_ARR = [1, 3, 5, 1]</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>js/src/module2.js</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">let data = &#x27;module2 data&#x27;</span><br><span class="line"></span><br><span class="line">function fun1() &#123;</span><br><span class="line">  console.log(&#x27;module2 fun1() &#x27; + data);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function fun2() &#123;</span><br><span class="line">  console.log(&#x27;module2 fun2() &#x27; + data);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export &#123;fun1, fun2&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>js/src/module3.js</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">export default &#123;</span><br><span class="line">  name: &#x27;Tom&#x27;,</span><br><span class="line">  setName: function (name) &#123;</span><br><span class="line">    this.name = name</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>js/src/app.js</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">import &#123;foo, bar&#125; from &#x27;./module1&#x27;</span><br><span class="line">import &#123;DATA_ARR&#125; from &#x27;./module1&#x27;</span><br><span class="line">import &#123;fun1, fun2&#125; from &#x27;./module2&#x27;</span><br><span class="line">import person from &#x27;./module3&#x27;</span><br><span class="line"></span><br><span class="line">import $ from &#x27;jquery&#x27;</span><br><span class="line"></span><br><span class="line">$(&#x27;body&#x27;).css(&#x27;background&#x27;, &#x27;red&#x27;)</span><br><span class="line"></span><br><span class="line">foo()</span><br><span class="line">bar()</span><br><span class="line">console.log(DATA_ARR);</span><br><span class="line">fun1()</span><br><span class="line">fun2()</span><br><span class="line"></span><br><span class="line">person.setName(&#x27;JACK&#x27;)</span><br><span class="line">console.log(person.name);</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<ol start="5">
-<li>编译</li>
-</ol>
-<ul>
-<li>使用Babel将ES6编译为ES5代码(但包含CommonJS语法) : babel js/src -d js/lib</li>
-<li>使用Browserify编译js : browserify js/lib/app.js -o js/lib/bundle.js</li>
-</ul>
-<ol start="6">
-<li><p>页面中引入测试</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;js/lib/bundle.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>引入第三方模块(jQuery)<br>1). 下载jQuery模块: </p>
-<ul>
-<li>npm install jquery@1 –save<br>2). 在app.js中引入并使用</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import $ from &#x27;jquery&#x27;</span><br><span class="line">$(&#x27;body&#x27;).css(&#x27;background&#x27;, &#x27;red&#x27;)</span><br></pre></td></tr></table></figure>
+<h4 id="jquery-cityselect-js—城市选择插件—省市联动效果"><a href="#jquery-cityselect-js—城市选择插件—省市联动效果" class="headerlink" title="jquery.cityselect.js—城市选择插件—省市联动效果"></a>jquery.cityselect.js—城市选择插件—省市联动效果</h4><p><a target="_blank" rel="noopener" href="http://www.ijquery.cn/?p=360">第74款插件：jquery.cityselect.js基于jQuery+JSON的省市或自定义联动效果</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// HTML代码</span><br><span class="line">&lt;div id=&quot;city&quot;&gt; </span><br><span class="line">    &lt;select class=&quot;prov&quot;&gt;&lt;/select&gt;  </span><br><span class="line">    &lt;select class=&quot;city&quot; disabled=&quot;disabled&quot;&gt;&lt;/select&gt; </span><br><span class="line">    &lt;select class=&quot;dist&quot; disabled=&quot;disabled&quot;&gt;&lt;/select&gt; </span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
 
-</li>
-</ol>
-<p>​       </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">// JS和CSS代码 ，请注意这里默认需要把城市数据库 city.min.js 放到 jquery.cityselect.js 所在的数据库中，千万不要丢失！</span><br><span class="line"></span><br><span class="line">&lt;script src=&quot;./js/jquery.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script src=&quot;./js/Plugins/City/jquery.cityselect.js&quot;&gt;&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">    $(function()&#123;</span><br><span class="line">        $(&quot;#city&quot;).citySelect(&#123;</span><br><span class="line">            nodata:&quot;none&quot;,</span><br><span class="line">            required:false</span><br><span class="line">        &#125;); </span><br><span class="line">    &#125;);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p><code>注意：要配置服务器访问页面，不然city.min.js的获取路径有问题</code></p>
+<h4 id="Bootstrap-Multiselect"><a href="#Bootstrap-Multiselect" class="headerlink" title="Bootstrap Multiselect"></a>Bootstrap Multiselect</h4><p><a target="_blank" rel="noopener" href="https://www.bootstrap-multiselect.cn/">Bootstrap Multiselect 中文网</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel=&quot;stylesheet&quot; href=&quot;./js/Plugins/bootstrap/css/bootstrap.min.css&quot;&gt;</span><br><span class="line">&lt;script src=&quot;./js/jquery.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script src=&quot;./js/Plugins/bootstrap/js/bootstrap.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;script src=&quot;./js/Plugins/bootstrap-multiselect/bootstrap-multiselect.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;link rel=&quot;stylesheet&quot; href=&quot;./js/Plugins/bootstrap-multiselect/bootstrap-multiselect.css&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;select id=&quot;example-getting-started&quot; multiple=&quot;multiple&quot;&gt;</span><br><span class="line">    &lt;option value=&quot;cheese&quot;&gt;Cheese&lt;/option&gt;</span><br><span class="line">    &lt;option value=&quot;tomatoes&quot;&gt;Tomatoes&lt;/option&gt;</span><br><span class="line">    &lt;option value=&quot;mozarella&quot;&gt;Mozzarella&lt;/option&gt;</span><br><span class="line">    &lt;option value=&quot;mushrooms&quot;&gt;Mushrooms&lt;/option&gt;</span><br><span class="line">    &lt;option value=&quot;pepperoni&quot;&gt;Pepperoni&lt;/option&gt;</span><br><span class="line">    &lt;option value=&quot;onions&quot;&gt;Onions&lt;/option&gt;</span><br><span class="line">&lt;/select&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">    $(document).ready(function() &#123;</span><br><span class="line">        $(&#x27;#example-getting-started&#x27;).multiselect();</span><br><span class="line">    &#125;);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="CKEditor-富文本编辑器"><a href="#CKEditor-富文本编辑器" class="headerlink" title="CKEditor-富文本编辑器"></a><a target="_blank" rel="noopener" href="https://ckeditor.com/ckeditor-5/demo/#document">CKEditor</a>-富文本编辑器</h4><p><a target="_blank" rel="noopener" href="https://cdn.ckeditor.com/">CKEditor CDN</a></p>
+<p><a target="_blank" rel="noopener" href="https://ckeditor.com/">CKEditor</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;utf-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;CKEditor 5 – Classic editor&lt;/title&gt;</span><br><span class="line">    &lt;script src=&quot;https://cdn.ckeditor.com/ckeditor5/35.0.1/classic/ckeditor.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;h1&gt;Classic editor&lt;/h1&gt;</span><br><span class="line">    &lt;div id=&quot;editor&quot;&gt;</span><br><span class="line">        &lt;p&gt;This is some sample content.&lt;/p&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        ClassicEditor</span><br><span class="line">            .create( document.querySelector( &#x27;#editor&#x27; ) )</span><br><span class="line">            .catch( error =&gt; &#123;</span><br><span class="line">                console.error( error );</span><br><span class="line">            &#125; );</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="Distpicker—中国省市区地址三级联动插件"><a href="#Distpicker—中国省市区地址三级联动插件" class="headerlink" title="Distpicker—中国省市区地址三级联动插件"></a><a target="_blank" rel="noopener" href="http://fengyuanchen.github.io/distpicker/">Distpicker</a>—中国省市区地址三级联动插件</h4><p><a target="_blank" rel="noopener" href="https://github.com/fengyuanchen/distpicker">distpicker-github</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.jq22.com/jquery-info8054">jQuery中国省市区地址三级联动插件Distpicker</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=&quot;./js/jquery.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script src=&quot;./js/Plugins/distpicker/distpicker.data.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script src=&quot;./js/Plugins/distpicker/distpicker.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;div data-toggle=&quot;distpicker&quot;&gt;</span><br><span class="line">  &lt;select data-province=&quot;---- 选择省 ----&quot;&gt;&lt;/select&gt;</span><br><span class="line">  &lt;select data-city=&quot;---- 选择市 ----&quot;&gt;&lt;/select&gt;</span><br><span class="line">  &lt;select data-district=&quot;---- 选择区 ----&quot;&gt;&lt;/select&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;distpicker1&quot;&gt;</span><br><span class="line">  &lt;select&gt;&lt;/select&gt;</span><br><span class="line">  &lt;select&gt;&lt;/select&gt;</span><br><span class="line">  &lt;select&gt;&lt;/select&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">$(&quot;#distpicker1&quot;).distpicker();</span><br></pre></td></tr></table></figure>
+
+<h4 id="city-picker—地区联动插件"><a href="#city-picker—地区联动插件" class="headerlink" title="city-picker—地区联动插件"></a><a target="_blank" rel="noopener" href="http://tshi0912.github.io/city-picker/">city-picker</a>—地区联动插件</h4><p><a target="_blank" rel="noopener" href="https://github.com/tshi0912/city-picker">city-picker—github</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel=&quot;stylesheet&quot; href=&quot;./js/Plugins/city-picker/city-picker.css&quot;&gt;</span><br><span class="line">&lt;script src=&quot;./js/jquery.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script src=&quot;./js/Plugins/city-picker/city-picker.data.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script src=&quot;./js/Plugins/city-picker/city-picker.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div style=&quot;position: relative;&quot;&gt;&lt;!-- container --&gt;</span><br><span class="line">    &lt;input readonly type=&quot;text&quot; data-toggle=&quot;city-picker&quot; placeholder=&quot;请选择省/市&quot; data-level=&quot;city&quot; &gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="Web-Uploader—现代文件上传组件"><a href="#Web-Uploader—现代文件上传组件" class="headerlink" title="Web Uploader—现代文件上传组件"></a><a target="_blank" rel="noopener" href="http://fex.baidu.com/webuploader/">Web Uploader</a>—现代文件上传组件</h4><h4 id="zTree—-jQuery-树插件"><a href="#zTree—-jQuery-树插件" class="headerlink" title="zTree— jQuery 树插件"></a><a target="_blank" rel="noopener" href="https://treejs.cn/v3/main.php#_zTreeInfo">zTree</a>— jQuery 树插件</h4><h4 id="jstree—树插件"><a href="#jstree—树插件" class="headerlink" title="jstree—树插件"></a><a target="_blank" rel="noopener" href="https://www.jstree.com/">jstree</a>—树插件</h4><h4 id="Font-Awesome—字体图标"><a href="#Font-Awesome—字体图标" class="headerlink" title="Font Awesome—字体图标"></a><a target="_blank" rel="noopener" href="http://www.fontawesome.com.cn/">Font Awesome</a>—字体图标</h4><h4 id="fastclick—解决移动端click事件延迟300ms"><a href="#fastclick—解决移动端click事件延迟300ms" class="headerlink" title="fastclick—解决移动端click事件延迟300ms"></a>fastclick—解决移动端click事件延迟300ms</h4><p><a target="_blank" rel="noopener" href="https://github.com/ftlabs/fastclick">fastclick-github</a></p>
+<h4 id="jQuery-WeUI"><a href="#jQuery-WeUI" class="headerlink" title="jQuery WeUI"></a><a target="_blank" rel="noopener" href="https://github.com/lihongxun945/jquery-weui">jQuery WeUI</a></h4><h4 id="swiper-1"><a href="#swiper-1" class="headerlink" title="swiper"></a><a target="_blank" rel="noopener" href="https://www.swiper.com.cn/index.html">swiper</a></h4><h4 id="粒子插件–页面特效"><a href="#粒子插件–页面特效" class="headerlink" title="粒子插件–页面特效"></a><a target="_blank" rel="noopener" href="https://github.com/VincentGarreau/particles.js">粒子插件–页面特效</a></h4><h5 id="Particles"><a href="#Particles" class="headerlink" title="Particles"></a>Particles</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install particles.js</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="http://www.bootstrapmb.com/tag/particles">particles-插件</a></p>
+<h4 id="前端react-粒子特效"><a href="#前端react-粒子特效" class="headerlink" title="前端react 粒子特效"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_54127208/article/details/124380211">前端react 粒子特效</a></h4><h4 id="particles官网"><a href="#particles官网" class="headerlink" title="particles官网"></a><a target="_blank" rel="noopener" href="https://particles.js.org/">particles官网</a></h4><h4 id="particles的使用"><a href="#particles的使用" class="headerlink" title="particles的使用"></a>particles的使用</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br></pre></td><td class="code"><pre><span class="line">import Particles from &quot;react-tsparticles&quot;;</span><br><span class="line">import &#123; loadFull &#125; from &quot;tsparticles&quot;;</span><br><span class="line"></span><br><span class="line">// 在组件外定义下面两个函数</span><br><span class="line">const particlesInit = async (main) =&gt; &#123;</span><br><span class="line">  console.log(main);</span><br><span class="line">  await loadFull(main);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">const particlesLoaded = (container) =&gt; &#123;</span><br><span class="line">  console.log(container);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">// 粒子参数</span><br><span class="line">const options = &#123;</span><br><span class="line">    &quot;background&quot;: &#123;</span><br><span class="line">        &quot;color&quot;: &#123;</span><br><span class="line">            &quot;value&quot;: &quot;#232741&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &quot;position&quot;: &quot;50% 50%&quot;,</span><br><span class="line">        &quot;repeat&quot;: &quot;no-repeat&quot;,</span><br><span class="line">        &quot;size&quot;: &quot;cover&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    // 帧数，越低越卡,默认60</span><br><span class="line">    &quot;fpsLimit&quot;: 120,</span><br><span class="line">    &quot;fullScreen&quot;: &#123;</span><br><span class="line">        &quot;zIndex&quot;: 1</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;interactivity&quot;: &#123;</span><br><span class="line">        &quot;events&quot;: &#123;</span><br><span class="line">            &quot;onClick&quot;: &#123;</span><br><span class="line">                &quot;enable&quot;: true,</span><br><span class="line">                &quot;mode&quot;: &quot;push&quot;</span><br><span class="line">            &#125;,</span><br><span class="line">            &quot;onHover&quot;: &#123;</span><br><span class="line">                &quot;enable&quot;: true,</span><br><span class="line">                &quot;mode&quot;: &quot;slow&quot;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        &quot;modes&quot;: &#123;</span><br><span class="line">            &quot;push&quot;: &#123;</span><br><span class="line">                //点击是添加1个粒子</span><br><span class="line">                &quot;quantity&quot;: 3,</span><br><span class="line">            &#125;,</span><br><span class="line">            &quot;bubble&quot;: &#123;</span><br><span class="line">                &quot;distance&quot;: 200,</span><br><span class="line">                &quot;duration&quot;: 2,</span><br><span class="line">                &quot;opacity&quot;: 0.8,</span><br><span class="line">                &quot;size&quot;: 20,</span><br><span class="line">                &quot;divs&quot;: &#123;</span><br><span class="line">                    &quot;distance&quot;: 200,</span><br><span class="line">                    &quot;duration&quot;: 0.4,</span><br><span class="line">                    &quot;mix&quot;: false,</span><br><span class="line">                    &quot;selectors&quot;: []</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            &quot;grab&quot;: &#123;</span><br><span class="line">                &quot;distance&quot;: 400</span><br><span class="line">            &#125;,</span><br><span class="line">            //击退</span><br><span class="line">            &quot;repulse&quot;: &#123;</span><br><span class="line">                &quot;divs&quot;: &#123;</span><br><span class="line">                    //鼠标移动时排斥粒子的距离</span><br><span class="line">                    &quot;distance&quot;: 200,</span><br><span class="line">                    //翻译是持续时间</span><br><span class="line">                    &quot;duration&quot;: 0.4,</span><br><span class="line">                    &quot;factor&quot;: 100,</span><br><span class="line">                    &quot;speed&quot;: 1,</span><br><span class="line">                    &quot;maxSpeed&quot;: 50,</span><br><span class="line">                    &quot;easing&quot;: &quot;ease-out-quad&quot;,</span><br><span class="line">                    &quot;selectors&quot;: []</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            //缓慢移动</span><br><span class="line">            &quot;slow&quot;: &#123;</span><br><span class="line">                //移动速度</span><br><span class="line">                &quot;factor&quot;: 2,</span><br><span class="line">                //影响范围</span><br><span class="line">                &quot;radius&quot;: 200,</span><br><span class="line">            &#125;,</span><br><span class="line">            //吸引</span><br><span class="line">            &quot;attract&quot;: &#123;</span><br><span class="line">                &quot;distance&quot;: 200,</span><br><span class="line">                &quot;duration&quot;: 0.4,</span><br><span class="line">                &quot;easing&quot;: &quot;ease-out-quad&quot;,</span><br><span class="line">                &quot;factor&quot;: 3,</span><br><span class="line">                &quot;maxSpeed&quot;: 50,</span><br><span class="line">                &quot;speed&quot;: 1</span><br><span class="line"></span><br><span class="line">            &#125;,</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    //  粒子的参数</span><br><span class="line">    &quot;particles&quot;: &#123;</span><br><span class="line">        //粒子的颜色</span><br><span class="line">        &quot;color&quot;: &#123;</span><br><span class="line">            &quot;value&quot;: &quot;#ffffff&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        //是否启动粒子碰撞</span><br><span class="line">        &quot;collisions&quot;: &#123;</span><br><span class="line">            &quot;enable&quot;: true,</span><br><span class="line">        &#125;,</span><br><span class="line">        //粒子之间的线的参数</span><br><span class="line">        &quot;links&quot;: &#123;</span><br><span class="line">            &quot;color&quot;: &#123;</span><br><span class="line">                &quot;value&quot;: &quot;#ffffff&quot;</span><br><span class="line">            &#125;,</span><br><span class="line">            &quot;distance&quot;: 150,</span><br><span class="line">            &quot;enable&quot;: true,</span><br><span class="line">            &quot;warp&quot;: true</span><br><span class="line">        &#125;,</span><br><span class="line">        &quot;move&quot;: &#123;</span><br><span class="line">            &quot;attract&quot;: &#123;</span><br><span class="line">                &quot;rotate&quot;: &#123;</span><br><span class="line">                    &quot;x&quot;: 600,</span><br><span class="line">                    &quot;y&quot;: 1200</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            &quot;enable&quot;: true,</span><br><span class="line">            &quot;outModes&quot;: &#123;</span><br><span class="line">                &quot;bottom&quot;: &quot;out&quot;,</span><br><span class="line">                &quot;left&quot;: &quot;out&quot;,</span><br><span class="line">                &quot;right&quot;: &quot;out&quot;,</span><br><span class="line">                &quot;top&quot;: &quot;out&quot;</span><br><span class="line">            &#125;,</span><br><span class="line">            &quot;speed&quot;: 6,</span><br><span class="line">            &quot;warp&quot;: true</span><br><span class="line">        &#125;,</span><br><span class="line">        &quot;number&quot;: &#123;</span><br><span class="line">            &quot;density&quot;: &#123;</span><br><span class="line">                &quot;enable&quot;: true</span><br><span class="line">            &#125;,</span><br><span class="line">            //初始粒子数</span><br><span class="line">            &quot;value&quot;: 40</span><br><span class="line">        &#125;,</span><br><span class="line">        //透明度</span><br><span class="line">        &quot;opacity&quot;: &#123;</span><br><span class="line">            &quot;value&quot;: 0.5,</span><br><span class="line">            &quot;animation&quot;: &#123;</span><br><span class="line">                &quot;speed&quot;: 3,</span><br><span class="line">                &quot;minimumValue&quot;: 0.1</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        //大小</span><br><span class="line">        &quot;size&quot;: &#123;</span><br><span class="line">            &quot;random&quot;: &#123;</span><br><span class="line">                &quot;enable&quot;: true</span><br><span class="line">            &#125;,</span><br><span class="line">            &quot;value&quot;: &#123;</span><br><span class="line">                &quot;min&quot;: 1,</span><br><span class="line">                &quot;max&quot;: 3</span><br><span class="line">            &#125;,</span><br><span class="line">            &quot;animation&quot;: &#123;</span><br><span class="line">                &quot;speed&quot;: 20,</span><br><span class="line">                &quot;minimumValue&quot;: 0.1</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#123;/* 粒子插件 */&#125;</span><br><span class="line">&lt;Particles</span><br><span class="line">  id=&quot;tsparticles&quot;</span><br><span class="line">  init=&#123;particlesInit&#125;</span><br><span class="line">  loaded=&#123;particlesLoaded&#125;</span><br><span class="line">  options=&#123;options&#125;</span><br><span class="line">/&gt;</span><br></pre></td></tr></table></figure>
+
 
       
     </div>
@@ -883,7 +339,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/03/JavaScript%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE-%E7%AC%94%E8%AE%B0/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/27/qrcode%E7%94%9F%E6%88%90%E4%BA%8C%E7%BB%B4%E7%A0%81/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -897,7 +353,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/02/03/JavaScript%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE-%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">JavaScript思维导图-笔记</a>
+            <a href="/2021/01/27/qrcode%E7%94%9F%E6%88%90%E4%BA%8C%E7%BB%B4%E7%A0%81/" class="post-title-link" itemprop="url">qrcode生成二维码</a>
         </h2>
 
         <div class="post-meta">
@@ -907,7 +363,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-02-03 15:34:20" itemprop="dateCreated datePublished" datetime="2021-02-03T15:34:20+08:00">2021-02-03</time>
+              <time title="创建时间：2021-01-27 11:09:11" itemprop="dateCreated datePublished" datetime="2021-01-27T11:09:11+08:00">2021-01-27</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
@@ -916,6 +372,19 @@
                 <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2022-08-24 18:09:23" itemprop="dateModified" datetime="2022-08-24T18:09:23+08:00">2022-08-24</time>
               </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/%E6%8F%92%E4%BB%B6/" itemprop="url" rel="index"><span itemprop="name">插件</span></a>
+                </span>
+            </span>
 
           
 
@@ -928,8 +397,21 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>注：只做笔记查阅，侵权必删。</p>
-<p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/JavaScript%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE-%E7%AC%94%E8%AE%B0/yunsuanfu.gif" alt="JavaScript思维导图"><br><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/JavaScript%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE-%E7%AC%94%E8%AE%B0/shuzu.gif" alt="JavaScript思维导图"><br><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/JavaScript%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE-%E7%AC%94%E8%AE%B0/bianliang.gif" alt="JavaScript思维导图"><br><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/JavaScript%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE-%E7%AC%94%E8%AE%B0/yuju.gif" alt="JavaScript思维导图"><br><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/JavaScript%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE-%E7%AC%94%E8%AE%B0/zhengze.gif" alt="JavaScript思维导图"><br><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/JavaScript%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE-%E7%AC%94%E8%AE%B0/DOM.gif" alt="JavaScript思维导图"><br><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/JavaScript%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE-%E7%AC%94%E8%AE%B0/hanshu.gif" alt="JavaScript思维导图"><br><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/JavaScript%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE-%E7%AC%94%E8%AE%B0/zifuchuanhanshu.gif" alt="JavaScript思维导图"></p>
+          <h4 id="qrcode生成二维码"><a href="#qrcode生成二维码" class="headerlink" title="qrcode生成二维码"></a>qrcode生成二维码</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;jquery.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;qrcode.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;input id=&quot;text&quot; type=&quot;text&quot; value=&quot;https://www.baidu.com/&quot; style=&quot;width:80%&quot; /&gt;&lt;br /&gt;</span><br><span class="line">&lt;div id=&quot;qrcode&quot; style=&quot;width:100px; height:100px; margin-top:15px;&quot;&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">    var qrcode = new QRCode(document.getElementById(&quot;qrcode&quot;), &#123;</span><br><span class="line">        width : 100,</span><br><span class="line">        height : 100</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    function makeCode () &#123;		</span><br><span class="line">        var elText = document.getElementById(&quot;text&quot;);</span><br><span class="line"></span><br><span class="line">        if (!elText.value) &#123;</span><br><span class="line">            alert(&quot;Input a text&quot;);</span><br><span class="line">            elText.focus();</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        qrcode.makeCode(elText.value);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    makeCode();</span><br><span class="line"></span><br><span class="line">    $(&quot;#text&quot;).on(&quot;blur&quot;, function () &#123;</span><br><span class="line">        makeCode();</span><br><span class="line">    &#125;).on(&quot;keydown&quot;, function (e) &#123;</span><br><span class="line">        if (e.keyCode == 13) &#123;</span><br><span class="line">            makeCode();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="微信二维码电子名片生成系统"><a href="#微信二维码电子名片生成系统" class="headerlink" title="微信二维码电子名片生成系统"></a>微信二维码电子名片生成系统</h4><p><a target="_blank" rel="noopener" href="https://gitee.com/winney/work/blob/master/Plugs/qrcode/code.png">【示意图】</a></p>
+<p>清空二维码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">qrcode.clear(); // clear the code.</span><br></pre></td></tr></table></figure>
+
+<p>加上中文内容会报错：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">qrcode.min.js:1 Uncaught Error: code length overflow. (3452&gt;1440)</span><br></pre></td></tr></table></figure>
+
+<p>解决方案：</p>
+<p> <a target="_blank" rel="noopener" href="https://github.com/KeeeX/qrcodejs">Keeex/qrcode</a>，用这里的js替换原来的js，但生成的内容格式跟原来的是不一样的。</p>
 
       
     </div>
@@ -949,7 +431,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/29/Web%E9%98%85%E8%AF%BB%E5%99%A8%E5%BC%80%E5%8F%91/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/25/PHP-%E7%AC%94%E8%AE%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -963,7 +445,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/01/29/Web%E9%98%85%E8%AF%BB%E5%99%A8%E5%BC%80%E5%8F%91/" class="post-title-link" itemprop="url">Web阅读器开发-笔记</a>
+            <a href="/2021/01/25/PHP-%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">PHP-笔记</a>
         </h2>
 
         <div class="post-meta">
@@ -973,7 +455,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-01-29 15:55:19" itemprop="dateCreated datePublished" datetime="2021-01-29T15:55:19+08:00">2021-01-29</time>
+              <time title="创建时间：2021-01-25 14:29:47" itemprop="dateCreated datePublished" datetime="2021-01-25T14:29:47+08:00">2021-01-25</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
@@ -982,6 +464,19 @@
                 <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2022-08-24 18:09:23" itemprop="dateModified" datetime="2022-08-24T18:09:23+08:00">2022-08-24</time>
               </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/PHP/" itemprop="url" rel="index"><span itemprop="name">PHP</span></a>
+                </span>
+            </span>
 
           
 
@@ -994,153 +489,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p><a target="_blank" rel="noopener" href="https://www.imooc.com/video/17794">课程链接</a></p>
-<h4 id="课程介绍"><a href="#课程介绍" class="headerlink" title="课程介绍"></a>课程介绍</h4><ul>
-<li>了解阅读器工作原理，了解epub格式的解析原理</li>
-<li>运用Vue.js+epub.js实现一个简单的阅读器</li>
-<li>实现阅读器的基础功能，如字号选择、背景色选择等</li>
-</ul>
-<h4 id="课程安排"><a href="#课程安排" class="headerlink" title="课程安排"></a>课程安排</h4><ol>
-<li>阅读器原理学习</li>
-<li>搭建vue-cli环境</li>
-<li>编写阅读器源码</li>
-<li>总结学习知识点</li>
-</ol>
-<h4 id="知识点解析"><a href="#知识点解析" class="headerlink" title="知识点解析"></a>知识点解析</h4><h5 id="阅读器"><a href="#阅读器" class="headerlink" title="阅读器"></a>阅读器</h5><ul>
-<li><p>阅读器的工作原理</p>
-<ul>
-<li><p>工作流程</p>
-</li>
-<li><p>阅读器引擎</p>
-</li>
-</ul>
-</li>
-<li><p>常见电子书格式</p>
-</li>
-<li><p>epub格式电子书解析原理</p>
-<ul>
-<li>mimetype</li>
-<li>container.xml</li>
-<li>content.opf</li>
-<li>toc.ncx</li>
-</ul>
-</li>
-</ul>
-<h5 id="vue"><a href="#vue" class="headerlink" title="vue"></a>vue</h5><ul>
-<li>transition过渡</li>
-<li>组件化</li>
-<li>class与style</li>
-<li>绑定父组件与子组件通信</li>
-<li>子组件与父组件通信</li>
-<li>nextTick0方法</li>
-<li>dom操作</li>
-</ul>
-<h5 id="epub-js"><a href="#epub-js" class="headerlink" title="epub.js"></a>epub.js</h5><ul>
-<li>epub下载</li>
-<li>Book</li>
-<li>Rendition</li>
-<li>Theme</li>
-</ul>
-<h4 id="scss"><a href="#scss" class="headerlink" title="scss"></a>scss</h4><ul>
-<li>import</li>
-<li>function</li>
-<li>mixin</li>
-<li>变量</li>
-</ul>
-<h4 id="css"><a href="#css" class="headerlink" title="css"></a>css</h4><ul>
-<li>伪类和伪元素</li>
-<li>resetcss</li>
-<li>定位</li>
-<li>过渡动画</li>
-<li>flex布局</li>
-</ul>
-<h4 id="阅读器工作原理简介"><a href="#阅读器工作原理简介" class="headerlink" title="阅读器工作原理简介"></a>阅读器工作原理简介</h4><ol>
-<li><p>电子书</p>
-<ul>
-<li><p>txt</p>
-</li>
-<li><p>pdf</p>
-</li>
-<li><p>epub</p>
-</li>
-<li><p>mobi</p>
-</li>
-<li><p>…..</p>
-</li>
-</ul>
-</li>
-<li><p>阅读器引擎</p>
-<p>2.1 解析</p>
-<ul>
-<li>书名</li>
-<li>作者</li>
-<li>目录</li>
-<li>封面</li>
-<li>章节</li>
-</ul>
-<p>2.2 渲染</p>
-</li>
-<li><p>功能</p>
-<ul>
-<li>字号</li>
-<li>背景色</li>
-<li>目录</li>
-<li>书签</li>
-<li>笔记</li>
-<li>…..</li>
-</ul>
-</li>
-</ol>
-<h4 id="ePub和mobi"><a href="#ePub和mobi" class="headerlink" title="ePub和mobi"></a>ePub和mobi</h4><ul>
-<li>ePub(Electronic Publication)电子出版物</li>
-<li>mobi是Amazon Kindle的电子书格式</li>
-</ul>
-<h4 id="开发流程"><a href="#开发流程" class="headerlink" title="开发流程"></a>开发流程</h4><ol>
-<li>开发准备</li>
-<li>vue-cli</li>
-<li>依赖包下载</li>
-<li>项目配置</li>
-<li>阅读器解析</li>
-<li>阅读器渲染</li>
-<li>翻页功能</li>
-<li>字号背景</li>
-<li>进度条</li>
-<li>目录</li>
-</ol>
-<h4 id="开发准备-搭建Vue脚手架"><a href="#开发准备-搭建Vue脚手架" class="headerlink" title="开发准备+搭建Vue脚手架"></a>开发准备+搭建Vue脚手架</h4><ul>
-<li>安装Node.js和Vue.js环境</li>
-<li>通过vue init搭建Vue脚手架</li>
-<li>通过VSCode打开项目，使用npm run dev启动项目</li>
-</ul>
-<blockquote>
-<p>下载脚手架模板： <a target="_blank" rel="noopener" href="https://github.com/vuejs-templates/webpack">https://github.com/vuejs-templates/webpack</a></p>
-</blockquote>
-<h4 id="viewport配置"><a href="#viewport配置" class="headerlink" title="viewport配置"></a>viewport配置</h4><ul>
-<li>viewport用来设置用户在手机上的可视区域</li>
-<li>width=device-width :指定viewport宽度为设备宽度，initial-scale=1.0∶指定默认缩放比例为1:1</li>
-<li>通过maximum-scale和minimum-scale限定屏幕缩放比例为1:1通过user-scalable限制用户对屏幕进行缩放</li>
-</ul>
-<blockquote>
-<p>在dom加载完毕之后，动态设置根元素的font-size</p>
-</blockquote>
-<h4 id="rem配置"><a href="#rem配置" class="headerlink" title="rem配置"></a>rem配置</h4><ul>
-<li><p>rem是css3新增的一个相对长度单位</p>
-</li>
-<li><p>rem的值相当于根元素font-size值的倍数</p>
-<p>1rem =根元素font-size<br>2rem =根元素font-size * 2</p>
-</li>
-<li><p>DOMContentLoaded事件动态设置根元素font-size</p>
-<p>html.style.fontSize = window.innerWidth / 10 + ‘px’</p>
-</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">export default &#123;name: &#x27;App&#x27;&#125;</span><br><span class="line">document.addEventListener(&#x27;DOMContentLoaded&#x27;,()=&gt; &#123;</span><br><span class="line">    const html = document.querySelector(&#x27;html&#x27;)</span><br><span class="line">    let fontSize = window.innerwidth / 10</span><br><span class="line">    fontSize = fontSize &gt; 50 ? 50 : fontSize</span><br><span class="line">    html.style.fontSize = fontSize + &#x27;px&#x27;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<h4 id="reset-scsS和global-scss"><a href="#reset-scsS和global-scss" class="headerlink" title="reset.scsS和global.scss"></a>reset.scsS和global.scss</h4><ul>
-<li>reset.scss的目的是为了消除不同浏览器默认样式的不一致性</li>
-<li>global.scss规定了整个站点的公共样式、公共方法和公共参数等</li>
-<li>实现px2rem方法，将px转化为rem</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Reset.css :https://meyerweb.com/eric/tools/css/reset/</span><br></pre></td></tr></table></figure>
+          <h4 id="输出json数据"><a href="#输出json数据" class="headerlink" title="输出json数据"></a>输出json数据</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">echo &#x27;&#123;&quot;code&quot;:0,&quot;msg&quot;:&quot;&quot;,&quot;count&quot;:1000,&quot;data&quot;:[&#123;&quot;id&quot;:10000,&quot;username&quot;:&quot;user-0&quot;,&quot;sex&quot;:&quot;女&quot;,&quot;city&quot;:&quot;城市-0&quot;,&quot;sign&quot;:&quot;签名-0&quot;,&quot;experience&quot;:255,&quot;logins&quot;:24,&quot;wealth&quot;:82830700,&quot;classify&quot;:&quot;作家&quot;,&quot;score&quot;:57&#125;,&#123;&quot;id&quot;:10029,&quot;username&quot;:&quot;user-29&quot;,&quot;sex&quot;:&quot;男&quot;,&quot;city&quot;:&quot;城市-29&quot;,&quot;sign&quot;:&quot;签名-29&quot;,&quot;experience&quot;:647,&quot;logins&quot;:107,&quot;wealth&quot;:97450636,&quot;classify&quot;:&quot;酱油&quot;,&quot;score&quot;:27&#125;]&#125;&#x27;;</span><br></pre></td></tr></table></figure>
 
 
       
@@ -1228,20 +577,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">130</span>
+          <span class="site-state-item-count">132</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">55</span>
+        <span class="site-state-item-count">54</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">76</span>
+        <span class="site-state-item-count">78</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

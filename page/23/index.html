@@ -193,7 +193,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/13/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/11/TypeScript%E6%B3%9B%E5%9E%8B-%E9%9A%BE%E7%82%B9/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -207,7 +207,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/01/13/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="post-title-link" itemprop="url">正则表达式</a>
+            <a href="/2020/11/11/TypeScript%E6%B3%9B%E5%9E%8B-%E9%9A%BE%E7%82%B9/" class="post-title-link" itemprop="url">TypeScript函数泛型-难点</a>
         </h2>
 
         <div class="post-meta">
@@ -217,7 +217,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-01-13 11:16:27" itemprop="dateCreated datePublished" datetime="2021-01-13T11:16:27+08:00">2021-01-13</time>
+              <time title="创建时间：2020-11-11 17:37:35" itemprop="dateCreated datePublished" datetime="2020-11-11T17:37:35+08:00">2020-11-11</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
@@ -236,7 +236,7 @@
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/TypeScript/" itemprop="url" rel="index"><span itemprop="name">TypeScript</span></a>
                 </span>
             </span>
 
@@ -251,317 +251,480 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h4 id="正则表达式示例"><a href="#正则表达式示例" class="headerlink" title="正则表达式示例"></a><a target="_blank" rel="noopener" href="https://c.runoob.com/front-end/854/">正则表达式示例</a></h4><p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/note1.png" alt="正则表达式-思维导图"></p>
-<h4 id="最全的常用正则表达式大全-校验数字-字符-号码等"><a href="#最全的常用正则表达式大全-校验数字-字符-号码等" class="headerlink" title="最全的常用正则表达式大全(校验数字,字符,号码等)"></a><a target="_blank" rel="noopener" href="https://www.cnblogs.com/yoyowin/p/12208917.html">最全的常用正则表达式大全(校验数字,字符,号码等)</a></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var reg = /^[\u4e00-\u9fffa-zA-Z]&#123;1,15&#125;$/;</span><br><span class="line">if(!reg.test(value)) &#123;</span><br><span class="line">  callback(new Error(&#x27;请输入15个以内的字符&#x27;));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <h4 id="TypeScript-函数泛型-难点"><a href="#TypeScript-函数泛型-难点" class="headerlink" title="TypeScript 函数泛型-难点"></a>TypeScript 函数泛型-难点</h4><blockquote>
+<h4 id="编写一个联合类型-Demo"><a href="#编写一个联合类型-Demo" class="headerlink" title="编写一个联合类型 Demo"></a>编写一个联合类型 Demo</h4></blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">join</span>(<span class="params">first: string | number, second: string | number</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;first&#125;</span><span class="subst">$&#123;second&#125;</span>`</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">join</span>(<span class="string">&quot;jspang&quot;</span>, <span class="string">&quot;.com&quot;</span>);</span><br></pre></td></tr></table></figure>
 
+<p>那现在所学的知识就完成不了啦，所以需要学习<code>泛型</code>来解决这个问题。</p>
+<blockquote>
+<h4 id="初始泛型概念-generic"><a href="#初始泛型概念-generic" class="headerlink" title="初始泛型概念-generic"></a>初始泛型概念-generic</h4></blockquote>
+<blockquote>
+<p>泛型：[generic - 通用、泛指的意思],那最简单的理解，泛型就是泛指的类型。</p>
+</blockquote>
+<p>泛型的定义使用<code>&lt;&gt;</code>（尖角号）进行定义的</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> join&lt;<span class="title class_">JSPang</span>&gt;(<span class="attr">first</span>: <span class="title class_">JSPang</span>, <span class="attr">second</span>: <span class="title class_">JSPang</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;first&#125;</span><span class="subst">$&#123;second&#125;</span>`</span>;</span><br><span class="line">&#125;</span><br><span class="line">join &lt; string &gt; (<span class="string">&quot;jspang&quot;</span>, <span class="string">&quot;.com&quot;</span>);</span><br></pre></td></tr></table></figure>
 
-
-
-
-<h4 id="用户名、密码等15个常用的js正则表达式"><a href="#用户名、密码等15个常用的js正则表达式" class="headerlink" title="用户名、密码等15个常用的js正则表达式"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41465646/article/details/108105076">用户名、密码等15个常用的js正则表达式</a></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 用户名正则，4到16位（字母，数字，下划线，减号）  </span><br><span class="line">var uPattern = /^[a-zA-Z0-9_-]&#123;4,16&#125;$/;  </span><br><span class="line">//输出 true  </span><br><span class="line">console.log(uPattern.test(&quot;iFat3&quot;)); </span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">if(!/^[A-Za-z0-9@*_-\u4E00-\u9FA5]&#123;1,20&#125;$/.test(params.name)) &#123;</span><br><span class="line">    layer.msg(&#x27;姓名请输入20位字符以内的中英文或数字或@*_-&#x27;, &#123;time: 1000&#125;);</span><br><span class="line">    return false;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<h3 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h3><p>date（日期格式不正确）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/^(\d&#123;4&#125;)[-\/](\d&#123;1&#125;|0\d&#123;1&#125;|1[0-2])([-\/](\d&#123;1&#125;|0\d&#123;1&#125;|[1-2][0-9]|3[0-1]))*$/</span><br></pre></td></tr></table></figure>
-
-<p>email（邮箱格式不正确）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]&#123;2,4&#125;)+$/</span><br></pre></td></tr></table></figure>
-
-<p>identity（请输入正确的身份证号）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/(^\d&#123;15&#125;$)|(^\d&#123;17&#125;(x|X|\d)$)/</span><br></pre></td></tr></table></figure>
-
-<p>phone（请输入正确的手机号）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/^1\d&#123;10&#125;$/</span><br></pre></td></tr></table></figure>
-
-<p>required（必填项不能为空）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/[\S]+/</span><br></pre></td></tr></table></figure>
-
-<p>url（链接格式不正确）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/(^#)|(^http(s*):\/\/[^\s]+\.[^\s]+)/</span><br></pre></td></tr></table></figure>
-
-<p>请输入数字/小数点</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>最多只能输入两位小数</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>判断是否为数字</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">isNaN(Number(money))</span><br></pre></td></tr></table></figure>
-
-<p>只能输入百分比正则（数字+%）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>判断是否是非数字值</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">isNaN()</span><br><span class="line"></span><br><span class="line">例如：isNaN(Number(money))</span><br></pre></td></tr></table></figure>
+<p>如果要是<code>number</code>类型，就直接在调用方法的时候进行更改就可以了。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">join &lt; number &gt; (<span class="number">1</span>, <span class="number">2</span>);</span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p>如果参数值为 NaN 或字符串、对象、undefined等非数字值则返回 true, 否则返回 false。</p>
+<h4 id="泛型中数组的使用"><a href="#泛型中数组的使用" class="headerlink" title="泛型中数组的使用"></a>泛型中数组的使用</h4></blockquote>
+<p>如果传递过来的值要求是数字，如何用泛型进行定义那?两种方法，第一种是直接使用<code>[]</code>，第二种是使用<code>Array&lt;泛型&gt;</code>。形式不一样，其他的都一样。</p>
+<p>第一种写法：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> myFun&lt;<span class="variable constant_">ANY</span>&gt;(<span class="attr">params</span>: <span class="variable constant_">ANY</span>[]) &#123;</span><br><span class="line">  <span class="keyword">return</span> params;</span><br><span class="line">&#125;</span><br><span class="line">myFun &lt; string &gt; [<span class="string">&quot;123&quot;</span>, <span class="string">&quot;456&quot;</span>];</span><br></pre></td></tr></table></figure>
+
+<p>第二种写法：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> myFun&lt;<span class="variable constant_">ANY</span>&gt;(<span class="attr">params</span>: <span class="title class_">Array</span>&lt;<span class="variable constant_">ANY</span>&gt;) &#123;</span><br><span class="line">  <span class="keyword">return</span> params;</span><br><span class="line">&#125;</span><br><span class="line">myFun &lt; string &gt; [<span class="string">&quot;123&quot;</span>, <span class="string">&quot;456&quot;</span>];</span><br></pre></td></tr></table></figure>
+
+<p>在工作中，我们经常使用<code>&lt;T&gt;</code>来作泛型的表示</p>
+<blockquote>
+<h4 id="多个泛型的定义"><a href="#多个泛型的定义" class="headerlink" title="多个泛型的定义"></a>多个泛型的定义</h4></blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> join&lt;T, P&gt;(<span class="attr">first</span>: T, <span class="attr">second</span>: P) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;first&#125;</span><span class="subst">$&#123;second&#125;</span>`</span>;</span><br><span class="line">&#125;</span><br><span class="line">join &lt; number, string &gt; (<span class="number">1</span>, <span class="string">&quot;2&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<h4 id="泛型的类型推断"><a href="#泛型的类型推断" class="headerlink" title="泛型的类型推断"></a>泛型的类型推断</h4></blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> join&lt;T, P&gt;(<span class="attr">first</span>: T, <span class="attr">second</span>: P) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;first&#125;</span><span class="subst">$&#123;second&#125;</span>`</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">join</span>(<span class="number">1</span>, <span class="string">&quot;2&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>不建议大量使用类型推断，这会让你的代码易读和健壮性都会下降</p>
+<h4 id="TypeScript-类中泛型-难点"><a href="#TypeScript-类中泛型-难点" class="headerlink" title="TypeScript 类中泛型-难点"></a>TypeScript 类中泛型-难点</h4><blockquote>
+<h4 id="编写一个基本类"><a href="#编写一个基本类" class="headerlink" title="编写一个基本类"></a>编写一个基本类</h4></blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">SelectGirl</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">private girls: string[]</span>) &#123;&#125;</span><br><span class="line">  <span class="title function_">getGirl</span>(<span class="attr">index</span>: number): string &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">girls</span>[index];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> selectGirl = <span class="keyword">new</span> <span class="title class_">SelectGirl</span>([<span class="string">&quot;大脚&quot;</span>, <span class="string">&quot;刘英&quot;</span>, <span class="string">&quot;晓红&quot;</span>]);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(selectGirl.<span class="title function_">getGirl</span>(<span class="number">1</span>));</span><br></pre></td></tr></table></figure>
+
+<p>在 TypeScript 中，编写复杂代码的时候，会经常使用泛型。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">SelectGirl</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">private girls: string[] | number[]</span>) &#123;&#125;</span><br><span class="line">  <span class="title function_">getGirl</span>(<span class="attr">index</span>: number): string | number &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">girls</span>[index];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<h4 id="初始类的泛型"><a href="#初始类的泛型" class="headerlink" title="初始类的泛型"></a>初始类的泛型</h4></blockquote>
+<p>用<code>&lt;&gt;</code>编写</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">SelectGirl</span>&lt;T&gt; &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">private girls: T[]</span>) &#123;&#125;</span><br><span class="line">  <span class="title function_">getGirl</span>(<span class="attr">index</span>: number): T &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">girls</span>[index];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> selectGirl = <span class="keyword">new</span> <span class="title class_">SelectGirl</span>([<span class="string">&quot;大脚&quot;</span>, <span class="string">&quot;刘英&quot;</span>, <span class="string">&quot;晓红&quot;</span>]);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(selectGirl.<span class="title function_">getGirl</span>(<span class="number">1</span>));</span><br></pre></td></tr></table></figure>
+
+<p>这时候代码并不报错，也使用了泛型，但是在实例化对象的时候，TypeScript 是通过类型推断出来的。这种方法并不好，所以还是需要在实例化对象的时候，对泛型的值进行确定，比如是<code>string</code>类型，就这样写。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> selectGirl = <span class="keyword">new</span> <span class="title class_">SelectGirl</span>() &lt; string &gt; [<span class="string">&quot;大脚&quot;</span>, <span class="string">&quot;刘英&quot;</span>, <span class="string">&quot;晓红&quot;</span>];</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<h4 id="泛型中的继承"><a href="#泛型中的继承" class="headerlink" title="泛型中的继承"></a>泛型中的继承</h4></blockquote>
+<p>现在需求又变了，要求返回是一个对象中的<code>name</code>,也就是下面的代码要改成这个样子。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">girls</span>[index].<span class="property">name</span>;</span><br></pre></td></tr></table></figure>
+
+<p>现在的代码一定时报错的，但是这时候还要求我们这么做，意思就是说传递过来的值必须是一个对象类型的，里边还要有<code>name</code>属性。这时候就要用到继承了，我用接口的方式来实现。写一个<code>Girl</code>的接口，每个接口里都要有 name 属性。代码如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">interface <span class="title class_">Girl</span> &#123;</span><br><span class="line">  <span class="attr">name</span>: string;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>有了接口后用<code>extends</code>关键字实现泛型继承，代码如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">SelectGirl</span>&lt;T <span class="keyword">extends</span> <span class="title class_">Girl</span>&gt; &#123;</span><br><span class="line"> ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这句代码的意思是泛型里必须有一个<code>name</code>属性，因为它继承了<code>Girl</code>接口。</p>
+<p>现在程序还是报错的，因为我们<code>getGirl</code>方法的返回类型还不对，这时候应该是一个<code>string</code>类型才对，所以代码应该改为下面的样子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">interface <span class="title class_">Girl</span> &#123;</span><br><span class="line">  <span class="attr">name</span>: string;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">SelectGirl</span>&lt;T <span class="keyword">extends</span> <span class="title class_">Girl</span>&gt; &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">private girls: T[]</span>) &#123;&#125;</span><br><span class="line">  <span class="title function_">getGirl</span>(<span class="attr">index</span>: number): string &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">girls</span>[index].<span class="property">name</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> selectGirl = <span class="keyword">new</span> <span class="title class_">SelectGirl</span>([</span><br><span class="line">  &#123; <span class="attr">name</span>: <span class="string">&quot;大脚&quot;</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">name</span>: <span class="string">&quot;刘英&quot;</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">name</span>: <span class="string">&quot;晓红&quot;</span> &#125;,</span><br><span class="line">]);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(selectGirl.<span class="title function_">getGirl</span>(<span class="number">1</span>));</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<h4 id="泛型约束"><a href="#泛型约束" class="headerlink" title="泛型约束"></a>泛型约束</h4></blockquote>
+<p>现在的泛型可以是任意类型，可以是对象、字符串、布尔、数字都是可以的。但你现在要求这个泛型必须是<code>string</code>或者<code>number</code>类型。我们还是拿上面的例子，不过把代码改为最初的样子。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">SelectGirl</span>&lt;T&gt; &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">private girls: T[]</span>) &#123;&#125;</span><br><span class="line">  <span class="title function_">getGirl</span>(<span class="attr">index</span>: number): T &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">girls</span>[index];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> selectGirl = <span class="keyword">new</span> <span class="title class_">SelectGirl</span>&lt;string&gt;([<span class="string">&quot;大脚&quot;</span>, <span class="string">&quot;刘英&quot;</span>, <span class="string">&quot;晓红&quot;</span>]);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(selectGirl.<span class="title function_">getGirl</span>(<span class="number">1</span>));</span><br></pre></td></tr></table></figure>
+
+<p>然后进行约束，这时候还是可以使用关键字<code>extends</code>来进行约束，把代码改成下面的样子。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">SelectGirl</span>&lt;T <span class="keyword">extends</span> number | string&gt; &#123;</span><br><span class="line">  <span class="comment">//.....</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/11/TypeScript%E7%9A%84%E8%81%94%E5%90%88%E7%B1%BB%E5%9E%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="winney">
+      <meta itemprop="description" content="Doing is better than saying.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="winney">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/11/11/TypeScript%E7%9A%84%E8%81%94%E5%90%88%E7%B1%BB%E5%9E%8B/" class="post-title-link" itemprop="url">TypeScript的联合类型</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-11-11 15:43:27" itemprop="dateCreated datePublished" datetime="2020-11-11T15:43:27+08:00">2020-11-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-08-24 18:09:23" itemprop="dateModified" datetime="2022-08-24T18:09:23+08:00">2022-08-24</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/TypeScript/" itemprop="url" rel="index"><span itemprop="name">TypeScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="联合类型和类型保护"><a href="#联合类型和类型保护" class="headerlink" title="联合类型和类型保护"></a>联合类型和类型保护</h4><blockquote>
+<h4 id="联合类型展示"><a href="#联合类型展示" class="headerlink" title="联合类型展示"></a>联合类型展示</h4></blockquote>
+<p>所谓联合类型，可以认为一个变量可能有两种或两种以上的类型。所以我们使用了联合类型，关键符号是<code>|</code>(竖线)。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">interface Waiter &#123;</span><br><span class="line">  anjiao: boolean;</span><br><span class="line">  say: () =&gt; &#123;&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">interface Teacher &#123;</span><br><span class="line">  anjiao: boolean;</span><br><span class="line">  skill: () =&gt; &#123;&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function judgeWho(animal: Waiter | Teacher) &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function judgeWho(animal: Waiter | Teacher) &#123;</span><br><span class="line">  animal.say();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>但这时候问题来了，如果我直接写一个这样的方法，就会报错，因为<code>judgeWho</code>不能准确的判断联合类型具体的实例是什么。</p>
+<p>这时候就需要再引出一个概念叫做<code>类型保护</code></p>
+<blockquote>
+<h4 id="类型保护-类型断言"><a href="#类型保护-类型断言" class="headerlink" title="类型保护-类型断言"></a>类型保护-类型断言</h4></blockquote>
+<p>类型断言就是通过断言的方式确定传递过来的准确值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">interface Waiter &#123;</span><br><span class="line">  anjiao: boolean;</span><br><span class="line">  say: () =&gt; &#123;&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">interface Teacher &#123;</span><br><span class="line">  anjiao: boolean;</span><br><span class="line">  skill: () =&gt; &#123;&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function judgeWho(animal: Waiter | Teacher) &#123;</span><br><span class="line">  if (animal.anjiao) &#123;</span><br><span class="line">    (animal as Teacher).skill();</span><br><span class="line">  &#125;else&#123;</span><br><span class="line">    (animal as Waiter).say();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<h4 id="类型保护-in语法"><a href="#类型保护-in语法" class="headerlink" title="类型保护-in语法"></a>类型保护-in语法</h4></blockquote>
+<p>经常使用<code>in</code>语法来作类型保护，比如用<code>if</code>来判断<code>animal</code>里有没有<code>skill()</code>方法。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function judgeWhoTwo(animal: Waiter | Teacher) &#123;</span><br><span class="line">  if (&quot;skill&quot; in animal) &#123;</span><br><span class="line">    animal.skill();</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    animal.say();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里的<code>else</code>部分能够自动判断，得益于<code>TypeScript</code>的自动判断。</p>
+<blockquote>
+<h4 id="类型保护-typeof-语法"><a href="#类型保护-typeof-语法" class="headerlink" title="类型保护-typeof 语法"></a>类型保护-typeof 语法</h4></blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function add(first: string | number, second: string | number) &#123;</span><br><span class="line">  return first + second;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这时候会报错，解决这个问题，就可以直接用type of来进行解决</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function add(first: string | number, second: string | number) &#123;</span><br><span class="line">  if (typeof first === &quot;string&quot; || typeof second === &quot;string&quot;) &#123;</span><br><span class="line">    return `$&#123;first&#125;$&#123;second&#125;`;</span><br><span class="line">  &#125;</span><br><span class="line">  return first + second;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<h4 id="类型保护-instanceof-语法"><a href="#类型保护-instanceof-语法" class="headerlink" title="类型保护-instanceof 语法"></a>类型保护-instanceof 语法</h4></blockquote>
+<p>比如现在要作类型保护的是一个对象，这时候就可以使用<code>instanceof</code>语法来作</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">class NumberObj &#123;</span><br><span class="line">  count: number;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function addObj(first: object | NumberObj, second: object | NumberObj) &#123;</span><br><span class="line">  return first.count + second.count;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>报错不要紧，直接使用<code>instanceof</code>语法进行判断一下，就可以解决问题。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function addObj(first: object | NumberObj, second: object | NumberObj) &#123;</span><br><span class="line">  if (first instanceof NumberObj &amp;&amp; second instanceof NumberObj) &#123;</span><br><span class="line">    return first.count + second.count;</span><br><span class="line">  &#125;</span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Enum-枚举类型讲解"><a href="#Enum-枚举类型讲解" class="headerlink" title="Enum 枚举类型讲解"></a>Enum 枚举类型讲解</h4><p>初级程序员写法：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">getServe</span>(<span class="params">status: number</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (status === <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;massage&quot;</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (status === <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;SPA&quot;</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (status === <span class="number">2</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;dabaojian&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> result = <span class="title function_">getServe</span>(<span class="number">0</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`我要去<span class="subst">$&#123;result&#125;</span>`</span>);</span><br></pre></td></tr></table></figure>
+
+<p>中级程序员写法：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title class_">Status</span> = &#123;</span><br><span class="line">  <span class="attr">MASSAGE</span>: <span class="number">0</span>,</span><br><span class="line">  <span class="attr">SPA</span>: <span class="number">1</span>,</span><br><span class="line">  <span class="attr">DABAOJIAN</span>: <span class="number">2</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">getServe</span>(<span class="params">status: any</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (status === <span class="title class_">Status</span>.<span class="property">MASSAGE</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;massage&quot;</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (status === <span class="title class_">Status</span>.<span class="property">SPA</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;spa&quot;</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (status === <span class="title class_">Status</span>.<span class="property">DABAOJIAN</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;dabaojian&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> result = <span class="title function_">getServe</span>(<span class="title class_">Status</span>.<span class="property">SPA</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`我要去<span class="subst">$&#123;result&#125;</span>`</span>);</span><br></pre></td></tr></table></figure>
+
+<p>高级程序员写法：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">enum <span class="title class_">Status</span> &#123;</span><br><span class="line">  <span class="variable constant_">MASSAGE</span>,</span><br><span class="line">  <span class="variable constant_">SPA</span>,</span><br><span class="line">  <span class="variable constant_">DABAOJIAN</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">getServe</span>(<span class="params">status: any</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (status === <span class="title class_">Status</span>.<span class="property">MASSAGE</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;massage&quot;</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (status === <span class="title class_">Status</span>.<span class="property">SPA</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;spa&quot;</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (status === <span class="title class_">Status</span>.<span class="property">DABAOJIAN</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;dabaojian&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> result = <span class="title function_">getServe</span>(<span class="title class_">Status</span>.<span class="property">SPA</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`我要去<span class="subst">$&#123;result&#125;</span>`</span>);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<h4 id="枚举类型的对应值"><a href="#枚举类型的对应值" class="headerlink" title="枚举类型的对应值"></a>枚举类型的对应值</h4></blockquote>
+<p>你调用时传一个<code>1</code>,也会输出<code>我要去spa</code>。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> result = <span class="title function_">getServe</span>(<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+
+<p>因为枚举类型是有对应的数字值的，默认是从 0 开始的</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Status</span>.<span class="property">MASSAGE</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Status</span>.<span class="property">SPA</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Status</span>.<span class="property">DABAOJIAN</span>);</span><br></pre></td></tr></table></figure>
+
+<p>可以看出结果就是<code>0,1,2</code>。那这时候不想默认从 0 开始，而是想从 1 开始。可以这样写。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">enum <span class="title class_">Status</span> &#123;</span><br><span class="line">  <span class="variable constant_">MASSAGE</span> = <span class="number">1</span>,</span><br><span class="line">  <span class="variable constant_">SPA</span>,</span><br><span class="line">  <span class="variable constant_">DABAOJIAN</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<h4 id="枚举通过下标反查"><a href="#枚举通过下标反查" class="headerlink" title="枚举通过下标反查"></a>枚举通过下标反查</h4></blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Status</span>.<span class="property">MASSAGE</span>, <span class="title class_">Status</span>[<span class="number">1</span>]);</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/10/TypeScript%E7%9A%84%E7%B1%BB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="winney">
+      <meta itemprop="description" content="Doing is better than saying.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="winney">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/11/10/TypeScript%E7%9A%84%E7%B1%BB/" class="post-title-link" itemprop="url">TypeScript的类</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-11-10 16:30:26" itemprop="dateCreated datePublished" datetime="2020-11-10T16:30:26+08:00">2020-11-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-08-24 18:09:23" itemprop="dateModified" datetime="2022-08-24T18:09:23+08:00">2022-08-24</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/TypeScript/" itemprop="url" rel="index"><span itemprop="name">TypeScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="TypeScript中类的概念和使用"><a href="#TypeScript中类的概念和使用" class="headerlink" title="TypeScript中类的概念和使用"></a>TypeScript中类的概念和使用</h4><blockquote>
+<h4 id="类的基本使用"><a href="#类的基本使用" class="headerlink" title="类的基本使用"></a>类的基本使用</h4></blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">class Lady &#123;</span><br><span class="line">  content = &quot;Hi，帅哥&quot;;</span><br><span class="line">  sayHello() &#123;</span><br><span class="line">    return this.content;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const goddess = new Lady();</span><br><span class="line">console.log(goddess.sayHello());</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<h4 id="类的继承"><a href="#类的继承" class="headerlink" title="类的继承"></a>类的继承</h4></blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">class Lady &#123;</span><br><span class="line">  content = &quot;Hi，帅哥&quot;;</span><br><span class="line">  sayHello() &#123;</span><br><span class="line">    return this.content;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">class XiaoJieJie extends Lady &#123;</span><br><span class="line">  sayLove() &#123;</span><br><span class="line">    return &quot;I love you&quot;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const goddess = new XiaoJieJie();</span><br><span class="line">console.log(goddess.sayHello());</span><br><span class="line">console.log(goddess.sayLove());</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<h4 id="类的重写"><a href="#类的重写" class="headerlink" title="类的重写"></a>类的重写</h4></blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">class XiaoJieJie extends Lady &#123;</span><br><span class="line">  sayLove() &#123;</span><br><span class="line">    return &quot;I love you!&quot;;</span><br><span class="line">  &#125;</span><br><span class="line">  sayHello() &#123;</span><br><span class="line">    return &quot;Hi , honey!&quot;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<h4 id="super关键字的使用"><a href="#super关键字的使用" class="headerlink" title="super关键字的使用"></a>super关键字的使用</h4></blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">class XiaoJieJie extends Lady &#123;</span><br><span class="line">  sayLove() &#123;</span><br><span class="line">    return &quot;I love you!&quot;;</span><br><span class="line">  &#125;</span><br><span class="line">  sayHello() &#123;</span><br><span class="line">    return super.sayHello() + &quot;。你好！&quot;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="TypeScript中类的访问类型"><a href="#TypeScript中类的访问类型" class="headerlink" title="TypeScript中类的访问类型"></a>TypeScript中类的访问类型</h4><blockquote>
+<p>其实类的访问类型就是基于三个关键词<code>private</code>、<code>protected</code>和<code>public</code></p>
 </blockquote>
-<p>正浮点数正则表达式</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/^(\d+)(\.\d+)?$/.test()</span><br><span class="line"></span><br><span class="line">例如：/^(\d+)(\.\d+)?$/.test(money)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">class Person &#123;</span><br><span class="line">    public name:string;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>url正则表达式</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/^http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w-.\/?%&amp;=]*)?$/</span><br><span class="line"></span><br><span class="line">/^((ht|f)tps?):\/\/[\w\-]+(\.[\w\-]+)+([\w\-\.,@?^=%&amp;:\/~\+#]*[\w\-\@?^=%&amp;\/~\+#])?$/</span><br></pre></td></tr></table></figure>
+<blockquote>
+<h4 id="public访问属性讲解"><a href="#public访问属性讲解" class="headerlink" title="public访问属性讲解"></a>public访问属性讲解</h4></blockquote>
+<blockquote>
+<p><code>public</code>从英文字面的解释就是<code>公共的</code>或者说是<code>公众的</code>，在程序里的意思就是允许在类的内部和外部被调用.</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class Person &#123;</span><br><span class="line">    public name:string;</span><br><span class="line">    public sayHello()&#123;</span><br><span class="line">        console.log(this.name + &#x27; say Hello&#x27;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>0-100的正整数</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/^(?:0|[1-9][0-9]?|100)$/</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">class Person &#123;</span><br><span class="line">    public name:string;</span><br><span class="line">    public sayHello()&#123;</span><br><span class="line">        console.log(this.name + &#x27;say Hello&#x27;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//-------以下属于类的外部--------</span><br><span class="line">const person = new Person()</span><br><span class="line">person.name = &#x27;jspang.com&#x27;</span><br><span class="line">person.sayHello()</span><br><span class="line">console.log(person.name)</span><br></pre></td></tr></table></figure>
 
-<p>数字/小大写字母/（30个字以内）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/^[A-Za-z0-9]&#123;1,30&#125;$/</span><br></pre></td></tr></table></figure>
+<blockquote>
+<h4 id="private访问属性讲解"><a href="#private访问属性讲解" class="headerlink" title="private访问属性讲解"></a>private访问属性讲解</h4></blockquote>
+<blockquote>
+<p>private 访问属性的意思是，只允许再类的内部被调用，外部不允许调用</p>
+</blockquote>
+<p>比如现在我们把 name 属性改成<code>private</code>,这时候在类的内部使用不会提示错误，而外部使用<code>VSCode</code>直接会报错。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">class Person &#123;</span><br><span class="line">    private name:string;</span><br><span class="line">    public sayHello()&#123;</span><br><span class="line">        console.log(this.name + &#x27;say Hello&#x27;)  //此处不报错</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//-------以下属于类的外部--------</span><br><span class="line">const person = new Person()</span><br><span class="line">person.name = &#x27;jspang.com&#x27;    //此处报错</span><br><span class="line">person.sayHello()</span><br><span class="line">console.log(person.name)  //此处报错</span><br></pre></td></tr></table></figure>
 
-<p>只能输入汉字（30个字以内）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/^[\u4e00-\u9fa5]&#123;1,30&#125;$/</span><br></pre></td></tr></table></figure>
+<blockquote>
+<h4 id="protected访问属性讲解"><a href="#protected访问属性讲解" class="headerlink" title="protected访问属性讲解"></a>protected访问属性讲解</h4></blockquote>
+<blockquote>
+<p>protected 允许在类内及继承的子类中使用</p>
+</blockquote>
+<h4 id="TypeScript类的构造函数"><a href="#TypeScript类的构造函数" class="headerlink" title="TypeScript类的构造函数"></a>TypeScript类的构造函数</h4><blockquote>
+<h4 id="类的构造函数"><a href="#类的构造函数" class="headerlink" title="类的构造函数"></a>类的构造函数</h4></blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">class Person&#123;</span><br><span class="line">    public name :string ;</span><br><span class="line">    constructor(name:string)&#123;</span><br><span class="line">        this.name=name</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const person= new Person(&#x27;jspang&#x27;)</span><br><span class="line">console.log(person.name)</span><br></pre></td></tr></table></figure>
 
-<p>不能输入汉字</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/^[^\u4e00-\u9fa5]&#123;0,&#125;$/</span><br></pre></td></tr></table></figure>
+<h6 id="简单写法："><a href="#简单写法：" class="headerlink" title="简单写法："></a>简单写法：</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">class Person&#123;</span><br><span class="line">    constructor(public name:string)&#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const person= new Person(&#x27;jspang&#x27;)</span><br><span class="line">console.log(person.name)</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">中文字符：[\u4e00-\u9fa5]</span><br><span class="line">双字节字符：[^\x00-\xff]</span><br><span class="line">空白行：\s</span><br><span class="line">Email地址：\w[-\w.+]*@([A-Za-z0-9][-A-Za-z0-9]+\.)+[A-Za-z]&#123;2,14&#125;</span><br><span class="line">网址URL：^((https|http|ftp|rtsp|mms)?:\/\/)[^\s]+</span><br><span class="line">手机（国内）：0?(13|14|15|17|18|19)[0-9]&#123;9&#125;</span><br><span class="line">电话号码（国内）：[0-9-()（）]&#123;7,18&#125;</span><br><span class="line">负浮点数：-([1-9]\d*.\d*|0.\d*[1-9]\d*)</span><br><span class="line">匹配整数：-?[1-9]\d*</span><br><span class="line">正浮点数：[1-9]\d*.\d*|0.\d*[1-9]\d*</span><br><span class="line">腾讯QQ号：[1-9]([0-9]&#123;5,11&#125;)</span><br><span class="line">邮政编码：\d&#123;6&#125;</span><br><span class="line">IP：(25[0-5]|2[0-4]\d|[0-1]\d&#123;2&#125;|[1-9]?\d)\.(25[0-5]|2[0-4]\d|[0-1]\d&#123;2&#125;|[1-9]?\d)\.(25[0-5]|2[0-4]\d|[0-1]\d&#123;2&#125;|[1-9]?\d)\.(25[0-5]|2[0-4]\d|[0-1]\d&#123;2&#125;|[1-9]?\d)</span><br><span class="line">身份证号：\d&#123;17&#125;[\d|x]|\d&#123;15&#125;</span><br><span class="line">格式日期：\d&#123;4&#125;(\-|\/|.)\d&#123;1,2&#125;\1\d&#123;1,2&#125;</span><br><span class="line">正整数：[1-9]\d*</span><br><span class="line">负整数：-[1-9]\d*</span><br><span class="line">用户名：[A-Za-z0-9_\-\u4e00-\u9fa5]+</span><br></pre></td></tr></table></figure>
+<blockquote>
+<h4 id="类继承中的构造器写法"><a href="#类继承中的构造器写法" class="headerlink" title="类继承中的构造器写法"></a>类继承中的构造器写法</h4></blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">class Person&#123;</span><br><span class="line">    constructor(public name:string)&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Teacher extends Person&#123;</span><br><span class="line">    constructor(public age:number)&#123;</span><br><span class="line">        super(&#x27;jspang&#x27;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const teacher = new Teacher(18)</span><br><span class="line">console.log(teacher.age)</span><br><span class="line">console.log(teacher.name)</span><br></pre></td></tr></table></figure>
 
-<p>JavaScript代码：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var pattern = /[\u4e00-\u9fa5]/,</span><br><span class="line">	str = &#x27;&#x27;;</span><br><span class="line">console.log(pattern.test(str));</span><br></pre></td></tr></table></figure>
+<p>这就是子类继承父类并有构造函数的原则，就是在子类里写构造函数时，必须用<code>super()</code>调用父类的构造函数，如果需要传值，也必须进行传值操作。就算是父类没有构造函数，子类也要使用<code>super()</code>进行调用，否则就会报错。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">class Person&#123;&#125;</span><br><span class="line"></span><br><span class="line">class Teacher extends Person&#123;</span><br><span class="line">    constructor(public age:number)&#123;</span><br><span class="line">        super()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const teacher = new Teacher(18)</span><br><span class="line">console.log(teacher.age)</span><br></pre></td></tr></table></figure>
 
-<h4 id="用户名—3-12位字符（大小写字母或数字）"><a href="#用户名—3-12位字符（大小写字母或数字）" class="headerlink" title="用户名—3-12位字符（大小写字母或数字）"></a>用户名—3-12位字符（大小写字母或数字）</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/^[A-Za-z0-9_]&#123;3,12&#125;$/</span><br></pre></td></tr></table></figure>
+<h4 id="TypeScript类的Getter、Setter和static使用"><a href="#TypeScript类的Getter、Setter和static使用" class="headerlink" title="TypeScript类的Getter、Setter和static使用"></a>TypeScript类的Getter、Setter和static使用</h4><p>类的访问类型<code>private</code>，它的最大用处是封装一个属性，然后通过 Getter 和 Setter 的形式来访问和修改这个属性。</p>
+<blockquote>
+<h4 id="类的Getter和Setter"><a href="#类的Getter和Setter" class="headerlink" title="类的Getter和Setter"></a>类的Getter和Setter</h4></blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">class Xiaojiejie &#123;</span><br><span class="line">  constructor(private _age:number)&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h4 id="用户密码—6-16位"><a href="#用户密码—6-16位" class="headerlink" title="用户密码—6-16位"></a>用户密码—6-16位</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/^[A-Za-z0-9!@#$%^&amp;*()&lt;&gt;,.?-_+=`~]&#123;6,16&#125;$/</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">class Xiaojiejie &#123;</span><br><span class="line">  constructor(private _age:number)&#123;&#125;</span><br><span class="line">  get age()&#123;</span><br><span class="line">      return this._age</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const dajiao = new Xiaojiejie(28)</span><br><span class="line"></span><br><span class="line">console.log(dajiao.getAge)</span><br></pre></td></tr></table></figure>
 
-<h4 id="昵称"><a href="#昵称" class="headerlink" title="昵称"></a>昵称</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/^[a-zA-Z\u4e00-\u9fa5]&#123;1,10&#125;$/</span><br></pre></td></tr></table></figure>
+<p>玄妙就在于<code>getter</code>里，我们可以对<code>_age</code>进行处理</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class Xiaojiejie &#123;</span><br><span class="line">  constructor(private _age:number)&#123;&#125;</span><br><span class="line">  get age()&#123;</span><br><span class="line">      return this._age-10</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h4 id="身份证"><a href="#身份证" class="headerlink" title="身份证"></a>身份证</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/^[1-9]\d&#123;5&#125;(19|20)\d&#123;2&#125;[01]\d[0123]\d\d&#123;3&#125;[xX\d]$/</span><br></pre></td></tr></table></figure>
+<p><code>_age</code>是私有的，那类的外部就没办法改变，所以这时候可以用<code>setter</code>属性进行改变：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">class Xiaojiejie &#123;</span><br><span class="line">  constructor(private _age:number)&#123;&#125;</span><br><span class="line">  get age()&#123;</span><br><span class="line">      return this._age-10</span><br><span class="line">  &#125;</span><br><span class="line">  set age(age:number)&#123;</span><br><span class="line">    this._age=age</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const dajiao = new Xiaojiejie(28)</span><br><span class="line">dajiao.age=25</span><br><span class="line">console.log(dajiao.age)</span><br></pre></td></tr></table></figure>
 
+<p>其实<code>setter</code>也是可以保护私有变量的，现在大脚的年龄输出是 15 岁，在<code>setter</code>里给他加上个 3 岁，就18</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">set age(age:number)&#123;</span><br><span class="line">   this._age=age+3</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-      
-    </div>
+<blockquote>
+<h4 id="类中的static"><a href="#类中的static" class="headerlink" title="类中的static"></a>类中的static</h4></blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">class Girl &#123;</span><br><span class="line">  sayLove() &#123;</span><br><span class="line">    return &quot;I Love you&quot;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const girl = new Girl();</span><br><span class="line">console.log(girl.sayLove());</span><br></pre></td></tr></table></figure>
 
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+<p>不想<code>new</code>出对象，而直接使用这个方法，那<code>TypeScript</code>为你提供了快捷的方式，用<code>static</code>声明的属性和方法，不需要进行声明对象，就可以直接使用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class Girl &#123;</span><br><span class="line">  static sayLove() &#123;</span><br><span class="line">    return &quot;I Love you&quot;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">console.log(Girl.sayLove());</span><br></pre></td></tr></table></figure>
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/08/%E5%85%8D%E8%B4%B9API%E6%8E%A5%E5%8F%A3/">
+<h4 id="类的只读属性和抽象类"><a href="#类的只读属性和抽象类" class="headerlink" title="类的只读属性和抽象类"></a>类的只读属性和抽象类</h4><p>抽象类跟父类很像，都需要继承，但是抽象类里一般都有抽象方法。继承抽象类的类必须实现抽象方法才可以</p>
+<blockquote>
+<h4 id="类里的只读属性-readonly"><a href="#类里的只读属性-readonly" class="headerlink" title="类里的只读属性 readonly"></a>类里的只读属性 readonly</h4></blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">    <span class="title function_">constructor</span>(<span class="params">public name:string </span>)&#123; &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> person = <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&#x27;jspang&#x27;</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(person.<span class="property">name</span>)</span><br></pre></td></tr></table></figure>
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="winney">
-      <meta itemprop="description" content="Doing is better than saying.">
-    </span>
+<p>比如我现在有一个需求，就是在实例化对象时赋予的名字，以后不能再更改了，也就是我们常说的只读属性。我们先来看现在这种情况是可以随意更改的：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">class Person &#123;</span><br><span class="line">    constructor(public name:string )&#123; &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const person = new Person(&#x27;jspang&#x27;)</span><br><span class="line">person.name= &#x27;谢广坤&#x27;</span><br><span class="line">console.log(person.name)</span><br></pre></td></tr></table></figure>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="winney">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/01/08/%E5%85%8D%E8%B4%B9API%E6%8E%A5%E5%8F%A3/" class="post-title-link" itemprop="url">免费API接口</a>
-        </h2>
+<p>这时候就可以用一个关键词<code>readonly</code>,也就是只读的意思，来修改<code>Person</code>类代码。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">class Person &#123;</span><br><span class="line">    public readonly _name :string;</span><br><span class="line">    constructor(name:string )&#123;</span><br><span class="line">        this._name = name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const person = new Person(&#x27;jspang&#x27;)</span><br><span class="line">person._name= &#x27;谢广坤&#x27;</span><br><span class="line">console.log(person._name)</span><br></pre></td></tr></table></figure>
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
+<p>这样写完后，<code>VSCode</code>就回直接给我们报错，告诉我们<code>_name</code>属性是只读属性，不能修改。</p>
+<blockquote>
+<h4 id="抽象类的使用"><a href="#抽象类的使用" class="headerlink" title="抽象类的使用"></a>抽象类的使用</h4></blockquote>
+<p>比如我开了一个红浪漫洗浴中心，里边有服务员，有初级技师，高级技师，每一个岗位我都写成一个类，那代码就是这样的</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">class Waiter &#123;&#125;</span><br><span class="line"></span><br><span class="line">class BaseTeacher &#123;&#125;</span><br><span class="line"></span><br><span class="line">class seniorTeacher &#123;&#125;</span><br></pre></td></tr></table></figure>
 
-              <time title="创建时间：2021-01-08 17:16:26" itemprop="dateCreated datePublished" datetime="2021-01-08T17:16:26+08:00">2021-01-08</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-08-24 18:09:23" itemprop="dateModified" datetime="2022-08-24T18:09:23+08:00">2022-08-24</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/%E5%85%8D%E8%B4%B9API%E6%8E%A5%E5%8F%A3/" itemprop="url" rel="index"><span itemprop="name">免费API接口</span></a>
-                </span>
-            </span>
+<p>我要求无论是什么职位，都要有独特的技能，比如服务员就是给顾客倒水，初级技师要求会泰式按摩，高级技师要求会 SPA 全身按摩。这是一个硬性要求，但是每个职位的技能有不同，这时候就可以用抽象类来解决问题。</p>
+<p>抽象类的关键词是<code>abstract</code>,里边的抽象方法也是<code>abstract</code>开头的，现在我们就写一个<code>Girl</code>的抽象类。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">abstract class Girl&#123;</span><br><span class="line">    abstract skill()  //因为没有具体的方法，所以我们这里不写括号</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-          
+<p>有了这个抽象类，三个类就可以继承这个类，然后会要求必须实现<code>skill()</code>方法，代码如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">abstract class Girl&#123;</span><br><span class="line">    abstract skill()  //因为没有具体的方法，所以我们这里不写括号</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Waiter extends Girl&#123;</span><br><span class="line">    skill()&#123;</span><br><span class="line">        console.log(&#x27;大爷，请喝水！&#x27;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class BaseTeacher extends Girl&#123;</span><br><span class="line">    skill()&#123;</span><br><span class="line">        console.log(&#x27;大爷，来个泰式按摩吧！&#x27;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class seniorTeacher extends Girl&#123;</span><br><span class="line">    skill()&#123;</span><br><span class="line">        console.log(&#x27;大爷，来个SPA全身按摩吧！&#x27;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-        </div>
-      </header>
+<h4 id="配置文件-初识-tsconfig-json"><a href="#配置文件-初识-tsconfig-json" class="headerlink" title="配置文件-初识 tsconfig.json"></a>配置文件-初识 tsconfig.json</h4><blockquote>
+<h4 id="生成-tsconfig-json-文件"><a href="#生成-tsconfig-json-文件" class="headerlink" title="生成 tsconfig.json 文件"></a>生成 tsconfig.json 文件</h4></blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tsc --init</span><br></pre></td></tr></table></figure>
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>1、音乐电台接口：</p>
-<p><a target="_blank" rel="noopener" href="https://api.apiopen.top/musicBroadcasting">https://api.apiopen.top/musicBroadcasting</a></p>
-<p>2、音乐电台详情接口：</p>
-<p><a target="_blank" rel="noopener" href="https://api.apiopen.top/musicBroadcastingDetails?channelname=public_tuijian_spring">https://api.apiopen.top/musicBroadcastingDetails?channelname=public_tuijian_spring</a></p>
-<p>3、音乐排行榜接口：</p>
-<p><a target="_blank" rel="noopener" href="https://api.apiopen.top/musicRankings">https://api.apiopen.top/musicRankings</a></p>
-<p>4、音乐排行榜详情接口：</p>
-<p><a target="_blank" rel="noopener" href="https://api.apiopen.top/musicRankingsDetails?type=1">https://api.apiopen.top/musicRankingsDetails?type=1</a></p>
-<p>5、每日视频推荐接口：</p>
-<p><a target="_blank" rel="noopener" href="https://api.apiopen.top/todayVideo">https://api.apiopen.top/todayVideo</a></p>
-<p>6、视频大纲获取接口：</p>
-<p><a target="_blank" rel="noopener" href="https://api.apiopen.top/videoHomeTab">https://api.apiopen.top/videoHomeTab</a></p>
-<p>7、视频分类推荐接口：</p>
-<p><a target="_blank" rel="noopener" href="https://api.apiopen.top/videoCategory">https://api.apiopen.top/videoCategory</a></p>
-<p><a target="_blank" rel="noopener" href="https://api.apiopen.top/videoCategoryDetails?id=14">https://api.apiopen.top/videoCategoryDetails?id=14</a></p>
-<p>9、根据ID推荐接口：</p>
-<p><a target="_blank" rel="noopener" href="https://api.apiopen.top/videoRecommend?id=127398">https://api.apiopen.top/videoRecommend?id=127398</a></p>
-<p>10、新闻接口：</p>
-<p><a target="_blank" rel="noopener" href="https://www.apiopen.top/journalismApi">https://www.apiopen.top/journalismApi</a></p>
-<p>11、随机推荐热门段子（包含文字、图片、GIF、视频）：</p>
-<p><a target="_blank" rel="noopener" href="https://www.apiopen.top/satinApi?type=1&amp;page=1">https://www.apiopen.top/satinApi?type=1&amp;page=1</a></p>
-<p>12、随机推荐热门段子【神评版本】（包含文字、图片、GIF、视频）：</p>
-<p><a target="_blank" rel="noopener" href="https://www.apiopen.top/satinGodApi?type=1&amp;page=1">https://www.apiopen.top/satinGodApi?type=1&amp;page=1</a></p>
-<p>13、随机推荐热门段子【神评版本】评论列表：</p>
-<p><a target="_blank" rel="noopener" href="https://www.apiopen.top/satinCommentApi?id=27610708&amp;page=1">https://www.apiopen.top/satinCommentApi?id=27610708&amp;page=1</a></p>
-<p>14、热门小说推荐：</p>
-<p><a target="_blank" rel="noopener" href="https://www.apiopen.top/novelApi">https://www.apiopen.top/novelApi</a></p>
-<p>15、小说搜索接口：</p>
-<p><a target="_blank" rel="noopener" href="https://www.apiopen.top/novelSearchApi?name=%E7%9B%97%E5%A2%93%E7%AC%94%E8%AE%B0">https://www.apiopen.top/novelSearchApi?name=盗墓笔记</a></p>
-<p>16、小说详情接口：</p>
-<p><a target="_blank" rel="noopener" href="https://www.apiopen.top/novelInfoApi?name=%E7%9B%97%E5%A2%93%E7%AC%94%E8%AE%B0">https://www.apiopen.top/novelInfoApi?name=盗墓笔记</a></p>
-<p>17、天气获取接口：</p>
-<p><a target="_blank" rel="noopener" href="https://www.apiopen.top/weatherApi?city=%E4%B8%8A%E6%B5%B7">https://www.apiopen.top/weatherApi?city=%E4%B8%8A%E6%B5%B7</a></p>
-<p>18、美图获取接口：</p>
-<p><a target="_blank" rel="noopener" href="https://www.apiopen.top/meituApi?page=1">https://www.apiopen.top/meituApi?page=1</a></p>
-<p>19、个性网名获取接口：</p>
-<p><a target="_blank" rel="noopener" href="https://www.apiopen.top/femaleNameApi?page=1">https://www.apiopen.top/femaleNameApi?page=1</a></p>
-<p>20、用户注册接口：</p>
-<p><a target="_blank" rel="noopener" href="https://www.apiopen.top/createUser?key=00d91e8e0cca2b76f515926a36db68f5&amp;phone=13594347817&amp;passwd=123654">https://www.apiopen.top/createUser?key=00d91e8e0cca2b76f515926a36db68f5&amp;phone=13594347817&amp;passwd=123654</a></p>
-<p>文章摘自：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/79463188">开放的免费API接口总结</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/08/%E7%BD%91%E7%AB%99%E6%94%B6%E9%9B%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="winney">
-      <meta itemprop="description" content="Doing is better than saying.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="winney">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/01/08/%E7%BD%91%E7%AB%99%E6%94%B6%E9%9B%86/" class="post-title-link" itemprop="url">网站收集</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-01-08 11:13:25" itemprop="dateCreated datePublished" datetime="2021-01-08T11:13:25+08:00">2021-01-08</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-08-24 18:09:23" itemprop="dateModified" datetime="2022-08-24T18:09:23+08:00">2022-08-24</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/%E7%BD%91%E7%AB%99%E6%94%B6%E9%9B%86/" itemprop="url" rel="index"><span itemprop="name">网站收集</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="web前端"><a href="#web前端" class="headerlink" title="web前端"></a>web前端</h4><div class="website-collect">
+<p>如果此时你的<code>tsc</code>执行不了，很有可能是你没有全局安装 TypeScript,可以全局安装一下。</p>
+<p>找到<code>complilerOptions</code>属性下的<code>removeComments:true</code>选项，把注释去掉。</p>
+<p>如果要想编译配置文件起作用，我们可以直接运行<code>tsc</code>命令，这时候<code>tsconfig.json</code>才起作用，可以看到生成的<code>js</code>文件已经不带注释了。</p>
+<blockquote>
+<h4 id="include-、exclude-和-files"><a href="#include-、exclude-和-files" class="headerlink" title="include 、exclude 和 files"></a>include 、exclude 和 files</h4></blockquote>
+<ol>
+<li><p>第一种：使用 include 配置</p>
+<p><code>include</code>属性是用来指定要编译的文件的，比如现在我们只编译<code>demo.ts</code>文件，而不编译其他</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;include&quot;:[&quot;demo.ts&quot;],</span><br><span class="line">  &quot;compilerOptions&quot;: &#123;</span><br><span class="line">      //any something</span><br><span class="line">      //........</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
-<table>
-<thead>
-<tr>
-<th>sd</th>
-<th>sd</th>
-<th></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>d</td>
-<td>sd</td>
-<td></td>
-</tr>
-<tr>
-<td>sd</td>
-<td>ds</td>
-<td></td>
-</tr>
-<tr>
-<td>sd</td>
-<td>sd</td>
-<td>d</td>
-</tr>
-</tbody></table>
-<p><a target="_blank" rel="noopener" href="https://www.awesomes.cn/rank">前端TOP100</a>    |   <a target="_blank" rel="noopener" href="https://www.jspang.com/">技术胖</a>   |  </p>
-</div>
+</li>
+<li><p>第二种：使用exclude配置</p>
+<p><code>exclude</code>是不包含，除了demo2.ts不编译，其他都编译。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">   &quot;exclude&quot;:[&quot;demo2.ts&quot;],</span><br><span class="line">  &quot;compilerOptions&quot;: &#123;</span><br><span class="line">      //any something</span><br><span class="line">      //........</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>第三种：使用 files 配置</p>
+<p><code>files</code>的配置效果和<code>include</code>几乎一样</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;files&quot;:[&quot;demo.ts&quot;],</span><br><span class="line">  &quot;compilerOptions&quot;: &#123;</span><br><span class="line">      //any something</span><br><span class="line">      //........</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h4 id="个人博客"><a href="#个人博客" class="headerlink" title="个人博客"></a>个人博客</h4><p><a target="_blank" rel="noopener" href="http://winney.gitee.io/">Gitee 个人博客</a></p>
-<p><a target="_blank" rel="noopener" href="https://winney07.github.io/">Github个人博客</a></p>
-<p><a target="_blank" rel="noopener" href="https://gitee.com/help#article-header0">Gitee帮助中心</a></p>
+</li>
+</ol>
+<h4 id="配置文件-初识-compilerOptions-配置项"><a href="#配置文件-初识-compilerOptions-配置项" class="headerlink" title="配置文件-初识 compilerOptions 配置项"></a>配置文件-初识 compilerOptions 配置项</h4><p>它是告诉<code>TypeScript</code>具体如何编译成<code>js</code>文件的</p>
+<blockquote>
+<h4 id="removeComments-属性"><a href="#removeComments-属性" class="headerlink" title="removeComments 属性"></a>removeComments 属性</h4></blockquote>
+<p>它的用处是告诉<code>TypeScript</code>对编译出来的<code>js</code>文件是否显示注释（注解）。比如我们现在把<code>removeComments</code>的值设置为<code>true</code>，就是在<code>js</code>中不显示注释。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// I&#x27;m JSPang</span><br><span class="line">const person: string = &quot;jspang&quot;;</span><br></pre></td></tr></table></figure>
+
+<p>把<code>removeComments</code>的值，设置为<code>true</code>，编译后：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&quot;use strict&quot;;</span><br><span class="line">var person = &quot;jspang&quot;;</span><br></pre></td></tr></table></figure>
+
+<p>把<code>removeComments</code>的值，设置为<code>false</code>,编译后：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot;use strict&quot;;</span><br><span class="line">// I‘m JSPang</span><br><span class="line">var person = &quot;jspang&quot;;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<h4 id="strict-属性"><a href="#strict-属性" class="headerlink" title="strict 属性"></a>strict 属性</h4></blockquote>
+<p><code>strict</code>属性如果设置为<code>true</code>,就代表我们的编译和书写规范，要按照<code>TypeScript</code>最严格的规范来写，如果我们把这个设置为<code>false</code>或者注释掉，意思是我们可以对设置一些不严格的写法。</p>
+<blockquote>
+<h4 id="noImplicitAny-属性"><a href="#noImplicitAny-属性" class="headerlink" title="noImplicitAny 属性"></a>noImplicitAny 属性</h4></blockquote>
+<p><code>noImplicitAny</code>属性的作用是，允许你的注解类型 any 不用特意表明</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function jspang(name) &#123;</span><br><span class="line">  return name;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这时候我们的<code>TypeScript</code>是进行报错的，我们用<code>tsc</code>编译也是报错的。这就是因为我们开启了<code>strict:true</code>,我们先注释掉，然后把<code>noImplicitAny</code>的值设置为<code>false</code>,就不再报错了。</p>
+<p>如果设置为<code>noImplicitAny:true</code>,意思就是值就算是 any（任意值），你也要进行类型注释。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function jspang(name: any) &#123;</span><br><span class="line">  return name;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>你可以简单的理解为，设置为 true，就是必须明确置顶 any 类型的值。</p>
+<blockquote>
+<h4 id="strictNullChecks-属性"><a href="#strictNullChecks-属性" class="headerlink" title="strictNullChecks 属性"></a>strictNullChecks 属性</h4></blockquote>
+<p>我们先把<code>strictNullChecks</code>设置为<code>false</code>,它的意思就是，<strong>不强制检查 NULL 类型。</strong>我们举个例子，让你能一下子就明白，还是删除<code>demo.ts</code>里的代码，然后编写代码.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const jspang: string = null;</span><br></pre></td></tr></table></figure>
+
+<p>代码写完后，你会发现这段代码是不报错的，如果是以前，一定是报错的，这就是我们配置了“不强制检验 null 类型”。如果你设成<code>strictNullChecks:true</code>，这时候就报错了。</p>
+<blockquote>
+<h4 id="ts-node-遵循-tsconfig-js-文件"><a href="#ts-node-遵循-tsconfig-js-文件" class="headerlink" title="ts-node 遵循 tsconfig.js 文件"></a>ts-node 遵循 tsconfig.js 文件</h4></blockquote>
+<h4 id="配置文件-compilerOptions-配置内容详解"><a href="#配置文件-compilerOptions-配置内容详解" class="headerlink" title="配置文件- compilerOptions 配置内容详解"></a>配置文件- compilerOptions 配置内容详解</h4><blockquote>
+<h4 id="rootDir-和-outDir"><a href="#rootDir-和-outDir" class="headerlink" title="rootDir 和 outDir"></a>rootDir 和 outDir</h4></blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;outDir&quot;: &quot;./build&quot; ,</span><br><span class="line">    &quot;rootDir&quot;: &quot;./src&quot; ,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<h4 id="编译-ES6-语法到-ES5-语法-allowJs"><a href="#编译-ES6-语法到-ES5-语法-allowJs" class="headerlink" title="编译 ES6 语法到 ES5 语法-allowJs"></a>编译 ES6 语法到 ES5 语法-allowJs</h4></blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export const name = &quot;jspang&quot;;</span><br></pre></td></tr></table></figure>
+
+<p>如果不做任何配置，这时候试用<code>tsc</code>是没有效果的。需要到<code>tsconfig.js</code>文件里进行修改，修改的地方有两个。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&quot;target&quot;:&#x27;es5&#x27; ,  // 这一项默认是开启的，你必须要保证它的开启，才能转换成功</span><br><span class="line">&quot;allowJs&quot;:true,   // 这个配置项的意思是联通</span><br></pre></td></tr></table></figure>
+
+<p>这两项都开启后，在使用<code>tsc</code>编译时，就会编译<code>js</code>文件了。</p>
+<blockquote>
+<h4 id="sourceMap-属性"><a href="#sourceMap-属性" class="headerlink" title="sourceMap 属性"></a>sourceMap 属性</h4></blockquote>
+<blockquote>
+<p>sourceMap 简单说，Source map 就是一个信息文件，里面储存着位置信息。也就是说，转换后的代码的每一个位置，所对应的转换前的位置。有了它，出错的时候，除错工具将直接显示原始代码，而不是转换后的代码。这无疑给开发者带来了很大方便。</p>
+</blockquote>
+<blockquote>
+<h4 id="noUnusedLocals-和-noUnusedParameters"><a href="#noUnusedLocals-和-noUnusedParameters" class="headerlink" title="noUnusedLocals 和 noUnusedParameters"></a>noUnusedLocals 和 noUnusedParameters</h4></blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const jspang: string = null;</span><br><span class="line">export const name = &quot;jspang&quot;;</span><br></pre></td></tr></table></figure>
+
+<p>这时候你会发现<code>jspang</code>这个变量没有任何地方使用，但是我们编译的话，它依然会被编译出来，这就是一种资源的浪费。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//编译后的文件</span><br><span class="line">&quot;use strict&quot;;</span><br><span class="line">exports.__esModule = true;</span><br><span class="line">exports.name = void 0;</span><br><span class="line">var jspang = null;</span><br><span class="line">exports.name = &quot;jspang&quot;;</span><br></pre></td></tr></table></figure>
+
+<p>这时候我们可以开启<code>noUnusedLocals：true</code>，开启后我们的程序会直接给我们提示不能这样编写代码，有没有使用的变量。</p>
+<p><code>noUnusedParameters</code>是针对于名优使用的函数的，方法和<code>noUnusedLocals：true</code>一样，小伙伴们自己尝试吧。</p>
+<h6 id="编译选项详解"><a href="#编译选项详解" class="headerlink" title="编译选项详解"></a>编译选项详解</h6><p><a target="_blank" rel="noopener" href="https://www.tslang.cn/docs/handbook/compiler-options.html">编译选项</a></p>
 
       
     </div>
@@ -648,20 +811,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">130</span>
+          <span class="site-state-item-count">132</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">55</span>
+        <span class="site-state-item-count">54</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">76</span>
+        <span class="site-state-item-count">78</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

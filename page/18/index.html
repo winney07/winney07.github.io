@@ -193,7 +193,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/20/Koa-%E7%AC%94%E8%AE%B0/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/18/Wampserver-%E7%AC%94%E8%AE%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -207,7 +207,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/01/20/Koa-%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">Koa-笔记</a>
+            <a href="/2021/01/18/Wampserver-%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">Wampserver-笔记</a>
         </h2>
 
         <div class="post-meta">
@@ -217,7 +217,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-01-20 15:17:06" itemprop="dateCreated datePublished" datetime="2021-01-20T15:17:06+08:00">2021-01-20</time>
+              <time title="创建时间：2021-01-18 15:50:25" itemprop="dateCreated datePublished" datetime="2021-01-18T15:50:25+08:00">2021-01-18</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
@@ -236,7 +236,7 @@
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/Koa/" itemprop="url" rel="index"><span itemprop="name">Koa</span></a>
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/Wampserver/" itemprop="url" rel="index"><span itemprop="name">Wampserver</span></a>
                 </span>
             </span>
 
@@ -251,62 +251,38 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Pt41127sj?from=search&seid=17378531192218366513">技术胖-koa2教程</a>    <a target="_blank" rel="noopener" href="http://www.jspang.com/detailed?id=34">技术胖博客笔记</a></p>
-<h4 id="第01节：Koa开发环境搭建"><a href="#第01节：Koa开发环境搭建" class="headerlink" title="第01节：Koa开发环境搭建"></a>第01节：Koa开发环境搭建</h4><p>1、npm init -y (-y可选)  ————生成package.json文件</p>
-<p>2、npm install –save koa ————在开发环境安装koa</p>
-<p>3、编写测试程序：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">const Koa = require(&#x27;koa&#x27;);</span><br><span class="line">const app = new Koa();</span><br><span class="line"></span><br><span class="line">app.use(async (ctx) =&gt; &#123;</span><br><span class="line">  ctx.body = &#x27;Hello Winney&#x27;  </span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.listen(3000)</span><br></pre></td></tr></table></figure>
+          <p>注：如果重新有问题，启动服务一直是黄色，可以卸载了wamp，然后重启电脑，再重装</p>
+<h4 id="phpmyadmin默认SQL账号密码"><a href="#phpmyadmin默认SQL账号密码" class="headerlink" title="phpmyadmin默认SQL账号密码:"></a>phpmyadmin默认SQL账号密码:</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">账号：root，密码为空</span><br></pre></td></tr></table></figure>
 
-<p>4、运行node index.js  （因为是基于node的，所以直接node **.js）</p>
-<p>5、然后在浏览器中输入：<a target="_blank" rel="noopener" href="http://127.0.0.1:3000/">http://127.0.0.1:3000</a></p>
-<h4 id="第02节：async-await的使用方法"><a href="#第02节：async-await的使用方法" class="headerlink" title="第02节：async/await的使用方法"></a>第02节：async/await的使用方法</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">async function testAsync() &#123;</span><br><span class="line">	return &#x27;Hello async&#x27;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Wampserver-%E7%AC%94%E8%AE%B0/note1.png" alt="phpmyadmin默认SQL账号密码"></p>
+<h4 id="虚拟目录的配置"><a href="#虚拟目录的配置" class="headerlink" title="虚拟目录的配置"></a>虚拟目录的配置</h4><p>修改默认网站目录</p>
+<p>第一步：修改d:\wamp\bin\apache\Apache2.4.9\conf\httpd.conf</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">查找： DocumentRoot &quot;c:/wamp/www/&quot;</span><br><span class="line">修改： DocumentRoot &quot;d:/www/&quot;</span><br><span class="line">查找： &lt;Directory &quot;c:/wamp/www/&quot;&gt;</span><br><span class="line">修改： &lt;Directory &quot;d:/www/&quot;&gt;</span><br></pre></td></tr></table></figure>
 
-<blockquote>
-<p>加上async，就把这个方法变成了异步的</p>
-<p>启用了async，返回的不是一个普通字符串，而是一个promise</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function getSomething() &#123;</span><br><span class="line">    return &#x27;something&#x27;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">async function testAsync() &#123;</span><br><span class="line">    return &#x27;Helllo Async&#x27;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const result = testAsync();</span><br><span class="line">console.log(result);</span><br><span class="line">getSomething();</span><br></pre></td></tr></table></figure>
+<p>第二步：修改wampmanager.ini和wampmanager.tpl</p>
+<p>1、修改c:\wamp\wampmanager.ini:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(1)打开：c:\wamp\wampmanager.ini</span><br><span class="line">(2)查找：Type: item; Caption: &quot;www 目录&quot;; Action: shellexecute; FileName: &quot;c:/wamp/www&quot;; Glyph: 2</span><br><span class="line">(3)修改：Type: item; Caption: &quot;www 目录&quot;; Action: shellexecute; FileName: &quot;d:/www&quot;; Glyph: 2</span><br></pre></td></tr></table></figure>
 
-<h4 id="await：async-wait"><a href="#await：async-wait" class="headerlink" title="await：async wait"></a>await：async wait</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">function getSomething() &#123;</span><br><span class="line">    return &#x27;something&#x27;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">async function testAsync() &#123;</span><br><span class="line">    return &#x27;Helllo Async&#x27;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">async function test() &#123;</span><br><span class="line">    const v1 = await getSomething();</span><br><span class="line">    const v2 = await testAsync();</span><br><span class="line">    console.log(v1, v2);</span><br><span class="line">    console.log(`$&#123;v1&#125; $&#123;v2&#125;`);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test();</span><br></pre></td></tr></table></figure>
+<p>2、修改c:\wamp\wampmanager.tpl：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(1)打开：c:\wamp\wampmanager.tpl</span><br><span class="line">(2)查找：Type: item; Caption: &quot;$&#123;w_wwwDirectory&#125;&quot;; Action: shellexecute; FileName: &quot;$&#123;wwwdir&#125;&quot;; Glyph: 2</span><br><span class="line">(3)修改：Type: item; Caption: &quot;$&#123;w_wwwDirectory&#125;&quot;; Action: shellexecute; FileName: &quot;d:/www&quot;; Glyph: 2</span><br></pre></td></tr></table></figure>
 
-<blockquote>
-<p>await不仅可以接收promise对象也可以接收普通返回值。</p>
-</blockquote>
-<h4 id="setTimeout延迟处理"><a href="#setTimeout延迟处理" class="headerlink" title="setTimeout延迟处理"></a>setTimeout延迟处理</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function takeLongTime() &#123;</span><br><span class="line">    return new Promise(resolve =&gt; &#123;</span><br><span class="line">        setTimeout(() =&gt; resolve(&#x27;long_time_value&#x27;), 1000)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">async function test() &#123;</span><br><span class="line">    const v = await takeLongTime();</span><br><span class="line">    console.log(v);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test();</span><br></pre></td></tr></table></figure>
+<h4 id="修改默认项目目录"><a href="#修改默认项目目录" class="headerlink" title="修改默认项目目录"></a>修改默认项目目录</h4><p>1、修改httpd.conf:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">DocumentRoot &quot;D:/Work/&quot;</span><br><span class="line">&lt;Directory &quot;D:/Work/&quot;&gt;</span><br></pre></td></tr></table></figure>
 
-<blockquote>
-<p>node demo.js     输入命令后，3秒后出现结果</p>
-</blockquote>
-<h4 id="第03节：Get请求的接收"><a href="#第03节：Get请求的接收" class="headerlink" title="第03节：Get请求的接收"></a>第03节：Get请求的接收</h4><p>监听端口</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app.listen();</span><br></pre></td></tr></table></figure>
+<p>2、修改httpd-vhost.conf:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;VirtualHost *:80&gt;</span><br><span class="line">	ServerName localhost</span><br><span class="line">	ServerAlias localhost</span><br><span class="line">	DocumentRoot D:/Work/</span><br><span class="line">	&lt;Directory  &quot;D:/Work/&quot;&gt;</span><br><span class="line">		Options +Indexes +Includes +FollowSymLinks +MultiViews</span><br><span class="line">		AllowOverride All</span><br><span class="line">		Require local</span><br><span class="line">	&lt;/Directory&gt;</span><br><span class="line">&lt;/VirtualHost&gt;</span><br></pre></td></tr></table></figure>
 
-<p>query和querystring区别</p>
-<ul>
-<li><p>query：返回的是格式化好的参数对象。</p>
-</li>
-<li><p>querystring：返回的是请求字符串</p>
-</li>
-</ul>
-<blockquote>
-<p>在koa2中GET请求通过request接收，但是接受的方法有两种：query和querystring。</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">const Koa = require(&#x27;koa&#x27;);</span><br><span class="line">const app = new Koa();</span><br><span class="line"></span><br><span class="line">app.use(async(ctx) =&gt; &#123;</span><br><span class="line">    let url = ctx.url;</span><br><span class="line"></span><br><span class="line">    //从request中获取GET请求</span><br><span class="line">    let request = ctx.request;</span><br><span class="line">    let req_query = request.query;</span><br><span class="line">    let req_querystring = request.querystring;</span><br><span class="line"></span><br><span class="line">    //从上下文中直接获取</span><br><span class="line">    let ctx_query = ctx.query;</span><br><span class="line">    let ctx_querystring = ctx.querystring;</span><br><span class="line"></span><br><span class="line">    ctx.body = &#123;</span><br><span class="line">        url,</span><br><span class="line">        req_query,</span><br><span class="line">        req_querystring,</span><br><span class="line">        ctx_query,</span><br><span class="line">        ctx_querystring</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.listen(3000, ()=&gt;&#123;</span><br><span class="line">    console.log(&#x27;demo server is starting at port 3000&#x27;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="本地项目-配置服务器访问"><a href="#本地项目-配置服务器访问" class="headerlink" title="本地项目-配置服务器访问"></a>本地项目-配置服务器访问</h4><p>1、配置host（C:\Windows\System32\drivers\etc）</p>
+<p>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1       localhost</span><br><span class="line">192.168.1.49    www.web.com</span><br></pre></td></tr></table></figure>
 
-<p>访问<a target="_blank" rel="noopener" href="http://localhost:3000/%E5%9C%A8%E9%A1%B5%E9%9D%A2%E4%B8%AD%E6%98%BE%E7%A4%BA%EF%BC%9A">http://localhost:3000/在页面中显示：</a></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;url&quot;: &quot;/&quot; , &quot;req_query&quot;: &#123;&#125;, &quot;reg_querystring&quot;:&quot;&quot;&#125;</span><br></pre></td></tr></table></figure>
+<p>2、配置httpd-vhosts.conf（wampserver\bin\apache\apache2.4.23\conf\extra\httpd-vhosts.conf）</p>
+<p>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#</span><br><span class="line">listen 8081</span><br><span class="line">&lt;VirtualHost *:8081&gt;</span><br><span class="line">    ServerName www.web.com</span><br><span class="line">    DocumentRoot &quot;E:/wampserver/www/web&quot;</span><br><span class="line">    &lt;Directory &quot;E:/wampserver/www/web&quot;&gt;</span><br><span class="line">      Options Indexes FollowSymLinks</span><br><span class="line">      AllowOverride All</span><br><span class="line">      Order allow,deny</span><br><span class="line">      Allow from all</span><br><span class="line">    &lt;/Directory&gt;</span><br><span class="line">&lt;/VirtualHost&gt;</span><br><span class="line">#</span><br></pre></td></tr></table></figure>
 
-<p>访问<a target="_blank" rel="noopener" href="http://localhost:3000/?user=winney&amp;age=26%E5%9C%A8%E9%A1%B5%E9%9D%A2%E4%B8%AD%E6%98%BE%E7%A4%BA%EF%BC%9A">http://localhost:3000/?user=winney&amp;age=26在页面中显示：</a></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&quot;url&quot; :&quot;/?user=winney&amp;age=26&quot; , &quot;req_query&quot;: &#123;&quot;user&quot;:&quot;winney, &quot;age&quot;: &quot;26&quot;&#125;,&#x27;req_querystring &quot;: &quot;user=winney&amp;age=26&quot;&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>3、访问的时候，使用<a target="_blank" rel="noopener" href="http://www.web.com来访问本地项目/">www.web.com来访问本地项目</a></p>
+<h4 id="Apache相对路径文件的放置"><a href="#Apache相对路径文件的放置" class="headerlink" title="Apache相对路径文件的放置"></a>Apache相对路径文件的放置</h4><p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Wampserver-%E7%AC%94%E8%AE%B0/note2.png" alt="Apache相对路径文件的放置"></p>
 
-<blockquote>
-<p>我们可以使用浏览器插件-iFormatTool，让内容更清晰。图片中我们可以清楚看到query是一个对象，而querystring就是一个普通的字符串。</p>
-</blockquote>
-<p>下载地址：<a target="_blank" rel="noopener" href="http://www.pc6.com/soft/FireFox_579049.html">http://www.pc6.com/soft/FireFox_579049.html</a></p>
-<blockquote>
-<p>将解压后里面的.crx文件拖拽到谷歌浏览器的扩展程序中，选择”添加”</p>
-</blockquote>
-<h4 id="添加扩展程序成功后，在页面中可以看到json格式的数据"><a href="#添加扩展程序成功后，在页面中可以看到json格式的数据" class="headerlink" title="添加扩展程序成功后，在页面中可以看到json格式的数据"></a>添加扩展程序成功后，在页面中可以看到json格式的数据</h4><p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Koa-%E7%AC%94%E8%AE%B0/note1.png" alt="谷歌浏览器添加查看json格式数据的扩展"></p>
-<h4 id=""><a href="#" class="headerlink" title=""></a></h4>
       
     </div>
 
@@ -325,7 +301,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/20/MangoDB/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/18/HTML-%E7%AC%94%E8%AE%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -339,7 +315,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/01/20/MangoDB/" class="post-title-link" itemprop="url">MangoDB</a>
+            <a href="/2021/01/18/HTML-%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">HTML-笔记</a>
         </h2>
 
         <div class="post-meta">
@@ -349,7 +325,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-01-20 11:22:42" itemprop="dateCreated datePublished" datetime="2021-01-20T11:22:42+08:00">2021-01-20</time>
+              <time title="创建时间：2021-01-18 14:17:09" itemprop="dateCreated datePublished" datetime="2021-01-18T14:17:09+08:00">2021-01-18</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
@@ -368,7 +344,7 @@
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/MangoDB/" itemprop="url" rel="index"><span itemprop="name">MangoDB</span></a>
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/HTML/" itemprop="url" rel="index"><span itemprop="name">HTML</span></a>
                 </span>
             </span>
 
@@ -383,268 +359,144 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p><a target="_blank" rel="noopener" href="https://www.mongodb.com/">mongoDB官网</a>    <a target="_blank" rel="noopener" href="https://www.mongodb.org.cn/">mongoDB中文官网</a>  </p>
-<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>参考教程：<a target="_blank" rel="noopener" href="https://blog.csdn.net/mar_ljh/article/details/79286913">安装mongodb3.6之Installing MongoDB Compass…</a></p>
-<p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/MangoDB/note2.png" alt="安装教程"></p>
-<h4 id="环境变量配置"><a href="#环境变量配置" class="headerlink" title="环境变量配置"></a>环境变量配置</h4><p>环境变量加在“系统变量”中</p>
-<p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/MangoDB/note3.png" alt="环境变量加在“系统变量”中"></p>
-<h5 id="安装compass"><a href="#安装compass" class="headerlink" title="安装compass"></a><a target="_blank" rel="noopener" href="https://docs.mongodb.com/manual/reference/program/install_compass/index.html">安装compass</a></h5><h4 id="备份与删除"><a href="#备份与删除" class="headerlink" title="备份与删除"></a>备份与删除</h4><p>备份：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongodump -h 127.0.0.1 -d company -o D:\software\MangoDB\backup\123</span><br></pre></td></tr></table></figure>
+          <p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/HTML-%E7%AC%94%E8%AE%B0/note1.png" alt="元素结构"><br><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/HTML-%E7%AC%94%E8%AE%B0/note2.png" alt="层级结构"></p>
+<p>1、html</p>
+<p>HTML：hyperText markup language (超文本标记语言）</p>
+<p>2、是由标签组成的，解释标签是怎样的</p>
+<p>根标签：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
 
-<p>恢复：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongorestore -h 127.0.0.1 -d testDemo D:\software\MangoDB\backup\123\company</span><br></pre></td></tr></table></figure>
+<p>3、头标签，身体标签，类似人，头部是装思想的，身体是衣服样子</p>
+<p>写一个简单的英文，然后写中文乱码，因为是国外人创造的，不认识中文，需要告诉浏览器，要以中文的形式显示，然后要加meta标签，单加标签没有用。要加属性，解释属性</p>
+<p>Lang属性是告诉搜索引擎爬虫，我们的网站是关于什么内容的</p>
+<p>Lang = ‘en’ 英文的</p>
+<p>Lang = ‘zh’ 中文的</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">	&lt;meta charset=&quot;utf-8&quot;&gt;</span><br><span class="line">	&lt;!-- gb2312 gbk unicode--&gt;</span><br><span class="line">	&lt;!-- Utf-8是unicode的升级版 --&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">	Life is shit!!!美好的生活!!!</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="select下拉框，添加分组-optgroup"><a href="#select下拉框，添加分组-optgroup" class="headerlink" title="select下拉框，添加分组(optgroup)"></a>select下拉框，添加分组(optgroup)</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;select&gt;</span><br><span class="line">  &lt;optgroup label=&quot;蔬菜&quot;&gt;</span><br><span class="line">    &lt;option value =&quot;娃娃菜&quot;&gt;娃娃菜&lt;/option&gt;</span><br><span class="line">    &lt;option value =&quot;西红柿&quot;&gt;西红柿&lt;/option&gt;</span><br><span class="line">  &lt;/optgroup&gt;</span><br><span class="line"></span><br><span class="line">  &lt;optgroup label=&quot;水果&quot;&gt;</span><br><span class="line">    &lt;option value =&quot;苹果&quot;&gt;苹果&lt;/option&gt;</span><br><span class="line">    &lt;option value =&quot;蓝莓&quot;&gt;蓝莓&lt;/option&gt;</span><br><span class="line">  &lt;/optgroup&gt;</span><br><span class="line">&lt;/select&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="添加网页图标（favicon"><a href="#添加网页图标（favicon" class="headerlink" title="添加网页图标（favicon)"></a>添加网页图标（favicon)</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel=&quot;shortcut icon&quot; href=&quot; /favicon.ico&quot; /&gt;</span><br></pre></td></tr></table></figure>
 
 
 
-<p>  <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/av21989676?from=search&seid=13644841351714946278">【尚硅谷】前端视频_MongoDB夯实基础视频</a></p>
-<ul>
-<li><p>基本概念</p>
-<p>数据库（database）</p>
-<p>集合（collection）</p>
-<p>文档（documen）</p>
-<pre><code>-在MongoDB中，数据庳和集合都不需要手动创建，
-    当我们创建文档时，如果文档所在的集合或数据库不存在会自动创建数据庳和集合
-</code></pre>
-</li>
-<li><p>基本指令</p>
-<ul>
-<li>show dbs</li>
-<li>show databases<br>-显示当前的所有数据库</li>
-<li>use 数据库名<br>-进入到指定的数据库中</li>
-<li>db<br>-db表示的是当前所处的数据库</li>
-<li>show collections<br>-显示数据库中所有的集合</li>
-</ul>
-</li>
-</ul>
-<h4 id="数据库（Database）"><a href="#数据库（Database）" class="headerlink" title="数据库（Database）"></a>数据库（Database）</h4><ul>
-<li>数据库是按照数据结构来组织、存储和管理数据的仓库。</li>
-<li>我们的程序都是在内存中运行的，一旦程序运行结束或者计算机断电，程序运行中的数据都会丢失。</li>
-<li>所以我们就需要将一些程序运行的数据持久化到硬盘之中，以确保数据的安全性。而数据库就是数据持久化的最佳选择。</li>
-<li>说白了，数据库就是存储数据的仓库。</li>
-</ul>
-<h4 id="数据库分类"><a href="#数据库分类" class="headerlink" title="数据库分类"></a>数据库分类</h4><p>数据库主要分成两种:</p>
-<ul>
-<li><p>关系型数据库(RDBMS)</p>
-<ul>
-<li><p>MySQL、Oracle、DB2、SQL Server …..</p>
-</li>
-<li><p>关系数据库中全都是表</p>
-</li>
-</ul>
-</li>
-<li><p>非关系型数据库(NoSQL Not Only SQL)</p>
-<ul>
-<li>MongoDB、Redis……</li>
-<li>键值对数据库</li>
-<li>文档数据库MongoDB</li>
-</ul>
-</li>
-</ul>
-<h4 id="数据库-database"><a href="#数据库-database" class="headerlink" title="数据库(database)"></a>数据库(database)</h4><ul>
-<li><p>数据库的服务器</p>
-<ul>
-<li><p>服务器用来保存数据</p>
-</li>
-<li><p>mongod用来启动服务器</p>
-</li>
-</ul>
-</li>
-<li><p>数据库的客户端</p>
-<ul>
-<li><p>客户端用来操作服务器，对数据进行增删剧改查的操作</p>
-</li>
-<li><p>mongo用来启动客户端</p>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="MongoDB简介"><a href="#MongoDB简介" class="headerlink" title="MongoDB简介"></a>MongoDB简介</h4><ul>
-<li>MongoDB是为快速开发互联网Web应用而设计的数据库系统。</li>
-<li>MongoDB的设计目标是极简、灵活、作为Web应用栈的一部分。</li>
-<li>MongoDB的数据模型是面向文档的，所谓文档是一种类似于JSON的结构，简单理解MongoDB这个数据库中存的是各种各样的JSON。(BSON )</li>
-</ul>
-<h4 id="三个概念"><a href="#三个概念" class="headerlink" title="三个概念"></a>三个概念</h4><ul>
-<li><p>数据库( database )<br>– 数据库是一个仓库，在仓库中可以存放集合。</p>
-</li>
-<li><p>集合( collection )<br>– 集合类似于数组，在集合中可以存放文档。</p>
-</li>
-<li><p>文档( document )</p>
-<p>– 文档数据库中的最小单位，我们存储和操作的内容都是文档。</p>
-</li>
-</ul>
-<h4 id="下载MongoDB"><a href="#下载MongoDB" class="headerlink" title="下载MongoDB"></a>下载MongoDB</h4><ul>
-<li><p>下载地址</p>
-<p> <a target="_blank" rel="noopener" href="https://www.mongodb.org/dl/win32/">https://www.mongodb.org/dl/win32/</a></p>
-</li>
-<li><p>MongoDB的版本偶数版本为稳定版，奇数版本为开发版。</p>
-</li>
-<li><p>MongoDB对于32位系统支持不佳，所以3.2版本以后没有再对32位系统的支持。</p>
-</li>
-</ul>
-<h5 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h5><ul>
-<li>结构化查询语言</li>
-<li>关系数据库全都同SQL来操作</li>
-</ul>
-<p>1.安装MongoDB</p>
-<ul>
-<li>安装</li>
-<li>配置环境交量<br>C: \Program Files\MongoDB\Server\3.2\bin</li>
-<li>在c盘根日录<ul>
-<li>创建一个文件夹data</li>
-<li>在data中创建一个文件夹db</li>
-</ul>
-</li>
-<li>打开cmd命令行窗口<ul>
-<li>输入mongod启动mongodb服务器</li>
-<li>32位注意：<br>启动服务器时，需要输入如下内容：<br>mongod –storageEngine=mmapv1</li>
-</ul>
-</li>
-<li>在打开一个cmd窗口<br>输入mongo连接mongodb ，出现  &gt;</li>
-</ul>
-<h4 id="启动MongoDB"><a href="#启动MongoDB" class="headerlink" title="启动MongoDB"></a>启动MongoDB</h4><ul>
-<li><p>在C盘根目录下创建data文件夹，在data下创建db文件夹</p>
-</li>
-<li><p>打开CMD命令行窗口，输入mongod</p>
-</li>
-<li><p>32位系统第一次启动∶</p>
-<p>mongod –storageEngine=mmapv1</p>
-</li>
-</ul>
-<blockquote>
-<p>端口号最大不要超过65535</p>
-<p>mongod –dbpath 数据库路径 </p>
-<p>如果不想使用默认的端口号， 可以 mongod –dbpath 数据库路径 –port 端口号</p>
-</blockquote>
-<p><strong>注：先开数据库，再开客户端  先 mongod 再mongo</strong></p>
-<p>将MongoDB设置为系统服务，可以白动在后台启动，不需要每次都手动启动</p>
-<ol>
-<li><p>在c盘根目录创建data<br>在data 下创建db和log文件夹</p>
-</li>
-<li><p>创建配置文件<br>在目录C: \Program Files\MongoDB\Server\3.2下添加一个配置文件mongod.cfg</p>
-</li>
-<li><p>以管理员的身份打开命令行窗口</p>
-</li>
-<li><p>执行如下的命令</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sc.exe  create MongoDB binPath=&quot;\&quot;C:\Program Files mongoDB\Server\3.2\bin\mongod.exo\&quot; --service --config=\&quot;C:Program Files\MongoDB\Server\3.2\mongod.cfg\&quot;&quot; DisplayName= &quot;MongoDB&quot; start= &quot;auto&quot;</span><br><span class="line"></span><br><span class="line">sc.exe create MongoDB binPath=&quot;\&quot;mongod的bin目录\mongod.exe\&quot;--service --config=\&quot;mongo的安装目录\mongod.cfg\&quot;&quot; DisplayName=&quot;MongoDB&quot; start= “auto&quot;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>启动mongodb服务</p>
-</li>
-<li><p>如果启动失败，证明上边的操作有误,<br>在控制台输入sc delete MongoDB别除之前配置的服务然后从第—步再来一次</p>
-</li>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/18/VSCode-%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="winney">
+      <meta itemprop="description" content="Doing is better than saying.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="winney">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/01/18/VSCode-%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">VSCode-笔记</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-01-18 11:41:32" itemprop="dateCreated datePublished" datetime="2021-01-18T11:41:32+08:00">2021-01-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-09-02 10:42:45" itemprop="dateModified" datetime="2022-09-02T10:42:45+08:00">2022-09-02</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/VSCode/" itemprop="url" rel="index"><span itemprop="name">VSCode</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a target="_blank" rel="noopener" href="https://lzw.me/a/vscode-visual-studio-code-shortcut.html">常用快捷键</a>    <a target="_blank" rel="noopener" href="https://www.awesomes.cn/">大牛在用</a></p>
+<h4 id="格式化代码"><a href="#格式化代码" class="headerlink" title="格式化代码"></a>格式化代码</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Shift + Alt + F</span><br></pre></td></tr></table></figure>
+
+<p>代码缩进</p>
+<p>选中代码段之后</p>
+<p>1、向左</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shift + TAB </span><br></pre></td></tr></table></figure>
+
+<p>2、向右：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TAB</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="更换主题"><a href="#更换主题" class="headerlink" title="更换主题"></a>更换主题</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ctrl + K + T</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="VSCode搜索指定某个目录下查找文件"><a href="#VSCode搜索指定某个目录下查找文件" class="headerlink" title="VSCode搜索指定某个目录下查找文件"></a>VSCode搜索指定某个目录下查找文件</h4><ol>
+<li>先点击选中这个要查找的目录。</li>
+<li>右键点击后，点击里面的「Find in Folder」即 在文件夹中查找…..</li>
 </ol>
-<p><a target="_blank" rel="noopener" href="https://docs.mongodb.com/manual/crud/">增删改查</a></p>
-<h4 id="数据库服务器—mongoDB"><a href="#数据库服务器—mongoDB" class="headerlink" title="数据库服务器—mongoDB"></a>数据库服务器—mongoDB</h4><p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/MangoDB/note1.png" alt="数据库服务器—mongoDB"></p>
-<h4 id="安装mongodb以及设置为windows服务-详细步骤"><a href="#安装mongodb以及设置为windows服务-详细步骤" class="headerlink" title="安装mongodb以及设置为windows服务 详细步骤"></a>安装mongodb以及设置为windows服务 详细步骤</h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u010874036/article/details/51921206">参考教程</a></p>
-<p><a target="_blank" rel="noopener" href="https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/">Install MongoDB Community Edition on Windows</a></p>
+<p><a target="_blank" rel="noopener" href="https://jingyan.baidu.com/article/7e44095377c9d12fc1e2ef5b.html">将VSCode设置成中文语言环境</a></p>
+<h5 id="快速在浏览器中打开"><a href="#快速在浏览器中打开" class="headerlink" title="快速在浏览器中打开"></a>快速在浏览器中打开</h5><ol>
+<li>安装open in browser插件</li>
+<li>重新启动VSCode</li>
+<li>快捷键：Alt + B</li>
+</ol>
+<h5 id="使用sublime快捷键"><a href="#使用sublime快捷键" class="headerlink" title="使用sublime快捷键"></a>使用sublime快捷键</h5><p>安装插件：Sublime Text Keymap and Settings Importer</p>
+<h5 id="自动换行"><a href="#自动换行" class="headerlink" title="自动换行"></a>自动换行</h5><p><a target="_blank" rel="noopener" href="https://jingyan.baidu.com/article/6f2f55a14ba6e3b5b93e6cd6.html">https://jingyan.baidu.com/article/6f2f55a14ba6e3b5b93e6cd6.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://jingyan.baidu.com/article/6dad5075383c3fa123e36ec3.html">https://jingyan.baidu.com/article/6dad5075383c3fa123e36ec3.html</a></p>
+<h5 id="VSCode编辑器字体大小设置"><a href="#VSCode编辑器字体大小设置" class="headerlink" title="VSCode编辑器字体大小设置"></a>VSCode编辑器字体大小设置</h5><p>“settings”——“文本编辑器”——常用设置——Editor：Font Size（这里设置为20）</p>
+<h4 id="VSCode如何用浏览器预览运行html文件"><a href="#VSCode如何用浏览器预览运行html文件" class="headerlink" title="VSCode如何用浏览器预览运行html文件"></a>VSCode如何用浏览器预览运行html文件</h4><p>在”扩展“中搜索”view in browser“——右键点击html文件，选择View In Browser</p>
+<p><code>view in browser</code>已废弃， 换成”open in browser”</p>
+<h4 id="VSCode-编写Vue项目安装Vetur插件实现-代码高亮"><a href="#VSCode-编写Vue项目安装Vetur插件实现-代码高亮" class="headerlink" title="VSCode 编写Vue项目安装Vetur插件实现 代码高亮"></a>VSCode 编写Vue项目安装Vetur插件实现 代码高亮</h4><h4 id="VSCode中配置Vue3-TS-的用户代码片段"><a href="#VSCode中配置Vue3-TS-的用户代码片段" class="headerlink" title="VSCode中配置Vue3 + TS 的用户代码片段"></a>VSCode中配置Vue3 + TS 的用户代码片段</h4><p>设置——配置用户代码片段——新建代码片段——代码片段文件名（输入该快捷键生成代码片段–例如：vue3）</p>
+<p>输入以下内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	&quot;vue-template&quot;: &#123;</span><br><span class="line">		&quot;prefix&quot;: &quot;vue3&quot;,</span><br><span class="line">		&quot;body&quot;: [</span><br><span class="line">		&quot;&lt;template&gt;&quot;,</span><br><span class="line">		&quot;&quot;,</span><br><span class="line">		&quot;&lt;/template&gt;&quot;,</span><br><span class="line">		&quot;&quot;,</span><br><span class="line">		&quot;&lt;script setup lang=&#x27;ts&#x27;&gt;&quot;,</span><br><span class="line">		&quot;&quot;,</span><br><span class="line">		&quot;&lt;/script&gt;&quot;,</span><br><span class="line">		&quot;&quot;,</span><br><span class="line">		&quot;&lt;style lang=&#x27;less&#x27; scoped&gt;&quot;,</span><br><span class="line">		&quot;&quot;,</span><br><span class="line">		&quot;&lt;/style&gt;&quot;,</span><br><span class="line">		],</span><br><span class="line">		&quot;description&quot;: &quot;my vue3 template&quot;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-      
-    </div>
+<h5 id="使用方法："><a href="#使用方法：" class="headerlink" title="使用方法："></a>使用方法：</h5><p>在新建的.vue文件中，输入’vue3‘，即可快速生成以下代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line"></span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script setup lang=&#x27;ts&#x27;&gt;</span><br><span class="line"></span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style lang=&#x27;less&#x27; scoped&gt;</span><br><span class="line"></span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
 
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/19/%E7%BD%91%E9%A1%B5%E7%89%B9%E6%95%88/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="winney">
-      <meta itemprop="description" content="Doing is better than saying.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="winney">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/01/19/%E7%BD%91%E9%A1%B5%E7%89%B9%E6%95%88/" class="post-title-link" itemprop="url">网页特效</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-01-19 17:04:46" itemprop="dateCreated datePublished" datetime="2021-01-19T17:04:46+08:00">2021-01-19</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-08-24 18:09:23" itemprop="dateModified" datetime="2022-08-24T18:09:23+08:00">2022-08-24</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="轻松解决网站大部分特效展示问题"><a href="#轻松解决网站大部分特效展示问题" class="headerlink" title="轻松解决网站大部分特效展示问题"></a>轻松解决网站大部分特效展示问题</h4><p><a target="_blank" rel="noopener" href="http://www.superslide2.com/index.html">SuperSlide</a>     <a target="_blank" rel="noopener" href="https://www.swiper.com.cn/">Swiper</a>     <a target="_blank" rel="noopener" href="https://github.com/nolimits4web/swiper">Swiper-github</a></p>
-<h4 id="拖拽排序图片"><a href="#拖拽排序图片" class="headerlink" title="拖拽排序图片"></a>拖拽排序图片</h4><p><a target="_blank" rel="noopener" href="https://www.jq22.com/jquery-info572">模仿360首页导航Div排序插件</a></p>
-<p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/%E7%BD%91%E9%A1%B5%E7%89%B9%E6%95%88/note1.png" alt="移动替换效果"></p>
-<p><a target="_blank" rel="noopener" href="https://www.jq22.com/jquery-info14968">jquery 拖拽排序</a></p>
-<h4 id="鼠标点击网页出现爱心特效"><a href="#鼠标点击网页出现爱心特效" class="headerlink" title="鼠标点击网页出现爱心特效"></a>鼠标点击网页出现爱心特效</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line">(function(window,document,undefined)&#123;</span><br><span class="line">    var hearts = [];</span><br><span class="line">    window.requestAnimationFrame = (function()&#123;</span><br><span class="line">        return window.requestAnimationFrame ||</span><br><span class="line">        window.webkitRequestAnimationFrame ||</span><br><span class="line">        window.mozRequestAnimationFrame ||</span><br><span class="line">        window.oRequestAnimationFrame ||</span><br><span class="line">        window.msRequestAnimationFrame ||</span><br><span class="line">        function (callback)&#123;</span><br><span class="line">            setTimeout(callback,1000/60);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)();</span><br><span class="line">    init();</span><br><span class="line">    function init()&#123;</span><br><span class="line">        css(&quot;.heart&#123;width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);&#125;.heart:after,.heart:before&#123;content: &#x27;&#x27;;width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: absolute;&#125;.heart:after&#123;top: -5px;&#125;.heart:before&#123;left: -5px;&#125;&quot;);</span><br><span class="line">        attachEvent();</span><br><span class="line">        gameloop();</span><br><span class="line">    &#125;</span><br><span class="line">    function gameloop()&#123;</span><br><span class="line">        for(var i=0;i&lt;hearts.length;i++)&#123;</span><br><span class="line">            if(hearts[i].alpha &lt;=0)&#123;</span><br><span class="line">                document.body.removeChild(hearts[i].el);</span><br><span class="line">                hearts.splice(i,1);</span><br><span class="line">                continue;</span><br><span class="line">            &#125;</span><br><span class="line">            hearts[i].y--;</span><br><span class="line">            hearts[i].scale += 0.004;</span><br><span class="line">            hearts[i].alpha -= 0.013;</span><br><span class="line">            hearts[i].el.style.cssText = &quot;left:&quot;+hearts[i].x+&quot;px;top:&quot;+hearts[i].y+&quot;px;opacity:&quot;+hearts[i].alpha+&quot;;transform:scale(&quot;+hearts[i].scale+&quot;,&quot;+hearts[i].scale+&quot;) rotate(45deg);background:&quot;+hearts[i].color;</span><br><span class="line">        &#125;</span><br><span class="line">        requestAnimationFrame(gameloop);</span><br><span class="line">    &#125;</span><br><span class="line">    function attachEvent()&#123;</span><br><span class="line">        var old = typeof window.onclick===&quot;function&quot; &amp;&amp; window.onclick;</span><br><span class="line">        window.onclick = function(event)&#123;</span><br><span class="line">            old &amp;&amp; old();</span><br><span class="line">            createHeart(event);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    function createHeart(event)&#123;</span><br><span class="line">        var d = document.createElement(&quot;div&quot;);</span><br><span class="line">        d.className = &quot;heart&quot;;</span><br><span class="line">        hearts.push(&#123;</span><br><span class="line">            el : d,</span><br><span class="line">            x : event.clientX - 5,</span><br><span class="line">            y : event.clientY - 5,</span><br><span class="line">            scale : 1,</span><br><span class="line">            alpha : 1,</span><br><span class="line">            color : randomColor()</span><br><span class="line">        &#125;);</span><br><span class="line">        document.body.appendChild(d);</span><br><span class="line">    &#125;</span><br><span class="line">    function css(css)&#123;</span><br><span class="line">        var style = document.createElement(&quot;style&quot;);</span><br><span class="line">        style.type=&quot;text/css&quot;;</span><br><span class="line">        try&#123;</span><br><span class="line">            style.appendChild(document.createTextNode(css));</span><br><span class="line">        &#125;catch(ex)&#123;</span><br><span class="line">            style.styleSheet.cssText = css;</span><br><span class="line">        &#125;</span><br><span class="line">        document.getElementsByTagName(&#x27;head&#x27;)[0].appendChild(style);</span><br><span class="line">    &#125;</span><br><span class="line">    function randomColor()&#123;</span><br><span class="line">        return &quot;rgb(&quot;+(~~(Math.random()*255))+&quot;,&quot;+(~~(Math.random()*255))+&quot;,&quot;+(~~(Math.random()*255))+&quot;)&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)(window,document);</span><br></pre></td></tr></table></figure>
-
-<h4 id="TouchSlide"><a href="#TouchSlide" class="headerlink" title="TouchSlide"></a>TouchSlide</h4><p><a target="_blank" rel="noopener" href="http://www.superslide2.com/TouchSlide/">TouchSlide</a></p>
-<p>触屏滑动特效插件，移动端滑动特效，触屏焦点图，触屏Tab切换，触屏多图切换等</p>
-<h4 id="点击鼠标，图片落在鼠标点击的位置"><a href="#点击鼠标，图片落在鼠标点击的位置" class="headerlink" title="点击鼠标，图片落在鼠标点击的位置"></a>点击鼠标，图片落在鼠标点击的位置</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=&quot;images/beetle.gif&quot; id=&quot;pic&quot; style=&quot;visibility:hidden;position:absolute&quot;&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">    function show()&#123;</span><br><span class="line">        pic.style.left = event.x + &quot;px&quot;;</span><br><span class="line">        pic.style.top  = event.y + &quot;px&quot;;</span><br><span class="line">        pic.style.visibility = &quot;visible&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    document.onclick = show;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
-<h4 id="鼠标移到文字上，出现提示信息"><a href="#鼠标移到文字上，出现提示信息" class="headerlink" title="鼠标移到文字上，出现提示信息"></a>鼠标移到文字上，出现提示信息</h4><ul>
-<li><p>使用title属性</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;#&quot; title=&quot;提示信息&quot;&gt;超链接文字&lt;/a&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>自定义事件和自定义样式</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;tip&quot; &gt;这是提示信息&lt;/div&gt;</span><br><span class="line">&lt;a href=&quot;#&quot; onMouseOver=&quot;mm()&quot; onmouseout=&quot;tip.style.visibility=&#x27;hidden&#x27;&quot;&gt;超链接文字&lt;/a&gt;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">a:link&#123;text-decoration: none;&#125;</span><br><span class="line">#tip&#123;</span><br><span class="line">    background:#fcfcfc;</span><br><span class="line">    position:absolute;</span><br><span class="line">    width:auto;</span><br><span class="line">    height:auto;</span><br><span class="line">    visibility:hidden;</span><br><span class="line">    font-size: 12px;</span><br><span class="line">    border:1px solid #ccc;</span><br><span class="line">    padding: 2px 6px;</span><br><span class="line">    border-radius:4px;</span><br><span class="line">    box-shadow: 2px 4px 7px #ccc;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">    function mm()&#123;  </span><br><span class="line">        tip.style.visibility=&#x27;visible&#x27;;</span><br><span class="line">        tip.style.top = (event.y+10) + &quot;px&quot;;</span><br><span class="line">        tip.style.left = (event.x+10) + &quot;px&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h4 id="按←↑→↓键移到图片位置"><a href="#按←↑→↓键移到图片位置" class="headerlink" title="按←↑→↓键移到图片位置"></a>按←↑→↓键移到图片位置</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;img id=&quot;pic&quot; src=&quot;images/beetle.gif&quot; style=&quot;position:absolute;left:100px;top:100px;&quot;&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">    function move()&#123;</span><br><span class="line">        var key = event.keyCode;</span><br><span class="line">        var x = parseInt(pic.style.left);</span><br><span class="line">        var y = parseInt(pic.style.top);</span><br><span class="line">        var step = 10;</span><br><span class="line">        if (key == 37)  pic.style.left = x - step + &quot;px&quot;;</span><br><span class="line">        if (key == 38)  pic.style.top  = y - step + &quot;px&quot;;</span><br><span class="line">        if (key == 39)  pic.style.left = x + step + &quot;px&quot;;</span><br><span class="line">        if (key == 40)  pic.style.top  = y + step + &quot;px&quot;;</span><br><span class="line"></span><br><span class="line">        console.log(key)</span><br><span class="line">        console.log(x)</span><br><span class="line">        console.log(y)</span><br><span class="line">    &#125;</span><br><span class="line">    document.onkeydown=move;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
-<h4 id="文字滚动效果"><a href="#文字滚动效果" class="headerlink" title="文字滚动效果"></a>文字滚动效果</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;marquee direction =&quot;left&quot; onMouseOver=&quot;this.stop()&quot; onMouseOut=&quot;this.start()&quot; scrollamount=3&gt;JavaScript特效制作最新JavaScript特效常用HTML标签讲解ASP入门教程Dreamweaver 8 教程</span><br><span class="line">&lt;/marquee&gt;</span><br></pre></td></tr></table></figure>
-
-<h4 id="使用鼠标拖到图片到相应位置"><a href="#使用鼠标拖到图片到相应位置" class="headerlink" title="使用鼠标拖到图片到相应位置"></a>使用鼠标拖到图片到相应位置</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=&quot;images/beetle.gif&quot;  style=&quot;position:absolute;left:0px;top:0px;&quot; onMouseDown=&quot;dragImage(this)&quot;&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">    var down = false;</span><br><span class="line">    var x,y,imgID;</span><br><span class="line"></span><br><span class="line">    function dragImage(obj)&#123;</span><br><span class="line">        imgID = obj;</span><br><span class="line">        x = event.x - parseInt(imgID.style.left);</span><br><span class="line">        y = event.y - parseInt(imgID.style.top);</span><br><span class="line"></span><br><span class="line">        down=true;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function cancelDrag()&#123;  down=false; &#125;</span><br><span class="line"></span><br><span class="line">    function moveImage()&#123;</span><br><span class="line">        if(down)&#123;</span><br><span class="line">            //要加上单位“px”，不然图片不能移动</span><br><span class="line">            imgID.style.left  = (event.x - x) + &quot;px&quot;;</span><br><span class="line">            imgID.style.top   = (event.y - y) + &quot;px&quot;;   </span><br><span class="line"></span><br><span class="line">            event.returnValue = false;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    document.onmousemove = moveImage;</span><br><span class="line">    document.onmouseup = cancelDrag;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
-<p><a target="_blank" rel="noopener" href="https://gitee.com/winney/work/blob/master/effects/follow-mouse/mousemove.html">跟随鼠标移动的文字</a></p>
-<h4 id="tpanorama-全景图"><a href="#tpanorama-全景图" class="headerlink" title="tpanorama-全景图"></a>tpanorama-全景图</h4><p><a target="_blank" rel="noopener" href="https://github.com/ConardLi/tpanorama">github地址</a></p>
-<p><a target="_blank" rel="noopener" href="http://www.bootstrapmb.com/item/5657/preview">效果预览</a></p>
+<h4 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h4><p>open in browser：在默认浏览器打开</p>
 
       
     </div>
@@ -731,20 +583,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">130</span>
+          <span class="site-state-item-count">132</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">55</span>
+        <span class="site-state-item-count">54</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">76</span>
+        <span class="site-state-item-count">78</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

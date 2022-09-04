@@ -193,7 +193,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/14/vue%E9%A1%B9%E7%9B%AE%E5%A4%84%E7%90%86%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/10/TypeScript%E7%9A%84%E6%8E%A5%E5%8F%A3Interface/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -207,7 +207,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/12/14/vue%E9%A1%B9%E7%9B%AE%E5%A4%84%E7%90%86%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82/" class="post-title-link" itemprop="url">Vue项目处理跨域请求</a>
+            <a href="/2020/11/10/TypeScript%E7%9A%84%E6%8E%A5%E5%8F%A3Interface/" class="post-title-link" itemprop="url">初识接口Interface</a>
         </h2>
 
         <div class="post-meta">
@@ -217,186 +217,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-12-14 11:42:51" itemprop="dateCreated datePublished" datetime="2020-12-14T11:42:51+08:00">2020-12-14</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-08-24 18:09:23" itemprop="dateModified" datetime="2022-08-24T18:09:23+08:00">2022-08-24</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/Vue-js/" itemprop="url" rel="index"><span itemprop="name">Vue.js</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="1、设置配置文件"><a href="#1、设置配置文件" class="headerlink" title="1、设置配置文件"></a>1、设置配置文件</h4><ul>
-<li>方法一：在根目录中新建vue.config.js文件</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">module.exports = &#123;</span><br><span class="line">    runtimeCompiler: true,</span><br><span class="line">    devServer: &#123;</span><br><span class="line">        proxy: &#123;</span><br><span class="line">            // 匹配请求路径中的字符，</span><br><span class="line">            // 如果符合就用这个代理对象代理本次请求，路径为target的网址，</span><br><span class="line">            // changeOrigin为是否跨域，</span><br><span class="line">            // 如果不想始终传递这个前缀，可以重写路径</span><br><span class="line">            // pathRewrite为是否将指定字符串转换一个再发过去。</span><br><span class="line">            &#x27;/api&#x27;: &#123;</span><br><span class="line">              target: &#x27;http://ttapi.research.itcast.cn/&#x27;,</span><br><span class="line">                ws: true,</span><br><span class="line">                changeOrigin: true,</span><br><span class="line">                pathRewrite: &#123;</span><br><span class="line">                    &#x27;^/api&#x27;: &#x27;&#x27;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<ul>
-<li>方法二：在根目录中，新建config&gt;index.js文件</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">module.exports = &#123;</span><br><span class="line">    dev: &#123;</span><br><span class="line">        proxyTable: &#123;</span><br><span class="line">            &#x27;/api&#x27;: &#123;</span><br><span class="line">              target: &#x27;http://ttapi.research.itcast.cn/&#x27;, // 接口的域名</span><br><span class="line">              secure: false, // 如果是https接口，需要配置这个参数</span><br><span class="line">              changeOrigin: true, // 如果接口跨域，需要进行这个参数配置</span><br><span class="line">              pathRewrite: &#123;</span><br><span class="line">                &#x27;^/api&#x27;: &#x27;&#x27; // &#x27;/api/a/user&#x27; ==&#x27;localhost:8080/user&#x27;</span><br><span class="line">              &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h4 id="2、axios请求方法的写法："><a href="#2、axios请求方法的写法：" class="headerlink" title="2、axios请求方法的写法："></a>2、axios请求方法的写法：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">axios.get(&#x27;http://ttapi.research.itcast.cn/app/v1_0/comments&#x27;, &#123;</span><br><span class="line">    params: &#123;</span><br><span class="line">        type: &#x27;a&#x27;,</span><br><span class="line">        source: this.source,</span><br><span class="line">        offset: this.offset,</span><br><span class="line">        limit: this.limit</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line">.then(function (response) &#123;</span><br><span class="line">    console.log(&#x27;response&#x27;)</span><br><span class="line">    console.log(response)</span><br><span class="line">&#125;)</span><br><span class="line">.catch(function (error) &#123;</span><br><span class="line">    console.log(error)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<h4 id="name属性是父组件传过来的，除了数组，对象，其他都不允许修改"><a href="#name属性是父组件传过来的，除了数组，对象，其他都不允许修改" class="headerlink" title="name属性是父组件传过来的，除了数组，对象，其他都不允许修改"></a>name属性是父组件传过来的，除了数组，对象，其他都不允许修改</h4><blockquote>
-<p> props里面的数据，除了数组，对象，其他都不允许修改，所以不能用于页面元素的v-model属性中，因为v-model是双向绑定的</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;van-field</span><br><span class="line">   v-model=&quot;localName&quot;</span><br><span class="line">   ...</span><br><span class="line">/&gt;</span><br><span class="line"> props: &#123;</span><br><span class="line">     name: &#123;</span><br><span class="line">         type: String,</span><br><span class="line">         required: true</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;,</span><br><span class="line"> </span><br><span class="line">data () &#123;</span><br><span class="line">  return &#123;</span><br><span class="line">      localName: this.name</span><br><span class="line">  &#125;</span><br><span class="line"> &#125;,</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="当传递给子组件的数据既要使用又要修改，这种情况下我们可以使用v-model简写："><a href="#当传递给子组件的数据既要使用又要修改，这种情况下我们可以使用v-model简写：" class="headerlink" title="当传递给子组件的数据既要使用又要修改，这种情况下我们可以使用v-model简写："></a>当传递给子组件的数据既要使用又要修改，这种情况下我们可以使用v-model简写：</h4><p>例如：父组件的name</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">:name=&quot;user.name&quot;</span><br><span class="line">@update-name=&quot;user.name=$event&quot;</span><br></pre></td></tr></table></figure>
-
-<p>修改为：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">v-model=&quot;user.name&quot;</span><br></pre></td></tr></table></figure>
-
-<p>子组件也要跟着修改：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">props: &#123;</span><br><span class="line">    value: &#123;</span><br><span class="line">        type: String,</span><br><span class="line">        required: true</span><br><span class="line">    &#125;</span><br><span class="line">&#125;,</span><br><span class="line"></span><br><span class="line">this.$emit(&#x27;input&#x27;, this.localName)</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>v-model=”user.name”</p>
-<p>默认传递一个名字叫value的数据：    ：value=”user.name”</p>
-<p>默认监听input事件:      @input=”user.name=$event”</p>
-<p>v-model的本质还是父子组件通信，它仅仅是简化了父组件的使用，子组件还是按照原来那样使用</p>
-</blockquote>
-<p>注：在同一个子组件传递中，v-model只能使用一次</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">这样是错误的：</span><br><span class="line">&lt;update-name</span><br><span class="line">    v-model=&quot;user.name&quot;</span><br><span class="line">    v-model=&quot;user.photo&quot;</span><br><span class="line">/&gt;</span><br></pre></td></tr></table></figure>
-
-<h5 id="在同一个子组件传递中，v-model只能使用一次，如果有多个数据需要保持同步，使用-sync修饰符"><a href="#在同一个子组件传递中，v-model只能使用一次，如果有多个数据需要保持同步，使用-sync修饰符" class="headerlink" title="在同一个子组件传递中，v-model只能使用一次，如果有多个数据需要保持同步，使用.sync修饰符"></a>在同一个子组件传递中，v-model只能使用一次，如果有多个数据需要保持同步，使用.sync修饰符</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;update-name</span><br><span class="line">    v-model=&quot;user.name&quot;</span><br><span class="line">    :gender.sync=&quot;user.photo&quot;</span><br><span class="line">/&gt;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>注：我们一般把最常用的数据设计为v-model绑定，把不太常用的数据设计为.sync</p>
-</blockquote>
-<h4 id="销毁组件的一种方法："><a href="#销毁组件的一种方法：" class="headerlink" title="销毁组件的一种方法："></a>销毁组件的一种方法：</h4><p>1、加上v-if来控制渲染</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;update-name</span><br><span class="line">    v-if=&quot;isEditNameShow&quot;</span><br><span class="line">    v-model=&quot;user.name&quot;</span><br><span class="line">    @close=&quot;isEditNameShow=false&quot;</span><br><span class="line">/&gt;</span><br></pre></td></tr></table></figure>
-
-<h4 id="在Vue中操作DOM，要给该元素添加ref属性"><a href="#在Vue中操作DOM，要给该元素添加ref属性" class="headerlink" title="在Vue中操作DOM，要给该元素添加ref属性"></a>在Vue中操作DOM，要给该元素添加ref属性</h4><p>例如：点击头像，选择图片来修改头像</p>
-<p>1、给input  file添加ref属性</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;file&quot; hidden ref=&quot;file&quot;&gt;</span><br><span class="line">&lt;van-cell title=&quot;头像&quot; is-link center @click=&quot;$refs.file.click()&quot;&gt;</span><br><span class="line">    &lt;van-image</span><br><span class="line">        width=&quot;30&quot;</span><br><span class="line">        height=&quot;30&quot;</span><br><span class="line">        round fit=&quot;cover&quot;</span><br><span class="line">        :src=&quot;user.photo&quot;</span><br><span class="line">    /&gt;</span><br><span class="line">&lt;/van-cell&gt;</span><br></pre></td></tr></table></figure>
-
-<p>2、控制选择的文件类型：accept属性</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;file&quot; hidden ref=&quot;file&quot; accept=&quot;image/*&quot;&gt;</span><br></pre></td></tr></table></figure>
-
-<p>3、监听文件的change事件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;input</span><br><span class="line">    type=&quot;file&quot;</span><br><span class="line">    hidden</span><br><span class="line">    ref=&quot;file&quot;</span><br><span class="line">    accept=&quot;image/*&quot;</span><br><span class="line">    @change=&quot;onFileChange&quot;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-
-<p>4、解决选择相同文件不触发change事件,手动清空file的value值</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">onFileChange() &#123;</span><br><span class="line">    ....</span><br><span class="line">    </span><br><span class="line">     // 手动清空file的value值</span><br><span class="line">     this.$refs.file.value = &#x27;&#x27;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>5、展示弹出层，在弹出层预览图片</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">onFileChange() &#123;</span><br><span class="line">     // 展示弹出层</span><br><span class="line">     this.isEditPhotoShow = true</span><br><span class="line"></span><br><span class="line">    //  在弹出层预览选择的图片</span><br><span class="line">    const blod = window.URL.createObjectURL(this.$refs.file.files[0])</span><br><span class="line">    this.previewImage = blod</span><br><span class="line"></span><br><span class="line">     // 手动清空file的value值</span><br><span class="line">     this.$refs.file.value = &#x27;&#x27;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-
-<p>6、父传，子收。并展示预览图片</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">父传：</span><br><span class="line">&lt;update-photo</span><br><span class="line">    :image=&quot;previewImage&quot;</span><br><span class="line">/&gt;</span><br><span class="line">子收：</span><br><span class="line"> props: &#123;</span><br><span class="line">     image: &#123;</span><br><span class="line">         type: String,</span><br><span class="line">         required: true</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;,</span><br><span class="line"> </span><br><span class="line">&lt;div class=&quot;update-photo&quot;&gt;</span><br><span class="line">     &lt;img :src=&quot;image&quot;&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
-
-<p>7、修改父子组件传值的文件格式</p>
-<blockquote>
-<p>如果Content-Type  要求是 multipart/form-data，则一定要提交FormData数据对象，专门用于文件上传的，不能提交{}对象，没用</p>
-</blockquote>
-<p>所以要修改父组件传过来子组件的文件格式，保留原来的文件格式：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">父组件：</span><br><span class="line">onFileChange() &#123;</span><br><span class="line">    ....</span><br><span class="line">    const blod = this.$refs.file.files[0]</span><br><span class="line">    this.previewImage = blod</span><br><span class="line">	....</span><br><span class="line"> &#125;</span><br><span class="line"> </span><br><span class="line">&lt;update-photo</span><br><span class="line">    :file=&quot;previewImage&quot;</span><br><span class="line">    @close=&quot;isEditPhotoShow=false&quot;</span><br><span class="line">/&gt;</span><br><span class="line">子组件：</span><br><span class="line"> props: &#123;</span><br><span class="line">     file: &#123;</span><br><span class="line">        //  type: String,</span><br><span class="line">         required: true</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;,</span><br><span class="line"> data () &#123;</span><br><span class="line">  return &#123;</span><br><span class="line">      image: window.URL.createObjectURL(this.file)</span><br><span class="line">  &#125;</span><br><span class="line"> &#125;,</span><br></pre></td></tr></table></figure>
-
-<p>8、处理接口传参</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 文件格式处理</span><br><span class="line"> const fd = new FormData()</span><br><span class="line"> fd.append(&#x27;photo&#x27;, this.file)</span><br><span class="line"> // photo为参数名，this.file为参数值</span><br><span class="line"></span><br><span class="line"> await updateUserPhoto(fd)</span><br></pre></td></tr></table></figure>
-
-<p>9、处理图片裁切，使用 <a target="_blank" rel="noopener" href="https://github.com/fengyuanchen/cropperjs">cropperjs</a>  这个跟vue没有关系，其他项目也可以使用） 也可以在<a target="_blank" rel="noopener" href="https://github.com/vuejs/awesome-vue">Awesome</a> 中搜crop找裁切工具</p>
-<ul>
-<li>1、安装</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install cropperjs</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>2、引入</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import &#x27;cropperjs/dist/cropper.css&#x27;</span><br><span class="line">import Cropper from &#x27;cropperjs&#x27;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>3、使用：放在mounted里面</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;img :src=&quot;image&quot; ref=&quot;image&quot;&gt;</span><br><span class="line"></span><br><span class="line">mounted() &#123;</span><br><span class="line">    const image = this.$refs.image</span><br><span class="line">    const cropper = new Cropper(image, &#123;</span><br><span class="line">        viewMode: 1,</span><br><span class="line">        dragMode: &#x27;move&#x27;,</span><br><span class="line">        aspectRatio: 1,</span><br><span class="line">        // autoCropArea: 1,</span><br><span class="line">        cropBoxMovable: false,</span><br><span class="line">        cropBoxResizable: false,</span><br><span class="line">        background: false,</span><br><span class="line">        movable: true</span><br><span class="line">    &#125;)</span><br><span class="line">    console.log(cropper)</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>4、让裁切区居中显示</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">.update-photo&#123;</span><br><span class="line">    position: absolute;</span><br><span class="line">    top: 50%;</span><br><span class="line">    margin-top: -185px;</span><br><span class="line">    margin-left: -185px;</span><br><span class="line">    height: 370px;</span><br><span class="line">    left: 50%;</span><br><span class="line">    width:370px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>5、获取裁切结果，getCroppedCanvas()</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"> data () &#123;</span><br><span class="line">  return &#123;</span><br><span class="line">      image: window.URL.createObjectURL(this.file),</span><br><span class="line">      cropper: null</span><br><span class="line">  &#125;</span><br><span class="line"> &#125;,</span><br><span class="line"></span><br><span class="line">使用Promise返回一个裁切对象，用于async</span><br><span class="line"> getCroppedCanvas() &#123;</span><br><span class="line">     return new Promise(resolve =&gt; &#123;</span><br><span class="line">     // 因为cropper定义在mounted中，在这里无法使用，</span><br><span class="line">     	为了能够在这里能调用cropper，将cropper放在data中</span><br><span class="line">          this.cropper.getCroppedCanvas().toBlob((file) =&gt; &#123;</span><br><span class="line">            resolve(file)</span><br><span class="line">        &#125;)</span><br><span class="line">     &#125;)</span><br><span class="line"> &#125;,</span><br><span class="line"> </span><br><span class="line">getCroppedCanvas返回的Promise对象，在这里面使用：</span><br><span class="line">async onConfirm() &#123;</span><br><span class="line">     .....</span><br><span class="line">     const file = await this.getCroppedCanvas()</span><br><span class="line">     const img = window.URL.createObjectURL(file)</span><br><span class="line"></span><br><span class="line">    // 文件格式处理</span><br><span class="line">     const fd = new FormData()</span><br><span class="line">     fd.append(&#x27;photo&#x27;, file)</span><br><span class="line">     </span><br><span class="line">     await updateUserPhoto(fd)</span><br><span class="line"></span><br><span class="line">     this.$emit(&#x27;close&#x27;)</span><br><span class="line">     this.$emit(&#x27;update-photo&#x27;, img)</span><br><span class="line"></span><br><span class="line">     this.$toast.success(&#x27;保存成功&#x27;)</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/12/Parcel%E6%89%93%E5%8C%85TypeScript/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="winney">
-      <meta itemprop="description" content="Doing is better than saying.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="winney">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/11/12/Parcel%E6%89%93%E5%8C%85TypeScript/" class="post-title-link" itemprop="url">Parcel打包TypeScript</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-11-12 10:46:45" itemprop="dateCreated datePublished" datetime="2020-11-12T10:46:45+08:00">2020-11-12</time>
+              <time title="创建时间：2020-11-10 10:44:44" itemprop="dateCreated datePublished" datetime="2020-11-10T10:44:44+08:00">2020-11-10</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
@@ -430,55 +251,25 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h4 id="用-Parcel-打包-TypeScript-代码"><a href="#用-Parcel-打包-TypeScript-代码" class="headerlink" title="用 Parcel 打包 TypeScript 代码"></a>用 Parcel 打包 TypeScript 代码</h4><blockquote>
-<h4 id="建立一个新项目"><a href="#建立一个新项目" class="headerlink" title="建立一个新项目"></a>建立一个新项目</h4></blockquote>
-<ol>
-<li>教学需要，这里我们重新建立一个项目<code>TSTest</code>,在桌面新建立一个文件夹，然后在<code>VSCode</code>中打开。</li>
-<li>打开终端，输入<code>npm init -y</code>,创建<code>package.json</code>文件</li>
-<li>在终端中输入<code>tsc --init</code>,创建<code>tsconfig.json</code>文件</li>
-<li>修改<code>tsconfig.json</code>配置<code>rootDir</code>和<code>outDir</code>.</li>
-<li>新建<code>src</code>文件夹，在里边建立<code>index.html</code>,<code>page.ts</code>文件</li>
-<li>编写<code>index.html</code>文件，并引入<code>page.ts</code>文件</li>
-<li>编写<code>page.ts</code>文件</li>
-</ol>
-<p>index.html</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;!<span class="variable constant_">DOCTYPE</span> html&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;./page.ts&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;<span class="name">body</span>&gt;</span><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+          <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">const screenResume= (name: string,age: number,bust:number)=&gt;&#123;</span><br><span class="line">	age &lt; 24 &amp;&amp; bust &gt;=90 &amp;&amp; console.log(name+&#x27;进入面试&#x27;)</span><br><span class="line">	age &gt;= 24 || bust &lt;90 &amp;&amp; console.log(name+&#x27;你被淘汰&#x27;)</span><br><span class="line">&#125;</span><br><span class="line">const getResume = (name : string, age : number, bust: number)=&gt;&#123;</span><br><span class="line">	console.log(name+&#x27;年龄是&#x27;+age)</span><br><span class="line">	console.log(name+&#x27;胸围是&#x27;+bust)</span><br><span class="line">&#125;</span><br><span class="line">screenResume(&#x27;大脚&#x27;,18,94)</span><br><span class="line">getResume(&#x27;大脚&quot;,18,94)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p>page.ts</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="attr">teacher</span>: string = <span class="string">&quot;jspang&quot;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(teacher);</span><br></pre></td></tr></table></figure>
+<h4 id="定义接口"><a href="#定义接口" class="headerlink" title="定义接口"></a>定义接口</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">interface Girl &#123;</span><br><span class="line">	name: string;</span><br><span class="line">	age : number;</span><br><span class="line">	bust: number;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<blockquote>
-<h4 id="Parcel-的安装和使用"><a href="#Parcel-的安装和使用" class="headerlink" title="Parcel 的安装和使用"></a>Parcel 的安装和使用</h4></blockquote>
-<p><code>npm</code>或者<code>yarn</code>来进行安装</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add --dev parcel@next</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">const girl=&#123;</span><br><span class="line">	name:&#x27;大脚&quot;,</span><br><span class="line">	age: 18,</span><br><span class="line">	bust: 94</span><br><span class="line">&#125;</span><br><span class="line">const screenResume= (girl : Girl)=&gt;&#123;</span><br><span class="line">	girl.age &lt; 24 &amp;&amp; girl.bust &gt;=90 &amp;&amp; console.log( girl.name+&#x27;进入面试&#x27;)</span><br><span class="line">	girl.age &gt;= 24 || girl.bust &lt;90 &amp;&amp; console.log( girl.name+&#x27;你被淘汰&quot;)</span><br><span class="line">&#125;</span><br><span class="line">const getResume = (girl:Girl)=&gt;&#123;</span><br><span class="line">	console.log(girl.name+&#x27;年龄是&#x27;+girl.age)</span><br><span class="line">	console.log(girl.name+ &#x27;胸围是&#x27;+girl.bust)</span><br><span class="line">&#125;</span><br><span class="line">screenResume(girl)</span><br><span class="line">getResume(girl)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p>修改package.json</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;test&quot;</span>: <span class="string">&quot;parcel ./src/index.html&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="可选值的定义："><a href="#可选值的定义：" class="headerlink" title="可选值的定义："></a>可选值的定义：</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">age ?: number (age可有可没有)</span><br></pre></td></tr></table></figure>
 
-<p>然后打开终端输入<code>yarn test</code>,这时候终端会给出一个地址<code>http://localhost:1234</code>,把地址放到浏览器上，可以看到浏览器的控制台会输出<code>jspang</code>。</p>
-<p>这说明<code>Parcel</code>会自动对<code>index.html</code>中引入的<code>TypeScript</code>文件进行编译，然后打包好后，就可以直接使用了。</p>
-<h4 id="在-TypeScript-中使用-JQuery"><a href="#在-TypeScript-中使用-JQuery" class="headerlink" title="在 TypeScript 中使用 JQuery"></a>在 TypeScript 中使用 JQuery</h4><blockquote>
-<h4 id="引入-JQuery-框架库"><a href="#引入-JQuery-框架库" class="headerlink" title="引入 JQuery 框架库"></a>引入 JQuery 框架库</h4></blockquote>
-<p>直接在<code>index.html</code>加入<code>&lt;script&gt;</code>标签</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">&quot;https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js&quot;</span>&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">interface Girl &#123;</span><br><span class="line">	name: string;</span><br><span class="line">	age : number;</span><br><span class="line">	bust: number;</span><br><span class="line">	waistline ?: number;</span><br><span class="line">&#125;</span><br><span class="line">这样写不会报错：</span><br><span class="line">const getResume = (girl:Girl)=&gt;&#123;</span><br><span class="line">	console.log(girl.name+&#x27;年龄是&#x27;+girl.age)</span><br><span class="line">	console.log(girl.name+&#x27;胸围是&#x27;+girl.bust)</span><br><span class="line">	girl.waistline &amp;&amp; console.log(girl.name+&#x27;腰围是:&#x27;+girl.waistline )</span><br><span class="line">&#125;</span><br><span class="line">输出的内容还是跟原来一样</span><br><span class="line"></span><br><span class="line">如果将girl改为：</span><br><span class="line">const girl=&#123;</span><br><span class="line">	name:&#x27;大脚&quot;,</span><br><span class="line">	age: 18,</span><br><span class="line">	bust: 94,</span><br><span class="line">	waistline: 21</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">再输出打印，就会将waistline打印出来</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p>有了 jquery 框架，就可以在<code>TypeScript</code>文件中进行使用<code>JQuery</code>的语法</p>
-<p>然后在<code>page.ts</code>文件中编写如下代码</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="attr">teacher</span>: string = <span class="string">&quot;jspang&quot;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(teacher);</span><br><span class="line"></span><br><span class="line">$(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="title function_">alert</span>(<span class="string">&quot;jspang&quot;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h5 id="定义一个可以加任何属性"><a href="#定义一个可以加任何属性" class="headerlink" title="定义一个可以加任何属性"></a>定义一个可以加任何属性</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[propname:string]: any;</span><br></pre></td></tr></table></figure>
 
-<p>写完后到终端中输入<code>yarn test</code>进行编译和启动服务。然后在地址栏输入了<code>http://localhost:1234</code>,可以看到程序可以正常输出，也没有任何的报错。</p>
-<blockquote>
-<h4 id="安装-types-jquery-解决方法"><a href="#安装-types-jquery-解决方法" class="headerlink" title="安装 types/jquery(解决方法)"></a>安装 types/jquery(解决方法)</h4></blockquote>
-<p>第一种：就是安装别人写好的文件</p>
-<p>但是在<code>vscode</code>中是会报错的，这时候就需要我们安装类型文件<code>type file</code>,直接可以用 npm 进行安装。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i @types/jquery</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">interface Girl &#123;</span><br><span class="line">	name: string;</span><br><span class="line">	age : number;</span><br><span class="line">	bust: number;</span><br><span class="line">	waistline ?: number;</span><br><span class="line">	[propname:string]: any;</span><br><span class="line">&#125;</span><br><span class="line">const girl=&#123;</span><br><span class="line">	name: &quot;大脚&quot;,</span><br><span class="line">	age: 18,</span><br><span class="line">	bust:94,</span><br><span class="line">	waistline: 21,</span><br><span class="line">	sex:&#x27;女’</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p>第二种:简单粗暴</p>
-<p>还有一种简单粗暴的方法的方式就是直接在<code>page.ts</code>文件的头部加入这句代码：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">declare <span class="keyword">var</span> <span class="attr">$</span>: any;</span><br></pre></td></tr></table></figure>
+<h5 id="添加方法："><a href="#添加方法：" class="headerlink" title="添加方法："></a>添加方法：</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">interface Girl &#123;</span><br><span class="line">	name: string;</span><br><span class="line">	age : number;</span><br><span class="line">	bust: number;</span><br><span class="line">	waistline ?: number;</span><br><span class="line">	[propname:string]: any;</span><br><span class="line">	say(): string;</span><br><span class="line">&#125;</span><br><span class="line">const girl=&#123;</span><br><span class="line">	name:&#x27;大脚&quot;，</span><br><span class="line">	age: 18,</span><br><span class="line">	bust:94,</span><br><span class="line">	waistline: 21,</span><br><span class="line">	sex: &#x27;女&#x27;，</span><br><span class="line">	say()&#123;</span><br><span class="line">		return &quot;欢迎光临，红浪漫洗浴!!”</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p>第三种：自己写一个<code>.d.ts</code>声明文件的类库，如果你用的类库很少见，就需要自己写了。这个写起来还是很麻烦的。 比如 JQuery 就有几十个接口，如果你要写，这个文件会写很长，所以原则就是有别人写好的就直接用，实在没有就用粗暴的方法，如果实在不行，再考虑写<code>.d.ts</code>声明文件。</p>
+<h5 id="接口和类的约束"><a href="#接口和类的约束" class="headerlink" title="接口和类的约束"></a>接口和类的约束</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">class xiaojieJie implements Girl&#123;</span><br><span class="line">	name=&quot;刘英&quot;</span><br><span class="line">	age=18</span><br><span class="line">	bust=90</span><br><span class="line">	say()&#123;</span><br><span class="line">		return &quot;欢迎光临,红浪漫洗浴!!&quot;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;	</span><br></pre></td></tr></table></figure>
 
+<h5 id="接口间的继承"><a href="#接口间的继承" class="headerlink" title="接口间的继承"></a>接口间的继承</h5>
       
     </div>
 
@@ -497,7 +288,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/12/TypeScript%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4-Namespace/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/09/%E5%85%83%E7%BB%84%E7%9A%84%E4%BD%BF%E7%94%A8%E5%92%8C%E7%B1%BB%E5%9E%8B%E7%BA%A6%E6%9D%9F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -511,7 +302,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/11/12/TypeScript%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4-Namespace/" class="post-title-link" itemprop="url">TypeScript命名空间-Namespace</a>
+            <a href="/2020/11/09/%E5%85%83%E7%BB%84%E7%9A%84%E4%BD%BF%E7%94%A8%E5%92%8C%E7%B1%BB%E5%9E%8B%E7%BA%A6%E6%9D%9F/" class="post-title-link" itemprop="url">元组的使用和类型约束</a>
         </h2>
 
         <div class="post-meta">
@@ -521,7 +312,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-11-12 10:37:53" itemprop="dateCreated datePublished" datetime="2020-11-12T10:37:53+08:00">2020-11-12</time>
+              <time title="创建时间：2020-11-09 11:35:27" itemprop="dateCreated datePublished" datetime="2020-11-09T11:35:27+08:00">2020-11-09</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
@@ -555,94 +346,133 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h4 id="初识命名空间-Namespace"><a href="#初识命名空间-Namespace" class="headerlink" title="初识命名空间-Namespace"></a>初识命名空间-Namespace</h4><p>以前的课程都是通过<code>Node</code>来运行代码的，这节课为了有更好的演示效果，我们要在浏览器中运行代码。这就要求我们重新创建一个项目，直接在桌面上建立一个文件夹<code>TSWeb</code>。</p>
-<blockquote>
-<h4 id="搭建浏览器开发环境步骤"><a href="#搭建浏览器开发环境步骤" class="headerlink" title="搭建浏览器开发环境步骤"></a>搭建浏览器开发环境步骤</h4></blockquote>
-<ol>
-<li>建立好文件夹后，打开 VSCode，把文件夹拉到编辑器当中，然后打开终端，运行<code>npm init -y</code>,创建<code>package.json</code>文件。</li>
-<li>生成文件后，我们接着在终端中运行<code>tsc -init</code>,生成<code>tsconfig.json</code>文件。</li>
-<li>新建<code>src</code>和<code>build</code>文件夹，再建一个<code>index.html</code>文件。</li>
-<li>在<code>src</code>目录下，新建一个<code>page.ts</code>文件，这就是我们要编写的<code>ts</code>文件了。</li>
-<li>配置<code>tsconfig.json</code>文件，设置<code>outDir</code>和<code>rootDir</code>(在 15 行左右)，也就是设置需要编译的文件目录，和编译好的文件目录。</li>
-<li>然后编写<code>index.html</code>，引入<code>&lt;script src=&quot;./build/page.js&quot;&gt;&lt;/script&gt;</code>,当让我们现在还没有<code>page.js</code>文件。</li>
-<li>编写<code>page.ts</code>文件，加入一句输出<code>console.log(&#39;jspang.com&#39;)</code>,再在控制台输入<code>tsc</code>,就会生成<code>page.js</code>文件</li>
-<li>再到浏览器中查看<code>index.html</code>文件，如果按<code>F12</code>可以看到<code>jspang.com</code>，说明我们的搭建正常了。</li>
+          <h6 id="类型约束"><a href="#类型约束" class="headerlink" title="类型约束"></a>类型约束</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">// const xiaojiejie : (string | number)[] = [ &#x27;dajiao &#x27; , &#x27;teacher &#x27;, 28]</span><br></pre></td></tr></table></figure>
+
+<h5 id="元组的写法"><a href="#元组的写法" class="headerlink" title="元组的写法"></a>元组的写法</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const xiaojiejie : [string,string,number] = [ &#x27;dajiao&#x27; , &#x27;teacher&#x27;,28]</span><br></pre></td></tr></table></figure>
+
+<h5 id="CSV（现在很少用）"><a href="#CSV（现在很少用）" class="headerlink" title="CSV（现在很少用）"></a>CSV（现在很少用）</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const xiaojiejies : [string, string, number][] =[</span><br><span class="line">	[ &#x27;dajiao &#x27; , &#x27;teacher&quot; ,28],</span><br><span class="line">	[ &#x27;liuying&quot; , &#x27;teacher&#x27; ,18],</span><br><span class="line">	[ &quot; cuihua &#x27; , &#x27;teacher&quot; ,22]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/06/TypeScript%E9%9D%99%E6%80%81%E7%B1%BB%E5%9E%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="winney">
+      <meta itemprop="description" content="Doing is better than saying.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="winney">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/11/06/TypeScript%E9%9D%99%E6%80%81%E7%B1%BB%E5%9E%8B/" class="post-title-link" itemprop="url">TypeScript静态类型</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-11-06 11:22:40" itemprop="dateCreated datePublished" datetime="2020-11-06T11:22:40+08:00">2020-11-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-08-24 18:09:23" itemprop="dateModified" datetime="2022-08-24T18:09:23+08:00">2022-08-24</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/TypeScript/" itemprop="url" rel="index"><span itemprop="name">TypeScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="TypeScript-静态类型"><a href="#TypeScript-静态类型" class="headerlink" title="TypeScript 静态类型"></a>TypeScript 静态类型</h4><h5 id="TypeScript-最主要的特点就是可以定义静态类型"><a href="#TypeScript-最主要的特点就是可以定义静态类型" class="headerlink" title="TypeScript 最主要的特点就是可以定义静态类型"></a>TypeScript 最主要的特点就是可以定义静态类型</h5><p>Static Typing  (一旦定义了就不可以再改变了)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let count : number = 1;   (一旦定义了是number，就是number，不能改变类型。)</span><br><span class="line">count.后面可以跟number的所有方法</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">interface XiaojieJie &#123;</span><br><span class="line">    uname: string, </span><br><span class="line">    age: number</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const xiaohong : XiaojieJie = &#123;</span><br><span class="line">    uname: &#x27;小红&#x27;, </span><br><span class="line">    age: 18</span><br><span class="line">&#125;</span><br><span class="line">console.log(xiaohong.age) </span><br></pre></td></tr></table></figure>
+
+<h4 id="基础静态类型和对象静态类型"><a href="#基础静态类型和对象静态类型" class="headerlink" title="基础静态类型和对象静态类型"></a>基础静态类型和对象静态类型</h4><h5 id="基础静态类型"><a href="#基础静态类型" class="headerlink" title="基础静态类型"></a>基础静态类型</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const count0 : number = 918;</span><br><span class="line">const myName : string = &#x27;jspang&#x27;;</span><br><span class="line">// null , undefinde , booLean, void, symboL</span><br></pre></td></tr></table></figure>
+
+<h5 id="对象静态类型"><a href="#对象静态类型" class="headerlink" title="对象静态类型"></a>对象静态类型</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const xiaojieJie: &#123;</span><br><span class="line">    name : string,</span><br><span class="line">    age : number </span><br><span class="line">&#125; = &#123;</span><br><span class="line">    name : &#x27;大脚&#x27;,</span><br><span class="line">    age:18</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const xiaojiejie : string [] = [&quot;小红&quot;, &quot;小林&quot;, &quot;小星星&quot;]</span><br><span class="line"></span><br><span class="line">class Person&#123;&#125;</span><br><span class="line">const dajiao : Person = new Person();</span><br></pre></td></tr></table></figure>
+<p>定义一个函数，返回值必须是字符串：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const jianXiaoJieJie :()=&gt;string =()=&gt;&#123;return &#x27;大脚&#x27;&#125;</span><br><span class="line">//对象类型，数组类型，类类型，函数类型</span><br></pre></td></tr></table></figure>
+
+<h4 id="类型注解和类型推断"><a href="#类型注解和类型推断" class="headerlink" title="类型注解和类型推断"></a>类型注解和类型推断</h4><h5 id="类型注解-type-annotation"><a href="#类型注解-type-annotation" class="headerlink" title="类型注解 - type annotation"></a>类型注解 - type annotation</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">let count : number ;</span><br><span class="line"></span><br><span class="line">function getTotal(one : number , two : number)&#123;</span><br><span class="line">	return one + two</span><br><span class="line">&#125;</span><br><span class="line">const total = getTotal(1,2);</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="类型推断-type-inference"><a href="#类型推断-type-inference" class="headerlink" title="类型推断 - type inference"></a>类型推断 - type inference</h5><h4 id="函数参数和返回类型的注解"><a href="#函数参数和返回类型的注解" class="headerlink" title="函数参数和返回类型的注解"></a>函数参数和返回类型的注解</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function getTotal(one : number , two : number)&#123;</span><br><span class="line">	return one + two +&#x27;&#x27;</span><br><span class="line">&#125;</span><br><span class="line">const total = getTotal(1,2);  (会有错误提示) （定义的是number类型，返回的是string类型）</span><br><span class="line"></span><br><span class="line">解决方法：对返回做注解</span><br><span class="line">function getTotal(one : number , two : number): number&#123;</span><br><span class="line">	return one + two +&#x27;&#x27;  (这样写，编辑器就会有错误的提示)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">改正：</span><br><span class="line">function getTotal(one : number , two : number): number&#123;</span><br><span class="line">	return one + two </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="void："><a href="#void：" class="headerlink" title="void："></a>void：</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function sayHe1lo(): void&#123;</span><br><span class="line">	console.log(&#x27;Hello worid&#x27;)</span><br><span class="line">	return &quot;&quot;;(如果在函数中，任何地方有return就会报错，就会很直观的知道);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="never："><a href="#never：" class="headerlink" title="never："></a>never：</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">抛出异常：</span><br><span class="line">function errorFuntion() : never&#123;</span><br><span class="line">	throw new Error()</span><br><span class="line">	console.log(&quot;Hello world&quot;)</span><br><span class="line">&#125;</span><br><span class="line">或者死循环：</span><br><span class="line">function forNever() : never&#123;</span><br><span class="line">	while(true)&#123;&#125;</span><br><span class="line">	console.log( &#x27;Hello world &#x27;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function add(&#123;one ,two&#125; : &#123;one : number ,two : number&#125; )&#123;</span><br><span class="line">	return one + two</span><br><span class="line">&#125;</span><br><span class="line">const total = add(fone: 1,two:2&#125;); </span><br><span class="line"></span><br><span class="line">function getNumber(&#123;one&#125; : &#123;one : number&#125;)&#123;</span><br><span class="line">	return one</span><br><span class="line">&#125;</span><br><span class="line">const one = getNumber(&#123;one: 1&#125;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="数组类型注解的方法"><a href="#数组类型注解的方法" class="headerlink" title="数组类型注解的方法"></a>数组类型注解的方法</h4><h5 id="类型推断"><a href="#类型推断" class="headerlink" title="类型推断"></a>类型推断</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const numberArr = [1,2,3]</span><br><span class="line">(鼠标放上去，能够看到推断出是number类型)</span><br></pre></td></tr></table></figure>
+
+<h5 id="类型注释"><a href="#类型注释" class="headerlink" title="类型注释"></a>类型注释</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const numberArr : number[] = [1,2,3];</span><br><span class="line">const stringArr : string[] = [&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;];</span><br><span class="line">const undefinedArr : undefined[] = [undefined, undefined];</span><br><span class="line">const arr : (number | string)[] = [1, &#x27;string&#x27;, 2];</span><br></pre></td></tr></table></figure>
+
+<h5 id="对象数组"><a href="#对象数组" class="headerlink" title="对象数组"></a>对象数组</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const xiaojiejies :&#123;name : string, age:number&#125;[] =[</span><br><span class="line">	&#123;name: &#x27;刘英&#x27;, age: 18&#125;,</span><br><span class="line">	&#123;name : &#x27;谢大脚&quot;, age: 28&#125;,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<h6 id="其他形式写法："><a href="#其他形式写法：" class="headerlink" title="其他形式写法："></a>其他形式写法：</h6><ol>
+<li><h6 id="type-alias-类型别名"><a href="#type-alias-类型别名" class="headerlink" title="type alias 类型别名"></a>type alias 类型别名</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">type Lady = &#123;name: string,age: number&#125;</span><br><span class="line">const xiaojiejies : Lady[] [</span><br><span class="line">	&#123;name:&#x27;刘英&#x27;, age: 18&#125;,</span><br><span class="line">	&#123;name : &#x27;谢大脚&quot; , age:28&#125;,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+</li>
+<li><h6 id="类"><a href="#类" class="headerlink" title="类"></a>类</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">class Madam &#123;</span><br><span class="line">	name: string ;</span><br><span class="line">	age : number;</span><br><span class="line">&#125;</span><br><span class="line">const xiaojiejies : Madam[] = [</span><br><span class="line">	&#123;name: &#x27;刘英&#x27;, age: 18&#125;,</span><br><span class="line">	&#123;name: &#x27;谢大脚&quot;, age: 28&#125;,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
 </ol>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;./build/page.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="元组的使用和类型约束"><a href="#元组的使用和类型约束" class="headerlink" title="元组的使用和类型约束"></a>元组的使用和类型约束</h4><h5 id="类型约束"><a href="#类型约束" class="headerlink" title="类型约束"></a>类型约束</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">// const xiaojiejie : (string | number)[] = [ &#x27;dajiao &#x27; , &#x27;teacher &#x27;, 28]</span><br></pre></td></tr></table></figure>
 
-<blockquote>
-<h4 id="没有命名空间时的问题"><a href="#没有命名空间时的问题" class="headerlink" title="没有命名空间时的问题"></a>没有命名空间时的问题</h4></blockquote>
-<p>为了你更好的理解，先写一下这样代码，用类的形式在<code>index.html</code>中实现<code>header</code>,<code>content</code>和<code>Footer</code>部分，类似我们常说的模板。</p>
-<p>在<code>page.ts</code>文件里，写出下面的代码：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Header</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> elem = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&quot;div&quot;</span>);</span><br><span class="line">    elem.<span class="property">innerText</span> = <span class="string">&quot;This is Header&quot;</span>;</span><br><span class="line">    <span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">appendChild</span>(elem);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Content</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> elem = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&quot;div&quot;</span>);</span><br><span class="line">    elem.<span class="property">innerText</span> = <span class="string">&quot;This is Content&quot;</span>;</span><br><span class="line">    <span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">appendChild</span>(elem);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Footer</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> elem = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&quot;div&quot;</span>);</span><br><span class="line">    elem.<span class="property">innerText</span> = <span class="string">&quot;This is Footer&quot;</span>;</span><br><span class="line">    <span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">appendChild</span>(elem);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Page</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">Header</span>();</span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">Content</span>();</span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">Footer</span>();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="元组的写法"><a href="#元组的写法" class="headerlink" title="元组的写法"></a>元组的写法</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const xiaojiejie : [string,string,number] = [ &#x27;dajiao&#x27; , &#x27;teacher&#x27;,28]</span><br></pre></td></tr></table></figure>
 
-<p>写完后我们用<code>tsc</code>进行编译一次，然后修改<code>index.html</code>文件，在<code>&lt;body&gt;</code>标签里引入<code>&lt;script&gt;</code>标签，并实例化<code>Page</code>，代码如下:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"><span class="keyword">new</span> <span class="title class_">Page</span>();</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
-
-<p>这时候再到浏览器进行预览，就可以看到对应的页面被展现出来了。看起来没有什么问题，但是有经验的程序员就会发现，这样写全部都是全局变量（通过查看<code>./build/page.js</code>文件可以看出全部都是<code>var</code>声明的变量）。<strong>过多的全局变量会让我们代码变的不可维护。</strong></p>
-<p>这时候你在浏览器的控制台(<code>Console</code>)中，分别输入<code>Header</code>、<code>Content</code>、<code>Footer</code>和<code>Page</code>都时可以拿到对应的变量的,说明他们全都是全局变量。</p>
-<p>其实你理想的是，只要有<code>Page</code>这个全局变量就足够了，剩下的可以模块化封装起来，不暴露到全局。</p>
-<blockquote>
-<h4 id="命名空间的使用"><a href="#命名空间的使用" class="headerlink" title="命名空间的使用"></a>命名空间的使用</h4></blockquote>
-<p><code>命名空间</code>这个语法，很类似编程中常说的模块化思想，比如<code>webpack</code>打包时，每个模块有自己的环境，不会污染其他模块,不会有全局变量产生。命名空间就跟这个很类似，注意这里是类似，而不是相同。</p>
-<p>命名空间声明的关键词是<code>namespace</code> 比如声明一个<code>namespace Home</code>,需要暴露出去的类，可以使用<code>export</code>关键词，这样只有暴漏出去的类是全局的，其他的不会再生成全局污染了。修改后的代码如下：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">namespace <span class="title class_">Home</span> &#123;</span><br><span class="line">  <span class="keyword">class</span> <span class="title class_">Header</span> &#123;</span><br><span class="line">    <span class="title function_">constructor</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="keyword">const</span> elem = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&quot;div&quot;</span>);</span><br><span class="line">      elem.<span class="property">innerText</span> = <span class="string">&quot;This is Header&quot;</span>;</span><br><span class="line">      <span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">appendChild</span>(elem);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">class</span> <span class="title class_">Content</span> &#123;</span><br><span class="line">    <span class="title function_">constructor</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="keyword">const</span> elem = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&quot;div&quot;</span>);</span><br><span class="line">      elem.<span class="property">innerText</span> = <span class="string">&quot;This is Content&quot;</span>;</span><br><span class="line">      <span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">appendChild</span>(elem);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">class</span> <span class="title class_">Footer</span> &#123;</span><br><span class="line">    <span class="title function_">constructor</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="keyword">const</span> elem = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&quot;div&quot;</span>);</span><br><span class="line">      elem.<span class="property">innerText</span> = <span class="string">&quot;This is Footer&quot;</span>;</span><br><span class="line">      <span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">appendChild</span>(elem);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">export</span> <span class="keyword">class</span> <span class="title class_">Page</span> &#123;</span><br><span class="line">    <span class="title function_">constructor</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="keyword">new</span> <span class="title class_">Header</span>();</span><br><span class="line">      <span class="keyword">new</span> <span class="title class_">Content</span>();</span><br><span class="line">      <span class="keyword">new</span> <span class="title class_">Footer</span>();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>TS 代码写完后，再到<code>index.html</code>文件中进行修改，用命名空间的形式进行调用，就可以正常了。 写完后，记得用<code>tsc</code>编译一下，当然你也可以使用<code>tsc -w</code>进行监视了，只要有改变就会进行重新编译。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="title class_">Home</span>.<span class="title class_">Page</span>();</span><br></pre></td></tr></table></figure>
-
-<p>现在再到浏览器中进行查看，可以看到现在就只有<code>Home.Page</code>是在控制台可以得到的，其他的<code>Home.Header</code>…这些都是得不到的，说明只有<code>Home.Page</code>是全局的，其他的都是模块化私有的。</p>
-<p>这就是 TypeScript 给我们提供的类似模块化开发的语法，它的好处就是让全局变量减少了很多，实现了基本的封装，减少了全局变量的污染。</p>
-<h4 id="深入命名空间-Namespace"><a href="#深入命名空间-Namespace" class="headerlink" title="深入命名空间-Namespace"></a>深入命名空间-Namespace</h4><blockquote>
-<h4 id="用命名空间实现组件化"><a href="#用命名空间实现组件化" class="headerlink" title="用命名空间实现组件化"></a>用命名空间实现组件化</h4></blockquote>
-<p>在<code>src</code>目录下新建一个文件<code>components.ts</code>，编写代码如下：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">namespace <span class="title class_">Components</span> &#123;</span><br><span class="line">  <span class="keyword">export</span> <span class="keyword">class</span> <span class="title class_">Header</span> &#123;</span><br><span class="line">    <span class="title function_">constructor</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="keyword">const</span> elem = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&quot;div&quot;</span>);</span><br><span class="line">      elem.<span class="property">innerText</span> = <span class="string">&quot;This is Header&quot;</span>;</span><br><span class="line">      <span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">appendChild</span>(elem);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">export</span> <span class="keyword">class</span> <span class="title class_">Content</span> &#123;</span><br><span class="line">    <span class="title function_">constructor</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="keyword">const</span> elem = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&quot;div&quot;</span>);</span><br><span class="line">      elem.<span class="property">innerText</span> = <span class="string">&quot;This is Content&quot;</span>;</span><br><span class="line">      <span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">appendChild</span>(elem);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">export</span> <span class="keyword">class</span> <span class="title class_">Footer</span> &#123;</span><br><span class="line">    <span class="title function_">constructor</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="keyword">const</span> elem = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&quot;div&quot;</span>);</span><br><span class="line">      elem.<span class="property">innerText</span> = <span class="string">&quot;This is Footer&quot;</span>;</span><br><span class="line">      <span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">appendChild</span>(elem);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这里需要注意的是，我每个类(<code>class</code>)都使用了<code>export</code>导出，导出后就可以在<code>page.ts</code>中使用这些组件了。比如这样使用-代码如下。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">namespace <span class="title class_">Home</span> &#123;</span><br><span class="line">  <span class="keyword">export</span> <span class="keyword">class</span> <span class="title class_">Page</span> &#123;</span><br><span class="line">    <span class="title function_">constructor</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="keyword">new</span> <span class="title class_">Components</span>.<span class="title class_">Header</span>();</span><br><span class="line">      <span class="keyword">new</span> <span class="title class_">Components</span>.<span class="title class_">Content</span>();</span><br><span class="line">      <span class="keyword">new</span> <span class="title class_">Components</span>.<span class="title class_">Footer</span>();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这时候你可以使用<code>tsc</code>进行重新编译，但在预览时，你会发现还是会报错，找不到<code>Components</code>,想解决这个问题，我们必须要在<code>index.html</code>里进行引入<code>components.js</code>文件。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">&quot;./build/page.js&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;./build/components.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<h4 id="多文件编译成一个文件"><a href="#多文件编译成一个文件" class="headerlink" title="多文件编译成一个文件"></a>多文件编译成一个文件</h4></blockquote>
-<p>直接打开<code>tsconfig.json</code>文件，然后找到<code>outFile</code>配置项，这个就是用来生成一个文件的设置，但是如果设置了它，就不再支持<code>&quot;module&quot;:&quot;commonjs&quot;</code>设置了，我们需要把它改成<code>&quot;module&quot;:&quot;amd&quot;</code>,然后在去掉对应的<code>outFile</code>注释，设置成下面的样子。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;outFile&quot;</span>: <span class="string">&quot;./build/page.js&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>配置好后，删除掉<code>build</code>下的<code>js</code>文件，然后用<code>tsc</code>进行再次编译。</p>
-<p>然后删掉<code>index.html</code>文件中的<code>component.js</code>,在浏览器里还是可以正常运行的。</p>
-<blockquote>
-<h4 id="子命名空间"><a href="#子命名空间" class="headerlink" title="子命名空间"></a>子命名空间</h4></blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">namespace <span class="title class_">Components</span> &#123;</span><br><span class="line">  <span class="keyword">export</span> namespace <span class="title class_">SubComponents</span> &#123;</span><br><span class="line">    <span class="keyword">export</span> <span class="keyword">class</span> <span class="title class_">Test</span> &#123;&#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">//someting ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>写完后在控制台再次编辑<code>tsc</code>，然后你在浏览器中也是可以查到这个命名空间的<code>Components.SubComponents.Test</code>(需要刷新页面后才会显示)。</p>
-<h4 id="TypeScript-如何使用-import-语法"><a href="#TypeScript-如何使用-import-语法" class="headerlink" title="TypeScript 如何使用 import 语法"></a>TypeScript 如何使用 import 语法</h4><blockquote>
-<h4 id="修改-components-ts-文件"><a href="#修改-components-ts-文件" class="headerlink" title="修改 components.ts 文件"></a>修改 components.ts 文件</h4></blockquote>
-<p>现在去掉<code>components.ts</code>里的<code>namespace</code>命名空间代码，写成 <code>ES6</code> 的 <code>export</code> 导出模式。代码如下：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> <span class="title class_">Header</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> elem = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&quot;div&quot;</span>);</span><br><span class="line">    elem.<span class="property">innerText</span> = <span class="string">&quot;This is Header&quot;</span>;</span><br><span class="line">    <span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">appendChild</span>(elem);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> <span class="title class_">Content</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> elem = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&quot;div&quot;</span>);</span><br><span class="line">    elem.<span class="property">innerText</span> = <span class="string">&quot;This is Content&quot;</span>;</span><br><span class="line">    <span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">appendChild</span>(elem);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> <span class="title class_">Footer</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> elem = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&quot;div&quot;</span>);</span><br><span class="line">    elem.<span class="property">innerText</span> = <span class="string">&quot;This is Footer&quot;</span>;</span><br><span class="line">    <span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">appendChild</span>(elem);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>现在三个类就都已经用<code>export</code>导出了，也就是说可以实现用<code>import</code>进行引入了。</p>
-<blockquote>
-<h4 id="修改-page-ts-文件"><a href="#修改-page-ts-文件" class="headerlink" title="修改 page.ts 文件"></a>修改 page.ts 文件</h4></blockquote>
-<p>来到<code>page.ts</code>文件，去掉<code>namespace</code>命名空间对应的代码，然后使用 <code>import</code> 语法进行导入<code>Header</code>、<code>Content</code>和<code>Footer</code>,代码如下：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Header</span>, <span class="title class_">Content</span>, <span class="title class_">Footer</span> &#125; <span class="keyword">from</span> <span class="string">&quot;./components&quot;</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> <span class="title class_">Page</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">Header</span>();</span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">Content</span>();</span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">Footer</span>();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>现在看起来确实和工作中写的代码非常类似了。这时候可以使用<code>tsc</code>进行编译。然后可以看到编译好的代码都是<code>define</code>开头的(这是 amd 规范的代码，不能直接在浏览器中运行，可以在 Node 中直接运行)，这种代码在浏览器中是没办法被直接运行的，需要其他库(<code>require.js</code>)的支持。</p>
-<blockquote>
-<h4 id="引入-require-js"><a href="#引入-require-js" class="headerlink" title="引入 require.js"></a>引入 require.js</h4></blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">&quot;https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.js&quot;</span>&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
-<p>这时候就可以解析<code>define</code>这样的语法了。然后把<code>page.ts</code>中加入<code>default</code>关键字，如果不加是没办法直接引用到的。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Header</span>, <span class="title class_">Content</span>, <span class="title class_">Footer</span> &#125; <span class="keyword">from</span> <span class="string">&quot;./components&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">class</span> <span class="title class_">Page</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">Header</span>();</span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">Content</span>();</span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">Footer</span>();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这时候再用<code>tsc</code>进行编译一下，你会发现还是又问题。因为使用<code>export default</code>这种形式的语法，需要在<code>html</code>里用<code>require</code>来进行引入。</p>
-<blockquote>
-<h4 id="require-方式引入"><a href="#require-方式引入" class="headerlink" title="require 方式引入"></a>require 方式引入</h4></blockquote>
-<p>因为你已经加入了<code>require.js</code>这个库，所以现在可以直接在代码中使用<code>require</code>了。具体代码如下</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="built_in">require</span>([<span class="string">&quot;page&quot;</span>], <span class="keyword">function</span> (<span class="params">page</span>) &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="keyword">new</span> page.<span class="title function_">default</span>();</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    &#125;);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
-
-<p>当我们有了<code>webpack</code>和<code>Parcel</code>的时候就不会这么麻烦，这些都交给打包工具来处理就好了。</p>
-
+<h5 id="CSV（现在很少用）"><a href="#CSV（现在很少用）" class="headerlink" title="CSV（现在很少用）"></a>CSV（现在很少用）</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const xiaojiejies : [string, string, number][] =[</span><br><span class="line">	[ &#x27;dajiao &#x27; , &#x27;teacher&quot; ,28],</span><br><span class="line">	[ &#x27;liuying&quot; , &#x27;teacher&#x27; ,18],</span><br><span class="line">	[ &quot; cuihua &#x27; , &#x27;teacher&quot; ,22]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -728,20 +558,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">130</span>
+          <span class="site-state-item-count">132</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">55</span>
+        <span class="site-state-item-count">54</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">76</span>
+        <span class="site-state-item-count">78</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

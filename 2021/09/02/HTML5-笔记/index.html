@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="HTML5新特性 拖放(Drag and drop ) API. 语义化更好的内容标签 (header、nav、 footer、aside、article、 section )。 音频、视频 (audio、 video) API 画布( Canvas ) API. 地理(Geolocation) API. 本地离线存储（localStorage），即长期存储数据，浏览器关闭后数据不丢失。 会会话存">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTML5-笔记">
+<meta property="og:url" content="http://example.com/2021/09/02/HTML5-%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="winney">
+<meta property="og:description" content="HTML5新特性 拖放(Drag and drop ) API. 语义化更好的内容标签 (header、nav、 footer、aside、article、 section )。 音频、视频 (audio、 video) API 画布( Canvas ) API. 地理(Geolocation) API. 本地离线存储（localStorage），即长期存储数据，浏览器关闭后数据不丢失。 会会话存">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-09-02T06:55:04.000Z">
+<meta property="article:modified_time" content="2022-09-02T08:27:02.900Z">
+<meta property="article:author" content="winney">
+<meta property="article:tag" content="HTML5">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2021/09/02/HTML5-%E7%AC%94%E8%AE%B0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>HTML5-笔记 | winney</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">winney</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">It is never too old to learn.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <img alt="winney" src="/images/blog-head.jpg">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/02/HTML5-%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="winney">
+      <meta itemprop="description" content="Doing is better than saying.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="winney">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          HTML5-笔记
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-09-02 14:55:04" itemprop="dateCreated datePublished" datetime="2021-09-02T14:55:04+08:00">2021-09-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-09-02 16:27:02" itemprop="dateModified" datetime="2022-09-02T16:27:02+08:00">2022-09-02</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h4 id="HTML5新特性"><a href="#HTML5新特性" class="headerlink" title="HTML5新特性"></a>HTML5新特性</h4><ul>
+<li>拖放(Drag and drop ) API.</li>
+<li>语义化更好的内容标签 (header、nav、 footer、aside、article、 section )。</li>
+<li>音频、视频 (audio、 video) API</li>
+<li>画布( Canvas ) API.</li>
+<li>地理(Geolocation) API.</li>
+<li>本地离线存储（localStorage），即长期存储数据，浏览器关闭后数据不丢失。</li>
+<li>会会话存储(sessionStorage），即数据在浏览器关闲后自动删除。</li>
+<li>表单控件包括 calendar、date、time 、 email、url、 search</li>
+<li>新的技术包括 webworker、 websocket、Geolocation.</li>
+</ul>
+<h4 id="HTML5-新增的API"><a href="#HTML5-新增的API" class="headerlink" title="HTML5 新增的API"></a>HTML5 新增的API</h4><p>新增的功能 API 包括 Media API、Text Track API、 Application Cache API、 User Interaction、Data Transfer API、 Command API.、Constraint Validation API、History API.</p>
+<h4 id="HTML5移除元素"><a href="#HTML5移除元素" class="headerlink" title="HTML5移除元素"></a>HTML5移除元素</h4><p>移除的元素如下：</p>
+<ul>
+<li>纯表现的元素，包括 basefont、big、center、 font、 s、 strike、tt、 u</li>
+<li>对可用性产生负面影响的元素，包括 frame、frameset、 Noframes</li>
+</ul>
+<h4 id="新的HTML5-文档类型和字符集"><a href="#新的HTML5-文档类型和字符集" class="headerlink" title="新的HTML5 文档类型和字符集"></a>新的HTML5 文档类型和字符集</h4><p>HTML5文档类型是<code>&lt;!doctype html&gt;</code><br>HTML5 使用的宇符集<code>&lt;meta charset=&quot;UTF-8&quot;&gt;</code></p>
+<h4 id="HTML5-的离线存储"><a href="#HTML5-的离线存储" class="headerlink" title="HTML5 的离线存储"></a>HTML5 的离线存储</h4><ul>
+<li>localStorage，可长期存储数据，即浏览器关闭后数据不丢失。</li>
+<li>sessionStorage，数据在浏览器关闭后自动删除。</li>
+</ul>
+<h4 id="HTML5-的form关闭自动补全功能"><a href="#HTML5-的form关闭自动补全功能" class="headerlink" title="HTML5 的form关闭自动补全功能"></a>HTML5 的form关闭自动补全功能</h4><p>将不想要提示的form 元素下的 input 元素的autocomplete 属性设置为off.</p>
+<h4 id="HTML5-页面中嵌入音频"><a href="#HTML5-页面中嵌入音频" class="headerlink" title="HTML5 页面中嵌入音频"></a>HTML5 页面中嵌入音频</h4><blockquote>
+<p>支持的格式包括 MP3、 Wav 和Ogg等</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;audio controls&gt;</span><br><span class="line">  &lt;source sr=&quot;icketang.mp3&quot; type=&quot;audio/mpeg&quot;&gt;</span><br><span class="line">  Your browser does&#x27;nt support audio embedding feature</span><br><span class="line">&lt;/audio&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="HTML5-页面中嵌入视频"><a href="#HTML5-页面中嵌入视频" class="headerlink" title="HTML5 页面中嵌入视频"></a>HTML5 页面中嵌入视频</h4><blockquote>
+<p>支持的格式包括MP4、 WebM和Ogg 等</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;video width=&quot;450&quot; height=&quot;340&quot; controls&gt;</span><br><span class="line">  &lt;source src=&quot;icketang.mp4&quot; type=&quot;video/mp4&quot;&gt;</span><br><span class="line">  Your browser does&#x27;nt support video embedding feature.</span><br><span class="line">&lt;/video&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="HTML5-引入新的表单属性"><a href="#HTML5-引入新的表单属性" class="headerlink" title="HTML5 引入新的表单属性"></a>HTML5 引入新的表单属性</h4><p>datalist、datetime、output、keygen、date、month、week、time、number、 range、 emailurl.</p>
+<h4 id="HTML5-应用缓存和常规的-HTML-浏览器缓存的差别"><a href="#HTML5-应用缓存和常规的-HTML-浏览器缓存的差别" class="headerlink" title="HTML5 应用缓存和常规的 HTML 浏览器缓存的差别"></a>HTML5 应用缓存和常规的 HTML 浏览器缓存的差别</h4><p>HTML5应用缓存最关键的就是支持离线应用，可荻取少数或者全部网站内容包括 HTTML、CSS、图像和 JavaScript 脚本 并存在本地。该特性提升了网站的性能，可通过如下方式实现</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;!doctype html&gt;</span><br><span class="line">  &lt;html manifest=&quot;example.appcache&quot;&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>与传统的浏览器缓存比较，该特性并不强制要求用户访问网站</p>
+</blockquote>
+<blockquote>
+<p>HTML5 没有使用 SGML 或者 XHTML，它是一个全新的类型，因此不需要参考DTD。对于HTML5，仅须放置下面的文档类型代码，让浏览器识别HTML5 文档。<br>如果不放入＜！doctype html&gt;标签，HITML5 不会工作。浏览器将不能识别出它是HTML文档，同时HTMLS 的标签将不能正常工作。</p>
+</blockquote>
+<h4 id="WebSocket"><a href="#WebSocket" class="headerlink" title="WebSocket"></a>WebSocket</h4><p>它是 Web 应用程序的传输协议，提供了双向的、按序到达的数据流。它是HTML5新增的协议，webSocket 的连接是持久的，它在客户端和服务器之间保特双工连接，服务器的更新可以及时推送到客户端，而不需要客户端以一定的时间间隔去轮询</p>
+<h4 id="实现浏览器内多个标签页之间的通信"><a href="#实现浏览器内多个标签页之间的通信" class="headerlink" title="实现浏览器内多个标签页之间的通信"></a>实现浏览器内多个标签页之间的通信</h4><p>在标签页之间，调用 localstorge、cookies 等数据存储，可以实现标签页之问的通信</p>
+<h4 id="localStorage-和cookie-的区别"><a href="#localStorage-和cookie-的区别" class="headerlink" title="localStorage 和cookie 的区别"></a>localStorage 和cookie 的区别</h4><p>​        localStorage 的概念和 cookie 相似，区别是 localStorage 是为了更大容量的存储设计的。cookie 的大小是受限的，并且每次请求一个新页面时，cookie 都会被发送过去，这样无形中浪费了带宽。另外，cookie 还需要指定作用域，不可以跨域调用。<br>​        除此之外，localStorage 拥有 setltem、getltem、removeltem、clear 等方法，cookie 则需要前端开发者自己封装 setCookie 和getcookie。但cookie 也是不可或缺的，因为 cookie的作用是与服务器进行交互，并且还是 HTTP 规范的一部分，而localStorage 仅因为是为了在本地“存储”数据而已，无法跨浏览器使用。</p>
+<h4 id="cookie-的特点"><a href="#cookie-的特点" class="headerlink" title="cookie 的特点"></a>cookie 的特点</h4><p>cookie 虽然为持久保存客户湍数据提供了方便，分担了服务器存储的负担，但是有以下局限性。</p>
+<ol>
+<li>每个特定的域名下最多生成20个 cookie。</li>
+<li>IE6 或更低版本最多有20个cookie。</li>
+<li>I7和之后的版本最多可以有50个 cookie.</li>
+<li> Firefox 最多可以有50个cookie。</li>
+<li>Chrome 和 Safari 没有做硬性限制。</li>
+</ol>
+<p>IE和Opera 会清理近期最少使用的cookie， Firefox 会随机清理 cookie.<br>cookie 最大为 4096字节，为了兼容性，一般不能超过 4095 字节。<br>IE提供了一种存储方式，可以让用户数据持久化，叫作userdata，从IE5.0 就开始支持此功能。每块数据最多 128KB，每个域名下最多1MB。这个持久化数据放在缓存中，如果果缓存没有被清理，就会一直存在。<br>优点如下：</p>
+<ol>
+<li>通过良好的编程，控制保存在cookie 中的 session 对象的大小</li>
+<li>通过加密和安全传输技术（SSL)，降低cookie被破解的可能性。</li>
+<li>只在cookie 中存放不敏感数据，即使被盗也不会有重大损失。</li>
+<li>控制cookie 的生命周期，使之不会永远有效。数据偷盗者很可能得到一个过期的cookie.</li>
+</ol>
+<p>缺点如下：</p>
+<ol>
+<li>scookie” 的数量和长度有限制。每个domain 最多只能有20条cookie，每个cookie 的长度不能超过 4KB，否则会被截掉。</li>
+<li>安全性问题。如果cookie 被别人拦截了，就可以取得所有的session 信息。即使加密也于事无补，因为拦截者并不需要知道cookie 的意义，他只要原样转发 cookie就可以达到目的。</li>
+<li>有些状态不可能保存在客产端。例如，为了防止重复提交表单，我们需要在服务器端保存一个计数器。如果把这个计数器保存在客户端，那么它起不到任何作用。</li>
+</ol>
+<h4 id="cookie-和session-的区别"><a href="#cookie-和session-的区别" class="headerlink" title="cookie 和session 的区别"></a>cookie 和session 的区别</h4><ol>
+<li>cookie 数据存放在客户的浏览器上，session 数据存放在服务器上。</li>
+<li>cookie 不是很安全，别人可以分析存放在本地的cookie 并进行 cookie 欺骗。考虑到安全问题应当使用 session。</li>
+<li>session 会在一定时问内保存在服务器上。当访问增多时，会占用较多服务器的资源。为了减轻服务器的负担，应当使用 cookie。</li>
+<li>单个cookie 保存的数据不能超过 4KB，很多浏览器都限制一个站,点最多保存20 个cookie.</li>
+</ol>
+<blockquote>
+<p>建议可以将登录信息等重要信息存放在session 中，其他信息（如果需要保留）可以存放在cookie 中</p>
+</blockquote>
+<h4 id="SVG"><a href="#SVG" class="headerlink" title="SVG"></a>SVG</h4><p>SVG即可缩放矢量因形(Scalable Vector Graphics )。它是基于文本的图形语言，使用文本、线条、点等来绘制图像，这使得它轻便、显示迅速</p>
+<h4 id="Canvas-和-SVG-的区别"><a href="#Canvas-和-SVG-的区别" class="headerlink" title="Canvas 和 SVG 的区别"></a>Canvas 和 SVG 的区别</h4><ol>
+<li>一旦 Canvas 绘制完成将不能访问像素或操作它；任何使用SVG绘制的形状都能被记忆和操作，可以被浏览器再次显示。</li>
+<li>Canvas 对绘制动画和游戏非常有利；SVG对创建图形（如CAD）非常有利</li>
+<li>因为不需要记住以后事情，所以 Canvas 运行更快；因为为了之后的操作，SVG需要记录坐标，所以运行比较缓慢。</li>
+<li>在Canvas 中不能为绘制对象邬定相关事件；在SVG 中可以为绘制对象绑定相关事件</li>
+<li>Canvas绘制出的是位图，因此与分辨率有关；SVG绘制出的是矢量图，因此与分辨率无关。</li>
+</ol>
+<h4 id="HTML5-中实现应用缓存"><a href="#HTML5-中实现应用缓存" class="headerlink" title="HTML5 中实现应用缓存"></a>HTML5 中实现应用缓存</h4><p>首先，需要指定”manifest” 文件，“manifest”文件帮助你定义缓存如何工作。</p>
+<p>“manifest”文件的结构：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">CACHE MANIFEST</span><br><span class="line"># version 1.0</span><br><span class="line">/demo.css</span><br><span class="line">/demo.js</span><br><span class="line">/demo.png</span><br><span class="line">所有manifest 文件都以&quot;CACHE MANIFEST&quot;语句开始。</span><br><span class="line">＃(散列标签）有助于提供缓存文件的版本。</span><br><span class="line">manifest 文件的内容类型应是&quot;text/cache-manifest&quot;</span><br></pre></td></tr></table></figure>
+
+<p>创建一个缓存manifest 文件后，在HTML 页面中提供manifest 链接，代码如下所示。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;html manifest=&quot;icketang.appcache&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>第一次运行以上文件时，它会添加到浏览器应用缓存中，在服务器宕机时，页面从应用缓存中获取数据</p>
+<h4 id="刷新浏览器的应用缓存"><a href="#刷新浏览器的应用缓存" class="headerlink" title="刷新浏览器的应用缓存"></a>刷新浏览器的应用缓存</h4><p>应用缓存通过变更“#”标签后的版本号来刷新，如下所示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">CACHE MANIFEST</span><br><span class="line"># version 2.0</span><br><span class="line">/icketang.css</span><br><span class="line">/icketang. js</span><br><span class="line">/icketang.png</span><br><span class="line">NETWORK</span><br><span class="line">login.php</span><br></pre></td></tr></table></figure>
+
+<h4 id="应用缓存中的回退"><a href="#应用缓存中的回退" class="headerlink" title="应用缓存中的回退"></a>应用缓存中的回退</h4><p>应用缓存中的回退会帮助你指定在服务器不可访问时，品示某文件。例如在下面的manifest 文件中，如果用户输入了“/home”，同时服务器不可到达，“404.html”文件应送达</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">FAIIBACK:</span><br><span class="line">/home/ /404. html</span><br></pre></td></tr></table></figure>
+
+<h4 id="应用缓存中网络命令的作用"><a href="#应用缓存中网络命令的作用" class="headerlink" title="应用缓存中网络命令的作用"></a>应用缓存中网络命令的作用</h4><p>网络命令描述不需要缓存的文件，例如以下代码中”login.php”始终都不应该缓存或者离线访问。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NEIWORK:</span><br><span class="line">login.php</span><br></pre></td></tr></table></figure>
+
+<h4 id="WebSql"><a href="#WebSql" class="headerlink" title="WebSql"></a>WebSql</h4><p>Websql 是一个在浏览器客户端的结构关系数据库，是浏览器内的本地 RDBMS（关系型数据库管理系统），可以使用SQL 查询。</p>
+<blockquote>
+<p>websql 不是HTML5 的一个规范，这个规范是基于 SOLite</p>
+</blockquote>
+<h4 id="HTML5-实现跨域"><a href="#HTML5-实现跨域" class="headerlink" title="HTML5 实现跨域"></a>HTML5 实现跨域</h4><p>在服务器端设置允许在其他域名下访问，例如允许所有域名访问以下内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">response.setHeader(&quot;Access-Control-Allow-Origin&quot;,</span><br><span class="line">response.setHeader(&quot;Access-Control-Allow-Methods&quot;,&quot;pOST&quot;)</span><br><span class="line">response. setHeader (&quot;Access-Control-Allow-Headers&quot; &quot;x-requested-with, content-type&quot;) ;</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/HTML5/" rel="tag"># HTML5</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/06/23/%E7%AC%94%E8%AE%B0/" rel="prev" title="笔记">
+      <i class="fa fa-chevron-left"></i> 笔记
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/09/10/%E4%BC%98%E5%8C%96JS%E4%BB%A3%E7%A0%81%E7%9A%8434%E7%A7%8D%E6%96%B9%E6%B3%95/" rel="next" title="优化JS代码的34种方法">
+      优化JS代码的34种方法 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#HTML5%E6%96%B0%E7%89%B9%E6%80%A7"><span class="nav-number">1.</span> <span class="nav-text">HTML5新特性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HTML5-%E6%96%B0%E5%A2%9E%E7%9A%84API"><span class="nav-number">2.</span> <span class="nav-text">HTML5 新增的API</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HTML5%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0"><span class="nav-number">3.</span> <span class="nav-text">HTML5移除元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B0%E7%9A%84HTML5-%E6%96%87%E6%A1%A3%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%AD%97%E7%AC%A6%E9%9B%86"><span class="nav-number">4.</span> <span class="nav-text">新的HTML5 文档类型和字符集</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HTML5-%E7%9A%84%E7%A6%BB%E7%BA%BF%E5%AD%98%E5%82%A8"><span class="nav-number">5.</span> <span class="nav-text">HTML5 的离线存储</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HTML5-%E7%9A%84form%E5%85%B3%E9%97%AD%E8%87%AA%E5%8A%A8%E8%A1%A5%E5%85%A8%E5%8A%9F%E8%83%BD"><span class="nav-number">6.</span> <span class="nav-text">HTML5 的form关闭自动补全功能</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HTML5-%E9%A1%B5%E9%9D%A2%E4%B8%AD%E5%B5%8C%E5%85%A5%E9%9F%B3%E9%A2%91"><span class="nav-number">7.</span> <span class="nav-text">HTML5 页面中嵌入音频</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HTML5-%E9%A1%B5%E9%9D%A2%E4%B8%AD%E5%B5%8C%E5%85%A5%E8%A7%86%E9%A2%91"><span class="nav-number">8.</span> <span class="nav-text">HTML5 页面中嵌入视频</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HTML5-%E5%BC%95%E5%85%A5%E6%96%B0%E7%9A%84%E8%A1%A8%E5%8D%95%E5%B1%9E%E6%80%A7"><span class="nav-number">9.</span> <span class="nav-text">HTML5 引入新的表单属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HTML5-%E5%BA%94%E7%94%A8%E7%BC%93%E5%AD%98%E5%92%8C%E5%B8%B8%E8%A7%84%E7%9A%84-HTML-%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98%E7%9A%84%E5%B7%AE%E5%88%AB"><span class="nav-number">10.</span> <span class="nav-text">HTML5 应用缓存和常规的 HTML 浏览器缓存的差别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#WebSocket"><span class="nav-number">11.</span> <span class="nav-text">WebSocket</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E6%B5%8F%E8%A7%88%E5%99%A8%E5%86%85%E5%A4%9A%E4%B8%AA%E6%A0%87%E7%AD%BE%E9%A1%B5%E4%B9%8B%E9%97%B4%E7%9A%84%E9%80%9A%E4%BF%A1"><span class="nav-number">12.</span> <span class="nav-text">实现浏览器内多个标签页之间的通信</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#localStorage-%E5%92%8Ccookie-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">13.</span> <span class="nav-text">localStorage 和cookie 的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cookie-%E7%9A%84%E7%89%B9%E7%82%B9"><span class="nav-number">14.</span> <span class="nav-text">cookie 的特点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cookie-%E5%92%8Csession-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">15.</span> <span class="nav-text">cookie 和session 的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SVG"><span class="nav-number">16.</span> <span class="nav-text">SVG</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Canvas-%E5%92%8C-SVG-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">17.</span> <span class="nav-text">Canvas 和 SVG 的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HTML5-%E4%B8%AD%E5%AE%9E%E7%8E%B0%E5%BA%94%E7%94%A8%E7%BC%93%E5%AD%98"><span class="nav-number">18.</span> <span class="nav-text">HTML5 中实现应用缓存</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%B7%E6%96%B0%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%BA%94%E7%94%A8%E7%BC%93%E5%AD%98"><span class="nav-number">19.</span> <span class="nav-text">刷新浏览器的应用缓存</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E7%BC%93%E5%AD%98%E4%B8%AD%E7%9A%84%E5%9B%9E%E9%80%80"><span class="nav-number">20.</span> <span class="nav-text">应用缓存中的回退</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E7%BC%93%E5%AD%98%E4%B8%AD%E7%BD%91%E7%BB%9C%E5%91%BD%E4%BB%A4%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="nav-number">21.</span> <span class="nav-text">应用缓存中网络命令的作用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#WebSql"><span class="nav-number">22.</span> <span class="nav-text">WebSql</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HTML5-%E5%AE%9E%E7%8E%B0%E8%B7%A8%E5%9F%9F"><span class="nav-number">23.</span> <span class="nav-text">HTML5 实现跨域</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="winney"
+      src="/images/header.jpg">
+  <p class="site-author-name" itemprop="name">winney</p>
+  <div class="site-description" itemprop="description">Doing is better than saying.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">132</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">54</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">78</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://www.xiaochao.me/" title="https:&#x2F;&#x2F;www.xiaochao.me&#x2F;" rel="noopener" target="_blank">小超</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://winney07.github.io/" title="https:&#x2F;&#x2F;winney07.github.io&#x2F;" rel="noopener" target="_blank">winney07</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2015 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">winney07</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="CSS3新特性 圆角(border-radius ); 阴影(box-shadow ); 对文字加特效(text-shadow ); 线性渐变（gradient ); 变换(transform），如 transform: rotate(9deg) scale(0.85,0.90) translate(0px,-30px) skew(-9deg,0deg)&#x2F;&#x2F;旋转、缩放、定位、倾斜. 更多的 CSS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS3-笔记">
+<meta property="og:url" content="http://example.com/2018/09/02/CSS3-%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="winney">
+<meta property="og:description" content="CSS3新特性 圆角(border-radius ); 阴影(box-shadow ); 对文字加特效(text-shadow ); 线性渐变（gradient ); 变换(transform），如 transform: rotate(9deg) scale(0.85,0.90) translate(0px,-30px) skew(-9deg,0deg)&#x2F;&#x2F;旋转、缩放、定位、倾斜. 更多的 CSS">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-09-02T08:28:27.000Z">
+<meta property="article:modified_time" content="2022-09-04T03:29:08.108Z">
+<meta property="article:author" content="winney">
+<meta property="article:tag" content="CSS3">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2018/09/02/CSS3-%E7%AC%94%E8%AE%B0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>CSS3-笔记 | winney</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">winney</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">It is never too old to learn.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <img alt="winney" src="/images/blog-head.jpg">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2018/09/02/CSS3-%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="winney">
+      <meta itemprop="description" content="Doing is better than saying.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="winney">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          CSS3-笔记
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-09-02 16:28:27" itemprop="dateCreated datePublished" datetime="2018-09-02T16:28:27+08:00">2018-09-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-09-04 11:29:08" itemprop="dateModified" datetime="2022-09-04T11:29:08+08:00">2022-09-04</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h4 id="CSS3新特性"><a href="#CSS3新特性" class="headerlink" title="CSS3新特性"></a>CSS3新特性</h4><ul>
+<li>圆角(border-radius );</li>
+<li>阴影(box-shadow );</li>
+<li>对文字加特效(text-shadow );</li>
+<li>线性渐变（gradient );</li>
+<li>变换(transform），如 transform: rotate(9deg) scale(0.85,0.90) translate(0px,-30px) skew(-9deg,0deg)//旋转、缩放、定位、倾斜.</li>
+<li>更多的 CSS 选择器；</li>
+<li>多背景设置；</li>
+<li>色彩模式，如rgba;</li>
+<li>伪元素：selection;</li>
+<li>媒体杏询；</li>
+<li>多栏布局；</li>
+<li>图片边框 (border-image )。</li>
+</ul>
+<h4 id="CSS3-新增伪类"><a href="#CSS3-新增伪类" class="headerlink" title="CSS3 新增伪类"></a>CSS3 新增伪类</h4><p>新增伪类有以下几个：</p>
+<ul>
+<li>p:first-of-type，选择属于其父元素的首个<code>&lt;p&gt;</code>元素的每个<code>&lt;p&gt;</code>元素。</li>
+<li>p:last-of-type，选择属于其父元素的最后一个<code>&lt;p&gt;</code>元素的每个<code>&lt;p&gt;</code>元素</li>
+<li>p:only-of-type，选择属于其父元素的唯一<code>&lt;p&gt;</code>元素的每个<code>&lt;p&gt;</code>元素。</li>
+<li>p:only-child，选择属于其父元素的唯一子元素的每个<code>&lt;p&gt;</code>元素。</li>
+<li>p:nth-child(2)，选择属于其父元素的第二个子元素的每个<code>&lt;p&gt;</code>元素。</li>
+<li>:enabled:disabled，控制表单控件的禁用状态。</li>
+<li>:checked，单选框或复选框被选中。</li>
+</ul>
+<h4 id="first-child-与first-of-type-的区别"><a href="#first-child-与first-of-type-的区别" class="headerlink" title="first-child 与first-of-type 的区别"></a>first-child 与first-of-type 的区别</h4><p>first-child 匹配的是父元素的第一个子元素，可以说是结构上的第一个子元素</p>
+<p>first-oftype 匹配的是该类型的第一个元素，类型就是指冒号前面匹配到的元素。并不限制是第一个子元泰，只要是该类型元素的第一个即可。当然，这些元素的范国都属于同一级，也就是同辈</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;</span><br><span class="line">  &lt;p&gt;&lt;/p&gt;</span><br><span class="line">  &lt;span&gt;&lt;/span&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<p>p:tirst-child 匹配到p元素，因为p元素是div的第一个子元素。<br>span:first-chid 匹配不到 span 元素，因为span 是div的第二个子元素。<br>p:first-of-type 匹配到p元素，因为p是div所有为p的子元素中的第一个。<br>span:first-of-type 匹配到span 元素，因为span是div 所有为span 的子元素中的第一个。</p>
+<h4 id="解决使用-transform-translate-属性时出现闪烁现象的问题"><a href="#解决使用-transform-translate-属性时出现闪烁现象的问题" class="headerlink" title="解决使用 transform:translate 属性时出现闪烁现象的问题"></a>解决使用 transform:translate 属性时出现闪烁现象的问题</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-webkit-backface-visibility:hidden;		// 隐藏转换的元素的背面</span><br><span class="line">-webkit-transform-style: preserve-3d;	// 使被转换的元素的子元素保留其3D转换</span><br><span class="line">-webkit-transform: translate3d(0,0,0);// 开启GPU硬件加速模式，使用GPU代替CPU渲染动画</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>在某些 Android 系统中，有时会有莫名其妙的 Bug，建议慎重使用</p>
+</blockquote>
+<h4 id="CSS3-动画在动作结束时保持该状态不变"><a href="#CSS3-动画在动作结束时保持该状态不变" class="headerlink" title="CSS3 动画在动作结束时保持该状态不变"></a>CSS3 动画在动作结束时保持该状态不变</h4><p>采用animation-fill-mode。其可以设置为以下值</p>
+<ul>
+<li>none，不改变默认行为。</li>
+<li>forwards，当动画完成后，保持最后一个属性值（在最后一个关键帧中定义)。</li>
+<li>backwards， 在animation-delay 所指定的一段时间内，在动画显示之前，应用开始属性值（在第一个关键帧中定义）。</li>
+<li>both，向前和向后填充模式都可以应用</li>
+</ul>
+<h4 id="实现某-DIV-元素以每秒50px-的速度左移-100px"><a href="#实现某-DIV-元素以每秒50px-的速度左移-100px" class="headerlink" title="实现某 DIV 元素以每秒50px 的速度左移 100px"></a>实现某 DIV 元素以每秒50px 的速度左移 100px</h4><p>方法一，使用 jQuery：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(&#x27;div&#x27;).animate(&#123;&#x27;left&#x27;: 100&#125;, 2000);</span><br></pre></td></tr></table></figure>
+
+<p>方法二，使用JavaScript + CSS3：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">div &#123;</span><br><span class="line">  transition: al1 2s 1inear; // 1inear 规定以相同速度（匀速）开始至结束的过渡效果</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">div.style.left = (div.offsetLeft + 100) + &#x27;px&#x27;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="box-sizing-属性"><a href="#box-sizing-属性" class="headerlink" title="box-sizing 属性"></a>box-sizing 属性</h4><p>box-sizing 属性主要用来控制元素盒模型的解析模式。默认值是content-box.</p>
+<p>content-box 让元素维持 W3C的标准盒模型。元素的宽度/高度由border + padding +content 的宽度/高度决定，设置width/height 属性指的是指定content 部分的宽度/高度。</p>
+<p>border-box 让元素维持正 传统盒模型（IE6以下版本和IE6、IE7 的怪异模式）。设置width/height 属性指的是指定border + padding + content 的宽度/高度</p>
+<p>标淮浏览器下，按照 W3C 规范解析盒模型。一旦修政了元素的边框或内距，就会影响元素的盒子尺寸，就不得不重新计算元素的盒子尺寸，从而影响整个页面的布局。</p>
+<h4 id="content-box-盒模型"><a href="#content-box-盒模型" class="headerlink" title="content-box 盒模型"></a>content-box 盒模型</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Width(布局所占宽度) = width + padding-left + padding-right + border-left + border-right</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Height(布局所占高度) = height + padding-top + padding-bottom + border-top + border-bottom</span><br></pre></td></tr></table></figure>
+
+<h4 id="padding-box-盒模型"><a href="#padding-box-盒模型" class="headerlink" title="padding-box 盒模型"></a>padding-box 盒模型</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Width(布局所占宽度) = width（包含 padding-left + padding-right) + border-top + border-bottom</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Height(布局所占高度) = height（包含 padding-top + padding-bottom) + border-top + border-bottom</span><br></pre></td></tr></table></figure>
+
+<h4 id="border-box-盒模型"><a href="#border-box-盒模型" class="headerlink" title="border-box 盒模型"></a>border-box 盒模型</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Width(布局所占宽度) = width(包含 padding-left + padding-right + border-left + border-right)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Height(布局所占高度) = height (包含padding-top + padding-bottom + border-top + border-bottom)</span><br></pre></td></tr></table></figure>
+
+<h4 id="CSS3-动画的优缺点"><a href="#CSS3-动画的优缺点" class="headerlink" title="CSS3 动画的优缺点"></a>CSS3 动画的优缺点</h4><p>优点：</p>
+<p>（1）在性能上会稍微好一些，浏览器会对 CSS3 的动画做一些优化。<br>（2）代码相对简单</p>
+<p>缺点：</p>
+<p>（1）在动画控制上不够灵活。<br>（2）兼容性不好。<br>（3）部分动画功能无法实现</p>
+<h4 id="Animation-与-Transition-的异同"><a href="#Animation-与-Transition-的异同" class="headerlink" title="Animation 与 Transition 的异同"></a>Animation 与 Transition 的异同</h4><p>Animation 与Transition 的功能相同，都是通过改变元素的属性值来实现动画效果的。<br>它们的区别在于，使用Transition 的功能时只能用指定属性的开始值和结束值，然后在这两个属性值之问使用平滑过渡的方式实现动画效果，因此不能实现比较复杂的动画效果。Animation 功能通过定义多个关键帧，以及定义每个关键帧中元素的属性值来实现更为复杂的动画效果。</p>
+<h4 id="Animation-属性值"><a href="#Animation-属性值" class="headerlink" title="Animation 属性值"></a>Animation 属性值</h4><p>两个必要属性如下</p>
+<ul>
+<li>animation-name，即动画名称。</li>
+<li>animation-duration，即动画持续时间。</li>
+</ul>
+<p>其他属性值如下。</p>
+<ul>
+<li>animation-play-state，即播放状态（running 表示播放，paused 表示暂停），可以用来控制动画暂停</li>
+<li>animation-timing-function，即动画运动形式。</li>
+<li>animation-delay，即动画延迟时间。</li>
+<li>animation-iteration-count，即重复次数。</li>
+<li>animation-direction，即播放前重置（alternate 动画,直接从上一次停止的位置开始执行）。</li>
+</ul>
+<h4 id="媒体查询的使用方法"><a href="#媒体查询的使用方法" class="headerlink" title="媒体查询的使用方法"></a>媒体查询的使用方法</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@media 媒体类型 and（媒体特性）&#123;样式规则&#125;</span><br></pre></td></tr></table></figure>
+
+<p>两个缺点<br>(1）适配屏幕的尺寸不是连续的。<br>(2）会在CSS文件中添加大段的查询代码，增加了CSS 文件的大小，<br>为改进上述缺点，可以使用 Javascript 获取移动设备屏幕的宽度，根据设计稿的原型尺寸，动态地计算 font-size 的值</p>
+<h4 id="设置-CSS3-文本阴影"><a href="#设置-CSS3-文本阴影" class="headerlink" title="设置 CSS3 文本阴影"></a>设置 CSS3 文本阴影</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hl &#123;text-shadow：水平阴影，重直阴影，模糊距离，阴影颜色&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="把元素从左侧移动-50-像素，从顶端移动-100-像素"><a href="#把元素从左侧移动-50-像素，从顶端移动-100-像素" class="headerlink" title="把元素从左侧移动 50 像素，从顶端移动 100 像素"></a>把元素从左侧移动 50 像素，从顶端移动 100 像素</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">div&#123;</span><br><span class="line">  transform: translate (50px, 100px);</span><br><span class="line">  -ms-transform: translate (50px, 100px) ;/*IE 9*/</span><br><span class="line">  -webkit-transform: translate (50px, 100px) ;/* Safari 和 Chrome */</span><br><span class="line">  -o-transform: translate (50px, 100px) ;/* Opera */</span><br><span class="line">  -moz-transform: translate (50px, 100px) ;/* Firefox */</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="把一个元素旋转-30°"><a href="#把一个元素旋转-30°" class="headerlink" title="把一个元素旋转 30°"></a>把一个元素旋转 30°</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">div&#123;</span><br><span class="line">  transform: rotate(30deg);</span><br><span class="line">  -ms-transform: rotate(30deg);/*IE 9*/</span><br><span class="line">  -webkit-transform: rotate(30deg);/* Safari 和 Chrome */</span><br><span class="line">  -o-transform: rotate(30deg);/* Opera */</span><br><span class="line">  -moz-transform: rotate (30deg);/* Firefox */</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="使用-matrix-将div元素旋转-30°"><a href="#使用-matrix-将div元素旋转-30°" class="headerlink" title="使用 matrix()将div元素旋转 30°"></a>使用 matrix()将div元素旋转 30°</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">div&#123;</span><br><span class="line">  transform:matrix (0.866,0.5,-0.5,0.866, 0, 0) ;</span><br><span class="line">  -ms-transform:matrix (0.866, 0.5,-0.5,0.866, 0, 0) ;/*IE 9*/</span><br><span class="line">  -moz-transform:matrix(0.866,0.5,-0.5,0.866,0,0);/* Safari 和 Chrome */</span><br><span class="line">  -webkit-transform:matrix (0.866,0.5,-0.5,0.866, 0, 0) ;/* Opera */</span><br><span class="line">  -0-transform:matrix (0.866,0.5,-0.5,0.866, 0, 0);/* Firefox */</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="利用-CSS3-制作淡入淡出的动画效果"><a href="#利用-CSS3-制作淡入淡出的动画效果" class="headerlink" title="利用 CSS3 制作淡入淡出的动画效果"></a>利用 CSS3 制作淡入淡出的动画效果</h4><p>（1）定义动画关键帧，名称为 fadeln</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">@-webkit-keyframes fadeIn &#123;</span><br><span class="line">  from &#123;</span><br><span class="line">    opacity：0;/* 初始状态，透明度为 0 */</span><br><span class="line">  &#125;</span><br><span class="line">  to &#123;</span><br><span class="line">    opacity：1; /* 结尾状态，透明度为 1 */</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@-webkit-keyframes fadeOut&#123;</span><br><span class="line">  from&#123;</span><br><span class="line">    opacity：1; /*初始状态，透明度为 1*/</span><br><span class="line">  &#125;</span><br><span class="line">  to &#123;</span><br><span class="line">    opacity：0; /*结尾状态，透明度为 0*/</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>（2）为div增加动画代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">div&#123;</span><br><span class="line">  -webkit-animation-name:fadeIn;	/*动画名称*/</span><br><span class="line">  -webkit-animation-duration:3s;	/*动画持线时间*/</span><br><span class="line">  -webkit-animation-iteration-count:1;	/*动画次数*/</span><br><span class="line">  -webkit-animation-delay: 0s;	/*延迟时间*/</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="盒阴影"><a href="#盒阴影" class="headerlink" title="盒阴影"></a>盒阴影</h4><p>盒阴影的语法结构与文本阴影类似，如:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">box-shadow:5px 5px 5px rgba(255,15,255,0.5);</span><br></pre></td></tr></table></figure>
+
+<p>但是，盒阴影多了一个属性，即外延值 inset， 如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">box-shadow: 5px 5px 25px rgba(0,0,255,0.5）inset;</span><br></pre></td></tr></table></figure>
+
+<h4 id="为盒子添加蒙版"><a href="#为盒子添加蒙版" class="headerlink" title="为盒子添加蒙版"></a>为盒子添加蒙版</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.demo &#123;</span><br><span class="line">  height: 144px;</span><br><span class="line">  width: 144px;</span><br><span class="line">  background: url(logo.png);</span><br><span class="line">  -webkit-mask-image: url (shadow.png) ;</span><br><span class="line">  -webkit-mask-position: 50% 50%;</span><br><span class="line">  -webkit-mask-repeat: no-repeat;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>蒙版复合属性的语法是<code>-webkit-mask: url(pro_pho_ show_ pic.png) 50% 50% no-repeat</code></p>
+<p>蒙版相关属性如下:</p>
+<ul>
+<li>-webkit-mask-clip，即蒙版裁剪位置。</li>
+<li>-webkit-mask-origin，即蒙版原点位置。</li>
+</ul>
+<h4 id="CSS3-实现背景颜色线性渐变"><a href="#CSS3-实现背景颜色线性渐变" class="headerlink" title="CSS3 实现背景颜色线性渐变"></a>CSS3 实现背景颜色线性渐变</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">div&#123;</span><br><span class="line">  background: -webkit-linear-gradient (left, red, green 50%, blue) ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="实现-CSS3-倒影"><a href="#实现-CSS3-倒影" class="headerlink" title="实现 CSS3 倒影"></a>实现 CSS3 倒影</h3><p>通过<code>-webkit-box-reflect</code>设置方向、距离。<br>方向可以设置为below、 above、left、 right.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">demo &#123;</span><br><span class="line">  height: 144px:</span><br><span class="line">  width: 144px;</span><br><span class="line">  background: url (logo.png) ;</span><br><span class="line">  -webkit-box-reflect: below 10px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="当元素不面向屏幕时，定义其可见性"><a href="#当元素不面向屏幕时，定义其可见性" class="headerlink" title="当元素不面向屏幕时，定义其可见性"></a>当元素不面向屏幕时，定义其可见性</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">使用 backface-visibility : visible | hidden.</span><br></pre></td></tr></table></figure>
+
+<h4 id="CSS3中transition-属性值及含义"><a href="#CSS3中transition-属性值及含义" class="headerlink" title="CSS3中transition 属性值及含义"></a>CSS3中transition 属性值及含义</h4><p>transition 属性是一个简写属性，用于设置以下4个过渡属性</p>
+<ul>
+<li>transition-property，哪个属性需要实现过渡。</li>
+<li>transition-duration，完成过渡效果需要多少秒/毫秒</li>
+<li>transition-timing-function，速度效果的运动曲线，如linear ease-in ease、ease-out、ease-in-out、 cube-bezier.</li>
+<li>transition-delay，规定过渡开始前的延迟时问。</li>
+</ul>
+<h4 id="相对于内容框定义图像"><a href="#相对于内容框定义图像" class="headerlink" title="相对于内容框定义图像"></a>相对于内容框定义图像</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">.demo&#123;</span><br><span class="line">  height: 200px;</span><br><span class="line">  width: 200px;</span><br><span class="line">  padding: 50px;</span><br><span class="line">  border: 1px solid #ccc;</span><br><span class="line">  background-image: url (&#x27;logo.png&#x27;);</span><br><span class="line">  background-repeat: no-repeat;</span><br><span class="line">  background-position: left top;</span><br><span class="line">  background-origin: content-box;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>语法为<code> background-origin: padding-box | border-box | content-box;</code></p>
+<h4 id="background-clip-和-background-origin-的区别"><a href="#background-clip-和-background-origin-的区别" class="headerlink" title="background-clip 和 background-origin 的区别"></a>background-clip 和 background-origin 的区别</h4><p>background-olip 规定背景（包括背景颜色和背景图片）的绘制区域。<br>它有3种属性，分别是border-box、padding-box、 content-box.</p>
+<ul>
+<li>border-box，即背景从边框开始绘制。</li>
+<li>padding-box，即背景在边框内部绘制。</li>
+<li>content-box，即背景从内容部分绘制。</li>
+</ul>
+<p>background-origin 规定背景图片的定位区域。</p>
+<p>它也有了种属性：border-box、padding-box、content-box。但要注意，它描述的是“背景图片”。也就是说，它只能对背景做样式上的操作。一旦规定了图片开始绘制的区域，就当于规定图片的左上角从什么地方开始，其他的它就不负责了</p>
+<h4 id="把文本分隔为-4列并使两列之问间隔30-像素"><a href="#把文本分隔为-4列并使两列之问间隔30-像素" class="headerlink" title="把文本分隔为 4列并使两列之问间隔30 像素"></a>把文本分隔为 4列并使两列之问间隔30 像素</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">div&#123;</span><br><span class="line">  -moz-column-count:4;</span><br><span class="line">  -webkit-column-count:4;</span><br><span class="line">  column-count:4;</span><br><span class="line">  -moz-column-gap:40px;</span><br><span class="line">  -webkit-column-gap:40px;</span><br><span class="line">  column-gap:40px;</span><br><span class="line">  width: 600px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="实现文本换行"><a href="#实现文本换行" class="headerlink" title="实现文本换行"></a>实现文本换行</h4><p>使用word-wrap 属性。</p>
+<ul>
+<li><p>normal，只在允许的断字点换行（浏览器保持默认处理）。</p>
+</li>
+<li><p>break-word，在长单词或 URL 地址内部进行换行。</p>
+</li>
+</ul>
+<h4 id="用-keytrames-使-dliv-元素移动-200-像素"><a href="#用-keytrames-使-dliv-元素移动-200-像素" class="headerlink" title="用@keytrames 使 dliv 元素移动 200 像素"></a>用@keytrames 使 dliv 元素移动 200 像素</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">div&#123;</span><br><span class="line">  width: 100px;</span><br><span class="line">  height: 50px;</span><br><span class="line">  background: #f30;</span><br><span class="line">  animation: move 3s;</span><br><span class="line">  @keyframes move</span><br><span class="line">  from &#123;</span><br><span class="line">  margin-left: 0px;</span><br><span class="line">  to</span><br><span class="line">  margin-left: 200px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/CSS3/" rel="tag"># CSS3</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2018/08/18/Bootstrap%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/" rel="prev" title="Bootstrap相关笔记">
+      <i class="fa fa-chevron-left"></i> Bootstrap相关笔记
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2018/09/19/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/" rel="next" title="前端面试题">
+      前端面试题 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#CSS3%E6%96%B0%E7%89%B9%E6%80%A7"><span class="nav-number">1.</span> <span class="nav-text">CSS3新特性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CSS3-%E6%96%B0%E5%A2%9E%E4%BC%AA%E7%B1%BB"><span class="nav-number">2.</span> <span class="nav-text">CSS3 新增伪类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#first-child-%E4%B8%8Efirst-of-type-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">3.</span> <span class="nav-text">first-child 与first-of-type 的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E4%BD%BF%E7%94%A8-transform-translate-%E5%B1%9E%E6%80%A7%E6%97%B6%E5%87%BA%E7%8E%B0%E9%97%AA%E7%83%81%E7%8E%B0%E8%B1%A1%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">4.</span> <span class="nav-text">解决使用 transform:translate 属性时出现闪烁现象的问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CSS3-%E5%8A%A8%E7%94%BB%E5%9C%A8%E5%8A%A8%E4%BD%9C%E7%BB%93%E6%9D%9F%E6%97%B6%E4%BF%9D%E6%8C%81%E8%AF%A5%E7%8A%B6%E6%80%81%E4%B8%8D%E5%8F%98"><span class="nav-number">5.</span> <span class="nav-text">CSS3 动画在动作结束时保持该状态不变</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E6%9F%90-DIV-%E5%85%83%E7%B4%A0%E4%BB%A5%E6%AF%8F%E7%A7%9250px-%E7%9A%84%E9%80%9F%E5%BA%A6%E5%B7%A6%E7%A7%BB-100px"><span class="nav-number">6.</span> <span class="nav-text">实现某 DIV 元素以每秒50px 的速度左移 100px</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#box-sizing-%E5%B1%9E%E6%80%A7"><span class="nav-number">7.</span> <span class="nav-text">box-sizing 属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#content-box-%E7%9B%92%E6%A8%A1%E5%9E%8B"><span class="nav-number">8.</span> <span class="nav-text">content-box 盒模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#padding-box-%E7%9B%92%E6%A8%A1%E5%9E%8B"><span class="nav-number">9.</span> <span class="nav-text">padding-box 盒模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#border-box-%E7%9B%92%E6%A8%A1%E5%9E%8B"><span class="nav-number">10.</span> <span class="nav-text">border-box 盒模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CSS3-%E5%8A%A8%E7%94%BB%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="nav-number">11.</span> <span class="nav-text">CSS3 动画的优缺点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Animation-%E4%B8%8E-Transition-%E7%9A%84%E5%BC%82%E5%90%8C"><span class="nav-number">12.</span> <span class="nav-text">Animation 与 Transition 的异同</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Animation-%E5%B1%9E%E6%80%A7%E5%80%BC"><span class="nav-number">13.</span> <span class="nav-text">Animation 属性值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AA%92%E4%BD%93%E6%9F%A5%E8%AF%A2%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95"><span class="nav-number">14.</span> <span class="nav-text">媒体查询的使用方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE-CSS3-%E6%96%87%E6%9C%AC%E9%98%B4%E5%BD%B1"><span class="nav-number">15.</span> <span class="nav-text">设置 CSS3 文本阴影</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8A%8A%E5%85%83%E7%B4%A0%E4%BB%8E%E5%B7%A6%E4%BE%A7%E7%A7%BB%E5%8A%A8-50-%E5%83%8F%E7%B4%A0%EF%BC%8C%E4%BB%8E%E9%A1%B6%E7%AB%AF%E7%A7%BB%E5%8A%A8-100-%E5%83%8F%E7%B4%A0"><span class="nav-number">16.</span> <span class="nav-text">把元素从左侧移动 50 像素，从顶端移动 100 像素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8A%8A%E4%B8%80%E4%B8%AA%E5%85%83%E7%B4%A0%E6%97%8B%E8%BD%AC-30%C2%B0"><span class="nav-number">17.</span> <span class="nav-text">把一个元素旋转 30°</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-matrix-%E5%B0%86div%E5%85%83%E7%B4%A0%E6%97%8B%E8%BD%AC-30%C2%B0"><span class="nav-number">18.</span> <span class="nav-text">使用 matrix()将div元素旋转 30°</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%A9%E7%94%A8-CSS3-%E5%88%B6%E4%BD%9C%E6%B7%A1%E5%85%A5%E6%B7%A1%E5%87%BA%E7%9A%84%E5%8A%A8%E7%94%BB%E6%95%88%E6%9E%9C"><span class="nav-number">19.</span> <span class="nav-text">利用 CSS3 制作淡入淡出的动画效果</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9B%92%E9%98%B4%E5%BD%B1"><span class="nav-number">20.</span> <span class="nav-text">盒阴影</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BA%E7%9B%92%E5%AD%90%E6%B7%BB%E5%8A%A0%E8%92%99%E7%89%88"><span class="nav-number">21.</span> <span class="nav-text">为盒子添加蒙版</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CSS3-%E5%AE%9E%E7%8E%B0%E8%83%8C%E6%99%AF%E9%A2%9C%E8%89%B2%E7%BA%BF%E6%80%A7%E6%B8%90%E5%8F%98"><span class="nav-number">22.</span> <span class="nav-text">CSS3 实现背景颜色线性渐变</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0-CSS3-%E5%80%92%E5%BD%B1"><span class="nav-number"></span> <span class="nav-text">实现 CSS3 倒影</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BD%93%E5%85%83%E7%B4%A0%E4%B8%8D%E9%9D%A2%E5%90%91%E5%B1%8F%E5%B9%95%E6%97%B6%EF%BC%8C%E5%AE%9A%E4%B9%89%E5%85%B6%E5%8F%AF%E8%A7%81%E6%80%A7"><span class="nav-number">1.</span> <span class="nav-text">当元素不面向屏幕时，定义其可见性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CSS3%E4%B8%ADtransition-%E5%B1%9E%E6%80%A7%E5%80%BC%E5%8F%8A%E5%90%AB%E4%B9%89"><span class="nav-number">2.</span> <span class="nav-text">CSS3中transition 属性值及含义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9B%B8%E5%AF%B9%E4%BA%8E%E5%86%85%E5%AE%B9%E6%A1%86%E5%AE%9A%E4%B9%89%E5%9B%BE%E5%83%8F"><span class="nav-number">3.</span> <span class="nav-text">相对于内容框定义图像</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#background-clip-%E5%92%8C-background-origin-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">4.</span> <span class="nav-text">background-clip 和 background-origin 的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8A%8A%E6%96%87%E6%9C%AC%E5%88%86%E9%9A%94%E4%B8%BA-4%E5%88%97%E5%B9%B6%E4%BD%BF%E4%B8%A4%E5%88%97%E4%B9%8B%E9%97%AE%E9%97%B4%E9%9A%9430-%E5%83%8F%E7%B4%A0"><span class="nav-number">5.</span> <span class="nav-text">把文本分隔为 4列并使两列之问间隔30 像素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E6%96%87%E6%9C%AC%E6%8D%A2%E8%A1%8C"><span class="nav-number">6.</span> <span class="nav-text">实现文本换行</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%A8-keytrames-%E4%BD%BF-dliv-%E5%85%83%E7%B4%A0%E7%A7%BB%E5%8A%A8-200-%E5%83%8F%E7%B4%A0"><span class="nav-number">7.</span> <span class="nav-text">用@keytrames 使 dliv 元素移动 200 像素</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="winney"
+      src="/images/header.jpg">
+  <p class="site-author-name" itemprop="name">winney</p>
+  <div class="site-description" itemprop="description">Doing is better than saying.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">132</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">54</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">78</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://www.xiaochao.me/" title="https:&#x2F;&#x2F;www.xiaochao.me&#x2F;" rel="noopener" target="_blank">小超</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://winney07.github.io/" title="https:&#x2F;&#x2F;winney07.github.io&#x2F;" rel="noopener" target="_blank">winney07</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2015 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">winney07</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

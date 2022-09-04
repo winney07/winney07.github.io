@@ -193,7 +193,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/08/24/Node-js%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/07/09/HTML%E4%B8%AD%E7%9A%84%E7%89%B9%E6%AE%8A%E7%AC%A6%E5%8F%B7/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -207,7 +207,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/08/24/Node-js%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">Node.js相关笔记</a>
+            <a href="/2020/07/09/HTML%E4%B8%AD%E7%9A%84%E7%89%B9%E6%AE%8A%E7%AC%A6%E5%8F%B7/" class="post-title-link" itemprop="url">HTML中的特殊符号</a>
         </h2>
 
         <div class="post-meta">
@@ -217,7 +217,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-08-24 12:18:15" itemprop="dateCreated datePublished" datetime="2020-08-24T12:18:15+08:00">2020-08-24</time>
+              <time title="创建时间：2020-07-09 14:50:35" itemprop="dateCreated datePublished" datetime="2020-07-09T14:50:35+08:00">2020-07-09</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
@@ -226,6 +226,19 @@
                 <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2022-08-24 18:09:23" itemprop="dateModified" datetime="2022-08-24T18:09:23+08:00">2022-08-24</time>
               </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/HTML%E4%B8%AD%E7%9A%84%E7%89%B9%E6%AE%8A%E7%AC%A6%E5%8F%B7/" itemprop="url" rel="index"><span itemprop="name">HTML中的特殊符号</span></a>
+                </span>
+            </span>
 
           
 
@@ -238,75 +251,646 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p><a target="_blank" rel="noopener" href="https://nodejs.org/zh-cn/">Node.js官网</a></p>
-<p><a target="_blank" rel="noopener" href="https://cnodejs.org/">Cnode社区</a></p>
-<p><a target="_blank" rel="noopener" href="http://nodejs.cn/">Node.js中文网</a></p>
-<p><a target="_blank" rel="noopener" href="https://npm.taobao.org/">淘宝NPM镜像</a></p>
-<p>Node.js&amp;HTML5论坛</p>
-<p><strong>后端处理分页数据的接口</strong>   <a target="_blank" rel="noopener" href="https://www.cnblogs.com/fm060/p/8144758.html">参考博客</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.axis-studio.org/2017/12/29/element-express-mongoose%E5%AE%9E%E7%8E%B0%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2/index.html">element+express+mongoose实现分页查询</a></p>
-<h4 id="后端接口代码："><a href="#后端接口代码：" class="headerlink" title="后端接口代码："></a>后端接口代码：</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">app.<span class="title function_">get</span>(<span class="string">&#x27;/api/getSources&#x27;</span>,<span class="title function_">async</span>(req, res)=&gt;&#123;</span><br><span class="line">    <span class="keyword">let</span> currentPage = <span class="built_in">parseInt</span>(req.<span class="property">query</span>.<span class="property">currentPage</span>) <span class="comment">// 转换前端传入当前页码</span></span><br><span class="line">    <span class="keyword">let</span> pageSize = <span class="built_in">parseInt</span>(req.<span class="property">query</span>.<span class="property">pageSize</span>) <span class="comment">// 转换前端传入的每页大小</span></span><br><span class="line">    <span class="keyword">let</span> skip = (currentPage-<span class="number">1</span>)*pageSize <span class="comment">// 实现分割查询的skip</span></span><br><span class="line">    <span class="keyword">let</span> params = &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 所有数据</span></span><br><span class="line">    <span class="keyword">var</span> allSources = <span class="keyword">await</span> <span class="title class_">Sources</span>.<span class="title function_">find</span>();</span><br><span class="line">    <span class="keyword">var</span> allCount = allSources.<span class="property">length</span>;</span><br><span class="line">    <span class="keyword">var</span> allPage = <span class="title class_">Math</span>.<span class="title function_">ceil</span>(allCount/pageSize);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 根据页码和每页显示条数筛选数据</span></span><br><span class="line">    <span class="keyword">const</span> sources = <span class="keyword">await</span> <span class="title class_">Sources</span>.<span class="title function_">find</span>(params).<span class="title function_">skip</span>(skip).<span class="title function_">limit</span>(pageSize)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> object =&#123;</span><br><span class="line">        <span class="attr">allCount</span>: allCount,</span><br><span class="line">        <span class="attr">allPage</span>: allPage,</span><br><span class="line">        <span class="attr">page</span>: currentPage,</span><br><span class="line">        <span class="attr">data</span>: sources</span><br><span class="line">    &#125;</span><br><span class="line">    res.<span class="title function_">send</span>(object)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<h4 id="前端请求接口代码："><a href="#前端请求接口代码：" class="headerlink" title="前端请求接口代码："></a>前端请求接口代码：</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 获取素材列表</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title function_">getSources</span> = (<span class="params">param</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="title function_">request</span>(&#123;</span><br><span class="line">    <span class="attr">method</span>: <span class="string">&#x27;GET&#x27;</span>,</span><br><span class="line">    <span class="attr">url</span>: <span class="string">&#x27;/getSources&#x27;</span>,</span><br><span class="line">    <span class="attr">params</span>: param</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>.vue页面：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">&lt;el-pagination</span><br><span class="line">  @size-change=<span class="string">&quot;handleSizeChange&quot;</span></span><br><span class="line">  @current-change=<span class="string">&quot;handleCurrentChange&quot;</span></span><br><span class="line">  :current-page=<span class="string">&quot;currentPage&quot;</span></span><br><span class="line">  :page-sizes=<span class="string">&quot;[10, 15, 20, 25, 30]&quot;</span></span><br><span class="line">  :page-size=<span class="string">&quot;pageSize&quot;</span></span><br><span class="line">  layout=<span class="string">&quot;total, sizes, prev, pager, next, jumper&quot;</span></span><br><span class="line">  :total=<span class="string">&quot;allCount&quot;</span>&gt;</span><br><span class="line">&lt;/el-pagination&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="attr">sourceList</span>: [],</span><br><span class="line"><span class="attr">allCount</span>: <span class="number">0</span>,</span><br><span class="line"><span class="attr">pageSize</span>: <span class="number">10</span>,</span><br><span class="line"><span class="attr">currentPage</span>: <span class="number">1</span>,</span><br><span class="line">  </span><br><span class="line">created () &#123;</span><br><span class="line">  <span class="comment">// 渲染第一页的数据</span></span><br><span class="line">  <span class="variable language_">this</span>.<span class="title function_">initData</span>(<span class="variable language_">this</span>.<span class="property">currentPage</span>)</span><br><span class="line">&#125;,</span><br><span class="line">  </span><br><span class="line">initData (thisPage) &#123;</span><br><span class="line">  <span class="keyword">let</span> param = &#123;</span><br><span class="line">    <span class="attr">currentPage</span>: thisPage,</span><br><span class="line">    <span class="attr">pageSize</span>: <span class="variable language_">this</span>.<span class="property">pageSize</span>,</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="title function_">getSources</span>(param).<span class="title function_">then</span>(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(res)</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">sourceList</span> = res.<span class="property">data</span>.<span class="property">data</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">allCount</span> = res.<span class="property">data</span>.<span class="property">allCount</span></span><br><span class="line">  &#125;)</span><br><span class="line">&#125;,</span><br><span class="line">  </span><br><span class="line"><span class="title function_">handleCurrentChange</span>(<span class="params">val</span>) &#123;</span><br><span class="line">  <span class="comment">// console.log(`当前页: $&#123;val&#125;`);  </span></span><br><span class="line">  <span class="comment">// 渲染相应页码的数据</span></span><br><span class="line">  <span class="variable language_">this</span>.<span class="title function_">initData</span>(val)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="创建package-json："><a href="#创建package-json：" class="headerlink" title="创建package.json："></a>创建package.json：</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm init</span><br></pre></td></tr></table></figure>
-
-<p><a target="_blank" rel="noopener" href="http://javascript.ruanyifeng.com/nodejs/npm.html">npm模块管理器</a></p>
-<p><a target="_blank" rel="noopener" href="https://jingyan.baidu.com/article/91f5db1b3e1f991c7f05e395.html">我们安装了Nodejs是安装了什么</a></p>
-<p><a target="_blank" rel="noopener" href="https://github.com/nimoc/gulp-book/blob/master/chapter1.md">安装 Node 和 gulp</a></p>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p><a target="_blank" rel="noopener" href="https://nodejs.org/zh-cn/download/">node安装包下载地址</a></p>
-<ol>
-<li>下载.msi文件</li>
-<li>按”下一步”，”下一步”装好</li>
-<li>双击安装好的目录里面的”node.exe”，文件，输入node  （这一步好像不需要）</li>
-<li>创建一个app.js文件</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">&quot;http&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> hostname = <span class="string">&quot;127.0.0.1&quot;</span>;</span><br><span class="line"><span class="keyword">const</span> port = <span class="number">3000</span>;</span><br><span class="line"><span class="keyword">const</span> server = http.<span class="title function_">createServer</span>(<span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">  res.<span class="property">statusCode</span> = <span class="number">200</span>;</span><br><span class="line">  res.<span class="title function_">setHeader</span>(<span class="string">&#x27;Content-Type&#x27;</span>, <span class="string">&#x27;text/plain&#x27;</span>);</span><br><span class="line">  res.<span class="title function_">end</span>(<span class="string">&#x27;He1lo world\n&#x27;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">server.<span class="title function_">listen</span>(port, hostname, <span class="function">()=&gt;</span> &#123;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`Server running at http://<span class="subst">$&#123;hostname&#125;</span>:<span class="subst">$&#123;port&#125;</span>/`</span>)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<ol>
-<li>运行app.js：</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node app.<span class="property">js</span></span><br></pre></td></tr></table></figure>
-
-<ol>
-<li>在浏览器中预览</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">http</span>:<span class="comment">//localhost:3000/ </span></span><br><span class="line">或者</span><br><span class="line"><span class="attr">http</span>:<span class="comment">//127.0.0.1:3000/</span></span><br></pre></td></tr></table></figure>
-
-<p>使用淘宝NPM镜像</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g cnpm --registry=<span class="attr">https</span>:<span class="comment">//registry.npm.taobao.org</span></span><br></pre></td></tr></table></figure>
-
-<p>清屏命令（清掉历史操作记录）</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cls</span><br></pre></td></tr></table></figure>
-
-<p>取消命令继续执行</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Ctrl</span> +  C </span><br></pre></td></tr></table></figure>
-
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_36423639/article/details/70230571">window下通过nvm-windows来安装多版本node</a></p>
-<p>[全栈最后一公里 - Scott 带你学习 Node.js 线上服务器部署与发布](<a target="_blank" rel="noopener" href="http://www.imooc.com/article/17554">http://www.imooc.com/article/17554</a> Scott)</p>
-<p><a target="_blank" rel="noopener" href="http://nqdeng.github.io/7-days-nodejs/">七天学会NodeJS</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.handlebarsjs.cn/">Handlebars-轻量的语义化模板</a></p>
-<p><strong>什么是异步I/O？</strong></p>
-<p>就是我们读取/写入文件或者操作数据库的时候，此时应该是异步的读取。CPU命令磁盘驱动器读取文件，CPU此时不能死等磁盘返回结果，如果死等CPU自己就被阻塞了，性能是极大的浪费。比如：PHP读取文件，性能就不高，因为被阻塞了。</p>
-<h3 id="Node-js创建第一个应用"><a href="#Node-js创建第一个应用" class="headerlink" title="Node.js创建第一个应用"></a>Node.js创建第一个应用</h3><p>如果我们使用PHP来编写后端的代码时，需要Apache 或者Nginx 的 HTTP服务器，来处理客户端的请求相应。不过对Node.js 来说，概念完全不一样了。使用 Node.js时，我们不仅仅在实现一个应用，同时还实现了整个HTTP服务器。</p>
-<ol>
-<li>引入http模块</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http= <span class="built_in">require</span>(<span class="string">&quot;http&quot;</span>);</span><br></pre></td></tr></table></figure>
-
-<ol>
-<li>创建服务器</li>
-</ol>
-<p>接下来我们使用http.createServer()方法创建服务器，并使用listen方法绑定8888端口。函数通过request, response参数来接收和响应数据。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">&#x27;http&#x27;</span>);</span><br><span class="line"></span><br><span class="line">http.<span class="title function_">createServer</span>(functio (request, response)&#123;</span><br><span class="line">	<span class="comment">// 发送HTTP头部</span></span><br><span class="line">	<span class="comment">// HTTP状态值: 200 : oK</span></span><br><span class="line">  <span class="comment">// 设置HTTP头部，状态码是200，文件类型是html，字符集是utf8</span></span><br><span class="line">  response.<span class="title function_">writeHead</span>(<span class="number">200</span>,&#123;<span class="string">&quot;Content-Type&quot;</span>:<span class="string">&quot;text/html;charset=UTF-8&quot;</span>&#125;);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 发送响应数据“Hello World&quot;</span></span><br><span class="line">  res.<span class="title function_">end</span>(<span class="string">&quot;哈哈哈哈，我买了一个iPhone&quot;</span> +(<span class="number">1</span>+<span class="number">2</span>+<span class="number">3</span>)+<span class="string">&quot;s&quot;</span><span class="string">&quot;);</span></span><br><span class="line"><span class="string">          </span></span><br><span class="line"><span class="string">&#125;).listen(8888);</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">// 终端打印如下信息</span></span><br><span class="line"><span class="string">console.log(&quot;</span><span class="title class_">Server</span> running at <span class="attr">http</span>:<span class="comment">//127.0.0.1:8888/&quot;);</span></span><br></pre></td></tr></table></figure>
-
-<p>结束响应：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">res.<span class="title function_">end</span>();</span><br></pre></td></tr></table></figure>
-
-<h3 id="node-js查询数据，倒序排序：sort-‘-字段名’"><a href="#node-js查询数据，倒序排序：sort-‘-字段名’" class="headerlink" title="node.js查询数据，倒序排序：sort(‘-字段名’)"></a>node.js查询数据，倒序排序：sort(‘-字段名’)</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">let currentPage = parseInt(req.query.currentPage) // 转换前端传入当前页码</span><br><span class="line">let pageSize = parseInt(req.query.pageSize) // 转换前端传入的每页大小</span><br><span class="line">let skip = (currentPage-1)*pageSize // 实现分割查询的skip</span><br><span class="line">let params = &#123;&#x27;delete_time&#x27;: &quot;0&quot;&#125;;</span><br><span class="line"></span><br><span class="line">// 根据页码和每页显示条数筛选数据</span><br><span class="line">const sources = await Sources.find(params).sort(&#x27;-create_time&#x27;).skip(skip).limit(pageSize)</span><br></pre></td></tr></table></figure>
+          <p>&infin;</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">无穷的符号 ： &amp;infin;</span><br></pre></td></tr></table></figure>
+<table cellpadding="0" border="1" width="708" style="border:1pt solid;"><tbody><tr><td width="29" style="border:1pt solid #000000;width:21.75pt;">
+<p align="center" style="text-align:center;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">符号</span></strong></span></p>
+</td>
+<td width="63" style="border:1pt solid #000000;width:47.25pt;">
+<p align="center" style="text-align:center;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">说明</span></strong></span></p>
+</td>
+<td width="72" style="border:1pt solid #000000;width:54pt;">
+<p align="center" style="text-align:center;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">编码</span></strong></span></p>
+</td>
+<td rowspan="25" width="17" style="border:1pt solid #000000;width:12.75pt;">
+<p align="center" style="text-align:center;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&nbsp;</span></strong></span></p>
+</td>
+<td width="36" style="border:1pt solid #000000;width:27pt;">
+<p align="center" style="text-align:center;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">符号</span></strong></span></p>
+</td>
+<td width="94" style="border:1pt solid #000000;width:70.5pt;">
+<p align="center" style="text-align:center;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">说明</span></strong></span></p>
+</td>
+<td width="72" style="border:1pt solid #000000;width:54pt;">
+<p align="center" style="text-align:center;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">编码</span></strong></span></p>
+</td>
+<td rowspan="25" width="17" style="border:1pt solid #000000;width:12.75pt;">
+<p align="center" style="text-align:center;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&nbsp;</span></strong></span></p>
+</td>
+<td width="36" style="border:1pt solid #000000;width:27pt;">
+<p align="center" style="text-align:center;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">符号</span></strong></span></p>
+</td>
+<td width="96" style="border:1pt solid #000000;width:72pt;">
+<p align="center" style="text-align:center;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">说明</span></strong></span></p>
+</td>
+<td width="73" style="border:1pt solid #000000;width:54.75pt;">
+<p align="center" style="text-align:center;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">编码</span></strong></span></p>
+</td>
+</tr><tr><td width="29" style="border:1pt solid #000000;width:21.75pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">"</span></strong></span></p>
+</td>
+<td width="63" style="border:1pt solid #000000;width:47.25pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">双引号</span></strong></span></p>
+</td>
+<td width="72" style="border:1pt solid #000000;width:54pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;quot;</span></strong></span></p>
+</td>
+<td width="36" style="border:1pt solid #000000;width:27pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">×</span></strong></span></p>
+</td>
+<td width="94" style="border:1pt solid #000000;width:70.5pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">乘号</span></strong></span></p>
+</td>
+<td width="72" style="border:1pt solid #000000;width:54pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;times;</span></strong></span></p>
+</td>
+<td width="36" style="border:1pt solid #000000;width:27pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">←</span></strong></span></p>
+</td>
+<td width="96" style="border:1pt solid #000000;width:72pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">向左箭头</span></strong></span></p>
+</td>
+<td width="73" style="border:1pt solid #000000;width:54.75pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;larr;</span></strong></span></p>
+</td>
+</tr><tr><td width="29" style="border:1pt solid #000000;width:21.75pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;</span></strong></span></p>
+</td>
+<td width="63" style="border:1pt solid #000000;width:47.25pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">AND</span><span style="font-family:'宋体';font-size:10pt;">符号</span></strong></span></p>
+</td>
+<td width="72" style="border:1pt solid #000000;width:54pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;amp;</span></strong></span></p>
+</td>
+<td width="36" style="border:1pt solid #000000;width:27pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">÷</span></strong></span></p>
+</td>
+<td width="94" style="border:1pt solid #000000;width:70.5pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">除号</span></strong></span></p>
+</td>
+<td width="72" style="border:1pt solid #000000;width:54pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;divide;</span></strong></span></p>
+</td>
+<td width="36" style="border:1pt solid #000000;width:27pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">↑</span></strong></span></p>
+</td>
+<td width="96" style="border:1pt solid #000000;width:72pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">向上箭头</span></strong></span></p>
+</td>
+<td width="73" style="border:1pt solid #000000;width:54.75pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;uarr;</span></strong></span></p>
+</td>
+</tr><tr><td width="29" style="border:1pt solid #000000;width:21.75pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&lt;&nbsp;</span></strong></span></p>
+</td>
+<td width="63" style="border:1pt solid #000000;width:47.25pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">小于符号</span></strong></span></p>
+</td>
+<td width="72" style="border:1pt solid #000000;width:54pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;lt;</span></strong></span></p>
+</td>
+<td width="36" style="border:1pt solid #000000;width:27pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">±</span></strong></span></p>
+</td>
+<td width="94" style="border:1pt solid #000000;width:70.5pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">正负符号</span></strong></span></p>
+</td>
+<td width="72" style="border:1pt solid #000000;width:54pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;plusmn;</span></strong></span></p>
+</td>
+<td width="36" style="border:1pt solid #000000;width:27pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">→</span></strong></span></p>
+</td>
+<td width="96" style="border:1pt solid #000000;width:72pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">向右箭头</span></strong></span></p>
+</td>
+<td width="73" style="border:1pt solid #000000;width:54.75pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;rarr;</span></strong></span></p>
+</td>
+</tr><tr><td width="29" style="border:1pt solid #000000;width:21.75pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&gt;&nbsp;</span></strong></span></p>
+</td>
+<td width="63" style="border:1pt solid #000000;width:47.25pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">大于符号</span></strong></span></p>
+</td>
+<td width="72" style="border:1pt solid #000000;width:54pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;gt;</span></strong></span></p>
+</td>
+<td width="36" style="border:1pt solid #000000;width:27pt;">
+<p align="left" style="text-align:left;"><span style="font-size:14px;">ƒ</span><br></p>
+</td>
+<td width="94" style="border:1pt solid #000000;width:70.5pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">function</span><span style="font-family:'宋体';font-size:10pt;">符号</span></strong></span></p>
+</td>
+<td width="72" style="border:1pt solid #000000;width:54pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;fnof;</span></strong></span></p>
+</td>
+<td width="36" style="border:1pt solid #000000;width:27pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">↓</span></strong></span></p>
+</td>
+<td width="96" style="border:1pt solid #000000;width:72pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">向下箭头</span></strong></span></p>
+</td>
+<td width="73" style="border:1pt solid #000000;width:54.75pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;darr;</span></strong></span></p>
+</td>
+</tr><tr><td width="29" style="border:1pt solid #000000;width:21.75pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&nbsp;</span></strong></span></p>
+</td>
+<td width="63" style="border:1pt solid #000000;width:47.25pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">空格</span></strong></span></p>
+</td>
+<td width="72" style="border:1pt solid #000000;width:54pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;nbsp;</span></strong></span></p>
+</td>
+<td width="36" style="border:1pt solid #000000;width:27pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">√</span></strong></span></p>
+</td>
+<td width="94" style="border:1pt solid #000000;width:70.5pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">根号</span></strong></span></p>
+</td>
+<td width="72" style="border:1pt solid #000000;width:54pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;radic;</span></strong></span></p>
+</td>
+<td width="36" style="border:1pt solid #000000;width:27pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">↑</span></strong></span></p>
+</td>
+<td width="96" style="border:1pt solid #000000;width:72pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">双向箭头</span></strong></span></p>
+</td>
+<td width="73" style="border:1pt solid #000000;width:54.75pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;harr;</span></strong></span></p>
+</td>
+</tr><tr><td width="29" style="border:1pt solid #000000;width:21.75pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">?</span></strong></span></p>
+</td>
+<td width="63" style="border:1pt solid #000000;width:47.25pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">倒问号</span></strong></span></p>
+</td>
+<td width="72" style="border:1pt solid #000000;width:54pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;iquest;</span></strong></span></p>
+</td>
+<td width="36" style="border:1pt solid #000000;width:27pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">∞</span></strong></span></p>
+</td>
+<td width="94" style="border:1pt solid #000000;width:70.5pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">无限大符号</span></strong></span></p>
+</td>
+<td width="72" style="border:1pt solid #000000;width:54pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;infin;</span></strong></span></p>
+</td>
+<td width="36" style="border:1pt solid #000000;width:27pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us"><span style="font-size:18px;">⇐</span></span></strong></span></p>
+</td>
+<td width="96" style="border:1pt solid #000000;width:72pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">双线向左箭头</span></strong></span></p>
+</td>
+<td width="73" style="border:1pt solid #000000;width:54.75pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;lArr;</span></strong></span></p>
+</td>
+</tr><tr><td width="29" style="border:1pt solid #000000;width:21.75pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">?</span></strong></span></p>
+</td>
+<td width="63" style="border:1pt solid #000000;width:47.25pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">双左箭头</span></strong></span></p>
+</td>
+<td width="72" style="border:1pt solid #000000;width:54pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;laquo;</span></strong></span></p>
+</td>
+<td width="36" style="border:1pt solid #000000;width:27pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">∠</span></strong></span></p>
+</td>
+<td width="94" style="border:1pt solid #000000;width:70.5pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">角度符号</span></strong></span></p>
+</td>
+<td width="72" style="border:1pt solid #000000;width:54pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;ang;</span></strong></span></p>
+</td>
+<td width="36" style="border:1pt solid #000000;width:27pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us"><span style="font-size:18px;">⇑</span></span></strong></span></p>
+</td>
+<td width="96" style="border:1pt solid #000000;width:72pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">双线向上箭头</span></strong></span></p>
+</td>
+<td width="73" style="border:1pt solid #000000;width:54.75pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;uArr;</span></strong></span></p>
+</td>
+</tr><tr><td width="29" style="border:1pt solid #000000;width:21.75pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">?</span></strong></span></p>
+</td>
+<td width="63" style="border:1pt solid #000000;width:47.25pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">双右箭头</span></strong></span></p>
+</td>
+<td width="72" style="border:1pt solid #000000;width:54pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;raquo;</span></strong></span></p>
+</td>
+<td width="36" style="border:1pt solid #000000;width:27pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">∫</span></strong></span></p>
+</td>
+<td width="94" style="border:1pt solid #000000;width:70.5pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">微积分符号</span></strong></span></p>
+</td>
+<td width="72" style="border:1pt solid #000000;width:54pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;int;</span></strong></span></p>
+</td>
+<td width="36" style="border:1pt solid #000000;width:27pt;">
+<p align="left" style="text-align:left;"><span style="font-size:18px;">⇒</span><br></p>
+</td>
+<td width="96" style="border:1pt solid #000000;width:72pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">双线向右箭头</span></strong></span></p>
+</td>
+<td width="73" style="border:1pt solid #000000;width:54.75pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;rArr;</span></strong></span></p>
+</td>
+</tr><tr><td width="29" style="border:1pt solid #000000;width:21.75pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">‘</span></strong></span></p>
+</td>
+<td width="63" style="border:1pt solid #000000;width:47.25pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">左单引号</span></strong></span></p>
+</td>
+<td width="72" style="border:1pt solid #000000;width:54pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;lsquo;</span></strong></span></p>
+</td>
+<td width="36" style="border:1pt solid #000000;width:27pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">°</span></strong></span></p>
+</td>
+<td width="94" style="border:1pt solid #000000;width:70.5pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">度数符号</span></strong></span></p>
+</td>
+<td width="72" style="border:1pt solid #000000;width:54pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;deg;</span></strong></span></p>
+</td>
+<td width="36" style="border:1pt solid #000000;width:27pt;">
+<p align="left" style="text-align:left;"><span style="font-size:18px;">⇓</span><br></p>
+</td>
+<td width="96" style="border:1pt solid #000000;width:72pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">双线向下箭头</span></strong></span></p>
+</td>
+<td width="73" style="border:1pt solid #000000;width:54.75pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;dArr;</span></strong></span></p>
+</td>
+</tr><tr><td width="29" style="border:1pt solid #000000;width:21.75pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">’</span></strong></span></p>
+</td>
+<td width="63" style="border:1pt solid #000000;width:47.25pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">右单引号</span></strong></span></p>
+</td>
+<td width="72" style="border:1pt solid #000000;width:54pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;rsquo;</span></strong></span></p>
+</td>
+<td width="36" style="border:1pt solid #000000;width:27pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">≠</span></strong></span></p>
+</td>
+<td width="94" style="border:1pt solid #000000;width:70.5pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">不等于符号</span></strong></span></p>
+</td>
+<td width="72" style="border:1pt solid #000000;width:54pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;ne;</span></strong></span></p>
+</td>
+<td width="36" style="border:1pt solid #000000;width:27pt;">
+<p align="left" style="text-align:left;"><span style="font-size:18px;">⇔</span><br></p>
+</td>
+<td width="96" style="border:1pt solid #000000;width:72pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">双线双向箭头</span></strong></span></p>
+</td>
+<td width="73" style="border:1pt solid #000000;width:54.75pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;hArr;</span></strong></span></p>
+</td>
+</tr><tr><td width="29" style="border:1pt solid #000000;width:21.75pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">“</span></strong></span></p>
+</td>
+<td width="63" style="border:1pt solid #000000;width:47.25pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">左双引号</span></strong></span></p>
+</td>
+<td width="72" style="border:1pt solid #000000;width:54pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;ldquo;</span></strong></span></p>
+</td>
+<td width="36" style="border:1pt solid #000000;width:27pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">≡</span></strong></span></p>
+</td>
+<td width="94" style="border:1pt solid #000000;width:70.5pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">相等符号</span></strong></span></p>
+</td>
+<td width="72" style="border:1pt solid #000000;width:54pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;equiv;</span></strong></span></p>
+</td>
+<td width="36" style="border:1pt solid #000000;width:27pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">♠</span></strong></span></p>
+</td>
+<td width="96" style="border:1pt solid #000000;width:72pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">黑桃符号</span></strong></span></p>
+</td>
+<td width="73" style="border:1pt solid #000000;width:54.75pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;spades;</span></strong></span></p>
+</td>
+</tr><tr><td width="29" style="border:1pt solid #000000;width:21.75pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">”</span></strong></span></p>
+</td>
+<td width="63" style="border:1pt solid #000000;width:47.25pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">右双引号</span></strong></span></p>
+</td>
+<td width="72" style="border:1pt solid #000000;width:54pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;rdquo;</span></strong></span></p>
+</td>
+<td width="36" style="border:1pt solid #000000;width:27pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">≤</span></strong></span></p>
+</td>
+<td width="94" style="border:1pt solid #000000;width:70.5pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">小于等于符号</span></strong></span></p>
+</td>
+<td width="72" style="border:1pt solid #000000;width:54pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;le;</span></strong></span></p>
+</td>
+<td width="36" style="border:1pt solid #000000;width:27pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">♣</span></strong></span></p>
+</td>
+<td width="96" style="border:1pt solid #000000;width:72pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">梅花符号</span></strong></span></p>
+</td>
+<td width="73" style="border:1pt solid #000000;width:54.75pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;clubs;</span></strong></span></p>
+</td>
+</tr><tr><td width="29" style="border:1pt solid #000000;width:21.75pt;">
+<p align="left" style="text-align:left;"><span style="font-size:14px;">¶</span><br></p>
+</td>
+<td width="63" style="border:1pt solid #000000;width:47.25pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">段落符号</span></strong></span></p>
+</td>
+<td width="72" style="border:1pt solid #000000;width:54pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;para;</span></strong></span></p>
+</td>
+<td width="36" style="border:1pt solid #000000;width:27pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">≥</span></strong></span></p>
+</td>
+<td width="94" style="border:1pt solid #000000;width:70.5pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">大于等于符号</span></strong></span></p>
+</td>
+<td width="72" style="border:1pt solid #000000;width:54pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;ge;</span></strong></span></p>
+</td>
+<td width="36" style="border:1pt solid #000000;width:27pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">♥</span></strong></span></p>
+</td>
+<td width="96" style="border:1pt solid #000000;width:72pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">红心符号</span></strong></span></p>
+</td>
+<td width="73" style="border:1pt solid #000000;width:54.75pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;hearts;</span></strong></span></p>
+</td>
+</tr><tr><td width="29" style="border:1pt solid #000000;width:21.75pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">§</span></strong></span></p>
+</td>
+<td width="63" style="border:1pt solid #000000;width:47.25pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">章节符号</span></strong></span></p>
+</td>
+<td width="72" style="border:1pt solid #000000;width:54pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;sect;</span></strong></span></p>
+</td>
+<td width="36" style="border:1pt solid #000000;width:27pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">⊥</span></strong></span></p>
+</td>
+<td width="94" style="border:1pt solid #000000;width:70.5pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">垂直符号</span></strong></span></p>
+</td>
+<td width="72" style="border:1pt solid #000000;width:54pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;perp;</span></strong></span></p>
+</td>
+<td width="36" style="border:1pt solid #000000;width:27pt;">
+<p align="left" style="text-align:left;"><span style="font-size:18px;">♦</span><br></p>
+</td>
+<td width="96" style="border:1pt solid #000000;width:72pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">方块符号</span></strong></span></p>
+</td>
+<td width="73" style="border:1pt solid #000000;width:54.75pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;diams;</span></strong></span></p>
+</td>
+</tr><tr><td width="29" style="border:1pt solid #000000;width:21.75pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us"><span style="font-size:18px;">©</span></span></strong></span></p>
+</td>
+<td width="63" style="border:1pt solid #000000;width:47.25pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">版权所有符号</span></strong></span></p>
+</td>
+<td width="72" style="border:1pt solid #000000;width:54pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;copy;</span></strong></span></p>
+</td>
+<td width="36" style="border:1pt solid #000000;width:27pt;">
+<p align="left" style="text-align:left;">&nbsp;<span style="font-size:14px;">½</span><br></p>
+</td>
+<td width="94" style="border:1pt solid #000000;width:70.5pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">二分之一符号</span></strong></span></p>
+</td>
+<td width="72" style="border:1pt solid #000000;width:54pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;frac12;</span></strong></span></p>
+</td>
+<td width="36" style="border:1pt solid #000000;width:27pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">α</span></strong></span></p>
+</td>
+<td width="96" style="border:1pt solid #000000;width:72pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">Alpha</span><span style="font-family:'宋体';font-size:10pt;">符号</span></strong></span></p>
+</td>
+<td width="73" style="border:1pt solid #000000;width:54.75pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;alpha;</span></strong></span></p>
+</td>
+</tr><tr><td width="29" style="border:1pt solid #000000;width:21.75pt;">
+<p align="left" style="text-align:left;"><span style="font-size:18px;">®</span><br></p>
+</td>
+<td width="63" style="border:1pt solid #000000;width:47.25pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">注册商标符号</span></strong></span></p>
+</td>
+<td width="72" style="border:1pt solid #000000;width:54pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;reg;</span></strong></span></p>
+</td>
+<td width="36" style="border:1pt solid #000000;width:27pt;">
+<p align="left" style="text-align:left;"><span style="font-size:14px;">¼</span><br></p>
+</td>
+<td width="94" style="border:1pt solid #000000;width:70.5pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">四分之一符号</span></strong></span></p>
+</td>
+<td width="72" style="border:1pt solid #000000;width:54pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;frac14;</span></strong></span></p>
+</td>
+<td width="36" style="border:1pt solid #000000;width:27pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">β</span></strong></span></p>
+</td>
+<td width="96" style="border:1pt solid #000000;width:72pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">Bata</span><span style="font-family:'宋体';font-size:10pt;">符号</span></strong></span></p>
+</td>
+<td width="73" style="border:1pt solid #000000;width:54.75pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;beta;</span></strong></span></p>
+</td>
+</tr><tr><td width="29" style="border:1pt solid #000000;width:21.75pt;">
+<p align="left" style="text-align:left;"><span style="font-size:18px;">™</span><br></p>
+</td>
+<td width="63" style="border:1pt solid #000000;width:47.25pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">商标符号</span></strong></span></p>
+</td>
+<td width="72" style="border:1pt solid #000000;width:54pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;trade;</span></strong></span></p>
+</td>
+<td width="36" style="border:1pt solid #000000;width:27pt;">
+<p align="left" style="text-align:left;"><span style="font-size:14px;">¾</span><br></p>
+</td>
+<td width="94" style="border:1pt solid #000000;width:70.5pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">四分之三符号</span></strong></span></p>
+</td>
+<td width="72" style="border:1pt solid #000000;width:54pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;frac34;</span></strong></span></p>
+</td>
+<td width="36" style="border:1pt solid #000000;width:27pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">γ</span></strong></span></p>
+</td>
+<td width="96" style="border:1pt solid #000000;width:72pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">Gamma</span><span style="font-family:'宋体';font-size:10pt;">符号</span></strong></span></p>
+</td>
+<td width="73" style="border:1pt solid #000000;width:54.75pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;gamma;</span></strong></span></p>
+</td>
+</tr><tr><td width="29" style="border:1pt solid #000000;width:21.75pt;">
+<p align="left" style="text-align:left;"><span style="font-size:18px;">€</span><br></p>
+</td>
+<td width="63" style="border:1pt solid #000000;width:47.25pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">欧元符号</span></strong></span></p>
+</td>
+<td width="72" style="border:1pt solid #000000;width:54pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;euro;</span></strong></span></p>
+</td>
+<td width="36" style="border:1pt solid #000000;width:27pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">‰</span></strong></span></p>
+</td>
+<td width="94" style="border:1pt solid #000000;width:70.5pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">百分符号</span></strong></span></p>
+</td>
+<td width="72" style="border:1pt solid #000000;width:54pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;permil;</span></strong></span></p>
+</td>
+<td width="36" style="border:1pt solid #000000;width:27pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">Δ</span></strong></span></p>
+</td>
+<td width="96" style="border:1pt solid #000000;width:72pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">Delta</span><span style="font-family:'宋体';font-size:10pt;">符号</span></strong></span></p>
+</td>
+<td width="73" style="border:1pt solid #000000;width:54.75pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;Delta;</span></strong></span></p>
+</td>
+</tr><tr><td width="29" style="border:1pt solid #000000;width:21.75pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">￠</span></strong></span></p>
+</td>
+<td width="63" style="border:1pt solid #000000;width:47.25pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">美分符号</span></strong></span></p>
+</td>
+<td width="72" style="border:1pt solid #000000;width:54pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;cent;</span></strong></span></p>
+</td>
+<td width="36" style="border:1pt solid #000000;width:27pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">∴</span></strong></span></p>
+</td>
+<td width="94" style="border:1pt solid #000000;width:70.5pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">所以符号</span></strong></span></p>
+</td>
+<td width="72" style="border:1pt solid #000000;width:54pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;there4;</span></strong></span></p>
+</td>
+<td width="36" style="border:1pt solid #000000;width:27pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">θ</span></strong></span></p>
+</td>
+<td width="96" style="border:1pt solid #000000;width:72pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">Theta</span><span style="font-family:'宋体';font-size:10pt;">符号</span></strong></span></p>
+</td>
+<td width="73" style="border:1pt solid #000000;width:54.75pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;theta;</span></strong></span></p>
+</td>
+</tr><tr><td width="29" style="border:1pt solid #000000;width:21.75pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">￡</span></strong></span></p>
+</td>
+<td width="63" style="border:1pt solid #000000;width:47.25pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">英镑符号</span></strong></span></p>
+</td>
+<td width="72" style="border:1pt solid #000000;width:54pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;pound;</span></strong></span></p>
+</td>
+<td width="36" style="border:1pt solid #000000;width:27pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">π</span></strong></span></p>
+</td>
+<td width="94" style="border:1pt solid #000000;width:70.5pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">圆周率符号</span></strong></span></p>
+</td>
+<td width="72" style="border:1pt solid #000000;width:54pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;pi;</span></strong></span></p>
+</td>
+<td width="36" style="border:1pt solid #000000;width:27pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">λ</span></strong></span></p>
+</td>
+<td width="96" style="border:1pt solid #000000;width:72pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">Lambda</span><span style="font-family:'宋体';font-size:10pt;">符号</span></strong></span></p>
+</td>
+<td width="73" style="border:1pt solid #000000;width:54.75pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;lambda;</span></strong></span></p>
+</td>
+</tr><tr><td width="29" style="border:1pt solid #000000;width:21.75pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">￥</span></strong></span></p>
+</td>
+<td width="63" style="border:1pt solid #000000;width:47.25pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">日圆符号</span></strong></span></p>
+</td>
+<td width="72" style="border:1pt solid #000000;width:54pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;yen;</span></strong></span></p>
+</td>
+<td width="36" style="border:1pt solid #000000;width:27pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">1</span></strong></span></p>
+</td>
+<td width="94" style="border:1pt solid #000000;width:70.5pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">批注<span lang="en-us" xml:lang="en-us">1</span>符号</span></strong></span></p>
+</td>
+<td width="72" style="border:1pt solid #000000;width:54pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;sup1;</span></strong></span></p>
+</td>
+<td width="36" style="border:1pt solid #000000;width:27pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">Σ</span></strong></span></p>
+</td>
+<td width="96" style="border:1pt solid #000000;width:72pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">Sigma</span><span style="font-family:'宋体';font-size:10pt;">符号</span></strong></span></p>
+</td>
+<td width="73" style="border:1pt solid #000000;width:54.75pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;Sigma;</span></strong></span></p>
+</td>
+</tr><tr><td width="29" style="border:1pt solid #000000;width:21.75pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">…</span></strong></span></p>
+</td>
+<td width="63" style="border:1pt solid #000000;width:47.25pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">...</span></strong></span></p>
+</td>
+<td width="72" style="border:1pt solid #000000;width:54pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;hellip;</span></strong></span></p>
+</td>
+<td width="36" style="border:1pt solid #000000;width:27pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">2</span></strong></span></p>
+</td>
+<td width="94" style="border:1pt solid #000000;width:70.5pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">批注<span lang="en-us" xml:lang="en-us">2</span>符号、平方</span></strong></span></p>
+</td>
+<td width="72" style="border:1pt solid #000000;width:54pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;sup2;</span></strong></span></p>
+</td>
+<td width="36" style="border:1pt solid #000000;width:27pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;">τ</span></strong></span></p>
+</td>
+<td width="96" style="border:1pt solid #000000;width:72pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">Tau</span><span style="font-family:'宋体';font-size:10pt;">符号</span></strong></span></p>
+</td>
+<td width="73" style="border:1pt solid #000000;width:54.75pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;tau;</span></strong></span></p>
+</td>
+</tr><tr><td width="29" style="border:1pt solid #000000;width:21.75pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span style="font-family:'宋体';font-size:10pt;"><span style="font-size:18px;">⊕</span></span></strong></span></p>
+</td>
+<td width="63" style="border:1pt solid #000000;width:47.25pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&nbsp;</span></strong></span></p>
+</td>
+<td width="72" style="border:1pt solid #000000;width:54pt;">
+<p align="left" style="text-align:left;"><span style="color:#666666;"><strong><span lang="en-us" style="font-family:'宋体';font-size:10pt;" xml:lang="en-us">&amp;oplus;</span></strong></span></p>
+</td>
+<td><span style="color:#666666;"><strong><br></strong></span></td>
+</tr></tbody></table>
 
 
       
@@ -327,7 +911,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/07/29/Vue3-Vite%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA%E7%AC%94%E8%AE%B0/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/07/08/%E5%9C%A8Github%E4%B8%8A%E4%BD%BF%E7%94%A8%E4%BB%93%E5%BA%93%E5%AD%98%E6%94%BE-md%E7%AC%94%E8%AE%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -341,7 +925,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/07/29/Vue3-Vite%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">Vue3-Vite项目搭建笔记</a>
+            <a href="/2020/07/08/%E5%9C%A8Github%E4%B8%8A%E4%BD%BF%E7%94%A8%E4%BB%93%E5%BA%93%E5%AD%98%E6%94%BE-md%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">在Github上使用仓库存放.md笔记</a>
         </h2>
 
         <div class="post-meta">
@@ -351,7 +935,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-07-29 10:53:07" itemprop="dateCreated datePublished" datetime="2020-07-29T10:53:07+08:00">2020-07-29</time>
+              <time title="创建时间：2020-07-08 11:59:41" itemprop="dateCreated datePublished" datetime="2020-07-08T11:59:41+08:00">2020-07-08</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
@@ -360,6 +944,19 @@
                 <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2022-08-24 18:09:23" itemprop="dateModified" datetime="2022-08-24T18:09:23+08:00">2022-08-24</time>
               </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/md%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">md笔记</span></a>
+                </span>
+            </span>
 
           
 
@@ -372,60 +969,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p><a target="_blank" rel="noopener" href="https://vitejs.dev/">Vite官网</a></p>
-<p><a target="_blank" rel="noopener" href="https://vitejs.cn/">Vite中文官网</a></p>
-<p>安装Vuter，有代码提示</p>
-<blockquote>
-<p>Vite requires <a target="_blank" rel="noopener" href="https://nodejs.org/en/">Node.js</a> version 14.18+, 16+</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br></pre></td></tr></table></figure>
-
-<h4 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a><a target="_blank" rel="noopener" href="https://vitejs.dev/guide/#scaffolding-your-first-vite-project">创建项目</a></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm create vite@latest</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Ok to proceed? (y) y</span><br><span class="line">√ Project name: ... Vue3_mobile</span><br><span class="line">√ Package name: ... vue3-mobile</span><br><span class="line">√ Select a framework: » vue</span><br><span class="line">√ Select a variant: » vue-ts</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd Vue3_mobile</span><br><span class="line">npm install   </span><br><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
-
-<p>或</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm init vite@latest</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">√ Project name: ... vue_mobile</span><br><span class="line">√ Select a framework: » vue</span><br><span class="line">√ Select a variant: » vue-ts</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd vue_mobile</span><br><span class="line">npm install</span><br><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="几款实用的VUE移动端UI框架"><a href="#几款实用的VUE移动端UI框架" class="headerlink" title="几款实用的VUE移动端UI框架"></a><a target="_blank" rel="noopener" href="https://wenku.baidu.com/view/c4b466ee5cbfc77da26925c52cc58bd6318693d5.html">几款实用的VUE移动端UI框架</a></h4><ul>
-<li><a target="_blank" rel="noopener" href="https://vant-contrib.gitee.io/vant/#/zh-CN">Vant</a> （有赞）</li>
-<li><a target="_blank" rel="noopener" href="https://nutui.jd.com/#/">NutUI</a>   (京东)</li>
-<li><a target="_blank" rel="noopener" href="http://mint-ui.github.io/docs/#/">Mint-ui</a></li>
-<li><a target="_blank" rel="noopener" href="https://doc.vux.li/zh-CN/vux-loader/plugins.html">Vux</a>  （微信风格）</li>
-<li><a target="_blank" rel="noopener" href="https://vonic.ai/#features">vonic</a></li>
-</ul>
-<h4 id="vue3-vite的项目如何将打包后的绝对路径改为相对路径"><a href="#vue3-vite的项目如何将打包后的绝对路径改为相对路径" class="headerlink" title="vue3+vite的项目如何将打包后的绝对路径改为相对路径"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/zy21131437/article/details/125861170">vue3+vite的项目如何将打包后的绝对路径改为相对路径</a></h4><p>在vue3+vite的项目中，配置文件名为 <strong><code>vite.config.js</code>**，如果没有就在<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E6%A0%B9%E7%9B%AE%E5%BD%95&spm=1001.2101.3001.7020">根目录</a>下新建一个，文件名固定为：</strong><code>vite.config.js</code>**，然后在里面加上base属性，设置值为 <code>&quot;./&quot;</code>，如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import &#123; defineConfig &#125; from &#x27;vite&#x27;</span><br><span class="line">import vue from &#x27;@vitejs/plugin-vue&#x27;</span><br><span class="line"></span><br><span class="line">// https://vitejs.dev/config/</span><br><span class="line">export default defineConfig(&#123;</span><br><span class="line">  plugins: [vue()],</span><br><span class="line">  base: &#x27;./&#x27;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<p>如果不是用Vite的，<a target="_blank" rel="noopener" href="https://www.jb51.net/article/243243.htm">vue cli3.x打包后如何修改生成的静态资源的目录和路径</a></p>
-<h3 id="移动端1px的问题"><a href="#移动端1px的问题" class="headerlink" title="移动端1px的问题"></a>移动端1px的问题</h3><p>1px可以不转换为rem</p>
-<h3 id="移动端vm与rem适配"><a href="#移动端vm与rem适配" class="headerlink" title="移动端vm与rem适配"></a>移动端vm与rem适配</h3><ol>
-<li>将根元素的<code>font-size</code>设置为<code>font-size: 0.13333333vw;</code></li>
-<li>这样就是1rem = 1px；写样式的时候，多少px就写多少rem</li>
-</ol>
-<p>参考博客：</p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38990451/article/details/107382146?app_version=5.6.1&csdn_share_tail=%7B%22type%22:%22blog%22,%22rType%22:%22article%22,%22rId%22:%22107382146%22,%22source%22:%22winney07%22%7D&ctrtid=M0aIM&utm_source=app">最简单的移动端适配方案（vw/rem）</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/sky2714/article/details/80849863?app_version=5.6.1&csdn_share_tail=%7B%22type%22:%22blog%22,%22rType%22:%22article%22,%22rId%22:%2280849863%22,%22source%22:%22winney07%22%7D&ctrtid=keW0g&utm_source=app">最简单的移动端适配方案(rem+vw)</a></p>
-<h4 id="关于字体的适配-文本字号不建议使用rem"><a href="#关于字体的适配-文本字号不建议使用rem" class="headerlink" title="关于字体的适配-文本字号不建议使用rem"></a>关于字体的适配-<a target="_blank" rel="noopener" href="https://github.com/amfe/article/issues/17">文本字号不建议使用<code>rem</code></a></h4><blockquote>
-<p>现在绝大多数的字体文件都自带一些点阵尺寸，通常是<code>16px</code>和<code>24px</code>，所以我们<strong>不希望出现<code>13px</code>和<code>15px</code>这样的奇葩尺寸</strong>。</p>
-</blockquote>
-<p>所以可以使用媒体查询，根据不同的dpr，设置不一样的字体大小</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">p &#123;</span><br><span class="line">    font-size: 12px; </span><br><span class="line">    line-height: 1.5;</span><br><span class="line">&#125;</span><br><span class="line">@media(-webkit-min-device-pixel-ratio:2),(min-device-pixel-ratio:2)&#123;</span><br><span class="line">   p &#123;</span><br><span class="line">      font-size: 24px;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@media(-webkit-min-device-pixel-ratio:3),(min-device-pixel-ratio:3)&#123;</span><br><span class="line">   p &#123;</span><br><span class="line">      font-size: 36px;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>github上使用下面这种，但好像不起作用</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[data-dpr=&quot;2&quot;] p &#123;</span><br><span class="line">    font-size: 24px;</span><br><span class="line">&#125;</span><br><span class="line">[data-dpr=&quot;3&quot;] p &#123;</span><br><span class="line">    font-size: 36px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="svg的使用"><a href="#svg的使用" class="headerlink" title="svg的使用"></a>svg的使用</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel=&quot;icon&quot; type=&quot;image/svg+xml&quot; href=&quot;/vite.svg&quot; /&gt;</span><br></pre></td></tr></table></figure>
-
-
+          <h3 id="一、在GitHub上创建一个仓库，例如：GaoShu"><a href="#一、在GitHub上创建一个仓库，例如：GaoShu" class="headerlink" title="一、在GitHub上创建一个仓库，例如：GaoShu"></a>一、在GitHub上创建一个仓库，例如：GaoShu</h3><h3 id="二、在本地新建一个存放-md笔记的文件夹GaoShu"><a href="#二、在本地新建一个存放-md笔记的文件夹GaoShu" class="headerlink" title="二、在本地新建一个存放.md笔记的文件夹GaoShu"></a>二、在本地新建一个存放.md笔记的文件夹GaoShu</h3><h3 id="三、执行git命令"><a href="#三、执行git命令" class="headerlink" title="三、执行git命令"></a>三、执行git命令</h3><p><strong>…or create a new repository on the command line</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;# GaoShu&quot; &gt;&gt; README.md</span><br><span class="line">git init</span><br><span class="line">git add README.md</span><br><span class="line">git commit -m &quot;first commit&quot;</span><br><span class="line">git remote add origin https://github.com/AAAAAA/GaoShu.git</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
+<p><strong>…or push an existing repository from the command line</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin https://github.com/AAAAAA/GaoShu.git</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -444,7 +991,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/07/26/%E5%BE%AE%E4%BF%A1%E5%BC%80%E5%8F%91/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/07/07/Hexo-Gitee-Pages%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -458,7 +1005,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/07/26/%E5%BE%AE%E4%BF%A1%E5%BC%80%E5%8F%91/" class="post-title-link" itemprop="url">微信开发</a>
+            <a href="/2020/07/07/Hexo-Gitee-Pages%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" class="post-title-link" itemprop="url">Hexo-Gitee-Pages搭建个人博客</a>
         </h2>
 
         <div class="post-meta">
@@ -468,7 +1015,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-07-26 17:06:55" itemprop="dateCreated datePublished" datetime="2020-07-26T17:06:55+08:00">2020-07-26</time>
+              <time title="创建时间：2020-07-07 15:31:55" itemprop="dateCreated datePublished" datetime="2020-07-07T15:31:55+08:00">2020-07-07</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
@@ -477,6 +1024,19 @@
                 <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2022-08-24 18:09:23" itemprop="dateModified" datetime="2022-08-24T18:09:23+08:00">2022-08-24</time>
               </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
+                </span>
+            </span>
 
           
 
@@ -489,16 +1049,25 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/doc/">微信官网文档</a></p>
-<p><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/community/homepage">微信开放社区</a></p>
-<p><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/doc/offiaccount/Getting_Started/Overview.html">微信公众号-开发文档</a></p>
-<p><a target="_blank" rel="noopener" href="https://github.com/Tencent/weui">weui-ui框架</a></p>
-<p><a target="_blank" rel="noopener" href="https://weui.io/">WeUI体验官网</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.kancloud.cn/ywfwj2008/weui/274290">WeUI中文文档</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.zcool.com.cn/article/ZODQ2Mzg0.html">移动端设计规范和方法汇总</a></p>
-<p><a target="_blank" rel="noopener" href="http://www.uishe.cn/153001.html">超全面的移动端UI 设计规范整理汇总</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.uisdc.com/mobile-ui-design-specifications">超全面的移动端UI 设计规范整理汇总</a></p>
-<p>使用flex布局</p>
+          <h3 id="一、环境配置"><a href="#一、环境配置" class="headerlink" title="一、环境配置"></a>一、环境配置</h3><p>node.js  <a href="https://nodejs.org/zh-cn/" title="" target="">官网</a><br>Git   <a href="https://git-scm.com/" title="" target="">官网</a></p>
+<h3 id="二、Hexo的安装与基本命令"><a href="#二、Hexo的安装与基本命令" class="headerlink" title="二、Hexo的安装与基本命令"></a>二、Hexo的安装与基本命令</h3><h4 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h4><p>如果没有安装hexo的，只需要在目录中单击右键启动Git Bash Here，输入命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo </span><br></pre></td></tr></table></figure>
+<h4 id="初始化在本地生成Hexo相关目录"><a href="#初始化在本地生成Hexo相关目录" class="headerlink" title="初始化在本地生成Hexo相关目录"></a>初始化在本地生成Hexo相关目录</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo init Note  # 初始化创建，会再桌面创建Note文件夹</span><br><span class="line">cd Note         # 进入Note目录</span><br><span class="line">npm install     # 进一步安装hexo所需文件</span><br></pre></td></tr></table></figure>
+<h4 id="Hexo三连"><a href="#Hexo三连" class="headerlink" title="Hexo三连"></a>Hexo三连</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean(or c)          # 清空已有hexo网站文件</span><br><span class="line">hexo generate(or g)   # 依据网页文本与新的CSS样式生成新网站文件</span><br><span class="line">hexo server(or s)     # 启动本地服务器，可以在localhost:4000查看网站修改效果</span><br></pre></td></tr></table></figure>
+<h3 id="配置Git个人信息"><a href="#配置Git个人信息" class="headerlink" title="配置Git个人信息"></a>配置Git个人信息</h3><p>Git 全局设置:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;Github用户名&quot;       //自己Github的账号名</span><br><span class="line">git config --global user.email &quot;Github邮箱&quot;        //自己注册Github的邮箱地址</span><br></pre></td></tr></table></figure>
+<p>创建 git 仓库:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mkdir test</span><br><span class="line">cd test</span><br><span class="line">git init</span><br><span class="line">touch README.md</span><br><span class="line">git add README.md</span><br><span class="line">git commit -m &quot;first commit&quot;</span><br><span class="line">git remote add origin git@gitee.com:AAAA/AAAA.git</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
+<p>已有仓库?</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd existing_git_repo</span><br><span class="line">git remote add origin git@gitee.com:AAAA/AAAA.git</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
+<h3 id="三、主题下载与安装"><a href="#三、主题下载与安装" class="headerlink" title="三、主题下载与安装"></a>三、主题下载与安装</h3><p>Hexo官网上提供了丰富的主题可选，你只需要打开对应的界面（<a href="https://hexo.io/themes/" rel="nofollow noreferrer" target="_blank">https://hexo.io/themes/</a>）选择喜欢的，然后点击<strong>名称</strong>跳转到<strong>GitHub</strong>仓库选择<em>下载或者克隆</em>对应的<strong>zip</strong>文件到本地，并且解压到网站目录下的<strong>themes</strong>目录即可。</p>
+<p>然后接下来，你需要修改两个配置文件：</p>
+<li>你的网站根目录下的<strong>_config.yml</strong>文件，即网站配置文件；</li>
+<li>你选择的主题的自带配置文件<strong>_config.yml</strong>，即主题样式配置文件；</li>
+
+<h4 id="生成-添加-SSH-公钥之后，测试是否连接成功"><a href="#生成-添加-SSH-公钥之后，测试是否连接成功" class="headerlink" title="生成/添加 SSH 公钥之后，测试是否连接成功:"></a>生成/添加 SSH 公钥之后，测试是否连接成功:</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@gitee.com</span><br><span class="line"></span><br><span class="line">如果成功，会显示：</span><br><span class="line">Hi xxx! You&#x27;ve successfully authenticated, but GITEE.COM does not provide shell access.</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="图片路径设置"><a href="#图片路径设置" class="headerlink" title="图片路径设置"></a>图片路径设置</h4><p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Hexo-Gitee-Pages%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/images-set.png" alt="图片路径设置"></p>
 
       
     </div>
@@ -585,20 +1154,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">130</span>
+          <span class="site-state-item-count">132</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">55</span>
+        <span class="site-state-item-count">54</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">76</span>
+        <span class="site-state-item-count">78</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

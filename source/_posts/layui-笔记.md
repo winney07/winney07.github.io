@@ -1010,3 +1010,96 @@ table.render({
 });
 ```
 
+[EasyAdmin](http://easyadmin.99php.cn/docs/)
+
+#### [LAYUI MINI](http://layuimini.99php.cn/docs/)
+
+EasyAdmin—layui mini 页面——表格内容渲染的方法在`public/static/admin/js/对应页面的js文件`，页面在`app/admin/view`
+
+[在线DEMO](http://layuimini.99php.cn/iframe/v2/index.html)
+
+##### 表格的筛选条件使用日期格式：
+
+使用`search: 'range'`
+
+```
+{field: 'create_time', minWidth: 80, title: '操作时间',search: 'range'},
+```
+
+表格的筛选条件使用下拉框：
+
+使用`search: 'select'`
+
+```
+{field: 'status', minWidth: 80, title: '审核状态', search: 'select',selectList: {1: '已审核', 0: '未审核'},templet: function (d) {
+    if(d.status == 1) {
+        return "已审核";
+    }else if(d.status == 0){
+        return "未审核";
+    }
+},
+},
+```
+
+##### 操作栏
+
+```
+{field: 'account_ban_status', title: '操作内容', minWidth: 80, templet: function (d) {
+    if(d.status == 0) {
+        return "注销账号";
+    }
+    if(d.status == 1) {
+        return "恢复账号";
+    }
+},
+},
+```
+
+##### 切换左侧导航栏或Tab栏，关闭页面的二级页面（即iframe中的弹窗内容）——修改框架代码
+
+`public/static/plugs/lay-module/layuimini/miniAdmin.js`
+
+```
+/**
+ * 打开新窗口
+ */
+$('body').on('click', '[layuimini-href]', function () {
+    var URL = window.location.href.split("#")[1]; // 当前URL
+
+    var loading = layer.load(0, {shade: false, time: 2 * 1000});
+    var tabId = $(this).attr('layuimini-href'),
+        href = $(this).attr('layuimini-href'),
+        title = $(this).text(),
+        target = $(this).attr('target');
+
+    var el = $("[layuimini-href='" + href + "']", ".layuimini-menu-left");
+    layer.close(window.openTips);
+
+    // 菜单地址不等于当前URL——切换到其他页面，关闭子页面内容
+    if(href !== URL) {
+        var hasSecond = $('iframe[src="' + URL + '"]').contents().find('.layui-layer-iframe').length;
+        if(hasSecond > 0) {
+            $('iframe[src="' + URL + '"]').contents().find('.layui-layer-iframe').remove();
+            $('iframe[src="' + URL + '"]').contents().find('.layui-layer-shade').remove();
+            $('iframe[src="' + URL + '"]').contents().find('.layui-layer-move').remove();
+        }
+    }
+
+    ......
+    ......
+    ......
+});
+```
+
+##### 修改logo
+
+`public/static/plugs/lay-module/layuimini/miniAdmin.js`
+
+```
+renderLogo: function (data) {
+    // var html = '<a href="' + data.href + '"><img src="' + data.image + '" alt="logo"><h1>' + data.title + '</h1></a>';
+    var html = '<img src="/static/common/images/logo.png" alt="logo"><h1>' + data.title + '</h1>';
+    $('.layuimini-logo').html(html);
+},
+```
+

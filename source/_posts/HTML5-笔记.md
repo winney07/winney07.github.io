@@ -220,3 +220,918 @@ response.setHeader("Access-Control-Allow-Methods","pOST")
 response. setHeader ("Access-Control-Allow-Headers" "x-requested-with, content-type") ;
 ```
 
+
+
+
+
+## 新增语义标签
+
+| 区块标签 | 内容分组标签 | 文本级别标签 |
+| -------- | ------------ | ------------ |
+| article  | main         | time         |
+| header   | figure       |              |
+| footer   | figcaption   |              |
+| nav      |              |              |
+| aside    |              |              |
+| section  |              |              |
+
+```plain
+<figure>
+	<img src="images/caffe-2.jpg" alt="卡布奇诺"/><figcaption>卡布奇诺</figcaption>
+</figure>
+```
+
+### ![img](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/HTML5-%E7%AC%94%E8%AE%B0/coffee.png)
+
+### header
+
+header标签的使用:
+
+- 一个文档中可以包含多于一个的header标签
+- header标签不一定非要显示在页面的上方，它的内容决定这里需要使用header标签，位置并不重要
+
+
+
+—些使用aside的例子:
+
+- 页面侧边栏
+- 广告
+- 友情链接
+- 引语(内容摘要)
+
+
+
+一个主题性的内容分组，通常包含一个头部( header ) ,可能还会有一个尾部( footer )。
+
+
+
+### div
+
+- 应用更广泛，只要你想为一个区域定义一个样式，就可以使用div标签
+
+### section
+
+- 包含的内容是一个明确的主题，通常有标题区域
+
+### main
+
+- 显示页面的主体内容。
+- 每个页面只能包含一个main标签。
+- main标签中不包含网站标题、logo、主导航、版权声明等信息。
+
+
+
+HTML5中文本级别的语义标签
+
+- time（表示一个日期，或者一个时间，或者同时表示一个日期和时间值）
+- i和b
+- em和strong
+
+```plain
+<time datetime="2015-06-30">2015年6月30日</time>
+
+// datetime="2015-06-30"：
+// 这里是一个固定格式的日期或时间值，可以被搜索引擎、屏幕阅读器等方便的识别。
+
+// 2015年6月30日：
+// 标签中间的文本只要人可以识别就可以，例如“今天”，“1小时前”，“结婚纪念日”，“情人节”等
+   如果没有定义datetime属性，则这里的文本需要是一个固定格式
+```
+
+#### time的格式
+
+- 指定年月日：2015-06-30
+- 指定年月：2015-06
+- 年份可以是两位数字：15-06-30
+- 指定时间（ 24小时制)：14:54:39
+- 指定时间(24小时制）：14:54
+- 指定日期和时间：2015-06-30 14:54:39
+- T表示时间，意义同上:2015-06-30T14:54:39
+- Z表示使用UTC标准时间：2015-06-30T14:54Z
+
+注：utc标准时间+8小时=北京时间
+
+### i
+
+HTML4：修饰文字样式的，将文字显示为*斜体*文本
+
+HTML5：表示强调不同的情绪或声音，也可以表示技术术语、生物分类、来自另一种语言的成语或习语、一个想法等等
+
+### b
+
+HTML4：修饰文字样式的，将文字显示为粗体文本
+
+HTML5：表示文档中的关键字、商品名称等
+
+### em
+
+标签中的内容是用来强调的重点内容
+
+会被浏览器显示成*斜体*文本
+
+### strong
+
+表示非常重要、严重性或内容的紧迫性
+
+会被浏览器显示成**粗体**文本
+
+### 使用建议
+
+如果你只是单纯的想要把文字的样式显示为斜体或粗体请不要使用这几个语义标签
+
+w3C建议我们要在css样式表中定义文字样式
+
+### small
+
+small标签在HTML5中的语义：
+
+注释或批注说明
+
+### HTML5之前Web上的视频格式
+
+| 格式      | 文件 |
+| --------- | ---- |
+| AVI       | .avi |
+| WMV       | .wmv |
+| QuickTime | .mov |
+| Realvideo | .rm  |
+| Mpeg-4    |      |
+| Flash     |      |
+
+浏览器要想播放视频，必须预先安装对应的浏览器插件
+
+#### embed标签
+
+在HTML4中不是web的标准
+
+```plain
+<embed type="application/x-shockwave-flash"
+src="zq.swf" width="508" height="430">
+</embed>
+```
+
+浏览器要想播放视频，必须预先安装对应的浏览器插件
+
+#### object标签
+
+在低版本IE中无法工作(<= IE8 )
+
+```plain
+<object type="application/x-shockwave-flash"data="zq.swf" width="500" height="430"></object>
+```
+
+除了低版本的IE (<= IE 10)，无法工作在任何其它的浏览器中
+
+```plain
+<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-44455354000e"
+width="500" height="430">
+  <param name="src" value="zq.swf”/>
+</object>
+```
+
+### 为了兼容所有的浏览器
+
+使用object兼容所有的浏览器
+
+```plain
+<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-44455354000o""
+width="5e0" height="430"><!--兼容低版本IE-->
+	<param name="src" value="zq.swf"/>
+  <!--高版本IE和其他浏览器-->
+	<object type="application/x-shockwave-flash"
+data="zq.swf" width="50o" height="430"></object>
+</object>
+```
+
+### video标签的属性
+
+- src
+- controls
+- autoplay
+- preload
+- muted
+- loop
+- poster
+- width和height
+
+```plain
+<video src="lesson-0.mp4" controls autoplay></video>
+```
+
+controls和autoplay是布尔属性：只有属性名，没有属性值。例如∶
+
+如果有autoplay属性，视频就会自动播放
+
+如果没有autoplay属性，视频就不会自动播放
+
+```plain
+<video src="lesson-0.mp4" controls="controls" autoplay="autoplay">x</video>
+```
+
+XHTML风格的代码语法更严格
+
+属性必须由属性名和属性值两部分组成
+
+```plain
+<audio controls="controls" src="1.mp3" autoplay="autoplay">
+  您的浏览器不支持播放此音频，请使用高级的浏览器
+</audio>
+```
+
+### 
+
+您的浏览器不支持这个视频的播放，想观看视频，请用高级的浏览器，chrome、Firefox、Opera、Safari等浏览器。
+
+【这里插入的内容是供不支持video元素的浏览器显示的】
+
+```plain
+<video src="pian.mp4" width="600px" height="400px" border="1px solid #ccc" controls="controls">
+<video width="500" autoplay="autoplay" loop="loop" controls="controls">
+    <source src="pian.ogg" type="video/ogg">
+    <source src="pian.mp4" type="video/mp4">
+    <!--video 元素允许多个 source 元素。source 元素可以链接不同的视频文件。
+    浏览器将使用第一个可识别的格式：-->
+  Your browser does not support the video tag.
+</video>
+
+<!-- video的属性有autoplay,controls,height,loop,preload,src,width -->
+<!-- <video src="pian.mp4" width="500px" controls="controls" autoplay="autoplay"></video> -->
+ <div style="text-align:center;">
+  <button onclick="playPause()">播放/暂停</button> 
+  <button onclick="makeBig()">大</button>
+  <button onclick="makeNormal()">中</button>
+  <button onclick="makeSmall()">小</button>
+  <br /> 
+  <video id="video1" width="420" style="margin-top:15px;">
+    <source src="pian.mp4" type="video/mp4" />
+    Your browser does not support HTML5 video.
+  </video>
+</div> 
+
+<script type="text/javascript">
+var myVideo=document.getElementById("video1");
+
+function playPause()
+{ 
+if (myVideo.paused) 
+  myVideo.play(); 
+else 
+  myVideo.pause(); 
+} 
+
+function makeBig()
+{ 
+myVideo.width=560; 
+} 
+
+function makeSmall()
+{ 
+myVideo.width=320; 
+} 
+
+function makeNormal()
+{ 
+myVideo.width=420; 
+} 
+</script> 
+```
+
+### audio
+
+audio 元素允许多个 source 元素。source 元素可以链接不同的音频文件。浏览器将使用第一个可识别的格式：
+
+```plain
+<audio controls="controls" autoplay="autoplay">
+  <source src="1.mp3" type="audio/mp3" />
+  <source src="1.ogg" type="audio/ogg" />
+</audio>
+```
+
+preload属性
+
+| 属性值         | 详细说明                                                     |
+| -------------- | ------------------------------------------------------------ |
+| none           | 视频播放前，浏览器不会预先下载视频资源，当用户不点击播放按钮时会节省带宽。 |
+| metadata       | 视频播放前，浏览器不会下载视频资源，但是会获取资源的元数据（视频大小、持续时间、视频格式、前几帧画面) |
+| auto（默认值） | 浏览器根据实际情况动态决定。例如∶在wifi、3G、4G数据漫游等情况下，动态采用不同的加载方案。 |
+
+muted：是否默认静音播放
+
+```plain
+<video src="lesson-0.mp4" controls muted loop></video>
+```
+
+poster属性设置视频的封面
+
+```plain
+<video src="let-it-go.mp4" controls
+	poster="cover.jpg"
+	width="854" height="480">
+</video>
+```
+
+![img](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/HTML5-%E7%AC%94%E8%AE%B0/video.jpeg)
+
+### 浏览器对视频格式的支持
+
+浏览器对视频格式的支持情况: http://caniuse.com/#search=video
+
+
+
+浏览器从上到下查找source元素，直到找到它能播放的一种格式
+
+```plain
+<video controls>
+  <source src="tweetsip.mp4">
+  <source src="tweetsip.webm">
+  <source src="tweetsip.ogv">
+	<p>对不起，您的浏览器不支持video标签</p>
+</video>
+```
+
+对于这里的每个source元素，浏览器都会加载视频文件的元数据，查看能不能播放这个视频，这个过程可能很耗费时间。
+
+### 兼容所有的浏览器
+
+
+
+embed标签或object标签用在不支持video标签的旧版本额的浏览器中
+
+```plain
+<video controls>
+  <source src="tweetsip.mp4" type='video/mp4; codecs="avc1.42E01E，mp4a.40.2"">
+  <source src="tweetsip.webm" type='video/ogg; codecs="vp8，vorbis"'>
+  <source src="tweetsip.ogv" type='video/ogg; codecs="theora，vorbis"">
+  <embed src="tweetsip.swf" type="application/x-shockwave-flash"></embed>
+</video> 
+```
+
+### HTML5支持的音频格式
+
+HTML5支持的音频格式: http://en.wikipedia.org/wiki/HTML5_Audio
+
+### 兼容所有的音频格式和浏览器
+
+```plain
+<audio controls>
+  <source src="YouAreMySunshine.mp3" type='audio/mpeg; codecs="mp3"'>
+  <source src="YouAreMySunshine.ogg" type='audio/ogg; codecs="vorbis"' >
+  <p>对不起，您的浏览器不支持audio标签</p>
+</ audio>
+```
+
+### 新增input类型
+
+input标签新增type属性值
+
+- search(搜索框)
+- date(日期选择)
+- email (邮件地址输入框)
+- month(月份选择)
+- url ( url地址输入框)
+- week(周选择）
+- tel(电话号码输入框)
+- time (时间选择)
+- number (数字输入框)
+- datetime-local (日期时间)
+- range(滑动条)
+- datetime (包含时区)
+- color（颜色选择)
+
+
+
+
+
+它看起来是一个文本输入框，可以输入一个电子邮件地址在移动设备上有额外的特性:
+
+```plain
+<input type="email">
+<input type="url">
+<input type="tel">
+```
+
+专门用来输入一个数值的输入框，右侧有一组上下箭头，用来控制文本框中数值的大小
+
+```plain
+<input type="number">
+```
+
+通过滑动条选择一个数值范围
+
+```plain
+<input type="range">
+```
+
+在弹出的的日历中选择一个具体的日期
+
+```plain
+<input type="date">
+```
+
+选择一个具体的月份
+
+```plain
+<input type="month">
+```
+
+选择一个具体的星期
+
+```plain
+<input type="week">
+```
+
+在弹出的的日历中选择一个具体的时间
+
+```plain
+<input type="time">
+```
+
+选择日期和时间(本地时间)
+
+```plain
+<input type="datetime-local">
+```
+
+选择日期和时间( UTC世界标准时间)
+
+```plain
+<input type="datetime">
+```
+
+在弹出的颜色面板中选择一个颜色
+
+```plain
+<input type="color">
+```
+
+### datalist
+
+为其它输入控件提供一个预定义的选项列表
+
+
+
+
+
+```plain
+<!--为输入框指定一个list属性-->
+<input type="text" list="browsers">
+<!--和文本框中list属性的值一致-->
+<datalist id="browsers">
+  <option value="Chrome"><option value="Firefox">
+  <option value="Internet Explorer"><option value="opera">
+  <option value="opera mini"><option value="Safari">
+</datalist>
+```
+
+### keygen
+
+用于客户端访问服务器时的安全验证
+
+当提交表单时，会生成两个键，一个是私钥，一个公钥私钥存储于客户端，公钥则被发送到服务器
+
+公钥可用于之后验证用户的客户端证书
+
+```plain
+<form action="#" method="get">
+  用户名:<input type="text" name="usrname">
+  加密:<keygen name="security">
+  <input type="submit">
+</form>
+```
+
+### output
+
+结合JavaScript，主要用于显示脚本输出
+
+```plain
+<form oninput="x.value=a.value">
+  选择一个数字:
+  <input type="range" name="a" value="o">
+  <output name="x">o</output>
+</form>
+```
+
+### 表单验证
+
+表单验证是指，在用户提交表单之前，确保用户输入的数据是合法的。
+
+- 输入类型
+- 日期和时间范围
+- 必填字段
+- 步长
+- 字符长度
+- 正则表达式
+- 数值范围
+- 禁用表单验证
+
+### 必填字段验证
+
+- required属性是boolean属性
+- 表单提交时输入域不能为空
+
+### 字符长度验证
+
+没有达到最少字符时浏览器提示位数不够达到最大字符数时浏览器禁止继续输入
+
+```plain
+<form action="success.html" method="post">
+	<div>密码: <input type="password" minlength="6" maxlength="10"></div>
+  <div><input type="submit"></div>
+</form>
+```
+
+它们是很多input元素的共有属性
+
+如text、search、password、email、url、tel
+
+
+
+### 数值范围验证
+
+输入的数值不能小于min指定的值不能大于max指定的值
+
+```plain
+<form action="success.html" method="post">
+	<div>订购数量: <input type="number" min="5" max="10"></div>
+  <div><input type="submit"></div>
+</form>
+```
+
+用于number、range和日期时间类型
+
+### 日期和时间范围验证
+
+- 只能选择范围内的日期和时间
+- 范围外的日期和时间无法选择
+
+```plain
+<form action="success.html" method="post" >
+	<div>送货日期:<input type="date" min="2020-01-01" max="2020-01-10"></div>
+  <div>送货时间:<input type="time" min="e8:0o" max="17:00"></div>
+  <div><input type="submit"></div>
+</form>
+```
+
+### 步长验证
+
+```plain
+<form action="success.htm1" method="post">
+  <div>订购数量:<input type="number" min="10" max="5o" step="10"></div>
+  <div><input type="submit"></div>
+</form>
+```
+
+点击number输入框右侧的上下箭头，每次增加或减少一个步长的值
+
+```plain
+<form action="success.html" method="post" oninput=""out.value=count.value">
+  <div>
+    订购数量: <input name=" count" type="range"
+    value="10" min="1e" max="5e" step="10">
+    <output name="out">10</output>
+  </div>
+	<div><input type="submit"></div>
+</form>
+```
+
+移动滑动条每次增加或减少—个步长的值
+
+
+
+### 正则表达式验证
+
+[0-4]{3}
+
+[0-4]表示0到4之间的任意一个数字{3}
+
+表示必须出现3次例如∶103、341、222
+
+```plain
+<form action="success.htm1" method="post">
+	<div>编号: <input type="text" pattern="[e-4]{[3}"></div>
+  <div><input type="submit"></div>
+</form>
+```
+
+是所有的可输入的input元素共有的属性如text、search、password、email、url、tel
+
+### 禁用表单验证
+
+如果你更想使用基于JavaScript的更强大和灵活的表单验证功能，那么首先需要禁用HTML5表单验证
+
+- novalidate
+- formnovalidate
+
+```plain
+<form action="success.html" method="post" novalidate>
+  <div>数字: <input type="number"></div>
+  <div>邮箱: <input type="email"></div>
+  <div>网址: <input type="ur1"></div>
+  <div><input type="submit"></div>
+</form>
+<form action="success.html" method="post">
+	<div>数字: <input type="number"></div>
+  <div>邮箱:<input type="email"></div>
+  <div>网址: <input type="ur1"></div>
+  <div><input type="submit" formnovalidate></div>
+</form>
+```
+
+在提交按钮中使用formnovalidate属性
+
+### 总结
+
+- 输入类型验证: number、email、url必填字段验证:required
+- 字符长度验证: minlength、maxlength设置数值范围: min、max
+- 设置日期和时间范围:min、max设置步长: step
+- 正则表达式验证:pattern
+- 禁用表单验证: novalidate、formnovalidate
+
+### 新增表单属性
+
+- list
+- placeholder
+- required
+- autofocus（—个页面只能有一个autofocus属性的定义。如果有多个，则应用第一个）
+- minlength和maxlength
+- autocomplete（当我们填写表单，并成功提交后，再回到表单中填写时，会出现提醒功能，可以根据提醒功能进行快速输入。）（填写完，成功提交后，再回到表单填写时，没有上次的输入记录了。）
+- multiple
+- min和max
+- form
+- step
+- formaction
+- pattern
+- formmethod
+- novalidate
+- formenctype
+- formnovalidate
+- formtarget
+
+
+
+```plain
+<form action="success.html" method="post" autocomplete="off">
+  <!--把autocomplete="on"放在input标签中，它会覆盖form中的设置，
+  这个属性可以用在所有可输入的input标签。
+  -->
+  <input placeholder="姓名" name="username" autocomplete="on">
+  <input placeholder="账号" name="cardid">
+  <input type="submit">
+</form>
+```
+
+### multiple
+
+```plain
+<select multiple>
+  <option>美式咖啡</option>
+  <option>卡布奇诺</option>
+  <option>拿铁</option>
+  <option>摩卡</option>
+</select>
+```
+
+按住键盘上的ctrl键可以实现多选
+
+
+
+选完一个之后，输入逗号，可以再输入一个地址。
+
+```plain
+<input placeholder="请输入邮件地址" type="email" list="contacts" multiple>
+<datalist id="contacts">
+  <option value="helen@qq.com">
+  <option value="cohen@baidu.com">
+  <option value="yaohuan@sina.com">
+  <option value="annie@qq.com">
+</datalist>
+<!--按住Ctrl键，可以选择多个文件-->
+<input type="file" multiple>
+```
+
+### form
+
+```plain
+<form action="success.htm1">
+  <input placeholder="姓名" type="text" name="username">
+  <input type="submit">
+</form>
+<input placeholder="账号" type="text" name="cardid">
+```
+
+提交后,在URL地址中，只有username，即在form外面的input没有被提交
+
+
+
+
+
+在默认情况下，表单外的控件不会被提交，因此在form中加一个id,在input中加form="f";然后就可以一起提交到服务器了。
+
+```plain
+<form action="success.htm1" id="f">
+  <input placeholder="姓名" type="text" name="username">
+  <input type="submit">
+</form>
+<input placeholder="账号" type="text" name="cardid" form="f">
+```
+
+### form相关属性
+
+```plain
+<form action="success.htm1" method="post" target="_blank" 
+enctype="application/x-www-form-urlencoded">
+<! --其它表单控件-->
+<input type="submit">
+</form>
+```
+
+enctype：页面提交时的编码方式(仅限于post方式提交的表单)
+
+
+
+这些属性是表单提交按钮的属性，当表单中的属性和提交按钮中存在同名属性时，提交按钮中的属性会被应用。
+
+```plain
+<form>
+  <! --其它表单控件--><input type="submit"
+  formaction="success.htm1"formmethod="post"
+  formtarget="_blank"
+  formenctype="application/x-www-form-urlencoded">
+</form>
+```
+
+### accesskey
+
+
+
+### svg
+
+```plain
+<html xmlns:svg="http://www.w3.org/2000/svg">
+<body>
+
+<p>This is an HTML paragraph</p>
+
+<svg:svg width="300" height="100" version="1.1" >
+<svg:circle cx="100" cy="50" r="40" stroke="black"
+stroke-width="2" fill="red" />
+</svg:svg>
+
+</body>
+</html>
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" 
+"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+
+<svg width="100%" height="100%" version="1.1"
+xmlns="http://www.w3.org/2000/svg">
+
+<rect width="300" height="100"
+style="fill:rgb(0,0,255);stroke-width:1;
+stroke:rgb(0,0,0)"/>
+
+</svg>
+```
+
+### drag
+
+```plain
+<style type="text/css">
+#div1 {width:488px;height:70px;padding:10px;border:1px solid #aaaaaa;}
+</style>
+<script type="text/javascript">
+function allowDrop(ev)
+{
+ev.preventDefault();
+}
+
+function drag(ev)
+{
+ev.dataTransfer.setData("Text",ev.target.id);
+}
+
+function drop(ev)
+{
+ev.preventDefault();
+var data=ev.dataTransfer.getData("Text");
+ev.target.appendChild(document.getElementById(data));
+}
+</script>
+</head>
+<body>
+
+<p>请把 W3School 的图片拖放到矩形中：</p>
+
+<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+<br />
+<img id="drag1" src="w3school_banner.gif" draggable="true" ondragstart="drag(event)" />
+
+</body>
+ <head>
+ 	<meta charset="UTF-8">
+ 	<title>拖放</title>
+ 	<style>
+		p{
+			font-size: 16px;
+		}
+		#div1{
+			width: 390px;
+			height: 260px;
+			padding: 10px;
+			border: 1px solid #ccc;
+			background-color: yellowgreen;
+			border-radius: 10px;
+			display: inline-block;
+		}
+		img{
+			border-radius: 10px;
+		}
+ 	</style>
+ 	<script type="text/javascript">
+ 		function allowDrop(ev){
+ 			ev.preventDefault();
+ 		}
+ 		function drag(ev){
+ 			ev.dataTransfer.setData("text",ev.target.id);
+ 		}
+ 		function drop(ev){
+ 			ev.preventDefault();
+ 			var data = ev.dataTransfer.getData("text");
+ 			ev.target.appendChild(document.getElementById(data));
+ 		}
+ 	</script>
+ </head>
+ <body>
+ 	<p>请把单车的图片拖放到下面的矩形中：</p>
+ 	<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+ 	<img id="img1" src="bike.png" height="260" alt="单车" draggable="true" ondragstart="drag(event)">
+ </body>
+<head>
+	<meta charset="UTF-8">
+	<title>来回拖放</title>
+	<style>
+		div{
+			width: 300px;
+			height: 220px;
+			border: 1px solid #000;
+			border-radius: 10px;
+			background-color: pink;
+			display: inline-block;
+			margin-right: 20px;
+			overflow: hidden;
+			padding: 10px;
+		}
+	</style>
+	<script type="text/javascript">
+		function allowDrop(ev){
+			ev.preventDefault();
+		}
+		function drag(ev){
+			ev.dataTransfer.setData("text",ev.target.id);
+		}
+		function drop(ev){
+			ev.preventDefault();
+			var data = ev.dataTransfer.getData("text");
+			ev.target.appendChild(document.getElementById(data));
+		}
+	</script>
+</head>
+<body>
+	<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
+		<img id="img2" src="bike.png" alt="单车" width="280px" draggable="true" ondragstart="drag(event)">
+	</div>
+	<div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+	<div id="div3" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+</body>
+<style type="text/css">
+#div1, #div2
+{float:left; width:100px; height:35px; margin:10px;padding:10px;border:1px solid #aaaaaa;}
+</style>
+<script type="text/javascript">
+function allowDrop(ev)
+{
+ev.preventDefault();
+}
+
+function drag(ev)
+{
+ev.dataTransfer.setData("Text",ev.target.id);
+}
+
+function drop(ev)
+{
+ev.preventDefault();
+var data=ev.dataTransfer.getData("Text");
+ev.target.appendChild(document.getElementById(data));
+}
+</script>
+</head>
+<body>
+
+<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
+  <img width="100px" src="bike.png" draggable="true" ondragstart="drag(event)" id="drag1" />
+</div>
+<div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+
+</body>
+```

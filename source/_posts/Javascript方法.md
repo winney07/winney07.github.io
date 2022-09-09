@@ -66,6 +66,73 @@ new Date().toUTCString()
 Wed, 02 Mar 2020 09:51:30 GMT
 ```
 
+#### 获取明天的日期并格式化
+
+```
+// 格式化日期
+function format(t, symbol){
+    var year = t.getFullYear()       // 年份
+        , month = t.getMonth() + 1   // 月份
+        , date = t.getDate()         // 日
+        , symbol = symbol || '-';    // 分隔符，默认为-
+    month = month < 10 ? '0' + month : month;
+    date = date < 10 ? '0' + date : date;
+    return year + symbol + month + symbol + date;
+}
+
+var now = new Date()               // 获取当前时间
+    , time_stamp = now.setDate(now.getDate() +  1)
+    , tomorrow = format(new Date(time_stamp));  // 明天
+```
+
+#### 获取前后相隔n天的日期
+
+```
+/*
+* 根据间隔天数获取日期
+* @param interval：间隔天数
+* @param symbol：日期格式分隔符（默认：-）
+* interval为-1：昨天
+* interval为0：今天
+* interval为1：明天
+*/
+
+function getDate(interval, symbol) {
+    // getDate: 返回月份的某一天
+    // setDate：设置为月份的某一天
+    var now = new Date()               // 获取当前时间
+        , time_stamp = now.setDate(now.getDate() +  parseInt(interval))
+        , date = new Date(time_stamp);  // 根据间隔天数获取的日期
+    // 返回格式化后日期
+    return format(date);
+}
+```
+
+#### 根据某天的前后几天获取日期
+
+```
+/*
+* 根据某天的前/后几天
+* @param interval：间隔天数
+* @param value：某天的日期
+* @param symbol：日期格式分隔符（默认：-）
+* interval为-1：昨天
+* interval为0：今天
+* interval为1：明天
+*/
+function getPreDate(interval, value, symbol) {
+    // getDate: 返回月份的某一天
+    // setDate：设置为月份的某一天
+    var now = new Date(value)               // 获取当前时间
+        , time_stamp = now.setDate(now.getDate() +  parseInt(interval))
+        , date = new Date(time_stamp);  // 根据间隔天数获取的日期
+    // 返回格式化后日期
+    return format(date);
+}
+```
+
+
+
 #### 实现倒计时功能
 
 ```

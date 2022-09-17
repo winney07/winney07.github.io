@@ -8,6 +8,20 @@ categories:
 - Javascript
 ---
 
+#### [关于< input type=“number” />可以输入字母e](https://www.cnblogs.com/ysx215/p/14654648.html)
+
+```
+onKeypress="return(/[\d\.]/.test(String.fromCharCode(event.keyCode)))"
+```
+
+**主要原因是：e在数学上代表的是无理数，是一个无限不循环的小数，其值约为2.7182818284，所以在输入e的时候，输入框会把e当成一个数字看待。**
+
+可以采用下面的方式来避免这个BUG，在input标签中添加如下属性：
+
+```
+<input type="number" class="form-control" onKeypress="return(/[\d\.]/.test(String.fromCharCode(event.keyCode)))"  placeholder="number"/>
+```
+
 #### 删除对象某个属性
 
 ```

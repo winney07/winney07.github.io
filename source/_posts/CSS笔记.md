@@ -1319,3 +1319,59 @@ scrollbar::-webkit-scrollbar{
 }
 ```
 
+#### IE浏览器图片兼容问题
+
+在IE浏览器，图片有边框
+
+解决方法：给img加上`border:0;`的样式，去掉边框
+
+#### [textarea placeholder文字换行](https://www.cnblogs.com/wangmeijian/p/6953813.html)
+
+##### 谷歌浏览器和火狐浏览器支持
+
+方法一：
+
+```
+<textarea rows="5" cols="50" ></textarea>
+
+document.querySelector('textarea').setAttribute('placeholder','1、textarea\n2、success')
+```
+
+```
+var txtArr = ["自定义参数，格式如下:","key_1=value_1","key_2=value_2","...","key_n=value_n","key和value之间用等号'='分隔，不要带空格","每一组key和value占用一行"];
+var placeholderTxt= txtArr.join("\n");
+$(".sdk-textarea").attr("placeholder", placeholderTxt);
+```
+
+方法二：
+
+```
+<textarea rows="5" cols="50" placeholder="1、textarea&#10;2、success"></textarea>
+```
+
+#### CSS实现固定表头  内容溢出滚动
+
+```
+thead{
+  tr {
+    display:table;
+    width:100%;
+    table-fixed:fixed;
+  }
+}
+
+
+tbody{
+  width:calc(100% + 17px);
+  display:block;
+  height:420px;
+  overflow-y:auto;
+  overflow-x:hidden;
+  tr{
+  	display:table;
+    width:100%;
+    table-layout:fixed;
+  }
+}
+```
+

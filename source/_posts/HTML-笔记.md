@@ -508,3 +508,239 @@ H1到H6标签不是用于字体大小的样式设置。
 
 
 ## HTML语义化
+
+
+
+
+
+#### meta标签
+
+```
+<meta name="screen-orientation" content="portrait"><!-- uc强制竖屏 -->
+<meta name="x5-orientation" content="portrait"><!-- QQ强制竖屏 -->
+```
+
+##### [移动前端常用meta标签](https://www.cnblogs.com/qiye2016/p/5807524.html)
+
+摘自：[HTML meta标签总结,HTML5 head meta属性整理](http://caibaojian.com/mobile-meta.html)， 仅用于学习
+
+```
+!DOCTYPE html> <!-- 使用 HTML5 doctype，不区分大小写 -->
+<html lang="zh-cmn-Hans"> <!-- 更加标准的 lang 属性写法 http://zhi.hu/XyIa -->
+<head>
+    <!-- 声明文档使用的字符编码 -->
+    <meta charset='utf-8'>
+    <!-- 优先使用 IE 最新版本和 Chrome -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <!-- 页面描述 -->
+    <meta name="description" content="不超过150个字符"/>
+    <!-- 页面关键词 -->
+    <meta name="keywords" content=""/>
+    <!-- 网页作者 -->
+    <meta name="author" content="name, email@gmail.com"/>
+    <!-- 搜索引擎抓取 -->
+    <meta name="robots" content="index,follow"/>
+    <!-- 为移动设备添加 viewport -->
+    <meta name="viewport" content="initial-scale=1, maximum-scale=3, minimum-scale=1, user-scalable=no">
+    <!-- `width=device-width` 会导致 iPhone 5 添加到主屏后以 WebApp 全屏模式打开页面时出现黑边 http://bigc.at/ios-webapp-viewport-meta.orz -->
+ 
+    <!-- iOS 设备 begin -->
+    <meta name="apple-mobile-web-app-title" content="标题">
+    <!-- 添加到主屏后的标题（iOS 6 新增） -->
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <!-- 是否启用 WebApp 全屏模式，删除苹果默认的工具栏和菜单栏 -->
+ 
+    <meta name="apple-itunes-app" content="app-id=myAppStoreID, affiliate-data=myAffiliateData, app-argument=myURL">
+    <!-- 添加智能 App 广告条 Smart App Banner（iOS 6+ Safari） -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <!-- 设置苹果工具栏颜色 -->
+    <meta name="format-detection" content="telphone=no, email=no"/>
+    <!-- 忽略页面中的数字识别为电话，忽略email识别 -->
+    <!-- 启用360浏览器的极速模式(webkit) -->
+    <meta name="renderer" content="webkit">
+    <!-- 避免IE使用兼容模式 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- 不让百度转码 -->
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 -->
+    <meta name="HandheldFriendly" content="true">
+    <!-- 微软的老式浏览器 -->
+    <meta name="MobileOptimized" content="320">
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait">
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <!-- UC强制全屏 -->
+    <meta name="full-screen" content="yes">
+    <!-- QQ强制全屏 -->
+    <meta name="x5-fullscreen" content="true">
+    <!-- UC应用模式 -->
+    <meta name="browsermode" content="application">
+    <!-- QQ应用模式 -->
+    <meta name="x5-page-mode" content="app">
+    <!-- windows phone 点击无高光 -->
+    <meta name="msapplication-tap-highlight" content="no">
+    <!-- iOS 图标 begin -->
+    <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-57x57-precomposed.png"/>
+    <!-- iPhone 和 iTouch，默认 57x57 像素，必须有 -->
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/apple-touch-icon-114x114-precomposed.png"/>
+    <!-- Retina iPhone 和 Retina iTouch，114x114 像素，可以没有，但推荐有 -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144x144-precomposed.png"/>
+    <!-- Retina iPad，144x144 像素，可以没有，但推荐有 -->
+    <!-- iOS 图标 end -->
+ 
+    <!-- iOS 启动画面 begin -->
+    <link rel="apple-touch-startup-image" sizes="768x1004" href="/splash-screen-768x1004.png"/>
+    <!-- iPad 竖屏 768 x 1004（标准分辨率） -->
+    <link rel="apple-touch-startup-image" sizes="1536x2008" href="/splash-screen-1536x2008.png"/>
+    <!-- iPad 竖屏 1536x2008（Retina） -->
+    <link rel="apple-touch-startup-image" sizes="1024x748" href="/Default-Portrait-1024x748.png"/>
+    <!-- iPad 横屏 1024x748（标准分辨率） -->
+    <link rel="apple-touch-startup-image" sizes="2048x1496" href="/splash-screen-2048x1496.png"/>
+    <!-- iPad 横屏 2048x1496（Retina） -->
+ 
+    <link rel="apple-touch-startup-image" href="/splash-screen-320x480.png"/>
+    <!-- iPhone/iPod Touch 竖屏 320x480 (标准分辨率) -->
+    <link rel="apple-touch-startup-image" sizes="640x960" href="/splash-screen-640x960.png"/>
+    <!-- iPhone/iPod Touch 竖屏 640x960 (Retina) -->
+    <link rel="apple-touch-startup-image" sizes="640x1136" href="/splash-screen-640x1136.png"/>
+    <!-- iPhone 5/iPod Touch 5 竖屏 640x1136 (Retina) -->
+    <!-- iOS 启动画面 end -->
+ 
+    <!-- iOS 设备 end -->
+    <meta name="msapplication-TileColor" content="#000"/>
+    <!-- Windows 8 磁贴颜色 -->
+    <meta name="msapplication-TileImage" content="icon.png"/>
+    <!-- Windows 8 磁贴图标 -->
+ 
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="/rss.xml"/>
+    <!-- 添加 RSS 订阅 -->
+    <link rel="shortcut icon" type="image/ico" href="/favicon.ico"/>
+    <!-- 添加 favicon icon -->
+
+    <!-- sns 社交标签 begin -->
+    <!-- 参考微博API -->
+    <meta property="og:type" content="类型" />
+    <meta property="og:url" content="URL地址" />
+    <meta property="og:title" content="标题" />
+    <meta property="og:image" content="图片" />
+    <meta property="og:description" content="描述" />
+    <!-- sns 社交标签 end -->
+ 
+    <title>标题</title>
+</head>
+```
+
+上面给出了常用的一些meta属性，下面给一个对meta使用的理解。 meta是html语言head区的一个辅助性标签。也许你认为这些代码可有可无。其实如果你能够用好meta标签，会给你带来意想不到的效果，meta标签的作用有：搜索引擎优化（SEO），定义页面使用语言，自动刷新并指向新的页面，实现网页转换时的动态效果，控制页面缓冲，网页定级评价，控制网页显示的窗口等！ meta标签的组成：meta标签共有两个属性，它们分别是http-equiv属性和name属性，不同的属性又有不同的参数值，这些不同的参数值就实现了不同的网页功能。 **1、name属性** name属性主要用于描述网页，与之对应的属性值为content，content中的内容主要是便于搜索引擎机器人查找信息和分类信息用的。 meta标签的name属性语法格式是：
+
+```
+<meta name="参数"content="具体的参数值">。 
+```
+
+其中name属性主要有以下几种参数： **A、Keywords(关键字)** 说明：keywords用来告诉搜索引擎你网页的关键字是什么。 举例：
+
+```
+<meta name="keywords"content="meta总结,html meta,meta属性,meta跳转"> 
+```
+
+**B、description(网站内容描述)** 说明：description用来告诉搜索引擎你的网站主要内容。 举例：
+
+```
+<meta name="description"content="haorooms博客,html的meta总结，meta是html语言head区的一个辅助性标签。"> 
+```
+
+**C、robots(机器人向导)** 说明：robots用来告诉搜索机器人哪些页面需要索引，哪些页面不需要索引。 content的参数有all,none,index,noindex,follow,nofollow。默认是all。 举例：
+
+```
+<meta name="robots"content="none"> 
+```
+
+**具体参数如下：** 信息参数为all：文件将被检索，且页面上的链接可以被查询； 信息参数为none：文件将不被检索，且页面上的链接不可以被查询； 信息参数为index：文件将被检索； 信息参数为follow：页面上的链接可以被查询； 信息参数为noindex：文件将不被检索，但页面上的链接可以被查询； 信息参数为nofollow：文件将被检索，但页面上的链接不可以被查询； **D、author(作者)** 说明：标注网页的作者 举例：
+
+```
+<meta name="author"content="root,root@xxxx.com"> 
+```
+
+**E、generator**
+
+```
+<meta name="generator"content="信息参数"/> 
+```
+
+meta标签的generator的信息参数，代表说明网站的采用的什么软件制作。 **F、COPYRIGHT**
+
+```
+<META NAME="COPYRIGHT"CONTENT="信息参数"> 
+```
+
+meta标签的COPYRIGHT的信息参数，代表说明网站版权信息。 **G、revisit-after**
+
+```
+<META name="revisit-after"CONTENT="7days"> 
+```
+
+revisit-after代表网站重访,7days代表7天，依此类推。 **2、http-equiv属性** http-equiv顾名思义，相当于http的文件头作用，它可以向浏览器传回一些有用的信息，以帮助正确和精确地显示网页内容，与之对应的属性值为content，content中的内容其实就是各个参数的变量值。 meta标签的http-equiv属性语法格式是：
+
+```
+<meta http-equiv="参数"content="参数变量值">； 
+```
+
+其中http-equiv属性主要有以下几种参数： **A、Expires(期限)** 说明：可以用于设定网页的到期时间。一旦网页过期，必须到服务器上重新传输。 用法：
+
+```
+<meta http-equiv="expires"content="Fri,12Jan200118:18:18GMT"> 
+```
+
+注意：必须使用GMT的时间格式。 **B、Pragma(cache模式)** 说明：禁止浏览器从本地计算机的缓存中访问页面内容。 用法：
+
+```
+<meta http-equiv="Pragma"content="no-cache"> 
+```
+
+注意：这样设定，访问者将无法脱机浏览。 **C、Refresh(刷新)** 说明：自动刷新并指向新页面。 用法：
+
+```
+<meta http-equiv="Refresh"content="2;URL=http://www.haorooms.com"> //(注意后面的引号，分别在秒数的前面和网址的后面) 
+```
+
+注意：其中的2是指停留2秒钟后自动刷新到URL网址。 **D、Set-Cookie(cookie设定)** 说明：如果网页过期，那么存盘的cookie将被删除。 用法：
+
+```
+<meta http-equiv="Set-Cookie"content="cookie value=xxx;expires=Friday,12-Jan-200118:18:18GMT；path=/"> 
+```
+
+注意：必须使用GMT的时间格式。 **E、Window-target(显示窗口的设定)** 说明：强制页面在当前窗口以独立页面显示。 用法：
+
+```
+<meta http-equiv="Window-target"content="_top"> 
+```
+
+注意：用来防止别人在框架里调用自己的页面。 **F、content-Type(显示字符集的设定)** 说明：设定页面使用的字符集。 用法：
+
+```
+<meta http-equiv="content-Type"content="text/html;charset=gb2312"> 
+```
+
+**具体如下：** meta标签的charset的信息参数如GB2312时，代表说明网站是采用的编码是简体中文； meta标签的charset的信息参数如BIG5时，代表说明网站是采用的编码是繁体中文； meta标签的charset的信息参数如iso-2022-jp时，代表说明网站是采用的编码是日文； meta标签的charset的信息参数如ks_c_5601时，代表说明网站是采用的编码是韩文； meta标签的charset的信息参数如ISO-8859-1时，代表说明网站是采用的编码是英文； meta标签的charset的信息参数如UTF-8时，代表世界通用的语言编码； **G、content-Language（显示语言的设定）** 用法：
+
+```
+<meta http-equiv="Content-Language"content="zh-cn"/> 
+```
+
+**H、Cache-Control指定请求和响应遵循的缓存机制。** Cache-Control指定请求和响应遵循的缓存机制。在请求消息或响应消息中设置Cache-Control并不会修改另一个消息处理过程中的缓存处理过程。请求时的缓存指令包括no-cache、no-store、max-age、max-stale、min-fresh、on ly-if-cached，响应消息中的指令包括public、private、no-cache、no-store、no-transform、must-revalidate、proxy-revalidate、max-age。各个消息中的指令含义如下 Public指示响应可被任何缓存区缓存 Private指示对于单个用户的整个或部分响应消息，不能被共享缓存处理。这允许服务器仅仅描述当用户的部分响应消息，此响应消息对于其他用户的请求无效 no-cache指示请求或响应消息不能缓存 no-store用于防止重要的信息被无意的发布。在请求消息中发送将使得请求和响应消息都不使用缓存。 max-age指示客户机可以接收生存期不大于指定时间（以秒为单位）的响应 min-fresh指示客户机可以接收响应时间小于当前时间加上指定时间的响应 max-stale指示客户机可以接收超出超时期间的响应消息。如果指定max-stale消息的值，那么客户机可以接收超出超时期指定值之内的响应消息。 **J、http-equiv="imagetoolbar"**
+
+```
+<meta http-equiv="imagetoolbar"content="false"/> 
+```
+
+指定是否显示图片工具栏，当为false代表不显示，当为true代表显示。 **K、Content-Script-Type**
+
+```
+<Meta http-equiv="Content-Script-Type"Content="text/javascript"> 
+```
+
+W3C网页规范，指明页面中脚本的类型。 **HTML < base > 标签** 为页面上所有链接指定默认打开方式： 例如：
+
+```
+<base target="_self">
+```

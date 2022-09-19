@@ -787,3 +787,535 @@ font-size属性用于设置字号，该属性的值可以使用相对长度单�
 一般页面中: 12px14px例如:
 p { font-size: 32px; }
 
+
+
+#### 复用代码
+
+##### 居中对齐
+
+```
+-webkit-transform: translate(-50%, -50%);
+   -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+     -o-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+```
+
+##### 圆角
+
+```
+border-radius: rem(10);
+-o-border-radius: rem(10);
+-ms-border-radius: rem(10);
+-moz-border-radius: rem(10);
+-webkit-border-radius: rem(10);
+```
+
+```
+border-top-left-radius: <length> <length> //左上角
+border-top-right-radius: <length> <length> //右上角
+border-bottom-right-radius:<length> <length> //右下角
+border-bottom-left-radius:<length> <length> //左下角
+```
+
+##### 圆角不一样时的简写
+
+```
+ border-radius：rem(10) 0 rem(10) 0;
+```
+
+#### 去掉input ,button,select 在ios的默认样式
+
+```
+-webkit-appearance:none;
+outline:none
+```
+
+#### ios input阴影 去除
+
+```
+/* ios input阴影 */  
+input {  
+  outline: none;  
+  -webkit-appearance: none;  
+  /*去除系统默认的样式*/  
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);  
+  /* 点击高亮的颜色*/  
+}  
+  
+  
+// IOS点击阴影  
+select{  
+  -webkit-tap-highlight-color: transparent;  
+  -webkit-touch-callout: none;  
+  -webkit-user-select: none;  
+  user-select:none;  
+} 
+```
+
+#### [手机页面上面 按钮点击的时候有阴影 如何除去](http://blog.csdn.net/orichisonic/article/details/49583077)
+
+```
+*{
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	-webkit-tap-highlight-color: transparent; /* For some Androids */ 
+} 
+```
+
+#### 输入框的样式
+
+```
+input{
+    vertical-align: middle;
+    font-size: rem(28);
+    height: rem(34);
+    line-height: normal;
+    width: 70%;
+}
+```
+
+#### 自定义输入框placeholder 的样式
+
+```
+::-webkit-input-placeholder { 
+    padding-top: rem(3);
+} 
+:-moz-placeholder { 
+    padding-top: rem(3);
+} 
+::-moz-placeholder { 
+    padding-top: rem(3);
+} 
+:-ms-input-placeholder { 
+    padding-top: rem(3);
+} 
+```
+
+##### input placeholder 颜色
+
+```
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+  color: #666;
+}
+input:-moz-placeholder, textarea:-moz-placeholder {
+  color:#666;
+}
+input::-moz-placeholder, textarea::-moz-placeholder {
+  color:#666;
+}
+input:-ms-input-placeholder, textarea:-ms-input-placeholder {
+  color:#666;
+}
+```
+
+##### 让输入框中的placeholder 文字垂直居中
+
+加padding-top
+
+#### 输入框不可用
+
+```
+disabled：disabled；
+readonly：readonly；
+```
+
+#### [IOS Input Disabled默认样式问题](https://www.jianshu.com/p/c4e3bc4048f8)
+
+`input`或`textarea`设置为`disabled`后，在iphone手机上样式将被覆写。解决方案就是：
+
+```
+input:disabled, textarea:diabled {
+    -webkit-text-fill-color: #000;
+    -webkit-opacity: 1;
+    color: #000;
+}
+```
+
+以上样式将覆盖其系统默认设置的值，能够实现android和ios的兼容性。
+其中,`-webkit-text-fill-color`是用来做填充色使用的，如果有设置这个值，则`color`属性将不生效。
+
+这个属性也经常用于制作镂空字体等特效。
+如:
+
+```
+<div class="demo">
+  hello
+</div>
+
+.demo {
+  width: 100px;
+  height: 100px;
+  font-size: 40px;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 1px #000; /* 外面描线的样式 */
+}
+```
+
+#### 垂直居中
+
+```
+top: 50%;
+transform: translateY(-50%);
+-o-transform: translateY(-50%);
+-ms-transform: translateY(-50%);
+-moz-transform: translateY(-50%);
+-webkit-transform: translateY(-50%);
+```
+
+#### [CSS3中的Opacity多浏览器透明度兼容性问题](https://www.jb51.net/css/398056.html)
+
+```
+.opacity{   
+  filter:alpha(opacity=50); /* IE */  
+  -moz-opacity:0.5; /* 老版Mozilla */  
+  -khtml-opacity:0.5; /* 老版Safari */  
+  opacity: 0.5; /* 支持opacity的浏览器*/  
+} 
+```
+
+#### 兼容所有浏览器
+
+```
+.transparent_class {          
+  filter:alpha(opacity=50);          
+  -moz-opacity:0.5;          
+  -khtml-opacity: 0.5;          
+  opacity: 0.5;          
+}   
+```
+
+#### 文字超出长度，省略号显示
+
+```
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;  // 可以不加这个
+```
+
+#### 文字超出长度，换行
+
+```
+word-wrap:break-word;
+word-break:break-all;
+overflow: hidden;
+```
+
+#### 只显示两行文字，多出的用省略号代替
+
+```
+overflow: hidden;
+text-overflow: ellipsis;
+display: -webkit-box;
+ -webkit-line-clamp: 2;
+-webkit-box-orient: vertical;
+```
+
+#### 字体垂直居中
+
+```
+<div style="
+    width: 100%;
+    height: 100px;
+    background-color:
+    gray;color: white;
+    font-size: 30px;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;"
+   >
+       this  is title this is title thle
+</div>
+```
+
+#### 当提示信息的文字长度不确定的时候
+
+给最小宽度，然后不允许换行
+
+最小长度：min-width
+
+不允许换行：white-space:nowrap;
+
+例如：
+
+```
+display: none;
+position: fixed;
+z-index: 5000;
+min-width: rem(150);
+min-height: rem(40);
+padding: rem(20);
+top:rem(480);
+left: 50%;
+transform: translateX(-50%);
+background: rgba(0, 0, 0, 0.5);
+text-align: center;
+border-radius: rem(10);
+color: $white;
+font-size: rem(26);
+white-space:nowrap;
+```
+
+#### 背景图
+
+```
+display: block;
+border: 0;
+outline: 0;
+width: 100%;
+height: 100%;
+position: absolute;
+left: 0;
+top:0;
+z-index: -1;
+```
+
+#### 错误信息提示框样式
+
+```
+p#error {
+  //	display: none;
+  position: fixed;
+  left: 50%;
+  top: 30%;
+  z-index: 999;
+  -webkit-transform: translateX(-50%);	
+  -moz-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
+  margin: 0 auto;
+  padding: rem(20);
+  font-size: rem(30);
+  color: $white;
+  background: rgba(0,0,0,.7);
+  border-radius: rem(10);
+  -webkit-border-radius: rem(10);
+  -moz-border-radius: rem(10);	
+  -o-border-radius: rem(10);
+  text-align: center;
+  border: 0;
+  text-indent: 0;
+  width: auto;
+  min-width: 45%;
+}
+```
+
+#### 过渡效果
+
+```
+-webkit-transition: all .25s ease|linear|ease-in|ease-out|ease-in-out|cubic-bezier(<number>,<number>,<number>,<number>);
+-moz-transition: all .25s ease|linear|ease-in|ease-out|ease-in-out|cubic-bezier(<number>,<number>,<number>,<number>);
+-ms-transition: all .25s ease|linear|ease-in|ease-out|ease-in-out|cubic-bezier(<number>,<number>,<number>,<number>);
+-o-transition: all .25s ease|linear|ease-in|ease-out|ease-in-out|cubic-bezier(<number>,<number>,<number>,<number>);
+transition: all .25s ease|linear|ease-in|ease-out|ease-in-out|cubic-bezier(<number>,<number>,<number>,<number>);
+
+transition: property duration timing-function delay;
+```
+
+#### transform 属性向元素应用 2D 或 3D 转换。该属性允许我们对元素进行旋转、缩放、移动或倾斜
+
+```
+-webkit-transform: ;
+   -moz-transform: ;
+    -ms-transform: ;
+     -o-transform: ;
+       	transform: ;
+```
+
+####  允许改变textarea 不同方向的大小
+
+```
+textarea { resize:both; } /* none|horizontal|vertical|both */
+textarea.vert { resize:vertical; }
+textarea.noResize { resize:none; }
+```
+
+#### 禁止输入框调整大小
+
+```
+textarea {
+  	resize: none;
+}
+```
+
+#### 固定定位在IE6下是不兼容的
+
+#### 在使用clientX和clientY时，要使用scrollTop和scrollLeft。避免出现问题
+
+#### [css input[type=file] 样式美化-input上传按钮美化](https://www.haorooms.com/post/css_input_uploadmh)
+
+##### DOM结构
+
+```
+<a href="javascript:;" class="a-upload">
+    <input type="file" name="" id="">点击这里上传文件
+</a>
+
+<a href="javascript:;" class="file">选择文件
+    <input type="file" name="" id="">
+</a>
+```
+
+CSS样式1：
+
+```
+/*a  upload */
+.a-upload {
+    padding: 4px 10px;
+    height: 20px;
+    line-height: 20px;
+    position: relative;
+    cursor: pointer;
+    color: #888;
+    background: #fafafa;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+    display: inline-block;
+    *display: inline;
+    *zoom: 1
+}
+
+.a-upload  input {
+    position: absolute;
+    font-size: 100px;
+    right: 0;
+    top: 0;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    cursor: pointer
+}
+
+.a-upload:hover {
+    color: #444;
+    background: #eee;
+    border-color: #ccc;
+    text-decoration: none
+}
+```
+
+样式2：
+
+```
+.file {
+    position: relative;
+    display: inline-block;
+    background: #D0EEFF;
+    border: 1px solid #99D3F5;
+    border-radius: 4px;
+    padding: 4px 12px;
+    overflow: hidden;
+    color: #1E88C7;
+    text-decoration: none;
+    text-indent: 0;
+    line-height: 20px;
+}
+.file input {
+    position: absolute;
+    font-size: 100px;
+    right: 0;
+    top: 0;
+    opacity: 0;
+}
+.file:hover {
+    background: #AADFFD;
+    border-color: #78C3F3;
+    color: #004974;
+    text-decoration: none;
+}
+```
+
+![样式](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/CSS%E7%AC%94%E8%AE%B0/input_upload.png)
+
+
+
+#### 限制textarea文本域拉动
+
+> textarea:resize属性值：both（表示横向纵向均可拉动）horizontal（表示只有横向可以拉动）vertical（表示只有纵向才可以拉动）none（禁止拉动）
+
+##### 设置文本域宽高
+
+```
+cols="30" rows="5"
+```
+
+#### CSS 前缀
+
+主流浏览器引擎前缀
+
+- -webkit- (谷歌, Safari, 新版Opera浏览器等)
+- -moz- (火狐浏览器)
+- -o- (旧版Opera浏览器等)
+- -ms- (IE浏览器 和 Edge浏览器)
+
+#### [不用 JS 显示“更多”的按钮来展开更多内容](https://mp.weixin.qq.com/s?__biz=MzI1MTA2MDcyOQ==&mid=2649567547&idx=1&sn=e022597760c3e5734a9505a71268e856&chksm=f1e159adc696d0bb7c87a84a56074a280efec840af9493da10f2fda8c683dcbac14ba96ddb30&scene=21#wechat_redirect)
+
+#### 自定义滚动条样式
+
+```
+scrollbar::-webkit-scrollbar{
+  width: 5px;
+  height: 5px;
+  background:#f3f3f3;
+}
+/*定义滑块，内阴影及圆角*/
+.scrollbar::-webkit-scrollbar-thumb{
+  height: 20px;
+  background:rgba(0,0,0,.1);
+}
+.onhost-data {
+  text-align: center;
+  padding-top:30px;
+}
+```
+
+#### 解决移动端fixed定位
+
+[小技巧css解决移动端ios不兼容position:fixed属性，无需插件](https://blog.csdn.net/liu__hua/article/details/40106595)
+
+需要解决的问题：头部fixed的情况下，右侧内容如果有输入框的话，在UC浏览器，当输入框获取焦点的时候，页面往上滚动，超过顶部固定导航。
+
+![样式](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/CSS%E7%AC%94%E8%AE%B0/fixed1.png)
+
+获取焦点后：
+
+![样式](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/CSS%E7%AC%94%E8%AE%B0/fixed2.png)
+
+##### 解决方法：
+
+让右侧内容也固定定位
+
+
+
+#### 网页适配 iPhoneX
+
+[网页适配 iPhoneX，就是这么简单](https://jelly.jd.com/article/6006b1055b6c6a01506c87fd)
+
+#### 溢出文字省略号显示兼容IE
+
+原来：
+
+```
+.essential-info td:nth-child(2) a:nth-child(1){
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+```
+
+解决：加上宽度即可
+
+```
+.essential-info td:nth-child(2) a:nth-child(1){
+    display: inline-block;
+    width:100%;
+    width: 1000px\9;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+```
+

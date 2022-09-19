@@ -8,9 +8,62 @@ categories:
 - 《Vue2实践揭秘》
 ---
 
+#### [Vue.js-中文文档](https://cn.vuejs.org/)
+
 #### 找相关资源
 
 vue.js官网的资源列表中的[awesome -vue](https://github.com/vuejs/awesome-vue)里面
+
+[腾讯课堂vue.js学习视频](https://ke.qq.com/course/180464)
+
+Vue.js是一套构建用户界面(view)的MVWM框架。Vue.js 的核心库只关注视图层，并且非
+常容易学习，非常容易与其他库或已有的项目整合。
+
+####  Vue.js的目的
+
+Vue.js的产生核心是为了解决如下三个问题：
+
+1. 解决数据绑定的问题;
+2. Vue.js 框架生产的主要目的是为了开发大兴单页面应用(SPA: Single Page Application)
+   Angularjs中对PC端支持的比较良好，但是对移动端支持就一般。而Vue.js主要支
+   持移动端，也支持PC端。
+3. 它还支持组件化。也就是可以将页面封装成若干个组件，采用积木式编程，这样是
+   页面的复用度达到最高(支持组件化)。
+
+####  Vue.js特性
+
+1. MVVM模式
+    M: model业务模型， 用处:处理数据，提供数据
+  V: view用户界面、用户视图
+
+  		业务模型model中的数据发生改变的时候，用户视图view也随之变化。用户视图
+  view改变的时候，业务模型model中的数据也可以发生改变。
+
+
+2. 组件化
+3. 指令系统
+4. Vue.js 2.0开始支持虚拟DOM (Vue.js 1.0是操作的真是DOM，而不是虚拟DOM)
+虚拟DOM可以提升页面的刷新速度。
+
+#### 使用
+
+第一步，引入vue.js
+
+```
+<script src="https://unpkg.com/vue"></script>
+```
+
+第二步，Vue.js提供了一个Vue，我们需要创建一个对象
+
+```
+var app = new Vue({
+	el:"#demo",		// 声明Vue.js管理的边界
+	data:{},	// data核心作用是存放显示在页面中的数据，需要是一个对象
+})
+```
+
+第三步，在用户界面view中，通过{{}}形式将data中的数据显示在页面中。
+				在用户界面中，{{}}代码中绑定的data的key,而在页面中显示的是该key的value。
 
 #### vue特点
 
@@ -24,6 +77,12 @@ Vue2具有很高的兼容性，我们也可以用".js"文件来单纯地定义�
 
 注： 从Vue2开始，组件模板必须且只能有一个顶层元素，如果在组件模板内设置多个顶层元素将会引发编译异常。
 ```
+
+- 数据驱动
+- 组件化
+- 轻量
+- 简洁
+- 高效
 
 #### 单页组件由一下三部分组成：
 
@@ -142,7 +201,9 @@ export default {
 
 2、生产环境版本，优化了尺寸和速度
 
-	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>	
+```
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>	
+```
 
 二、下载和引入
 
@@ -220,3 +281,145 @@ v-bind
 #### Object侦测
 
 ![Object侦测](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Vue2-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/Object%E4%BE%A6%E6%B5%8B.png)
+
+
+
+#### 在控制台查看data数据
+
+```
+app.name
+```
+
+app这个变量会代理vue中data数据。所以我们访问data中数据的时候，直接用app.name就可以了
+
+这样，如果我们要实现前后台交互，只要将从后台得到的数据，放在data中，页面就会自动绑定，这样就实现了从model->view的数据流向。
+
+#### 防止闪烁
+
+```
+<style>
+	[v-cloak]{
+		display:none;
+	}
+</style>
+```
+
+```
+<div id="box">
+	<span>{{msg}}</span>
+	<span v-text="msg"></span>   // 这种写法，网络不好的时候，不会看到花括号，防止闪烁
+</div>
+```
+
+#### 自定义过滤器
+
+```
+<div id="box">
+	{{a | toDou}}
+</div>
+
+<script>
+	Vue.filter('toDou', function(input){
+		return input < 10 ? '0' + input : input;
+	})
+</script>
+```
+
+```
+<div id="box">
+	{{a | toDou 1 2}}
+</div>
+
+<script>
+	Vue.filter('toDou', function(input,a,b){
+		alert(a + ',' + b);
+		return input < 10 ? '0' + input : input;
+	})
+</script>
+```
+
+```
+<div id="box">
+	{{a | date}}
+</div>
+
+<script>
+	Vue.filter('date', function(input){
+		var oDate = new Date(input);
+		// 时间戳转时分秒
+		return oDate.getFullYear() + '-' + (oDate.getMonth() + 1) + '-' + oDate.getDate() + ' ' + oDate.getHours() + ':' + oDate.getMinutes() + ':' + oDate.getSeconds();
+	})
+</script>
+```
+
+#### 自定义指令
+
+```
+<div id="box">
+	<span v-red>
+		红色字体
+	</span>
+</div>
+
+<script>
+	Vue.directive('red', function(){
+		this.el.style.background = 'red';
+	})
+	
+	window.onload = function() {
+		var vm = new Vue({
+			el:'#box',
+			data:{
+				msg:'welcome'
+			}
+		})
+	}
+</script>
+```
+
+#### 字符串翻转（倒序）-逆转消息
+
+##### join() 方法
+
+用于把数组中的所有元素放入一个字符串。
+
+元素是通过指定的分隔符进行分隔的
+
+##### split() 方法
+
+用于把一个字符串分割成字符串数组。
+
+```
+<div id="app-5">
+	<p>{{ message }}</p>
+	<button @click="reverseMessage">逆转消息</button>
+</div>
+
+var app5 = new Vue({
+	el:"#app-5",
+	data:{
+		message:'Hello Vue.js'
+	},
+	methods:{
+		reverseMessage:function(){
+			this.message = this.message.split('').reverse().join('')
+		}
+	}
+})
+```
+
+#### 线上生产环境
+
+##### 代码开发及测试环节
+
+1. UI标注
+2. 真实数据演示
+
+##### 代码规范
+
+1. 架构设计
+2. 组件抽象
+3. 模块拆分
+4. 代码风格统一
+5. JS变量命名规范
+6. CSS代码规范

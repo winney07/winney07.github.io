@@ -2008,3 +2008,20 @@ function fact(num) {
 console.log(fact(4));   //24
 ```
 
+#### [js如何验证type为file的input是否为空](https://zhidao.baidu.com/question/195410818.html)
+
+1：js判断的话，直接判断input的value，如果value的长度为0，那么就空如：
+
+```
+<input type="file" id="file"/>
+<input type="button" value="看看file是不是空" onclick="alert(file.value.length);"/>
+```
+
+，如果值大于0，则不为空。
+2：使用Jquery的话(前提：你要导入Jquery)，如：
+
+```
+<input type="file" id="file"/>
+<input type="button" onclick="alert($('#file').val().length)" value="click"/>
+```
+

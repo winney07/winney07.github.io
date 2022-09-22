@@ -744,3 +744,16 @@ W3C网页规范，指明页面中脚本的类型。 **HTML < base > 标签** 为
 ```
 <base target="_self">
 ```
+
+
+
+
+
+#### html实现打电话,发短信,发邮件
+
+```
+<a href="tel:10086">拨打电话</a>
+<a href="sms:18945086283?body=短信内容">发送短信</a>
+<a href="mailto:mail@mail.com">发送邮件</a>
+```
+

@@ -146,3 +146,171 @@ QQ应用模式
 ```
 
 `注意：页面不写meta[name="viewport"]标签,代码自动判断插入`
+
+##### mobile-util.js—做横竖屏适配
+
+```
+// 横竖屏字体设置
+if (window.orientation == 90 || window.orientation == -90) {
+    // 横屏
+    docEl.style.fontSize = rem/2 + 'px';   // 将字体缩小一倍
+} else {
+    // 竖屏
+    docEl.style.fontSize = rem + 'px';
+}
+```
+
+```
+// 兼容横竖屏切换
+window.addEventListener("orientationchange", function(){
+    mobileUtil.fixScreen();
+});
+```
+
+#### 移动端横竖屏适配
+
+摘自：[JavaScript实现移动端横竖屏检测](https://www.jb51.net/article/256157.htm)， 仅用于学习
+
+##### 一、HTML方法检测
+
+```
+<!-- 引用竖屏的CSS文件 portrait.css -->
+  <link rel="stylesheet" media="all and (orientation:portrait)" href="portrait.css" rel="external nofollow"  >
+   
+  <!-- 引用横屏的CSS文件 landscape.css -->
+<link rel="stylesheet" media="all and (orientation:landscape)" href="landscape.css" rel="external nofollow"  >
+
+```
+
+##### 二、CSS方法检测
+
+css中通过媒体查询方法来判断是横屏还是竖屏
+
+```
+/* 竖屏 */
+@media screen and (orientation:portrait) {
+  /* 这里写竖屏样式 */
+}
+
+/* 横屏 */
+@media screen and (orientation:landscape) {
+  /* 这里写横屏样式 */
+}
+```
+
+##### 三、JS方法检测
+
+**【1】orientationChange事件**
+
+苹果公司为移动 Safari中添加了 orientationchange 事件，orientationchange 事件在设备的纵横方向改变时触发
+
+```
+window.addEventListener("orientationchange",function(){
+    alert(window.orientation);
+}); 
+```
+
+**【2】orientation属性**
+
+> window.orientation 获取手机的横竖的状态，window.orientation 属性中有 4个值：0和180的时候为竖屏（180为倒过来的竖屏），90和-90时为横屏（-90为倒过来的横屏）
+>
+> 0 表示肖像模式，90 表示向左旋转的横向模式（“主屏幕”按钮在右侧），-90 表示向右旋转的横向模 式（“主屏幕”按钮在左侧），180 表示 iPhone头朝下；但这种模式至今 尚未得到支持。如图展示了 window.orientation 的每个值的含义。
+
+**【3】案例**
+
+检测用户当前手机横竖屏状态，如果处于横屏状态，提示用户 “为了更好的观看体验，请在竖屏下浏览”，否则不提示
+
+```
+<!DOCTYPE html>
+<html lang="en">
+  
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    #box {
+      position: fixed;
+      box-sizing: border-box;
+      padding: 50px;
+      display: none;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, .5);
+    }
+  
+    #box span {
+      margin: auto;
+      font: 20px/40px "宋体";
+      color: #fff;
+      text-align: center;
+    }
+  </style>
+</head>
+  
+<body>
+  <div id="box"><span>为了更好的观看体验，请在竖屏下浏览</span></div>
+  <script>
+    window.addEventListener("orientationchange", toOrientation);
+    function toOrientation() {
+      let box = document.querySelector("#box");
+      if (window.orientation == 90 || window.orientation == -90) {
+        // 横屏-显示提示
+        box.style.display = "flex";
+      } else {
+        // 横屏-隐藏提示
+        box.style.display = "none";
+      }
+    }
+  </script>
+</body>
+  
+</html>
+```
+
+#### 移动端VM适配-横竖屏适配
+
+1. `html，body`的字体设置`font-size: 0.13333333vw; `
+2. 元素`多少px`，就写`多少rem`
+
+```
+html, body{
+    font-size: 0.13333333vw;
+}
+
+// 横屏适配
+@media screen and (orientation: landscape){
+    html, body{
+        font-size: 0.065vw;
+    }
+}
+
+header{
+	font-size: 16rem;
+}
+```
+
+#### 
+
+
+
+```
+<li>
+<div class="left">
+    <div class="hb-price">
+        <strong>红包提现</strong>
+        <p>2022-08-01 19:09:09</p>
+    </div>
+</div>
+<div class="right r-flex">
+    <strong>+888</strong>
+    <p>
+        审核中
+    </p>
+</div>
+</li>
+```
+

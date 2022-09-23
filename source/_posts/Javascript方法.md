@@ -2025,3 +2025,33 @@ console.log(fact(4));   //24
 <input type="button" onclick="alert($('#file').val().length)" value="click"/>
 ```
 
+
+
+#### 5:2,3:1数据类型数据判断
+
+```
+for(var i = 0; i< arr.length; i++) {
+    console.log('arr[i]');
+    console.log(arr[i]);
+    console.log(arr[i].indexOf(':'));
+    // ,前后数据不为空的情况下，为空，不做判断，
+    if(arr[i] !== '') {
+        // 没有：---格式不对
+        if(arr[i].indexOf(':') === -1) {
+            console.log('第1个判断')
+            return '请填写数字及英文字符<strong>【' + txt + '】</strong>';
+        }
+        var arr2 = arr[i].split(":");
+        for(var j = 0; j < arr2.length; j++) {
+            console.log('第2个判断')
+            console.log('arr2[j]')
+            console.log(arr2[j])
+            // 判断是否为数字或其一为空
+            if(isNaN(arr2[j]) || arr2[j] === '') {
+                return '请填写数字及英文字符<strong>【' + txt + '】</strong>';
+            }
+        }
+    }
+}
+```
+

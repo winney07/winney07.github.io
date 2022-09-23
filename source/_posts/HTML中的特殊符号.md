@@ -7,7 +7,12 @@ categories:
 - 工作笔记
 - HTML中的特殊符号
 ---
-&infin;
+#### [HTML 特殊符号编码对照表](https://tool.chinaz.com/tools/htmlchar.aspx)
+
+
+
+#### &infin;
+
 ```
 无穷的符号 ： &infin;
 ```

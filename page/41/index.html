@@ -193,7 +193,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2019/03/07/jQuery-%E7%AC%94%E8%AE%B0/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2018/08/02/%E5%9C%A8Hexo%E5%8D%9A%E5%AE%A2%E4%B8%AD%E5%8F%91%E5%B8%83%E6%96%87%E7%AB%A0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -207,7 +207,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2019/03/07/jQuery-%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">jQuery-笔记</a>
+            <a href="/2018/08/02/%E5%9C%A8Hexo%E5%8D%9A%E5%AE%A2%E4%B8%AD%E5%8F%91%E5%B8%83%E6%96%87%E7%AB%A0/" class="post-title-link" itemprop="url">在Hexo博客中发布文章</a>
         </h2>
 
         <div class="post-meta">
@@ -217,92 +217,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2019-03-07 15:01:55" itemprop="dateCreated datePublished" datetime="2019-03-07T15:01:55+08:00">2019-03-07</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-09-03 21:06:21" itemprop="dateModified" datetime="2022-09-03T21:06:21+08:00">2022-09-03</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/jQuery/" itemprop="url" rel="index"><span itemprop="name">jQuery</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="监听输入框的值变化事件"><a href="#监听输入框的值变化事件" class="headerlink" title="监听输入框的值变化事件"></a>监听输入框的值变化事件</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(&quot;.search-input&quot;).bind(&#x27;input porpertychange&#x27;,function()&#123;</span><br><span class="line">	.....</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>不足：输入中文时，每输入一个字母，都会触发</p>
-<h4 id="监听输入框的值变化-优化"><a href="#监听输入框的值变化-优化" class="headerlink" title="监听输入框的值变化-优化"></a>监听输入框的值变化-优化</h4><p>改为使用compositionstart和compositionend</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">// 搜索框</span><br><span class="line">var flag = true;</span><br><span class="line">$(&quot;.optionList .searchIpt&quot;).on(&quot;compositionstart&quot;, function() &#123;</span><br><span class="line">    flag = false;</span><br><span class="line">&#125;);</span><br><span class="line">$(&quot;.optionList .searchIpt&quot;).on(&quot;compositionend&quot;, function() &#123;</span><br><span class="line">    flag = true;</span><br><span class="line">&#125;);</span><br><span class="line">$(&quot;.optionList .searchIpt&quot;).on(&quot;keyup&quot;, function() &#123;</span><br><span class="line">    if(flag) &#123;</span><br><span class="line">        var text = $(this).val().trim();</span><br><span class="line">        // 匹配查询结果</span><br><span class="line">        searchCheck(text, &quot;.searchIpt&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<h4 id="回到页面顶部"><a href="#回到页面顶部" class="headerlink" title="回到页面顶部"></a>回到页面顶部</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">window.onscroll = function()&#123;</span><br><span class="line">    if (document.documentElement.scrollTop || document.body.scrollTop &gt; 0) &#123;</span><br><span class="line">        document.getElementById(&quot;test&quot;).style.display=&#x27;block&#x27;;</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        document.getElementById(&quot;test&quot;).style.display=&#x27;none&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">test.onclick = function()&#123;</span><br><span class="line">    document.body.scrollTop = document.documentElement.scrollTop = 0;</span><br><span class="line">    document.getElementById(&quot;test&quot;).style.display = &quot;none&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2018/09/19/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="winney">
-      <meta itemprop="description" content="Doing is better than saying.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="winney">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/09/19/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/" class="post-title-link" itemprop="url">前端面试题</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-09-19 16:55:43" itemprop="dateCreated datePublished" datetime="2018-09-19T16:55:43+08:00">2018-09-19</time>
+              <time title="创建时间：2018-08-02 11:34:29" itemprop="dateCreated datePublished" datetime="2018-08-02T11:34:29+08:00">2018-08-02</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
@@ -321,7 +236,7 @@
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/web%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">web前端</span></a>
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
                 </span>
             </span>
 
@@ -336,34 +251,17 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h4 id="基础题"><a href="#基础题" class="headerlink" title="基础题"></a>基础题</h4><ol>
-<li>prototype和 proto的关系是什么</li>
-<li>meta viewport 原理</li>
-<li>域名收敛是什么</li>
-<li>float和display : inline-block :区别</li>
-<li>前端优化策略列举</li>
-<li>首屏白屏时间如何计算</li>
-<li>闭包</li>
-<li>作用连接</li>
-<li> ajax如何实现。readystate五中状态的含义</li>
-<li> jsonp如何实现</li>
-<li>怎么处理跨域</li>
-<li> restful的method解释</li>
-<li>get和post的区别</li>
-<li>事件模型解释</li>
-<li>编写一个元素拖拽的插件</li>
-<li>编写一个Contextmenu插件</li>
-<li>编写web端cookie的设置和获取方法</li>
-<li>兼容ie 8的水平垂直居中</li>
-<li>兼容IE的事件封装</li>
-<li>Html5和原生Android的优缺点</li>
-<li>编写H5需要注意什么</li>
-<li>XSS和crsf的原理以及怎么预防</li>
-<li>css优先级</li>
-<li>如何实现点击radio的文字描述控制radio的状态（通过label实现)</li>
-<li>delegate如何实现</li>
-</ol>
-
+          <h4 id="1、新建一篇文章"><a href="#1、新建一篇文章" class="headerlink" title="1、新建一篇文章"></a>1、新建一篇文章</h4><p>（1）在hexo博客目录下，进入Git Bash命令窗口中，输入以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new <span class="string">&quot;在这里&quot;</span></span><br></pre></td></tr></table></figure>
+<p>（2）在博客目录下的/source/_posts/ 文件夹下，可以看到已经生成了标题为(在这里.md)的博客文件：<br>如图所示：<br><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/%E5%9C%A8Hexo%E5%8D%9A%E5%AE%A2%E4%B8%AD%E5%8F%91%E5%B8%83%E6%96%87%E7%AB%A0/zai.png" alt="生成的博客文件"><br>（3）在（在这里.md）文件中编辑自己的博客文章即可。<br>注意：Hexo 发布的文章是 Markdown 格式的文件， Markdown 基本语法的网址：<a href="http://www.markdown.cn/" title="" target="">点这里前往</a> </p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2018/08/02/%E5%9C%A8Hexo%E5%8D%9A%E5%AE%A2%E4%B8%AD%E5%8F%91%E5%B8%83%E6%96%87%E7%AB%A0/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -382,7 +280,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2018/09/02/CSS3-%E7%AC%94%E8%AE%B0/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2018/08/01/%E5%B0%86Hexo%E5%8D%9A%E5%AE%A2%E4%B8%BB%E9%A2%98%E6%9B%B4%E6%8D%A2%E4%B8%BANexT%E4%B8%BB%E9%A2%98/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -396,7 +294,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2018/09/02/CSS3-%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">CSS3-笔记</a>
+            <a href="/2018/08/01/%E5%B0%86Hexo%E5%8D%9A%E5%AE%A2%E4%B8%BB%E9%A2%98%E6%9B%B4%E6%8D%A2%E4%B8%BANexT%E4%B8%BB%E9%A2%98/" class="post-title-link" itemprop="url">将Hexo博客主题更换为NexT主题</a>
         </h2>
 
         <div class="post-meta">
@@ -406,15 +304,28 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2018-09-02 16:28:27" itemprop="dateCreated datePublished" datetime="2018-09-02T16:28:27+08:00">2018-09-02</time>
+              <time title="创建时间：2018-08-01 17:10:28" itemprop="dateCreated datePublished" datetime="2018-08-01T17:10:28+08:00">2018-08-01</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-09-04 11:29:08" itemprop="dateModified" datetime="2022-09-04T11:29:08+08:00">2022-09-04</time>
+                <time title="修改时间：2022-08-24 18:09:23" itemprop="dateModified" datetime="2022-08-24T18:09:23+08:00">2022-08-24</time>
               </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
+                </span>
+            </span>
 
           
 
@@ -427,155 +338,134 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h4 id="CSS3新特性"><a href="#CSS3新特性" class="headerlink" title="CSS3新特性"></a>CSS3新特性</h4><ul>
-<li>圆角(border-radius );</li>
-<li>阴影(box-shadow );</li>
-<li>对文字加特效(text-shadow );</li>
-<li>线性渐变（gradient );</li>
-<li>变换(transform），如 transform: rotate(9deg) scale(0.85,0.90) translate(0px,-30px) skew(-9deg,0deg)//旋转、缩放、定位、倾斜.</li>
-<li>更多的 CSS 选择器；</li>
-<li>多背景设置；</li>
-<li>色彩模式，如rgba;</li>
-<li>伪元素：selection;</li>
-<li>媒体杏询；</li>
-<li>多栏布局；</li>
-<li>图片边框 (border-image )。</li>
-</ul>
-<h4 id="CSS3-新增伪类"><a href="#CSS3-新增伪类" class="headerlink" title="CSS3 新增伪类"></a>CSS3 新增伪类</h4><p>新增伪类有以下几个：</p>
-<ul>
-<li>p:first-of-type，选择属于其父元素的首个<code>&lt;p&gt;</code>元素的每个<code>&lt;p&gt;</code>元素。</li>
-<li>p:last-of-type，选择属于其父元素的最后一个<code>&lt;p&gt;</code>元素的每个<code>&lt;p&gt;</code>元素</li>
-<li>p:only-of-type，选择属于其父元素的唯一<code>&lt;p&gt;</code>元素的每个<code>&lt;p&gt;</code>元素。</li>
-<li>p:only-child，选择属于其父元素的唯一子元素的每个<code>&lt;p&gt;</code>元素。</li>
-<li>p:nth-child(2)，选择属于其父元素的第二个子元素的每个<code>&lt;p&gt;</code>元素。</li>
-<li>:enabled:disabled，控制表单控件的禁用状态。</li>
-<li>:checked，单选框或复选框被选中。</li>
-</ul>
-<h4 id="first-child-与first-of-type-的区别"><a href="#first-child-与first-of-type-的区别" class="headerlink" title="first-child 与first-of-type 的区别"></a>first-child 与first-of-type 的区别</h4><p>first-child 匹配的是父元素的第一个子元素，可以说是结构上的第一个子元素</p>
-<p>first-oftype 匹配的是该类型的第一个元素，类型就是指冒号前面匹配到的元素。并不限制是第一个子元泰，只要是该类型元素的第一个即可。当然，这些元素的范国都属于同一级，也就是同辈</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;</span><br><span class="line">  &lt;p&gt;&lt;/p&gt;</span><br><span class="line">  &lt;span&gt;&lt;/span&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+          <p>1、<a href="https://gitforwindows.org/" title="" target="">下载NexT主题</a>，下载解压后，将该文件夹命名为next，把这个文件夹放置到博客目录的themes 文件夹下，如图所示：<br><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/%E5%B0%86Hexo%E5%8D%9A%E5%AE%A2%E4%B8%BB%E9%A2%98%E6%9B%B4%E6%8D%A2%E4%B8%BANexT%E4%B8%BB%E9%A2%98/next.png" alt="将主题的文件夹命名为next"><br>想了解更多，可以查看NexT 主题使用文档： <a href="http://theme-next.iissnan.com/" title="" target="">官方使用文档</a></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2018/08/01/%E5%B0%86Hexo%E5%8D%9A%E5%AE%A2%E4%B8%BB%E9%A2%98%E6%9B%B4%E6%8D%A2%E4%B8%BANexT%E4%B8%BB%E9%A2%98/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
 
-<p>p:tirst-child 匹配到p元素，因为p元素是div的第一个子元素。<br>span:first-chid 匹配不到 span 元素，因为span 是div的第二个子元素。<br>p:first-of-type 匹配到p元素，因为p是div所有为p的子元素中的第一个。<br>span:first-of-type 匹配到span 元素，因为span是div 所有为span 的子元素中的第一个。</p>
-<h4 id="解决使用-transform-translate-属性时出现闪烁现象的问题"><a href="#解决使用-transform-translate-属性时出现闪烁现象的问题" class="headerlink" title="解决使用 transform:translate 属性时出现闪烁现象的问题"></a>解决使用 transform:translate 属性时出现闪烁现象的问题</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-webkit-backface-visibility:hidden;		// 隐藏转换的元素的背面</span><br><span class="line">-webkit-transform-style: preserve-3d;	// 使被转换的元素的子元素保留其3D转换</span><br><span class="line">-webkit-transform: translate3d(0,0,0);// 开启GPU硬件加速模式，使用GPU代替CPU渲染动画</span><br></pre></td></tr></table></figure>
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
 
-<blockquote>
-<p>在某些 Android 系统中，有时会有莫名其妙的 Bug，建议慎重使用</p>
-</blockquote>
-<h4 id="CSS3-动画在动作结束时保持该状态不变"><a href="#CSS3-动画在动作结束时保持该状态不变" class="headerlink" title="CSS3 动画在动作结束时保持该状态不变"></a>CSS3 动画在动作结束时保持该状态不变</h4><p>采用animation-fill-mode。其可以设置为以下值</p>
-<ul>
-<li>none，不改变默认行为。</li>
-<li>forwards，当动画完成后，保持最后一个属性值（在最后一个关键帧中定义)。</li>
-<li>backwards， 在animation-delay 所指定的一段时间内，在动画显示之前，应用开始属性值（在第一个关键帧中定义）。</li>
-<li>both，向前和向后填充模式都可以应用</li>
-</ul>
-<h4 id="实现某-DIV-元素以每秒50px-的速度左移-100px"><a href="#实现某-DIV-元素以每秒50px-的速度左移-100px" class="headerlink" title="实现某 DIV 元素以每秒50px 的速度左移 100px"></a>实现某 DIV 元素以每秒50px 的速度左移 100px</h4><p>方法一，使用 jQuery：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(&#x27;div&#x27;).animate(&#123;&#x27;left&#x27;: 100&#125;, 2000);</span><br></pre></td></tr></table></figure>
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2018/08/01/Hexo-GitHub-Pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">
 
-<p>方法二，使用JavaScript + CSS3：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">div &#123;</span><br><span class="line">  transition: al1 2s 1inear; // 1inear 规定以相同速度（匀速）开始至结束的过渡效果</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="winney">
+      <meta itemprop="description" content="Doing is better than saying.">
+    </span>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">div.style.left = (div.offsetLeft + 100) + &#x27;px&#x27;;</span><br></pre></td></tr></table></figure>
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="winney">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/08/01/Hexo-GitHub-Pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" class="post-title-link" itemprop="url">Hexo + GitHub Pages  搭建个人博客</a>
+        </h2>
 
-<h4 id="box-sizing-属性"><a href="#box-sizing-属性" class="headerlink" title="box-sizing 属性"></a>box-sizing 属性</h4><p>box-sizing 属性主要用来控制元素盒模型的解析模式。默认值是content-box.</p>
-<p>content-box 让元素维持 W3C的标准盒模型。元素的宽度/高度由border + padding +content 的宽度/高度决定，设置width/height 属性指的是指定content 部分的宽度/高度。</p>
-<p>border-box 让元素维持正 传统盒模型（IE6以下版本和IE6、IE7 的怪异模式）。设置width/height 属性指的是指定border + padding + content 的宽度/高度</p>
-<p>标淮浏览器下，按照 W3C 规范解析盒模型。一旦修政了元素的边框或内距，就会影响元素的盒子尺寸，就不得不重新计算元素的盒子尺寸，从而影响整个页面的布局。</p>
-<h4 id="content-box-盒模型"><a href="#content-box-盒模型" class="headerlink" title="content-box 盒模型"></a>content-box 盒模型</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Width(布局所占宽度) = width + padding-left + padding-right + border-left + border-right</span><br></pre></td></tr></table></figure>
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Height(布局所占高度) = height + padding-top + padding-bottom + border-top + border-bottom</span><br></pre></td></tr></table></figure>
+              <time title="创建时间：2018-08-01 11:01:02" itemprop="dateCreated datePublished" datetime="2018-08-01T11:01:02+08:00">2018-08-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-08-24 18:09:23" itemprop="dateModified" datetime="2022-08-24T18:09:23+08:00">2022-08-24</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
+                </span>
+            </span>
 
-<h4 id="padding-box-盒模型"><a href="#padding-box-盒模型" class="headerlink" title="padding-box 盒模型"></a>padding-box 盒模型</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Width(布局所占宽度) = width（包含 padding-left + padding-right) + border-top + border-bottom</span><br></pre></td></tr></table></figure>
+          
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Height(布局所占高度) = height（包含 padding-top + padding-bottom) + border-top + border-bottom</span><br></pre></td></tr></table></figure>
+        </div>
+      </header>
 
-<h4 id="border-box-盒模型"><a href="#border-box-盒模型" class="headerlink" title="border-box 盒模型"></a>border-box 盒模型</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Width(布局所占宽度) = width(包含 padding-left + padding-right + border-left + border-right)</span><br></pre></td></tr></table></figure>
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Height(布局所占高度) = height (包含padding-top + padding-bottom + border-top + border-bottom)</span><br></pre></td></tr></table></figure>
+      
+          <h2 id="一、准备工作"><a href="#一、准备工作" class="headerlink" title="一、准备工作"></a>一、准备工作</h2><h4 id="1、安装Node-js"><a href="#1、安装Node-js" class="headerlink" title="1、安装Node.js"></a>1、安装Node.js</h4><p>(1) 下载Node.js：<a href="https://nodejs.org/en/download/" title="官网下载地址" target="">官网下载地址</a> （这里以Windows 为例）；<br><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Hexo-GitHub-Pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/download.png" alt="下载Node.js"><br>(2) 双击下载好的.msi文件，按下一步下一步，安装好就可以；<br>(3) 在cmd命令窗口，输入下面的这个命令，如果能够显示Node.js的版本，说明安装成功了。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Hexo-GitHub-Pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/node-v.png" alt="查看node版本"></p>
+<h4 id="2、安装Git"><a href="#2、安装Git" class="headerlink" title="2、安装Git"></a>2、安装Git</h4><p>(1) 下载Git：<a href="https://gitforwindows.org/" title="官网下载地址" target="">下载地址</a> （这里以Windows 为例，我是在这里下载的） 你也可以到 <a href="https://git-scm.com/downloads" title="官网下载地址" target="">官网下载</a> ；<br>(2) 双击下载好的Git安装包，按下一步下一步，进行安装即可；<br>(3) 在cmd命令窗口，输入下面的这个命令，如果能够显示Git的版本，说明安装成功了。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git -version</span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Hexo-GitHub-Pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/git-v.png" alt="查看git版本"><br>(4) 想对Git有更多的了解，可以从下面几个网站学习，若你有更好的网站，也可以推荐给我：<br>· 官网：<a href="https://git-scm.com/book/zh/v2" title="" target="">点这里前往</a><br>·W3Cschool:<a href="https://www.w3cschool.cn/git/" title="" target="">点这里前往</a><br>· 廖雪峰网站教程：<a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" title="" target="">点这里前往</a> </p>
+<h2 id="二、Hexo搭建博客"><a href="#二、Hexo搭建博客" class="headerlink" title="二、Hexo搭建博客"></a>二、Hexo搭建博客</h2><h4 id="1、安装Hexo"><a href="#1、安装Hexo" class="headerlink" title="1、安装Hexo"></a>1、安装Hexo</h4><p>（1）在计算机中，新建一个winneyBlog文件夹，用于存放自己的博客内容。<br>（2）在winneyBlog文件夹内，鼠标右键，选择Git Bash,进入到命令窗口<br><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Hexo-GitHub-Pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/blog-path.png" alt="博客目录-进入命令窗口"><br>（3）在命令窗口中，输入下面代码：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+<p>如图所示：<br><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Hexo-GitHub-Pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/hexo-cli.png" alt="安装hexo-cli"></p>
+<h4 id="2、初始化Hexo"><a href="#2、初始化Hexo" class="headerlink" title="2、初始化Hexo"></a>2、初始化Hexo</h4><p>(1) 在命令窗口中，输入下面代码：(会在winneyBlog目录下，新建了一个hero文件夹)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init hexo</span><br></pre></td></tr></table></figure>
+<p>如图所示：<br><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Hexo-GitHub-Pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/hexo-init.png" alt="初始化hexo"></p>
+<h4 id="3、配置Hexo"><a href="#3、配置Hexo" class="headerlink" title="3、配置Hexo"></a>3、配置Hexo</h4><p>(1) 进入hexo文件夹</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> hexo</span><br></pre></td></tr></table></figure>
+<p>(2) 安装依赖</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure>
+<p>(3) 部署形成的文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo generate</span><br></pre></td></tr></table></figure>
+<p>如图所示：<br><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Hexo-GitHub-Pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/hexo-gen.png" alt="部署形成的文件"></p>
+<h4 id="4、启动服务器"><a href="#4、启动服务器" class="headerlink" title="4、启动服务器"></a>4、启动服务器</h4><p>(1) 在命令窗口执行下面代码：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+<p>如图所示：（想要进行别的命令操作，可以按Ctrl + C停止服务器）<br><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Hexo-GitHub-Pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/hexo-server.png" alt="启动服务器"><br>(2) 在浏览器地址栏中输入<a target="_blank" rel="noopener" href="http://localhost:4000/">http://localhost:4000/</a>  （默认端口是4000），如果能够看到如图所示的效果，说明初始化的Hexo博客搭建成功了。<br>如图所示：<br><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Hexo-GitHub-Pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/hexo-blog.png" alt="浏览器中查看博客"></p>
+<h2 id="三、将本地的-Hexo-博客部署到-GitHub-Pages上"><a href="#三、将本地的-Hexo-博客部署到-GitHub-Pages上" class="headerlink" title="三、将本地的 Hexo 博客部署到 GitHub Pages上"></a>三、将本地的 Hexo 博客部署到 GitHub Pages上</h2><p>1、新建一个仓库，仓库名为winney07.github.io（这个仓库的名称必须严格按照 username.github.io 的格式来命名）【前提是你要有一个Github账号】<br>如图所示：（因为我已经创建过这个库了，所以会显示红色警告，只是后来为了截图，重新写一个同名的）<br><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Hexo-GitHub-Pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/hexo-git.png" alt="创建仓库"><br>2、进入已经创建好的仓库（点击自己的头像，选择Your profile，点击刚创建好的那个仓库进去仓库里面），点击settings，找到GitHub Pages 选项，点击 Choose a theme 选择一个主题（可以选择也可以不选择，根据自己的需求决定是否操作这一步）<br>如图所示：<br><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Hexo-GitHub-Pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/git-pages.png" alt="配置Github Pages"><br>3、配置Git个人信息，在winneyBlog目录下，鼠标右键，选择Git Bash，进入命令窗口，输入下面的命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name <span class="string">&quot;Github用户名&quot;</span>       //自己Github的账号名</span><br><span class="line">git config --global user.email <span class="string">&quot;Github邮箱&quot;</span>        //自己注册Github的邮箱地址</span><br></pre></td></tr></table></figure>
+<p>4、生成SSH KEY,意思是生成一个公钥和密钥，因为Github需要一个密钥才能与本地相连接。在命令窗口输入下面的命令，然后需要连续按3次回车生成密钥（每按一次回车你可以看到对应的信息） 【你也可以先查看是否已经有了ssh密钥：cd ~/.ssh   如果没有密钥则不会有此文件夹，有则备份删除】</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C  <span class="string">&quot;Github邮箱&quot;</span>        //自己注册Github的邮箱地址</span><br></pre></td></tr></table></figure>
+<p>如图所示：<br><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Hexo-GitHub-Pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/ssh-key.png" alt="生成SSH KEY"><br>5、生成的SSH KEY会保存到 C:/Users/电脑名用户名/.ssh 目录中（根据你自己电脑用户名，打开对应的目录）<br><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Hexo-GitHub-Pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/win-user.png" alt="SSH KEY存放目录"><br>（1）打开.ssh 这个目录，打开 id_rsa.pub 文件，复制里面的全部内容（这些内容就是密钥）<br><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Hexo-GitHub-Pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/user-ssh.png" alt="打开 id_rsa.pub 文件"><br>6、在GitHub中添加SSH keys<br>（1）打开Github，点击头像，选择Settings；<br><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Hexo-GitHub-Pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/set.png" alt="设置"><br>（2）选择SSH and GPG keys项,点击右上角New SSH key按钮，将刚刚复制到的密钥粘贴到key输入框中，title自己给它命一个名就好<br><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Hexo-GitHub-Pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/add-key.png" alt="添加ssh key 到仓库"><br>（3）最后点击Add Key，如果显示这样的界面，说明SSH KEY 配置成功：<br><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Hexo-GitHub-Pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/ssh-keys.png" alt="SSH KEY 配置成功"><br>7、修改全局配置文件<br>（1）在hexo文件夹下，找到_config.yml文件；<br>如图所示：<br><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Hexo-GitHub-Pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/config1.png" alt="_config.yml文件"><br>（2）复制仓库地址：<br>如图所示：<br><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Hexo-GitHub-Pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/git-href.png" alt="复制仓库地址"><br>（3）修改_config.yml文件里的deploy属性(目的是将本地hexo项目放到Github上)<br>如图所示：<br><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Hexo-GitHub-Pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/deploy.png" alt="修改_config.yml文件里的deploy属性"><br>注：【如果repository中填写的是https协议的，hexo d上传代码到Github时有下面类似错误，可以将repository改为ssh的链接】<br>如图所示：<br><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Hexo-GitHub-Pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/deploy-error.png" alt="报错信息"><br><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Hexo-GitHub-Pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/ssh-link.png" alt="使用 SSH链接"></p>
+<p>8、安装hexo-deployer-git 插件，目的是将代码快速托管到Github上</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+<p>9、将hexo项目托管到GitHub上（命令可以分开写也可以一起写）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo generate &amp;&amp; hexo deploy</span><br></pre></td></tr></table></figure>
+<p>备注：<br>hexo clean ：清除缓存文件 (db.json) 和已生成的静态文件 (public)<br>hexo generate ：部署之前预先生成静态文件，简写为hexo g<br>hexo deploy : 文件生成后立即部署网站，简写为hexo d<br>10、在浏览器地址栏输入 <a target="_blank" rel="noopener" href="https://username.github.io/">https://username.github.io/</a> 即可访问，（username也就是你的Github账户名），如果能够正常访问，并且跟本地hexo项目显示的内容是一样的，那么说明你已经把本地hexo项目部署到Github上了。</p>
+<h2 id="四、配置博客的个人信息"><a href="#四、配置博客的个人信息" class="headerlink" title="四、配置博客的个人信息"></a>四、配置博客的个人信息</h2><p>1、在hexo目录中，找到全局配置文件_config.yml<br>2、配置信息如下所示：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Hexo Configuration</span></span><br><span class="line"><span class="comment">## Docs: https://hexo.io/docs/configuration.html</span></span><br><span class="line"><span class="comment">## Source: https://github.com/hexojs/hexo/</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Site 站点信息配置</span></span><br><span class="line">title: winney     <span class="comment">#站点名</span></span><br><span class="line">subtitle: It is never too old to learn.  <span class="comment">#站点副标题</span></span><br><span class="line">description: Doing is better than saying.     <span class="comment">#站点信息简介</span></span><br><span class="line">keywords: winneyBlog   博客</span><br><span class="line">author: winney   <span class="comment">#站点作者</span></span><br><span class="line">language: zh-Hans     <span class="comment">#站点语言，default默认是英文，zh-Hans是中文</span></span><br><span class="line">timezone: Asia/Shanghai      <span class="comment">#时区</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># URL   博客地址</span></span><br><span class="line"><span class="comment">## If your site is put in a subdirectory, set url as &#x27;http://yoursite.com/child&#x27; and root as &#x27;/child/&#x27;</span></span><br><span class="line">url: https://AAAAAAAAAA.github.io/</span><br><span class="line">root: /</span><br><span class="line">permalink: :year/:month/:day/:title/</span><br><span class="line">permalink_defaults:</span><br><span class="line"></span><br><span class="line"><span class="comment"># Directory  目录设置</span></span><br><span class="line">source_dir: <span class="built_in">source</span></span><br><span class="line">public_dir: public</span><br><span class="line">tag_dir: tags</span><br><span class="line">archive_dir: archives</span><br><span class="line">category_dir: categories</span><br><span class="line">code_dir: downloads/code</span><br><span class="line">i18n_dir: :lang</span><br><span class="line">skip_render:</span><br><span class="line"></span><br><span class="line"><span class="comment"># Writing 文章布局</span></span><br><span class="line">new_post_name: :title.md <span class="comment"># File name of new posts</span></span><br><span class="line">default_layout: post</span><br><span class="line">titlecase: <span class="literal">false</span> <span class="comment"># Transform title into titlecase</span></span><br><span class="line">external_link: <span class="literal">true</span> <span class="comment"># Open external links in new tab</span></span><br><span class="line">filename_case: 0</span><br><span class="line">render_drafts: <span class="literal">false</span></span><br><span class="line">post_asset_folder: <span class="literal">true</span></span><br><span class="line">relative_link: <span class="literal">false</span></span><br><span class="line">future: <span class="literal">true</span></span><br><span class="line">highlight:</span><br><span class="line">  <span class="built_in">enable</span>: <span class="literal">true</span></span><br><span class="line">  line_number: <span class="literal">true</span></span><br><span class="line">  auto_detect: <span class="literal">false</span></span><br><span class="line">  tab_replace:</span><br><span class="line">  </span><br><span class="line"><span class="comment"># Home page setting  主页设置</span></span><br><span class="line"><span class="comment"># path: Root path for your blogs index page. (default = &#x27;&#x27;)</span></span><br><span class="line"><span class="comment"># per_page: Posts displayed per page. (0 = disable pagination)</span></span><br><span class="line"><span class="comment"># order_by: Posts order. (Order by date descending by default)</span></span><br><span class="line">index_generator:</span><br><span class="line">  path: <span class="string">&#x27;&#x27;</span></span><br><span class="line">  per_page: 3  <span class="comment">#每页文章数量</span></span><br><span class="line">  order_by: -<span class="built_in">date</span></span><br><span class="line">  </span><br><span class="line"><span class="comment"># Category &amp; Tag   分类和标签</span></span><br><span class="line">default_category: uncategorized</span><br><span class="line">category_map:</span><br><span class="line">tag_map:</span><br><span class="line"></span><br><span class="line"><span class="comment"># Date / Time format  日期 / 时间格式</span></span><br><span class="line"><span class="comment">## Hexo uses Moment.js to parse and display date</span></span><br><span class="line"><span class="comment">## You can customize the date format as defined in</span></span><br><span class="line"><span class="comment">## http://momentjs.com/docs/#/displaying/format/</span></span><br><span class="line">date_format: YYYY-MM-DD</span><br><span class="line">time_format: HH:mm:ss</span><br><span class="line"></span><br><span class="line"><span class="comment"># Pagination    归档显示</span></span><br><span class="line"><span class="comment">## Set per_page to 0 to disable pagination</span></span><br><span class="line">per_page: 10</span><br><span class="line">pagination_dir: page</span><br><span class="line"></span><br><span class="line"><span class="comment"># Extensions  扩展</span></span><br><span class="line"><span class="comment">## Plugins: https://hexo.io/plugins/</span></span><br><span class="line"><span class="comment">## Themes: https://hexo.io/themes/</span></span><br><span class="line">theme: next</span><br><span class="line"></span><br><span class="line"><span class="comment"># Deployment</span></span><br><span class="line"><span class="comment">## Docs: https://hexo.io/docs/deployment.html</span></span><br><span class="line">deploy:</span><br><span class="line">  <span class="built_in">type</span>: git    <span class="comment">#部署的类型</span></span><br><span class="line">  repository: https://github.com/AAAAAAA/AAAAAAA.github.io.git    <span class="comment">#仓库地址</span></span><br><span class="line">  branch: master    <span class="comment">#分支名称</span></span><br><span class="line">  message: hexo deploy  <span class="comment">#提交信息</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#Search</span></span><br><span class="line">search:</span><br><span class="line">  path: search.xml</span><br><span class="line">  field: post</span><br><span class="line">  format: html</span><br><span class="line">  <span class="built_in">limit</span>: 10000</span><br></pre></td></tr></table></figure>
+<p>注意：.yml 文件有严格的格式要求，文件里所有的配置都是：冒号 空格 值，并且冒号是英文状态下的输入。想了解更多的可以前往 官网 。<br>3、在博客目录下，右键点击Git Bash，进去命令窗口，输入下面的命令，即可在浏览器中看到刚刚设置的内容显示在页面中：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server    //简写为hexo s</span><br></pre></td></tr></table></figure>
 
-<h4 id="CSS3-动画的优缺点"><a href="#CSS3-动画的优缺点" class="headerlink" title="CSS3 动画的优缺点"></a>CSS3 动画的优缺点</h4><p>优点：</p>
-<p>（1）在性能上会稍微好一些，浏览器会对 CSS3 的动画做一些优化。<br>（2）代码相对简单</p>
-<p>缺点：</p>
-<p>（1）在动画控制上不够灵活。<br>（2）兼容性不好。<br>（3）部分动画功能无法实现</p>
-<h4 id="Animation-与-Transition-的异同"><a href="#Animation-与-Transition-的异同" class="headerlink" title="Animation 与 Transition 的异同"></a>Animation 与 Transition 的异同</h4><p>Animation 与Transition 的功能相同，都是通过改变元素的属性值来实现动画效果的。<br>它们的区别在于，使用Transition 的功能时只能用指定属性的开始值和结束值，然后在这两个属性值之问使用平滑过渡的方式实现动画效果，因此不能实现比较复杂的动画效果。Animation 功能通过定义多个关键帧，以及定义每个关键帧中元素的属性值来实现更为复杂的动画效果。</p>
-<h4 id="Animation-属性值"><a href="#Animation-属性值" class="headerlink" title="Animation 属性值"></a>Animation 属性值</h4><p>两个必要属性如下</p>
-<ul>
-<li>animation-name，即动画名称。</li>
-<li>animation-duration，即动画持续时间。</li>
-</ul>
-<p>其他属性值如下。</p>
-<ul>
-<li>animation-play-state，即播放状态（running 表示播放，paused 表示暂停），可以用来控制动画暂停</li>
-<li>animation-timing-function，即动画运动形式。</li>
-<li>animation-delay，即动画延迟时间。</li>
-<li>animation-iteration-count，即重复次数。</li>
-<li>animation-direction，即播放前重置（alternate 动画,直接从上一次停止的位置开始执行）。</li>
-</ul>
-<h4 id="媒体查询的使用方法"><a href="#媒体查询的使用方法" class="headerlink" title="媒体查询的使用方法"></a>媒体查询的使用方法</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@media 媒体类型 and（媒体特性）&#123;样式规则&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="提交到远程仓库报错"><a href="#提交到远程仓库报错" class="headerlink" title="提交到远程仓库报错"></a>提交到远程仓库报错</h4><p>报403或者每次提交都要输入账号密码</p>
+<p>可以将_config.yml里的</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">repository: https://github.com/winney07/winney07.github.io.git   #仓库地址</span><br></pre></td></tr></table></figure>
 
-<p>两个缺点<br>(1）适配屏幕的尺寸不是连续的。<br>(2）会在CSS文件中添加大段的查询代码，增加了CSS 文件的大小，<br>为改进上述缺点，可以使用 Javascript 获取移动设备屏幕的宽度，根据设计稿的原型尺寸，动态地计算 font-size 的值</p>
-<h4 id="设置-CSS3-文本阴影"><a href="#设置-CSS3-文本阴影" class="headerlink" title="设置 CSS3 文本阴影"></a>设置 CSS3 文本阴影</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hl &#123;text-shadow：水平阴影，重直阴影，模糊距离，阴影颜色&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="把元素从左侧移动-50-像素，从顶端移动-100-像素"><a href="#把元素从左侧移动-50-像素，从顶端移动-100-像素" class="headerlink" title="把元素从左侧移动 50 像素，从顶端移动 100 像素"></a>把元素从左侧移动 50 像素，从顶端移动 100 像素</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">div&#123;</span><br><span class="line">  transform: translate (50px, 100px);</span><br><span class="line">  -ms-transform: translate (50px, 100px) ;/*IE 9*/</span><br><span class="line">  -webkit-transform: translate (50px, 100px) ;/* Safari 和 Chrome */</span><br><span class="line">  -o-transform: translate (50px, 100px) ;/* Opera */</span><br><span class="line">  -moz-transform: translate (50px, 100px) ;/* Firefox */</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="把一个元素旋转-30°"><a href="#把一个元素旋转-30°" class="headerlink" title="把一个元素旋转 30°"></a>把一个元素旋转 30°</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">div&#123;</span><br><span class="line">  transform: rotate(30deg);</span><br><span class="line">  -ms-transform: rotate(30deg);/*IE 9*/</span><br><span class="line">  -webkit-transform: rotate(30deg);/* Safari 和 Chrome */</span><br><span class="line">  -o-transform: rotate(30deg);/* Opera */</span><br><span class="line">  -moz-transform: rotate (30deg);/* Firefox */</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="使用-matrix-将div元素旋转-30°"><a href="#使用-matrix-将div元素旋转-30°" class="headerlink" title="使用 matrix()将div元素旋转 30°"></a>使用 matrix()将div元素旋转 30°</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">div&#123;</span><br><span class="line">  transform:matrix (0.866,0.5,-0.5,0.866, 0, 0) ;</span><br><span class="line">  -ms-transform:matrix (0.866, 0.5,-0.5,0.866, 0, 0) ;/*IE 9*/</span><br><span class="line">  -moz-transform:matrix(0.866,0.5,-0.5,0.866,0,0);/* Safari 和 Chrome */</span><br><span class="line">  -webkit-transform:matrix (0.866,0.5,-0.5,0.866, 0, 0) ;/* Opera */</span><br><span class="line">  -0-transform:matrix (0.866,0.5,-0.5,0.866, 0, 0);/* Firefox */</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="利用-CSS3-制作淡入淡出的动画效果"><a href="#利用-CSS3-制作淡入淡出的动画效果" class="headerlink" title="利用 CSS3 制作淡入淡出的动画效果"></a>利用 CSS3 制作淡入淡出的动画效果</h4><p>（1）定义动画关键帧，名称为 fadeln</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">@-webkit-keyframes fadeIn &#123;</span><br><span class="line">  from &#123;</span><br><span class="line">    opacity：0;/* 初始状态，透明度为 0 */</span><br><span class="line">  &#125;</span><br><span class="line">  to &#123;</span><br><span class="line">    opacity：1; /* 结尾状态，透明度为 1 */</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@-webkit-keyframes fadeOut&#123;</span><br><span class="line">  from&#123;</span><br><span class="line">    opacity：1; /*初始状态，透明度为 1*/</span><br><span class="line">  &#125;</span><br><span class="line">  to &#123;</span><br><span class="line">    opacity：0; /*结尾状态，透明度为 0*/</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>（2）为div增加动画代码</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">div&#123;</span><br><span class="line">  -webkit-animation-name:fadeIn;	/*动画名称*/</span><br><span class="line">  -webkit-animation-duration:3s;	/*动画持线时间*/</span><br><span class="line">  -webkit-animation-iteration-count:1;	/*动画次数*/</span><br><span class="line">  -webkit-animation-delay: 0s;	/*延迟时间*/</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="盒阴影"><a href="#盒阴影" class="headerlink" title="盒阴影"></a>盒阴影</h4><p>盒阴影的语法结构与文本阴影类似，如:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">box-shadow:5px 5px 5px rgba(255,15,255,0.5);</span><br></pre></td></tr></table></figure>
-
-<p>但是，盒阴影多了一个属性，即外延值 inset， 如：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">box-shadow: 5px 5px 25px rgba(0,0,255,0.5）inset;</span><br></pre></td></tr></table></figure>
-
-<h4 id="为盒子添加蒙版"><a href="#为盒子添加蒙版" class="headerlink" title="为盒子添加蒙版"></a>为盒子添加蒙版</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.demo &#123;</span><br><span class="line">  height: 144px;</span><br><span class="line">  width: 144px;</span><br><span class="line">  background: url(logo.png);</span><br><span class="line">  -webkit-mask-image: url (shadow.png) ;</span><br><span class="line">  -webkit-mask-position: 50% 50%;</span><br><span class="line">  -webkit-mask-repeat: no-repeat;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>蒙版复合属性的语法是<code>-webkit-mask: url(pro_pho_ show_ pic.png) 50% 50% no-repeat</code></p>
-<p>蒙版相关属性如下:</p>
-<ul>
-<li>-webkit-mask-clip，即蒙版裁剪位置。</li>
-<li>-webkit-mask-origin，即蒙版原点位置。</li>
-</ul>
-<h4 id="CSS3-实现背景颜色线性渐变"><a href="#CSS3-实现背景颜色线性渐变" class="headerlink" title="CSS3 实现背景颜色线性渐变"></a>CSS3 实现背景颜色线性渐变</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">div&#123;</span><br><span class="line">  background: -webkit-linear-gradient (left, red, green 50%, blue) ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="实现-CSS3-倒影"><a href="#实现-CSS3-倒影" class="headerlink" title="实现 CSS3 倒影"></a>实现 CSS3 倒影</h3><p>通过<code>-webkit-box-reflect</code>设置方向、距离。<br>方向可以设置为below、 above、left、 right.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">demo &#123;</span><br><span class="line">  height: 144px:</span><br><span class="line">  width: 144px;</span><br><span class="line">  background: url (logo.png) ;</span><br><span class="line">  -webkit-box-reflect: below 10px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="当元素不面向屏幕时，定义其可见性"><a href="#当元素不面向屏幕时，定义其可见性" class="headerlink" title="当元素不面向屏幕时，定义其可见性"></a>当元素不面向屏幕时，定义其可见性</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">使用 backface-visibility : visible | hidden.</span><br></pre></td></tr></table></figure>
-
-<h4 id="CSS3中transition-属性值及含义"><a href="#CSS3中transition-属性值及含义" class="headerlink" title="CSS3中transition 属性值及含义"></a>CSS3中transition 属性值及含义</h4><p>transition 属性是一个简写属性，用于设置以下4个过渡属性</p>
-<ul>
-<li>transition-property，哪个属性需要实现过渡。</li>
-<li>transition-duration，完成过渡效果需要多少秒/毫秒</li>
-<li>transition-timing-function，速度效果的运动曲线，如linear ease-in ease、ease-out、ease-in-out、 cube-bezier.</li>
-<li>transition-delay，规定过渡开始前的延迟时问。</li>
-</ul>
-<h4 id="相对于内容框定义图像"><a href="#相对于内容框定义图像" class="headerlink" title="相对于内容框定义图像"></a>相对于内容框定义图像</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">.demo&#123;</span><br><span class="line">  height: 200px;</span><br><span class="line">  width: 200px;</span><br><span class="line">  padding: 50px;</span><br><span class="line">  border: 1px solid #ccc;</span><br><span class="line">  background-image: url (&#x27;logo.png&#x27;);</span><br><span class="line">  background-repeat: no-repeat;</span><br><span class="line">  background-position: left top;</span><br><span class="line">  background-origin: content-box;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>语法为<code> background-origin: padding-box | border-box | content-box;</code></p>
-<h4 id="background-clip-和-background-origin-的区别"><a href="#background-clip-和-background-origin-的区别" class="headerlink" title="background-clip 和 background-origin 的区别"></a>background-clip 和 background-origin 的区别</h4><p>background-olip 规定背景（包括背景颜色和背景图片）的绘制区域。<br>它有3种属性，分别是border-box、padding-box、 content-box.</p>
-<ul>
-<li>border-box，即背景从边框开始绘制。</li>
-<li>padding-box，即背景在边框内部绘制。</li>
-<li>content-box，即背景从内容部分绘制。</li>
-</ul>
-<p>background-origin 规定背景图片的定位区域。</p>
-<p>它也有了种属性：border-box、padding-box、content-box。但要注意，它描述的是“背景图片”。也就是说，它只能对背景做样式上的操作。一旦规定了图片开始绘制的区域，就当于规定图片的左上角从什么地方开始，其他的它就不负责了</p>
-<h4 id="把文本分隔为-4列并使两列之问间隔30-像素"><a href="#把文本分隔为-4列并使两列之问间隔30-像素" class="headerlink" title="把文本分隔为 4列并使两列之问间隔30 像素"></a>把文本分隔为 4列并使两列之问间隔30 像素</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">div&#123;</span><br><span class="line">  -moz-column-count:4;</span><br><span class="line">  -webkit-column-count:4;</span><br><span class="line">  column-count:4;</span><br><span class="line">  -moz-column-gap:40px;</span><br><span class="line">  -webkit-column-gap:40px;</span><br><span class="line">  column-gap:40px;</span><br><span class="line">  width: 600px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="实现文本换行"><a href="#实现文本换行" class="headerlink" title="实现文本换行"></a>实现文本换行</h4><p>使用word-wrap 属性。</p>
-<ul>
-<li><p>normal，只在允许的断字点换行（浏览器保持默认处理）。</p>
-</li>
-<li><p>break-word，在长单词或 URL 地址内部进行换行。</p>
-</li>
-</ul>
-<h4 id="用-keytrames-使-dliv-元素移动-200-像素"><a href="#用-keytrames-使-dliv-元素移动-200-像素" class="headerlink" title="用@keytrames 使 dliv 元素移动 200 像素"></a>用@keytrames 使 dliv 元素移动 200 像素</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">div&#123;</span><br><span class="line">  width: 100px;</span><br><span class="line">  height: 50px;</span><br><span class="line">  background: #f30;</span><br><span class="line">  animation: move 3s;</span><br><span class="line">  @keyframes move</span><br><span class="line">  from &#123;</span><br><span class="line">  margin-left: 0px;</span><br><span class="line">  to</span><br><span class="line">  margin-left: 200px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>改为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">repository: git@github.com:winney07/winney07.github.io.git   #仓库地址</span><br></pre></td></tr></table></figure>
 
 
       
@@ -595,7 +485,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/40/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/40/">40</a><span class="page-number current">41</span><a class="page-number" href="/page/42/">42</a><span class="space">&hellip;</span><a class="page-number" href="/page/44/">44</a><a class="extend next" rel="next" href="/page/42/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/40/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/40/">40</a><span class="page-number current">41</span><a class="page-number" href="/page/42/">42</a><a class="extend next" rel="next" href="/page/42/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -663,14 +553,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">132</span>
+          <span class="site-state-item-count">126</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">54</span>
+        <span class="site-state-item-count">52</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">

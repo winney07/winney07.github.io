@@ -193,7 +193,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/11/TypeScript%E6%B3%9B%E5%9E%8B-%E9%9A%BE%E7%82%B9/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/09/%E5%85%83%E7%BB%84%E7%9A%84%E4%BD%BF%E7%94%A8%E5%92%8C%E7%B1%BB%E5%9E%8B%E7%BA%A6%E6%9D%9F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -207,7 +207,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/11/11/TypeScript%E6%B3%9B%E5%9E%8B-%E9%9A%BE%E7%82%B9/" class="post-title-link" itemprop="url">TypeScript函数泛型-难点</a>
+            <a href="/2020/11/09/%E5%85%83%E7%BB%84%E7%9A%84%E4%BD%BF%E7%94%A8%E5%92%8C%E7%B1%BB%E5%9E%8B%E7%BA%A6%E6%9D%9F/" class="post-title-link" itemprop="url">元组的使用和类型约束</a>
         </h2>
 
         <div class="post-meta">
@@ -217,7 +217,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-11-11 17:37:35" itemprop="dateCreated datePublished" datetime="2020-11-11T17:37:35+08:00">2020-11-11</time>
+              <time title="创建时间：2020-11-09 11:35:27" itemprop="dateCreated datePublished" datetime="2020-11-09T11:35:27+08:00">2020-11-09</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
@@ -251,78 +251,13 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h4 id="TypeScript-函数泛型-难点"><a href="#TypeScript-函数泛型-难点" class="headerlink" title="TypeScript 函数泛型-难点"></a>TypeScript 函数泛型-难点</h4><blockquote>
-<h4 id="编写一个联合类型-Demo"><a href="#编写一个联合类型-Demo" class="headerlink" title="编写一个联合类型 Demo"></a>编写一个联合类型 Demo</h4></blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">join</span>(<span class="params">first: string | number, second: string | number</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;first&#125;</span><span class="subst">$&#123;second&#125;</span>`</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">join</span>(<span class="string">&quot;jspang&quot;</span>, <span class="string">&quot;.com&quot;</span>);</span><br></pre></td></tr></table></figure>
+          <h6 id="类型约束"><a href="#类型约束" class="headerlink" title="类型约束"></a>类型约束</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">// const xiaojiejie : (string | number)[] = [ &#x27;dajiao &#x27; , &#x27;teacher &#x27;, 28]</span><br></pre></td></tr></table></figure>
 
-<p>那现在所学的知识就完成不了啦，所以需要学习<code>泛型</code>来解决这个问题。</p>
-<blockquote>
-<h4 id="初始泛型概念-generic"><a href="#初始泛型概念-generic" class="headerlink" title="初始泛型概念-generic"></a>初始泛型概念-generic</h4></blockquote>
-<blockquote>
-<p>泛型：[generic - 通用、泛指的意思],那最简单的理解，泛型就是泛指的类型。</p>
-</blockquote>
-<p>泛型的定义使用<code>&lt;&gt;</code>（尖角号）进行定义的</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> join&lt;<span class="title class_">JSPang</span>&gt;(<span class="attr">first</span>: <span class="title class_">JSPang</span>, <span class="attr">second</span>: <span class="title class_">JSPang</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;first&#125;</span><span class="subst">$&#123;second&#125;</span>`</span>;</span><br><span class="line">&#125;</span><br><span class="line">join &lt; string &gt; (<span class="string">&quot;jspang&quot;</span>, <span class="string">&quot;.com&quot;</span>);</span><br></pre></td></tr></table></figure>
+<h5 id="元组的写法"><a href="#元组的写法" class="headerlink" title="元组的写法"></a>元组的写法</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const xiaojiejie : [string,string,number] = [ &#x27;dajiao&#x27; , &#x27;teacher&#x27;,28]</span><br></pre></td></tr></table></figure>
 
-<p>如果要是<code>number</code>类型，就直接在调用方法的时候进行更改就可以了。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">join &lt; number &gt; (<span class="number">1</span>, <span class="number">2</span>);</span><br></pre></td></tr></table></figure>
+<h5 id="CSV（现在很少用）"><a href="#CSV（现在很少用）" class="headerlink" title="CSV（现在很少用）"></a>CSV（现在很少用）</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const xiaojiejies : [string, string, number][] =[</span><br><span class="line">	[ &#x27;dajiao &#x27; , &#x27;teacher&quot; ,28],</span><br><span class="line">	[ &#x27;liuying&quot; , &#x27;teacher&#x27; ,18],</span><br><span class="line">	[ &quot; cuihua &#x27; , &#x27;teacher&quot; ,22]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
 
-<blockquote>
-<h4 id="泛型中数组的使用"><a href="#泛型中数组的使用" class="headerlink" title="泛型中数组的使用"></a>泛型中数组的使用</h4></blockquote>
-<p>如果传递过来的值要求是数字，如何用泛型进行定义那?两种方法，第一种是直接使用<code>[]</code>，第二种是使用<code>Array&lt;泛型&gt;</code>。形式不一样，其他的都一样。</p>
-<p>第一种写法：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> myFun&lt;<span class="variable constant_">ANY</span>&gt;(<span class="attr">params</span>: <span class="variable constant_">ANY</span>[]) &#123;</span><br><span class="line">  <span class="keyword">return</span> params;</span><br><span class="line">&#125;</span><br><span class="line">myFun &lt; string &gt; [<span class="string">&quot;123&quot;</span>, <span class="string">&quot;456&quot;</span>];</span><br></pre></td></tr></table></figure>
 
-<p>第二种写法：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> myFun&lt;<span class="variable constant_">ANY</span>&gt;(<span class="attr">params</span>: <span class="title class_">Array</span>&lt;<span class="variable constant_">ANY</span>&gt;) &#123;</span><br><span class="line">  <span class="keyword">return</span> params;</span><br><span class="line">&#125;</span><br><span class="line">myFun &lt; string &gt; [<span class="string">&quot;123&quot;</span>, <span class="string">&quot;456&quot;</span>];</span><br></pre></td></tr></table></figure>
-
-<p>在工作中，我们经常使用<code>&lt;T&gt;</code>来作泛型的表示</p>
-<blockquote>
-<h4 id="多个泛型的定义"><a href="#多个泛型的定义" class="headerlink" title="多个泛型的定义"></a>多个泛型的定义</h4></blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> join&lt;T, P&gt;(<span class="attr">first</span>: T, <span class="attr">second</span>: P) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;first&#125;</span><span class="subst">$&#123;second&#125;</span>`</span>;</span><br><span class="line">&#125;</span><br><span class="line">join &lt; number, string &gt; (<span class="number">1</span>, <span class="string">&quot;2&quot;</span>);</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<h4 id="泛型的类型推断"><a href="#泛型的类型推断" class="headerlink" title="泛型的类型推断"></a>泛型的类型推断</h4></blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> join&lt;T, P&gt;(<span class="attr">first</span>: T, <span class="attr">second</span>: P) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;first&#125;</span><span class="subst">$&#123;second&#125;</span>`</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">join</span>(<span class="number">1</span>, <span class="string">&quot;2&quot;</span>);</span><br></pre></td></tr></table></figure>
-
-<p>不建议大量使用类型推断，这会让你的代码易读和健壮性都会下降</p>
-<h4 id="TypeScript-类中泛型-难点"><a href="#TypeScript-类中泛型-难点" class="headerlink" title="TypeScript 类中泛型-难点"></a>TypeScript 类中泛型-难点</h4><blockquote>
-<h4 id="编写一个基本类"><a href="#编写一个基本类" class="headerlink" title="编写一个基本类"></a>编写一个基本类</h4></blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">SelectGirl</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">private girls: string[]</span>) &#123;&#125;</span><br><span class="line">  <span class="title function_">getGirl</span>(<span class="attr">index</span>: number): string &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">girls</span>[index];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> selectGirl = <span class="keyword">new</span> <span class="title class_">SelectGirl</span>([<span class="string">&quot;大脚&quot;</span>, <span class="string">&quot;刘英&quot;</span>, <span class="string">&quot;晓红&quot;</span>]);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(selectGirl.<span class="title function_">getGirl</span>(<span class="number">1</span>));</span><br></pre></td></tr></table></figure>
-
-<p>在 TypeScript 中，编写复杂代码的时候，会经常使用泛型。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">SelectGirl</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">private girls: string[] | number[]</span>) &#123;&#125;</span><br><span class="line">  <span class="title function_">getGirl</span>(<span class="attr">index</span>: number): string | number &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">girls</span>[index];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<h4 id="初始类的泛型"><a href="#初始类的泛型" class="headerlink" title="初始类的泛型"></a>初始类的泛型</h4></blockquote>
-<p>用<code>&lt;&gt;</code>编写</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">SelectGirl</span>&lt;T&gt; &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">private girls: T[]</span>) &#123;&#125;</span><br><span class="line">  <span class="title function_">getGirl</span>(<span class="attr">index</span>: number): T &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">girls</span>[index];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> selectGirl = <span class="keyword">new</span> <span class="title class_">SelectGirl</span>([<span class="string">&quot;大脚&quot;</span>, <span class="string">&quot;刘英&quot;</span>, <span class="string">&quot;晓红&quot;</span>]);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(selectGirl.<span class="title function_">getGirl</span>(<span class="number">1</span>));</span><br></pre></td></tr></table></figure>
-
-<p>这时候代码并不报错，也使用了泛型，但是在实例化对象的时候，TypeScript 是通过类型推断出来的。这种方法并不好，所以还是需要在实例化对象的时候，对泛型的值进行确定，比如是<code>string</code>类型，就这样写。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> selectGirl = <span class="keyword">new</span> <span class="title class_">SelectGirl</span>() &lt; string &gt; [<span class="string">&quot;大脚&quot;</span>, <span class="string">&quot;刘英&quot;</span>, <span class="string">&quot;晓红&quot;</span>];</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<h4 id="泛型中的继承"><a href="#泛型中的继承" class="headerlink" title="泛型中的继承"></a>泛型中的继承</h4></blockquote>
-<p>现在需求又变了，要求返回是一个对象中的<code>name</code>,也就是下面的代码要改成这个样子。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">girls</span>[index].<span class="property">name</span>;</span><br></pre></td></tr></table></figure>
-
-<p>现在的代码一定时报错的，但是这时候还要求我们这么做，意思就是说传递过来的值必须是一个对象类型的，里边还要有<code>name</code>属性。这时候就要用到继承了，我用接口的方式来实现。写一个<code>Girl</code>的接口，每个接口里都要有 name 属性。代码如下：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">interface <span class="title class_">Girl</span> &#123;</span><br><span class="line">  <span class="attr">name</span>: string;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>有了接口后用<code>extends</code>关键字实现泛型继承，代码如下：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">SelectGirl</span>&lt;T <span class="keyword">extends</span> <span class="title class_">Girl</span>&gt; &#123;</span><br><span class="line"> ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这句代码的意思是泛型里必须有一个<code>name</code>属性，因为它继承了<code>Girl</code>接口。</p>
-<p>现在程序还是报错的，因为我们<code>getGirl</code>方法的返回类型还不对，这时候应该是一个<code>string</code>类型才对，所以代码应该改为下面的样子：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">interface <span class="title class_">Girl</span> &#123;</span><br><span class="line">  <span class="attr">name</span>: string;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">SelectGirl</span>&lt;T <span class="keyword">extends</span> <span class="title class_">Girl</span>&gt; &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">private girls: T[]</span>) &#123;&#125;</span><br><span class="line">  <span class="title function_">getGirl</span>(<span class="attr">index</span>: number): string &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">girls</span>[index].<span class="property">name</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> selectGirl = <span class="keyword">new</span> <span class="title class_">SelectGirl</span>([</span><br><span class="line">  &#123; <span class="attr">name</span>: <span class="string">&quot;大脚&quot;</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">name</span>: <span class="string">&quot;刘英&quot;</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">name</span>: <span class="string">&quot;晓红&quot;</span> &#125;,</span><br><span class="line">]);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(selectGirl.<span class="title function_">getGirl</span>(<span class="number">1</span>));</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<h4 id="泛型约束"><a href="#泛型约束" class="headerlink" title="泛型约束"></a>泛型约束</h4></blockquote>
-<p>现在的泛型可以是任意类型，可以是对象、字符串、布尔、数字都是可以的。但你现在要求这个泛型必须是<code>string</code>或者<code>number</code>类型。我们还是拿上面的例子，不过把代码改为最初的样子。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">SelectGirl</span>&lt;T&gt; &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">private girls: T[]</span>) &#123;&#125;</span><br><span class="line">  <span class="title function_">getGirl</span>(<span class="attr">index</span>: number): T &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">girls</span>[index];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> selectGirl = <span class="keyword">new</span> <span class="title class_">SelectGirl</span>&lt;string&gt;([<span class="string">&quot;大脚&quot;</span>, <span class="string">&quot;刘英&quot;</span>, <span class="string">&quot;晓红&quot;</span>]);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(selectGirl.<span class="title function_">getGirl</span>(<span class="number">1</span>));</span><br></pre></td></tr></table></figure>
-
-<p>然后进行约束，这时候还是可以使用关键字<code>extends</code>来进行约束，把代码改成下面的样子。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">SelectGirl</span>&lt;T <span class="keyword">extends</span> number | string&gt; &#123;</span><br><span class="line">  <span class="comment">//.....</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -342,7 +277,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/11/TypeScript%E7%9A%84%E8%81%94%E5%90%88%E7%B1%BB%E5%9E%8B/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/04/Clipboard%E7%9A%84%E4%BD%BF%E7%94%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -356,7 +291,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/11/11/TypeScript%E7%9A%84%E8%81%94%E5%90%88%E7%B1%BB%E5%9E%8B/" class="post-title-link" itemprop="url">TypeScript的联合类型</a>
+            <a href="/2020/11/04/Clipboard%E7%9A%84%E4%BD%BF%E7%94%A8/" class="post-title-link" itemprop="url">Clipboard的使用</a>
         </h2>
 
         <div class="post-meta">
@@ -366,7 +301,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-11-11 15:43:27" itemprop="dateCreated datePublished" datetime="2020-11-11T15:43:27+08:00">2020-11-11</time>
+              <time title="创建时间：2020-11-04 14:44:28" itemprop="dateCreated datePublished" datetime="2020-11-04T14:44:28+08:00">2020-11-04</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
@@ -385,7 +320,7 @@
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/TypeScript/" itemprop="url" rel="index"><span itemprop="name">TypeScript</span></a>
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/Clipboard/" itemprop="url" rel="index"><span itemprop="name">Clipboard</span></a>
                 </span>
             </span>
 
@@ -400,66 +335,16 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h4 id="联合类型和类型保护"><a href="#联合类型和类型保护" class="headerlink" title="联合类型和类型保护"></a>联合类型和类型保护</h4><blockquote>
-<h4 id="联合类型展示"><a href="#联合类型展示" class="headerlink" title="联合类型展示"></a>联合类型展示</h4></blockquote>
-<p>所谓联合类型，可以认为一个变量可能有两种或两种以上的类型。所以我们使用了联合类型，关键符号是<code>|</code>(竖线)。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">interface Waiter &#123;</span><br><span class="line">  anjiao: boolean;</span><br><span class="line">  say: () =&gt; &#123;&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">interface Teacher &#123;</span><br><span class="line">  anjiao: boolean;</span><br><span class="line">  skill: () =&gt; &#123;&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function judgeWho(animal: Waiter | Teacher) &#123;&#125;</span><br></pre></td></tr></table></figure>
+          <h4 id="如果存在clipboard-先将它销毁"><a href="#如果存在clipboard-先将它销毁" class="headerlink" title="如果存在clipboard,先将它销毁"></a>如果存在clipboard,先将它销毁</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if(clipboard) &#123;</span><br><span class="line">    clipboard.destroy();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="Clipboard官网使用教程"><a href="#Clipboard官网使用教程" class="headerlink" title="Clipboard官网使用教程"></a><a target="_blank" rel="noopener" href="http://www.clipboardjs.cn/">Clipboard官网使用教程</a></h5><h5 id="复制成功和复制失败的提示"><a href="#复制成功和复制失败的提示" class="headerlink" title="复制成功和复制失败的提示"></a>复制成功和复制失败的提示</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">var u = navigator.userAgent;</span><br><span class="line">clipboard.on(&#x27;success&#x27;, function(e) &#123;</span><br><span class="line">    layer.msg(&#x27;复制成功&#x27;, &#123;time: 1000&#125;);</span><br><span class="line">    e.clearSelection();</span><br><span class="line">&#125;);</span><br><span class="line">clipboard.on(&#x27;error&#x27;, function(e) &#123;</span><br><span class="line">    if(u.indexOf(&#x27;UCBrowser&#x27;) &gt; -1)&#123;</span><br><span class="line">        layer.msg(&#x27;您的浏览器不支持，请长按内容手动复制！&#x27;, &#123;time: 1000&#125;);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        layer.msg(&#x27;复制失败&#x27;, &#123;time: 1000&#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function judgeWho(animal: Waiter | Teacher) &#123;</span><br><span class="line">  animal.say();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="如果提示信息弹两次"><a href="#如果提示信息弹两次" class="headerlink" title="如果提示信息弹两次"></a>如果提示信息弹两次</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">自己写一个copySuccessTip提示信息</span><br><span class="line">$(&quot;.copySuccessTip&quot;).addClass(&quot;mymove&quot;);</span><br><span class="line">setTimeout(function() &#123;</span><br><span class="line">    $(&quot;.copySuccessTip&quot;).removeClass(&quot;mymove&quot;);</span><br><span class="line">&#125;,1000);</span><br></pre></td></tr></table></figure>
 
-<p>但这时候问题来了，如果我直接写一个这样的方法，就会报错，因为<code>judgeWho</code>不能准确的判断联合类型具体的实例是什么。</p>
-<p>这时候就需要再引出一个概念叫做<code>类型保护</code></p>
-<blockquote>
-<h4 id="类型保护-类型断言"><a href="#类型保护-类型断言" class="headerlink" title="类型保护-类型断言"></a>类型保护-类型断言</h4></blockquote>
-<p>类型断言就是通过断言的方式确定传递过来的准确值</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">interface Waiter &#123;</span><br><span class="line">  anjiao: boolean;</span><br><span class="line">  say: () =&gt; &#123;&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">interface Teacher &#123;</span><br><span class="line">  anjiao: boolean;</span><br><span class="line">  skill: () =&gt; &#123;&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function judgeWho(animal: Waiter | Teacher) &#123;</span><br><span class="line">  if (animal.anjiao) &#123;</span><br><span class="line">    (animal as Teacher).skill();</span><br><span class="line">  &#125;else&#123;</span><br><span class="line">    (animal as Waiter).say();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="解决clipboard复制弹多次提示的问题"><a href="#解决clipboard复制弹多次提示的问题" class="headerlink" title="解决clipboard复制弹多次提示的问题"></a>解决clipboard复制弹多次提示的问题</h4><p>1、使用destroy（在单页面里面，回来页面，如果存在这个对象，就删除。）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">// 如果存在clipboard，先将它销毁</span><br><span class="line">if(clipboard)&#123;</span><br><span class="line">	clipboard.destroy();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var clipboard =new ClipboardJS(&#x27;.copyBtn&#x27;, &#123;</span><br><span class="line">	text: function(trigger)&#123;</span><br><span class="line">		var txt = $(trigger).data( &quot;clipboard-text&quot;);</span><br><span class="line">		return txt;		//	返回需要复制的内容</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">var u = navigator.userAgent;</span><br><span class="line"></span><br><span class="line">clipboard.on(&#x27;success&#x27;, function(e)&#123;</span><br><span class="line">	layer.msg(&#x27;复制成功&#x27;);</span><br><span class="line">	e.clearselection();</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">clipboard.on(&#x27;error&#x27;, function(e) &#123;</span><br><span class="line">	if(u.indexOf(&quot;UCBrowser&quot;) &gt;-1)&#123;</span><br><span class="line">		layer.msg(&#x27;您的浏览器不支持，请长按内容手动复制!&#x27;);</span><br><span class="line">	&#125;else &#123;</span><br><span class="line">		layer.msg(&#x27;复制失败&#x27;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
-<blockquote>
-<h4 id="类型保护-in语法"><a href="#类型保护-in语法" class="headerlink" title="类型保护-in语法"></a>类型保护-in语法</h4></blockquote>
-<p>经常使用<code>in</code>语法来作类型保护，比如用<code>if</code>来判断<code>animal</code>里有没有<code>skill()</code>方法。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function judgeWhoTwo(animal: Waiter | Teacher) &#123;</span><br><span class="line">  if (&quot;skill&quot; in animal) &#123;</span><br><span class="line">    animal.skill();</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    animal.say();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这里的<code>else</code>部分能够自动判断，得益于<code>TypeScript</code>的自动判断。</p>
-<blockquote>
-<h4 id="类型保护-typeof-语法"><a href="#类型保护-typeof-语法" class="headerlink" title="类型保护-typeof 语法"></a>类型保护-typeof 语法</h4></blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function add(first: string | number, second: string | number) &#123;</span><br><span class="line">  return first + second;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这时候会报错，解决这个问题，就可以直接用type of来进行解决</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function add(first: string | number, second: string | number) &#123;</span><br><span class="line">  if (typeof first === &quot;string&quot; || typeof second === &quot;string&quot;) &#123;</span><br><span class="line">    return `$&#123;first&#125;$&#123;second&#125;`;</span><br><span class="line">  &#125;</span><br><span class="line">  return first + second;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<h4 id="类型保护-instanceof-语法"><a href="#类型保护-instanceof-语法" class="headerlink" title="类型保护-instanceof 语法"></a>类型保护-instanceof 语法</h4></blockquote>
-<p>比如现在要作类型保护的是一个对象，这时候就可以使用<code>instanceof</code>语法来作</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">class NumberObj &#123;</span><br><span class="line">  count: number;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function addObj(first: object | NumberObj, second: object | NumberObj) &#123;</span><br><span class="line">  return first.count + second.count;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>报错不要紧，直接使用<code>instanceof</code>语法进行判断一下，就可以解决问题。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function addObj(first: object | NumberObj, second: object | NumberObj) &#123;</span><br><span class="line">  if (first instanceof NumberObj &amp;&amp; second instanceof NumberObj) &#123;</span><br><span class="line">    return first.count + second.count;</span><br><span class="line">  &#125;</span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="Enum-枚举类型讲解"><a href="#Enum-枚举类型讲解" class="headerlink" title="Enum 枚举类型讲解"></a>Enum 枚举类型讲解</h4><p>初级程序员写法：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">getServe</span>(<span class="params">status: number</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (status === <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;massage&quot;</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (status === <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;SPA&quot;</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (status === <span class="number">2</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;dabaojian&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> result = <span class="title function_">getServe</span>(<span class="number">0</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`我要去<span class="subst">$&#123;result&#125;</span>`</span>);</span><br></pre></td></tr></table></figure>
-
-<p>中级程序员写法：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title class_">Status</span> = &#123;</span><br><span class="line">  <span class="attr">MASSAGE</span>: <span class="number">0</span>,</span><br><span class="line">  <span class="attr">SPA</span>: <span class="number">1</span>,</span><br><span class="line">  <span class="attr">DABAOJIAN</span>: <span class="number">2</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">getServe</span>(<span class="params">status: any</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (status === <span class="title class_">Status</span>.<span class="property">MASSAGE</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;massage&quot;</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (status === <span class="title class_">Status</span>.<span class="property">SPA</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;spa&quot;</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (status === <span class="title class_">Status</span>.<span class="property">DABAOJIAN</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;dabaojian&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> result = <span class="title function_">getServe</span>(<span class="title class_">Status</span>.<span class="property">SPA</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`我要去<span class="subst">$&#123;result&#125;</span>`</span>);</span><br></pre></td></tr></table></figure>
-
-<p>高级程序员写法：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">enum <span class="title class_">Status</span> &#123;</span><br><span class="line">  <span class="variable constant_">MASSAGE</span>,</span><br><span class="line">  <span class="variable constant_">SPA</span>,</span><br><span class="line">  <span class="variable constant_">DABAOJIAN</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">getServe</span>(<span class="params">status: any</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (status === <span class="title class_">Status</span>.<span class="property">MASSAGE</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;massage&quot;</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (status === <span class="title class_">Status</span>.<span class="property">SPA</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;spa&quot;</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (status === <span class="title class_">Status</span>.<span class="property">DABAOJIAN</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;dabaojian&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> result = <span class="title function_">getServe</span>(<span class="title class_">Status</span>.<span class="property">SPA</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`我要去<span class="subst">$&#123;result&#125;</span>`</span>);</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<h4 id="枚举类型的对应值"><a href="#枚举类型的对应值" class="headerlink" title="枚举类型的对应值"></a>枚举类型的对应值</h4></blockquote>
-<p>你调用时传一个<code>1</code>,也会输出<code>我要去spa</code>。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> result = <span class="title function_">getServe</span>(<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
-
-<p>因为枚举类型是有对应的数字值的，默认是从 0 开始的</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Status</span>.<span class="property">MASSAGE</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Status</span>.<span class="property">SPA</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Status</span>.<span class="property">DABAOJIAN</span>);</span><br></pre></td></tr></table></figure>
-
-<p>可以看出结果就是<code>0,1,2</code>。那这时候不想默认从 0 开始，而是想从 1 开始。可以这样写。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">enum <span class="title class_">Status</span> &#123;</span><br><span class="line">  <span class="variable constant_">MASSAGE</span> = <span class="number">1</span>,</span><br><span class="line">  <span class="variable constant_">SPA</span>,</span><br><span class="line">  <span class="variable constant_">DABAOJIAN</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<h4 id="枚举通过下标反查"><a href="#枚举通过下标反查" class="headerlink" title="枚举通过下标反查"></a>枚举通过下标反查</h4></blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Status</span>.<span class="property">MASSAGE</span>, <span class="title class_">Status</span>[<span class="number">1</span>]);</span><br></pre></td></tr></table></figure>
+<p>2、换成setTimeout，不用layer.msg（copySuccessTip的样式模拟layer.msg的样式即可）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">clipboard.on(&#x27;success&#x27;, function(e)&#123;</span><br><span class="line">	$(&#x27;.copySuccessTip&#x27;).show();</span><br><span class="line">	</span><br><span class="line">	setTimeout(function()&#123;</span><br><span class="line">		$(&#x27;.copySuccessTip&#x27;).hide();</span><br><span class="line">	&#125;, 1000);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -478,7 +363,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/10/TypeScript%E7%9A%84%E7%B1%BB/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/08/25/%E6%8A%80%E6%9C%AF%E8%83%96%E6%B5%8F%E8%A7%88%E5%99%A8%E6%94%B6%E8%97%8F%E5%A4%B9%E5%85%AC%E5%BC%80/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -492,7 +377,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/11/10/TypeScript%E7%9A%84%E7%B1%BB/" class="post-title-link" itemprop="url">TypeScript的类</a>
+            <a href="/2020/08/25/%E6%8A%80%E6%9C%AF%E8%83%96%E6%B5%8F%E8%A7%88%E5%99%A8%E6%94%B6%E8%97%8F%E5%A4%B9%E5%85%AC%E5%BC%80/" class="post-title-link" itemprop="url">技术胖浏览器收藏夹公开</a>
         </h2>
 
         <div class="post-meta">
@@ -502,28 +387,15 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-11-10 16:30:26" itemprop="dateCreated datePublished" datetime="2020-11-10T16:30:26+08:00">2020-11-10</time>
+              <time title="创建时间：2020-08-25 07:08:41" itemprop="dateCreated datePublished" datetime="2020-08-25T07:08:41+08:00">2020-08-25</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-08-24 18:09:23" itemprop="dateModified" datetime="2022-08-24T18:09:23+08:00">2022-08-24</time>
+                <time title="修改时间：2022-09-03 17:56:36" itemprop="dateModified" datetime="2022-09-03T17:56:36+08:00">2022-09-03</time>
               </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/TypeScript/" itemprop="url" rel="index"><span itemprop="name">TypeScript</span></a>
-                </span>
-            </span>
 
           
 
@@ -536,195 +408,487 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h4 id="TypeScript中类的概念和使用"><a href="#TypeScript中类的概念和使用" class="headerlink" title="TypeScript中类的概念和使用"></a>TypeScript中类的概念和使用</h4><blockquote>
-<h4 id="类的基本使用"><a href="#类的基本使用" class="headerlink" title="类的基本使用"></a>类的基本使用</h4></blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">class Lady &#123;</span><br><span class="line">  content = &quot;Hi，帅哥&quot;;</span><br><span class="line">  sayHello() &#123;</span><br><span class="line">    return this.content;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const goddess = new Lady();</span><br><span class="line">console.log(goddess.sayHello());</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<h4 id="类的继承"><a href="#类的继承" class="headerlink" title="类的继承"></a>类的继承</h4></blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">class Lady &#123;</span><br><span class="line">  content = &quot;Hi，帅哥&quot;;</span><br><span class="line">  sayHello() &#123;</span><br><span class="line">    return this.content;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">class XiaoJieJie extends Lady &#123;</span><br><span class="line">  sayLove() &#123;</span><br><span class="line">    return &quot;I love you&quot;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const goddess = new XiaoJieJie();</span><br><span class="line">console.log(goddess.sayHello());</span><br><span class="line">console.log(goddess.sayLove());</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<h4 id="类的重写"><a href="#类的重写" class="headerlink" title="类的重写"></a>类的重写</h4></blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">class XiaoJieJie extends Lady &#123;</span><br><span class="line">  sayLove() &#123;</span><br><span class="line">    return &quot;I love you!&quot;;</span><br><span class="line">  &#125;</span><br><span class="line">  sayHello() &#123;</span><br><span class="line">    return &quot;Hi , honey!&quot;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<h4 id="super关键字的使用"><a href="#super关键字的使用" class="headerlink" title="super关键字的使用"></a>super关键字的使用</h4></blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">class XiaoJieJie extends Lady &#123;</span><br><span class="line">  sayLove() &#123;</span><br><span class="line">    return &quot;I love you!&quot;;</span><br><span class="line">  &#125;</span><br><span class="line">  sayHello() &#123;</span><br><span class="line">    return super.sayHello() + &quot;。你好！&quot;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="TypeScript中类的访问类型"><a href="#TypeScript中类的访问类型" class="headerlink" title="TypeScript中类的访问类型"></a>TypeScript中类的访问类型</h4><blockquote>
-<p>其实类的访问类型就是基于三个关键词<code>private</code>、<code>protected</code>和<code>public</code></p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">class Person &#123;</span><br><span class="line">    public name:string;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<h4 id="public访问属性讲解"><a href="#public访问属性讲解" class="headerlink" title="public访问属性讲解"></a>public访问属性讲解</h4></blockquote>
-<blockquote>
-<p><code>public</code>从英文字面的解释就是<code>公共的</code>或者说是<code>公众的</code>，在程序里的意思就是允许在类的内部和外部被调用.</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class Person &#123;</span><br><span class="line">    public name:string;</span><br><span class="line">    public sayHello()&#123;</span><br><span class="line">        console.log(this.name + &#x27; say Hello&#x27;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">class Person &#123;</span><br><span class="line">    public name:string;</span><br><span class="line">    public sayHello()&#123;</span><br><span class="line">        console.log(this.name + &#x27;say Hello&#x27;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//-------以下属于类的外部--------</span><br><span class="line">const person = new Person()</span><br><span class="line">person.name = &#x27;jspang.com&#x27;</span><br><span class="line">person.sayHello()</span><br><span class="line">console.log(person.name)</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<h4 id="private访问属性讲解"><a href="#private访问属性讲解" class="headerlink" title="private访问属性讲解"></a>private访问属性讲解</h4></blockquote>
-<blockquote>
-<p>private 访问属性的意思是，只允许再类的内部被调用，外部不允许调用</p>
-</blockquote>
-<p>比如现在我们把 name 属性改成<code>private</code>,这时候在类的内部使用不会提示错误，而外部使用<code>VSCode</code>直接会报错。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">class Person &#123;</span><br><span class="line">    private name:string;</span><br><span class="line">    public sayHello()&#123;</span><br><span class="line">        console.log(this.name + &#x27;say Hello&#x27;)  //此处不报错</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//-------以下属于类的外部--------</span><br><span class="line">const person = new Person()</span><br><span class="line">person.name = &#x27;jspang.com&#x27;    //此处报错</span><br><span class="line">person.sayHello()</span><br><span class="line">console.log(person.name)  //此处报错</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<h4 id="protected访问属性讲解"><a href="#protected访问属性讲解" class="headerlink" title="protected访问属性讲解"></a>protected访问属性讲解</h4></blockquote>
-<blockquote>
-<p>protected 允许在类内及继承的子类中使用</p>
-</blockquote>
-<h4 id="TypeScript类的构造函数"><a href="#TypeScript类的构造函数" class="headerlink" title="TypeScript类的构造函数"></a>TypeScript类的构造函数</h4><blockquote>
-<h4 id="类的构造函数"><a href="#类的构造函数" class="headerlink" title="类的构造函数"></a>类的构造函数</h4></blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">class Person&#123;</span><br><span class="line">    public name :string ;</span><br><span class="line">    constructor(name:string)&#123;</span><br><span class="line">        this.name=name</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const person= new Person(&#x27;jspang&#x27;)</span><br><span class="line">console.log(person.name)</span><br></pre></td></tr></table></figure>
-
-<h6 id="简单写法："><a href="#简单写法：" class="headerlink" title="简单写法："></a>简单写法：</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">class Person&#123;</span><br><span class="line">    constructor(public name:string)&#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const person= new Person(&#x27;jspang&#x27;)</span><br><span class="line">console.log(person.name)</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<h4 id="类继承中的构造器写法"><a href="#类继承中的构造器写法" class="headerlink" title="类继承中的构造器写法"></a>类继承中的构造器写法</h4></blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">class Person&#123;</span><br><span class="line">    constructor(public name:string)&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Teacher extends Person&#123;</span><br><span class="line">    constructor(public age:number)&#123;</span><br><span class="line">        super(&#x27;jspang&#x27;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const teacher = new Teacher(18)</span><br><span class="line">console.log(teacher.age)</span><br><span class="line">console.log(teacher.name)</span><br></pre></td></tr></table></figure>
-
-<p>这就是子类继承父类并有构造函数的原则，就是在子类里写构造函数时，必须用<code>super()</code>调用父类的构造函数，如果需要传值，也必须进行传值操作。就算是父类没有构造函数，子类也要使用<code>super()</code>进行调用，否则就会报错。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">class Person&#123;&#125;</span><br><span class="line"></span><br><span class="line">class Teacher extends Person&#123;</span><br><span class="line">    constructor(public age:number)&#123;</span><br><span class="line">        super()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const teacher = new Teacher(18)</span><br><span class="line">console.log(teacher.age)</span><br></pre></td></tr></table></figure>
-
-<h4 id="TypeScript类的Getter、Setter和static使用"><a href="#TypeScript类的Getter、Setter和static使用" class="headerlink" title="TypeScript类的Getter、Setter和static使用"></a>TypeScript类的Getter、Setter和static使用</h4><p>类的访问类型<code>private</code>，它的最大用处是封装一个属性，然后通过 Getter 和 Setter 的形式来访问和修改这个属性。</p>
-<blockquote>
-<h4 id="类的Getter和Setter"><a href="#类的Getter和Setter" class="headerlink" title="类的Getter和Setter"></a>类的Getter和Setter</h4></blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">class Xiaojiejie &#123;</span><br><span class="line">  constructor(private _age:number)&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">class Xiaojiejie &#123;</span><br><span class="line">  constructor(private _age:number)&#123;&#125;</span><br><span class="line">  get age()&#123;</span><br><span class="line">      return this._age</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const dajiao = new Xiaojiejie(28)</span><br><span class="line"></span><br><span class="line">console.log(dajiao.getAge)</span><br></pre></td></tr></table></figure>
-
-<p>玄妙就在于<code>getter</code>里，我们可以对<code>_age</code>进行处理</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class Xiaojiejie &#123;</span><br><span class="line">  constructor(private _age:number)&#123;&#125;</span><br><span class="line">  get age()&#123;</span><br><span class="line">      return this._age-10</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><code>_age</code>是私有的，那类的外部就没办法改变，所以这时候可以用<code>setter</code>属性进行改变：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">class Xiaojiejie &#123;</span><br><span class="line">  constructor(private _age:number)&#123;&#125;</span><br><span class="line">  get age()&#123;</span><br><span class="line">      return this._age-10</span><br><span class="line">  &#125;</span><br><span class="line">  set age(age:number)&#123;</span><br><span class="line">    this._age=age</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const dajiao = new Xiaojiejie(28)</span><br><span class="line">dajiao.age=25</span><br><span class="line">console.log(dajiao.age)</span><br></pre></td></tr></table></figure>
-
-<p>其实<code>setter</code>也是可以保护私有变量的，现在大脚的年龄输出是 15 岁，在<code>setter</code>里给他加上个 3 岁，就18</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">set age(age:number)&#123;</span><br><span class="line">   this._age=age+3</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<h4 id="类中的static"><a href="#类中的static" class="headerlink" title="类中的static"></a>类中的static</h4></blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">class Girl &#123;</span><br><span class="line">  sayLove() &#123;</span><br><span class="line">    return &quot;I Love you&quot;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const girl = new Girl();</span><br><span class="line">console.log(girl.sayLove());</span><br></pre></td></tr></table></figure>
-
-<p>不想<code>new</code>出对象，而直接使用这个方法，那<code>TypeScript</code>为你提供了快捷的方式，用<code>static</code>声明的属性和方法，不需要进行声明对象，就可以直接使用</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class Girl &#123;</span><br><span class="line">  static sayLove() &#123;</span><br><span class="line">    return &quot;I Love you&quot;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">console.log(Girl.sayLove());</span><br></pre></td></tr></table></figure>
-
-<h4 id="类的只读属性和抽象类"><a href="#类的只读属性和抽象类" class="headerlink" title="类的只读属性和抽象类"></a>类的只读属性和抽象类</h4><p>抽象类跟父类很像，都需要继承，但是抽象类里一般都有抽象方法。继承抽象类的类必须实现抽象方法才可以</p>
-<blockquote>
-<h4 id="类里的只读属性-readonly"><a href="#类里的只读属性-readonly" class="headerlink" title="类里的只读属性 readonly"></a>类里的只读属性 readonly</h4></blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">    <span class="title function_">constructor</span>(<span class="params">public name:string </span>)&#123; &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> person = <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&#x27;jspang&#x27;</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(person.<span class="property">name</span>)</span><br></pre></td></tr></table></figure>
-
-<p>比如我现在有一个需求，就是在实例化对象时赋予的名字，以后不能再更改了，也就是我们常说的只读属性。我们先来看现在这种情况是可以随意更改的：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">class Person &#123;</span><br><span class="line">    constructor(public name:string )&#123; &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const person = new Person(&#x27;jspang&#x27;)</span><br><span class="line">person.name= &#x27;谢广坤&#x27;</span><br><span class="line">console.log(person.name)</span><br></pre></td></tr></table></figure>
-
-<p>这时候就可以用一个关键词<code>readonly</code>,也就是只读的意思，来修改<code>Person</code>类代码。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">class Person &#123;</span><br><span class="line">    public readonly _name :string;</span><br><span class="line">    constructor(name:string )&#123;</span><br><span class="line">        this._name = name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const person = new Person(&#x27;jspang&#x27;)</span><br><span class="line">person._name= &#x27;谢广坤&#x27;</span><br><span class="line">console.log(person._name)</span><br></pre></td></tr></table></figure>
-
-<p>这样写完后，<code>VSCode</code>就回直接给我们报错，告诉我们<code>_name</code>属性是只读属性，不能修改。</p>
-<blockquote>
-<h4 id="抽象类的使用"><a href="#抽象类的使用" class="headerlink" title="抽象类的使用"></a>抽象类的使用</h4></blockquote>
-<p>比如我开了一个红浪漫洗浴中心，里边有服务员，有初级技师，高级技师，每一个岗位我都写成一个类，那代码就是这样的</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">class Waiter &#123;&#125;</span><br><span class="line"></span><br><span class="line">class BaseTeacher &#123;&#125;</span><br><span class="line"></span><br><span class="line">class seniorTeacher &#123;&#125;</span><br></pre></td></tr></table></figure>
-
-<p>我要求无论是什么职位，都要有独特的技能，比如服务员就是给顾客倒水，初级技师要求会泰式按摩，高级技师要求会 SPA 全身按摩。这是一个硬性要求，但是每个职位的技能有不同，这时候就可以用抽象类来解决问题。</p>
-<p>抽象类的关键词是<code>abstract</code>,里边的抽象方法也是<code>abstract</code>开头的，现在我们就写一个<code>Girl</code>的抽象类。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">abstract class Girl&#123;</span><br><span class="line">    abstract skill()  //因为没有具体的方法，所以我们这里不写括号</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>有了这个抽象类，三个类就可以继承这个类，然后会要求必须实现<code>skill()</code>方法，代码如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">abstract class Girl&#123;</span><br><span class="line">    abstract skill()  //因为没有具体的方法，所以我们这里不写括号</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Waiter extends Girl&#123;</span><br><span class="line">    skill()&#123;</span><br><span class="line">        console.log(&#x27;大爷，请喝水！&#x27;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class BaseTeacher extends Girl&#123;</span><br><span class="line">    skill()&#123;</span><br><span class="line">        console.log(&#x27;大爷，来个泰式按摩吧！&#x27;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class seniorTeacher extends Girl&#123;</span><br><span class="line">    skill()&#123;</span><br><span class="line">        console.log(&#x27;大爷，来个SPA全身按摩吧！&#x27;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="配置文件-初识-tsconfig-json"><a href="#配置文件-初识-tsconfig-json" class="headerlink" title="配置文件-初识 tsconfig.json"></a>配置文件-初识 tsconfig.json</h4><blockquote>
-<h4 id="生成-tsconfig-json-文件"><a href="#生成-tsconfig-json-文件" class="headerlink" title="生成 tsconfig.json 文件"></a>生成 tsconfig.json 文件</h4></blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tsc --init</span><br></pre></td></tr></table></figure>
-
-<p>如果此时你的<code>tsc</code>执行不了，很有可能是你没有全局安装 TypeScript,可以全局安装一下。</p>
-<p>找到<code>complilerOptions</code>属性下的<code>removeComments:true</code>选项，把注释去掉。</p>
-<p>如果要想编译配置文件起作用，我们可以直接运行<code>tsc</code>命令，这时候<code>tsconfig.json</code>才起作用，可以看到生成的<code>js</code>文件已经不带注释了。</p>
-<blockquote>
-<h4 id="include-、exclude-和-files"><a href="#include-、exclude-和-files" class="headerlink" title="include 、exclude 和 files"></a>include 、exclude 和 files</h4></blockquote>
-<ol>
-<li><p>第一种：使用 include 配置</p>
-<p><code>include</code>属性是用来指定要编译的文件的，比如现在我们只编译<code>demo.ts</code>文件，而不编译其他</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;include&quot;:[&quot;demo.ts&quot;],</span><br><span class="line">  &quot;compilerOptions&quot;: &#123;</span><br><span class="line">      //any something</span><br><span class="line">      //........</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-</li>
-<li><p>第二种：使用exclude配置</p>
-<p><code>exclude</code>是不包含，除了demo2.ts不编译，其他都编译。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">   &quot;exclude&quot;:[&quot;demo2.ts&quot;],</span><br><span class="line">  &quot;compilerOptions&quot;: &#123;</span><br><span class="line">      //any something</span><br><span class="line">      //........</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>第三种：使用 files 配置</p>
-<p><code>files</code>的配置效果和<code>include</code>几乎一样</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;files&quot;:[&quot;demo.ts&quot;],</span><br><span class="line">  &quot;compilerOptions&quot;: &#123;</span><br><span class="line">      //any something</span><br><span class="line">      //........</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
+          <h1 id="收藏夹"><a href="#收藏夹" class="headerlink" title="收藏夹"></a>收藏夹</h1><h4 id="01-JavaScript"><a href="#01-JavaScript" class="headerlink" title="01.JavaScript"></a>01.JavaScript</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://wangdoc.com/javascript/">JavaScript 教程 | 通俗易懂的JavaScript教程</a></li>
+<li><a target="_blank" rel="noopener" href="https://es6.ruanyifeng.com/">ES6 入门教程 | 通俗易懂的ES6入门教程</a></li>
+<li><a target="_blank" rel="noopener" href="https://javascript30.com/">JavaScript 30  |  使用原生JavaScript在30天内完成30个项目</a></li>
+<li><a target="_blank" rel="noopener" href="https://zh.javascript.info/">现代 JavaScript 教程 |  最近很流行的JavaScript教程</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.poetries.top/node-learning-notes/">Node.js学习指南 | 系统的Node.js学习教程和笔记系统整理</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/ryanmcdermott/clean-code-javascript">JS 代码规范 | 优秀的 JS代码规范</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/xcatliu/typescript-tutorial">TypeScript 教程 | 通俗易懂的TypeScript教程</a></li>
+<li><a target="_blank" rel="noopener" href="https://jspang.com/detailed?id=63">TypeScript 教程 |  最好的TypeScript 视频+图文教程</a></li>
+</ul>
+<h4 id="02-CSS样式"><a href="#02-CSS样式" class="headerlink" title="02.CSS样式"></a>02.CSS样式</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://lhammer.cn/You-need-to-know-css/#/zh-cn/">CSS Tricks 效果大全 | CSS的各种效果实现 有很多动画效果</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/chokcoco/CSS-Inspiration">CSS Inspiration |  CSS灵感的诞生地  我每天都的网站</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/QiShaoXuan/css_tricks"> CSS 常用样式 |  有很多常用的CSS样式</a></li>
+<li><a target="_blank" rel="noopener" href="https://animista.net/"> Animista | CSS动画库  主打按需定制CSS动画效果</a></li>
+<li><a target="_blank" rel="noopener" href="https://animista.net/"> Animista | CSS动画库  主打按需定制CSS动画效果</a></li>
+<li><a target="_blank" rel="noopener" href="https://cssminifier.com/"> CSS Minifier | 在线CSS代码简化/压缩工具</a></li>
+<li><a target="_blank" rel="noopener" href="https://sass.bootcss.com/documentation"> Sass: Sass 文档 | Sass 中文网  成熟、稳定、强大的CSS扩展语言</a></li>
+<li><a target="_blank" rel="noopener" href="https://less.bootcss.com/"> Less 快速入门 | Less.js 中文文档 将CSS赋予了动态语言特性的样式语言</a></li>
+<li><a target="_blank" rel="noopener" href="https://stylus-lang.com/"> stylus | CSS扩展  富有变现里、动态、健壮的CSS</a></li>
+</ul>
+<h4 id="03-算法数据"><a href="#03-算法数据" class="headerlink" title="03.算法数据"></a>03.算法数据</h4><ul>
+<li><a target="_blank" rel="noopener" href="http://github.com/trekhleb/javascript-algorithms"> JavaScript 算法与数据结构 | 多种基于JavaScript的算法与数据结构</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/azl397985856/leetcode"> leetcode 解题之路 |  私藏LeetCode解题攻略 </a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/MisterBooo/LeetCodeAnimation"> 五分钟学算法 |  每天拿出五分钟  学学算法  比如上个厕所就学了 </a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/biaochenxuying/blog/issues/43">数据结构与算法项目推荐 | Github上170K+Star的前端学习数据结构和算法题目 </a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/biaochenxuying/blog/issues/42">JavaScript  十大经典排序算法 | JavaScript排序必会题目  作者功力很深 值得学习 </a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/algorithm-visualizer/algorithm-visualizer">算法可视化工具 |  用可视化工具和交互方式 让你从代码中可视化算法 </a></li>
+<li><a target="_blank" rel="noopener" href="https://visualgo.net/en">算法可视化来源 </a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/skidding/illustrated-algorithms">算法的工作方式 | 变量和操作的可视化表示 增强了控制流和实际源代码 </a></li>
+</ul>
+<h4 id="04-前端面试"><a href="#04-前端面试" class="headerlink" title="04.前端面试"></a>04.前端面试</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://blog.poetries.top/FE-Interview-Questions/">前端面试常考问题整理 |  按模块和知识点分类</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/markyun/My-blog/tree/master/Front-end-Developer-Questions">前端开发面试题</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/h5bp/Front-end-Developer-Interview-Questions/">WEB前端面试宝典</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/shfshanyue/blog/blob/master/post/juejin-interview.md">掘金前端面试题合集</a></li>
+<li><a target="_blank" rel="noopener" href="https://yuchengkai.cn/">前端面试图谱</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/biaochenxuying/blog/issues/47">前端面试开源项目汇总 | Github上100K+ Star 的前端面试开源项目汇总</a></li>
+</ul>
+<h4 id="05-技术社区"><a href="#05-技术社区" class="headerlink" title="05.技术社区"></a>05.技术社区</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/">GitHub  |  高质量内容创作和分享平台</a></li>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/">Stackoverflow |一个回答技术问题的网站</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/">掘金 | 国内的很多优质前端文章都掘金</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/">博客园  | 一个很纯粹的技术博客平台</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.zhihu.com/">知乎 |  很多程序人喜欢泡在知乎</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.csdn.net/">CSDN  | 老牌社区  程序员必上的一个社区</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.v2ex.com/">v2ex  | 程序员分享和探索的社区</a></li>
+<li><a target="_blank" rel="noopener" href="https://segmentfault.com/">segmentfault  | 低调技术博客社区</a></li>
+<li><a target="_blank" rel="noopener" href="https://cnodejs.org/">Node.js 中文社区 |  node专业中文社区</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.smashingmagazine.com/">博客杂志站点 | 一个 web 技术类的博客杂志站点</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.jstips.co/">JS 技术的网站 | 每天推出一个JS技巧的网站</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.jstips.co/">W3Cplus | 推广国内行业的技术博客</a></li>
+<li><a target="_blank" rel="noopener" href="https://docschina.org/">印记中文 | 最权威的技术中文文档社区</a></li>
+</ul>
+<h4 id="06-前端博客"><a href="#06-前端博客" class="headerlink" title="06.前端博客"></a>06.前端博客</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://jspang.com/">技术胖博客 |  专注前端 每年100集免费前端视频</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.alloyteam.com/">腾讯Alloy Team  | 腾讯前端博客 每天必看</a></li>
+<li><a target="_blank" rel="noopener" href="https://isux.tencent.com/">腾讯用户体验博客 | 专注于前端用户体验</a></li>
+<li><a target="_blank" rel="noopener" href="https://fed.taobao.org/">淘系前端博客 |  淘宝前端博客 代表中国最强前端实力</a></li>
+<li><a target="_blank" rel="noopener" href="https://aotu.io/">京东凹凸实验室  |  京东前端技术博客</a></li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/ElemeFE">饿了么前端博客  |  知乎上的最强前端博客</a></li>
+<li><a target="_blank" rel="noopener" href="http://fex.baidu.com/">百度前端博客  |  百度前端团队旗下博客</a></li>
+<li><a target="_blank" rel="noopener" href="https://75.team/">360奇舞团  |  360公司前端团队</a></li>
+<li><a target="_blank" rel="noopener" href="https://tech.meituan.com/">美团技术博客  |  美团技术团队博客</a></li>
+</ul>
+<h4 id="07-构建工具"><a href="#07-构建工具" class="headerlink" title="07.构建工具"></a>07.构建工具</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://www.npmjs.com/">NPM |  包管理 和 项目构建工具</a></li>
+<li><a target="_blank" rel="noopener" href="https://webpack.js.org/">webpack  | 前端最流行的项目构建工具</a></li>
+<li><a target="_blank" rel="noopener" href="https://yarnpkg.com/">Yarn  |  后起之秀 优秀的包管理和构建工具</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.gulpjs.com.cn/">Gulp  |  老牌构建工具</a></li>
+<li><a target="_blank" rel="noopener" href="https://babeljs.io/">Babel  | ES6构建转换工具</a></li>
+<li><a target="_blank" rel="noopener" href="https://cn.eslint.org/">ESLint  | 可组装的JavaScript和JSX检查工具</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.postcss.com.cn/">PostCSS | 用JavaScript转换CSS代码的工具</a></li>
+</ul>
+<h4 id="08-部署工具"><a href="#08-部署工具" class="headerlink" title="08.部署工具"></a>08.部署工具</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://pages.github.com/">Github Page  | Github提供的免费静态网站托管服务</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.netlify.com/">Netlify  |  30秒内部署你的网站</a></li>
+<li><a target="_blank" rel="noopener" href="https://vercel.com/">Vercel  |  快速部署你的网站 国外很流行</a></li>
+<li><a target="_blank" rel="noopener" href="https://surge.sh/">Surge  |  一个命令部署你的网站</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.heroku.com/">Heroku  |  运动构建 、 运行你的网站和应用</a></li>
+</ul>
+<h4 id="09-静态站点搭建"><a href="#09-静态站点搭建" class="headerlink" title="09.静态站点搭建"></a>09.静态站点搭建</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/">Hexo  |  最流行的静态博客程序 Markdown编写 生成静态站点</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.vuepress.cn/">VuePress  |  Vue驱动的静态网站生成器</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.gitbook.com/">GitBook  | 现代化的文档平台，支持团队协作</a></li>
+</ul>
+<h4 id="10-前端代码规范"><a href="#10-前端代码规范" class="headerlink" title="10.前端代码规范"></a>10.前端代码规范</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://tgideas.qq.com/doc/index.html">Tgideas | 腾讯前端代码规范 值得参考</a></li>
+<li><a target="_blank" rel="noopener" href="https://guide.aotu.io/index.html">京东  |  京东前端代码规范文档 分类详细</a></li>
+<li><a target="_blank" rel="noopener" href="https://codeguide.bootcss.com/">Bootstrap编码规范  |  适合个人和小团队使用的代码规范 不复杂</a></li>
+<li><a target="_blank" rel="noopener" href="https://es6.ruanyifeng.com/#docs/style">ES6 编程风格  | 阮一峰编写的ES6代码规范  值得每个人阅读并参考</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/airbnb/javascript">Airbnb  前端代码规范  |  国外企业的前端代码规范</a></li>
+<li><a target="_blank" rel="noopener" href="https://eslint.org/">ESLint  |  代码规范检查和格式化工具</a></li>
+<li><a target="_blank" rel="noopener" href="https://prettier.io/">Prettier  | VSCode 最热门的代码格式化工具  让你写出漂亮的代码</a></li>
+</ul>
+<h4 id="11-调试抓包"><a href="#11-调试抓包" class="headerlink" title="11.调试抓包"></a>11.调试抓包</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://wproxy.org/whistle/">Whistle  |  代理抓包工具  我一直在用的工具 很好很强大</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.telerik.com/fiddler">Fiddler  |  使用人数最多的抓包工具</a></li>
+</ul>
+<h4 id="12-在线工具"><a href="#12-在线工具" class="headerlink" title="12.在线工具"></a>12.在线工具</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://codepen.io/">CodePen  |  前端在线测试和演示工具  国外站点</a></li>
+<li><a target="_blank" rel="noopener" href="https://caniuse.com/">Can  I  use |  Web前端兼容性列表</a></li>
+<li><a target="_blank" rel="noopener" href="https://tinypng.com/">TinyPNG  |  PNG/JPG 图片在线压缩工具</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.umeng.com/">CNZZ |  老牌站点统计工具  5年前国内站长必上网站</a></li>
+<li><a target="_blank" rel="noopener" href="https://web.dev/measure/">web.dev  |  评测网站性能  基于Lighthouse</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.shapedivider.app/">Shape Divider  | 定制各种形状SVG的工具</a></li>
+<li><a target="_blank" rel="noopener" href="https://gtmetrix.com/">GTmetrix  |  网页性能在线分析工具</a></li>
+<li><a target="_blank" rel="noopener" href="https://carbon.now.sh/">Carbon  |  代码转图片工具  </a></li>
+<li><a target="_blank" rel="noopener" href="https://www.wappalyzer.com/">Wappalyzer  |  检测某个网站的技术栈  </a></li>
+<li><a target="_blank" rel="noopener" href="https://unbug.github.io/codelf">CODEIF | 变量方法起名工具  人工智能加持  </a></li>
+<li><a target="_blank" rel="noopener" href="https://tool.lu/"> tool.lu  |  程序员在线工具大全   </a></li>
+</ul>
+<h4 id="13-开发工具"><a href="#13-开发工具" class="headerlink" title="13.开发工具"></a>13.开发工具</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://code.visualstudio.com/"> VSCode  |  前端最流行的编辑器   </a></li>
+<li><a target="_blank" rel="noopener" href="https://www.sublimetext.com/"> Sublime Text  |  轻量级代码编辑工具 曾经我的最爱   </a></li>
+<li><a target="_blank" rel="noopener" href="https://www.jetbrains.com/webstorm/"> WebStom |  忠爱粉最多的编辑器 </a></li>
+<li><a target="_blank" rel="noopener" href="https://atom.io/"> Atom  |   用的人很多  我却不喜欢的编辑器 </a></li>
+<li><a target="_blank" rel="noopener" href="https://www.typora.io/"> Typora |  程序人Mrakdown笔记  一直在用的笔记工具 </a></li>
+</ul>
+<h4 id="14-开发者大会"><a href="#14-开发者大会" class="headerlink" title="14.开发者大会"></a>14.开发者大会</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://fequan.com/"> Vue.js开发者大会 |  前端人必须关注的前端大会 </a></li>
+<li><a target="_blank" rel="noopener" href="https://jsconfchina.com/"> 中国JS开发者大会  |  公司每年必组织参加的技术大会 </a></li>
+<li><a target="_blank" rel="noopener" href="https://css.w3ctech.com/"> CSS开发者大会 |  提高CSS技术的开发者大会  打开视野 面向世界 </a></li>
+<li><a target="_blank" rel="noopener" href="https://www.alibabaf2e.com/"> D2前端开发者大会 |  阿里组织的大会 可以看直播  </a></li>
+</ul>
+<h4 id="15-WEB图标"><a href="#15-WEB图标" class="headerlink" title="15.WEB图标"></a>15.WEB图标</h4><ul>
+<li><a target="_blank" rel="noopener" href="http://www.fontawesome.com.cn/"> Font Awesome  |  网站开发最流行的图标集  </a></li>
+<li><a target="_blank" rel="noopener" href="https://feathericons.com/"> Feather |  简洁美观的开源图标  </a></li>
+<li><a target="_blank" rel="noopener" href="https://material.io/resources/icons/"> Material  Design Icons  |  轻快、精美的符号图标  </a></li>
+<li><a target="_blank" rel="noopener" href="https://tablericons.com/"> Tabler Icons | 681枚可定制的开源SVG图标  </a></li>
+<li><a target="_blank" rel="noopener" href="https://simpleicons.org/"> 常见品牌的SVG图标  </a></li>
+</ul>
+<h1 id="B站学习资源整合"><a href="#B站学习资源整合" class="headerlink" title="B站学习资源整合"></a>B站学习资源整合</h1><h2 id="网络知识"><a href="#网络知识" class="headerlink" title="网络知识"></a>网络知识</h2><p>（Internet）</p>
+<ul>
+<li><ol>
+<li>网络工作原理</li>
 </ol>
-<h4 id="配置文件-初识-compilerOptions-配置项"><a href="#配置文件-初识-compilerOptions-配置项" class="headerlink" title="配置文件-初识 compilerOptions 配置项"></a>配置文件-初识 compilerOptions 配置项</h4><p>它是告诉<code>TypeScript</code>具体如何编译成<code>js</code>文件的</p>
-<blockquote>
-<h4 id="removeComments-属性"><a href="#removeComments-属性" class="headerlink" title="removeComments 属性"></a>removeComments 属性</h4></blockquote>
-<p>它的用处是告诉<code>TypeScript</code>对编译出来的<code>js</code>文件是否显示注释（注解）。比如我们现在把<code>removeComments</code>的值设置为<code>true</code>，就是在<code>js</code>中不显示注释。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// I&#x27;m JSPang</span><br><span class="line">const person: string = &quot;jspang&quot;;</span><br></pre></td></tr></table></figure>
-
-<p>把<code>removeComments</code>的值，设置为<code>true</code>，编译后：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&quot;use strict&quot;;</span><br><span class="line">var person = &quot;jspang&quot;;</span><br></pre></td></tr></table></figure>
-
-<p>把<code>removeComments</code>的值，设置为<code>false</code>,编译后：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot;use strict&quot;;</span><br><span class="line">// I‘m JSPang</span><br><span class="line">var person = &quot;jspang&quot;;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<h4 id="strict-属性"><a href="#strict-属性" class="headerlink" title="strict 属性"></a>strict 属性</h4></blockquote>
-<p><code>strict</code>属性如果设置为<code>true</code>,就代表我们的编译和书写规范，要按照<code>TypeScript</code>最严格的规范来写，如果我们把这个设置为<code>false</code>或者注释掉，意思是我们可以对设置一些不严格的写法。</p>
-<blockquote>
-<h4 id="noImplicitAny-属性"><a href="#noImplicitAny-属性" class="headerlink" title="noImplicitAny 属性"></a>noImplicitAny 属性</h4></blockquote>
-<p><code>noImplicitAny</code>属性的作用是，允许你的注解类型 any 不用特意表明</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function jspang(name) &#123;</span><br><span class="line">  return name;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这时候我们的<code>TypeScript</code>是进行报错的，我们用<code>tsc</code>编译也是报错的。这就是因为我们开启了<code>strict:true</code>,我们先注释掉，然后把<code>noImplicitAny</code>的值设置为<code>false</code>,就不再报错了。</p>
-<p>如果设置为<code>noImplicitAny:true</code>,意思就是值就算是 any（任意值），你也要进行类型注释。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function jspang(name: any) &#123;</span><br><span class="line">  return name;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>你可以简单的理解为，设置为 true，就是必须明确置顶 any 类型的值。</p>
-<blockquote>
-<h4 id="strictNullChecks-属性"><a href="#strictNullChecks-属性" class="headerlink" title="strictNullChecks 属性"></a>strictNullChecks 属性</h4></blockquote>
-<p>我们先把<code>strictNullChecks</code>设置为<code>false</code>,它的意思就是，<strong>不强制检查 NULL 类型。</strong>我们举个例子，让你能一下子就明白，还是删除<code>demo.ts</code>里的代码，然后编写代码.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const jspang: string = null;</span><br></pre></td></tr></table></figure>
-
-<p>代码写完后，你会发现这段代码是不报错的，如果是以前，一定是报错的，这就是我们配置了“不强制检验 null 类型”。如果你设成<code>strictNullChecks:true</code>，这时候就报错了。</p>
-<blockquote>
-<h4 id="ts-node-遵循-tsconfig-js-文件"><a href="#ts-node-遵循-tsconfig-js-文件" class="headerlink" title="ts-node 遵循 tsconfig.js 文件"></a>ts-node 遵循 tsconfig.js 文件</h4></blockquote>
-<h4 id="配置文件-compilerOptions-配置内容详解"><a href="#配置文件-compilerOptions-配置内容详解" class="headerlink" title="配置文件- compilerOptions 配置内容详解"></a>配置文件- compilerOptions 配置内容详解</h4><blockquote>
-<h4 id="rootDir-和-outDir"><a href="#rootDir-和-outDir" class="headerlink" title="rootDir 和 outDir"></a>rootDir 和 outDir</h4></blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;outDir&quot;: &quot;./build&quot; ,</span><br><span class="line">    &quot;rootDir&quot;: &quot;./src&quot; ,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<h4 id="编译-ES6-语法到-ES5-语法-allowJs"><a href="#编译-ES6-语法到-ES5-语法-allowJs" class="headerlink" title="编译 ES6 语法到 ES5 语法-allowJs"></a>编译 ES6 语法到 ES5 语法-allowJs</h4></blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export const name = &quot;jspang&quot;;</span><br></pre></td></tr></table></figure>
-
-<p>如果不做任何配置，这时候试用<code>tsc</code>是没有效果的。需要到<code>tsconfig.js</code>文件里进行修改，修改的地方有两个。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&quot;target&quot;:&#x27;es5&#x27; ,  // 这一项默认是开启的，你必须要保证它的开启，才能转换成功</span><br><span class="line">&quot;allowJs&quot;:true,   // 这个配置项的意思是联通</span><br></pre></td></tr></table></figure>
-
-<p>这两项都开启后，在使用<code>tsc</code>编译时，就会编译<code>js</code>文件了。</p>
-<blockquote>
-<h4 id="sourceMap-属性"><a href="#sourceMap-属性" class="headerlink" title="sourceMap 属性"></a>sourceMap 属性</h4></blockquote>
-<blockquote>
-<p>sourceMap 简单说，Source map 就是一个信息文件，里面储存着位置信息。也就是说，转换后的代码的每一个位置，所对应的转换前的位置。有了它，出错的时候，除错工具将直接显示原始代码，而不是转换后的代码。这无疑给开发者带来了很大方便。</p>
-</blockquote>
-<blockquote>
-<h4 id="noUnusedLocals-和-noUnusedParameters"><a href="#noUnusedLocals-和-noUnusedParameters" class="headerlink" title="noUnusedLocals 和 noUnusedParameters"></a>noUnusedLocals 和 noUnusedParameters</h4></blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const jspang: string = null;</span><br><span class="line">export const name = &quot;jspang&quot;;</span><br></pre></td></tr></table></figure>
-
-<p>这时候你会发现<code>jspang</code>这个变量没有任何地方使用，但是我们编译的话，它依然会被编译出来，这就是一种资源的浪费。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//编译后的文件</span><br><span class="line">&quot;use strict&quot;;</span><br><span class="line">exports.__esModule = true;</span><br><span class="line">exports.name = void 0;</span><br><span class="line">var jspang = null;</span><br><span class="line">exports.name = &quot;jspang&quot;;</span><br></pre></td></tr></table></figure>
-
-<p>这时候我们可以开启<code>noUnusedLocals：true</code>，开启后我们的程序会直接给我们提示不能这样编写代码，有没有使用的变量。</p>
-<p><code>noUnusedParameters</code>是针对于名优使用的函数的，方法和<code>noUnusedLocals：true</code>一样，小伙伴们自己尝试吧。</p>
-<h6 id="编译选项详解"><a href="#编译选项详解" class="headerlink" title="编译选项详解"></a>编译选项详解</h6><p><a target="_blank" rel="noopener" href="https://www.tslang.cn/docs/handbook/compiler-options.html">编译选项</a></p>
+</li>
+<li>计算机网络原理：<a href="https://gitee.com/link?target=https://www.bilibili.com/video/BV1xJ41137Q3">https://www.bilibili.com/video/BV1xJ41137Q3</a></li>
+<li><ol>
+<li>什么是HTTP</li>
+</ol>
+</li>
+<li>HTTP协议详解：<a href="https://gitee.com/link?target=https://www.bilibili.com/video/BV1js411g7Fw">https://www.bilibili.com/video/BV1js411g7Fw</a></li>
+<li><ol>
+<li>浏览器及工作方式</li>
+</ol>
+</li>
+<li>浏览器是如何运作的？：<a href="https://gitee.com/link?target=https://www.bilibili.com/video/BV1x54y1B7RE">https://www.bilibili.com/video/BV1x54y1B7RE</a></li>
+<li><ol>
+<li>DNS 及其工作原理</li>
+</ol>
+</li>
+<li>DNS基本工作原理：<a href="https://gitee.com/link?target=https://www.bilibili.com/video/BV1GW411j7Ts">https://www.bilibili.com/video/BV1GW411j7Ts</a></li>
+<li>直观DNS科普：<a href="https://gitee.com/link?target=https://www.bilibili.com/video/BV1F54y1R7BC">https://www.bilibili.com/video/BV1F54y1R7BC</a></li>
+<li><ol>
+<li>域名相关知识</li>
+</ol>
+</li>
+<li>域名解析完整讲解：<a href="https://gitee.com/link?target=https://www.bilibili.com/video/BV1zA411x7Pj">https://www.bilibili.com/video/BV1zA411x7Pj</a></li>
+<li><ol>
+<li>云服务相关知识</li>
+</ol>
+</li>
+<li>揭秘阿里云服务器：<a href="https://gitee.com/link?target=https://www.bilibili.com/video/BV1Rt411u7k4">https://www.bilibili.com/video/BV1Rt411u7k4</a></li>
+</ul>
+<h2 id="超文本标记语言"><a href="#超文本标记语言" class="headerlink" title="超文本标记语言"></a>超文本标记语言</h2><p>（HTML）</p>
+<ul>
+<li><ol>
+<li>HTML基础知识学习</li>
+</ol>
+</li>
+<li>HTML全套基础教程：<a href="https://gitee.com/link?target=https://www.bilibili.com/video/BV11t411K74Q">https://www.bilibili.com/video/BV11t411K74Q</a></li>
+<li><ol>
+<li>HTML 编写规则 和语义化写法</li>
+</ol>
+</li>
+<li>HTML 速成：<a href="https://gitee.com/link?target=https://www.bilibili.com/video/BV1vs411M7aT">https://www.bilibili.com/video/BV1vs411M7aT</a></li>
+<li><ol>
+<li>表单和验证</li>
+</ol>
+</li>
+<li>html5表单验证：<a href="https://gitee.com/link?target=https://www.bilibili.com/video/BV16K4y1Z7Gb">https://www.bilibili.com/video/BV16K4y1Z7Gb</a></li>
+<li><ol>
+<li>公约和最佳实践方法</li>
+</ol>
+</li>
+<li>前端代码规范秘籍：<a href="https://gitee.com/link?target=https://www.bilibili.com/video/BV19P4y147Jz">https://www.bilibili.com/video/BV19P4y147Jz</a></li>
+<li><ol>
+<li>SEO 基础知识</li>
+</ol>
+</li>
+<li>SEO优化学习教程：<a href="https://gitee.com/link?target=https://www.bilibili.com/video/BV1fE411J7ya">https://www.bilibili.com/video/BV1fE411J7ya</a></li>
+</ul>
+<h2 id="层叠样式表"><a href="#层叠样式表" class="headerlink" title="层叠样式表"></a>层叠样式表</h2><p>（CSS)</p>
+<ul>
+<li><ol>
+<li>CSS 基础知识学习</li>
+</ol>
+</li>
+<li><p>CSS3基础教程：<a href="https://gitee.com/link?target=https://www.bilibili.com/video/BV1Bx411u7cS">https://www.bilibili.com/video/BV1Bx411u7cS</a></p>
+</li>
+<li><p>CSS3全套教程：<a href="https://gitee.com/link?target=https://www.bilibili.com/video/BV1et411q74F">https://www.bilibili.com/video/BV1et411q74F</a></p>
+</li>
+<li><ol>
+<li>页面切图和布局实现</li>
+</ol>
+</li>
+<li><p>浮动布局</p>
+</li>
+<li><p>浮动布局：<a href="https://gitee.com/link?target=https://www.bilibili.com/video/BV1Zs411j7Z3">https://www.bilibili.com/video/BV1Zs411j7Z3</a></p>
+</li>
+<li><p>定位布局</p>
+</li>
+<li><p>CSS定位布局：<a href="https://gitee.com/link?target=https://www.bilibili.com/video/BV1ni4y1g7tc">https://www.bilibili.com/video/BV1ni4y1g7tc</a></p>
+</li>
+<li><p>Display</p>
+</li>
+<li><p>display&amp;visibility：<a href="https://gitee.com/link?target=https://www.bilibili.com/video/BV1HJ411M7CM">https://www.bilibili.com/video/BV1HJ411M7CM</a></p>
+</li>
+<li><p>盒子模型</p>
+</li>
+<li><p>CSS盒子模型与定位：<a href="https://gitee.com/link?target=https://www.bilibili.com/video/BV1P7411G7BW">https://www.bilibili.com/video/BV1P7411G7BW</a></p>
+</li>
+<li><p>Grid 布局</p>
+</li>
+<li><p>如何用grid：<a href="https://gitee.com/link?target=https://www.bilibili.com/video/BV14C4y1W7oA">https://www.bilibili.com/video/BV14C4y1W7oA</a></p>
+</li>
+<li><p>Flex 布局</p>
+</li>
+<li><p>Flex伸缩布局：<a href="https://gitee.com/link?target=https://www.bilibili.com/video/BV1BJ41197XE">https://www.bilibili.com/video/BV1BJ41197XE</a></p>
+</li>
+<li><ol>
+<li>页面响应式布局设计</li>
+</ol>
+</li>
+<li><p>六个案例学会响应式布局：<a href="https://gitee.com/link?target=https://www.bilibili.com/video/BV1ov411k7sm">https://www.bilibili.com/video/BV1ov411k7sm</a></p>
+</li>
+</ul>
+<h2 id="浏览器脚本语言"><a href="#浏览器脚本语言" class="headerlink" title="浏览器脚本语言"></a>浏览器脚本语言</h2><p>(JavaScript)</p>
+<ul>
+<li><ol>
+<li>JavaScript基础语法和知识</li>
+</ol>
+</li>
+<li>JavaScript基础语法：<a href="https://gitee.com/link?target=https://www.bilibili.com/video/BV1Sy4y1C7ha">https://www.bilibili.com/video/BV1Sy4y1C7ha</a></li>
+<li><ol>
+<li>使用JavaScript 操作 DOM元素</li>
+</ol>
+</li>
+<li>JS必会的DOM BOM操作：<a href="https://gitee.com/link?target=https://www.bilibili.com/video/BV1k4411w7sV">https://www.bilibili.com/video/BV1k4411w7sV</a></li>
+<li><ol>
+<li>Ajax 异步请求相关知识学习</li>
+</ol>
+</li>
+<li>Ajax入门到精通：<a href="https://gitee.com/link?target=https://www.bilibili.com/video/BV1WC4y1b78y">https://www.bilibili.com/video/BV1WC4y1b78y</a></li>
+<li><ol>
+<li>ES6 以上版本 的JavaScript</li>
+</ol>
+</li>
+<li>ES6-ES11新特性：<a href="https://gitee.com/link?target=https://www.bilibili.com/video/BV1uK411H7on">https://www.bilibili.com/video/BV1uK411H7on</a></li>
+</ul>
+<h2 id="版本控制管理系统"><a href="#版本控制管理系统" class="headerlink" title="版本控制管理系统"></a>版本控制管理系统</h2><p>Version Control System</p>
+<ul>
+<li><ol>
+<li>Git的基本用法</li>
+</ol>
+</li>
+<li><p>Git最新教程：<a href="https://gitee.com/link?target=https://www.bilibili.com/video/BV1FE411P7B3">https://www.bilibili.com/video/BV1FE411P7B3</a></p>
+</li>
+<li><ol>
+<li>相关平台/软件的使用</li>
+</ol>
+</li>
+<li><p>GitHub</p>
+</li>
+<li><p>十分钟学会Github：<a href="https://gitee.com/link?target=https://www.bilibili.com/video/BV1yo4y1d7UK">https://www.bilibili.com/video/BV1yo4y1d7UK</a></p>
+</li>
+<li><p>GitLab</p>
+</li>
+<li><p>gitlab使用说明：<a href="https://gitee.com/link?target=https://www.bilibili.com/video/BV11E411x7Uv">https://www.bilibili.com/video/BV11E411x7Uv</a></p>
+</li>
+<li><p>Gitee</p>
+</li>
+<li><p>这个看中文网址就可以了，目前B站还没有很好的视频介绍</p>
+</li>
+</ul>
+<h2 id="网络安全相关知识"><a href="#网络安全相关知识" class="headerlink" title="网络安全相关知识"></a>网络安全相关知识</h2><p>Web Security Knowledge</p>
+<ul>
+<li><ol>
+<li>HTTPS 原理和使用</li>
+</ol>
+</li>
+<li>你连HTTPS原理都不懂：<a href="https://gitee.com/link?target=https://www.bilibili.com/video/BV1Up4y1i7PG">https://www.bilibili.com/video/BV1Up4y1i7PG</a></li>
+<li><ol>
+<li>CORS 跨域请求和安全知识</li>
+</ol>
+</li>
+<li>什么是CORS：<a href="https://gitee.com/link?target=https://www.bilibili.com/video/BV1Kt411E76z">https://www.bilibili.com/video/BV1Kt411E76z</a></li>
+<li><ol>
+<li>内容安全策略</li>
+</ol>
+</li>
+<li>网络渗透：<a href="https://gitee.com/link?target=https://www.bilibili.com/video/BV1kh411W7Vv">https://www.bilibili.com/video/BV1kh411W7Vv</a></li>
+<li><ol>
+<li>OWASP 安全风险知识</li>
+</ol>
+</li>
+<li>OWASP TOP10：<a href="https://gitee.com/link?target=https://www.bilibili.com/video/BV1ey4y1V7Jj">https://www.bilibili.com/video/BV1ey4y1V7Jj</a></li>
+</ul>
+<h2 id="包管理工具"><a href="#包管理工具" class="headerlink" title="包管理工具"></a>包管理工具</h2><p>Package Managers</p>
+<ul>
+<li><ol>
+<li>npm</li>
+</ol>
+</li>
+<li>包管理工具：<a href="https://gitee.com/link?target=https://www.bilibili.com/video/BV1Dv411W7XP">https://www.bilibili.com/video/BV1Dv411W7XP</a></li>
+<li><ol>
+<li>yarn</li>
+</ol>
+</li>
+<li>Yarn入门：<a href="https://gitee.com/link?target=https://www.imooc.com/learn/766">https://www.imooc.com/learn/766</a> (B站没有，推荐这个免费)</li>
+</ul>
+<h2 id="CSS-预处理-语言"><a href="#CSS-预处理-语言" class="headerlink" title="CSS 预处理 语言"></a>CSS 预处理 语言</h2><p>CSS Preprocessors</p>
+<ul>
+<li><ol>
+<li>Sass</li>
+</ol>
+</li>
+<li>SCSS从入门到实战：<a href="https://gitee.com/link?target=https://www.bilibili.com/video/BV1Zg4y1v75U">https://www.bilibili.com/video/BV1Zg4y1v75U</a></li>
+<li><ol>
+<li>PostCSS</li>
+</ol>
+</li>
+<li>B站没太好的视频，建议买书《深入PostCSS Web设计》</li>
+<li><ol>
+<li>Less</li>
+</ol>
+</li>
+<li>前端less教程：<a href="https://gitee.com/link?target=https://www.bilibili.com/video/BV1YW411T7vd">https://www.bilibili.com/video/BV1YW411T7vd</a></li>
+</ul>
+<h2 id="构建工具"><a href="#构建工具" class="headerlink" title="构建工具"></a>构建工具</h2><p>Build Tools</p>
+<ul>
+<li><ol>
+<li>任务执行命令 [Task Runners]</li>
+</ol>
+</li>
+<li><p>npm scripts</p>
+</li>
+<li><p>npm包管理应用：<a href="https://gitee.com/link?target=https://www.bilibili.com/video/BV1Dv411W7XP">https://www.bilibili.com/video/BV1Dv411W7XP</a></p>
+</li>
+<li><p>Gulp</p>
+</li>
+<li><p>Gulp入门：<a href="https://gitee.com/link?target=https://www.bilibili.com/video/BV1yA411s72G">https://www.bilibili.com/video/BV1yA411s72G</a></p>
+</li>
+<li><ol>
+<li>打包工具</li>
+</ol>
+</li>
+<li><p>Webpack</p>
+</li>
+<li><p>Webpack从入门到精通：<a href="https://gitee.com/link?target=https://www.bilibili.com/video/BV1e7411j7T5">https://www.bilibili.com/video/BV1e7411j7T5</a></p>
+</li>
+<li><p>Parcel</p>
+</li>
+<li><p>Parcel初体验：<a href="https://gitee.com/link?target=https://www.bilibili.com/video/BV1Pa4y147Kf">https://www.bilibili.com/video/BV1Pa4y147Kf</a></p>
+</li>
+<li><ol>
+<li>代码格式化工具</li>
+</ol>
+</li>
+<li><p>Prettier</p>
+</li>
+<li><p>Prettier和ESLint使用：<a href="https://gitee.com/link?target=https://www.bilibili.com/video/BV183411r7YK">https://www.bilibili.com/video/BV183411r7YK</a></p>
+</li>
+<li><p>ESLint</p>
+</li>
+<li><p>ESLint基础入门：<a href="https://gitee.com/link?target=https://space.bilibili.com/390120104/search/video?keyword=ESLint">https://space.bilibili.com/390120104/search/video?keyword=ESLint</a></p>
+</li>
+</ul>
+<h2 id="三大前端框架"><a href="#三大前端框架" class="headerlink" title="三大前端框架"></a>三大前端框架</h2><p>Web Framework</p>
+<ul>
+<li>React.js</li>
+<li>React基础视频：<a href="https://gitee.com/link?target=https://www.bilibili.com/video/BV1g4411i7po">https://www.bilibili.com/video/BV1g4411i7po</a></li>
+<li>React全家桶：<a href="https://gitee.com/link?target=https://www.bilibili.com/video/BV1wy4y1D7JT">https://www.bilibili.com/video/BV1wy4y1D7JT</a></li>
+<li>React实战博客：<a href="https://gitee.com/link?target=https://www.bilibili.com/video/BV1CJ411377B">https://www.bilibili.com/video/BV1CJ411377B</a></li>
+<li>React商城实战：<a href="https://gitee.com/link?target=https://www.bilibili.com/video/BV1i5411c7xp">https://www.bilibili.com/video/BV1i5411c7xp</a></li>
+<li>Vue.js</li>
+<li>Vue2全家桶：<a href="https://gitee.com/link?target=https://www.jspang.com/detailed?id=57">https://www.jspang.com/detailed?id=57</a></li>
+<li>Vue3全家桶：<a href="https://gitee.com/link?target=https://www.jspang.com/detailed?id=67">https://www.jspang.com/detailed?id=67</a></li>
+<li>vuejs从入门到精通：<a href="https://gitee.com/link?target=https://www.bilibili.com/video/BV1Zy4y1K7SH">https://www.bilibili.com/video/BV1Zy4y1K7SH</a></li>
+<li>Angular</li>
+<li>Angular基础：<a href="https://gitee.com/link?target=https://www.bilibili.com/video/BV1Wx411R7qt">https://www.bilibili.com/video/BV1Wx411R7qt</a></li>
+</ul>
+<h2 id="Web-组件化编程"><a href="#Web-组件化编程" class="headerlink" title="Web 组件化编程"></a>Web 组件化编程</h2><p>Web Components</p>
+<ul>
+<li>HTML Templates</li>
+<li>Custom Elements</li>
+<li>Shadow DOM</li>
+<li>概要: 此部分内容没有找到合适视频</li>
+</ul>
+<h2 id="CSS-相关框架"><a href="#CSS-相关框架" class="headerlink" title="CSS 相关框架"></a>CSS 相关框架</h2><p>CSS Frameworks</p>
+<ul>
+<li>BootStrap</li>
+<li>一周学会BootStrap：<a href="https://gitee.com/link?target=https://www.bilibili.com/video/BV1Lx411v73k">https://www.bilibili.com/video/BV1Lx411v73k</a></li>
+<li>Material UI</li>
+<li>Material UI入门教程：<a href="https://gitee.com/link?target=https://www.bilibili.com/video/BV12J411s75b">https://www.bilibili.com/video/BV12J411s75b</a></li>
+<li>Materialize CSS</li>
+<li>Materialize CSS Crash Course：<a href="https://gitee.com/link?target=https://www.bilibili.com/video/BV1gx411h7Y5">https://www.bilibili.com/video/BV1gx411h7Y5</a></li>
+<li>ReactStrap</li>
+</ul>
+<h2 id="JavaScript-语法糖"><a href="#JavaScript-语法糖" class="headerlink" title="JavaScript 语法糖"></a>JavaScript 语法糖</h2><p>Type Checkers</p>
+<ul>
+<li>TypeScript</li>
+<li>TypeScript从入门到精通：<a href="https://gitee.com/link?target=https://www.bilibili.com/video/BV1qV41167VD">https://www.bilibili.com/video/BV1qV41167VD</a></li>
+<li>Flow</li>
+</ul>
+<h2 id="服务端渲染"><a href="#服务端渲染" class="headerlink" title="服务端渲染"></a>服务端渲染</h2><p>Server Side Rendering （SSR）</p>
+<ul>
+<li><p>React.js</p>
+</li>
+<li><p>Next.js</p>
+</li>
+<li><p>Next.js入门教程：<a href="https://gitee.com/link?target=https://www.bilibili.com/video/BV13441117KK">https://www.bilibili.com/video/BV13441117KK</a></p>
+</li>
+<li><p>GatsbyJS</p>
+</li>
+<li><p>GatsbyJS 实战：<a href="https://gitee.com/link?target=https://www.bilibili.com/video/BV1i4411T7AR">https://www.bilibili.com/video/BV1i4411T7AR</a> （英文）</p>
+</li>
+<li><p>Vue.js</p>
+</li>
+<li><p>Nuxt.js</p>
+</li>
+<li><p>Nuxt.js入门：<a href="https://gitee.com/link?target=https://www.bilibili.com/video/BV1Xt41117Kg">https://www.bilibili.com/video/BV1Xt41117Kg</a></p>
+</li>
+<li><p>Angular</p>
+</li>
+<li><p>Universal</p>
+</li>
+</ul>
+<h2 id="图形化编程"><a href="#图形化编程" class="headerlink" title="图形化编程"></a>图形化编程</h2><p>GraphQL</p>
+<ul>
+<li>Cocos Creator</li>
+<li>Cocos 图形游戏开发：<a href="https://gitee.com/link?target=https://www.bilibili.com/video/BV1sA411Y7x4">https://www.bilibili.com/video/BV1sA411Y7x4</a></li>
+<li>Three.js</li>
+<li>Three.js基础教程-英文：<a href="https://gitee.com/link?target=https://www.bilibili.com/video/BV1ks411W78i">https://www.bilibili.com/video/BV1ks411W78i</a></li>
+<li>Three.js教程：<a href="https://gitee.com/link?target=https://www.bilibili.com/video/BV1va4y1p7QB">https://www.bilibili.com/video/BV1va4y1p7QB</a></li>
+</ul>
+<h2 id="静态站点生成器"><a href="#静态站点生成器" class="headerlink" title="静态站点生成器"></a>静态站点生成器</h2><p>Static Site Generators</p>
+<ul>
+<li>Next.js</li>
+<li>Next.js入门教程：<a href="https://gitee.com/link?target=https://www.bilibili.com/video/BV13441117KK">https://www.bilibili.com/video/BV13441117KK</a></li>
+<li>GatsbyJS</li>
+<li>GatsbyJS 实战：<a href="https://gitee.com/link?target=https://www.bilibili.com/video/BV1i4411T7AR">https://www.bilibili.com/video/BV1i4411T7AR</a> （英文）</li>
+<li>Nuxt.js</li>
+<li>Nuxt.js入门：<a href="https://gitee.com/link?target=https://www.bilibili.com/video/BV1Xt41117Kg">https://www.bilibili.com/video/BV1Xt41117Kg</a></li>
+<li>Vuepress</li>
+<li>Vuepress入门到精通：<a href="https://gitee.com/link?target=https://www.bilibili.com/video/BV1vb411m7NY">https://www.bilibili.com/video/BV1vb411m7NY</a></li>
+<li>Hugo</li>
+<li>10分钟搭建个人网站：<a href="https://gitee.com/link?target=https://www.bilibili.com/video/BV1x64y117PX">https://www.bilibili.com/video/BV1x64y117PX</a></li>
+</ul>
+<h2 id="移动App开发"><a href="#移动App开发" class="headerlink" title="移动App开发"></a>移动App开发</h2><p>Mobile Applications</p>
+<ul>
+<li>React Native</li>
+<li>ReactNatvie基础：<a href="https://gitee.com/link?target=https://www.bilibili.com/video/BV1Eg4y16735">https://www.bilibili.com/video/BV1Eg4y16735</a></li>
+<li>ReactNatvie实战：<a href="https://gitee.com/link?target=https://www.bilibili.com/video/BV15K411s75p">https://www.bilibili.com/video/BV15K411s75p</a></li>
+<li>UniApp</li>
+<li>Uni-App从入门到实战：<a href="https://gitee.com/link?target=https://www.bilibili.com/video/BV1BJ411W7pX">https://www.bilibili.com/video/BV1BJ411W7pX</a></li>
+<li>Uni-App美团外卖：<a href="https://gitee.com/link?target=https://www.bilibili.com/video/BV1Zt4y117RR">https://www.bilibili.com/video/BV1Zt4y117RR</a></li>
+<li>Flutter</li>
+<li>Flutter基础：<a href="https://gitee.com/link?target=https://www.bilibili.com/video/BV15t411U7yf">https://www.bilibili.com/video/BV15t411U7yf</a></li>
+<li>Flutter实战：<a href="https://gitee.com/link?target=https://www.bilibili.com/video/BV1kt411B7mu">https://www.bilibili.com/video/BV1kt411B7mu</a></li>
+<li>Ionic</li>
+<li>Ionic入门：<a href="https://gitee.com/link?target=https://www.bilibili.com/video/BV1Ub41117q5">https://www.bilibili.com/video/BV1Ub41117q5</a></li>
+</ul>
+<h2 id="桌面应用开发"><a href="#桌面应用开发" class="headerlink" title="桌面应用开发"></a>桌面应用开发</h2><p>Desktop Applications</p>
+<ul>
+<li>Electron</li>
+<li>Electron入门：<a href="https://gitee.com/link?target=https://www.bilibili.com/video/BV1QB4y1F722">https://www.bilibili.com/video/BV1QB4y1F722</a></li>
+<li>Electron基础：<a href="https://gitee.com/link?target=https://www.bilibili.com/video/BV177411s7Lt">https://www.bilibili.com/video/BV177411s7Lt</a></li>
+</ul>
 
       
     </div>
@@ -743,7 +907,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/22/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><span class="page-number current">23</span><a class="page-number" href="/page/24/">24</a><span class="space">&hellip;</span><a class="page-number" href="/page/44/">44</a><a class="extend next" rel="next" href="/page/24/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/22/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><span class="page-number current">23</span><a class="page-number" href="/page/24/">24</a><span class="space">&hellip;</span><a class="page-number" href="/page/42/">42</a><a class="extend next" rel="next" href="/page/24/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -811,14 +975,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">132</span>
+          <span class="site-state-item-count">126</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">54</span>
+        <span class="site-state-item-count">52</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">

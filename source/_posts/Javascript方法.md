@@ -2055,3 +2055,34 @@ for(var i = 0; i< arr.length; i++) {
 }
 ```
 
+#### [js控制当滚动条到最底部时隐藏某个div](https://zhidao.baidu.com/question/454586791163562165.html)
+
+```
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title> </title>
+<style>
+body{margin:0;height:2000px;}
+div{height:500px;width:500px;background:#f00;margin:0 auto;}
+</style>
+<script>
+window.onscroll=function(){
+    var scrollTop = document.documentElement.scrollTop||document.body.scrollTop;
+    if(scrollTop>=document.body.offsetHeight-document.documentElement.clientHeight)
+    {
+        document.getElementById("div1").style.display="none";  
+        alert("去看看是不是DIV不见了");
+    }
+}
+</script>
+</head>
+<body>
+<div id="div1">
+    this is a div
+</div>
+</body>
+</html>
+```
+

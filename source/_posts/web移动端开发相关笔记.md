@@ -8,25 +8,18 @@ tags:
 
 #### [移动端开发的资源与小技巧](https://github.com/jtyjty99999/mobileTech)
 
-[移动端Web解决方案](https://github.com/AlloyTeam/Mars)
 
-[移动前端开发收藏夹](https://github.com/hoosin/mobile-web-favorites)
 
-[优化移动体验的HTML5技巧](https://www.oschina.net/translate/mobile-app-optimization-and-performance)
+#### 网站收集
 
-[移动端手势表](http://ww1.sinaimg.cn/bmiddle/c2c57f68jw1e4fh7dmw12j20fi2w6qe1.jpg)
+| [移动端Web解决方案](https://github.com/AlloyTeam/Mars)       | [移动前端开发收藏夹](https://github.com/hoosin/mobile-web-favorites) | [优化移动体验的HTML5技巧](https://www.oschina.net/translate/mobile-app-optimization-and-performance) |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| [移动端手势表](http://ww1.sinaimg.cn/bmiddle/c2c57f68jw1e4fh7dmw12j20fi2w6qe1.jpg) | [Mobile HTML5](http://mobilehtml5.org/)—html5移动端兼容性速查 | [Pixel Density Display Listing](https://pixensity.com/)—几乎所有设备的屏幕尺寸与像素密度表 |
+| [Screen Sizes](https://screensiz.es/phone)—移动设备参数表    | [The iOS Design Guidelines](https://ivomynttinen.com/blog/ios-design-guidelines)—ios端移动设备参数速查 | [iPhone 6 屏幕揭秘](http://wileam.com/iphone-6-screen-cn/)   |
+| [移动设备适配库2](http://detectmobilebrowsers.com/)          | [jQuery Mobile Demos](https://demos.jquerymobile.com/1.4.3/) | [zepto源码注释](https://www.cnblogs.com/sky000/archive/2013/03/29/2988952.html) |
+| [移动端web开发技巧](http://www.imooc.com/article/1115)       |                                                              |                                                              |
 
-[Mobile HTML5](http://mobilehtml5.org/)—html5移动端兼容性速查
 
-[Pixel Density Display Listing](https://pixensity.com/)—几乎所有设备的屏幕尺寸与像素密度表
-
-[Screen Sizes](https://screensiz.es/phone)—移动设备参数表
-
-[The iOS Design Guidelines](https://ivomynttinen.com/blog/ios-design-guidelines)—ios端移动设备参数速查
-
-[iPhone 6 屏幕揭秘](http://wileam.com/iphone-6-screen-cn/)
-
-[移动设备适配库2](http://detectmobilebrowsers.com/)
 
 #### 移动端meta头一些常用的属性
 
@@ -2055,9 +2048,20 @@ navigator.contacts.find(fields, onSuccess, onError,options);
 
 #### 移动端适配：font-size
 
+```
+html{font-size:10px}
+@media screen and (min-width:321px) and (max-width:375px){html{font-size:11px}}
+@media screen and (min-width:376px) and (max-width:414px){html{font-size:12px}}
+@media screen and (min-width:415px) and (max-width:639px){html{font-size:15px}}
+@media screen and (min-width:640px) and (max-width:719px){html{font-size:20px}}
+@media screen and (min-width:720px) and (max-width:749px){html{font-size:22.5px}}
+@media screen and (min-width:750px) and (max-width:799px){html{font-size:23.5px}}
+@media screen and (min-width:800px){html{font-size:25px}}
+```
 
+[在 iOS 应用中直接跳转到 AppStore 的方法](https://blog.csdn.net/kkk0526/article/details/9836369/)
 
-
+**移动端避免使用fixed定位**，并且避免同时有fixed和输入框同时出现
 
 #### 书籍
 

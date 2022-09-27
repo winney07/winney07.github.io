@@ -1375,3 +1375,13 @@ tbody{
 }
 ```
 
+#### 解决苹果网页-手机字体变大
+
+解决移动端iPhone（苹果手机）网页兼容（部分字号变大）
+
+ safari浏览器是webkit内核
+
+```
+body{-webkit-text-size-adjust:none;}
+```
+

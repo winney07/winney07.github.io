@@ -964,3 +964,7 @@ function readInputFile(id){
 7. for循环必须使用大括号括起来。
 8. 语句必须使用大括号括起来
 9. for in 循环中的变量应该使用 var 关键字明确限定的作用域，从而避免作用域污染
+
+
+
+[jquery判断页面滚动条(scroll)是上滚还是下滚，且是否滚动到头部或者底部](https://www.haorooms.com/post/jquery_scroll_upanddown)

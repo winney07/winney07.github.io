@@ -394,3 +394,379 @@ window.addEventListener("popstate", function(e) {
 </script> 
 ```
 
+#### 监听手机输入框值变化的事件
+
+```
+$('#username').bind('input propertychange', function() {  
+   $('#result').html($(this).val().length + ' characters');  
+}); 
+```
+
+#### 判断对象是否为空对象
+
+```
+function isEmptyObject(obj) {
+    if (obj.length != null && obj.length == 0) return false;
+    if (Object.prototype.toString.apply(obj) !== '[object Object]') return false;
+    for (var p in obj) if (obj.hasOwnProperty(p)) return false;
+    return true
+};
+```
+
+#### console.log()在IE浏览器的兼容模式下不可用
+
+[关于console.log()在IE浏览器的兼容模式下不可用的问题](https://blog.csdn.net/escapeplan/article/details/55210495)
+
+解决方法：
+
+```
+<script type="text/javascript">
+    if(!window.console){
+        window.console = {};
+    }
+    if(!window.console.log){
+        window.console.log = function(msg){};
+    }
+</script>
+```
+
+#### JSON字符串与JSON对象之间的转换
+
+[JS 处理JSON数据及javascript处理对象、JSON对象、hash对象、数组对象的方法](https://blog.csdn.net/chenxiaodan_danny/article/details/40656559)
+
+```
+var str1 = '{"name":"yangyanyi","age":"25"}';//JSON字符串
+var str2 = {"name":"yangyanyi","age":"25"}//JSON对象
+var str3 = eval('(' + str1 + ')');//JSON字符串转换为JSON对象
+console.log(JSON.parse(str1));//JSON字符串转换为JSON对象
+console.log(JSON.stringify(str2));//JSON对象转换为JSON字符串
+```
+
+#### 获取对象的长度
+
+```
+function countProperties (obj) {
+    var count = 0;
+    for (var property in obj) {
+        if (Object.prototype.hasOwnProperty.call(obj, property)) {
+            count++;
+        }
+    }
+    return count;
+}
+```
+
+#### for  in 
+
+[javascript中的for in循环和for循环的使用](http://caibaojian.com/js-loop-for-in.html)
+
+#### 将字符串反向排序
+
+```
+var message = "yangyanyi";
+message.split('').reverse().join('');    //iynaygnay
+```
+
+#### [JavaScript获取页面宽度高度大全](https://www.cnblogs.com/wcg249165510/archive/2009/02/20/1394749.html)
+
+网页可见区域宽：document.body.clientWidth
+
+网页可见区域高：document.body.clientHeight
+
+网页可见区域宽：document.body.offsetWidth(包括边线的宽)
+
+网页可见区域高：document.body.offsetHeight(包括边线的宽)
+
+网页正文全文宽：document.body.scrollWidth
+
+网页正文全文高：document.body.scrollHeight
+
+网页被卷去的高：document.body.scrollTop(IE7无效)
+
+网页被卷去的左：document.body.scrollLeft(IE7无效)
+
+网页被卷去的高：document.documentElement.scrollTop(IE7有效)
+
+网页被卷去的左：document.documentElement.scrollLeft(IE7有效)
+
+网页正文部分上：window.screenTop
+
+网页正文部分左：window.screenLeft
+
+屏幕分辨率的高：window.screen.height
+
+屏幕分辨率的宽：window.screen.width
+
+屏幕可用工作区高度：window.screen.availHeight
+
+屏幕可用工作区宽度：window.screen.availWidth
+
+相对于窗口左上角的X：window.event.clientX
+
+相对于窗口左上角的Y：window.event.clientY
+
+相对于整个页面的X：window.event.X
+
+相对于整个页面的Y：window.event.Y
+
+#### iOS移动端(H5)alert/confirm提示信息去除网址(URL)
+
+[iOS移动端(H5)alert/confirm提示信息去除网址(URL)](https://www.jb51.net/article/97633.htm)
+
+重写alert方法
+
+```
+window.alert = function(name){
+  var iframe = document.createElement("IFRAME");
+  iframe.style.display="none";
+  iframe.setAttribute("src", 'data:text/plain,');
+  document.documentElement.appendChild(iframe);
+  window.frames[0].window.alert(name);
+  iframe.parentNode.removeChild(iframe);
+};
+```
+
+#### [js获取网页屏幕可见区域高度](http://qiaolevip.iteye.com/blog/2076034)
+
+获取页面高度
+
+```
+var windowHeight =  document.documentElement.clientHeight;
+console.log(windowHeight);
+$('.content').css('height', (windowHeight- 80)+'px');
+```
+
+```
+// 获取当前页面可视高度(注意，此处行到的是当前页面的可视高度，而不是浏览器的可视高度
+function getClientHeight(){
+    var clientEeight = 0 ;
+    if(document.body.clientHeight && document.documentElement.clientHeight){
+        clientHeight = Math.min(document.body.clientHeight, document.documentElement.clientHeight);
+    }else{ 
+        clientHeight = Math.max(document.body.clientHeight, document.documentElement.clientHeight) ;
+    return clientHeight ;
+}
+```
+
+```
+// 加上这个就可以直接使用document.body.clientHeight
+
+html, body{
+	height:100%;
+}
+```
+
+#### localStorage
+
+1. localStorage是一个普通对象，任何对象的操作都适用。
+2. localStorage对象的属性值只能是字符串。
+
+方法：
+
+```
+localStorage.getItem(key):获取指定key本地存储的值
+localStorage.setItem(key,value)：将value存储到key字段
+localStorage.removeItem(key):删除指定key本地存储的值
+```
+
+```
+添加键值对：localStorage.setItem(key,value)
+获取键值：localStorage.getItem(key)
+删除键值对：localStorage.removeItem(key)。
+清除所有键值对：localStorage.clear()。
+获取localStorage的属性名称（键名称）：localStorage.key(index)。
+还有一个和普通对象不一样的属性length:
+获取localStorage中保存的键值对的数量：localStorage.length。
+```
+
+#### 删除对象属性
+
+```
+delete localObj.username;//删除属性
+```
+
+[关于给javascript对象添加、删除、修改对象的属性](https://www.cnblogs.com/goweb/p/5357640.html)
+
+#### IE浏览器  点击事件不生效
+
+当按F12有点击有反应的时候，查一下代码中有没有console.log()的代码，因为ie没有这个方法。
+
+#### 点击动态生成的元素
+
+##### 使用on.()   要阻止冒泡事件
+
+![动态生成元素](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Javascript%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81/%E7%82%B9%E5%87%BB%E5%90%8E%E6%9C%9F%E7%94%9F%E6%88%90%E5%85%83%E7%B4%A0.png)
+
+#### [浏览器的重绘与重排](https://www.cnblogs.com/gyjWEB/p/4547140.html)
+
+将需要多次重排的元素，position属性设为absolute或fixed
+
+#### ajax请求
+
+```
+/**
+ * HTTP请求
+ * 
+ * @param url
+ * @param data
+ * @param type
+ * @param async
+ * @returns
+ */
+function http_request(url, data, type, async, dataType) {
+    // 默认能数
+    async = (async ? async : false);
+    data = (data ? data : '');
+    type = (type ? type : 'POST');
+    dataType = (dataType ? dataType : 'JSON');
+
+    var result;
+    $.ajax({
+        'url' : url,
+        'type' : type,
+        'data' : data,
+        'async' : async,
+        'dataType' : dataType,
+        'success' : function(res) {
+            result = res;
+        }
+    });
+    return result;
+}
+
+/**
+ * HTTP_GET
+ * 
+ * @param url
+ * @param data
+ * @param async
+ * @returns
+ */
+function http_get(url, data, async) {
+    return http_request(url, data, 'GET', async, 'JSON');
+}
+
+/**
+ * HTTP_POST
+ * 
+ * @param url
+ * @param data
+ * @param async
+ * @returns
+ */
+function http_post(url, data, async) {
+    return http_request(url, data, 'POST', async, 'JSON');
+}
+```
+
+#### 获取字符串的首字母
+
+```
+str.charAt(0)
+str.substr(0, 1)
+```
+
+#### 获取字符串的末字母
+
+```
+str.charAt(str.length - 1)
+```
+
+#### 获取汉字首字母
+
+[JS获取中文拼音首字母，并通过拼音首字母快速查找页面内的中文内容](https://blog.csdn.net/testcs_dn/article/details/25116655)
+
+#### F12审核元素，搜索全部文件有没有某字符
+
+ 快捷键 ：`ctrl +shift +F`
+
+#### 用[QQ](https://www.baidu.com/s?wd=QQ&tn=44039180_cpr&fenlei=mv6quAkxTZn0IZRqIHckPjm4nH00T1dWuhRLryn3ny7-ujNbPH010ZwV5Hcvrjm3rH6sPfKWUMw85HfYnjn4nH6sgvPsT6K1TL0qnfK1TL0z5HD0IgF_5y9YIZ0lQzqlpA-bmyt8mh7GuZR8mvqVQL7dugPYpyq8Q1RzP1TLPjT1n6)登录
+
+```
+<meta property="qc:admins" content="2432050734660161756375" />
+```
+
+> 这个是让网站加入[QQ](https://www.baidu.com/s?wd=QQ&tn=44039180_cpr&fenlei=mv6quAkxTZn0IZRqIHckPjm4nH00T1dWuhRLryn3ny7-ujNbPH010ZwV5Hcvrjm3rH6sPfKWUMw85HfYnjn4nH6sgvPsT6K1TL0qnfK1TL0z5HD0IgF_5y9YIZ0lQzqlpA-bmyt8mh7GuZR8mvqVQL7dugPYpyq8Q1RzP1TLPjT1n6)登录接口，这段代码可放在之间。
+>
+> 申请腾讯接口后，会得到这样的代码，加入接口之后，你的网站上面的注册登录功能，别人可以直接用[QQ](https://www.baidu.com/s?wd=QQ&tn=44039180_cpr&fenlei=mv6quAkxTZn0IZRqIHckPjm4nH00T1dWuhRLryn3ny7-ujNbPH010ZwV5Hcvrjm3rH6sPfKWUMw85HfYnjn4nH6sgvPsT6K1TL0qnfK1TL0z5HD0IgF_5y9YIZ0lQzqlpA-bmyt8mh7GuZR8mvqVQL7dugPYpyq8Q1RzP1TLPjT1n6)登录，省去注册的麻烦。
+
+#### 去除字符串两端的空白字符
+
+```
+$.trim( str )
+```
+
+#### [previousSibling、previousElementSibling的区别](https://blog.csdn.net/sunlizhen/article/details/73437102)
+
+previousSibling：获取元素的上一个兄弟节点；（既包含元素节点、文本节点、注释节点）；
+
+previousElementSibling：获取上一个兄弟元素节点；（只包含元素节点）；
+
+#### 解决ios软键盘弹起遮盖住底部输入框的问题
+
+解决ios软键盘弹起遮盖住底部输入框的问题（终极解决方案！！！绝对好用）
+
+```
+<div class="layout_flex">
+    <!-- 头部 -->
+    <div class="header">header</div>
+    <!-- 中间内容区域 -->
+    <div class="content" id="content">
+        <div class="dataList">
+            <ul>
+                <li>数据趋势图/数据列表均调用此接口</li>
+                <li>数据趋势图/数据列表均调用此接口</li>
+                <li>数据趋势图/数据列表均调用此接口</li>
+            </ul>
+        </div>
+    </div>
+    <!-- 底部输入框部 -->
+    <div class="footer">
+        <div class="foter"><input type="text" name=""/></div>
+        <div class="fcont">使用定时器是为了让输入框上滑时更加自然</div>
+    </div>
+</div>
+
+css样式
+
+/*flex布局*/
+html, body{height:100%;}
+.layout_flex{display:-webkit-box;-webkit-box-orient:vertical;height:100%;}
+.layout_flex .content{-webkit-box-flex:1;overflow:auto;-webkit-overflow-scrolling:touch;position:relative;height:100%;}
+
+/*头部*/
+.header{height: 5rem;background-color: red;font-size: 2rem;line-height: 5rem;color: #fff;}
+
+/*底部评论框*/
+.footer{background-color: green;font-size: 2rem;color: #fff;padding: 0 1rem;}
+.foter{padding: 1rem 0;}
+.foter input{width: 100%;height: 3rem;line-height: 3rem;text-indent: 1rem;}
+.content{background-color: yellow;}
+.fcont{height: 2rem;line-height: 2rem;color: #fff;font-size: 1rem;}
+
+js代码(可以不使用js)
+
+var bfscrolltop = document.body.scrollTop;
+$("input").focus(function(){
+    interval = setInterval(function(){
+    document.body.scrollTop = document.body.scrollHeight;
+    },100)
+}).blur(function(){
+    clearInterval(interval);
+    document.body.scrollTop = bfscrolltop;
+});
+```
+
+#### 动态改变和获取input的checked属性值
+
+pop()方法
+
+#### 搜索匹配，keyup事件
+
+##### 中文输入时，要等输入法按确定之后才匹配
+
+[**compositionstart** ](https://developer.mozilla.org/zh-CN/docs/Web/Events/compositionstart)
+
+[**compositionend**](https://developer.mozilla.org/zh-CN/docs/Web/Events/compositionend)
+
+![keyup](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Javascript%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81/keyup.png)

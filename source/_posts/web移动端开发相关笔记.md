@@ -8,7 +8,9 @@ tags:
 
 #### [移动端开发的资源与小技巧](https://github.com/jtyjty99999/mobileTech)
 
+[Mobile - Table of contents](https://www.quirksmode.org/mobile/)
 
+[移动端](https://www.yuque.com/docs/share/27e13760-a250-4376-ab7e-072b8bae0b5b?# 《移动端》)-语雀笔记
 
 #### 网站收集
 
@@ -18,6 +20,107 @@ tags:
 | [Screen Sizes](https://screensiz.es/phone)—移动设备参数表    | [The iOS Design Guidelines](https://ivomynttinen.com/blog/ios-design-guidelines)—ios端移动设备参数速查 | [iPhone 6 屏幕揭秘](http://wileam.com/iphone-6-screen-cn/)   |
 | [移动设备适配库2](http://detectmobilebrowsers.com/)          | [jQuery Mobile Demos](https://demos.jquerymobile.com/1.4.3/) | [zepto源码注释](https://www.cnblogs.com/sky000/archive/2013/03/29/2988952.html) |
 | [移动端web开发技巧](http://www.imooc.com/article/1115)       |                                                              |                                                              |
+
+#### 移动端H5页面适配问题总结
+
+##### 移动端H5页面使用rem做适配
+
+1. `如果H5页面不需要放在App内做混合App开发`，可以使用`vw`做适配
+
+   ```
+   html, body{
+       font-size: 0.13333333vw;
+   }
+   // 设计稿是用iPhone6的尺寸设计，设计稿多少px就写多少rem
+   ```
+
+2. `如果H5页面需要放在App内做混合App开发`，不需要兼容低版本的Android手机(9.0及以下)
+
+   1. 使用`vw`的情况下，`不需要兼容Android低版本（≤10.0）手机 `   。可以直接使用`vw`做适配
+
+   2. 使用`vw`的情况下，`需要兼容Android低版本（≤10.0）手机，不需要兼容9.0及以下 `  的做法
+
+      原因：在Android手机低版本（≤10.0）的`webview`中，会出现`h5页面放大的情况`。低版本的webview获取错了字段，默认是8的，导致字体放大了8倍
+
+      > 在在Android手机低版本（≤9.0）的手机自带浏览器中是显示正常的
+
+      解决方法：在Android客户端加上以下两行代码，对webview进行相应的配置
+
+      ```
+      mWebView.getSettings().setMinimumFontSize(1);
+      mWebView.getSettings().setMinimumLogicalFontSize(1);
+      ```
+
+      参考博客：[关于html：Android Webview Rem单元可将框的大小缩放](https://www.codenong.com/41179357/)
+
+3. `如果H5页面需要放在App内做混合App开发`，且需要兼容低版本的安卓手机(9.0及以下)
+
+   使用[mobile-util.js](https://github.com/re54k/mobileweb-utilities/blob/master/util/mobile-util.js)做适配
+
+   **使用[mobile-util.js](https://github.com/re54k/mobileweb-utilities/blob/master/util/mobile-util.js)做适配的注意事项**
+
+   1. 要在head中引入
+
+   2. 要在样式表前引入
+
+      ```
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <meta name="apple-mobile-web-app-capable" content="yes">
+      <meta name="apple-mobile-web-app-status-bar-style" content="black">
+      <meta name="format-detection" content="telephone=no">
+      <meta name="format-detection" content="email=no">
+      <meta name="applicable-device" content="mobile">
+      <meta name="x5-orientation" content="portrait">
+      <script src="./js/Plugins/Rem/mobile-util.js"></script>
+      ```
+
+      `注意：页面不写meta[name="viewport"]标签,代码自动判断插入`
+   
+   3. iPhone6中，`data-dpr="2"`，html的字体`style="font-size: 46.875px;"`
+
+      ```
+      26px——>0.55rem
+      
+      // 使用26px除以46.875就是0.55rem（设计稿中，多少px，除以46.875就是多少rem）
+      ```
+   
+   `如果需要适配横屏`，修改`mobile-util.js`
+   
+   ```
+   // 横竖屏字体设置
+   if (window.orientation == 90 || window.orientation == -90) {
+       // 横屏
+       docEl.style.fontSize = rem/2 + 'px';   // 将字体缩小一倍
+   } else {
+       // 竖屏
+       docEl.style.fontSize = rem + 'px';
+   }
+   
+   // =========在文件最后将mobileUtil.fixScreen();修改为兼容横竖屏变化=========
+   // 兼容横竖屏切换
+   window.addEventListener("orientationchange", function(){
+       mobileUtil.fixScreen();
+   });
+   ```
+
+#### 获取设备信息
+
+```
+var u = navigator.userAgent;
+```
+
+#### 使用vw，rem做移动端适配--在低版本的安卓手机，页面样式显示错误（放很大）
+
+webview设置可以解决此错误
+
+```
+mWebView.getSettings().setMinimumFontSize(1);
+mWebView.getSettings().setMinimumLogicalFontSize(1);
+```
+
+Android Webview的rem单位会放大
+
+参考：[关于html：Android Webview Rem单元可将框的大小缩放](https://www.codenong.com/41179357/)
 
 
 
@@ -2068,3 +2171,220 @@ html{font-size:10px}
 [《响应式Web设计》](https://book.douban.com/subject/20390374/)
 
 [《 HTML5 与 CSS3 权威指南》](https://book.douban.com/subject/6025285/)
+
+
+
+
+
+#### 获取安卓手机版本
+
+```
+var u = navigator.userAgent;
+var arr = u.split(';')
+console.log(arr)
+for(var i in arr) {
+    if(arr[i].indexOf('Android') > -1) {
+        console.log(arr[i]);
+        var arr2 = arr[i].trim().split(' ');
+        console.log(arr2);
+        var version = arr2[1].charAt(0);
+        console.log(version)
+    }
+}
+```
+
+#### 获取设备dpr
+
+[设备像素比（devicePixelRatio）](https://blog.csdn.net/xueli_2017/article/details/91492971)
+
+```
+window.devicePixelRatio
+```
+
+- [devicePixelRatio](https://www.quirksmode.org/blog/archives/2012/06/devicepixelrati.html)
+- [More about devicePixelRatio](https://www.quirksmode.org/blog/archives/2012/07/more_about_devi.html)
+- [A tale of two viewports — part two](https://www.quirksmode.org/mobile/viewports2.html)
+
+#### 获取设备宽度
+
+```
+// alert($(window).width())
+
+// var w = $("#to-withdraw").width()
+// alert(w)
+```
+
+
+
+https://developer.mozilla.org/zh-CN/docs/Web/CSS/@media/-webkit-device-pixel-ratio
+
+https://developer.mozilla.org/en-US/docs/Web/CSS/@media/resolution
+
+[教你@media媒体查询来适配ipad iphone5678plus 各种屏幕](https://blog.csdn.net/wys997/article/details/111380796)
+
+#### 移动端媒体查询media的设置
+
+```
+<style lang="less" rel="stylesheet/less" type="text/less" scoped>
+  /*iPhone6/7/8*/
+  @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-device-pixel-ratio: 2) {
+    /* .属性名{
+      ...样式
+    } */
+  }
+
+  /*iPhone6/7/8 Plus*/
+  @media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-device-pixel-ratio: 3) {
+    /* .属性名{
+      ...样式
+    } */
+  }
+
+  /*iPhone X*/
+  @media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-device-pixel-ratio: 3) {
+    /* .属性名{
+      ...样式
+    } */
+  }
+
+  /*移动端竖屏 css*/
+  @media only screen and (orientation: portrait) {
+    /* .属性名{
+      ...样式
+    } */
+  }
+
+  /*移动端横屏 css*/
+  @media only screen and (orientation: landscape) {
+    /* .属性名{
+      ...样式
+    } */
+  }
+
+  /* 判断ipad */
+  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    /* .属性名{
+      ...样式
+    } */
+  }
+
+  /* ipad横屏 */
+  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
+    /* .属性名{
+      ...样式
+    } */
+  }
+
+  /* ipad竖屏 */
+  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
+    /* .属性名{
+      ...样式
+    } */
+  }
+
+  /* 判断iphone5 */ /* 横屏竖屏判断方法与ipad一样 */
+  @media only screen and (min-device-width: 320px) and (max-device-width: 568px) {
+    /* .属性名{
+      ...样式
+    } */
+  }
+
+  /* 判断iphone4-iphone4s */ /* 横屏竖屏判断方法与ipad一样 */
+  @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    /* .属性名{
+      ...样式
+    } */
+  }
+</style>
+```
+
+@media媒体查询 这功能是非常强大的，他可以让你定制不同的分辨率和设备，并在不改变内容的情况下，让你制作的web页面在不同的分辨率和设备下都能显示正常，并且不会因此而丢失样式。
+
+```
+/* 判断ipad */
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px){
+/* style */
+}
+/* ipad横屏 */
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px)
+and (orientation : landscape){
+/* style */
+}
+/* ipad竖屏 */
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px)
+and (orientation : portrait){
+/* style */
+}
+/* 判断iphone5 *//* 横屏竖屏判断方法与ipad一样 */
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 568px){
+/* style */
+}
+/* 判断iphone4-iphone4s *//* 横屏竖屏判断方法与ipad一样 */
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 480px){
+/* style */
+}
+/* iphone5分辨率 */
+screen Width = 320px (css像素)
+screen Height = 568px (css像素)
+screen Width = 640px (实际像素)
+screen Height = 1136px (实际像素)
+Device-pixel-ratio:2
+/* iphone4-iphone4s分辨率 */
+screen Width = 320px (css像素)
+screen Height = 480px (css像素)
+screen Width = 640px (实际像素)
+screen Height = 960px (实际像素)
+Device-pixel-ratio:2
+```
+
+
+
+连接手机到电脑，传输文件时，不能两台手机同时连电脑，会识别不出来
+
+
+
+[Media媒体查询使用大全](https://blog.csdn.net/g1437353759/article/details/118574134)
+
+[详解CSS中的Media媒体查询](https://www.php.cn/css-tutorial-462277.html)
+
+
+
+
+
+[Android Studio模拟器运行apk文件](https://www.jb51.net/article/262042.htm)
+
+[Android Studio模拟器如何运行apk文件](https://blog.csdn.net/qq_48211069/article/details/123918040)
+
+[adb 出现 adb.exe: more than one device/emulator 解决方法](https://blog.csdn.net/weixin_64094652/article/details/126032471)
+
+```
+依次输入以下命令，再重新启动模拟器
+
+adb kill-server
+adb start-server
+adb remount
+```
+
+如果显示以下提示，表示重启成功
+
+```
+* daemon not running; starting now at tcp:5037
+* daemon started successfully
+```
+
+然后重新输入以下命令完成apk文件的安装
+
+```
+adb install base.apk
+```
+

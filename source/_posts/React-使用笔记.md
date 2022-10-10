@@ -228,7 +228,23 @@ return(
 >
 > 避免key使用索引index，特别是反序操作的情况。 因为会重新渲染，导致性能变差。使用id等唯一性属性
 
+> 在 `map()` 方法中的元素需要设置 key 属性
+>
 
+key 会传递信息给 React ，但不会传递给你的组件。如果你的组件中需要使用 `key` 属性的值，请用其他属性名显式传递这个值：
+
+```
+const content = posts.map((post) =>
+  <Post
+    key={post.id}
+    id={post.id}
+    title={post.title} />
+);
+```
+
+上面例子中，`Post` 组件可以读出 `props.id`，但是不能读出 `props.key`。
+
+### 
 
 ### 四、引入路由
 
@@ -399,3 +415,18 @@ npm install --save antd-mobile
 ```
 
 #### [国际化](https://mobile.ant.design/zh/guide/i18n)
+
+
+
+#### textarea 标签
+
+而在 React 中，`<textarea>` 使用 `value` 属性代替。这样，可以使得使用 `<textarea>` 的表单和使用单行 input 的表单非常类似：
+
+```
+<textarea value={this.state.value} onChange={this.handleChange} />
+```
+
+#### select 标签
+
+由于 `selected` 属性的缘故，椰子选项默认被选中。React 并不会使用 `selected` 属性，而是在根 `select` 标签上使用 `value` 属性。这在受控组件中更便捷，因为您只需要在根标签中更新它。例如：
+

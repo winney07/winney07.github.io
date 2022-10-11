@@ -9,6 +9,15 @@ tags:
 
 谷歌浏览器全局搜索关键字：`alt + shift + f`
 
+#### 日期时间Date的处理
+
+```
+var d = new Date();
+var n = d.toLocaleDateString();    // 2020/10/11
+var n = d.toLocaleString(); 	  	  // 2020/10/11 15:53:22
+var n = d.toLocaleTimeString(); 	  // 15:53:22
+```
+
 #### jQuery获取动态生成的元素
 
 [jQuery获取动态生成的元素示例](https://www.jb51.net/article/51085.htm)

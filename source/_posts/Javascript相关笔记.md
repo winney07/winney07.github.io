@@ -967,4 +967,14 @@ function readInputFile(id){
 
 
 
+#### 保留三位小数并四舍五入
+
+```
+const rounded = Math.round(val * 1000) / 1000;
+```
+
+
+
+
+
 [jquery判断页面滚动条(scroll)是上滚还是下滚，且是否滚动到头部或者底部](https://www.haorooms.com/post/jquery_scroll_upanddown)

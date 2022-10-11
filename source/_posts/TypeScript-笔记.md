@@ -12,7 +12,18 @@ categories:
 
 [TypeScript 中文手册](https://typescript.bootcss.com/)
 
+[TypeScript React Starter](https://github.com/Microsoft/TypeScript-React-Starter/blob/master/tsconfig.json) 
 
+- [在 React 中使用 TypeScript](https://github.com/Microsoft/TypeScript-React-Starter#typescript-react-starter)
+- [TypeScript 文档：基本类型](https://www.typescriptlang.org/docs/handbook/basic-types.html)
+- [TypeScript 文档：JavaScript 迁移](https://www.typescriptlang.org/docs/handbook/migrating-from-javascript.html)
+- [TypeScript 文档：React 与 Webpack](https://www.typescriptlang.org/docs/handbook/react-&-webpack.html)
+
+- [在 Create React App 中使用 TypeScript](https://react.docschina.org/docs/static-type-checking.html#using-typescript-with-create-react-app)
+
+如需将 TypeScript 添加到**现有的 Create React App 项目**中，[请参考此文档](https://facebook.github.io/create-react-app/docs/adding-typescript).
+
+通过[此文档](https://github.com/Microsoft/TypeScript-React-Starter#typescript-react-starter) 了解更多有关在 React 中使用 TypeScript 的知识。
 
 安装
 

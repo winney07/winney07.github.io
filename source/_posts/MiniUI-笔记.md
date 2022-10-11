@@ -586,3 +586,36 @@ function SubmitData()
 }
 ```
 
+
+
+#### 弹窗
+
+```
+mini.open({
+    url: "{:U('batch_check')}?id="+id + "&lock_status=" + status,
+    title: "审核信息", 
+    width: 800, 
+    height: 380,
+    onload: function (data) {
+        console.log(data)
+    },
+    ondestroy: function (action) {
+        if (action=='ok')
+        {
+            var iframe = this.getIFrameEl();
+            var data = iframe.contentWindow.GetData();
+            data = mini.clone(data);    //必须
+
+            $.post("{:U('batch_check')}", data, function(result) {
+                if (result.success == false)
+                {
+                    alert(result.msg);
+                }
+            }, "json");
+        }
+
+        grid.reload();
+    }
+});
+```
+

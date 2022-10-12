@@ -1522,6 +1522,35 @@ function Counter({initialCount}) {
 
 ##### [useCallback](https://react.docschina.org/docs/hooks-reference.html#usecallback)
 
+每次渲染，函数会生成一个新的引用地址（引用类型，跟对象/数组一样）
+
+- 保持一个函数的不变性
+- 可以说是`useMemo`的一个语法糖，专门处理函数
+
+[The useCallback hook](https://www.joshwcomeau.com/react/usememo-and-usecallback/#the-usecallback-hook)
+
+下面两个代码是等价的：
+
+`useMemo`：
+
+```
+const handleMegaBoost = React.useMemo(() => {
+  return function() {
+    setCount((currentValue) => currentValue + 1234);
+  }
+}, []);
+```
+
+`useCallback`：
+
+```
+const handleMegaBoost = React.useCallback(() => {
+  setCount((currentValue) => currentValue + 1234);
+}, []);
+```
+
+
+
 ```
 const memoizedCallback = useCallback(
   () => {
@@ -1532,6 +1561,232 @@ const memoizedCallback = useCallback(
 ```
 
 ##### [useMemo](https://react.docschina.org/docs/hooks-reference.html#usecallback)
+
+[Understanding useMemo and useCallback](https://www.joshwcomeau.com/react/usememo-and-usecallback/)
+
+[课程](https://www.bilibili.com/video/BV1uG411V7m3/?spm_id_from=333.337.search-card.all.click&vd_source=40931b9b7a6dfae9780e1c6f05637a83)
+
+- 做快照，减少大量运算
+- 保持一个值的不变性
+
+为了减少一些大量计算（需要计算的数据没有改变，但是其他数据改变，重新渲染，会引起大量计算）
+
+`useMemo` takes two arguments:（两个参数）
+
+1. A chunk of work to be performed, wrapped up in a function（大量计算的函数）
+2. A list of dependencies（依赖）
+
+**`useMemo` is essentially like a lil’ cache, and the dependencies are the cache invalidation strategy.**（像缓存）
+
+This is commonly known as *memoization*, and it's why this hook is called “useMemo”.（记忆化，备忘）
+
+###### 消耗性能的案例（每秒time变化，都会进行一次大量计算）
+
+```
+import React, {useState, useEffect} from 'react'
+
+export default function Customevent() {
+  const [num, setNum] = useState(10);
+  const [time, setTime] = useState(new Date())
+
+  useEffect(() => {
+    setTimeout(() => {
+      setTime(new Date())
+    }, 1000);
+  },[time])
+
+  // 大量计算
+  const heavyComputations = () => {
+    console.log('正在进行大量计算')
+    return num;
+  }
+
+  return (
+    <div>
+      <h1>{time.toLocaleString()}</h1>
+      <input type="text" value={num} onChange={ (e) => {setNum(e.target.value)}}/>
+
+      <div>{heavyComputations()}</div>
+    </div>
+  )
+}
+```
+
+###### 使用usememo之后，只有num变化时，才进行大量的计算
+
+```
+import React, {useState, useEffect, useMemo} from 'react'
+
+export default function Customevent() {
+  const [num, setNum] = useState(10);
+  const [time, setTime] = useState(new Date())
+
+  useEffect(() => {
+    setTimeout(() => {
+      setTime(new Date())
+    }, 1000);
+  },[time])
+
+  // 大量计算
+  const heavyComputations = () => {
+    console.log('正在进行大量计算')
+    return num;
+  }
+  
+  const result = useMemo(() => {
+    return heavyComputations();
+  }, [num]);
+
+  return (
+    <div>
+      <h1>{time.toLocaleString()}</h1>
+      <input type="text" value={num} onChange={ (e) => {setNum(e.target.value)}}/>
+
+      <div>{result}</div>
+    </div>
+  )
+}
+```
+
+I've extracted two new components, `Clock` and `PrimeCalculator`. By branching off from `App`, these two components each manage their own state. A re-render in one component won't affect the other.（可以将它们分成两个组件，各自管理它们自己的状态，互不影响）
+
+ `React.memo` wraps around our component and protects it from unrelated updates. Our `PurePrimeCalculator` will only re-render when it receives new data, or when its internal state changes.（可以使用 `React.memo`包裹组件，让它成为一个纯组件【输入不改变的时候，输出不改变】）
+
+###### 改为独立组件
+
+这样也是每秒都执行一次大量计算函数
+
+```
+import React, {useState, useEffect} from 'react'
+
+export default function Customevent() {
+  const [time, setTime] = useState(new Date())
+
+  useEffect(() => {
+    setTimeout(() => {
+      setTime(new Date())
+    }, 1000);
+  },[time])
+
+  return (
+    <div>
+      <h1>{time.toLocaleString()}</h1>
+      <ShowInput/>
+    </div>
+  )
+}
+
+function ShowInput() {
+  const [num, setNum] = useState(10);
+  // 大量计算
+  const heavyComputations = () => {
+    console.log('正在进行大量计算')
+    return num;
+  }
+
+  return (
+    <div>
+      <input type="text" value={num} onChange={ (e) => {setNum(e.target.value)}}/>
+
+      <div>{heavyComputations()}</div>
+    </div>
+  )
+}
+```
+
+解决：使用`React.memo`将ShowInput组件改为纯函数
+
+```
+import React, {useState, useEffect} from 'react'
+const PureShowInput = React.memo(ShowInput);
+
+export default function Customevent() {
+  const [time, setTime] = useState(new Date())
+
+  useEffect(() => {
+    setTimeout(() => {
+      setTime(new Date())
+    }, 1000);
+  },[time])
+
+  return (
+    <div>
+      <h1>{time.toLocaleString()}</h1>
+      <PureShowInput/>
+    </div>
+  )
+}
+
+function ShowInput() {
+ .....
+}
+```
+
+也可以在导出的时候，直接将其导出为纯组件
+
+```
+// PrimeCalculator.js
+function PrimeCalculator() {
+  /* Component stuff here */
+}
+export default React.memo(PrimeCalculator);
+```
+
+###### [使用纯组件（React.memo）的方法，还是会进行大量计算](https://www.joshwcomeau.com/react/usememo-and-usecallback/#use-case-2-preserved-references)
+
+`Boxes.js`
+
+```
+export default React.memo(Boxes);
+```
+
+`App.js`
+
+```
+const boxes = [
+    { flex: boxWidth, background: 'hsl(345deg 100% 50%)' },
+    { flex: 3, background: 'hsl(260deg 100% 40%)' },
+    { flex: 1, background: 'hsl(50deg 100% 60%)' },
+];
+
+<Boxes boxes={boxes} />
+```
+
+原因：every time React re-renders, we're producing a *brand new array*. They're equivalent in terms of *value*, but not in terms of *reference*.（组件每次重新渲染，会生成一个全新的数组，引用类型，地址就发生了改变，所以Boxes会重新渲染）
+
+解决方法：使用`useMemo`，依赖`boxWidth`，当`boxWidth`改变时才更新
+
+```
+const boxes = React.useMemo(() => {
+  return [
+    { flex: boxWidth, background: 'hsl(345deg 100% 50%)' },
+    { flex: 3, background: 'hsl(260deg 100% 40%)' },
+    { flex: 1, background: 'hsl(50deg 100% 60%)' },
+  ];
+}, [boxWidth]);
+```
+
+当使用context时，父组件的值改变的时候，会引起子组件的更新。如果不想子组件每次都更新，可以使用`useMemo`，只有当依赖`user, status, forgotPwLink`发生改变时，再更新
+
+```
+const AuthContext = React.createContext({});
+function AuthProvider({ user, status, forgotPwLink, children }){
+  const memoizedValue = React.useMemo(() => {
+    return {
+      user,
+      status,
+      forgotPwLink,
+    };
+  }, [user, status, forgotPwLink]);
+  return (
+    <AuthContext.Provider value={memoizedValue}>
+      {children}
+    </AuthContext.Provider>
+  );
+}
+```
+
+
 
 ##### [useRef](https://react.docschina.org/docs/hooks-reference.html#useref)
 

@@ -823,3 +823,61 @@ import { Link } from 'react-router-dom';
 
    
 
+#### antd-日期选择-最近几天
+
+```
+import { DatePicker } from 'antd';
+const { RangePicker } = DatePicker;
+
+<RangePicker
+  ranges={{
+    '全部': [moment("2020-09-10"), moment()],
+    '今天': [moment(), moment()],
+    '昨天': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+    '近7天': [moment().subtract(6, 'days'), moment()],
+    '近14天': [moment().subtract(13, 'days'), moment()],
+    '近30天': [moment().subtract(29, 'days'), moment()],
+  }}
+  locale={locale}
+  defaultValue={[moment("2020-09-10"), moment()]}
+  style={{width:220}}
+  onChange={onRangeChange}
+  placement="bottomRight"
+/>
+</Form.Item>
+```
+
+#### 表格数据-每个数据要有唯一的key
+
+key值相关报错：`Warning: Each child in a list should have a unique "key" prop.`
+
+解决方法：
+
+1. 在数据中添加key属性
+
+   ```
+   [
+       {
+           "key": 3215,
+           "id": 3215,
+           "group_id": 2,
+           "group_name": "测试项目",
+           "create_by": "10000"
+        }
+        ....
+    ]    
+   ```
+
+2. 使用别的唯一性的属性：` rowKey = { record => record.id}`
+
+   ```
+   <Table 
+     columns={columns} 
+     dataSource={accountList}
+     rowKey = { record => record.id}
+     bordered>
+   </Table>
+   ```
+
+   
+

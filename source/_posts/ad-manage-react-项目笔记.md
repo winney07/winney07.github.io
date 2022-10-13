@@ -253,14 +253,6 @@ useEffect(() => {
 },[])
 ```
 
-
-
-#### antd表格
-
-数组数据，每一项要有key值
-
-
-
 #### 使用数据图表
 
 [使用echarts-for-react数据图表](https://www.csdn.net/tags/MtjaUg3sNTM3OTQtYmxvZwO0O0OO0O0O.html)
@@ -847,7 +839,9 @@ const { RangePicker } = DatePicker;
 </Form.Item>
 ```
 
-#### 表格数据-每个数据要有唯一的key
+#### antd表格
+
+渲染表格的数据-----数组数据，每一项要有唯一的key值
 
 key值相关报错：`Warning: Each child in a list should have a unique "key" prop.`
 
@@ -881,3 +875,38 @@ key值相关报错：`Warning: Each child in a list should have a unique "key" p
 
    
 
+#### 报错信息处理
+
+`[Violation] Added non-passive event listener to a scroll-blocking ＜some＞ event. Consider marking eve`
+
+[react报错: Unable to preventDefault inside passive event li ……](https://blog.csdn.net/qq_45820967/article/details/117426636)
+
+[React js -[Violation] Added non-passive event listener to a scroll-blocking 'mousewheel' event](https://stackoverflow.com/questions/51345929/react-js-violation-added-non-passive-event-listener-to-a-scroll-blocking-mou)
+
+[react Added non-passive event listener to a scroll-blocking 'mousewheel' event](https://www.jianshu.com/p/576347881906?u_atoken=232b4a7e-0231-4946-8908-47ebf8e606a9&u_asession=01_3ZFCuVcOfuwSPfoQFLRMZKUf4ScuwHJlmBJl7VN4QVB7dNjfi4wDQit6KXmcpw4X0KNBwm7Lovlpxjd_P_q4JsKWYrT3W_NKPr8w6oU7K_OXZcyuDd-UGTHXkkR-LW63KmjkU3JT7ddtoHBlecZWGBkFo3NEHBv0PZUm6pbxQU&u_asig=05EPhiOrWxZ56qQnnFYP6YcxEx5hAgiHwRV60GtPYDTOQNU6EBiTLvNmp_kORYdoQkT4feHNfaH8NCsFDdym0tGIgqMawo17KziwQo1CW2H_dUHyxqMXrsIndIQKY2FKo2C0nf13abHfSCQtBUc7n-PTwxuv4jOESKkFpMk-zCu2P9JS7q8ZD7Xtz2Ly-b0kmuyAKRFSVJkkdwVUnyHAIJzTc2O0STMN1NJO_82A13D1qAuhUSv5lr4LcS7JnU9TKWzKnPGeiYgOeAvNODIGQOu-3h9VXwMyh6PgyDIVSG1W8DqoVQR08v6xbsOEOaVs-lHANw4_8BpU31TkZPiPBinieC25fhKOae3jNeeE3fG_hOWccivToL8qDJ_zjAM3mAmWspDxyAEEo4kbsryBKb9Q&u_aref=%2BOncCc9GS1BtE2d0dfPERz%2FUNao%3D)
+
+```
+yarn add default-passive-events  或  cnpm i default-passive-events -S
+并在 App.js 中 import 'default-passive-events';
+```
+
+加上以上配置之后，
+
+报错：`react-dom.development.js:6848 Unable to preventDefault inside passive event listener invocation.`
+
+[React中使用antd的select报错Unable to preventDefault inside passive event listener invocation.](https://blog.csdn.net/wdnmd_69/article/details/124354187)
+
+最后解决：
+
+先停掉运行中的项目，找到node_modules\react-dom\cjs\react-dom.development.js中6202行的代码将event.preventDefault();注释掉，再重新运行项目，无需任何其他设置
+
+```
+
+if (event.preventDefault) {
+    //event.preventDefault(); // $FlowFixMe - flow is not aware of `unknown` in IE
+  } else if (typeof event.returnValue !== 'unknown') {
+    event.returnValue = false;
+}
+```
+
+[React中轮播报错pan-y不起作用Unable to preventDefault inside passive event listener invocation](https://blog.csdn.net/weixin_59803648/article/details/121792700)

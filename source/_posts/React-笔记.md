@@ -948,6 +948,22 @@ function withMouse(Component) {
 
 **render prop 是一个用于告知组件需要渲染什么内容的函数 prop。**
 
+移动端事件使用onTouchMove
+
+```
+onTouchMove={handleMouseMove}
+
+// 使用event.touches[0].clientX
+// this.setState({
+//   x: event.touches[0].clientX - 30,
+//   y: event.touches[0].clientY - 30
+// });
+```
+
+
+
+
+
 #### [静态类型检查](https://react.docschina.org/docs/static-type-checking.html)
 
 建议在大型代码库中使用 Flow 或 TypeScript 来代替 `PropTypes`。

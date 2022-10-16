@@ -968,3 +968,34 @@ function readInputFile(id){
 
 
 [jquery判断页面滚动条(scroll)是上滚还是下滚，且是否滚动到头部或者底部](https://www.haorooms.com/post/jquery_scroll_upanddown)
+
+
+
+#### 去除前后空格
+
+```
+str.replace(/(^\s*)|(\s*$)/g, "")
+```
+
+
+
+
+
+#### 纯函数
+
+[纯函数要满足以下三点：](https://zhuanlan.zhihu.com/p/269239904)
+
+- 相同输入总是会返回相同的输出。
+- 不产生副作用。
+- 不依赖于外部状态。
+
+
+
+[满足以下条件的函数是纯函数：](https://zhuanlan.zhihu.com/p/139659155)
+
+- 它应始终返回相同的值。不管调用该函数多少次，无论今天、明天还是将来某个时候调用它。
+- 自包含（不使用全局变量）。
+- 它不应修改程序的状态或引起副作用（修改全局变量）。
+
+
+

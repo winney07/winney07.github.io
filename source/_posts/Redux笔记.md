@@ -38,6 +38,8 @@ categories:
 
 Redux 有很好的[文档](https://link.jianshu.com/?t=http://redux.js.org/)，还有配套的小视频（[前30集](https://link.jianshu.com/?t=https://egghead.io/courses/getting-started-with-redux)，[后30集](https://link.jianshu.com/?t=https://egghead.io/courses/building-react-applications-with-idiomatic-redux)）
 
+博客：[React进阶(4)-拆分Redux-将store,Reducer,action,actionTypes独立管理](http://www.javashuo.com/article/p-ruetjmbl-cg.html)
+
 #### [createStore(reducer, [preloadedState], [enhancer])](http://cn.redux.js.org/api/createstore)
 
 `reducer` *(Function)*: 接收两个参数，分别是当前的 state 树和要处理的 [action](http://cn.redux.js.org/understanding/thinking-in-redux/glossary#action)，返回新的 [state 树](http://cn.redux.js.org/understanding/thinking-in-redux/glossary#state)
@@ -501,6 +503,16 @@ const id = nanoid()
     toggleTodo: (state, action) => newState,
   }
 }
+```
+
+##### reducer不容许直接修改state
+
+```
+// 对原有的上一次的state作一次深拷贝,在Redux中,reducer不容许直接修改state
+// const newState = Object.assign({}, state);
+const newState = JSON.parse(JSON.stringify(state));
+newState.inputValue = action.value; // 将新的value值赋值给newState
+return newState;
 ```
 
 

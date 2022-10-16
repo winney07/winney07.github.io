@@ -228,7 +228,23 @@ return(
 >
 > 避免key使用索引index，特别是反序操作的情况。 因为会重新渲染，导致性能变差。使用id等唯一性属性
 
+> 在 `map()` 方法中的元素需要设置 key 属性
+>
 
+key 会传递信息给 React ，但不会传递给你的组件。如果你的组件中需要使用 `key` 属性的值，请用其他属性名显式传递这个值：
+
+```
+const content = posts.map((post) =>
+  <Post
+    key={post.id}
+    id={post.id}
+    title={post.title} />
+);
+```
+
+上面例子中，`Post` 组件可以读出 `props.id`，但是不能读出 `props.key`。
+
+### 
 
 ### 四、引入路由
 
@@ -399,3 +415,55 @@ npm install --save antd-mobile
 ```
 
 #### [国际化](https://mobile.ant.design/zh/guide/i18n)
+
+
+
+#### textarea 标签
+
+而在 React 中，`<textarea>` 使用 `value` 属性代替。这样，可以使得使用 `<textarea>` 的表单和使用单行 input 的表单非常类似：
+
+```
+<textarea value={this.state.value} onChange={this.handleChange} />
+```
+
+#### select 标签
+
+由于 `selected` 属性的缘故，椰子选项默认被选中。React 并不会使用 `selected` 属性，而是在根 `select` 标签上使用 `value` 属性。这在受控组件中更便捷，因为您只需要在根标签中更新它。例如：
+
+
+
+#### react打包正式环境-相对路径
+
+```
+npm run build
+```
+
+> 打包后，会有静态资源获取不到的报错
+
+解决：
+
+在`package.json`文件中，加入`homepage`属性
+
+```
+"homepage": "."
+```
+
+[react 项目打包路径问题](https://blog.csdn.net/qq_40259641/article/details/114988659)
+
+#### create-react-app打包上线页面空白的问题
+
+1.项目用的是 BrowserRouter ， BrowserRouter 一般是用于服务端渲染，所以服务端也需要相应的配置。要不然 网关不知道你有哪些路由，怎么给你转发。
+
+解决：
+
+1. `BrowserRouter 换成 HashRouter`
+   打包后，发现在本地开启web服务器预览后，正常，但是放在服务器上后，依然为空白，提示静态资源找不到。
+2. 解决：
+   配置 package.json 中的` homepage:'./'`
+   这样可以使打包后的静态资源，采用相对路径。
+
+
+
+[react根据不同环境配置不同接口](https://blog.csdn.net/weixin_40302777/article/details/94579132)
+
+[三分钟教你搞定 React 项目多环境配置](https://www.ltonus.com/React/react-project-config.html)

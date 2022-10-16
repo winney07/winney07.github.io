@@ -16,3 +16,8 @@ tags:
 cnpm i --save react-text-loop-next react-fast-marquee
 ```
 
+#### key报错
+
+[antd key报错 Each child in a list should have a unique “key“ prop.](https://blog.csdn.net/AS_TS/article/details/107981367)
+
+Table表格，Select选择器中的Option，`map()` 遍历渲染，Modal 对话框    需要添加key

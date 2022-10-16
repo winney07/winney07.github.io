@@ -1001,6 +1001,15 @@ word-break:break-all;
 overflow: hidden;
 ```
 
+#### 文字超出长度，不换行，省略号显示
+
+```
+overflow: hidden;
+white-space: nowrap;
+text-overflow: ellipsis;
+word-break: keep-all;
+```
+
 #### 只显示两行文字，多出的用省略号代替
 
 ```

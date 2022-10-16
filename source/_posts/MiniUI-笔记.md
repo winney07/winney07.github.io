@@ -428,3 +428,194 @@ function onValueChangedAll(e) {
  onblur="onValueChanged"
 ```
 
+#### 设置表单的值
+
+```
+<input  class="mini-textbox" name="game_id" id="game_id" required="true"/>
+
+// mini.get(ID值).setValue(str)
+mini.get('game_id').setValue('7000,7001')
+```
+
+#### 1-60的整数的验证
+
+`vtype="int;range:1,60"`, vtype中可以填写多个验证规则，用`;`隔开
+
+```
+<input  class="mini-textbox" name="act_days" vtype="int;range:1,60" intErrorText="请填写1-60的正整数" rangeErrorText="请填写1-60的正整数" required="true" requiredErrorText="活动天数不能为空" value="" style="width:200px;" emptyText="请输入活动天数" />
+```
+
+[表单验证规则总结](http://www.miniui.com/demo/form/rules.html)
+
+[Properties](http://www.miniui.com/docs/api/index.html#ui=textbox)
+
+
+
+#### 自定义表格里面的内容
+
+使用`renderer`属性
+
+```
+<div class="mini-fit">
+    <div id="datagrid1" class="mini-datagrid" style="width:100%;height:100%;" url="{:U('')}"  idField="id" showPager="true" pageSize="20">
+        <div property="columns">
+			.......
+            <div field="" width="100" headerAlign="center" align="center" allowSort="false" renderer="onActionRenderer_package_upload">上传母包</div>
+            <div field="" width="150" headerAlign="center" align="center" allowSort="false" renderer="onActionRenderer">操作</div>
+            .......
+        </div>
+    </div>
+</div>
+
+// 上传母包
+function onActionRenderer_package_upload(e) {
+    var grid      = e.sender;
+    var record    = e.record;
+    
+    var app_id    = record.app_id;
+    var app_package_exists = record.app_package_exists;
+    
+    var package_edit = '{$access['package_edit']}';
+    if (package_edit) {
+    	if(app_package_exists == 1){
+    		return '<span class="pointer" href="javascript:void(0)" onclick="jump(\'{:U('package_edit')}/app_id/'+app_id+'\')">重新上传</span>';
+    	} else {
+    		return '<span class="pointer" href="javascript:void(0)" onclick="jump(\'{:U('package_edit')}/app_id/'+app_id+'\')">+</span>';
+    	}
+    }
+}
+```
+
+#### 行内写JavaScript-跳转
+
+```
+<a href=\"javascript:edit(" + record.id + ");\">编辑</a>
+
+function edit(id)
+{
+	window.location.replace("{:U('HbSetting/edit')}" + '/id/' + id);
+}
+```
+
+#### 格式化日期
+
+```
+
+function timeForm(e)
+{
+	if (e.value != '' ) {
+		date = new Date(e.value);
+	    return date.Format("yyyy-MM-dd hh:mm:ss");
+	} else {
+		return e.value;
+	}
+	
+}
+Date.prototype.Format =  function (fmt) {  // author: meizz 
+    var o = {
+       "M+":  this.getMonth() + 1,  // 月份 
+       "d+":  this.getDate(),  // 日 
+       "h+":  this.getHours(),  // 小时 
+       "m+":  this.getMinutes(),  // 分 
+       "s+":  this.getSeconds(),  // 秒 
+       "q+": Math.floor(( this.getMonth() + 3) / 3),  // 季度 
+       "S":  this.getMilliseconds()  // 毫秒 
+   };
+    if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, ( this.getFullYear() + "").substr(4 - RegExp.$1.length));
+    for ( var k  in o)
+    if ( new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+    return fmt;
+}
+```
+
+#### 表格页面的初始化
+
+```
+var grid;
+var games = {$games};
+
+jQuery(document).ready(function() {
+    init();
+});
+
+function init()
+{
+    mini.parse();
+    grid = mini.get("datagrid1");
+    var form = new mini.Form("#fs");  
+    var data = form.getData(true);
+    grid.load(data);
+}
+
+function search()
+{
+    var form = new mini.Form("#fs");  
+    form.validate();
+    if (form.isValid() == false) return;
+    var data = form.getData(true);
+    grid.load(data);
+}
+```
+
+#### 表单页面的初始化
+
+```
+var form;
+function init(){
+	mini.parse();
+	form = new mini.Form("fa");	
+}
+jQuery(document).ready(function() {
+    init();
+});
+
+
+// 表单验证
+// 提交事件
+function SubmitData() 
+{
+    form.validate();
+    // form.isValid()   验证是否通过
+    
+    if (form.isValid() == false){
+		return false
+	};
+	
+	var data = $("form").serialize();
+	
+}
+```
+
+
+
+#### 弹窗
+
+```
+mini.open({
+    url: "{:U('batch_check')}?id="+id + "&lock_status=" + status,
+    title: "审核信息", 
+    width: 800, 
+    height: 380,
+    onload: function (data) {
+        console.log(data)
+    },
+    ondestroy: function (action) {
+        if (action=='ok')
+        {
+            var iframe = this.getIFrameEl();
+            var data = iframe.contentWindow.GetData();
+            data = mini.clone(data);    //必须
+
+            $.post("{:U('batch_check')}", data, function(result) {
+                if (result.success == false)
+                {
+                    alert(result.msg);
+                }
+            }, "json");
+        }
+
+        grid.reload();
+    }
+});
+```
+

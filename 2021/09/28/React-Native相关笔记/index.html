@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="React Native官网 React Native 中文网 移动App的开发模式 原生开发 原生App Android | iOS | Windows   混合开发 混合App React Native | Weex | Flutter   H5开发 Web App HTML、CSS、JavaScript  跨平台框架的比较   框架 React Native Weex Flutter">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React Native相关笔记">
+<meta property="og:url" content="http://example.com/2021/09/28/React-Native%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="winney">
+<meta property="og:description" content="React Native官网 React Native 中文网 移动App的开发模式 原生开发 原生App Android | iOS | Windows   混合开发 混合App React Native | Weex | Flutter   H5开发 Web App HTML、CSS、JavaScript  跨平台框架的比较   框架 React Native Weex Flutter">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-09-28T02:35:24.000Z">
+<meta property="article:modified_time" content="2022-10-16T06:50:21.954Z">
+<meta property="article:author" content="winney">
+<meta property="article:tag" content="React Native">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2021/09/28/React-Native%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>React Native相关笔记 | winney</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">winney</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">It is never too old to learn.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <img alt="winney" src="/images/blog-head.jpg">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/28/React-Native%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="winney">
+      <meta itemprop="description" content="Doing is better than saying.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="winney">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          React Native相关笔记
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-09-28 10:35:24" itemprop="dateCreated datePublished" datetime="2021-09-28T10:35:24+08:00">2021-09-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-10-16 14:50:21" itemprop="dateModified" datetime="2022-10-16T14:50:21+08:00">2022-10-16</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><a target="_blank" rel="noopener" href="https://reactnative.dev/">React Native官网</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.reactnative.cn/">React Native 中文网</a></p>
+<h4 id="移动App的开发模式"><a href="#移动App的开发模式" class="headerlink" title="移动App的开发模式"></a>移动App的开发模式</h4><ul>
+<li>原生开发</li>
+<li>原生App</li>
+<li>Android | iOS | Windows</li>
+</ul>
+<ul>
+<li>混合开发</li>
+<li>混合App</li>
+<li>React Native | Weex | Flutter</li>
+</ul>
+<ul>
+<li>H5开发</li>
+<li>Web App</li>
+<li>HTML、CSS、JavaScript</li>
+</ul>
+<h4 id="跨平台框架的比较"><a href="#跨平台框架的比较" class="headerlink" title="跨平台框架的比较"></a>跨平台框架的比较</h4><table>
+<thead>
+<tr>
+<th>框架</th>
+<th>React Native</th>
+<th>Weex</th>
+<th>Flutter</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>所属公司</td>
+<td>Facebook</td>
+<td>Alibaba</td>
+<td>Google</td>
+</tr>
+<tr>
+<td>编程语言</td>
+<td>JavaScript（React）</td>
+<td>JavaScript（Vue）</td>
+<td>Dart</td>
+</tr>
+<tr>
+<td>引擎</td>
+<td>JSCore</td>
+<td>V8</td>
+<td>Flutter engine</td>
+</tr>
+<tr>
+<td>支持系统</td>
+<td>Android、iOS</td>
+<td>Android、iOS、Web</td>
+<td>Android、iOS、Fuchsia</td>
+</tr>
+<tr>
+<td>性能</td>
+<td>一般</td>
+<td>较快</td>
+<td>较快</td>
+</tr>
+<tr>
+<td>使用场景</td>
+<td>整体App</td>
+<td>单页面</td>
+<td>整体App</td>
+</tr>
+<tr>
+<td>学习成本</td>
+<td>难</td>
+<td>易</td>
+<td>一般</td>
+</tr>
+</tbody></table>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/8717e1e614a9">移动端跨平台框架对比</a></p>
+<h4 id="移动App的开发模式-1"><a href="#移动App的开发模式-1" class="headerlink" title="移动App的开发模式"></a>移动App的开发模式</h4><table>
+<thead>
+<tr>
+<th>开发模式</th>
+<th>原生开发</th>
+<th>混合开发</th>
+<th>Web开发</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>运行环境</td>
+<td>Android、iOS</td>
+<td>Android、iOS</td>
+<td>浏览器、WebView</td>
+</tr>
+<tr>
+<td>编程语言</td>
+<td>Java、Objective-C</td>
+<td>JavaScript、Dart</td>
+<td>HTML、CSS、JavaScript</td>
+</tr>
+<tr>
+<td>可移植性</td>
+<td>差</td>
+<td>一般</td>
+<td>好</td>
+</tr>
+<tr>
+<td>开发速度</td>
+<td>慢</td>
+<td>一般</td>
+<td>快</td>
+</tr>
+<tr>
+<td>性能</td>
+<td>快</td>
+<td>较慢</td>
+<td>慢</td>
+</tr>
+<tr>
+<td>学习成本</td>
+<td>高</td>
+<td>一般</td>
+<td>低</td>
+</tr>
+</tbody></table>
+<p>React Native的优点</p>
+<ul>
+<li>开发体验好<ul>
+<li>用统一的代码规范开发移动端程序，不用关注移动端的差异</li>
+</ul>
+</li>
+<li>开发成本低<ul>
+<li>开发一次，可以生成Android和iOs两个系统上的App- Learn once, write anywhere</li>
+</ul>
+</li>
+<li>学习成本低<ul>
+<li>只要掌握JavaScript和React，就可以进行移动端开发了</li>
+</ul>
+</li>
+</ul>
+<p>React Native的不足</p>
+<ul>
+<li>不成熟;<ul>
+<li>项目版本更新维护较频繁，学习成本高;</li>
+<li>试错成本高，有些问题较少解决方案，易耽误开发进度。</li>
+</ul>
+</li>
+<li>性能差<ul>
+<li>整体性能仍不如原生</li>
+</ul>
+</li>
+<li>兼容性差<ul>
+<li>涉及底层的功能，需要针对Android和iOs双端单独开发;</li>
+</ul>
+</li>
+</ul>
+<h4 id="基础环境搭建"><a href="#基础环境搭建" class="headerlink" title="基础环境搭建"></a>基础环境搭建</h4><ul>
+<li><p>安装Node.js</p>
+<ul>
+<li>Node.js的版本应&gt;=12(推荐安装LTS版本)</li>
+<li><code> npm config set registry https://registry.npm.taobao.org</code></li>
+</ul>
+</li>
+<li><p>安装Yarn</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g yarn</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装 React Native脚手架</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g react-native-cli</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<p>需要安装Android开发环境、iOS开发环境</p>
+<p>Window下只能安装Android开发环境</p>
+<p>Mac下可以安装Android开发环境、iOS开发环境</p>
+<p>Android环境</p>
+<ul>
+<li>安装JDK</li>
+<li>安装Android Studio</li>
+<li>安装Android SDK</li>
+<li>配置环境变量</li>
+</ul>
+<p>·下载JDK(Java SE Development Kit)<br> https:/<a target="_blank" rel="noopener" href="http://www.oracle.com/jiava/technologies/iavase/javase-jdk8-downloads.html%C2%B7JDK%E7%9A%84%E7%89%88%E6%9C%AC%E5%BF%85%E9%A1%BB%E6%98%AF1.8(1.8%E7%89%88%E6%9C%AC%EF%BC%8C%E5%AE%98%E6%96%B9%E4%B9%9F%E7%9B%B4%E6%8E%A5%E7%A7%B08%E7%89%88%E6%9C%AC)">www.oracle.com/jiava/technologies/iavase/javase-jdk8-downloads.html·JDK的版本必须是1.8(1.8版本，官方也直接称8版本)</a><br>·目前不支持高于1.8的JDK版本<br>·下载时要求登陆(请先注册Oracle账号)<br>·或者直接找老师，获取上面的安装包<br>·安装JDK(一直“下一步”)<br>·命令行中，输入java -version，验证安装是否成功<br>L, A, G，。u———</p>
+<p>·下载Android Studio<br><a target="_blank" rel="noopener" href="https://developer.android.com/studio/index.html%C2%B7%E5%AE%89%E8%A3%85Android">https://developer.android.com/studio/index.html·安装Android</a> Studio (一直“下一步”)·启动Android Studio<br>·初次启动，需要安装组件（组件约2GB，安装后占用空间约8GB)·安装组件的过程巨长巨长巨长，要有耐心</p>
+<p>. What<br>·Android SDK是针对安卓开发的套件. Why<br>·虽然Android Studio默认会安装最新版本的Android SDK<br>·但是，目前编译React Native应用需要的是Android 10(Q)版本的SDK<br>· How<br>·打开Android Studio，在菜单Tools下找到”SDK Manager”</p>
+<p>·配置ANDROID_HOME环境变量<br>·打开Android Studio，点击菜单Tools → SDK Manager，找到Appearance &amp;Behavior → System Settings → Android SDK</p>
+<p>·跟ANDROID_HOME相关的环境变量<br>·%ANDROID_HOME%\platform-tools%ANDROID_HOME%\emulator<br>·%ANDROID_HOME%\tools·%ANDROID_HOME%\tools\bin<br>—L，A,G，。u</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/React-Native/" rel="tag"># React Native</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/09/10/%E4%BC%98%E5%8C%96JS%E4%BB%A3%E7%A0%81%E7%9A%8434%E7%A7%8D%E6%96%B9%E6%B3%95/" rel="prev" title="优化JS代码的34种方法">
+      <i class="fa fa-chevron-left"></i> 优化JS代码的34种方法
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/10/01/MacOs%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/" rel="next" title="MacOs相关笔记">
+      MacOs相关笔记 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A7%BB%E5%8A%A8App%E7%9A%84%E5%BC%80%E5%8F%91%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.</span> <span class="nav-text">移动App的开发模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B7%A8%E5%B9%B3%E5%8F%B0%E6%A1%86%E6%9E%B6%E7%9A%84%E6%AF%94%E8%BE%83"><span class="nav-number">2.</span> <span class="nav-text">跨平台框架的比较</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A7%BB%E5%8A%A8App%E7%9A%84%E5%BC%80%E5%8F%91%E6%A8%A1%E5%BC%8F-1"><span class="nav-number">3.</span> <span class="nav-text">移动App的开发模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="nav-number">4.</span> <span class="nav-text">基础环境搭建</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="winney"
+      src="/images/header.jpg">
+  <p class="site-author-name" itemprop="name">winney</p>
+  <div class="site-description" itemprop="description">Doing is better than saying.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">132</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">52</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">84</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://www.xiaochao.me/" title="https:&#x2F;&#x2F;www.xiaochao.me&#x2F;" rel="noopener" target="_blank">小超</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://winney07.github.io/" title="https:&#x2F;&#x2F;winney07.github.io&#x2F;" rel="noopener" target="_blank">winney07</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2015 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">winney07</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

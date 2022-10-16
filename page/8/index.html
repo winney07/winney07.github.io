@@ -193,7 +193,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/05/13/Element-UI%E7%AC%94%E8%AE%B0/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/28/React-Native%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -207,7 +207,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/05/13/Element-UI%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">Element-UI笔记</a>
+            <a href="/2021/09/28/React-Native%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">React Native相关笔记</a>
         </h2>
 
         <div class="post-meta">
@@ -217,14 +217,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-05-13 11:36:28" itemprop="dateCreated datePublished" datetime="2021-05-13T11:36:28+08:00">2021-05-13</time>
+              <time title="创建时间：2021-09-28 10:35:24" itemprop="dateCreated datePublished" datetime="2021-09-28T10:35:24+08:00">2021-09-28</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-08-24 18:09:23" itemprop="dateModified" datetime="2022-08-24T18:09:23+08:00">2022-08-24</time>
+                <time title="修改时间：2022-10-16 14:50:21" itemprop="dateModified" datetime="2022-10-16T14:50:21+08:00">2022-10-16</time>
               </span>
 
           
@@ -238,124 +238,185 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm i element-ui -S</span><br></pre></td></tr></table></figure>
-
-<h4 id="引入element-ui"><a href="#引入element-ui" class="headerlink" title="引入element-ui"></a>引入element-ui</h4><p>在 main.js 中写入以下内容（完整引入）：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">Vue</span> <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">ElementUI</span> <span class="keyword">from</span> <span class="string">&#x27;element-ui&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;element-ui/lib/theme-chalk/index.css&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">App</span> <span class="keyword">from</span> <span class="string">&#x27;./App.vue&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">ElementUI</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> <span class="title class_">Vue</span>(&#123;</span><br><span class="line">  <span class="attr">el</span>: <span class="string">&#x27;#app&#x27;</span>,</span><br><span class="line">  <span class="attr">render</span>: <span class="function"><span class="params">h</span> =&gt;</span> <span class="title function_">h</span>(<span class="title class_">App</span>)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<h4 id="ElementUI表格合并单元格"><a href="#ElementUI表格合并单元格" class="headerlink" title="ElementUI表格合并单元格"></a>ElementUI表格合并单元格</h4><p>摘抄自<a target="_blank" rel="noopener" href="https://www.cnblogs.com/yuwenjing0727/p/10110721.html">博客</a>，仅用于学习。</p>
-<table>
-  <tr>
-    <th>序号</th>
-    <th>工单类型</th>
-    <th>taskKey</th>
-    <th>templateUrl</th>
-    <th>操作</th>
-  </tr>
-  <tr>
-    <td rowspan="3">1</td>
-    <td rowspan="3">事件单</td>
-    <td>shijian_01</td>
-    <td>/shijian_01</td>
-    <td>编辑   删除</td>
-  </tr>
-  <tr>
-    <td>shijian_02</td>
-    <td>/shijian_02</td>
-    <td>编辑   删除</td>
-  </tr>
-  <tr>
-    <td>shijian_03</td>
-    <td>/shijian_03</td>
-    <td>编辑   删除</td>
-  </tr>
-  <tr>
-    <td rowspan="3">2</td>
-    <td rowspan="3">问题单</td>
-    <td>shijian_04</td>
-    <td>/shijian_04</td>
-    <td>编辑   删除</td>
-  </tr>
-  <tr>
-    <td>shijian_05</td>
-    <td>/shijian_05</td>
-    <td>编辑   删除</td>
-  </tr>
-  <tr>
-    <td>shijian_06</td>
-    <td>/shijian_06</td>
-    <td>编辑   删除</td>
-  </tr>
-</table>
-
-
-<p>代码附上：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div class=&quot;&quot;&gt;</span><br><span class="line">    &lt;el-table</span><br><span class="line">        :data=&quot;listData&quot;</span><br><span class="line">        :span-method=&quot;objectSpanMethod&quot;</span><br><span class="line">        class=&quot;tableArea&quot;</span><br><span class="line">        style=&quot;width: 100%&quot;&gt;</span><br><span class="line">        &lt;el-table-column</span><br><span class="line">          prop=&quot;type&quot;</span><br><span class="line">          label=&quot;序号&quot;</span><br><span class="line">          align=&quot;center&quot;</span><br><span class="line">          width=&quot;200&quot;/&gt;</span><br><span class="line">        &lt;el-table-column</span><br><span class="line">          prop=&quot;sheetType&quot;</span><br><span class="line">          label=&quot;工单类型&quot;</span><br><span class="line">          /&gt;</span><br><span class="line">        &lt;el-table-column</span><br><span class="line">          prop=&quot;taskKey&quot;</span><br><span class="line">          label=&quot;taskKey&quot;</span><br><span class="line">          /&gt;</span><br><span class="line">        &lt;el-table-column</span><br><span class="line">          prop=&quot;templateUrl&quot;</span><br><span class="line">          label=&quot;templateUrl&quot;</span><br><span class="line">          /&gt;</span><br><span class="line">        &lt;el-table-column</span><br><span class="line">          label=&quot;操作&quot;</span><br><span class="line">          &gt;</span><br><span class="line">          &lt;template slot-scope=&quot;scope&quot;&gt;</span><br><span class="line">              &lt;el-tooltip class=&quot;item&quot; effect=&quot;dark&quot; content=&quot;修改&quot; placement=&quot;top-start&quot;&gt;</span><br><span class="line">                      &lt;i class=&quot;el-icon-edit-outline&quot;  @click=&quot;modify(scope)&quot; /&gt;</span><br><span class="line">                    &lt;/el-tooltip&gt;</span><br><span class="line">                    &lt;el-tooltip class=&quot;item&quot; effect=&quot;dark&quot; content=&quot;删除&quot; placement=&quot;top-start&quot;&gt;</span><br><span class="line">            &lt;i class=&quot;el-icon-delete&quot; @click=&quot;deleteData(scope)&quot; /&gt;</span><br><span class="line">                    &lt;/el-tooltip&gt;</span><br><span class="line">          &lt;/template&gt;</span><br><span class="line">        &lt;/el-table-column &gt;</span><br><span class="line">      &lt;/el-table&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">  name: &#x27;myNeedDeal&#x27;,</span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      rowList: [],</span><br><span class="line">      spanArr: [],</span><br><span class="line">      position: 0,</span><br><span class="line">      listData: []</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  methods: &#123;</span><br><span class="line">      queryData()&#123;//查询操作</span><br><span class="line">          this.listData = [</span><br><span class="line">              &#123;</span><br><span class="line">            id:1,</span><br><span class="line">          type:1,</span><br><span class="line">          sheetType: &quot;事件单&quot;,</span><br><span class="line">          taskKey: &quot;shijian_01&quot;,</span><br><span class="line">          templateUrl: &quot;/shijian_01&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            id:2,</span><br><span class="line">          type:1,</span><br><span class="line">          sheetType: &quot;事件单&quot;,</span><br><span class="line">          taskKey: &quot;shijian_02&quot;,</span><br><span class="line">          templateUrl: &quot;/shijian_02&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            id:3,</span><br><span class="line">          type:1,</span><br><span class="line">          sheetType: &quot;事件单&quot;,</span><br><span class="line">          taskKey: &quot;shijian_03&quot;,</span><br><span class="line">          templateUrl: &quot;/shijian_04&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            id:4,</span><br><span class="line">          type:2,</span><br><span class="line">          sheetType: &quot;问题单&quot;,</span><br><span class="line">          taskKey: &quot;wenti_01&quot;,</span><br><span class="line">          templateUrl: &quot;/wenti_01&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            id:5,</span><br><span class="line">          type:2,</span><br><span class="line">          sheetType: &quot;问题单&quot;,</span><br><span class="line">          taskKey: &quot;wenti_02&quot;,</span><br><span class="line">          templateUrl: &quot;/wenti_02&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            id:6,</span><br><span class="line">          type:2,</span><br><span class="line">          sheetType: &quot;问题单&quot;,</span><br><span class="line">          taskKey: &quot;wenti_03&quot;,</span><br><span class="line">          templateUrl: &quot;/wenti_03&quot;</span><br><span class="line">        &#125;</span><br><span class="line">          ];</span><br><span class="line">          this.rowspan()</span><br><span class="line">      &#125;,</span><br><span class="line">      rowspan() &#123;</span><br><span class="line">          this.listData.forEach((item,index) =&gt; &#123;</span><br><span class="line">            if( index === 0)&#123;</span><br><span class="line">                this.spanArr.push(1);</span><br><span class="line">                this.position = 0;</span><br><span class="line">            &#125;else&#123;</span><br><span class="line">                if(this.listData[index].type === this.listData[index-1].type )&#123;</span><br><span class="line">                    this.spanArr[this.position] += 1;</span><br><span class="line">                    this.spanArr.push(0);</span><br><span class="line">                &#125;else&#123;</span><br><span class="line">                    this.spanArr.push(1);</span><br><span class="line">                    this.position = index;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;,</span><br><span class="line">    objectSpanMethod(&#123; row, column, rowIndex, columnIndex &#125;) &#123;  //表格合并行</span><br><span class="line">        if (columnIndex === 0) &#123;</span><br><span class="line">            const _row = this.spanArr[rowIndex];</span><br><span class="line">            const _col = _row&gt;0 ? 1 : 0;</span><br><span class="line">            return &#123;</span><br><span class="line">                rowspan: _row,</span><br><span class="line">                colspan: _col</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if(columnIndex === 1)&#123;</span><br><span class="line">            const _row = this.spanArr[rowIndex];</span><br><span class="line">            const _col = _row&gt;0 ? 1 : 0;</span><br><span class="line">            return &#123;</span><br><span class="line">                rowspan: _row,</span><br><span class="line">                colspan: _col</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  mounted() &#123;</span><br><span class="line">    this.queryData();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;style lang=&quot;scss&quot; scoped&gt;</span><br><span class="line">.el-select &#123;</span><br><span class="line">  margin-right: 15px;</span><br><span class="line">&#125;</span><br><span class="line">.el-input &#123;</span><br><span class="line">  margin-right: 15px;</span><br><span class="line">  width: 200px;</span><br><span class="line">&#125;</span><br><span class="line">.tableArea &#123;</span><br><span class="line">  margin-top: 20px;</span><br><span class="line">  box-shadow: 0 0 8px 0 #aaa;</span><br><span class="line">&#125;</span><br><span class="line">i[class^=&quot;el-icon&quot;] &#123;</span><br><span class="line">  margin-right: 5px;</span><br><span class="line">  font-size: 16px;</span><br><span class="line">  cursor: pointer;</span><br><span class="line">&#125;</span><br><span class="line">.modify_table&#123;</span><br><span class="line">    td&#123;</span><br><span class="line">        padding: 10px ;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">.item_title&#123;</span><br><span class="line">    text-align: right;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
-
-<p>详细说明：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:span-method=&quot;objectSpanMethod&quot;  </span><br></pre></td></tr></table></figure>
-
-<p>这个是官方给定的绑定属性和对应的方法，objectSpanMethod 传入了 { row, column, rowIndex, columnIndex }</p>
-<p>row: 当前行</p>
-<p>column: 当前列</p>
-<p>rowIndex：当前行号</p>
-<p>columnIndex ：当前列号</p>
-<p>该函数可以返回一个包含两个元素的数组，第一个元素代表<code>rowspan</code>，第二个元素代表<code>colspan</code>。 也可以返回一个键名为<code>rowspan</code>和<code>colspan</code>的对象。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.spanArr 数组 ，返回的是相对应的行合并行数</span><br></pre></td></tr></table></figure>
-
-<p>这个示例打印出的this.spanArr为 [3, 0, 0, 3, 0, 0]，比如，第一个元素为3，表示第一行应该向下合并3行（即第一行的rowspan为3），第二个元素的rowspan为0，就让它“消失”。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rowspan（）这个函数就是用来返回 this.spanArr 数组的，定义每一行的 rowspan</span><br></pre></td></tr></table></figure>
-
-<p>rowspan（）函数，if( index === 0)，第一行，直接先给数组push进一个1，表示自己先占一行，this.position是数组元素的位置（此时是从数组元素的第一个开始，所以this.position为0）， this.position为0意思表示的就是数组的第一个元素。</p>
-<p>当到了index为2的时候，if(this.listData[index].type === this.listData[index-1].type )，让第二行与第一行作比较，</p>
-<p>如果第二行与第一行相等的话，this.position就+1，当有n行第一行相同，this.position就为n，表示向下合并n行；第二行自己就this.spanArr.push(0)，表示第二行“消失”，因为第一行和第二行合并了啊。</p>
-<p>如果第二行与第一行不相等的话，那么this.spanArr.push(1);就让第二行自己独占一行；this.position = index意思就是把指针拿到index这行来，表示设置数组this.spanArr[this.position]的元素值，然后定义从此行开始向下合并几行（可能这句话我表述的不是很清楚你可以根据我这个示例研究下，当index为3时，this.position为3，当index为4时，第四行与第三行需要合并，那么在数组的this.position元素就要+1了，也就是this.spanArr[this.position] += 1）</p>
-<p>还有最后一句话</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const _col = _row&gt;0 ? 1 : 0;</span><br></pre></td></tr></table></figure>
-
-<p>定义的这一个单元格列的合并，我们项目只合并行，不合并列；</p>
-<p>_row：代表合并行的行数，_row的值要么是1，或者更大的自然正整数，要么是0。</p>
-<p>1代表：独占一行</p>
-<p>更大的自然数：代表合并了若干行</p>
-<p>0：代表“消失”的哪那一个单元格，后面的单元格向前推一格</p>
-<p>注意：如果配合分页一起渲染数据，要在rowspan函数中，先将this.spanArr清空数组。不添加，点分页加载数据会导致表格错乱。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">rowspan() &#123;</span><br><span class="line">    this.spanArr=[];</span><br><span class="line">    .......</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
-
-
-
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_33982670/article/details/91446060">elementui表格动态数据单元格合并</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.imooc.com/wenda/detail/522127">elementUI table合并相同数据的单元格</a></p>
-<p><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000019176628">elementUI table表格动态合并</a></p>
-<h3 id="slot的使用"><a href="#slot的使用" class="headerlink" title="slot的使用"></a>slot的使用</h3><h5 id="slots"><a href="#slots" class="headerlink" title="slots"></a>slots</h5><table>
+          <p><a target="_blank" rel="noopener" href="https://reactnative.dev/">React Native官网</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.reactnative.cn/">React Native 中文网</a></p>
+<h4 id="移动App的开发模式"><a href="#移动App的开发模式" class="headerlink" title="移动App的开发模式"></a>移动App的开发模式</h4><ul>
+<li>原生开发</li>
+<li>原生App</li>
+<li>Android | iOS | Windows</li>
+</ul>
+<ul>
+<li>混合开发</li>
+<li>混合App</li>
+<li>React Native | Weex | Flutter</li>
+</ul>
+<ul>
+<li>H5开发</li>
+<li>Web App</li>
+<li>HTML、CSS、JavaScript</li>
+</ul>
+<h4 id="跨平台框架的比较"><a href="#跨平台框架的比较" class="headerlink" title="跨平台框架的比较"></a>跨平台框架的比较</h4><table>
 <thead>
 <tr>
-<th>事件名称</th>
-<th>说明</th>
+<th>框架</th>
+<th>React Native</th>
+<th>Weex</th>
+<th>Flutter</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>title</td>
-<td>标题内容</td>
+<td>所属公司</td>
+<td>Facebook</td>
+<td>Alibaba</td>
+<td>Google</td>
 </tr>
 <tr>
-<td>content</td>
-<td>内容</td>
+<td>编程语言</td>
+<td>JavaScript（React）</td>
+<td>JavaScript（Vue）</td>
+<td>Dart</td>
+</tr>
+<tr>
+<td>引擎</td>
+<td>JSCore</td>
+<td>V8</td>
+<td>Flutter engine</td>
+</tr>
+<tr>
+<td>支持系统</td>
+<td>Android、iOS</td>
+<td>Android、iOS、Web</td>
+<td>Android、iOS、Fuchsia</td>
+</tr>
+<tr>
+<td>性能</td>
+<td>一般</td>
+<td>较快</td>
+<td>较快</td>
+</tr>
+<tr>
+<td>使用场景</td>
+<td>整体App</td>
+<td>单页面</td>
+<td>整体App</td>
+</tr>
+<tr>
+<td>学习成本</td>
+<td>难</td>
+<td>易</td>
+<td>一般</td>
 </tr>
 </tbody></table>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;el-page-header @back=<span class="string">&quot;goBack&quot;</span> content=<span class="string">&quot;管理&quot;</span>&gt;</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">slot</span>=<span class="string">&quot;title&quot;</span>&gt;</span>修改标题<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">	<span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">slot</span>=<span class="string">&quot;content&quot;</span>&gt;</span>修改内容<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&lt;/el-page-header&gt;</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/8717e1e614a9">移动端跨平台框架对比</a></p>
+<h4 id="移动App的开发模式-1"><a href="#移动App的开发模式-1" class="headerlink" title="移动App的开发模式"></a>移动App的开发模式</h4><table>
+<thead>
+<tr>
+<th>开发模式</th>
+<th>原生开发</th>
+<th>混合开发</th>
+<th>Web开发</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>运行环境</td>
+<td>Android、iOS</td>
+<td>Android、iOS</td>
+<td>浏览器、WebView</td>
+</tr>
+<tr>
+<td>编程语言</td>
+<td>Java、Objective-C</td>
+<td>JavaScript、Dart</td>
+<td>HTML、CSS、JavaScript</td>
+</tr>
+<tr>
+<td>可移植性</td>
+<td>差</td>
+<td>一般</td>
+<td>好</td>
+</tr>
+<tr>
+<td>开发速度</td>
+<td>慢</td>
+<td>一般</td>
+<td>快</td>
+</tr>
+<tr>
+<td>性能</td>
+<td>快</td>
+<td>较慢</td>
+<td>慢</td>
+</tr>
+<tr>
+<td>学习成本</td>
+<td>高</td>
+<td>一般</td>
+<td>低</td>
+</tr>
+</tbody></table>
+<p>React Native的优点</p>
+<ul>
+<li>开发体验好<ul>
+<li>用统一的代码规范开发移动端程序，不用关注移动端的差异</li>
+</ul>
+</li>
+<li>开发成本低<ul>
+<li>开发一次，可以生成Android和iOs两个系统上的App- Learn once, write anywhere</li>
+</ul>
+</li>
+<li>学习成本低<ul>
+<li>只要掌握JavaScript和React，就可以进行移动端开发了</li>
+</ul>
+</li>
+</ul>
+<p>React Native的不足</p>
+<ul>
+<li>不成熟;<ul>
+<li>项目版本更新维护较频繁，学习成本高;</li>
+<li>试错成本高，有些问题较少解决方案，易耽误开发进度。</li>
+</ul>
+</li>
+<li>性能差<ul>
+<li>整体性能仍不如原生</li>
+</ul>
+</li>
+<li>兼容性差<ul>
+<li>涉及底层的功能，需要针对Android和iOs双端单独开发;</li>
+</ul>
+</li>
+</ul>
+<h4 id="基础环境搭建"><a href="#基础环境搭建" class="headerlink" title="基础环境搭建"></a>基础环境搭建</h4><ul>
+<li><p>安装Node.js</p>
+<ul>
+<li>Node.js的版本应&gt;=12(推荐安装LTS版本)</li>
+<li><code> npm config set registry https://registry.npm.taobao.org</code></li>
+</ul>
+</li>
+<li><p>安装Yarn</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g yarn</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装 React Native脚手架</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g react-native-cli</span><br></pre></td></tr></table></figure>
 
-<h4 id="解决引用Element-UI-导致弹出多个message消息提示的问题"><a href="#解决引用Element-UI-导致弹出多个message消息提示的问题" class="headerlink" title="解决引用Element UI 导致弹出多个message消息提示的问题"></a><a target="_blank" rel="noopener" href="https://www.cnblogs.com/cndarren/p/14691315.html">解决引用Element UI 导致弹出多个message消息提示的问题</a></h4><h4 id="改造elementui的穿梭框，让他直接点击选项就穿梭到另一个框"><a href="#改造elementui的穿梭框，让他直接点击选项就穿梭到另一个框" class="headerlink" title="改造elementui的穿梭框，让他直接点击选项就穿梭到另一个框"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/yangmiemie120/article/details/100736154">改造elementui的穿梭框，让他直接点击选项就穿梭到另一个框</a></h4><h4 id="element-ui-change事件传值"><a href="#element-ui-change事件传值" class="headerlink" title="element-ui change事件传值"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_15601471/article/details/89048951">element-ui change事件传值</a></h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@change=<span class="string">&quot;handleSelect($event)&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="title function_">handleSelect</span>(<span class="params">event</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(event)</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
 
-<h4 id="vue使用elementUI表单的获取select-checkbox的value值"><a href="#vue使用elementUI表单的获取select-checkbox的value值" class="headerlink" title="vue使用elementUI表单的获取select,checkbox的value值"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43834855/article/details/108817517">vue使用elementUI表单的获取select,checkbox的value值</a></h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"> &lt;el-checkbox</span><br><span class="line">  v-<span class="keyword">for</span>=<span class="string">&quot;game in gameData&quot;</span></span><br><span class="line">  :label=<span class="string">&quot;game.id&quot;</span></span><br><span class="line">  :key=<span class="string">&quot;game.id&quot;</span></span><br><span class="line">  :data-id=<span class="string">&quot;game.id&quot;</span></span><br><span class="line">  :data-group=<span class="string">&quot;game.group_id&quot;</span>&gt;</span><br><span class="line">  &#123;&#123;game.<span class="property">name</span>&#125;&#125;&lt;/el-checkbox&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 把想要的value值放在label中，将需要显示的内容放在 &lt;el-checkbox&gt;标签之间</span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">el-checkbox</span> <span class="attr">:label</span>=<span class="string">&quot;想要获取的value值&quot;</span>&gt;</span>&#123;&#123;显示的内容值&#125;&#125;<span class="tag">&lt;/<span class="name">el-checkbox</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
 
-<p>checkbox的获取可以通过label来获得，将原来的label写在<el-checkbox>{名称}&lt;/&gt;中，因为elementUI获取绑定的是label，<br>即<el-checkbox label=[value]>[label]&lt;/&gt;</p>
-<p>事件传多参数</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul <span class="keyword">class</span>=<span class="string">&quot;ul-list txt-left&quot;</span>&gt;</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">li</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">    <span class="attr">v-for</span>=<span class="string">&quot;(game, index) in checkedData&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">    <span class="attr">:label</span>=<span class="string">&quot;game.id&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">    <span class="attr">:key</span>=<span class="string">&quot;game.id&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">     @<span class="attr">click</span>=<span class="string">&quot;chooseGame(index, game.id)&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">    <span class="attr">:class</span> = <span class="string">&quot;isactive == index ? &#x27;blue-txt&#x27; : &#x27;&#x27; &quot;</span> </span></span></span><br><span class="line"><span class="tag"><span class="language-xml">    <span class="attr">class</span>=<span class="string">&quot;active&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    &#123;&#123;game.name&#125;&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line">&lt;/ul&gt;</span><br><span class="line"></span><br><span class="line"><span class="attr">isactive</span>: <span class="number">0</span>,</span><br><span class="line">  </span><br><span class="line"><span class="title function_">chooseGame</span>(<span class="params">index, id</span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">isactive</span> = index</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">thisGameChannels</span> = <span class="variable language_">this</span>.<span class="property">allGameChannels</span>[id]</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
-
-<h3 id="Element-ui-el-row-el-col里面高度不一致的问题"><a href="#Element-ui-el-row-el-col里面高度不一致的问题" class="headerlink" title="Element ui el-row el-col里面高度不一致的问题"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/sinat_33255495/article/details/114366877">Element ui el-row el-col里面高度不一致的问题</a></h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;el-row type=<span class="string">&quot;flex&quot;</span>&gt;</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">el-col</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">	<span class="tag">&lt;<span class="name">textarea</span> <span class="attr">autocomplete</span>=<span class="string">&quot;off&quot;</span> <span class="attr">class</span>=<span class="string">&quot;el-textarea__inner&quot;</span> <span class="attr">style</span>=<span class="string">&quot;min-height: 33.2333px;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">textarea</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"> <span class="tag">&lt;/<span class="name">el-col</span>&gt;</span></span></span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">el-col</span>&gt;</span>test<span class="tag">&lt;<span class="name">br</span>&gt;</span>test<span class="tag">&lt;/<span class="name">el-col</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">el-row</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
-
-<p>用饿了吗el-row，el-col布局页面的时候会因为el-col的内容高度不统一，造成布局混乱，解决方案就是在el-row中添加type=”flex”。</p>
-<p>注意：里面的内容要有设定的高度，不然加上flex也无效。</p>
+</li>
+</ul>
+<p>需要安装Android开发环境、iOS开发环境</p>
+<p>Window下只能安装Android开发环境</p>
+<p>Mac下可以安装Android开发环境、iOS开发环境</p>
+<p>Android环境</p>
+<ul>
+<li>安装JDK</li>
+<li>安装Android Studio</li>
+<li>安装Android SDK</li>
+<li>配置环境变量</li>
+</ul>
+<p>·下载JDK(Java SE Development Kit)<br> https:/<a target="_blank" rel="noopener" href="http://www.oracle.com/jiava/technologies/iavase/javase-jdk8-downloads.html%C2%B7JDK%E7%9A%84%E7%89%88%E6%9C%AC%E5%BF%85%E9%A1%BB%E6%98%AF1.8(1.8%E7%89%88%E6%9C%AC%EF%BC%8C%E5%AE%98%E6%96%B9%E4%B9%9F%E7%9B%B4%E6%8E%A5%E7%A7%B08%E7%89%88%E6%9C%AC)">www.oracle.com/jiava/technologies/iavase/javase-jdk8-downloads.html·JDK的版本必须是1.8(1.8版本，官方也直接称8版本)</a><br>·目前不支持高于1.8的JDK版本<br>·下载时要求登陆(请先注册Oracle账号)<br>·或者直接找老师，获取上面的安装包<br>·安装JDK(一直“下一步”)<br>·命令行中，输入java -version，验证安装是否成功<br>L, A, G，。u———</p>
+<p>·下载Android Studio<br><a target="_blank" rel="noopener" href="https://developer.android.com/studio/index.html%C2%B7%E5%AE%89%E8%A3%85Android">https://developer.android.com/studio/index.html·安装Android</a> Studio (一直“下一步”)·启动Android Studio<br>·初次启动，需要安装组件（组件约2GB，安装后占用空间约8GB)·安装组件的过程巨长巨长巨长，要有耐心</p>
+<p>. What<br>·Android SDK是针对安卓开发的套件. Why<br>·虽然Android Studio默认会安装最新版本的Android SDK<br>·但是，目前编译React Native应用需要的是Android 10(Q)版本的SDK<br>· How<br>·打开Android Studio，在菜单Tools下找到”SDK Manager”</p>
+<p>·配置ANDROID_HOME环境变量<br>·打开Android Studio，点击菜单Tools → SDK Manager，找到Appearance &amp;Behavior → System Settings → Android SDK</p>
+<p>·跟ANDROID_HOME相关的环境变量<br>·%ANDROID_HOME%\platform-tools%ANDROID_HOME%\emulator<br>·%ANDROID_HOME%\tools·%ANDROID_HOME%\tools\bin<br>—L，A,G，。u</p>
 
       
     </div>
@@ -375,7 +436,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/24/yarn%E7%AC%94%E8%AE%B0/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/10/%E4%BC%98%E5%8C%96JS%E4%BB%A3%E7%A0%81%E7%9A%8434%E7%A7%8D%E6%96%B9%E6%B3%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -389,7 +450,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/04/24/yarn%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">yarn-笔记</a>
+            <a href="/2021/09/10/%E4%BC%98%E5%8C%96JS%E4%BB%A3%E7%A0%81%E7%9A%8434%E7%A7%8D%E6%96%B9%E6%B3%95/" class="post-title-link" itemprop="url">优化JS代码的34种方法</a>
         </h2>
 
         <div class="post-meta">
@@ -399,7 +460,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-04-24 15:43:06" itemprop="dateCreated datePublished" datetime="2021-04-24T15:43:06+08:00">2021-04-24</time>
+              <time title="创建时间：2021-09-10 11:23:20" itemprop="dateCreated datePublished" datetime="2021-09-10T11:23:20+08:00">2021-09-10</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
@@ -414,11 +475,11 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a>
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/yarn/" itemprop="url" rel="index"><span itemprop="name">yarn</span></a>
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/Javascript/" itemprop="url" rel="index"><span itemprop="name">Javascript</span></a>
                 </span>
             </span>
 
@@ -433,53 +494,39 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p><a target="_blank" rel="noopener" href="https://yarnpkg.com/">yarn官网</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.yarnpkg.cn/">yarn中文官网</a></p>
-<p><a target="_blank" rel="noopener" href="http://yarnpkg.top/">yarn-中文官网</a></p>
-<h4 id="全局安装yarn"><a href="#全局安装yarn" class="headerlink" title="全局安装yarn"></a>全局安装yarn</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --global yarn</span><br></pre></td></tr></table></figure>
+          <h3 id="优化JS代码的34种方法"><a href="#优化JS代码的34种方法" class="headerlink" title="优化JS代码的34种方法"></a>优化JS代码的34种方法</h3><h4 id="1-含有多个条件的if语句"><a href="#1-含有多个条件的if语句" class="headerlink" title="1. 含有多个条件的if语句"></a>1. 含有多个条件的if语句</h4><p>我们可以在数组中存储多个值，也可以使用数据的includes方法。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// longhand</span><br><span class="line">if (x=== &#x27;abc&#x27; || x === &#x27;def&#x27; || x === &#x27;ghi&#x27; || x ===jkl&#x27;) &#123;</span><br><span class="line">	// logic</span><br><span class="line">&#125;</span><br><span class="line">// shorthand</span><br><span class="line">if ([ &#x27;abc &#x27;, &#x27;def&#x27;, &#x27;ghi&#x27;, &#x27;jkl&#x27; ].includes (x)) &#123;</span><br><span class="line">    // logic</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h4 id="查看版本"><a href="#查看版本" class="headerlink" title="查看版本"></a>查看版本</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn --version</span><br></pre></td></tr></table></figure>
+<h4 id="2-If-…-else的缩写法"><a href="#2-If-…-else的缩写法" class="headerlink" title="2. If … else的缩写法"></a>2. If … else的缩写法</h4><p>当我们在if-else条件下的逻辑比较简单时，我们可以使用三元条件运算符。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">// Longhand</span><br><span class="line">let test: boolean;</span><br><span class="line"></span><br><span class="line">if(x &gt; 100)&#123;</span><br><span class="line">	test = true;</span><br><span class="line">&#125;else &#123;</span><br><span class="line">    test = false;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// shorthand</span><br><span class="line">let test = (x &gt; 10) ? true : false;</span><br><span class="line"></span><br><span class="line">// or we can use directly</span><br><span class="line">let test = x &gt; 10;</span><br><span class="line"></span><br><span class="line">console.log (test) ;</span><br></pre></td></tr></table></figure>
 
-<h4 id="启动开发环境服务"><a href="#启动开发环境服务" class="headerlink" title="启动开发环境服务"></a>启动开发环境服务</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn start</span><br></pre></td></tr></table></figure>
+<p>如果包含嵌套条件，也可以使用这种方法。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let x = 300,</span><br><span class="line">test2 = (x &gt; 100) ? &#x27;greater 100&#x27; : (x&lt;50) ? &#x27;less 50&#x27; : &#x27;between50 and 100&#x27;;</span><br><span class="line"></span><br><span class="line">console.log (test2);    // &quot;greater than 100&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<h4 id="打包（生成静态文件）"><a href="#打包（生成静态文件）" class="headerlink" title="打包（生成静态文件）"></a>打包（生成静态文件）</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn build</span><br></pre></td></tr></table></figure>
+<h4 id="3-定义变量"><a href="#3-定义变量" class="headerlink" title="3. 定义变量"></a>3. 定义变量</h4><p>当我们想要定义两个变量，并且这两个变量拥有相同的值或者类型的话，我们可以运用此种简略的表达方式。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// Longhand</span><br><span class="line">let testl;</span><br><span class="line">let test2 = 1;</span><br><span class="line"></span><br><span class="line">// Shorthand</span><br><span class="line">let test1, test2 = 1;</span><br></pre></td></tr></table></figure>
 
-<h4 id="创建React项目"><a href="#创建React项目" class="headerlink" title="创建React项目"></a><a target="_blank" rel="noopener" href="https://zh-hans.reactjs.org/docs/create-a-new-react-app.html#create-react-app">创建React项目</a></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npx create-react-app my-app</span><br><span class="line">cd my-app</span><br><span class="line">yarn start</span><br></pre></td></tr></table></figure>
+<h4 id="4-关于Null-undefined的检查"><a href="#4-关于Null-undefined的检查" class="headerlink" title="4. 关于Null, undefined的检查"></a>4. 关于Null, undefined的检查</h4><p>当我们创建新的变量时，有时候需要检查我们引用变量的值是否为null或是undefined，js本身就有一种缩写法能实现这个功能</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// Longhand</span><br><span class="line">if (testl !== null || test1 !== undefined || test1 !== &#x27;&#x27;) &#123;</span><br><span class="line">	let test2 - test1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// shorthand</span><br><span class="line">let test2 = test1 || &#x27;&#x27;;</span><br></pre></td></tr></table></figure>
 
-<h4 id="添加React-Router"><a href="#添加React-Router" class="headerlink" title="添加React Router"></a>添加React Router</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add react-router-dom@6</span><br></pre></td></tr></table></figure>
+<h4 id="5-Null值检查与指定默认赋值"><a href="#5-Null值检查与指定默认赋值" class="headerlink" title="5. Null值检查与指定默认赋值"></a>5. Null值检查与指定默认赋值</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let test1 = null,</span><br><span class="line">	test2 = test1 || &#x27;&#x27;;</span><br><span class="line">	</span><br><span class="line">console.log (&quot;null check&quot;, test2); // output will be &quot;&quot;</span><br></pre></td></tr></table></figure>
 
+<h4 id="6-Undefined值检查与默认赋值"><a href="#6-Undefined值检查与默认赋值" class="headerlink" title="6. Undefined值检查与默认赋值"></a>6. Undefined值检查与默认赋值</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let testl = undefined,</span><br><span class="line">	test2 = testl l| &#x27;&#x27;;</span><br><span class="line">	</span><br><span class="line">console.log (&quot;undefined check&quot;, test2); // output will be &quot;&quot;</span><br></pre></td></tr></table></figure>
 
+<p>正常值检查</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let test1 = &#x27;test&#x27;,</span><br><span class="line">    test2 = test1 || &#x27;&#x27;;</span><br><span class="line">    </span><br><span class="line">console.log(test2);  // output: &#x27;test&#x27;</span><br></pre></td></tr></table></figure>
 
+<p>（现在我们可以在4、5、6条中使用 ?? 运算符了）</p>
+<h4 id="7-聚合运算符"><a href="#7-聚合运算符" class="headerlink" title="7. 聚合运算符"></a>7. 聚合运算符</h4><p>**??**是聚合运算符，如果左值为null或undefined，就返回右值。默认返回左值。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const test= null ?? &#x27;default&#x27;;</span><br><span class="line">console.log(test);</span><br><span class="line">// expected output: &quot;default&quot;const test1 =0 ?? 2;</span><br><span class="line">console.log(test1);</span><br><span class="line">// expected output: 0</span><br></pre></td></tr></table></figure>
 
+<h4 id="8-为多个变量赋值"><a href="#8-为多个变量赋值" class="headerlink" title="8. 为多个变量赋值"></a>8. 为多个变量赋值</h4><p>当我们处理多个变量，想为不同的变量赋不同的值时，就会真正发现这种简略的表达方式的实用之处了。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// Longhand</span><br><span class="line">let test1, test2, test3;</span><br><span class="line">test1 = 1;</span><br><span class="line">test2 = 2;</span><br><span class="line">test3 = 3;</span><br><span class="line"></span><br><span class="line">// Shorthand</span><br><span class="line">let [testl, test2, test3] = [1，2，3];</span><br></pre></td></tr></table></figure>
 
-<h4 id="使用Vite创建Vue项目"><a href="#使用Vite创建Vue项目" class="headerlink" title="使用Vite创建Vue项目"></a>使用Vite创建Vue项目</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn create vite</span><br></pre></td></tr></table></figure>
+<h4 id="9-赋值运算符简略的表达方式"><a href="#9-赋值运算符简略的表达方式" class="headerlink" title="9. 赋值运算符简略的表达方式"></a>9. 赋值运算符简略的表达方式</h4><p>通常，我们会在程序中处理大量的算术运算符。而对于JavaScript变量的赋值运算符来说，这是其中一个实用的技巧。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// Longhand</span><br><span class="line">testl = testl + l;</span><br><span class="line">test2 = test2 - 1;</span><br><span class="line">test3 = test3 *20;</span><br><span class="line"></span><br><span class="line">// Shorthand</span><br><span class="line">test1++;</span><br><span class="line">test2--;</span><br><span class="line">test3 *= 20;</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">√ Project name: ... Vue3_yarn</span><br><span class="line">√ Package name: ... vue3-yarn</span><br><span class="line">√ Select a framework: » vue</span><br><span class="line">√ Select a variant: » vue-ts</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd Vue3_yarn</span><br><span class="line">yarn</span><br><span class="line">yarn dev</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="新建项目"><a href="#新建项目" class="headerlink" title="新建项目"></a>新建项目</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn init</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">question name (yarn_test):</span><br><span class="line">question version (1.0.0):</span><br><span class="line">question description:</span><br><span class="line">question entry point (index.js):</span><br><span class="line">question repository url:</span><br><span class="line">question author:</span><br><span class="line">question license (MIT):</span><br><span class="line">question private:</span><br><span class="line">success Saved package.json</span><br></pre></td></tr></table></figure>
-
-<h4 id="添加依赖"><a href="#添加依赖" class="headerlink" title="添加依赖"></a><strong>添加依赖</strong></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yarn add [package]</span><br><span class="line">yarn add [package]@[version]</span><br><span class="line">yarn add [package]@[tag]</span><br></pre></td></tr></table></figure>
-
-<h3 id="将依赖项添加到不同的依赖类别中"><a href="#将依赖项添加到不同的依赖类别中" class="headerlink" title="将依赖项添加到不同的依赖类别中"></a>将依赖项添加到不同的依赖类别中</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yarn add [package] --dev  <span class="comment"># dev dependencies</span></span><br><span class="line">yarn add [package] --peer <span class="comment"># peer dependencies</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="更新依赖"><a href="#更新依赖" class="headerlink" title="更新依赖"></a><strong>更新依赖</strong></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yarn upgrade [package]</span><br><span class="line">yarn upgrade [package]@[version]</span><br><span class="line">yarn upgrade [package]@[tag]</span><br></pre></td></tr></table></figure>
-
-<h4 id="删除依赖"><a href="#删除依赖" class="headerlink" title="删除依赖"></a><strong>删除依赖</strong></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn remove [package]</span><br></pre></td></tr></table></figure>
-
-<h4 id="根据package-json文件为项目安装所有依赖"><a href="#根据package-json文件为项目安装所有依赖" class="headerlink" title="根据package.json文件为项目安装所有依赖"></a><strong>根据package.json文件为项目安装所有依赖</strong></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn</span><br></pre></td></tr></table></figure>
-
-<p>or</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn install</span><br></pre></td></tr></table></figure>
-
-<h4 id="更新-Yarn-本体"><a href="#更新-Yarn-本体" class="headerlink" title="更新 Yarn 本体"></a>更新 Yarn 本体</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yarn <span class="built_in">set</span> version latest</span><br><span class="line">yarn <span class="built_in">set</span> version from sources</span><br></pre></td></tr></table></figure>
-
-
+<h4 id="10-判断变量是否存在的缩写法"><a href="#10-判断变量是否存在的缩写法" class="headerlink" title="10. 判断变量是否存在的缩写法"></a>10. 判断变量是否存在的缩写法</h4>
       
     </div>
 
@@ -498,7 +545,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/12/Redux%E7%AC%94%E8%AE%B0/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/02/HTML5-%E7%AC%94%E8%AE%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -512,7 +559,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/04/12/Redux%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">Redux笔记</a>
+            <a href="/2021/09/02/HTML5-%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">HTML5-笔记</a>
         </h2>
 
         <div class="post-meta">
@@ -522,28 +569,15 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-04-12 14:24:57" itemprop="dateCreated datePublished" datetime="2021-04-12T14:24:57+08:00">2021-04-12</time>
+              <time title="创建时间：2021-09-02 14:55:04" itemprop="dateCreated datePublished" datetime="2021-09-02T14:55:04+08:00">2021-09-02</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-08-24 18:09:23" itemprop="dateModified" datetime="2022-08-24T18:09:23+08:00">2022-08-24</time>
+                <time title="修改时间：2022-09-17 11:21:49" itemprop="dateModified" datetime="2022-09-17T11:21:49+08:00">2022-09-17</time>
               </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Redux/" itemprop="url" rel="index"><span itemprop="name">Redux</span></a>
-                </span>
-            </span>
 
           
 
@@ -556,225 +590,483 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p><a target="_blank" rel="noopener" href="https://github.com/reduxjs">Redux-Github</a></p>
-<p><a target="_blank" rel="noopener" href="https://redux.js.org/">Redux-官网</a></p>
-<p><a target="_blank" rel="noopener" href="http://cn.redux.js.org/">Redux 中文官网</a></p>
-<p><a target="_blank" rel="noopener" href="https://react-redux.js.org/">React Redux</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.redux.org.cn/">Redux 中文文档</a></p>
-<p><a target="_blank" rel="noopener" href="https://redux-toolkit-cn.netlify.app/">Redux工具包-中文文档</a></p>
-<p><a target="_blank" rel="noopener" href="https://redux-toolkit.js.org/">Redux Toolkit</a></p>
-<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/103420294">七步搞定React Redux</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_57218747/article/details/118070930">React-Redux</a></p>
-<p><a target="_blank" rel="noopener" href="https://baijiahao.baidu.com/s?id=1707122824099613498&wfr=spider&for=pc">「HearLing」React学习之路-redux、react-redux</a></p>
-<p><a target="_blank" rel="noopener" href="http://cn.redux.js.org/introduction/learning-resources">学习资源</a></p>
-<p><a target="_blank" rel="noopener" href="https://github.com/reduxjs/redux.git">示例</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/9dcfa43d4e5a">Redux（基本用法）</a></p>
-<p><strong><a target="_blank" rel="noopener" href="https://github.com/reduxjs/rtk-convert-todos-example">使用Redux工具包的示例—-rtk-convert-todos-example</a></strong></p>
-<p>Redux 有很好的<a target="_blank" rel="noopener" href="https://link.jianshu.com/?t=http://redux.js.org/">文档</a>，还有配套的小视频（<a target="_blank" rel="noopener" href="https://link.jianshu.com/?t=https://egghead.io/courses/getting-started-with-redux">前30集</a>，<a target="_blank" rel="noopener" href="https://link.jianshu.com/?t=https://egghead.io/courses/building-react-applications-with-idiomatic-redux">后30集</a>）</p>
-<h4 id="createStore-reducer-preloadedState-enhancer"><a href="#createStore-reducer-preloadedState-enhancer" class="headerlink" title="createStore(reducer, [preloadedState], [enhancer])"></a><a target="_blank" rel="noopener" href="http://cn.redux.js.org/api/createstore">createStore(reducer, [preloadedState], [enhancer])</a></h4><p><code>reducer</code> <em>(Function)</em>: 接收两个参数，分别是当前的 state 树和要处理的 <a target="_blank" rel="noopener" href="http://cn.redux.js.org/understanding/thinking-in-redux/glossary#action">action</a>，返回新的 <a target="_blank" rel="noopener" href="http://cn.redux.js.org/understanding/thinking-in-redux/glossary#state">state 树</a></p>
-<p> Reducer 必须是<strong>纯函数</strong></p>
-<p><strong>不要在 reducer 中调用 API 接口请求</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">import &#123; createStore &#125; from &#x27;redux&#x27;</span><br><span class="line"></span><br><span class="line">function todos(state = [], action) &#123;</span><br><span class="line">  switch (action.type) &#123;</span><br><span class="line">    case &#x27;ADD_TODO&#x27;:</span><br><span class="line">      return state.concat([action.text])</span><br><span class="line">    default:</span><br><span class="line">      return state</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let store = createStore(todos, [&#x27;Use Redux&#x27;])</span><br><span class="line"></span><br><span class="line">store.dispatch(&#123;</span><br><span class="line">  type: &#x27;ADD_TODO&#x27;,</span><br><span class="line">  text: &#x27;Read the docs&#x27;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">console.log(store.getState())</span><br><span class="line">// [ &#x27;Use Redux&#x27;, &#x27;Read the docs&#x27; ]</span><br></pre></td></tr></table></figure>
-
-<h4 id="小贴士"><a href="#小贴士" class="headerlink" title="小贴士#"></a>小贴士<a target="_blank" rel="noopener" href="http://cn.redux.js.org/api/createstore#%E5%B0%8F%E8%B4%B4%E5%A3%AB">#</a></h4><ul>
-<li>应用中不要创建多个 store！相反，使用 <a target="_blank" rel="noopener" href="http://cn.redux.js.org/api/combinereducers"><code>combineReducers</code></a> 来把多个 reducer 创建成一个根 reducer。</li>
-<li>Redux state 通常是普通 JS 对象或者数组。</li>
-<li>如果 state 是普通对象，永远不要修改它！比如，reducer 里不要使用 <code>Object.assign(state, newData)</code>，应该使用 <code>Object.assign(&#123;&#125;, state, newData)</code>。这样才不会覆盖旧的 <code>state</code>。如果可以的话，也可以使用 <a target="_blank" rel="noopener" href="http://cn.redux.js.org/recipes/using-object-spread-operator">对象拓展操作符（object spread spread operator</a> 特性中的 <code>return &#123; ...state, ...newData &#125;</code>。</li>
-<li>对于服务端运行的同构应用，为每一个请求创建一个 store 实例，以此让 store 相隔离。dispatch 一系列请求数据的 action 到 store 实例上，等待请求完成后再在服务端渲染应用。</li>
-<li>当 store 创建后，Redux 会 dispatch 一个 action 到 reducer 上，来用初始的 state 来填充 store。你不需要处理这个 action。但要记住，如果第一个参数也就是传入的 state 是 <code>undefined</code> 的话，reducer 应该返回初始的 state 值。</li>
-<li>要使用多个 store 增强器的时候，你可能需要使用 <a target="_blank" rel="noopener" href="http://cn.redux.js.org/api/compose">compose</a></li>
+          <h4 id="HTML5新特性"><a href="#HTML5新特性" class="headerlink" title="HTML5新特性"></a>HTML5新特性</h4><ul>
+<li>拖放(Drag and drop ) API.</li>
+<li>语义化更好的内容标签 (header、nav、 footer、aside、article、 section )。</li>
+<li>音频、视频 (audio、 video) API</li>
+<li>画布( Canvas ) API.</li>
+<li>地理(Geolocation) API.</li>
+<li>本地离线存储（localStorage），即长期存储数据，浏览器关闭后数据不丢失。</li>
+<li>会会话存储(sessionStorage），即数据在浏览器关闲后自动删除。</li>
+<li>表单控件包括 calendar、date、time 、 email、url、 search</li>
+<li>新的技术包括 webworker、 websocket、Geolocation.</li>
 </ul>
-<h4 id="combineReducers-reducers"><a href="#combineReducers-reducers" class="headerlink" title="combineReducers(reducers)"></a><a target="_blank" rel="noopener" href="http://cn.redux.js.org/api/combinereducers/">combineReducers(reducers)</a></h4><p><code>combineReducers</code> 辅助函数的作用是，把一个由多个不同 reducer 函数作为 value 的 object，合并成一个最终的 reducer 函数，然后就可以对这个 reducer 调用 <a target="_blank" rel="noopener" href="http://cn.redux.js.org/api/createstore"><code>createStore</code></a> 方</p>
-<h5 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h5><p><code>reducers/todos.js</code></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">export default function todos(state = [], action) &#123;</span><br><span class="line">  switch (action.type) &#123;</span><br><span class="line">    case &#x27;ADD_TODO&#x27;:</span><br><span class="line">      return state.concat([action.text])</span><br><span class="line">    default:</span><br><span class="line">      return state</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><code>reducers/counter.js</code></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">export default function counter(state = 0, action) &#123;</span><br><span class="line">  switch (action.type) &#123;</span><br><span class="line">    case &#x27;INCREMENT&#x27;:</span><br><span class="line">      return state + 1</span><br><span class="line">    case &#x27;DECREMENT&#x27;:</span><br><span class="line">      return state - 1</span><br><span class="line">    default:</span><br><span class="line">      return state</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><code>reducers/index.js</code></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import &#123; combineReducers &#125; from &#x27;redux&#x27;</span><br><span class="line">import todos from &#x27;./todos&#x27;</span><br><span class="line">import counter from &#x27;./counter&#x27;</span><br><span class="line"></span><br><span class="line">export default combineReducers(&#123;</span><br><span class="line">  todos,</span><br><span class="line">  counter</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<p><code>App.js</code></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">import &#123; createStore &#125; from &#x27;redux&#x27;</span><br><span class="line">import reducer from &#x27;./reducers/index&#x27;</span><br><span class="line"></span><br><span class="line">let store = createStore(reducer)</span><br><span class="line">console.log(store.getState())</span><br><span class="line">// &#123;</span><br><span class="line">//   counter: 0,</span><br><span class="line">//   todos: []</span><br><span class="line">// &#125;</span><br><span class="line"></span><br><span class="line">store.dispatch(&#123;</span><br><span class="line">  type: &#x27;ADD_TODO&#x27;,</span><br><span class="line">  text: &#x27;Use Redux&#x27;</span><br><span class="line">&#125;)</span><br><span class="line">console.log(store.getState())</span><br><span class="line">// &#123;</span><br><span class="line">//   counter: 0,</span><br><span class="line">//   todos: [ &#x27;Use Redux&#x27; ]</span><br><span class="line">// &#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="Store"><a href="#Store" class="headerlink" title="Store"></a><a target="_blank" rel="noopener" href="http://cn.redux.js.org/api/store/#store-%E6%96%B9%E6%B3%95">Store</a></h4><h4 id="Store-1"><a href="#Store-1" class="headerlink" title="Store"></a><a target="_blank" rel="noopener" href="http://cn.redux.js.org/tutorials/essentials/part-1-overview-concepts#store">Store</a></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import &#123; configureStore &#125; from &#x27;@reduxjs/toolkit&#x27;</span><br><span class="line"></span><br><span class="line">const store = configureStore(&#123; reducer: counterReducer &#125;)</span><br><span class="line"></span><br><span class="line">console.log(store.getState())</span><br><span class="line">// &#123;value: 0&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<h4 id="Action"><a href="#Action" class="headerlink" title="Action"></a>Action</h4><p>Action 是把数据传入 store 的惟一途径，所以任何数据，无论来自 UI 事件，网络回调或者是其它资源如 WebSockets，最终都应该以 action 的形式被 dispatch</p>
-<p><a target="_blank" rel="noopener" href="http://cn.redux.js.org/tutorials/essentials/part-1-overview-concepts#action"><strong>action</strong></a> 是一个具有 <code>type</code> 字段的普通 JavaScript 对象。<strong>你可以将 action 视为描述应用程序中发生了什么的事件</strong>.</p>
-<p><code>type</code> 字段是一个字符串，给这个 action 一个描述性的名字，比如<code>&quot;todos/todoAdded&quot;</code>。我们通常把那个类型的字符串写成“域/事件名称”，其中第一部分是这个 action 所属的特征或类别，第二部分是发生的具体事情。</p>
-<p>action 对象可以有其他字段，其中包含有关发生的事情的附加信息。按照惯例，我们将该信息放在名为 <code>payload</code> 的字段中。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const addTodoAction = &#123;</span><br><span class="line">  type: &#x27;todos/todoAdded&#x27;,</span><br><span class="line">  payload: &#x27;Buy milk&#x27;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><a target="_blank" rel="noopener" href="http://cn.redux.js.org/tutorials/essentials/part-1-overview-concepts#action-creator"><strong>action creator</strong></a> 是一个创建并返回一个 action 对象的函数。它的作用是让你不必每次都手动编写 action 对象：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const addTodo = text =&gt; &#123;</span><br><span class="line">  return &#123;</span><br><span class="line">    type: &#x27;todos/todoAdded&#x27;,</span><br><span class="line">    payload: text</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="Reducer"><a href="#Reducer" class="headerlink" title="Reducer"></a><a target="_blank" rel="noopener" href="http://cn.redux.js.org/tutorials/essentials/part-1-overview-concepts#reducer">Reducer</a></h4><p><strong>reducer</strong> 是一个函数，接收当前的 <code>state</code> 和一个 <code>action</code> 对象，必要时决定如何更新状态，并返回新状态。函数签名是：<code>(state, action) =&gt; newState</code>。 <strong>你可以将 reducer 视为一个事件监听器，它根据接收到的 action（事件）类型处理事件。</strong></p>
+<h4 id="HTML5-新增的API"><a href="#HTML5-新增的API" class="headerlink" title="HTML5 新增的API"></a>HTML5 新增的API</h4><p>新增的功能 API 包括 Media API、Text Track API、 Application Cache API、 User Interaction、Data Transfer API、 Command API.、Constraint Validation API、History API.</p>
+<h4 id="HTML5移除元素"><a href="#HTML5移除元素" class="headerlink" title="HTML5移除元素"></a>HTML5移除元素</h4><p>移除的元素如下：</p>
 <ul>
-<li>禁止任何异步逻辑、依赖随机值或导致其他“副作用”的代码</li>
+<li>纯表现的元素，包括 basefont、big、center、 font、 s、 strike、tt、 u</li>
+<li>对可用性产生负面影响的元素，包括 frame、frameset、 Noframes</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">const initialState = &#123; value: 0 &#125;</span><br><span class="line"></span><br><span class="line">function counterReducer(state = initialState, action) &#123;</span><br><span class="line">  // 检查 reducer 是否关心这个 action</span><br><span class="line">  if (action.type === &#x27;counter/increment&#x27;) &#123;</span><br><span class="line">    // 如果是，复制 `state`</span><br><span class="line">    return &#123;</span><br><span class="line">      ...state,</span><br><span class="line">      // 使用新值更新 state 副本</span><br><span class="line">      value: state.value + 1</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  // 返回原来的 state 不变</span><br><span class="line">  return state</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="Dispatch"><a href="#Dispatch" class="headerlink" title="Dispatch"></a><a target="_blank" rel="noopener" href="http://cn.redux.js.org/tutorials/essentials/part-1-overview-concepts#dispatch">Dispatch</a></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">store.dispatch(&#123; type: &#x27;counter/increment&#x27; &#125;)</span><br><span class="line"></span><br><span class="line">console.log(store.getState())</span><br></pre></td></tr></table></figure>
-
-<p>我们通常调用 action creator 来调用 action：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">const increment = () =&gt; &#123;</span><br><span class="line">  return &#123;</span><br><span class="line">    type: &#x27;counter/increment&#x27;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">store.dispatch(increment())</span><br><span class="line"></span><br><span class="line">console.log(store.getState())</span><br><span class="line">// &#123;value: 2&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="Redux-数据流"><a href="#Redux-数据流" class="headerlink" title="Redux 数据流"></a><a target="_blank" rel="noopener" href="http://cn.redux.js.org/tutorials/essentials/part-1-overview-concepts#redux-%E6%95%B0%E6%8D%AE%E6%B5%81">Redux 数据流</a></h3><p>初始启动：</p>
-<ul>
-<li>使用最顶层的 root reducer 函数创建 Redux store</li>
+<h4 id="新的HTML5-文档类型和字符集"><a href="#新的HTML5-文档类型和字符集" class="headerlink" title="新的HTML5 文档类型和字符集"></a>新的HTML5 文档类型和字符集</h4><p>HTML5文档类型是<code>&lt;!doctype html&gt;</code><br>HTML5 使用的宇符集<code>&lt;meta charset=&quot;UTF-8&quot;&gt;</code></p>
+<h4 id="HTML5-的离线存储"><a href="#HTML5-的离线存储" class="headerlink" title="HTML5 的离线存储"></a>HTML5 的离线存储</h4><ul>
+<li>localStorage，可长期存储数据，即浏览器关闭后数据不丢失。</li>
+<li>sessionStorage，数据在浏览器关闭后自动删除。</li>
 </ul>
-<p><img src="http://cn.redux.js.org/assets/images/ReduxDataFlowDiagram-49fa8c3968371d9ef6f2a1486bd40a26.gif" alt="动画的方式来表达数据流更新"></p>
-<h4 id="异步处理"><a href="#异步处理" class="headerlink" title="异步处理"></a>异步处理</h4><p><img src="https://redux.js.org/assets/images/ReduxAsyncDataFlowDiagram-d97ff38a0f4da0f327163170ccc13e80.gif" alt="异步"></p>
-<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><ul>
-<li>Redux 是一个管理全局应用状态的库<ul>
-<li>Redux 通常与 React-Redux 库一起使用，把 Redux 和 React 集成在一起</li>
-<li>Redux Toolkit 是编写 Redux 逻辑的推荐方式</li>
-</ul>
-</li>
-<li>Redux 使用 “单向数据流”<ul>
-<li>State 描述了应用程序在某个时间点的状态，UI 基于该状态渲染</li>
-<li>当应用程序中发生某些事情时：<ul>
-<li>UI dispatch 一个 action</li>
-<li>store 调用 reducer，随后根据发生的事情来更新 state</li>
-<li>store 通知 UI state 发生了变化</li>
-</ul>
-</li>
-<li>UI 基于新 state 重新渲染</li>
-</ul>
-</li>
-<li>Redux 有这几种类型的代码<ul>
-<li><em>Action</em> 是有 <code>type</code> 字段的纯对象，描述发生了什么</li>
-<li><em>Reducer</em> 是纯函数，基于先前的 state 和 action 来计算新的 state</li>
-<li>每当 dispatch 一个 action 后，<em>store</em> 就会调用 root reducer</li>
-</ul>
-</li>
-</ul>
-<h4 id="applyMiddleware-…middleware"><a href="#applyMiddleware-…middleware" class="headerlink" title="applyMiddleware(…middleware)"></a><a target="_blank" rel="noopener" href="http://cn.redux.js.org/api/applymiddleware/">applyMiddleware(…middleware)</a></h4><p><a target="_blank" rel="noopener" href="https://github.com/reduxjs/redux-thunk">redux-thunk</a></p>
-<p><a target="_blank" rel="noopener" href="https://redux.js.org/usage/writing-logic-thunks">Writing Logic with Thunks</a></p>
-<p>Middleware 是一个组合 <a target="_blank" rel="noopener" href="http://cn.redux.js.org/understanding/thinking-in-redux/glossary/#dispatching-function">dispatch 函数</a> 的高阶函数，返回一个新的 dispatch 函数，通常将<a target="_blank" rel="noopener" href="http://cn.redux.js.org/understanding/thinking-in-redux/glossary/#%E5%BC%82%E6%AD%A5-action">异步 action</a> 转换成 action</p>
-<h3 id="subscribe-listener"><a href="#subscribe-listener" class="headerlink" title="subscribe(listener)"></a><a target="_blank" rel="noopener" href="http://cn.redux.js.org/api/store#subscribelistener">subscribe(listener)</a></h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_40119412/article/details/120811920">Redux学习篇:关于store.subscribe()监听方法与取消监听的认识</a></p>
-<blockquote>
-<p>Store 允许使用store.subscribe方法设置<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E7%9B%91%E5%90%AC&spm=1001.2101.3001.7020">监听</a>函数，一旦 State 发生变化，就自动执行这个函数。</p>
-<p>store.subscribe方法返回一个函数，调用这个函数就可以解除监听</p>
+<h4 id="HTML5-的form关闭自动补全功能"><a href="#HTML5-的form关闭自动补全功能" class="headerlink" title="HTML5 的form关闭自动补全功能"></a>HTML5 的form关闭自动补全功能</h4><p>将不想要提示的form 元素下的 input 元素的autocomplete 属性设置为off.</p>
+<h4 id="HTML5-页面中嵌入音频"><a href="#HTML5-页面中嵌入音频" class="headerlink" title="HTML5 页面中嵌入音频"></a>HTML5 页面中嵌入音频</h4><blockquote>
+<p>支持的格式包括 MP3、 Wav 和Ogg等</p>
 </blockquote>
-<h2 id="计数器示例应用程序"><a href="#计数器示例应用程序" class="headerlink" title="计数器示例应用程序"></a>计数器示例应用程序</h2><p>本项目使用 <a target="_blank" rel="noopener" href="https://github.com/reduxjs/cra-template-redux">Create-React-App 的官方 Redux 模板</a> 创建。开箱即用，它已经配置了标准的 Redux 应用程序结构，使用 <a target="_blank" rel="noopener" href="https://redux-toolkit.js.org/">Redux Toolkit</a> 创建 Redux 存储和逻辑，以及 <a target="_blank" rel="noopener" href="https://react-redux.js.org/">React-Redux</a> 将 Redux 存储和 React 组件连接在一起。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx create-react-app redux-essentials-example --template redux</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;audio controls&gt;</span><br><span class="line">  &lt;source sr=&quot;icketang.mp3&quot; type=&quot;audio/mpeg&quot;&gt;</span><br><span class="line">  Your browser does&#x27;nt support audio embedding feature</span><br><span class="line">&lt;/audio&gt;</span><br></pre></td></tr></table></figure>
 
-<h4 id="react-redux"><a href="#react-redux" class="headerlink" title="react-redux"></a>react-redux</h4><p><strong><a target="_blank" rel="noopener" href="https://baijiahao.baidu.com/s?id=1707122824099613498&wfr=spider&for=pc">react-redux</a>发布了新的版本，与之前的contextAPI分离，提供对hooks的支持，那这不就更香了新的redux带来的改变</strong></p>
+<h4 id="HTML5-页面中嵌入视频"><a href="#HTML5-页面中嵌入视频" class="headerlink" title="HTML5 页面中嵌入视频"></a>HTML5 页面中嵌入视频</h4><blockquote>
+<p>支持的格式包括MP4、 WebM和Ogg 等</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;video width=&quot;450&quot; height=&quot;340&quot; controls&gt;</span><br><span class="line">  &lt;source src=&quot;icketang.mp4&quot; type=&quot;video/mp4&quot;&gt;</span><br><span class="line">  Your browser does&#x27;nt support video embedding feature.</span><br><span class="line">&lt;/video&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="HTML5-引入新的表单属性"><a href="#HTML5-引入新的表单属性" class="headerlink" title="HTML5 引入新的表单属性"></a>HTML5 引入新的表单属性</h4><p>datalist、datetime、output、keygen、date、month、week、time、number、 range、 emailurl.</p>
+<h4 id="HTML5-应用缓存和常规的-HTML-浏览器缓存的差别"><a href="#HTML5-应用缓存和常规的-HTML-浏览器缓存的差别" class="headerlink" title="HTML5 应用缓存和常规的 HTML 浏览器缓存的差别"></a>HTML5 应用缓存和常规的 HTML 浏览器缓存的差别</h4><p>HTML5应用缓存最关键的就是支持离线应用，可荻取少数或者全部网站内容包括 HTTML、CSS、图像和 JavaScript 脚本 并存在本地。该特性提升了网站的性能，可通过如下方式实现</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;!doctype html&gt;</span><br><span class="line">  &lt;html manifest=&quot;example.appcache&quot;&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>与传统的浏览器缓存比较，该特性并不强制要求用户访问网站</p>
+</blockquote>
+<blockquote>
+<p>HTML5 没有使用 SGML 或者 XHTML，它是一个全新的类型，因此不需要参考DTD。对于HTML5，仅须放置下面的文档类型代码，让浏览器识别HTML5 文档。<br>如果不放入＜！doctype html&gt;标签，HITML5 不会工作。浏览器将不能识别出它是HTML文档，同时HTMLS 的标签将不能正常工作。</p>
+</blockquote>
+<h4 id="WebSocket"><a href="#WebSocket" class="headerlink" title="WebSocket"></a>WebSocket</h4><p>它是 Web 应用程序的传输协议，提供了双向的、按序到达的数据流。它是HTML5新增的协议，webSocket 的连接是持久的，它在客户端和服务器之间保特双工连接，服务器的更新可以及时推送到客户端，而不需要客户端以一定的时间间隔去轮询</p>
+<h4 id="实现浏览器内多个标签页之间的通信"><a href="#实现浏览器内多个标签页之间的通信" class="headerlink" title="实现浏览器内多个标签页之间的通信"></a>实现浏览器内多个标签页之间的通信</h4><p>在标签页之间，调用 localstorge、cookies 等数据存储，可以实现标签页之问的通信</p>
+<h4 id="localStorage-和cookie-的区别"><a href="#localStorage-和cookie-的区别" class="headerlink" title="localStorage 和cookie 的区别"></a>localStorage 和cookie 的区别</h4><p>​        localStorage 的概念和 cookie 相似，区别是 localStorage 是为了更大容量的存储设计的。cookie 的大小是受限的，并且每次请求一个新页面时，cookie 都会被发送过去，这样无形中浪费了带宽。另外，cookie 还需要指定作用域，不可以跨域调用。<br>​        除此之外，localStorage 拥有 setltem、getltem、removeltem、clear 等方法，cookie 则需要前端开发者自己封装 setCookie 和getcookie。但cookie 也是不可或缺的，因为 cookie的作用是与服务器进行交互，并且还是 HTTP 规范的一部分，而localStorage 仅因为是为了在本地“存储”数据而已，无法跨浏览器使用。</p>
+<h4 id="cookie-的特点"><a href="#cookie-的特点" class="headerlink" title="cookie 的特点"></a>cookie 的特点</h4><p>cookie 虽然为持久保存客户湍数据提供了方便，分担了服务器存储的负担，但是有以下局限性。</p>
 <ol>
-<li><strong>「不再需要使用」</strong>mapStateToProps，mapDispatchToProps和connect来维护单独的container组件和UI组件，而是在组件中直接使用redux提供的hooks,读取redux中的state。</li>
-<li>可以将任何现有的自定义<strong>「hooks与redux集成」</strong>，而不是将通过hooks创建的state，作为参数传递给其他hooks</li>
+<li>每个特定的域名下最多生成20个 cookie。</li>
+<li>IE6 或更低版本最多有20个cookie。</li>
+<li>I7和之后的版本最多可以有50个 cookie.</li>
+<li> Firefox 最多可以有50个cookie。</li>
+<li>Chrome 和 Safari 没有做硬性限制。</li>
 </ol>
-<ul>
-<li><p><strong>「useSelector：」</strong> 用于从Redux存储的state中提取值并订阅该state。</p>
-</li>
-<li><p><strong>「useDispatch：」</strong> 除了读取store中的state，还能dispatch actions更新store中的state。</p>
-</li>
-<li><p><strong>「useStore：」</strong> 用于获取创建的store实例</p>
-</li>
-</ul>
-<h4 id="useSelector"><a href="#useSelector" class="headerlink" title="useSelector"></a><a target="_blank" rel="noopener" href="http://cn.redux.js.org/tutorials/fundamentals/part-5-ui-react/#reading-state-from-the-store-with-useselector">useSelector</a></h4><p><span style="color:red">使用useSelector、useDispatch等HooksApi替代connect，减少模板代码。</span></p>
-<p><code>useSelector</code> accepts a single function, which we call a <strong>selector</strong> function. <strong>A selector is a function that takes the entire Redux store state as its argument, reads some value from the state, and returns that result</strong>.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const selectTodos = state =&gt; state.todos</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const selectTotalCompletedTodos = state =&gt; &#123;</span><br><span class="line">  const completedTodos = state.todos.filter(todo =&gt; todo.completed)</span><br><span class="line">  return completedTodos.length</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">import React from &#x27;react&#x27;</span><br><span class="line">import &#123; useSelector &#125; from &#x27;react-redux&#x27;</span><br><span class="line">import TodoListItem from &#x27;./TodoListItem&#x27;</span><br><span class="line"></span><br><span class="line">const selectTodos = state =&gt; state.todos</span><br><span class="line"></span><br><span class="line">const TodoList = () =&gt; &#123;</span><br><span class="line">  const todos = useSelector(selectTodos)</span><br><span class="line"></span><br><span class="line">  // since `todos` is an array, we can loop over it</span><br><span class="line">  const renderedListItems = todos.map(todo =&gt; &#123;</span><br><span class="line">    return &lt;TodoListItem key=&#123;todo.id&#125; todo=&#123;todo&#125; /&gt;</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  return &lt;ul className=&quot;todo-list&quot;&gt;&#123;renderedListItems&#125;&lt;/ul&gt;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export default TodoList</span><br></pre></td></tr></table></figure>
-
+<p>IE和Opera 会清理近期最少使用的cookie， Firefox 会随机清理 cookie.<br>cookie 最大为 4096字节，为了兼容性，一般不能超过 4095 字节。<br>IE提供了一种存储方式，可以让用户数据持久化，叫作userdata，从IE5.0 就开始支持此功能。每块数据最多 128KB，每个域名下最多1MB。这个持久化数据放在缓存中，如果果缓存没有被清理，就会一直存在。<br>优点如下：</p>
+<ol>
+<li>通过良好的编程，控制保存在cookie 中的 session 对象的大小</li>
+<li>通过加密和安全传输技术（SSL)，降低cookie被破解的可能性。</li>
+<li>只在cookie 中存放不敏感数据，即使被盗也不会有重大损失。</li>
+<li>控制cookie 的生命周期，使之不会永远有效。数据偷盗者很可能得到一个过期的cookie.</li>
+</ol>
+<p>缺点如下：</p>
+<ol>
+<li>scookie” 的数量和长度有限制。每个domain 最多只能有20条cookie，每个cookie 的长度不能超过 4KB，否则会被截掉。</li>
+<li>安全性问题。如果cookie 被别人拦截了，就可以取得所有的session 信息。即使加密也于事无补，因为拦截者并不需要知道cookie 的意义，他只要原样转发 cookie就可以达到目的。</li>
+<li>有些状态不可能保存在客产端。例如，为了防止重复提交表单，我们需要在服务器端保存一个计数器。如果把这个计数器保存在客户端，那么它起不到任何作用。</li>
+</ol>
+<h4 id="cookie-和session-的区别"><a href="#cookie-和session-的区别" class="headerlink" title="cookie 和session 的区别"></a>cookie 和session 的区别</h4><ol>
+<li>cookie 数据存放在客户的浏览器上，session 数据存放在服务器上。</li>
+<li>cookie 不是很安全，别人可以分析存放在本地的cookie 并进行 cookie 欺骗。考虑到安全问题应当使用 session。</li>
+<li>session 会在一定时问内保存在服务器上。当访问增多时，会占用较多服务器的资源。为了减轻服务器的负担，应当使用 cookie。</li>
+<li>单个cookie 保存的数据不能超过 4KB，很多浏览器都限制一个站,点最多保存20 个cookie.</li>
+</ol>
 <blockquote>
-<p>useSelector 自动为我们订阅了 Redux 存储！ 这样，任何时候分派一个动作，它都会立即再次调用它的选择器函数。 如果选择器返回的值与上次运行时相比发生了变化，useSelector 将强制我们的组件使用新数据重新渲染。 我们所要做的就是在我们的组件中调用 useSelector() 一次，它会为我们完成剩下的工作</p>
+<p>建议可以将登录信息等重要信息存放在session 中，其他信息（如果需要保留）可以存放在cookie 中</p>
 </blockquote>
-<p>还值得注意的是，我们不必将选择器函数编写为单独的变量。您可以直接在 useSelector 调用中编写选择器函数</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const todos = useSelector(state =&gt; state.todos)</span><br></pre></td></tr></table></figure>
+<h4 id="SVG"><a href="#SVG" class="headerlink" title="SVG"></a>SVG</h4><p>SVG即可缩放矢量因形(Scalable Vector Graphics )。它是基于文本的图形语言，使用文本、线条、点等来绘制图像，这使得它轻便、显示迅速</p>
+<h4 id="Canvas-和-SVG-的区别"><a href="#Canvas-和-SVG-的区别" class="headerlink" title="Canvas 和 SVG 的区别"></a>Canvas 和 SVG 的区别</h4><ol>
+<li>一旦 Canvas 绘制完成将不能访问像素或操作它；任何使用SVG绘制的形状都能被记忆和操作，可以被浏览器再次显示。</li>
+<li>Canvas 对绘制动画和游戏非常有利；SVG对创建图形（如CAD）非常有利</li>
+<li>因为不需要记住以后事情，所以 Canvas 运行更快；因为为了之后的操作，SVG需要记录坐标，所以运行比较缓慢。</li>
+<li>在Canvas 中不能为绘制对象邬定相关事件；在SVG 中可以为绘制对象绑定相关事件</li>
+<li>Canvas绘制出的是位图，因此与分辨率有关；SVG绘制出的是矢量图，因此与分辨率无关。</li>
+</ol>
+<h4 id="HTML5-中实现应用缓存"><a href="#HTML5-中实现应用缓存" class="headerlink" title="HTML5 中实现应用缓存"></a>HTML5 中实现应用缓存</h4><p>首先，需要指定”manifest” 文件，“manifest”文件帮助你定义缓存如何工作。</p>
+<p>“manifest”文件的结构：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">CACHE MANIFEST</span><br><span class="line"># version 1.0</span><br><span class="line">/demo.css</span><br><span class="line">/demo.js</span><br><span class="line">/demo.png</span><br><span class="line">所有manifest 文件都以&quot;CACHE MANIFEST&quot;语句开始。</span><br><span class="line">＃(散列标签）有助于提供缓存文件的版本。</span><br><span class="line">manifest 文件的内容类型应是&quot;text/cache-manifest&quot;</span><br></pre></td></tr></table></figure>
 
-<h4 id="useDispatch"><a href="#useDispatch" class="headerlink" title="useDispatch"></a><a target="_blank" rel="noopener" href="http://cn.redux.js.org/tutorials/fundamentals/part-5-ui-react/#dispatching-actions-with-usedispatch">useDispatch</a></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123; useState &#125; from &#x27;react&#x27;</span><br><span class="line">import &#123; useDispatch &#125; from &#x27;react-redux&#x27;</span><br><span class="line"></span><br><span class="line">const Header = () =&gt; &#123;</span><br><span class="line">  const [text, setText] = useState(&#x27;&#x27;)</span><br><span class="line">  const dispatch = useDispatch()</span><br><span class="line"></span><br><span class="line">  const handleChange = e =&gt; setText(e.target.value)</span><br><span class="line"></span><br><span class="line">  const handleKeyDown = e =&gt; &#123;</span><br><span class="line">    const trimmedText = e.target.value.trim()</span><br><span class="line">    // If the user pressed the Enter key:</span><br><span class="line">    if (e.key === &#x27;Enter&#x27; &amp;&amp; trimmedText) &#123;</span><br><span class="line">      // Dispatch the &quot;todo added&quot; action with this text</span><br><span class="line">      dispatch(&#123; type: &#x27;todos/todoAdded&#x27;, payload: trimmedText &#125;)</span><br><span class="line">      // And clear out the text input</span><br><span class="line">      setText(&#x27;&#x27;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  return (</span><br><span class="line">    &lt;input</span><br><span class="line">      type=&quot;text&quot;</span><br><span class="line">      placeholder=&quot;What needs to be done?&quot;</span><br><span class="line">      autoFocus=&#123;true&#125;</span><br><span class="line">      value=&#123;text&#125;</span><br><span class="line">      onChange=&#123;handleChange&#125;</span><br><span class="line">      onKeyDown=&#123;handleKeyDown&#125;</span><br><span class="line">    /&gt;</span><br><span class="line">  )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export default Header</span><br></pre></td></tr></table></figure>
+<p>创建一个缓存manifest 文件后，在HTML 页面中提供manifest 链接，代码如下所示。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;html manifest=&quot;icketang.appcache&quot;&gt;</span><br></pre></td></tr></table></figure>
 
-<p>hook 是一个 JS 函数，所以它不能自动从 store.js 中自动导入 store</p>
-<p>We do this by <strong>rendering a <code>&lt;Provider&gt;</code> component around our entire <code>&lt;App&gt;</code>, and passing the Redux store as a prop to <code>&lt;Provider&gt;</code></strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">import React from &#x27;react&#x27;</span><br><span class="line">import ReactDOM from &#x27;react-dom&#x27;</span><br><span class="line">import &#123; Provider &#125; from &#x27;react-redux&#x27;</span><br><span class="line"></span><br><span class="line">import App from &#x27;./App&#x27;</span><br><span class="line">import store from &#x27;./store&#x27;</span><br><span class="line"></span><br><span class="line">ReactDOM.render(</span><br><span class="line">  // Render a `&lt;Provider&gt;` around the entire `&lt;App&gt;`,</span><br><span class="line">  // and pass the Redux store to as a prop</span><br><span class="line">  &lt;React.StrictMode&gt;</span><br><span class="line">    &lt;Provider store=&#123;store&#125;&gt;</span><br><span class="line">      &lt;App /&gt;</span><br><span class="line">    &lt;/Provider&gt;</span><br><span class="line">  &lt;/React.StrictMode&gt;,</span><br><span class="line">  document.getElementById(&#x27;root&#x27;)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>第一次运行以上文件时，它会添加到浏览器应用缓存中，在服务器宕机时，页面从应用缓存中获取数据</p>
+<h4 id="刷新浏览器的应用缓存"><a href="#刷新浏览器的应用缓存" class="headerlink" title="刷新浏览器的应用缓存"></a>刷新浏览器的应用缓存</h4><p>应用缓存通过变更“#”标签后的版本号来刷新，如下所示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">CACHE MANIFEST</span><br><span class="line"># version 2.0</span><br><span class="line">/icketang.css</span><br><span class="line">/icketang. js</span><br><span class="line">/icketang.png</span><br><span class="line">NETWORK</span><br><span class="line">login.php</span><br></pre></td></tr></table></figure>
 
-<p>React-Redux 与 React 结合使用的关键部分：</p>
-<ul>
-<li>Call the <code>useSelector</code> hook to read data in React components</li>
-<li>Call the <code>useDispatch</code> hook to dispatch actions in React components</li>
-<li>Put <code>&lt;Provider store=&#123;store&#125;&gt;</code> around your entire <code>&lt;App&gt;</code> component so that other components can talk to the store</li>
-</ul>
-<h3 id="Global-State-Component-State-and-Forms"><a href="#Global-State-Component-State-and-Forms" class="headerlink" title="Global State, Component State, and Forms"></a>Global State, Component State, and Forms</h3><p><a target="_blank" rel="noopener" href="http://cn.redux.js.org/tutorials/fundamentals/part-5-ui-react/#react-redux-patterns">在 React + Redux 应用程序中，你的全局状态应该放在 Redux 存储中，而你的本地状态应该留在 React 组件中</a>：</p>
-<ul>
-<li>Do other parts of the application care about this data?</li>
-<li>Do you need to be able to create further derived data based on this original data?</li>
-<li>Is the same data being used to drive multiple components?</li>
-<li>Is there value to you in being able to restore this state to a given point in time (ie, time travel debugging)?</li>
-<li>Do you want to cache the data (ie, use what’s in state if it’s already there instead of re-requesting it)?</li>
-<li>Do you want to keep this data consistent while hot-reloading UI components (which may lose their internal state when swapped)?</li>
-</ul>
-<p><strong>Most form state probably shouldn’t be kept in Redux</strong></p>
-<h3 id="Using-Multiple-Selectors-in-a-Component"><a href="#Using-Multiple-Selectors-in-a-Component" class="headerlink" title="Using Multiple Selectors in a Component"></a><a target="_blank" rel="noopener" href="http://cn.redux.js.org/tutorials/fundamentals/part-5-ui-react/#using-multiple-selectors-in-a-component">Using Multiple Selectors in a Component</a></h3><p><strong>We can call <code>useSelector</code> multiple times within one component</strong>. In fact, this is actually a good idea - <strong>each call to <code>useSelector</code> should always return the smallest amount of state possible</strong></p>
-<h3 id="Redux-Toolkit"><a href="#Redux-Toolkit" class="headerlink" title="Redux Toolkit"></a><a target="_blank" rel="noopener" href="https://redux-toolkit.js.org/"><strong>Redux Toolkit</strong></a></h3><h4 id="Redux-Toolkit-是什么？"><a href="#Redux-Toolkit-是什么？" class="headerlink" title="Redux Toolkit 是什么？"></a><a target="_blank" rel="noopener" href="http://cn.redux.js.org/redux-toolkit/overview/#redux-toolkit-%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F">Redux Toolkit 是什么？</a></h4><blockquote>
-<p>简化最常见场景下的 Redux 开发，包括配置 store、定义 reducer，不可变的更新逻辑、甚至可以立即创建整个状态的 “切片 slice”，而无需手动编写任何 action creator 或者 action type。它还包括使用最广泛的 Redux 插件，例如 Redux Thunk 用于异步逻辑，而 Reselect 用于编写选择器 selector 函数，因此你可以立即使用它们。</p>
+<h4 id="应用缓存中的回退"><a href="#应用缓存中的回退" class="headerlink" title="应用缓存中的回退"></a>应用缓存中的回退</h4><p>应用缓存中的回退会帮助你指定在服务器不可访问时，品示某文件。例如在下面的manifest 文件中，如果用户输入了“/home”，同时服务器不可到达，“404.html”文件应送达</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">FAIIBACK:</span><br><span class="line">/home/ /404. html</span><br></pre></td></tr></table></figure>
+
+<h4 id="应用缓存中网络命令的作用"><a href="#应用缓存中网络命令的作用" class="headerlink" title="应用缓存中网络命令的作用"></a>应用缓存中网络命令的作用</h4><p>网络命令描述不需要缓存的文件，例如以下代码中”login.php”始终都不应该缓存或者离线访问。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NEIWORK:</span><br><span class="line">login.php</span><br></pre></td></tr></table></figure>
+
+<h4 id="WebSql"><a href="#WebSql" class="headerlink" title="WebSql"></a>WebSql</h4><p>Websql 是一个在浏览器客户端的结构关系数据库，是浏览器内的本地 RDBMS（关系型数据库管理系统），可以使用SQL 查询。</p>
+<blockquote>
+<p>websql 不是HTML5 的一个规范，这个规范是基于 SOLite</p>
 </blockquote>
-<h4 id="createSlice"><a href="#createSlice" class="headerlink" title="createSlice"></a><a target="_blank" rel="noopener" href="https://redux-toolkit.js.org/api/createSlice">createSlice</a></h4><p>接受一组化 reducer 函数，一个 slice 切片名和初始状态 initial state，并自动生成具有相应 action creator 和 action type 的 slice reducer</p>
-<h5 id="nanoid"><a href="#nanoid" class="headerlink" title="nanoid"></a>nanoid</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import &#123; nanoid &#125; from &#x27;@reduxjs/toolkit&#x27;</span><br><span class="line"></span><br><span class="line">const id = nanoid()</span><br></pre></td></tr></table></figure>
-
-<p><code>createSlice</code> will return an object that looks like：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    name : string,</span><br><span class="line">    reducer : ReducerFunction,</span><br><span class="line">    actions : Record&lt;string, ActionCreator&gt;,</span><br><span class="line">    caseReducers: Record&lt;string, CaseReducer&gt;.</span><br><span class="line">    getInitialState: () =&gt; State</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  name: &quot;todos&quot;,</span><br><span class="line">  reducer: (state, action) =&gt; newState,</span><br><span class="line">  actions: &#123;</span><br><span class="line">    addTodo: (payload) =&gt; (&#123;type: &quot;todos/addTodo&quot;, payload&#125;),</span><br><span class="line">    toggleTodo: (payload) =&gt; (&#123;type: &quot;todos/toggleTodo&quot;, payload&#125;)</span><br><span class="line">  &#125;,</span><br><span class="line">  caseReducers: &#123;</span><br><span class="line">    addTodo: (state, action) =&gt; newState,</span><br><span class="line">    toggleTodo: (state, action) =&gt; newState,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="HTML5-实现跨域"><a href="#HTML5-实现跨域" class="headerlink" title="HTML5 实现跨域"></a>HTML5 实现跨域</h4><p>在服务器端设置允许在其他域名下访问，例如允许所有域名访问以下内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">response.setHeader(&quot;Access-Control-Allow-Origin&quot;,</span><br><span class="line">response.setHeader(&quot;Access-Control-Allow-Methods&quot;,&quot;pOST&quot;)</span><br><span class="line">response. setHeader (&quot;Access-Control-Allow-Headers&quot; &quot;x-requested-with, content-type&quot;) ;</span><br></pre></td></tr></table></figure>
 
 
 
-<h5 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line">import &#123; createSlice, createAction &#125; from &#x27;@reduxjs/toolkit&#x27;</span><br><span class="line">import &#123; createStore, combineReducers &#125; from &#x27;redux&#x27;</span><br><span class="line"></span><br><span class="line">const incrementBy = createAction(&#x27;incrementBy&#x27;)</span><br><span class="line">const decrementBy = createAction(&#x27;decrementBy&#x27;)</span><br><span class="line"></span><br><span class="line">const counter = createSlice(&#123;</span><br><span class="line">  name: &#x27;counter&#x27;,</span><br><span class="line">  initialState: 0,</span><br><span class="line">  reducers: &#123;</span><br><span class="line">    increment: (state) =&gt; state + 1,</span><br><span class="line">    decrement: (state) =&gt; state - 1,</span><br><span class="line">    multiply: &#123;</span><br><span class="line">      reducer: (state, action) =&gt; state * action.payload,</span><br><span class="line">      prepare: (value) =&gt; (&#123; payload: value || 2 &#125;), // fallback if the payload is a falsy value</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">  // &quot;builder callback API&quot;, recommended for TypeScript users</span><br><span class="line">  extraReducers: (builder) =&gt; &#123;</span><br><span class="line">    builder.addCase(incrementBy, (state, action) =&gt; &#123;</span><br><span class="line">      return state + action.payload</span><br><span class="line">    &#125;)</span><br><span class="line">    builder.addCase(decrementBy, (state, action) =&gt; &#123;</span><br><span class="line">      return state - action.payload</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">const user = createSlice(&#123;</span><br><span class="line">  name: &#x27;user&#x27;,</span><br><span class="line">  initialState: &#123; name: &#x27;&#x27;, age: 20 &#125;,</span><br><span class="line">  reducers: &#123;</span><br><span class="line">    setUserName: (state, action) =&gt; &#123;</span><br><span class="line">      state.name = action.payload // mutate the state all you want with immer</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">  // &quot;map object API&quot;</span><br><span class="line">  extraReducers: &#123;</span><br><span class="line">    [counter.actions.increment]: (</span><br><span class="line">      state,</span><br><span class="line">      action /* action will be inferred as &quot;any&quot;, as the map notation does not contain type information */</span><br><span class="line">    ) =&gt; &#123;</span><br><span class="line">      state.age += 1</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">const reducer = combineReducers(&#123;</span><br><span class="line">  counter: counter.reducer,</span><br><span class="line">  user: user.reducer,</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">const store = createStore(reducer)</span><br><span class="line"></span><br><span class="line">store.dispatch(counter.actions.increment())</span><br><span class="line">// -&gt; &#123; counter: 1, user: &#123;name : &#x27;&#x27;, age: 21&#125; &#125;</span><br><span class="line">store.dispatch(counter.actions.increment())</span><br><span class="line">// -&gt; &#123; counter: 2, user: &#123;name: &#x27;&#x27;, age: 22&#125; &#125;</span><br><span class="line">store.dispatch(counter.actions.multiply(3))</span><br><span class="line">// -&gt; &#123; counter: 6, user: &#123;name: &#x27;&#x27;, age: 22&#125; &#125;</span><br><span class="line">store.dispatch(counter.actions.multiply())</span><br><span class="line">// -&gt; &#123; counter: 12, user: &#123;name: &#x27;&#x27;, age: 22&#125; &#125;</span><br><span class="line">console.log(`$&#123;counter.actions.decrement&#125;`)</span><br><span class="line">// -&gt; &quot;counter/decrement&quot;</span><br><span class="line">store.dispatch(user.actions.setUserName(&#x27;eric&#x27;))</span><br><span class="line">// -&gt; &#123; counter: 12, user: &#123; name: &#x27;eric&#x27;, age: 22&#125; &#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="createAction"><a href="#createAction" class="headerlink" title="createAction"></a><a target="_blank" rel="noopener" href="https://redux-toolkit.js.org/api/createAction">createAction</a></h4><p>创建actions的原先做法：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">const INCREMENT = &#x27;counter/increment&#x27;</span><br><span class="line"></span><br><span class="line">function increment(amount) &#123;</span><br><span class="line">  return &#123;</span><br><span class="line">    type: INCREMENT,</span><br><span class="line">    payload: amount,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const action = increment(3)</span><br><span class="line">// &#123; type: &#x27;counter/increment&#x27;, payload: 3 &#125;</span><br></pre></td></tr></table></figure>
-
-<p>The <code>createAction</code> helper combines these two declarations into one. It takes an action type and returns an action creator for that type. The action creator can be called either without arguments or with a <code>payload</code> to be attached to the action. Also, the action creator overrides <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/toString">toString()</a> so that the action type becomes its string representation.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">import &#123; createAction &#125; from &#x27;@reduxjs/toolkit&#x27;</span><br><span class="line"></span><br><span class="line">const increment = createAction(&#x27;counter/increment&#x27;)</span><br><span class="line"></span><br><span class="line">let action = increment()</span><br><span class="line">// &#123; type: &#x27;counter/increment&#x27; &#125;</span><br><span class="line"></span><br><span class="line">action = increment(3)</span><br><span class="line">// returns &#123; type: &#x27;counter/increment&#x27;, payload: 3 &#125;</span><br><span class="line"></span><br><span class="line">console.log(increment.toString())</span><br><span class="line">// &#x27;counter/increment&#x27;</span><br><span class="line"></span><br><span class="line">console.log(`The action type is: $&#123;increment&#125;`)</span><br><span class="line">// &#x27;The action type is: counter/increment&#x27;</span><br></pre></td></tr></table></figure>
 
 
+<h2 id="新增语义标签"><a href="#新增语义标签" class="headerlink" title="新增语义标签"></a>新增语义标签</h2><table>
+<thead>
+<tr>
+<th>区块标签</th>
+<th>内容分组标签</th>
+<th>文本级别标签</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>article</td>
+<td>main</td>
+<td>time</td>
+</tr>
+<tr>
+<td>header</td>
+<td>figure</td>
+<td></td>
+</tr>
+<tr>
+<td>footer</td>
+<td>figcaption</td>
+<td></td>
+</tr>
+<tr>
+<td>nav</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>aside</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>section</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;figure&gt;</span><br><span class="line">	&lt;img src=&quot;images/caffe-2.jpg&quot; alt=&quot;卡布奇诺&quot;/&gt;&lt;figcaption&gt;卡布奇诺&lt;/figcaption&gt;</span><br><span class="line">&lt;/figure&gt;</span><br></pre></td></tr></table></figure>
 
-<p><code>createAction</code> accepts an optional second argument: a “prepare callback” that will be used to construct the payload value.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">import &#123; createAction, nanoid &#125; from &#x27;@reduxjs/toolkit&#x27;</span><br><span class="line"></span><br><span class="line">const addTodo = createAction(&#x27;todos/add&#x27;, function prepare(text) &#123;</span><br><span class="line">  return &#123;</span><br><span class="line">    payload: &#123;</span><br><span class="line">      text,</span><br><span class="line">      id: nanoid(),</span><br><span class="line">      createdAt: new Date().toISOString(),</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">console.log(addTodo(&#x27;Write more docs&#x27;))</span><br><span class="line">/**</span><br><span class="line"> * &#123;</span><br><span class="line"> *   type: &#x27;todos/add&#x27;,</span><br><span class="line"> *   payload: &#123;</span><br><span class="line"> *     text: &#x27;Write more docs&#x27;,</span><br><span class="line"> *     id: &#x27;4AJvwMSWEHCchcWYga3dj&#x27;,</span><br><span class="line"> *     createdAt: &#x27;2019-10-03T07:53:36.581Z&#x27;</span><br><span class="line"> *   &#125;</span><br><span class="line"> * &#125;</span><br><span class="line"> **/</span><br></pre></td></tr></table></figure>
-
-<h4 id="Usage-with-createReducer"><a href="#Usage-with-createReducer" class="headerlink" title="Usage with createReducer()"></a><a target="_blank" rel="noopener" href="https://redux-toolkit.js.org/api/createAction">Usage with createReducer()</a></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import &#123; createAction, createReducer &#125; from &#x27;@reduxjs/toolkit&#x27;</span><br><span class="line"></span><br><span class="line">const increment = createAction(&#x27;counter/increment&#x27;)</span><br><span class="line">const decrement = createAction(&#x27;counter/decrement&#x27;)</span><br><span class="line"></span><br><span class="line">const counterReducer = createReducer(0, (builder) =&gt; &#123;</span><br><span class="line">  builder.addCase(increment, (state, action) =&gt; state + action.payload)</span><br><span class="line">  builder.addCase(decrement, (state, action) =&gt; state - action.payload)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<h4 id="builder-addCase"><a href="#builder-addCase" class="headerlink" title="builder.addCase"></a><a target="_blank" rel="noopener" href="https://redux-toolkit.js.org/api/createReducer#builderaddcase">builder.addCase</a></h4><h4 id="Parameters"><a href="#Parameters" class="headerlink" title="Parameters"></a>Parameters</h4><ul>
-<li><strong>actionCreator</strong> Either a plain action type string, or an action creator generated by <a target="_blank" rel="noopener" href="https://redux-toolkit.js.org/api/createAction"><code>createAction</code></a> that can be used to determine the action type.</li>
-<li><strong>reducer</strong> The actual case reducer function.</li>
+<h3 id=""><a href="#" class="headerlink" title=""></a><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/HTML5-%E7%AC%94%E8%AE%B0/coffee.png" alt="img"></h3><h3 id="header"><a href="#header" class="headerlink" title="header"></a>header</h3><p>header标签的使用:</p>
+<ul>
+<li>一个文档中可以包含多于一个的header标签</li>
+<li>header标签不一定非要显示在页面的上方，它的内容决定这里需要使用header标签，位置并不重要</li>
 </ul>
-<h4 id="createReducer"><a href="#createReducer" class="headerlink" title="createReducer()"></a><a target="_blank" rel="noopener" href="https://redux-toolkit.js.org/api/createReducer">createReducer()</a></h4><p>Redux <a target="_blank" rel="noopener" href="https://redux.js.org/basics/reducers">reducers</a> are often implemented using a <code>switch</code> statement, with one <code>case</code> for every handled action type</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">const initialState = &#123; value: 0 &#125;</span><br><span class="line"></span><br><span class="line">function counterReducer(state = initialState, action) &#123;</span><br><span class="line">  switch (action.type) &#123;</span><br><span class="line">    case &#x27;increment&#x27;:</span><br><span class="line">      return &#123; ...state, value: state.value + 1 &#125;</span><br><span class="line">    case &#x27;decrement&#x27;:</span><br><span class="line">      return &#123; ...state, value: state.value - 1 &#125;</span><br><span class="line">    case &#x27;incrementByAmount&#x27;:</span><br><span class="line">      return &#123; ...state, value: state.value + action.payload &#125;</span><br><span class="line">    default:</span><br><span class="line">      return state</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>With <code>createReducer</code>, your reducers instead look like:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">import &#123; createAction, createReducer &#125; from &#x27;@reduxjs/toolkit&#x27;</span><br><span class="line"></span><br><span class="line">const increment = createAction(&#x27;counter/increment&#x27;)</span><br><span class="line">const decrement = createAction(&#x27;counter/decrement&#x27;)</span><br><span class="line">const incrementByAmount = createAction(&#x27;counter/incrementByAmount&#x27;)</span><br><span class="line"></span><br><span class="line">const initialState = &#123; value: 0 &#125;</span><br><span class="line"></span><br><span class="line">const counterReducer = createReducer(initialState, (builder) =&gt; &#123;</span><br><span class="line">  builder</span><br><span class="line">    .addCase(increment, (state, action) =&gt; &#123;</span><br><span class="line">      state.value++</span><br><span class="line">    &#125;)</span><br><span class="line">    .addCase(decrement, (state, action) =&gt; &#123;</span><br><span class="line">      state.value--</span><br><span class="line">    &#125;)</span><br><span class="line">    .addCase(incrementByAmount, (state, action) =&gt; &#123;</span><br><span class="line">      state.value += action.payload</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<h5 id="Parameters-1"><a href="#Parameters-1" class="headerlink" title="Parameters"></a>Parameters</h5><ul>
-<li><p><strong>initialState</strong> <code>State | (() =&gt; State)</code>:</p>
-</li>
-<li><p><strong>builderCallback</strong> <code>(builder: Builder) =&gt; void</code>      <code> builder.addCase(actionCreatorOrType, reducer)</code></p>
-</li>
+<p>—些使用aside的例子:</p>
+<ul>
+<li>页面侧边栏</li>
+<li>广告</li>
+<li>友情链接</li>
+<li>引语(内容摘要)</li>
 </ul>
-<h4 id="configureStore"><a href="#configureStore" class="headerlink" title="configureStore"></a><a target="_blank" rel="noopener" href="https://redux-toolkit.js.org/api/configureStore">configureStore</a></h4><h4 id="getDefaultMiddleware"><a href="#getDefaultMiddleware" class="headerlink" title="getDefaultMiddleware"></a><a target="_blank" rel="noopener" href="https://redux-toolkit.js.org/api/getDefaultMiddleware">getDefaultMiddleware</a></h4><p><a target="_blank" rel="noopener" href="https://redux-toolkit-cn.netlify.app/tutorials/intermediate-tutorial">Redux工具包-使用教程</a></p>
-<h4 id="Store数据-持久化"><a href="#Store数据-持久化" class="headerlink" title="Store数据-持久化"></a>Store数据-持久化</h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_47077674/article/details/122617851?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522165025080216782246469362%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fall.%2522%257D&request_id=165025080216782246469362&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~first_rank_ecpm_v1~rank_v31_ecpm-1-122617851.142%5Ev9%5Econtrol,157%5Ev4%5Econtrol&utm_term=%E5%A6%82%E4%BD%95%E5%9C%A8React%E4%B8%AD%E5%AE%9E%E7%8E%B0%E5%85%A8%E5%B1%80%E6%95%B0%E6%8D%AE%E7%9A%84%E7%8A%B6%E6%80%81%E6%8C%81%E4%B9%85%E5%8C%96&spm=1018.2226.3001.4187">如何在React中实现全局数据的状态持久化？一篇文章让你看懂状态持久化</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/59a85632d781">react-几步搞定redux-persist-持久化存储</a></p>
-<h5 id="src-app-RootReducers-js"><a href="#src-app-RootReducers-js" class="headerlink" title="src/app/RootReducers.js"></a>src/app/RootReducers.js</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import &#123; combineReducers &#125; from &quot;@reduxjs/toolkit&quot;;</span><br><span class="line">import userReducer from &quot;../reducers/userSlice&quot;;</span><br><span class="line"></span><br><span class="line">export default combineReducers(&#123;</span><br><span class="line">    user: userReducer</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>一个主题性的内容分组，通常包含一个头部( header ) ,可能还会有一个尾部( footer )。</p>
+<h3 id="div"><a href="#div" class="headerlink" title="div"></a>div</h3><ul>
+<li>应用更广泛，只要你想为一个区域定义一个样式，就可以使用div标签</li>
+</ul>
+<h3 id="section"><a href="#section" class="headerlink" title="section"></a>section</h3><ul>
+<li>包含的内容是一个明确的主题，通常有标题区域</li>
+</ul>
+<h3 id="main"><a href="#main" class="headerlink" title="main"></a>main</h3><ul>
+<li>显示页面的主体内容。</li>
+<li>每个页面只能包含一个main标签。</li>
+<li>main标签中不包含网站标题、logo、主导航、版权声明等信息。</li>
+</ul>
+<p>HTML5中文本级别的语义标签</p>
+<ul>
+<li>time（表示一个日期，或者一个时间，或者同时表示一个日期和时间值）</li>
+<li>i和b</li>
+<li>em和strong</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;time datetime=&quot;2015-06-30&quot;&gt;2015年6月30日&lt;/time&gt;</span><br><span class="line"></span><br><span class="line">// datetime=&quot;2015-06-30&quot;：</span><br><span class="line">// 这里是一个固定格式的日期或时间值，可以被搜索引擎、屏幕阅读器等方便的识别。</span><br><span class="line"></span><br><span class="line">// 2015年6月30日：</span><br><span class="line">// 标签中间的文本只要人可以识别就可以，例如“今天”，“1小时前”，“结婚纪念日”，“情人节”等</span><br><span class="line">   如果没有定义datetime属性，则这里的文本需要是一个固定格式</span><br></pre></td></tr></table></figure>
 
-<h5 id="src-app-store-js"><a href="#src-app-store-js" class="headerlink" title="src/app/store.js"></a>src/app/store.js</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">import &#123; configureStore &#125; from &#x27;@reduxjs/toolkit&#x27;;</span><br><span class="line">import &#123; persistStore, persistReducer &#125; from &#x27;redux-persist&#x27;;</span><br><span class="line">import storage from &#x27;redux-persist/lib/storage&#x27;;</span><br><span class="line">import rootReducer from &#x27;./RootReducers&#x27;;</span><br><span class="line"></span><br><span class="line">const persistConfig = &#123;</span><br><span class="line">  key: &#x27;root&#x27;,</span><br><span class="line">  storage</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const persistedReducer = persistReducer(</span><br><span class="line">  persistConfig,</span><br><span class="line">  rootReducer</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">export const store = configureStore(&#123;</span><br><span class="line">  reducer: persistedReducer,</span><br><span class="line">  middleware: (getDefaultMiddleware) =&gt;</span><br><span class="line">    getDefaultMiddleware(&#123;</span><br><span class="line">      serializableCheck: false,</span><br><span class="line">    &#125;),</span><br><span class="line">&#125;)</span><br><span class="line">export const persistor = persistStore(store)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="time的格式"><a href="#time的格式" class="headerlink" title="time的格式"></a>time的格式</h4><ul>
+<li>指定年月日：2015-06-30</li>
+<li>指定年月：2015-06</li>
+<li>年份可以是两位数字：15-06-30</li>
+<li>指定时间（ 24小时制)：14:54:39</li>
+<li>指定时间(24小时制）：14:54</li>
+<li>指定日期和时间：2015-06-30 14:54:39</li>
+<li>T表示时间，意义同上:2015-06-30T14:54:39</li>
+<li>Z表示使用UTC标准时间：2015-06-30T14:54Z</li>
+</ul>
+<p>注：utc标准时间+8小时=北京时间</p>
+<h3 id="i"><a href="#i" class="headerlink" title="i"></a>i</h3><p>HTML4：修饰文字样式的，将文字显示为<em>斜体</em>文本</p>
+<p>HTML5：表示强调不同的情绪或声音，也可以表示技术术语、生物分类、来自另一种语言的成语或习语、一个想法等等</p>
+<h3 id="b"><a href="#b" class="headerlink" title="b"></a>b</h3><p>HTML4：修饰文字样式的，将文字显示为粗体文本</p>
+<p>HTML5：表示文档中的关键字、商品名称等</p>
+<h3 id="em"><a href="#em" class="headerlink" title="em"></a>em</h3><p>标签中的内容是用来强调的重点内容</p>
+<p>会被浏览器显示成<em>斜体</em>文本</p>
+<h3 id="strong"><a href="#strong" class="headerlink" title="strong"></a>strong</h3><p>表示非常重要、严重性或内容的紧迫性</p>
+<p>会被浏览器显示成<strong>粗体</strong>文本</p>
+<h3 id="使用建议"><a href="#使用建议" class="headerlink" title="使用建议"></a>使用建议</h3><p>如果你只是单纯的想要把文字的样式显示为斜体或粗体请不要使用这几个语义标签</p>
+<p>w3C建议我们要在css样式表中定义文字样式</p>
+<h3 id="small"><a href="#small" class="headerlink" title="small"></a>small</h3><p>small标签在HTML5中的语义：</p>
+<p>注释或批注说明</p>
+<h3 id="HTML5之前Web上的视频格式"><a href="#HTML5之前Web上的视频格式" class="headerlink" title="HTML5之前Web上的视频格式"></a>HTML5之前Web上的视频格式</h3><table>
+<thead>
+<tr>
+<th>格式</th>
+<th>文件</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>AVI</td>
+<td>.avi</td>
+</tr>
+<tr>
+<td>WMV</td>
+<td>.wmv</td>
+</tr>
+<tr>
+<td>QuickTime</td>
+<td>.mov</td>
+</tr>
+<tr>
+<td>Realvideo</td>
+<td>.rm</td>
+</tr>
+<tr>
+<td>Mpeg-4</td>
+<td></td>
+</tr>
+<tr>
+<td>Flash</td>
+<td></td>
+</tr>
+</tbody></table>
+<p>浏览器要想播放视频，必须预先安装对应的浏览器插件</p>
+<h4 id="embed标签"><a href="#embed标签" class="headerlink" title="embed标签"></a>embed标签</h4><p>在HTML4中不是web的标准</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;embed type=&quot;application/x-shockwave-flash&quot;</span><br><span class="line">src=&quot;zq.swf&quot; width=&quot;508&quot; height=&quot;430&quot;&gt;</span><br><span class="line">&lt;/embed&gt;</span><br></pre></td></tr></table></figure>
 
-<h5 id="src-index-js"><a href="#src-index-js" class="headerlink" title="src/index.js"></a>src/index.js</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">import React from &#x27;react&#x27;;</span><br><span class="line">import &#123; Provider &#125; from &#x27;react-redux&#x27;;</span><br><span class="line">import &#123; BrowserRouter &#125; from &#x27;react-router-dom&#x27;</span><br><span class="line">import &#x27;./index.css&#x27;;</span><br><span class="line">import App from &#x27;./App&#x27;;</span><br><span class="line">import * as serviceWorker from &#x27;./serviceWorker&#x27;;</span><br><span class="line">import &#123; store, persistor &#125; from &#x27;./app/store&#x27;;</span><br><span class="line">import &#123; PersistGate &#125; from &quot;redux-persist/integration/react&quot;</span><br><span class="line"></span><br><span class="line">import &#123; createRoot &#125; from &#x27;react-dom/client&#x27;;</span><br><span class="line">const container = document.getElementById(&#x27;root&#x27;);</span><br><span class="line">const root = createRoot(container);</span><br><span class="line">root.render(</span><br><span class="line">    &lt;React.StrictMode&gt;</span><br><span class="line">        &lt;Provider store=&#123;store&#125;&gt;</span><br><span class="line">            &lt;PersistGate loading=&#123;null&#125; persistor=&#123;persistor&#125;&gt;</span><br><span class="line">                &lt;BrowserRouter&gt;</span><br><span class="line">                    &lt;App/&gt;</span><br><span class="line">                &lt;/BrowserRouter&gt;</span><br><span class="line">            &lt;/PersistGate&gt;</span><br><span class="line">    &lt;/Provider&gt;</span><br><span class="line">    &lt;/React.StrictMode&gt;</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">// If you want your app to work offline and load faster, you can change</span><br><span class="line">// unregister() to register() below. Note this comes with some pitfalls.</span><br><span class="line">// Learn more about service workers: https://bit.ly/CRA-PWA</span><br><span class="line">serviceWorker.unregister();</span><br></pre></td></tr></table></figure>
+<p>浏览器要想播放视频，必须预先安装对应的浏览器插件</p>
+<h4 id="object标签"><a href="#object标签" class="headerlink" title="object标签"></a>object标签</h4><p>在低版本IE中无法工作(&lt;= IE8 )</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;object type=&quot;application/x-shockwave-flash&quot;data=&quot;zq.swf&quot; width=&quot;500&quot; height=&quot;430&quot;&gt;&lt;/object&gt;</span><br></pre></td></tr></table></figure>
 
+<p>除了低版本的IE (&lt;= IE 10)，无法工作在任何其它的浏览器中</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;object classid=&quot;clsid:D27CDB6E-AE6D-11cf-96B8-44455354000e&quot;</span><br><span class="line">width=&quot;500&quot; height=&quot;430&quot;&gt;</span><br><span class="line">  &lt;param name=&quot;src&quot; value=&quot;zq.swf”/&gt;</span><br><span class="line">&lt;/object&gt;</span><br></pre></td></tr></table></figure>
 
+<h3 id="为了兼容所有的浏览器"><a href="#为了兼容所有的浏览器" class="headerlink" title="为了兼容所有的浏览器"></a>为了兼容所有的浏览器</h3><p>使用object兼容所有的浏览器</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;object classid=&quot;clsid:D27CDB6E-AE6D-11cf-96B8-44455354000o&quot;&quot;</span><br><span class="line">width=&quot;5e0&quot; height=&quot;430&quot;&gt;&lt;!--兼容低版本IE--&gt;</span><br><span class="line">	&lt;param name=&quot;src&quot; value=&quot;zq.swf&quot;/&gt;</span><br><span class="line">  &lt;!--高版本IE和其他浏览器--&gt;</span><br><span class="line">	&lt;object type=&quot;application/x-shockwave-flash&quot;</span><br><span class="line">data=&quot;zq.swf&quot; width=&quot;50o&quot; height=&quot;430&quot;&gt;&lt;/object&gt;</span><br><span class="line">&lt;/object&gt;</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;/* &lt;Routes&gt;</span><br><span class="line">        &lt;Route path=&quot;/&quot; element=&#123;&lt;Container/&gt;&#125; /&gt;</span><br><span class="line">        &lt;Route path=&quot;/login&quot; element=&#123;&lt;Login /&gt;&#125; /&gt;</span><br><span class="line">        &lt;Route path=&quot;/home&quot; element=&#123;&lt;Home /&gt;&#125;&gt;</span><br><span class="line">          &lt;Route path=&quot;/home/:id&quot; element=&#123;&lt;Home /&gt;&#125; /&gt;</span><br><span class="line">        &lt;/Route&gt; */&#125;</span><br><span class="line">        &#123;/* &lt;Route path=&quot;/product&quot; element=&#123;&lt;Container /&gt;&#125;&gt;</span><br><span class="line">          &lt;Route path=&quot;/product/add&quot; element=&#123;&lt;AddProduct /&gt;&#125; /&gt;</span><br><span class="line">          &lt;Route path=&quot;/product/edit/:id&quot; element=&#123;&lt;EditProduct /&gt;&#125; /&gt;</span><br><span class="line">        &lt;/Route&gt; */&#125;</span><br><span class="line"></span><br><span class="line">      &#123;/* &lt;/Routes&gt; */&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="video标签的属性"><a href="#video标签的属性" class="headerlink" title="video标签的属性"></a>video标签的属性</h3><ul>
+<li>src</li>
+<li>controls</li>
+<li>autoplay</li>
+<li>preload</li>
+<li>muted</li>
+<li>loop</li>
+<li>poster</li>
+<li>width和height</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;video src=&quot;lesson-0.mp4&quot; controls autoplay&gt;&lt;/video&gt;</span><br></pre></td></tr></table></figure>
 
+<p>controls和autoplay是布尔属性：只有属性名，没有属性值。例如∶</p>
+<p>如果有autoplay属性，视频就会自动播放</p>
+<p>如果没有autoplay属性，视频就不会自动播放</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;video src=&quot;lesson-0.mp4&quot; controls=&quot;controls&quot; autoplay=&quot;autoplay&quot;&gt;x&lt;/video&gt;</span><br></pre></td></tr></table></figure>
 
+<p>XHTML风格的代码语法更严格</p>
+<p>属性必须由属性名和属性值两部分组成</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;audio controls=&quot;controls&quot; src=&quot;1.mp3&quot; autoplay=&quot;autoplay&quot;&gt;</span><br><span class="line">  您的浏览器不支持播放此音频，请使用高级的浏览器</span><br><span class="line">&lt;/audio&gt;</span><br></pre></td></tr></table></figure>
 
-<h4 id="React-Redux"><a href="#React-Redux" class="headerlink" title="React Redux"></a><a target="_blank" rel="noopener" href="https://react-redux.js.org/">React Redux</a></h4><h4 id="redux-persist"><a href="#redux-persist" class="headerlink" title="redux-persist"></a><a target="_blank" rel="noopener" href="https://github.com/rt2zz/redux-persist">redux-persist</a></h4><p><a target="_blank" rel="noopener" href="https://redux-toolkit.js.org/usage/usage-guide#use-with-redux-persist">Use with Redux-Persist</a></p>
-<h4 id="Redux-Toolkit–使用教程"><a href="#Redux-Toolkit–使用教程" class="headerlink" title="Redux Toolkit–使用教程"></a><a target="_blank" rel="noopener" href="https://redux-toolkit.js.org/tutorials/quick-start">Redux Toolkit–使用教程</a></h4>
+<h3 id="-1"><a href="#-1" class="headerlink" title=""></a></h3><p>您的浏览器不支持这个视频的播放，想观看视频，请用高级的浏览器，chrome、Firefox、Opera、Safari等浏览器。</p>
+<p>【这里插入的内容是供不支持video元素的浏览器显示的】</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">&lt;video src=&quot;pian.mp4&quot; width=&quot;600px&quot; height=&quot;400px&quot; border=&quot;1px solid #ccc&quot; controls=&quot;controls&quot;&gt;</span><br><span class="line">&lt;video width=&quot;500&quot; autoplay=&quot;autoplay&quot; loop=&quot;loop&quot; controls=&quot;controls&quot;&gt;</span><br><span class="line">    &lt;source src=&quot;pian.ogg&quot; type=&quot;video/ogg&quot;&gt;</span><br><span class="line">    &lt;source src=&quot;pian.mp4&quot; type=&quot;video/mp4&quot;&gt;</span><br><span class="line">    &lt;!--video 元素允许多个 source 元素。source 元素可以链接不同的视频文件。</span><br><span class="line">    浏览器将使用第一个可识别的格式：--&gt;</span><br><span class="line">  Your browser does not support the video tag.</span><br><span class="line">&lt;/video&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- video的属性有autoplay,controls,height,loop,preload,src,width --&gt;</span><br><span class="line">&lt;!-- &lt;video src=&quot;pian.mp4&quot; width=&quot;500px&quot; controls=&quot;controls&quot; autoplay=&quot;autoplay&quot;&gt;&lt;/video&gt; --&gt;</span><br><span class="line"> &lt;div style=&quot;text-align:center;&quot;&gt;</span><br><span class="line">  &lt;button onclick=&quot;playPause()&quot;&gt;播放/暂停&lt;/button&gt; </span><br><span class="line">  &lt;button onclick=&quot;makeBig()&quot;&gt;大&lt;/button&gt;</span><br><span class="line">  &lt;button onclick=&quot;makeNormal()&quot;&gt;中&lt;/button&gt;</span><br><span class="line">  &lt;button onclick=&quot;makeSmall()&quot;&gt;小&lt;/button&gt;</span><br><span class="line">  &lt;br /&gt; </span><br><span class="line">  &lt;video id=&quot;video1&quot; width=&quot;420&quot; style=&quot;margin-top:15px;&quot;&gt;</span><br><span class="line">    &lt;source src=&quot;pian.mp4&quot; type=&quot;video/mp4&quot; /&gt;</span><br><span class="line">    Your browser does not support HTML5 video.</span><br><span class="line">  &lt;/video&gt;</span><br><span class="line">&lt;/div&gt; </span><br><span class="line"></span><br><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">var myVideo=document.getElementById(&quot;video1&quot;);</span><br><span class="line"></span><br><span class="line">function playPause()</span><br><span class="line">&#123; </span><br><span class="line">if (myVideo.paused) </span><br><span class="line">  myVideo.play(); </span><br><span class="line">else </span><br><span class="line">  myVideo.pause(); </span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line">function makeBig()</span><br><span class="line">&#123; </span><br><span class="line">myVideo.width=560; </span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line">function makeSmall()</span><br><span class="line">&#123; </span><br><span class="line">myVideo.width=320; </span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line">function makeNormal()</span><br><span class="line">&#123; </span><br><span class="line">myVideo.width=420; </span><br><span class="line">&#125; </span><br><span class="line">&lt;/script&gt; </span><br></pre></td></tr></table></figure>
+
+<h3 id="audio"><a href="#audio" class="headerlink" title="audio"></a>audio</h3><p>audio 元素允许多个 source 元素。source 元素可以链接不同的音频文件。浏览器将使用第一个可识别的格式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;audio controls=&quot;controls&quot; autoplay=&quot;autoplay&quot;&gt;</span><br><span class="line">  &lt;source src=&quot;1.mp3&quot; type=&quot;audio/mp3&quot; /&gt;</span><br><span class="line">  &lt;source src=&quot;1.ogg&quot; type=&quot;audio/ogg&quot; /&gt;</span><br><span class="line">&lt;/audio&gt;</span><br></pre></td></tr></table></figure>
+
+<p>preload属性</p>
+<table>
+<thead>
+<tr>
+<th>属性值</th>
+<th>详细说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>none</td>
+<td>视频播放前，浏览器不会预先下载视频资源，当用户不点击播放按钮时会节省带宽。</td>
+</tr>
+<tr>
+<td>metadata</td>
+<td>视频播放前，浏览器不会下载视频资源，但是会获取资源的元数据（视频大小、持续时间、视频格式、前几帧画面)</td>
+</tr>
+<tr>
+<td>auto（默认值）</td>
+<td>浏览器根据实际情况动态决定。例如∶在wifi、3G、4G数据漫游等情况下，动态采用不同的加载方案。</td>
+</tr>
+</tbody></table>
+<p>muted：是否默认静音播放</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;video src=&quot;lesson-0.mp4&quot; controls muted loop&gt;&lt;/video&gt;</span><br></pre></td></tr></table></figure>
+
+<p>poster属性设置视频的封面</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;video src=&quot;let-it-go.mp4&quot; controls</span><br><span class="line">	poster=&quot;cover.jpg&quot;</span><br><span class="line">	width=&quot;854&quot; height=&quot;480&quot;&gt;</span><br><span class="line">&lt;/video&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/HTML5-%E7%AC%94%E8%AE%B0/video.jpeg" alt="img"></p>
+<h3 id="浏览器对视频格式的支持"><a href="#浏览器对视频格式的支持" class="headerlink" title="浏览器对视频格式的支持"></a>浏览器对视频格式的支持</h3><p>浏览器对视频格式的支持情况: <a target="_blank" rel="noopener" href="http://caniuse.com/#search=video">http://caniuse.com/#search=video</a></p>
+<p>浏览器从上到下查找source元素，直到找到它能播放的一种格式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;video controls&gt;</span><br><span class="line">  &lt;source src=&quot;tweetsip.mp4&quot;&gt;</span><br><span class="line">  &lt;source src=&quot;tweetsip.webm&quot;&gt;</span><br><span class="line">  &lt;source src=&quot;tweetsip.ogv&quot;&gt;</span><br><span class="line">	&lt;p&gt;对不起，您的浏览器不支持video标签&lt;/p&gt;</span><br><span class="line">&lt;/video&gt;</span><br></pre></td></tr></table></figure>
+
+<p>对于这里的每个source元素，浏览器都会加载视频文件的元数据，查看能不能播放这个视频，这个过程可能很耗费时间。</p>
+<h3 id="兼容所有的浏览器"><a href="#兼容所有的浏览器" class="headerlink" title="兼容所有的浏览器"></a>兼容所有的浏览器</h3><p>embed标签或object标签用在不支持video标签的旧版本额的浏览器中</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;video controls&gt;</span><br><span class="line">  &lt;source src=&quot;tweetsip.mp4&quot; type=&#x27;video/mp4; codecs=&quot;avc1.42E01E，mp4a.40.2&quot;&quot;&gt;</span><br><span class="line">  &lt;source src=&quot;tweetsip.webm&quot; type=&#x27;video/ogg; codecs=&quot;vp8，vorbis&quot;&#x27;&gt;</span><br><span class="line">  &lt;source src=&quot;tweetsip.ogv&quot; type=&#x27;video/ogg; codecs=&quot;theora，vorbis&quot;&quot;&gt;</span><br><span class="line">  &lt;embed src=&quot;tweetsip.swf&quot; type=&quot;application/x-shockwave-flash&quot;&gt;&lt;/embed&gt;</span><br><span class="line">&lt;/video&gt; </span><br></pre></td></tr></table></figure>
+
+<h3 id="HTML5支持的音频格式"><a href="#HTML5支持的音频格式" class="headerlink" title="HTML5支持的音频格式"></a>HTML5支持的音频格式</h3><p>HTML5支持的音频格式: <a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/HTML5_Audio">http://en.wikipedia.org/wiki/HTML5_Audio</a></p>
+<h3 id="兼容所有的音频格式和浏览器"><a href="#兼容所有的音频格式和浏览器" class="headerlink" title="兼容所有的音频格式和浏览器"></a>兼容所有的音频格式和浏览器</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;audio controls&gt;</span><br><span class="line">  &lt;source src=&quot;YouAreMySunshine.mp3&quot; type=&#x27;audio/mpeg; codecs=&quot;mp3&quot;&#x27;&gt;</span><br><span class="line">  &lt;source src=&quot;YouAreMySunshine.ogg&quot; type=&#x27;audio/ogg; codecs=&quot;vorbis&quot;&#x27; &gt;</span><br><span class="line">  &lt;p&gt;对不起，您的浏览器不支持audio标签&lt;/p&gt;</span><br><span class="line">&lt;/ audio&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="新增input类型"><a href="#新增input类型" class="headerlink" title="新增input类型"></a>新增input类型</h3><p>input标签新增type属性值</p>
+<ul>
+<li>search(搜索框)</li>
+<li>date(日期选择)</li>
+<li>email (邮件地址输入框)</li>
+<li>month(月份选择)</li>
+<li>url ( url地址输入框)</li>
+<li>week(周选择）</li>
+<li>tel(电话号码输入框)</li>
+<li>time (时间选择)</li>
+<li>number (数字输入框)</li>
+<li>datetime-local (日期时间)</li>
+<li>range(滑动条)</li>
+<li>datetime (包含时区)</li>
+<li>color（颜色选择)</li>
+</ul>
+<p>它看起来是一个文本输入框，可以输入一个电子邮件地址在移动设备上有额外的特性:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;email&quot;&gt;</span><br><span class="line">&lt;input type=&quot;url&quot;&gt;</span><br><span class="line">&lt;input type=&quot;tel&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>专门用来输入一个数值的输入框，右侧有一组上下箭头，用来控制文本框中数值的大小</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;number&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>通过滑动条选择一个数值范围</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;range&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>在弹出的的日历中选择一个具体的日期</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;date&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>选择一个具体的月份</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;month&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>选择一个具体的星期</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;week&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>在弹出的的日历中选择一个具体的时间</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;time&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>选择日期和时间(本地时间)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;datetime-local&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>选择日期和时间( UTC世界标准时间)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;datetime&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>在弹出的颜色面板中选择一个颜色</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;color&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="datalist"><a href="#datalist" class="headerlink" title="datalist"></a>datalist</h3><p>为其它输入控件提供一个预定义的选项列表</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--为输入框指定一个list属性--&gt;</span><br><span class="line">&lt;input type=&quot;text&quot; list=&quot;browsers&quot;&gt;</span><br><span class="line">&lt;!--和文本框中list属性的值一致--&gt;</span><br><span class="line">&lt;datalist id=&quot;browsers&quot;&gt;</span><br><span class="line">  &lt;option value=&quot;Chrome&quot;&gt;&lt;option value=&quot;Firefox&quot;&gt;</span><br><span class="line">  &lt;option value=&quot;Internet Explorer&quot;&gt;&lt;option value=&quot;opera&quot;&gt;</span><br><span class="line">  &lt;option value=&quot;opera mini&quot;&gt;&lt;option value=&quot;Safari&quot;&gt;</span><br><span class="line">&lt;/datalist&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="keygen"><a href="#keygen" class="headerlink" title="keygen"></a>keygen</h3><p>用于客户端访问服务器时的安全验证</p>
+<p>当提交表单时，会生成两个键，一个是私钥，一个公钥私钥存储于客户端，公钥则被发送到服务器</p>
+<p>公钥可用于之后验证用户的客户端证书</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=&quot;#&quot; method=&quot;get&quot;&gt;</span><br><span class="line">  用户名:&lt;input type=&quot;text&quot; name=&quot;usrname&quot;&gt;</span><br><span class="line">  加密:&lt;keygen name=&quot;security&quot;&gt;</span><br><span class="line">  &lt;input type=&quot;submit&quot;&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="output"><a href="#output" class="headerlink" title="output"></a>output</h3><p>结合JavaScript，主要用于显示脚本输出</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;form oninput=&quot;x.value=a.value&quot;&gt;</span><br><span class="line">  选择一个数字:</span><br><span class="line">  &lt;input type=&quot;range&quot; name=&quot;a&quot; value=&quot;o&quot;&gt;</span><br><span class="line">  &lt;output name=&quot;x&quot;&gt;o&lt;/output&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="表单验证"><a href="#表单验证" class="headerlink" title="表单验证"></a>表单验证</h3><p>表单验证是指，在用户提交表单之前，确保用户输入的数据是合法的。</p>
+<ul>
+<li>输入类型</li>
+<li>日期和时间范围</li>
+<li>必填字段</li>
+<li>步长</li>
+<li>字符长度</li>
+<li>正则表达式</li>
+<li>数值范围</li>
+<li>禁用表单验证</li>
+</ul>
+<h3 id="必填字段验证"><a href="#必填字段验证" class="headerlink" title="必填字段验证"></a>必填字段验证</h3><ul>
+<li>required属性是boolean属性</li>
+<li>表单提交时输入域不能为空</li>
+</ul>
+<h3 id="字符长度验证"><a href="#字符长度验证" class="headerlink" title="字符长度验证"></a>字符长度验证</h3><p>没有达到最少字符时浏览器提示位数不够达到最大字符数时浏览器禁止继续输入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=&quot;success.html&quot; method=&quot;post&quot;&gt;</span><br><span class="line">	&lt;div&gt;密码: &lt;input type=&quot;password&quot; minlength=&quot;6&quot; maxlength=&quot;10&quot;&gt;&lt;/div&gt;</span><br><span class="line">  &lt;div&gt;&lt;input type=&quot;submit&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
+
+<p>它们是很多input元素的共有属性</p>
+<p>如text、search、password、email、url、tel</p>
+<h3 id="数值范围验证"><a href="#数值范围验证" class="headerlink" title="数值范围验证"></a>数值范围验证</h3><p>输入的数值不能小于min指定的值不能大于max指定的值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=&quot;success.html&quot; method=&quot;post&quot;&gt;</span><br><span class="line">	&lt;div&gt;订购数量: &lt;input type=&quot;number&quot; min=&quot;5&quot; max=&quot;10&quot;&gt;&lt;/div&gt;</span><br><span class="line">  &lt;div&gt;&lt;input type=&quot;submit&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
+
+<p>用于number、range和日期时间类型</p>
+<h3 id="日期和时间范围验证"><a href="#日期和时间范围验证" class="headerlink" title="日期和时间范围验证"></a>日期和时间范围验证</h3><ul>
+<li>只能选择范围内的日期和时间</li>
+<li>范围外的日期和时间无法选择</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=&quot;success.html&quot; method=&quot;post&quot; &gt;</span><br><span class="line">	&lt;div&gt;送货日期:&lt;input type=&quot;date&quot; min=&quot;2020-01-01&quot; max=&quot;2020-01-10&quot;&gt;&lt;/div&gt;</span><br><span class="line">  &lt;div&gt;送货时间:&lt;input type=&quot;time&quot; min=&quot;e8:0o&quot; max=&quot;17:00&quot;&gt;&lt;/div&gt;</span><br><span class="line">  &lt;div&gt;&lt;input type=&quot;submit&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="步长验证"><a href="#步长验证" class="headerlink" title="步长验证"></a>步长验证</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=&quot;success.htm1&quot; method=&quot;post&quot;&gt;</span><br><span class="line">  &lt;div&gt;订购数量:&lt;input type=&quot;number&quot; min=&quot;10&quot; max=&quot;5o&quot; step=&quot;10&quot;&gt;&lt;/div&gt;</span><br><span class="line">  &lt;div&gt;&lt;input type=&quot;submit&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
+
+<p>点击number输入框右侧的上下箭头，每次增加或减少一个步长的值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=&quot;success.html&quot; method=&quot;post&quot; oninput=&quot;&quot;out.value=count.value&quot;&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    订购数量: &lt;input name=&quot; count&quot; type=&quot;range&quot;</span><br><span class="line">    value=&quot;10&quot; min=&quot;1e&quot; max=&quot;5e&quot; step=&quot;10&quot;&gt;</span><br><span class="line">    &lt;output name=&quot;out&quot;&gt;10&lt;/output&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">	&lt;div&gt;&lt;input type=&quot;submit&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
+
+<p>移动滑动条每次增加或减少—个步长的值</p>
+<h3 id="正则表达式验证"><a href="#正则表达式验证" class="headerlink" title="正则表达式验证"></a>正则表达式验证</h3><p>[0-4]{3}</p>
+<p>[0-4]表示0到4之间的任意一个数字{3}</p>
+<p>表示必须出现3次例如∶103、341、222</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=&quot;success.htm1&quot; method=&quot;post&quot;&gt;</span><br><span class="line">	&lt;div&gt;编号: &lt;input type=&quot;text&quot; pattern=&quot;[e-4]&#123;[3&#125;&quot;&gt;&lt;/div&gt;</span><br><span class="line">  &lt;div&gt;&lt;input type=&quot;submit&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
+
+<p>是所有的可输入的input元素共有的属性如text、search、password、email、url、tel</p>
+<h3 id="禁用表单验证"><a href="#禁用表单验证" class="headerlink" title="禁用表单验证"></a>禁用表单验证</h3><p>如果你更想使用基于JavaScript的更强大和灵活的表单验证功能，那么首先需要禁用HTML5表单验证</p>
+<ul>
+<li>novalidate</li>
+<li>formnovalidate</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=&quot;success.html&quot; method=&quot;post&quot; novalidate&gt;</span><br><span class="line">  &lt;div&gt;数字: &lt;input type=&quot;number&quot;&gt;&lt;/div&gt;</span><br><span class="line">  &lt;div&gt;邮箱: &lt;input type=&quot;email&quot;&gt;&lt;/div&gt;</span><br><span class="line">  &lt;div&gt;网址: &lt;input type=&quot;ur1&quot;&gt;&lt;/div&gt;</span><br><span class="line">  &lt;div&gt;&lt;input type=&quot;submit&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line">&lt;form action=&quot;success.html&quot; method=&quot;post&quot;&gt;</span><br><span class="line">	&lt;div&gt;数字: &lt;input type=&quot;number&quot;&gt;&lt;/div&gt;</span><br><span class="line">  &lt;div&gt;邮箱:&lt;input type=&quot;email&quot;&gt;&lt;/div&gt;</span><br><span class="line">  &lt;div&gt;网址: &lt;input type=&quot;ur1&quot;&gt;&lt;/div&gt;</span><br><span class="line">  &lt;div&gt;&lt;input type=&quot;submit&quot; formnovalidate&gt;&lt;/div&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
+
+<p>在提交按钮中使用formnovalidate属性</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
+<li>输入类型验证: number、email、url必填字段验证:required</li>
+<li>字符长度验证: minlength、maxlength设置数值范围: min、max</li>
+<li>设置日期和时间范围:min、max设置步长: step</li>
+<li>正则表达式验证:pattern</li>
+<li>禁用表单验证: novalidate、formnovalidate</li>
+</ul>
+<h3 id="新增表单属性"><a href="#新增表单属性" class="headerlink" title="新增表单属性"></a>新增表单属性</h3><ul>
+<li>list</li>
+<li>placeholder</li>
+<li>required</li>
+<li>autofocus（—个页面只能有一个autofocus属性的定义。如果有多个，则应用第一个）</li>
+<li>minlength和maxlength</li>
+<li>autocomplete（当我们填写表单，并成功提交后，再回到表单中填写时，会出现提醒功能，可以根据提醒功能进行快速输入。）（填写完，成功提交后，再回到表单填写时，没有上次的输入记录了。）</li>
+<li>multiple</li>
+<li>min和max</li>
+<li>form</li>
+<li>step</li>
+<li>formaction</li>
+<li>pattern</li>
+<li>formmethod</li>
+<li>novalidate</li>
+<li>formenctype</li>
+<li>formnovalidate</li>
+<li>formtarget</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=&quot;success.html&quot; method=&quot;post&quot; autocomplete=&quot;off&quot;&gt;</span><br><span class="line">  &lt;!--把autocomplete=&quot;on&quot;放在input标签中，它会覆盖form中的设置，</span><br><span class="line">  这个属性可以用在所有可输入的input标签。</span><br><span class="line">  --&gt;</span><br><span class="line">  &lt;input placeholder=&quot;姓名&quot; name=&quot;username&quot; autocomplete=&quot;on&quot;&gt;</span><br><span class="line">  &lt;input placeholder=&quot;账号&quot; name=&quot;cardid&quot;&gt;</span><br><span class="line">  &lt;input type=&quot;submit&quot;&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="multiple"><a href="#multiple" class="headerlink" title="multiple"></a>multiple</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;select multiple&gt;</span><br><span class="line">  &lt;option&gt;美式咖啡&lt;/option&gt;</span><br><span class="line">  &lt;option&gt;卡布奇诺&lt;/option&gt;</span><br><span class="line">  &lt;option&gt;拿铁&lt;/option&gt;</span><br><span class="line">  &lt;option&gt;摩卡&lt;/option&gt;</span><br><span class="line">&lt;/select&gt;</span><br></pre></td></tr></table></figure>
+
+<p>按住键盘上的ctrl键可以实现多选</p>
+<p>选完一个之后，输入逗号，可以再输入一个地址。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;input placeholder=&quot;请输入邮件地址&quot; type=&quot;email&quot; list=&quot;contacts&quot; multiple&gt;</span><br><span class="line">&lt;datalist id=&quot;contacts&quot;&gt;</span><br><span class="line">  &lt;option value=&quot;helen@qq.com&quot;&gt;</span><br><span class="line">  &lt;option value=&quot;cohen@baidu.com&quot;&gt;</span><br><span class="line">  &lt;option value=&quot;yaohuan@sina.com&quot;&gt;</span><br><span class="line">  &lt;option value=&quot;annie@qq.com&quot;&gt;</span><br><span class="line">&lt;/datalist&gt;</span><br><span class="line">&lt;!--按住Ctrl键，可以选择多个文件--&gt;</span><br><span class="line">&lt;input type=&quot;file&quot; multiple&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="form"><a href="#form" class="headerlink" title="form"></a>form</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=&quot;success.htm1&quot;&gt;</span><br><span class="line">  &lt;input placeholder=&quot;姓名&quot; type=&quot;text&quot; name=&quot;username&quot;&gt;</span><br><span class="line">  &lt;input type=&quot;submit&quot;&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line">&lt;input placeholder=&quot;账号&quot; type=&quot;text&quot; name=&quot;cardid&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>提交后,在URL地址中，只有username，即在form外面的input没有被提交</p>
+<p>在默认情况下，表单外的控件不会被提交，因此在form中加一个id,在input中加form=”f”;然后就可以一起提交到服务器了。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=&quot;success.htm1&quot; id=&quot;f&quot;&gt;</span><br><span class="line">  &lt;input placeholder=&quot;姓名&quot; type=&quot;text&quot; name=&quot;username&quot;&gt;</span><br><span class="line">  &lt;input type=&quot;submit&quot;&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line">&lt;input placeholder=&quot;账号&quot; type=&quot;text&quot; name=&quot;cardid&quot; form=&quot;f&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="form相关属性"><a href="#form相关属性" class="headerlink" title="form相关属性"></a>form相关属性</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=&quot;success.htm1&quot; method=&quot;post&quot; target=&quot;_blank&quot; </span><br><span class="line">enctype=&quot;application/x-www-form-urlencoded&quot;&gt;</span><br><span class="line">&lt;! --其它表单控件--&gt;</span><br><span class="line">&lt;input type=&quot;submit&quot;&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
+
+<p>enctype：页面提交时的编码方式(仅限于post方式提交的表单)</p>
+<p>这些属性是表单提交按钮的属性，当表单中的属性和提交按钮中存在同名属性时，提交按钮中的属性会被应用。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;form&gt;</span><br><span class="line">  &lt;! --其它表单控件--&gt;&lt;input type=&quot;submit&quot;</span><br><span class="line">  formaction=&quot;success.htm1&quot;formmethod=&quot;post&quot;</span><br><span class="line">  formtarget=&quot;_blank&quot;</span><br><span class="line">  formenctype=&quot;application/x-www-form-urlencoded&quot;&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="accesskey"><a href="#accesskey" class="headerlink" title="accesskey"></a>accesskey</h3><h3 id="svg"><a href="#svg" class="headerlink" title="svg"></a>svg</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;html xmlns:svg=&quot;http://www.w3.org/2000/svg&quot;&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;p&gt;This is an HTML paragraph&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;svg:svg width=&quot;300&quot; height=&quot;100&quot; version=&quot;1.1&quot; &gt;</span><br><span class="line">&lt;svg:circle cx=&quot;100&quot; cy=&quot;50&quot; r=&quot;40&quot; stroke=&quot;black&quot;</span><br><span class="line">stroke-width=&quot;2&quot; fill=&quot;red&quot; /&gt;</span><br><span class="line">&lt;/svg:svg&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line">&lt;?xml version=&quot;1.0&quot; standalone=&quot;no&quot;?&gt;</span><br><span class="line">&lt;!DOCTYPE svg PUBLIC &quot;-//W3C//DTD SVG 1.1//EN&quot; </span><br><span class="line">&quot;http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;svg width=&quot;100%&quot; height=&quot;100%&quot; version=&quot;1.1&quot;</span><br><span class="line">xmlns=&quot;http://www.w3.org/2000/svg&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;rect width=&quot;300&quot; height=&quot;100&quot;</span><br><span class="line">style=&quot;fill:rgb(0,0,255);stroke-width:1;</span><br><span class="line">stroke:rgb(0,0,0)&quot;/&gt;</span><br><span class="line"></span><br><span class="line">&lt;/svg&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="drag"><a href="#drag" class="headerlink" title="drag"></a>drag</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br></pre></td><td class="code"><pre><span class="line">&lt;style type=&quot;text/css&quot;&gt;</span><br><span class="line">#div1 &#123;width:488px;height:70px;padding:10px;border:1px solid #aaaaaa;&#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">function allowDrop(ev)</span><br><span class="line">&#123;</span><br><span class="line">ev.preventDefault();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function drag(ev)</span><br><span class="line">&#123;</span><br><span class="line">ev.dataTransfer.setData(&quot;Text&quot;,ev.target.id);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function drop(ev)</span><br><span class="line">&#123;</span><br><span class="line">ev.preventDefault();</span><br><span class="line">var data=ev.dataTransfer.getData(&quot;Text&quot;);</span><br><span class="line">ev.target.appendChild(document.getElementById(data));</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;p&gt;请把 W3School 的图片拖放到矩形中：&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;div id=&quot;div1&quot; ondrop=&quot;drop(event)&quot; ondragover=&quot;allowDrop(event)&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;br /&gt;</span><br><span class="line">&lt;img id=&quot;drag1&quot; src=&quot;w3school_banner.gif&quot; draggable=&quot;true&quot; ondragstart=&quot;drag(event)&quot; /&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line"> &lt;head&gt;</span><br><span class="line"> 	&lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line"> 	&lt;title&gt;拖放&lt;/title&gt;</span><br><span class="line"> 	&lt;style&gt;</span><br><span class="line">		p&#123;</span><br><span class="line">			font-size: 16px;</span><br><span class="line">		&#125;</span><br><span class="line">		#div1&#123;</span><br><span class="line">			width: 390px;</span><br><span class="line">			height: 260px;</span><br><span class="line">			padding: 10px;</span><br><span class="line">			border: 1px solid #ccc;</span><br><span class="line">			background-color: yellowgreen;</span><br><span class="line">			border-radius: 10px;</span><br><span class="line">			display: inline-block;</span><br><span class="line">		&#125;</span><br><span class="line">		img&#123;</span><br><span class="line">			border-radius: 10px;</span><br><span class="line">		&#125;</span><br><span class="line"> 	&lt;/style&gt;</span><br><span class="line"> 	&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line"> 		function allowDrop(ev)&#123;</span><br><span class="line"> 			ev.preventDefault();</span><br><span class="line"> 		&#125;</span><br><span class="line"> 		function drag(ev)&#123;</span><br><span class="line"> 			ev.dataTransfer.setData(&quot;text&quot;,ev.target.id);</span><br><span class="line"> 		&#125;</span><br><span class="line"> 		function drop(ev)&#123;</span><br><span class="line"> 			ev.preventDefault();</span><br><span class="line"> 			var data = ev.dataTransfer.getData(&quot;text&quot;);</span><br><span class="line"> 			ev.target.appendChild(document.getElementById(data));</span><br><span class="line"> 		&#125;</span><br><span class="line"> 	&lt;/script&gt;</span><br><span class="line"> &lt;/head&gt;</span><br><span class="line"> &lt;body&gt;</span><br><span class="line"> 	&lt;p&gt;请把单车的图片拖放到下面的矩形中：&lt;/p&gt;</span><br><span class="line"> 	&lt;div id=&quot;div1&quot; ondrop=&quot;drop(event)&quot; ondragover=&quot;allowDrop(event)&quot;&gt;&lt;/div&gt;</span><br><span class="line"> 	&lt;img id=&quot;img1&quot; src=&quot;bike.png&quot; height=&quot;260&quot; alt=&quot;单车&quot; draggable=&quot;true&quot; ondragstart=&quot;drag(event)&quot;&gt;</span><br><span class="line"> &lt;/body&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">	&lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">	&lt;title&gt;来回拖放&lt;/title&gt;</span><br><span class="line">	&lt;style&gt;</span><br><span class="line">		div&#123;</span><br><span class="line">			width: 300px;</span><br><span class="line">			height: 220px;</span><br><span class="line">			border: 1px solid #000;</span><br><span class="line">			border-radius: 10px;</span><br><span class="line">			background-color: pink;</span><br><span class="line">			display: inline-block;</span><br><span class="line">			margin-right: 20px;</span><br><span class="line">			overflow: hidden;</span><br><span class="line">			padding: 10px;</span><br><span class="line">		&#125;</span><br><span class="line">	&lt;/style&gt;</span><br><span class="line">	&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">		function allowDrop(ev)&#123;</span><br><span class="line">			ev.preventDefault();</span><br><span class="line">		&#125;</span><br><span class="line">		function drag(ev)&#123;</span><br><span class="line">			ev.dataTransfer.setData(&quot;text&quot;,ev.target.id);</span><br><span class="line">		&#125;</span><br><span class="line">		function drop(ev)&#123;</span><br><span class="line">			ev.preventDefault();</span><br><span class="line">			var data = ev.dataTransfer.getData(&quot;text&quot;);</span><br><span class="line">			ev.target.appendChild(document.getElementById(data));</span><br><span class="line">		&#125;</span><br><span class="line">	&lt;/script&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">	&lt;div id=&quot;div1&quot; ondrop=&quot;drop(event)&quot; ondragover=&quot;allowDrop(event)&quot;&gt;</span><br><span class="line">		&lt;img id=&quot;img2&quot; src=&quot;bike.png&quot; alt=&quot;单车&quot; width=&quot;280px&quot; draggable=&quot;true&quot; ondragstart=&quot;drag(event)&quot;&gt;</span><br><span class="line">	&lt;/div&gt;</span><br><span class="line">	&lt;div id=&quot;div2&quot; ondrop=&quot;drop(event)&quot; ondragover=&quot;allowDrop(event)&quot;&gt;&lt;/div&gt;</span><br><span class="line">	&lt;div id=&quot;div3&quot; ondrop=&quot;drop(event)&quot; ondragover=&quot;allowDrop(event)&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;style type=&quot;text/css&quot;&gt;</span><br><span class="line">#div1, #div2</span><br><span class="line">&#123;float:left; width:100px; height:35px; margin:10px;padding:10px;border:1px solid #aaaaaa;&#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">function allowDrop(ev)</span><br><span class="line">&#123;</span><br><span class="line">ev.preventDefault();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function drag(ev)</span><br><span class="line">&#123;</span><br><span class="line">ev.dataTransfer.setData(&quot;Text&quot;,ev.target.id);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function drop(ev)</span><br><span class="line">&#123;</span><br><span class="line">ev.preventDefault();</span><br><span class="line">var data=ev.dataTransfer.getData(&quot;Text&quot;);</span><br><span class="line">ev.target.appendChild(document.getElementById(data));</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;div id=&quot;div1&quot; ondrop=&quot;drop(event)&quot; ondragover=&quot;allowDrop(event)&quot;&gt;</span><br><span class="line">  &lt;img width=&quot;100px&quot; src=&quot;bike.png&quot; draggable=&quot;true&quot; ondragstart=&quot;drag(event)&quot; id=&quot;drag1&quot; /&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;div id=&quot;div2&quot; ondrop=&quot;drop(event)&quot; ondragover=&quot;allowDrop(event)&quot;&gt;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -792,7 +1084,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/42/">42</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/44/">44</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -860,7 +1152,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">126</span>
+          <span class="site-state-item-count">132</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -873,7 +1165,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">78</span>
+        <span class="site-state-item-count">84</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

@@ -272,7 +272,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/10/%E4%BC%98%E5%8C%96JS%E4%BB%A3%E7%A0%81%E7%9A%8434%E7%A7%8D%E6%96%B9%E6%B3%95/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/10/13/game-sdk%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -286,7 +286,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/09/10/%E4%BC%98%E5%8C%96JS%E4%BB%A3%E7%A0%81%E7%9A%8434%E7%A7%8D%E6%96%B9%E6%B3%95/" class="post-title-link" itemprop="url">优化JS代码的34种方法</a>
+            <a href="/2021/10/13/game-sdk%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">game_sdk项目笔记</a>
         </h2>
 
         <div class="post-meta">
@@ -296,28 +296,15 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-09-10 11:23:20" itemprop="dateCreated datePublished" datetime="2021-09-10T11:23:20+08:00">2021-09-10</time>
+              <time title="创建时间：2021-10-13 16:08:14" itemprop="dateCreated datePublished" datetime="2021-10-13T16:08:14+08:00">2021-10-13</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-08-24 18:09:23" itemprop="dateModified" datetime="2022-08-24T18:09:23+08:00">2022-08-24</time>
+                <time title="修改时间：2022-10-16 14:50:21" itemprop="dateModified" datetime="2022-10-16T14:50:21+08:00">2022-10-16</time>
               </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/Javascript/" itemprop="url" rel="index"><span itemprop="name">Javascript</span></a>
-                </span>
-            </span>
 
           
 
@@ -330,39 +317,72 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="优化JS代码的34种方法"><a href="#优化JS代码的34种方法" class="headerlink" title="优化JS代码的34种方法"></a>优化JS代码的34种方法</h3><h4 id="1-含有多个条件的if语句"><a href="#1-含有多个条件的if语句" class="headerlink" title="1. 含有多个条件的if语句"></a>1. 含有多个条件的if语句</h4><p>我们可以在数组中存储多个值，也可以使用数据的includes方法。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// longhand</span><br><span class="line">if (x=== &#x27;abc&#x27; || x === &#x27;def&#x27; || x === &#x27;ghi&#x27; || x ===jkl&#x27;) &#123;</span><br><span class="line">	// logic</span><br><span class="line">&#125;</span><br><span class="line">// shorthand</span><br><span class="line">if ([ &#x27;abc &#x27;, &#x27;def&#x27;, &#x27;ghi&#x27;, &#x27;jkl&#x27; ].includes (x)) &#123;</span><br><span class="line">    // logic</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn create react-app game_sdk</span><br></pre></td></tr></table></figure>
 
-<h4 id="2-If-…-else的缩写法"><a href="#2-If-…-else的缩写法" class="headerlink" title="2. If … else的缩写法"></a>2. If … else的缩写法</h4><p>当我们在if-else条件下的逻辑比较简单时，我们可以使用三元条件运算符。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">// Longhand</span><br><span class="line">let test: boolean;</span><br><span class="line"></span><br><span class="line">if(x &gt; 100)&#123;</span><br><span class="line">	test = true;</span><br><span class="line">&#125;else &#123;</span><br><span class="line">    test = false;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// shorthand</span><br><span class="line">let test = (x &gt; 10) ? true : false;</span><br><span class="line"></span><br><span class="line">// or we can use directly</span><br><span class="line">let test = x &gt; 10;</span><br><span class="line"></span><br><span class="line">console.log (test) ;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd game_sdk</span><br><span class="line">yarn start</span><br></pre></td></tr></table></figure>
 
-<p>如果包含嵌套条件，也可以使用这种方法。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let x = 300,</span><br><span class="line">test2 = (x &gt; 100) ? &#x27;greater 100&#x27; : (x&lt;50) ? &#x27;less 50&#x27; : &#x27;between50 and 100&#x27;;</span><br><span class="line"></span><br><span class="line">console.log (test2);    // &quot;greater than 100&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="添加路由"><a href="#添加路由" class="headerlink" title="添加路由"></a>添加路由</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add react-router-dom</span><br></pre></td></tr></table></figure>
 
-<h4 id="3-定义变量"><a href="#3-定义变量" class="headerlink" title="3. 定义变量"></a>3. 定义变量</h4><p>当我们想要定义两个变量，并且这两个变量拥有相同的值或者类型的话，我们可以运用此种简略的表达方式。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// Longhand</span><br><span class="line">let testl;</span><br><span class="line">let test2 = 1;</span><br><span class="line"></span><br><span class="line">// Shorthand</span><br><span class="line">let test1, test2 = 1;</span><br></pre></td></tr></table></figure>
+<ol>
+<li><code>index.js</code></li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import &#123; HashRouter &#125; from &#x27;react-router-dom&#x27;;</span><br><span class="line"></span><br><span class="line">&lt;HashRouter&gt;</span><br><span class="line">    &lt;App/&gt;</span><br><span class="line">&lt;/HashRouter&gt;</span><br></pre></td></tr></table></figure>
 
-<h4 id="4-关于Null-undefined的检查"><a href="#4-关于Null-undefined的检查" class="headerlink" title="4. 关于Null, undefined的检查"></a>4. 关于Null, undefined的检查</h4><p>当我们创建新的变量时，有时候需要检查我们引用变量的值是否为null或是undefined，js本身就有一种缩写法能实现这个功能</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// Longhand</span><br><span class="line">if (testl !== null || test1 !== undefined || test1 !== &#x27;&#x27;) &#123;</span><br><span class="line">	let test2 - test1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// shorthand</span><br><span class="line">let test2 = test1 || &#x27;&#x27;;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意事项：使用HashRouter，直接访问<a target="_blank" rel="noopener" href="http://localhost:3003/login%E6%98%AF%E9%A1%B5%E9%9D%A2%E7%A9%BA%E7%99%BD%E7%9A%84%EF%BC%8C%E8%A6%81%E6%B3%A8%E6%84%8FHashRouter%E4%B8%8EBrowserRouter%E7%9A%84%E5%8C%BA%E5%88%AB">http://localhost:3003/login是页面空白的，要注意HashRouter与BrowserRouter的区别</a></p>
+</blockquote>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="http://localhost:3003/#/login">http://localhost:3003/#/login</a></p>
+</blockquote>
+<p>项目中改为BrowserRouter，正式环境再改为HashRouter</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import &#123; BrowserRouter &#125; from &#x27;react-router-dom&#x27;;</span><br><span class="line"></span><br><span class="line">&lt;BrowserRouter&gt;</span><br><span class="line">    &lt;App/&gt;</span><br><span class="line">&lt;/BrowserRouter&gt;</span><br></pre></td></tr></table></figure>
 
-<h4 id="5-Null值检查与指定默认赋值"><a href="#5-Null值检查与指定默认赋值" class="headerlink" title="5. Null值检查与指定默认赋值"></a>5. Null值检查与指定默认赋值</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let test1 = null,</span><br><span class="line">	test2 = test1 || &#x27;&#x27;;</span><br><span class="line">	</span><br><span class="line">console.log (&quot;null check&quot;, test2); // output will be &quot;&quot;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li><code>router/index.js</code></li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">import &#123; Routes, Route &#125; from &#x27;react-router-dom&#x27;;</span><br><span class="line"></span><br><span class="line">import Login from &#x27;../pages/user/Login&#x27;;</span><br><span class="line">import Service from &#x27;../pages/service/Service&#x27;;</span><br><span class="line">import MyCenter from &#x27;../pages/mycenter/MyCenter&#x27;;</span><br><span class="line">import Register from &#x27;../pages/user/Register&#x27;;</span><br><span class="line"></span><br><span class="line">function RootRouter() &#123;</span><br><span class="line">  return (</span><br><span class="line">    &lt;&gt;</span><br><span class="line">       &lt;Routes&gt;</span><br><span class="line">        &lt;Route path=&quot;/login&quot; element=&#123;&lt;Login /&gt;&#125; /&gt;</span><br><span class="line">        &lt;Route path=&quot;/register&quot; element=&#123;&lt;Register /&gt;&#125; /&gt;</span><br><span class="line">        &lt;Route path=&quot;/service&quot; element=&#123;&lt;Service /&gt;&#125; /&gt;</span><br><span class="line">        &lt;Route path=&quot;/mycenter&quot; element=&#123;&lt;MyCenter /&gt;&#125; /&gt;</span><br><span class="line">      &lt;/Routes&gt;</span><br><span class="line">    &lt;/&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export default RootRouter;</span><br></pre></td></tr></table></figure>
 
-<h4 id="6-Undefined值检查与默认赋值"><a href="#6-Undefined值检查与默认赋值" class="headerlink" title="6. Undefined值检查与默认赋值"></a>6. Undefined值检查与默认赋值</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let testl = undefined,</span><br><span class="line">	test2 = testl l| &#x27;&#x27;;</span><br><span class="line">	</span><br><span class="line">console.log (&quot;undefined check&quot;, test2); // output will be &quot;&quot;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li><code>App.js</code></li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">import RootRouter from &quot;./router&quot;;</span><br><span class="line"></span><br><span class="line">function App() &#123;</span><br><span class="line">  return (</span><br><span class="line">    &lt;&gt;</span><br><span class="line">       &lt;RootRouter/&gt;</span><br><span class="line">    &lt;/&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export default App;</span><br></pre></td></tr></table></figure>
 
-<p>正常值检查</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let test1 = &#x27;test&#x27;,</span><br><span class="line">    test2 = test1 || &#x27;&#x27;;</span><br><span class="line">    </span><br><span class="line">console.log(test2);  // output: &#x27;test&#x27;</span><br></pre></td></tr></table></figure>
+<h4 id="使用antd（项目中使用antd"><a href="#使用antd（项目中使用antd" class="headerlink" title="使用antd（项目中使用antd)"></a>使用<a target="_blank" rel="noopener" href="https://ant.design/docs/react/use-with-create-react-app-cn">antd</a>（项目中使用antd)</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add antd</span><br></pre></td></tr></table></figure>
 
-<p>（现在我们可以在4、5、6条中使用 ?? 运算符了）</p>
-<h4 id="7-聚合运算符"><a href="#7-聚合运算符" class="headerlink" title="7. 聚合运算符"></a>7. 聚合运算符</h4><p>**??**是聚合运算符，如果左值为null或undefined，就返回右值。默认返回左值。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const test= null ?? &#x27;default&#x27;;</span><br><span class="line">console.log(test);</span><br><span class="line">// expected output: &quot;default&quot;const test1 =0 ?? 2;</span><br><span class="line">console.log(test1);</span><br><span class="line">// expected output: 0</span><br></pre></td></tr></table></figure>
+<p>修改 <code>src/App.css</code>，在文件顶部引入 <code>antd/dist/antd.css</code>。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@import</span> <span class="string">&#x27;~antd/dist/antd.css&#x27;</span>;</span><br></pre></td></tr></table></figure>
 
-<h4 id="8-为多个变量赋值"><a href="#8-为多个变量赋值" class="headerlink" title="8. 为多个变量赋值"></a>8. 为多个变量赋值</h4><p>当我们处理多个变量，想为不同的变量赋不同的值时，就会真正发现这种简略的表达方式的实用之处了。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// Longhand</span><br><span class="line">let test1, test2, test3;</span><br><span class="line">test1 = 1;</span><br><span class="line">test2 = 2;</span><br><span class="line">test3 = 3;</span><br><span class="line"></span><br><span class="line">// Shorthand</span><br><span class="line">let [testl, test2, test3] = [1，2，3];</span><br></pre></td></tr></table></figure>
+<h5 id="高级配置——使用less"><a href="#高级配置——使用less" class="headerlink" title="高级配置——使用less"></a><a target="_blank" rel="noopener" href="https://ant.design/docs/react/use-with-create-react-app-cn#%E9%AB%98%E7%BA%A7%E9%85%8D%E7%BD%AE">高级配置</a>——使用less</h5><p>安装 craco </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add @craco/craco</span><br></pre></td></tr></table></figure>
 
-<h4 id="9-赋值运算符简略的表达方式"><a href="#9-赋值运算符简略的表达方式" class="headerlink" title="9. 赋值运算符简略的表达方式"></a>9. 赋值运算符简略的表达方式</h4><p>通常，我们会在程序中处理大量的算术运算符。而对于JavaScript变量的赋值运算符来说，这是其中一个实用的技巧。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// Longhand</span><br><span class="line">testl = testl + l;</span><br><span class="line">test2 = test2 - 1;</span><br><span class="line">test3 = test3 *20;</span><br><span class="line"></span><br><span class="line">// Shorthand</span><br><span class="line">test1++;</span><br><span class="line">test2--;</span><br><span class="line">test3 *= 20;</span><br></pre></td></tr></table></figure>
+<p>修改 <code>package.json</code> 里的 <code>scripts</code> 属性。</p>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">/* package.json */</span><br><span class="line">&quot;scripts&quot;: &#123;</span><br><span class="line"><span class="deletion">-   &quot;start&quot;: &quot;react-scripts start&quot;,</span></span><br><span class="line"><span class="deletion">-   &quot;build&quot;: &quot;react-scripts build&quot;,</span></span><br><span class="line"><span class="deletion">-   &quot;test&quot;: &quot;react-scripts test&quot;,</span></span><br><span class="line"><span class="addition">+   &quot;start&quot;: &quot;craco start&quot;,</span></span><br><span class="line"><span class="addition">+   &quot;build&quot;: &quot;craco build&quot;,</span></span><br><span class="line"><span class="addition">+   &quot;test&quot;: &quot;craco test&quot;,</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h4 id="10-判断变量是否存在的缩写法"><a href="#10-判断变量是否存在的缩写法" class="headerlink" title="10. 判断变量是否存在的缩写法"></a>10. 判断变量是否存在的缩写法</h4>
+<p>在项目根目录创建一个 <code>craco.config.js</code> 用于修改默认配置。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/* craco.config.js */</span><br><span class="line">module.exports = &#123;</span><br><span class="line">  // ...</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>引入 <a target="_blank" rel="noopener" href="https://github.com/DocSpring/craco-less">craco-less</a> 来帮助加载 less 样式和修改变量</p>
+<p><code>src/App.css</code> 文件修改为 <code>src/App.less</code>，然后修改样式引用为 less 文件。</p>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">/* src/App.js */</span><br><span class="line"><span class="deletion">- import &#x27;./App.css&#x27;;</span></span><br><span class="line"><span class="addition">+ import &#x27;./App.less&#x27;;</span></span><br><span class="line">/* src/App.less */</span><br><span class="line"><span class="deletion">- @import &#x27;~antd/dist/antd.css&#x27;;</span></span><br><span class="line"><span class="addition">+ @import &#x27;~antd/dist/antd.less&#x27;;</span></span><br></pre></td></tr></table></figure>
+
+<p>安装 <code>craco-less</code> </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add craco-less</span><br></pre></td></tr></table></figure>
+
+<p>修改 <code>craco.config.js</code> 文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">const CracoLessPlugin = require(&#x27;craco-less&#x27;);</span><br><span class="line"></span><br><span class="line">module.exports = &#123;</span><br><span class="line">  plugins: [</span><br><span class="line">    &#123;</span><br><span class="line">      plugin: CracoLessPlugin,</span><br><span class="line">      options: &#123;</span><br><span class="line">        lessLoaderOptions: &#123;</span><br><span class="line">          lessOptions: &#123;</span><br><span class="line">            modifyVars: &#123; &#x27;@primary-color&#x27;: &#x27;#f6c700&#x27; &#125;,</span><br><span class="line">            javascriptEnabled: true,</span><br><span class="line">          &#125;,</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">  ],</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><code>注意：配置完，要重启项目</code></p>
+<p>这里是配置主题颜色，不改变主题颜色，可不加</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">modifyVars: &#123; &#x27;@primary-color&#x27;: &#x27;#f6c700&#x27; &#125;,</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p>也可以使用<a target="_blank" rel="noopener" href="https://antd-mobile.gitee.io/zh/guide/quick-start">Ant Design Mobile</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add antd-mobile</span><br></pre></td></tr></table></figure>
+
+
       
     </div>
 
@@ -381,7 +401,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/02/HTML5-%E7%AC%94%E8%AE%B0/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/10/13/AppCan/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -395,7 +415,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/09/02/HTML5-%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">HTML5-笔记</a>
+            <a href="/2021/10/13/AppCan/" class="post-title-link" itemprop="url">AppCan</a>
         </h2>
 
         <div class="post-meta">
@@ -405,14 +425,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-09-02 14:55:04" itemprop="dateCreated datePublished" datetime="2021-09-02T14:55:04+08:00">2021-09-02</time>
+              <time title="创建时间：2021-10-13 14:04:24" itemprop="dateCreated datePublished" datetime="2021-10-13T14:04:24+08:00">2021-10-13</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-09-17 11:21:49" itemprop="dateModified" datetime="2022-09-17T11:21:49+08:00">2022-09-17</time>
+                <time title="修改时间：2022-10-16 14:50:21" itemprop="dateModified" datetime="2022-10-16T14:50:21+08:00">2022-10-16</time>
               </span>
 
           
@@ -426,483 +446,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h4 id="HTML5新特性"><a href="#HTML5新特性" class="headerlink" title="HTML5新特性"></a>HTML5新特性</h4><ul>
-<li>拖放(Drag and drop ) API.</li>
-<li>语义化更好的内容标签 (header、nav、 footer、aside、article、 section )。</li>
-<li>音频、视频 (audio、 video) API</li>
-<li>画布( Canvas ) API.</li>
-<li>地理(Geolocation) API.</li>
-<li>本地离线存储（localStorage），即长期存储数据，浏览器关闭后数据不丢失。</li>
-<li>会会话存储(sessionStorage），即数据在浏览器关闲后自动删除。</li>
-<li>表单控件包括 calendar、date、time 、 email、url、 search</li>
-<li>新的技术包括 webworker、 websocket、Geolocation.</li>
-</ul>
-<h4 id="HTML5-新增的API"><a href="#HTML5-新增的API" class="headerlink" title="HTML5 新增的API"></a>HTML5 新增的API</h4><p>新增的功能 API 包括 Media API、Text Track API、 Application Cache API、 User Interaction、Data Transfer API、 Command API.、Constraint Validation API、History API.</p>
-<h4 id="HTML5移除元素"><a href="#HTML5移除元素" class="headerlink" title="HTML5移除元素"></a>HTML5移除元素</h4><p>移除的元素如下：</p>
-<ul>
-<li>纯表现的元素，包括 basefont、big、center、 font、 s、 strike、tt、 u</li>
-<li>对可用性产生负面影响的元素，包括 frame、frameset、 Noframes</li>
-</ul>
-<h4 id="新的HTML5-文档类型和字符集"><a href="#新的HTML5-文档类型和字符集" class="headerlink" title="新的HTML5 文档类型和字符集"></a>新的HTML5 文档类型和字符集</h4><p>HTML5文档类型是<code>&lt;!doctype html&gt;</code><br>HTML5 使用的宇符集<code>&lt;meta charset=&quot;UTF-8&quot;&gt;</code></p>
-<h4 id="HTML5-的离线存储"><a href="#HTML5-的离线存储" class="headerlink" title="HTML5 的离线存储"></a>HTML5 的离线存储</h4><ul>
-<li>localStorage，可长期存储数据，即浏览器关闭后数据不丢失。</li>
-<li>sessionStorage，数据在浏览器关闭后自动删除。</li>
-</ul>
-<h4 id="HTML5-的form关闭自动补全功能"><a href="#HTML5-的form关闭自动补全功能" class="headerlink" title="HTML5 的form关闭自动补全功能"></a>HTML5 的form关闭自动补全功能</h4><p>将不想要提示的form 元素下的 input 元素的autocomplete 属性设置为off.</p>
-<h4 id="HTML5-页面中嵌入音频"><a href="#HTML5-页面中嵌入音频" class="headerlink" title="HTML5 页面中嵌入音频"></a>HTML5 页面中嵌入音频</h4><blockquote>
-<p>支持的格式包括 MP3、 Wav 和Ogg等</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;audio controls&gt;</span><br><span class="line">  &lt;source sr=&quot;icketang.mp3&quot; type=&quot;audio/mpeg&quot;&gt;</span><br><span class="line">  Your browser does&#x27;nt support audio embedding feature</span><br><span class="line">&lt;/audio&gt;</span><br></pre></td></tr></table></figure>
+          <p><a target="_blank" rel="noopener" href="http://appcan.cn/">AppCan</a></p>
+<p><a target="_blank" rel="noopener" href="http://newdocx.appcan.cn/AppCan">AppCan-开发者</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.w3cschool.cn/appcan/">AppCan 教程-w3cschool</a></p>
 
-<h4 id="HTML5-页面中嵌入视频"><a href="#HTML5-页面中嵌入视频" class="headerlink" title="HTML5 页面中嵌入视频"></a>HTML5 页面中嵌入视频</h4><blockquote>
-<p>支持的格式包括MP4、 WebM和Ogg 等</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;video width=&quot;450&quot; height=&quot;340&quot; controls&gt;</span><br><span class="line">  &lt;source src=&quot;icketang.mp4&quot; type=&quot;video/mp4&quot;&gt;</span><br><span class="line">  Your browser does&#x27;nt support video embedding feature.</span><br><span class="line">&lt;/video&gt;</span><br></pre></td></tr></table></figure>
-
-<h4 id="HTML5-引入新的表单属性"><a href="#HTML5-引入新的表单属性" class="headerlink" title="HTML5 引入新的表单属性"></a>HTML5 引入新的表单属性</h4><p>datalist、datetime、output、keygen、date、month、week、time、number、 range、 emailurl.</p>
-<h4 id="HTML5-应用缓存和常规的-HTML-浏览器缓存的差别"><a href="#HTML5-应用缓存和常规的-HTML-浏览器缓存的差别" class="headerlink" title="HTML5 应用缓存和常规的 HTML 浏览器缓存的差别"></a>HTML5 应用缓存和常规的 HTML 浏览器缓存的差别</h4><p>HTML5应用缓存最关键的就是支持离线应用，可荻取少数或者全部网站内容包括 HTTML、CSS、图像和 JavaScript 脚本 并存在本地。该特性提升了网站的性能，可通过如下方式实现</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;!doctype html&gt;</span><br><span class="line">  &lt;html manifest=&quot;example.appcache&quot;&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>与传统的浏览器缓存比较，该特性并不强制要求用户访问网站</p>
-</blockquote>
-<blockquote>
-<p>HTML5 没有使用 SGML 或者 XHTML，它是一个全新的类型，因此不需要参考DTD。对于HTML5，仅须放置下面的文档类型代码，让浏览器识别HTML5 文档。<br>如果不放入＜！doctype html&gt;标签，HITML5 不会工作。浏览器将不能识别出它是HTML文档，同时HTMLS 的标签将不能正常工作。</p>
-</blockquote>
-<h4 id="WebSocket"><a href="#WebSocket" class="headerlink" title="WebSocket"></a>WebSocket</h4><p>它是 Web 应用程序的传输协议，提供了双向的、按序到达的数据流。它是HTML5新增的协议，webSocket 的连接是持久的，它在客户端和服务器之间保特双工连接，服务器的更新可以及时推送到客户端，而不需要客户端以一定的时间间隔去轮询</p>
-<h4 id="实现浏览器内多个标签页之间的通信"><a href="#实现浏览器内多个标签页之间的通信" class="headerlink" title="实现浏览器内多个标签页之间的通信"></a>实现浏览器内多个标签页之间的通信</h4><p>在标签页之间，调用 localstorge、cookies 等数据存储，可以实现标签页之问的通信</p>
-<h4 id="localStorage-和cookie-的区别"><a href="#localStorage-和cookie-的区别" class="headerlink" title="localStorage 和cookie 的区别"></a>localStorage 和cookie 的区别</h4><p>​        localStorage 的概念和 cookie 相似，区别是 localStorage 是为了更大容量的存储设计的。cookie 的大小是受限的，并且每次请求一个新页面时，cookie 都会被发送过去，这样无形中浪费了带宽。另外，cookie 还需要指定作用域，不可以跨域调用。<br>​        除此之外，localStorage 拥有 setltem、getltem、removeltem、clear 等方法，cookie 则需要前端开发者自己封装 setCookie 和getcookie。但cookie 也是不可或缺的，因为 cookie的作用是与服务器进行交互，并且还是 HTTP 规范的一部分，而localStorage 仅因为是为了在本地“存储”数据而已，无法跨浏览器使用。</p>
-<h4 id="cookie-的特点"><a href="#cookie-的特点" class="headerlink" title="cookie 的特点"></a>cookie 的特点</h4><p>cookie 虽然为持久保存客户湍数据提供了方便，分担了服务器存储的负担，但是有以下局限性。</p>
-<ol>
-<li>每个特定的域名下最多生成20个 cookie。</li>
-<li>IE6 或更低版本最多有20个cookie。</li>
-<li>I7和之后的版本最多可以有50个 cookie.</li>
-<li> Firefox 最多可以有50个cookie。</li>
-<li>Chrome 和 Safari 没有做硬性限制。</li>
-</ol>
-<p>IE和Opera 会清理近期最少使用的cookie， Firefox 会随机清理 cookie.<br>cookie 最大为 4096字节，为了兼容性，一般不能超过 4095 字节。<br>IE提供了一种存储方式，可以让用户数据持久化，叫作userdata，从IE5.0 就开始支持此功能。每块数据最多 128KB，每个域名下最多1MB。这个持久化数据放在缓存中，如果果缓存没有被清理，就会一直存在。<br>优点如下：</p>
-<ol>
-<li>通过良好的编程，控制保存在cookie 中的 session 对象的大小</li>
-<li>通过加密和安全传输技术（SSL)，降低cookie被破解的可能性。</li>
-<li>只在cookie 中存放不敏感数据，即使被盗也不会有重大损失。</li>
-<li>控制cookie 的生命周期，使之不会永远有效。数据偷盗者很可能得到一个过期的cookie.</li>
-</ol>
-<p>缺点如下：</p>
-<ol>
-<li>scookie” 的数量和长度有限制。每个domain 最多只能有20条cookie，每个cookie 的长度不能超过 4KB，否则会被截掉。</li>
-<li>安全性问题。如果cookie 被别人拦截了，就可以取得所有的session 信息。即使加密也于事无补，因为拦截者并不需要知道cookie 的意义，他只要原样转发 cookie就可以达到目的。</li>
-<li>有些状态不可能保存在客产端。例如，为了防止重复提交表单，我们需要在服务器端保存一个计数器。如果把这个计数器保存在客户端，那么它起不到任何作用。</li>
-</ol>
-<h4 id="cookie-和session-的区别"><a href="#cookie-和session-的区别" class="headerlink" title="cookie 和session 的区别"></a>cookie 和session 的区别</h4><ol>
-<li>cookie 数据存放在客户的浏览器上，session 数据存放在服务器上。</li>
-<li>cookie 不是很安全，别人可以分析存放在本地的cookie 并进行 cookie 欺骗。考虑到安全问题应当使用 session。</li>
-<li>session 会在一定时问内保存在服务器上。当访问增多时，会占用较多服务器的资源。为了减轻服务器的负担，应当使用 cookie。</li>
-<li>单个cookie 保存的数据不能超过 4KB，很多浏览器都限制一个站,点最多保存20 个cookie.</li>
-</ol>
-<blockquote>
-<p>建议可以将登录信息等重要信息存放在session 中，其他信息（如果需要保留）可以存放在cookie 中</p>
-</blockquote>
-<h4 id="SVG"><a href="#SVG" class="headerlink" title="SVG"></a>SVG</h4><p>SVG即可缩放矢量因形(Scalable Vector Graphics )。它是基于文本的图形语言，使用文本、线条、点等来绘制图像，这使得它轻便、显示迅速</p>
-<h4 id="Canvas-和-SVG-的区别"><a href="#Canvas-和-SVG-的区别" class="headerlink" title="Canvas 和 SVG 的区别"></a>Canvas 和 SVG 的区别</h4><ol>
-<li>一旦 Canvas 绘制完成将不能访问像素或操作它；任何使用SVG绘制的形状都能被记忆和操作，可以被浏览器再次显示。</li>
-<li>Canvas 对绘制动画和游戏非常有利；SVG对创建图形（如CAD）非常有利</li>
-<li>因为不需要记住以后事情，所以 Canvas 运行更快；因为为了之后的操作，SVG需要记录坐标，所以运行比较缓慢。</li>
-<li>在Canvas 中不能为绘制对象邬定相关事件；在SVG 中可以为绘制对象绑定相关事件</li>
-<li>Canvas绘制出的是位图，因此与分辨率有关；SVG绘制出的是矢量图，因此与分辨率无关。</li>
-</ol>
-<h4 id="HTML5-中实现应用缓存"><a href="#HTML5-中实现应用缓存" class="headerlink" title="HTML5 中实现应用缓存"></a>HTML5 中实现应用缓存</h4><p>首先，需要指定”manifest” 文件，“manifest”文件帮助你定义缓存如何工作。</p>
-<p>“manifest”文件的结构：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">CACHE MANIFEST</span><br><span class="line"># version 1.0</span><br><span class="line">/demo.css</span><br><span class="line">/demo.js</span><br><span class="line">/demo.png</span><br><span class="line">所有manifest 文件都以&quot;CACHE MANIFEST&quot;语句开始。</span><br><span class="line">＃(散列标签）有助于提供缓存文件的版本。</span><br><span class="line">manifest 文件的内容类型应是&quot;text/cache-manifest&quot;</span><br></pre></td></tr></table></figure>
-
-<p>创建一个缓存manifest 文件后，在HTML 页面中提供manifest 链接，代码如下所示。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;html manifest=&quot;icketang.appcache&quot;&gt;</span><br></pre></td></tr></table></figure>
-
-<p>第一次运行以上文件时，它会添加到浏览器应用缓存中，在服务器宕机时，页面从应用缓存中获取数据</p>
-<h4 id="刷新浏览器的应用缓存"><a href="#刷新浏览器的应用缓存" class="headerlink" title="刷新浏览器的应用缓存"></a>刷新浏览器的应用缓存</h4><p>应用缓存通过变更“#”标签后的版本号来刷新，如下所示：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">CACHE MANIFEST</span><br><span class="line"># version 2.0</span><br><span class="line">/icketang.css</span><br><span class="line">/icketang. js</span><br><span class="line">/icketang.png</span><br><span class="line">NETWORK</span><br><span class="line">login.php</span><br></pre></td></tr></table></figure>
-
-<h4 id="应用缓存中的回退"><a href="#应用缓存中的回退" class="headerlink" title="应用缓存中的回退"></a>应用缓存中的回退</h4><p>应用缓存中的回退会帮助你指定在服务器不可访问时，品示某文件。例如在下面的manifest 文件中，如果用户输入了“/home”，同时服务器不可到达，“404.html”文件应送达</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">FAIIBACK:</span><br><span class="line">/home/ /404. html</span><br></pre></td></tr></table></figure>
-
-<h4 id="应用缓存中网络命令的作用"><a href="#应用缓存中网络命令的作用" class="headerlink" title="应用缓存中网络命令的作用"></a>应用缓存中网络命令的作用</h4><p>网络命令描述不需要缓存的文件，例如以下代码中”login.php”始终都不应该缓存或者离线访问。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NEIWORK:</span><br><span class="line">login.php</span><br></pre></td></tr></table></figure>
-
-<h4 id="WebSql"><a href="#WebSql" class="headerlink" title="WebSql"></a>WebSql</h4><p>Websql 是一个在浏览器客户端的结构关系数据库，是浏览器内的本地 RDBMS（关系型数据库管理系统），可以使用SQL 查询。</p>
-<blockquote>
-<p>websql 不是HTML5 的一个规范，这个规范是基于 SOLite</p>
-</blockquote>
-<h4 id="HTML5-实现跨域"><a href="#HTML5-实现跨域" class="headerlink" title="HTML5 实现跨域"></a>HTML5 实现跨域</h4><p>在服务器端设置允许在其他域名下访问，例如允许所有域名访问以下内容</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">response.setHeader(&quot;Access-Control-Allow-Origin&quot;,</span><br><span class="line">response.setHeader(&quot;Access-Control-Allow-Methods&quot;,&quot;pOST&quot;)</span><br><span class="line">response. setHeader (&quot;Access-Control-Allow-Headers&quot; &quot;x-requested-with, content-type&quot;) ;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<h2 id="新增语义标签"><a href="#新增语义标签" class="headerlink" title="新增语义标签"></a>新增语义标签</h2><table>
-<thead>
-<tr>
-<th>区块标签</th>
-<th>内容分组标签</th>
-<th>文本级别标签</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>article</td>
-<td>main</td>
-<td>time</td>
-</tr>
-<tr>
-<td>header</td>
-<td>figure</td>
-<td></td>
-</tr>
-<tr>
-<td>footer</td>
-<td>figcaption</td>
-<td></td>
-</tr>
-<tr>
-<td>nav</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>aside</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>section</td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;figure&gt;</span><br><span class="line">	&lt;img src=&quot;images/caffe-2.jpg&quot; alt=&quot;卡布奇诺&quot;/&gt;&lt;figcaption&gt;卡布奇诺&lt;/figcaption&gt;</span><br><span class="line">&lt;/figure&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id=""><a href="#" class="headerlink" title=""></a><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/HTML5-%E7%AC%94%E8%AE%B0/coffee.png" alt="img"></h3><h3 id="header"><a href="#header" class="headerlink" title="header"></a>header</h3><p>header标签的使用:</p>
-<ul>
-<li>一个文档中可以包含多于一个的header标签</li>
-<li>header标签不一定非要显示在页面的上方，它的内容决定这里需要使用header标签，位置并不重要</li>
-</ul>
-<p>—些使用aside的例子:</p>
-<ul>
-<li>页面侧边栏</li>
-<li>广告</li>
-<li>友情链接</li>
-<li>引语(内容摘要)</li>
-</ul>
-<p>一个主题性的内容分组，通常包含一个头部( header ) ,可能还会有一个尾部( footer )。</p>
-<h3 id="div"><a href="#div" class="headerlink" title="div"></a>div</h3><ul>
-<li>应用更广泛，只要你想为一个区域定义一个样式，就可以使用div标签</li>
-</ul>
-<h3 id="section"><a href="#section" class="headerlink" title="section"></a>section</h3><ul>
-<li>包含的内容是一个明确的主题，通常有标题区域</li>
-</ul>
-<h3 id="main"><a href="#main" class="headerlink" title="main"></a>main</h3><ul>
-<li>显示页面的主体内容。</li>
-<li>每个页面只能包含一个main标签。</li>
-<li>main标签中不包含网站标题、logo、主导航、版权声明等信息。</li>
-</ul>
-<p>HTML5中文本级别的语义标签</p>
-<ul>
-<li>time（表示一个日期，或者一个时间，或者同时表示一个日期和时间值）</li>
-<li>i和b</li>
-<li>em和strong</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;time datetime=&quot;2015-06-30&quot;&gt;2015年6月30日&lt;/time&gt;</span><br><span class="line"></span><br><span class="line">// datetime=&quot;2015-06-30&quot;：</span><br><span class="line">// 这里是一个固定格式的日期或时间值，可以被搜索引擎、屏幕阅读器等方便的识别。</span><br><span class="line"></span><br><span class="line">// 2015年6月30日：</span><br><span class="line">// 标签中间的文本只要人可以识别就可以，例如“今天”，“1小时前”，“结婚纪念日”，“情人节”等</span><br><span class="line">   如果没有定义datetime属性，则这里的文本需要是一个固定格式</span><br></pre></td></tr></table></figure>
-
-<h4 id="time的格式"><a href="#time的格式" class="headerlink" title="time的格式"></a>time的格式</h4><ul>
-<li>指定年月日：2015-06-30</li>
-<li>指定年月：2015-06</li>
-<li>年份可以是两位数字：15-06-30</li>
-<li>指定时间（ 24小时制)：14:54:39</li>
-<li>指定时间(24小时制）：14:54</li>
-<li>指定日期和时间：2015-06-30 14:54:39</li>
-<li>T表示时间，意义同上:2015-06-30T14:54:39</li>
-<li>Z表示使用UTC标准时间：2015-06-30T14:54Z</li>
-</ul>
-<p>注：utc标准时间+8小时=北京时间</p>
-<h3 id="i"><a href="#i" class="headerlink" title="i"></a>i</h3><p>HTML4：修饰文字样式的，将文字显示为<em>斜体</em>文本</p>
-<p>HTML5：表示强调不同的情绪或声音，也可以表示技术术语、生物分类、来自另一种语言的成语或习语、一个想法等等</p>
-<h3 id="b"><a href="#b" class="headerlink" title="b"></a>b</h3><p>HTML4：修饰文字样式的，将文字显示为粗体文本</p>
-<p>HTML5：表示文档中的关键字、商品名称等</p>
-<h3 id="em"><a href="#em" class="headerlink" title="em"></a>em</h3><p>标签中的内容是用来强调的重点内容</p>
-<p>会被浏览器显示成<em>斜体</em>文本</p>
-<h3 id="strong"><a href="#strong" class="headerlink" title="strong"></a>strong</h3><p>表示非常重要、严重性或内容的紧迫性</p>
-<p>会被浏览器显示成<strong>粗体</strong>文本</p>
-<h3 id="使用建议"><a href="#使用建议" class="headerlink" title="使用建议"></a>使用建议</h3><p>如果你只是单纯的想要把文字的样式显示为斜体或粗体请不要使用这几个语义标签</p>
-<p>w3C建议我们要在css样式表中定义文字样式</p>
-<h3 id="small"><a href="#small" class="headerlink" title="small"></a>small</h3><p>small标签在HTML5中的语义：</p>
-<p>注释或批注说明</p>
-<h3 id="HTML5之前Web上的视频格式"><a href="#HTML5之前Web上的视频格式" class="headerlink" title="HTML5之前Web上的视频格式"></a>HTML5之前Web上的视频格式</h3><table>
-<thead>
-<tr>
-<th>格式</th>
-<th>文件</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>AVI</td>
-<td>.avi</td>
-</tr>
-<tr>
-<td>WMV</td>
-<td>.wmv</td>
-</tr>
-<tr>
-<td>QuickTime</td>
-<td>.mov</td>
-</tr>
-<tr>
-<td>Realvideo</td>
-<td>.rm</td>
-</tr>
-<tr>
-<td>Mpeg-4</td>
-<td></td>
-</tr>
-<tr>
-<td>Flash</td>
-<td></td>
-</tr>
-</tbody></table>
-<p>浏览器要想播放视频，必须预先安装对应的浏览器插件</p>
-<h4 id="embed标签"><a href="#embed标签" class="headerlink" title="embed标签"></a>embed标签</h4><p>在HTML4中不是web的标准</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;embed type=&quot;application/x-shockwave-flash&quot;</span><br><span class="line">src=&quot;zq.swf&quot; width=&quot;508&quot; height=&quot;430&quot;&gt;</span><br><span class="line">&lt;/embed&gt;</span><br></pre></td></tr></table></figure>
-
-<p>浏览器要想播放视频，必须预先安装对应的浏览器插件</p>
-<h4 id="object标签"><a href="#object标签" class="headerlink" title="object标签"></a>object标签</h4><p>在低版本IE中无法工作(&lt;= IE8 )</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;object type=&quot;application/x-shockwave-flash&quot;data=&quot;zq.swf&quot; width=&quot;500&quot; height=&quot;430&quot;&gt;&lt;/object&gt;</span><br></pre></td></tr></table></figure>
-
-<p>除了低版本的IE (&lt;= IE 10)，无法工作在任何其它的浏览器中</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;object classid=&quot;clsid:D27CDB6E-AE6D-11cf-96B8-44455354000e&quot;</span><br><span class="line">width=&quot;500&quot; height=&quot;430&quot;&gt;</span><br><span class="line">  &lt;param name=&quot;src&quot; value=&quot;zq.swf”/&gt;</span><br><span class="line">&lt;/object&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="为了兼容所有的浏览器"><a href="#为了兼容所有的浏览器" class="headerlink" title="为了兼容所有的浏览器"></a>为了兼容所有的浏览器</h3><p>使用object兼容所有的浏览器</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;object classid=&quot;clsid:D27CDB6E-AE6D-11cf-96B8-44455354000o&quot;&quot;</span><br><span class="line">width=&quot;5e0&quot; height=&quot;430&quot;&gt;&lt;!--兼容低版本IE--&gt;</span><br><span class="line">	&lt;param name=&quot;src&quot; value=&quot;zq.swf&quot;/&gt;</span><br><span class="line">  &lt;!--高版本IE和其他浏览器--&gt;</span><br><span class="line">	&lt;object type=&quot;application/x-shockwave-flash&quot;</span><br><span class="line">data=&quot;zq.swf&quot; width=&quot;50o&quot; height=&quot;430&quot;&gt;&lt;/object&gt;</span><br><span class="line">&lt;/object&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="video标签的属性"><a href="#video标签的属性" class="headerlink" title="video标签的属性"></a>video标签的属性</h3><ul>
-<li>src</li>
-<li>controls</li>
-<li>autoplay</li>
-<li>preload</li>
-<li>muted</li>
-<li>loop</li>
-<li>poster</li>
-<li>width和height</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;video src=&quot;lesson-0.mp4&quot; controls autoplay&gt;&lt;/video&gt;</span><br></pre></td></tr></table></figure>
-
-<p>controls和autoplay是布尔属性：只有属性名，没有属性值。例如∶</p>
-<p>如果有autoplay属性，视频就会自动播放</p>
-<p>如果没有autoplay属性，视频就不会自动播放</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;video src=&quot;lesson-0.mp4&quot; controls=&quot;controls&quot; autoplay=&quot;autoplay&quot;&gt;x&lt;/video&gt;</span><br></pre></td></tr></table></figure>
-
-<p>XHTML风格的代码语法更严格</p>
-<p>属性必须由属性名和属性值两部分组成</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;audio controls=&quot;controls&quot; src=&quot;1.mp3&quot; autoplay=&quot;autoplay&quot;&gt;</span><br><span class="line">  您的浏览器不支持播放此音频，请使用高级的浏览器</span><br><span class="line">&lt;/audio&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="-1"><a href="#-1" class="headerlink" title=""></a></h3><p>您的浏览器不支持这个视频的播放，想观看视频，请用高级的浏览器，chrome、Firefox、Opera、Safari等浏览器。</p>
-<p>【这里插入的内容是供不支持video元素的浏览器显示的】</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">&lt;video src=&quot;pian.mp4&quot; width=&quot;600px&quot; height=&quot;400px&quot; border=&quot;1px solid #ccc&quot; controls=&quot;controls&quot;&gt;</span><br><span class="line">&lt;video width=&quot;500&quot; autoplay=&quot;autoplay&quot; loop=&quot;loop&quot; controls=&quot;controls&quot;&gt;</span><br><span class="line">    &lt;source src=&quot;pian.ogg&quot; type=&quot;video/ogg&quot;&gt;</span><br><span class="line">    &lt;source src=&quot;pian.mp4&quot; type=&quot;video/mp4&quot;&gt;</span><br><span class="line">    &lt;!--video 元素允许多个 source 元素。source 元素可以链接不同的视频文件。</span><br><span class="line">    浏览器将使用第一个可识别的格式：--&gt;</span><br><span class="line">  Your browser does not support the video tag.</span><br><span class="line">&lt;/video&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- video的属性有autoplay,controls,height,loop,preload,src,width --&gt;</span><br><span class="line">&lt;!-- &lt;video src=&quot;pian.mp4&quot; width=&quot;500px&quot; controls=&quot;controls&quot; autoplay=&quot;autoplay&quot;&gt;&lt;/video&gt; --&gt;</span><br><span class="line"> &lt;div style=&quot;text-align:center;&quot;&gt;</span><br><span class="line">  &lt;button onclick=&quot;playPause()&quot;&gt;播放/暂停&lt;/button&gt; </span><br><span class="line">  &lt;button onclick=&quot;makeBig()&quot;&gt;大&lt;/button&gt;</span><br><span class="line">  &lt;button onclick=&quot;makeNormal()&quot;&gt;中&lt;/button&gt;</span><br><span class="line">  &lt;button onclick=&quot;makeSmall()&quot;&gt;小&lt;/button&gt;</span><br><span class="line">  &lt;br /&gt; </span><br><span class="line">  &lt;video id=&quot;video1&quot; width=&quot;420&quot; style=&quot;margin-top:15px;&quot;&gt;</span><br><span class="line">    &lt;source src=&quot;pian.mp4&quot; type=&quot;video/mp4&quot; /&gt;</span><br><span class="line">    Your browser does not support HTML5 video.</span><br><span class="line">  &lt;/video&gt;</span><br><span class="line">&lt;/div&gt; </span><br><span class="line"></span><br><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">var myVideo=document.getElementById(&quot;video1&quot;);</span><br><span class="line"></span><br><span class="line">function playPause()</span><br><span class="line">&#123; </span><br><span class="line">if (myVideo.paused) </span><br><span class="line">  myVideo.play(); </span><br><span class="line">else </span><br><span class="line">  myVideo.pause(); </span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line">function makeBig()</span><br><span class="line">&#123; </span><br><span class="line">myVideo.width=560; </span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line">function makeSmall()</span><br><span class="line">&#123; </span><br><span class="line">myVideo.width=320; </span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line">function makeNormal()</span><br><span class="line">&#123; </span><br><span class="line">myVideo.width=420; </span><br><span class="line">&#125; </span><br><span class="line">&lt;/script&gt; </span><br></pre></td></tr></table></figure>
-
-<h3 id="audio"><a href="#audio" class="headerlink" title="audio"></a>audio</h3><p>audio 元素允许多个 source 元素。source 元素可以链接不同的音频文件。浏览器将使用第一个可识别的格式：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;audio controls=&quot;controls&quot; autoplay=&quot;autoplay&quot;&gt;</span><br><span class="line">  &lt;source src=&quot;1.mp3&quot; type=&quot;audio/mp3&quot; /&gt;</span><br><span class="line">  &lt;source src=&quot;1.ogg&quot; type=&quot;audio/ogg&quot; /&gt;</span><br><span class="line">&lt;/audio&gt;</span><br></pre></td></tr></table></figure>
-
-<p>preload属性</p>
-<table>
-<thead>
-<tr>
-<th>属性值</th>
-<th>详细说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>none</td>
-<td>视频播放前，浏览器不会预先下载视频资源，当用户不点击播放按钮时会节省带宽。</td>
-</tr>
-<tr>
-<td>metadata</td>
-<td>视频播放前，浏览器不会下载视频资源，但是会获取资源的元数据（视频大小、持续时间、视频格式、前几帧画面)</td>
-</tr>
-<tr>
-<td>auto（默认值）</td>
-<td>浏览器根据实际情况动态决定。例如∶在wifi、3G、4G数据漫游等情况下，动态采用不同的加载方案。</td>
-</tr>
-</tbody></table>
-<p>muted：是否默认静音播放</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;video src=&quot;lesson-0.mp4&quot; controls muted loop&gt;&lt;/video&gt;</span><br></pre></td></tr></table></figure>
-
-<p>poster属性设置视频的封面</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;video src=&quot;let-it-go.mp4&quot; controls</span><br><span class="line">	poster=&quot;cover.jpg&quot;</span><br><span class="line">	width=&quot;854&quot; height=&quot;480&quot;&gt;</span><br><span class="line">&lt;/video&gt;</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/HTML5-%E7%AC%94%E8%AE%B0/video.jpeg" alt="img"></p>
-<h3 id="浏览器对视频格式的支持"><a href="#浏览器对视频格式的支持" class="headerlink" title="浏览器对视频格式的支持"></a>浏览器对视频格式的支持</h3><p>浏览器对视频格式的支持情况: <a target="_blank" rel="noopener" href="http://caniuse.com/#search=video">http://caniuse.com/#search=video</a></p>
-<p>浏览器从上到下查找source元素，直到找到它能播放的一种格式</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;video controls&gt;</span><br><span class="line">  &lt;source src=&quot;tweetsip.mp4&quot;&gt;</span><br><span class="line">  &lt;source src=&quot;tweetsip.webm&quot;&gt;</span><br><span class="line">  &lt;source src=&quot;tweetsip.ogv&quot;&gt;</span><br><span class="line">	&lt;p&gt;对不起，您的浏览器不支持video标签&lt;/p&gt;</span><br><span class="line">&lt;/video&gt;</span><br></pre></td></tr></table></figure>
-
-<p>对于这里的每个source元素，浏览器都会加载视频文件的元数据，查看能不能播放这个视频，这个过程可能很耗费时间。</p>
-<h3 id="兼容所有的浏览器"><a href="#兼容所有的浏览器" class="headerlink" title="兼容所有的浏览器"></a>兼容所有的浏览器</h3><p>embed标签或object标签用在不支持video标签的旧版本额的浏览器中</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;video controls&gt;</span><br><span class="line">  &lt;source src=&quot;tweetsip.mp4&quot; type=&#x27;video/mp4; codecs=&quot;avc1.42E01E，mp4a.40.2&quot;&quot;&gt;</span><br><span class="line">  &lt;source src=&quot;tweetsip.webm&quot; type=&#x27;video/ogg; codecs=&quot;vp8，vorbis&quot;&#x27;&gt;</span><br><span class="line">  &lt;source src=&quot;tweetsip.ogv&quot; type=&#x27;video/ogg; codecs=&quot;theora，vorbis&quot;&quot;&gt;</span><br><span class="line">  &lt;embed src=&quot;tweetsip.swf&quot; type=&quot;application/x-shockwave-flash&quot;&gt;&lt;/embed&gt;</span><br><span class="line">&lt;/video&gt; </span><br></pre></td></tr></table></figure>
-
-<h3 id="HTML5支持的音频格式"><a href="#HTML5支持的音频格式" class="headerlink" title="HTML5支持的音频格式"></a>HTML5支持的音频格式</h3><p>HTML5支持的音频格式: <a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/HTML5_Audio">http://en.wikipedia.org/wiki/HTML5_Audio</a></p>
-<h3 id="兼容所有的音频格式和浏览器"><a href="#兼容所有的音频格式和浏览器" class="headerlink" title="兼容所有的音频格式和浏览器"></a>兼容所有的音频格式和浏览器</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;audio controls&gt;</span><br><span class="line">  &lt;source src=&quot;YouAreMySunshine.mp3&quot; type=&#x27;audio/mpeg; codecs=&quot;mp3&quot;&#x27;&gt;</span><br><span class="line">  &lt;source src=&quot;YouAreMySunshine.ogg&quot; type=&#x27;audio/ogg; codecs=&quot;vorbis&quot;&#x27; &gt;</span><br><span class="line">  &lt;p&gt;对不起，您的浏览器不支持audio标签&lt;/p&gt;</span><br><span class="line">&lt;/ audio&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="新增input类型"><a href="#新增input类型" class="headerlink" title="新增input类型"></a>新增input类型</h3><p>input标签新增type属性值</p>
-<ul>
-<li>search(搜索框)</li>
-<li>date(日期选择)</li>
-<li>email (邮件地址输入框)</li>
-<li>month(月份选择)</li>
-<li>url ( url地址输入框)</li>
-<li>week(周选择）</li>
-<li>tel(电话号码输入框)</li>
-<li>time (时间选择)</li>
-<li>number (数字输入框)</li>
-<li>datetime-local (日期时间)</li>
-<li>range(滑动条)</li>
-<li>datetime (包含时区)</li>
-<li>color（颜色选择)</li>
-</ul>
-<p>它看起来是一个文本输入框，可以输入一个电子邮件地址在移动设备上有额外的特性:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;email&quot;&gt;</span><br><span class="line">&lt;input type=&quot;url&quot;&gt;</span><br><span class="line">&lt;input type=&quot;tel&quot;&gt;</span><br></pre></td></tr></table></figure>
-
-<p>专门用来输入一个数值的输入框，右侧有一组上下箭头，用来控制文本框中数值的大小</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;number&quot;&gt;</span><br></pre></td></tr></table></figure>
-
-<p>通过滑动条选择一个数值范围</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;range&quot;&gt;</span><br></pre></td></tr></table></figure>
-
-<p>在弹出的的日历中选择一个具体的日期</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;date&quot;&gt;</span><br></pre></td></tr></table></figure>
-
-<p>选择一个具体的月份</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;month&quot;&gt;</span><br></pre></td></tr></table></figure>
-
-<p>选择一个具体的星期</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;week&quot;&gt;</span><br></pre></td></tr></table></figure>
-
-<p>在弹出的的日历中选择一个具体的时间</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;time&quot;&gt;</span><br></pre></td></tr></table></figure>
-
-<p>选择日期和时间(本地时间)</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;datetime-local&quot;&gt;</span><br></pre></td></tr></table></figure>
-
-<p>选择日期和时间( UTC世界标准时间)</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;datetime&quot;&gt;</span><br></pre></td></tr></table></figure>
-
-<p>在弹出的颜色面板中选择一个颜色</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;color&quot;&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="datalist"><a href="#datalist" class="headerlink" title="datalist"></a>datalist</h3><p>为其它输入控件提供一个预定义的选项列表</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--为输入框指定一个list属性--&gt;</span><br><span class="line">&lt;input type=&quot;text&quot; list=&quot;browsers&quot;&gt;</span><br><span class="line">&lt;!--和文本框中list属性的值一致--&gt;</span><br><span class="line">&lt;datalist id=&quot;browsers&quot;&gt;</span><br><span class="line">  &lt;option value=&quot;Chrome&quot;&gt;&lt;option value=&quot;Firefox&quot;&gt;</span><br><span class="line">  &lt;option value=&quot;Internet Explorer&quot;&gt;&lt;option value=&quot;opera&quot;&gt;</span><br><span class="line">  &lt;option value=&quot;opera mini&quot;&gt;&lt;option value=&quot;Safari&quot;&gt;</span><br><span class="line">&lt;/datalist&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="keygen"><a href="#keygen" class="headerlink" title="keygen"></a>keygen</h3><p>用于客户端访问服务器时的安全验证</p>
-<p>当提交表单时，会生成两个键，一个是私钥，一个公钥私钥存储于客户端，公钥则被发送到服务器</p>
-<p>公钥可用于之后验证用户的客户端证书</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=&quot;#&quot; method=&quot;get&quot;&gt;</span><br><span class="line">  用户名:&lt;input type=&quot;text&quot; name=&quot;usrname&quot;&gt;</span><br><span class="line">  加密:&lt;keygen name=&quot;security&quot;&gt;</span><br><span class="line">  &lt;input type=&quot;submit&quot;&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="output"><a href="#output" class="headerlink" title="output"></a>output</h3><p>结合JavaScript，主要用于显示脚本输出</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;form oninput=&quot;x.value=a.value&quot;&gt;</span><br><span class="line">  选择一个数字:</span><br><span class="line">  &lt;input type=&quot;range&quot; name=&quot;a&quot; value=&quot;o&quot;&gt;</span><br><span class="line">  &lt;output name=&quot;x&quot;&gt;o&lt;/output&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="表单验证"><a href="#表单验证" class="headerlink" title="表单验证"></a>表单验证</h3><p>表单验证是指，在用户提交表单之前，确保用户输入的数据是合法的。</p>
-<ul>
-<li>输入类型</li>
-<li>日期和时间范围</li>
-<li>必填字段</li>
-<li>步长</li>
-<li>字符长度</li>
-<li>正则表达式</li>
-<li>数值范围</li>
-<li>禁用表单验证</li>
-</ul>
-<h3 id="必填字段验证"><a href="#必填字段验证" class="headerlink" title="必填字段验证"></a>必填字段验证</h3><ul>
-<li>required属性是boolean属性</li>
-<li>表单提交时输入域不能为空</li>
-</ul>
-<h3 id="字符长度验证"><a href="#字符长度验证" class="headerlink" title="字符长度验证"></a>字符长度验证</h3><p>没有达到最少字符时浏览器提示位数不够达到最大字符数时浏览器禁止继续输入</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=&quot;success.html&quot; method=&quot;post&quot;&gt;</span><br><span class="line">	&lt;div&gt;密码: &lt;input type=&quot;password&quot; minlength=&quot;6&quot; maxlength=&quot;10&quot;&gt;&lt;/div&gt;</span><br><span class="line">  &lt;div&gt;&lt;input type=&quot;submit&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
-
-<p>它们是很多input元素的共有属性</p>
-<p>如text、search、password、email、url、tel</p>
-<h3 id="数值范围验证"><a href="#数值范围验证" class="headerlink" title="数值范围验证"></a>数值范围验证</h3><p>输入的数值不能小于min指定的值不能大于max指定的值</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=&quot;success.html&quot; method=&quot;post&quot;&gt;</span><br><span class="line">	&lt;div&gt;订购数量: &lt;input type=&quot;number&quot; min=&quot;5&quot; max=&quot;10&quot;&gt;&lt;/div&gt;</span><br><span class="line">  &lt;div&gt;&lt;input type=&quot;submit&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
-
-<p>用于number、range和日期时间类型</p>
-<h3 id="日期和时间范围验证"><a href="#日期和时间范围验证" class="headerlink" title="日期和时间范围验证"></a>日期和时间范围验证</h3><ul>
-<li>只能选择范围内的日期和时间</li>
-<li>范围外的日期和时间无法选择</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=&quot;success.html&quot; method=&quot;post&quot; &gt;</span><br><span class="line">	&lt;div&gt;送货日期:&lt;input type=&quot;date&quot; min=&quot;2020-01-01&quot; max=&quot;2020-01-10&quot;&gt;&lt;/div&gt;</span><br><span class="line">  &lt;div&gt;送货时间:&lt;input type=&quot;time&quot; min=&quot;e8:0o&quot; max=&quot;17:00&quot;&gt;&lt;/div&gt;</span><br><span class="line">  &lt;div&gt;&lt;input type=&quot;submit&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="步长验证"><a href="#步长验证" class="headerlink" title="步长验证"></a>步长验证</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=&quot;success.htm1&quot; method=&quot;post&quot;&gt;</span><br><span class="line">  &lt;div&gt;订购数量:&lt;input type=&quot;number&quot; min=&quot;10&quot; max=&quot;5o&quot; step=&quot;10&quot;&gt;&lt;/div&gt;</span><br><span class="line">  &lt;div&gt;&lt;input type=&quot;submit&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
-
-<p>点击number输入框右侧的上下箭头，每次增加或减少一个步长的值</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=&quot;success.html&quot; method=&quot;post&quot; oninput=&quot;&quot;out.value=count.value&quot;&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    订购数量: &lt;input name=&quot; count&quot; type=&quot;range&quot;</span><br><span class="line">    value=&quot;10&quot; min=&quot;1e&quot; max=&quot;5e&quot; step=&quot;10&quot;&gt;</span><br><span class="line">    &lt;output name=&quot;out&quot;&gt;10&lt;/output&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">	&lt;div&gt;&lt;input type=&quot;submit&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
-
-<p>移动滑动条每次增加或减少—个步长的值</p>
-<h3 id="正则表达式验证"><a href="#正则表达式验证" class="headerlink" title="正则表达式验证"></a>正则表达式验证</h3><p>[0-4]{3}</p>
-<p>[0-4]表示0到4之间的任意一个数字{3}</p>
-<p>表示必须出现3次例如∶103、341、222</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=&quot;success.htm1&quot; method=&quot;post&quot;&gt;</span><br><span class="line">	&lt;div&gt;编号: &lt;input type=&quot;text&quot; pattern=&quot;[e-4]&#123;[3&#125;&quot;&gt;&lt;/div&gt;</span><br><span class="line">  &lt;div&gt;&lt;input type=&quot;submit&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
-
-<p>是所有的可输入的input元素共有的属性如text、search、password、email、url、tel</p>
-<h3 id="禁用表单验证"><a href="#禁用表单验证" class="headerlink" title="禁用表单验证"></a>禁用表单验证</h3><p>如果你更想使用基于JavaScript的更强大和灵活的表单验证功能，那么首先需要禁用HTML5表单验证</p>
-<ul>
-<li>novalidate</li>
-<li>formnovalidate</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=&quot;success.html&quot; method=&quot;post&quot; novalidate&gt;</span><br><span class="line">  &lt;div&gt;数字: &lt;input type=&quot;number&quot;&gt;&lt;/div&gt;</span><br><span class="line">  &lt;div&gt;邮箱: &lt;input type=&quot;email&quot;&gt;&lt;/div&gt;</span><br><span class="line">  &lt;div&gt;网址: &lt;input type=&quot;ur1&quot;&gt;&lt;/div&gt;</span><br><span class="line">  &lt;div&gt;&lt;input type=&quot;submit&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line">&lt;form action=&quot;success.html&quot; method=&quot;post&quot;&gt;</span><br><span class="line">	&lt;div&gt;数字: &lt;input type=&quot;number&quot;&gt;&lt;/div&gt;</span><br><span class="line">  &lt;div&gt;邮箱:&lt;input type=&quot;email&quot;&gt;&lt;/div&gt;</span><br><span class="line">  &lt;div&gt;网址: &lt;input type=&quot;ur1&quot;&gt;&lt;/div&gt;</span><br><span class="line">  &lt;div&gt;&lt;input type=&quot;submit&quot; formnovalidate&gt;&lt;/div&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
-
-<p>在提交按钮中使用formnovalidate属性</p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
-<li>输入类型验证: number、email、url必填字段验证:required</li>
-<li>字符长度验证: minlength、maxlength设置数值范围: min、max</li>
-<li>设置日期和时间范围:min、max设置步长: step</li>
-<li>正则表达式验证:pattern</li>
-<li>禁用表单验证: novalidate、formnovalidate</li>
-</ul>
-<h3 id="新增表单属性"><a href="#新增表单属性" class="headerlink" title="新增表单属性"></a>新增表单属性</h3><ul>
-<li>list</li>
-<li>placeholder</li>
-<li>required</li>
-<li>autofocus（—个页面只能有一个autofocus属性的定义。如果有多个，则应用第一个）</li>
-<li>minlength和maxlength</li>
-<li>autocomplete（当我们填写表单，并成功提交后，再回到表单中填写时，会出现提醒功能，可以根据提醒功能进行快速输入。）（填写完，成功提交后，再回到表单填写时，没有上次的输入记录了。）</li>
-<li>multiple</li>
-<li>min和max</li>
-<li>form</li>
-<li>step</li>
-<li>formaction</li>
-<li>pattern</li>
-<li>formmethod</li>
-<li>novalidate</li>
-<li>formenctype</li>
-<li>formnovalidate</li>
-<li>formtarget</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=&quot;success.html&quot; method=&quot;post&quot; autocomplete=&quot;off&quot;&gt;</span><br><span class="line">  &lt;!--把autocomplete=&quot;on&quot;放在input标签中，它会覆盖form中的设置，</span><br><span class="line">  这个属性可以用在所有可输入的input标签。</span><br><span class="line">  --&gt;</span><br><span class="line">  &lt;input placeholder=&quot;姓名&quot; name=&quot;username&quot; autocomplete=&quot;on&quot;&gt;</span><br><span class="line">  &lt;input placeholder=&quot;账号&quot; name=&quot;cardid&quot;&gt;</span><br><span class="line">  &lt;input type=&quot;submit&quot;&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="multiple"><a href="#multiple" class="headerlink" title="multiple"></a>multiple</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;select multiple&gt;</span><br><span class="line">  &lt;option&gt;美式咖啡&lt;/option&gt;</span><br><span class="line">  &lt;option&gt;卡布奇诺&lt;/option&gt;</span><br><span class="line">  &lt;option&gt;拿铁&lt;/option&gt;</span><br><span class="line">  &lt;option&gt;摩卡&lt;/option&gt;</span><br><span class="line">&lt;/select&gt;</span><br></pre></td></tr></table></figure>
-
-<p>按住键盘上的ctrl键可以实现多选</p>
-<p>选完一个之后，输入逗号，可以再输入一个地址。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;input placeholder=&quot;请输入邮件地址&quot; type=&quot;email&quot; list=&quot;contacts&quot; multiple&gt;</span><br><span class="line">&lt;datalist id=&quot;contacts&quot;&gt;</span><br><span class="line">  &lt;option value=&quot;helen@qq.com&quot;&gt;</span><br><span class="line">  &lt;option value=&quot;cohen@baidu.com&quot;&gt;</span><br><span class="line">  &lt;option value=&quot;yaohuan@sina.com&quot;&gt;</span><br><span class="line">  &lt;option value=&quot;annie@qq.com&quot;&gt;</span><br><span class="line">&lt;/datalist&gt;</span><br><span class="line">&lt;!--按住Ctrl键，可以选择多个文件--&gt;</span><br><span class="line">&lt;input type=&quot;file&quot; multiple&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="form"><a href="#form" class="headerlink" title="form"></a>form</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=&quot;success.htm1&quot;&gt;</span><br><span class="line">  &lt;input placeholder=&quot;姓名&quot; type=&quot;text&quot; name=&quot;username&quot;&gt;</span><br><span class="line">  &lt;input type=&quot;submit&quot;&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line">&lt;input placeholder=&quot;账号&quot; type=&quot;text&quot; name=&quot;cardid&quot;&gt;</span><br></pre></td></tr></table></figure>
-
-<p>提交后,在URL地址中，只有username，即在form外面的input没有被提交</p>
-<p>在默认情况下，表单外的控件不会被提交，因此在form中加一个id,在input中加form=”f”;然后就可以一起提交到服务器了。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=&quot;success.htm1&quot; id=&quot;f&quot;&gt;</span><br><span class="line">  &lt;input placeholder=&quot;姓名&quot; type=&quot;text&quot; name=&quot;username&quot;&gt;</span><br><span class="line">  &lt;input type=&quot;submit&quot;&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line">&lt;input placeholder=&quot;账号&quot; type=&quot;text&quot; name=&quot;cardid&quot; form=&quot;f&quot;&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="form相关属性"><a href="#form相关属性" class="headerlink" title="form相关属性"></a>form相关属性</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=&quot;success.htm1&quot; method=&quot;post&quot; target=&quot;_blank&quot; </span><br><span class="line">enctype=&quot;application/x-www-form-urlencoded&quot;&gt;</span><br><span class="line">&lt;! --其它表单控件--&gt;</span><br><span class="line">&lt;input type=&quot;submit&quot;&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
-
-<p>enctype：页面提交时的编码方式(仅限于post方式提交的表单)</p>
-<p>这些属性是表单提交按钮的属性，当表单中的属性和提交按钮中存在同名属性时，提交按钮中的属性会被应用。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;form&gt;</span><br><span class="line">  &lt;! --其它表单控件--&gt;&lt;input type=&quot;submit&quot;</span><br><span class="line">  formaction=&quot;success.htm1&quot;formmethod=&quot;post&quot;</span><br><span class="line">  formtarget=&quot;_blank&quot;</span><br><span class="line">  formenctype=&quot;application/x-www-form-urlencoded&quot;&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="accesskey"><a href="#accesskey" class="headerlink" title="accesskey"></a>accesskey</h3><h3 id="svg"><a href="#svg" class="headerlink" title="svg"></a>svg</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;html xmlns:svg=&quot;http://www.w3.org/2000/svg&quot;&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;p&gt;This is an HTML paragraph&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;svg:svg width=&quot;300&quot; height=&quot;100&quot; version=&quot;1.1&quot; &gt;</span><br><span class="line">&lt;svg:circle cx=&quot;100&quot; cy=&quot;50&quot; r=&quot;40&quot; stroke=&quot;black&quot;</span><br><span class="line">stroke-width=&quot;2&quot; fill=&quot;red&quot; /&gt;</span><br><span class="line">&lt;/svg:svg&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line">&lt;?xml version=&quot;1.0&quot; standalone=&quot;no&quot;?&gt;</span><br><span class="line">&lt;!DOCTYPE svg PUBLIC &quot;-//W3C//DTD SVG 1.1//EN&quot; </span><br><span class="line">&quot;http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;svg width=&quot;100%&quot; height=&quot;100%&quot; version=&quot;1.1&quot;</span><br><span class="line">xmlns=&quot;http://www.w3.org/2000/svg&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;rect width=&quot;300&quot; height=&quot;100&quot;</span><br><span class="line">style=&quot;fill:rgb(0,0,255);stroke-width:1;</span><br><span class="line">stroke:rgb(0,0,0)&quot;/&gt;</span><br><span class="line"></span><br><span class="line">&lt;/svg&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="drag"><a href="#drag" class="headerlink" title="drag"></a>drag</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br></pre></td><td class="code"><pre><span class="line">&lt;style type=&quot;text/css&quot;&gt;</span><br><span class="line">#div1 &#123;width:488px;height:70px;padding:10px;border:1px solid #aaaaaa;&#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">function allowDrop(ev)</span><br><span class="line">&#123;</span><br><span class="line">ev.preventDefault();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function drag(ev)</span><br><span class="line">&#123;</span><br><span class="line">ev.dataTransfer.setData(&quot;Text&quot;,ev.target.id);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function drop(ev)</span><br><span class="line">&#123;</span><br><span class="line">ev.preventDefault();</span><br><span class="line">var data=ev.dataTransfer.getData(&quot;Text&quot;);</span><br><span class="line">ev.target.appendChild(document.getElementById(data));</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;p&gt;请把 W3School 的图片拖放到矩形中：&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;div id=&quot;div1&quot; ondrop=&quot;drop(event)&quot; ondragover=&quot;allowDrop(event)&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;br /&gt;</span><br><span class="line">&lt;img id=&quot;drag1&quot; src=&quot;w3school_banner.gif&quot; draggable=&quot;true&quot; ondragstart=&quot;drag(event)&quot; /&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line"> &lt;head&gt;</span><br><span class="line"> 	&lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line"> 	&lt;title&gt;拖放&lt;/title&gt;</span><br><span class="line"> 	&lt;style&gt;</span><br><span class="line">		p&#123;</span><br><span class="line">			font-size: 16px;</span><br><span class="line">		&#125;</span><br><span class="line">		#div1&#123;</span><br><span class="line">			width: 390px;</span><br><span class="line">			height: 260px;</span><br><span class="line">			padding: 10px;</span><br><span class="line">			border: 1px solid #ccc;</span><br><span class="line">			background-color: yellowgreen;</span><br><span class="line">			border-radius: 10px;</span><br><span class="line">			display: inline-block;</span><br><span class="line">		&#125;</span><br><span class="line">		img&#123;</span><br><span class="line">			border-radius: 10px;</span><br><span class="line">		&#125;</span><br><span class="line"> 	&lt;/style&gt;</span><br><span class="line"> 	&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line"> 		function allowDrop(ev)&#123;</span><br><span class="line"> 			ev.preventDefault();</span><br><span class="line"> 		&#125;</span><br><span class="line"> 		function drag(ev)&#123;</span><br><span class="line"> 			ev.dataTransfer.setData(&quot;text&quot;,ev.target.id);</span><br><span class="line"> 		&#125;</span><br><span class="line"> 		function drop(ev)&#123;</span><br><span class="line"> 			ev.preventDefault();</span><br><span class="line"> 			var data = ev.dataTransfer.getData(&quot;text&quot;);</span><br><span class="line"> 			ev.target.appendChild(document.getElementById(data));</span><br><span class="line"> 		&#125;</span><br><span class="line"> 	&lt;/script&gt;</span><br><span class="line"> &lt;/head&gt;</span><br><span class="line"> &lt;body&gt;</span><br><span class="line"> 	&lt;p&gt;请把单车的图片拖放到下面的矩形中：&lt;/p&gt;</span><br><span class="line"> 	&lt;div id=&quot;div1&quot; ondrop=&quot;drop(event)&quot; ondragover=&quot;allowDrop(event)&quot;&gt;&lt;/div&gt;</span><br><span class="line"> 	&lt;img id=&quot;img1&quot; src=&quot;bike.png&quot; height=&quot;260&quot; alt=&quot;单车&quot; draggable=&quot;true&quot; ondragstart=&quot;drag(event)&quot;&gt;</span><br><span class="line"> &lt;/body&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">	&lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">	&lt;title&gt;来回拖放&lt;/title&gt;</span><br><span class="line">	&lt;style&gt;</span><br><span class="line">		div&#123;</span><br><span class="line">			width: 300px;</span><br><span class="line">			height: 220px;</span><br><span class="line">			border: 1px solid #000;</span><br><span class="line">			border-radius: 10px;</span><br><span class="line">			background-color: pink;</span><br><span class="line">			display: inline-block;</span><br><span class="line">			margin-right: 20px;</span><br><span class="line">			overflow: hidden;</span><br><span class="line">			padding: 10px;</span><br><span class="line">		&#125;</span><br><span class="line">	&lt;/style&gt;</span><br><span class="line">	&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">		function allowDrop(ev)&#123;</span><br><span class="line">			ev.preventDefault();</span><br><span class="line">		&#125;</span><br><span class="line">		function drag(ev)&#123;</span><br><span class="line">			ev.dataTransfer.setData(&quot;text&quot;,ev.target.id);</span><br><span class="line">		&#125;</span><br><span class="line">		function drop(ev)&#123;</span><br><span class="line">			ev.preventDefault();</span><br><span class="line">			var data = ev.dataTransfer.getData(&quot;text&quot;);</span><br><span class="line">			ev.target.appendChild(document.getElementById(data));</span><br><span class="line">		&#125;</span><br><span class="line">	&lt;/script&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">	&lt;div id=&quot;div1&quot; ondrop=&quot;drop(event)&quot; ondragover=&quot;allowDrop(event)&quot;&gt;</span><br><span class="line">		&lt;img id=&quot;img2&quot; src=&quot;bike.png&quot; alt=&quot;单车&quot; width=&quot;280px&quot; draggable=&quot;true&quot; ondragstart=&quot;drag(event)&quot;&gt;</span><br><span class="line">	&lt;/div&gt;</span><br><span class="line">	&lt;div id=&quot;div2&quot; ondrop=&quot;drop(event)&quot; ondragover=&quot;allowDrop(event)&quot;&gt;&lt;/div&gt;</span><br><span class="line">	&lt;div id=&quot;div3&quot; ondrop=&quot;drop(event)&quot; ondragover=&quot;allowDrop(event)&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;style type=&quot;text/css&quot;&gt;</span><br><span class="line">#div1, #div2</span><br><span class="line">&#123;float:left; width:100px; height:35px; margin:10px;padding:10px;border:1px solid #aaaaaa;&#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">function allowDrop(ev)</span><br><span class="line">&#123;</span><br><span class="line">ev.preventDefault();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function drag(ev)</span><br><span class="line">&#123;</span><br><span class="line">ev.dataTransfer.setData(&quot;Text&quot;,ev.target.id);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function drop(ev)</span><br><span class="line">&#123;</span><br><span class="line">ev.preventDefault();</span><br><span class="line">var data=ev.dataTransfer.getData(&quot;Text&quot;);</span><br><span class="line">ev.target.appendChild(document.getElementById(data));</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;div id=&quot;div1&quot; ondrop=&quot;drop(event)&quot; ondragover=&quot;allowDrop(event)&quot;&gt;</span><br><span class="line">  &lt;img width=&quot;100px&quot; src=&quot;bike.png&quot; draggable=&quot;true&quot; ondragstart=&quot;drag(event)&quot; id=&quot;drag1&quot; /&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;div id=&quot;div2&quot; ondrop=&quot;drop(event)&quot; ondragover=&quot;allowDrop(event)&quot;&gt;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -920,7 +467,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/42/">42</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/44/">44</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -988,7 +535,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">126</span>
+          <span class="site-state-item-count">132</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1001,7 +548,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">78</span>
+        <span class="site-state-item-count">84</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

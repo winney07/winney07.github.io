@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="macOS环境配置iOS参考博客：MacOs M1安装Homebrew 在国内最简单方法——使用这个安装成功 1.安装Homebrew 安装步骤：M1芯片： 1&#x2F;bin&#x2F;zsh -c &quot;$(curl -fsSL https:&#x2F;&#x2F;gitee.com&#x2F;huwei1024&#x2F;HomebrewCN&#x2F;raw&#x2F;master&#x2F;Homebrew.sh)&quot;  报错： 1command not fo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React-Native环境配置相关笔记">
+<meta property="og:url" content="http://example.com/2021/10/02/React-Native%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="winney">
+<meta property="og:description" content="macOS环境配置iOS参考博客：MacOs M1安装Homebrew 在国内最简单方法——使用这个安装成功 1.安装Homebrew 安装步骤：M1芯片： 1&#x2F;bin&#x2F;zsh -c &quot;$(curl -fsSL https:&#x2F;&#x2F;gitee.com&#x2F;huwei1024&#x2F;HomebrewCN&#x2F;raw&#x2F;master&#x2F;Homebrew.sh)&quot;  报错： 1command not fo">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-10-02T00:10:40.000Z">
+<meta property="article:modified_time" content="2022-10-03T00:26:37.747Z">
+<meta property="article:author" content="winney">
+<meta property="article:tag" content="React">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2021/10/02/React-Native%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>React-Native环境配置相关笔记 | winney</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">winney</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">It is never too old to learn.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <img alt="winney" src="/images/blog-head.jpg">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/10/02/React-Native%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="winney">
+      <meta itemprop="description" content="Doing is better than saying.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="winney">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          React-Native环境配置相关笔记
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-10-02 08:10:40" itemprop="dateCreated datePublished" datetime="2021-10-02T08:10:40+08:00">2021-10-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-10-03 08:26:37" itemprop="dateModified" datetime="2022-10-03T08:26:37+08:00">2022-10-03</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="macOS环境配置"><a href="#macOS环境配置" class="headerlink" title="macOS环境配置"></a>macOS环境配置</h3><h4 id="iOS"><a href="#iOS" class="headerlink" title="iOS"></a>iOS</h4><p>参考博客：<a target="_blank" rel="noopener" href="https://blog.csdn.net/sinat_38184748/article/details/114115441">MacOs M1安装Homebrew 在国内最简单方法</a>——使用这个安装成功</p>
+<h5 id="1-安装Homebrew"><a href="#1-安装Homebrew" class="headerlink" title="1.安装Homebrew"></a>1.安装Homebrew</h5><hr>
+<h6 id="安装步骤："><a href="#安装步骤：" class="headerlink" title="安装步骤："></a>安装步骤：</h6><p>M1芯片：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/bin/zsh -c &quot;$(curl -fsSL https://gitee.com/huwei1024/HomebrewCN/raw/master/Homebrew.sh)&quot;</span><br></pre></td></tr></table></figure>
+
+<p>报错：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">command not found : brew</span><br></pre></td></tr></table></figure>
+
+<p>因为M1芯片的包安装位置不在是以前的<code>/usr/local/</code>，而是<code>/opt/homebrew</code>，所以要将配置文件里的环境变量改过来</p>
+<p>1、首先进入根目录</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cd ~</span><br></pre></td></tr></table></figure>
+
+<p>2、创建.zshrc文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ touch .zshrc</span><br></pre></td></tr></table></figure>
+
+<p>3、打开文件进行编辑</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ open -e .zshrc</span><br></pre></td></tr></table></figure>
+
+<p>4、如果有旧的环境就修改，没有就新增</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export PATH=/opt/homebrew/bin:$PATH</span><br><span class="line">export PATH=/opt/homebrew/sbin:$PATH</span><br></pre></td></tr></table></figure>
+
+<p>5、保存<br>使用<code>command + s</code><br>6、生效环境变量</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ source .zshrc</span><br></pre></td></tr></table></figure>
+
+<p>7、测试</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ brew -v    // 显示版本，即安装成功</span><br></pre></td></tr></table></figure>
+
+<hr>
+<hr>
+<h6 id="本次安装参考内容："><a href="#本次安装参考内容：" class="headerlink" title="本次安装参考内容："></a>本次安装参考内容：</h6><p>开源安装脚本库：<a target="_blank" rel="noopener" href="https://gitee.com/cunkai/HomebrewCN">https://gitee.com/cunkai/HomebrewCN</a></p>
+<p>复制以下内容到你的终端：<br>intel芯片：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/bin/zsh -c &quot;$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh)&quot;</span><br></pre></td></tr></table></figure>
+
+<p>M1芯片：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/bin/zsh -c &quot;$(curl -fsSL https://gitee.com/huwei1024/HomebrewCN/raw/master/Homebrew.sh)&quot;</span><br></pre></td></tr></table></figure>
+
+<p>回车运行，按照提示运行下去就可以了</p>
+<p>错误<br>做完上面的傻瓜式操作，理论上就OK了，但是我这边出现了安装完后用不了的错误</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">command not found : brew</span><br></pre></td></tr></table></figure>
+
+<hr>
+<hr>
+<h6 id="相关参考内容："><a href="#相关参考内容：" class="headerlink" title="相关参考内容："></a>相关参考内容：</h6><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/111014448">Homebrew国内如何自动安装（国内地址）（Mac &amp; Linux）</a></p>
+<p>旧文章：<a target="_blank" rel="noopener" href="https://blog.csdn.net/sinat_38184748/article/details/99450330?spm=1001.2014.3001.5502">macOS安装Homebrew太慢，换用清华镜像</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git config --global --add safe.directory /opt/homebrew/Homebrew/Library/Taps/homebrew/homebrew-core</span><br><span class="line"></span><br><span class="line">git config --global --add safe.directory /opt/homebrew/Homebrew/Library/Taps/homebrew/homebrew-cask</span><br></pre></td></tr></table></figure>
+
+<h6 id="查看镜像"><a href="#查看镜像" class="headerlink" title="查看镜像"></a>查看镜像</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd &quot;$(brew --repo)&quot; &amp;&amp; git remote -v</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="2-安装watchman"><a href="#2-安装watchman" class="headerlink" title="2.安装watchman"></a>2.安装watchman</h4><blockquote>
+<p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/zhengzaifeidelushang/article/details/126640559?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522166458144816782417056210%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fall.%2522%257D&request_id=166458144816782417056210&biz_id=&utm_medium=distribute.pc_search_result.none-task-code-2~all~first_rank_ecpm_v1~rank_v31_ecpm-2-126640559-0-null-null.142%5Ev51%5Econtrol,201%5Ev3%5Econtrol_1&utm_term=Disable%20this%20behaviour%20by%20setting%20HOMEBREW_NO_INSTALL_CLEANUP.%20Hide%20these%20hints%20with%20HOMEBREW_NO_ENV_HINTS%20(see%20%60man%20brew%60).">Mac系列之：Disable this behaviour by setting HOMEBREW_NO_INSTALL_CLEANUP. Hide these hints with HOMEBREW</a></p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install watchman</span><br></pre></td></tr></table></figure>
+
+<p>报错信息：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Disable this behaviour by setting HOMEBREW_NO_INSTALL_CLEANUP.</span><br><span class="line">Hide these hints with HOMEBREW_NO_ENV_HINTS (see `man brew`).</span><br></pre></td></tr></table></figure>
+
+<p>解决方法，终端输入以下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export HOMEBREW_NO_INSTALL_CLEANUP=TRUE</span><br></pre></td></tr></table></figure>
+
+<p>查看版本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">watchman -v</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="3-安装cocoapods"><a href="#3-安装cocoapods" class="headerlink" title="3.安装cocoapods"></a>3.安装cocoapods</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install cocoapods</span><br></pre></td></tr></table></figure>
+
+<p>报错信息：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">yarn run v1.22.19</span><br><span class="line">warning ../../../../../package.json: No license field</span><br><span class="line">$ react-native run-ios</span><br><span class="line">info Found Xcode project &quot;AwesomeProject.xcodeproj&quot;</span><br><span class="line">info Building (using &quot;xcodebuild -project AwesomeProject.xcodeproj -configuration Debug -scheme AwesomeProject -destination id=A7F04948-7FA8-45D1-B4A6-C26B21B6548A&quot;)</span><br><span class="line">error Failed to build iOS project. We ran &quot;xcodebuild&quot; command but it exited with error code 65. To debug build logs further, consider building your app with Xcode.app, by opening AwesomeProject.xcodeproj.</span><br><span class="line">Command line invocation:</span><br><span class="line">    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project AwesomeProject.xcodeproj -configuration Debug -scheme AwesomeProject -destination id=A7F04948-7FA8-45D1-B4A6-C26B21B6548A</span><br><span class="line"></span><br><span class="line">User defaults from command line:</span><br><span class="line">    IDEPackageSupportUseBuiltinSCM = YES</span><br><span class="line"></span><br><span class="line">Prepare packages</span><br><span class="line"></span><br><span class="line">Computing target dependency graph and provisioning inputs</span><br><span class="line"></span><br><span class="line">Create build description</span><br><span class="line">Build description signature: bf2f29ad51ca6266b44cbb8d643576b3</span><br><span class="line">Build description path: /Users/yangyanyi/Library/Developer/Xcode/DerivedData/AwesomeProject-fgqiuteczcwroxgbdakmwcrknckt/Build/Intermediates.noindex/XCBuildData/bf2f29ad51ca6266b44cbb8d643576b3-desc.xcbuild</span><br><span class="line"></span><br><span class="line">note: Building targets in dependency order</span><br><span class="line">/Users/yangyanyi/Documents/Code/Gitee/reactive_native/AwesomeProject/ios/Pods/Target Support Files/Pods-AwesomeProject/Pods-AwesomeProject.debug.xcconfig:1:1: error: unable to open configuration settings file</span><br><span class="line">/Users/yangyanyi/Documents/Code/Gitee/reactive_native/AwesomeProject/ios/Pods/Target Support Files/Pods-AwesomeProject/Pods-AwesomeProject.debug.xcconfig:1:1: error: unable to open configuration settings file</span><br><span class="line">/Users/yangyanyi/Documents/Code/Gitee/reactive_native/AwesomeProject/ios/Pods/Target Support Files/Pods-AwesomeProject/Pods-AwesomeProject.debug.xcconfig:1:1: error: unable to open configuration settings file</span><br><span class="line">/Users/yangyanyi/Documents/Code/Gitee/reactive_native/AwesomeProject/ios/Pods/Target Support Files/Pods-AwesomeProject/Pods-AwesomeProject.debug.xcconfig:1:1: error: unable to open configuration settings file</span><br><span class="line">warning: Unable to read contents of XCFileList &#x27;/Target Support Files/Pods-AwesomeProject/Pods-AwesomeProject-resources-Debug-output-files.xcfilelist&#x27; (in target &#x27;AwesomeProject&#x27; from project &#x27;AwesomeProject&#x27;)</span><br><span class="line">warning: Unable to read contents of XCFileList &#x27;/Target Support Files/Pods-AwesomeProject/Pods-AwesomeProject-frameworks-Debug-output-files.xcfilelist&#x27; (in target &#x27;AwesomeProject&#x27; from project &#x27;AwesomeProject&#x27;)</span><br><span class="line">error: Unable to load contents of file list: &#x27;/Target Support Files/Pods-AwesomeProject/Pods-AwesomeProject-resources-Debug-input-files.xcfilelist&#x27; (in target &#x27;AwesomeProject&#x27; from project &#x27;AwesomeProject&#x27;)</span><br><span class="line">error: Unable to load contents of file list: &#x27;/Target Support Files/Pods-AwesomeProject/Pods-AwesomeProject-resources-Debug-output-files.xcfilelist&#x27; (in target &#x27;AwesomeProject&#x27; from project &#x27;AwesomeProject&#x27;)</span><br><span class="line">error: Unable to load contents of file list: &#x27;/Target Support Files/Pods-AwesomeProject/Pods-AwesomeProject-frameworks-Debug-input-files.xcfilelist&#x27; (in target &#x27;AwesomeProject&#x27; from project &#x27;AwesomeProject&#x27;)</span><br><span class="line">error: Unable to load contents of file list: &#x27;/Target Support Files/Pods-AwesomeProject/Pods-AwesomeProject-frameworks-Debug-output-files.xcfilelist&#x27; (in target &#x27;AwesomeProject&#x27; from project &#x27;AwesomeProject&#x27;)</span><br><span class="line">warning: Run script build phase &#x27;[CP] Copy Pods Resources&#x27; will be run during every build because it does not specify any outputs. To address this warning, either add output dependencies to the script phase, or configure it to run in every build by unchecking &quot;Based on dependency analysis&quot; in the script phase. (in target &#x27;AwesomeProject&#x27; from project &#x27;AwesomeProject&#x27;)</span><br><span class="line">warning: Run script build phase &#x27;[CP] Embed Pods Frameworks&#x27; will be run during every build because it does not specify any outputs. To address this warning, either add output dependencies to the script phase, or configure it to run in every build by unchecking &quot;Based on dependency analysis&quot; in the script phase. (in target &#x27;AwesomeProject&#x27; from project &#x27;AwesomeProject&#x27;)</span><br><span class="line">warning: Run script build phase &#x27;Bundle React Native code and images&#x27; will be run during every build because it does not specify any outputs. To address this warning, either add output dependencies to the script phase, or configure it to run in every build by unchecking &quot;Based on dependency analysis&quot; in the script phase. (in target &#x27;AwesomeProject&#x27; from project &#x27;AwesomeProject&#x27;)</span><br><span class="line">warning: Run script build phase &#x27;Start Packager&#x27; will be run during every build because it does not specify any outputs. To address this warning, either add output dependencies to the script phase, or configure it to run in every build by unchecking &quot;Based on dependency analysis&quot; in the script phase. (in target &#x27;AwesomeProject&#x27; from project &#x27;AwesomeProject&#x27;)</span><br><span class="line"></span><br><span class="line">** BUILD FAILED **</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">info Run CLI with --verbose flag for more details.</span><br><span class="line">error Command failed with exit code 1.</span><br><span class="line">info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.</span><br></pre></td></tr></table></figure>
+
+<p>解决方法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd ios </span><br><span class="line">pod install</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>参考：<a target="_blank" rel="noopener" href="https://lightrun.com/answers/facebook-react-native-fresh-react-native-066-app-does-not-build-on-xcode-13-ios-116-compiler-error-on-sysuioo">Fresh react-native (0.66) app does not build on XCode 13, iOS 11.6: compiler error on SysUio.o</a>  </p>
+<p>参考：<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/55725042/error-failed-to-build-ios-project-we-ran-xcodebuild-command-but-it-exited-wit">error Failed to build iOS project. We ran “xcodebuild” command but it exited with error code 65. i can not Run my Project</a></p>
+</blockquote>
+<p>报错信息：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[!] Error installing CocoaAsyncSocket</span><br><span class="line">[!] /usr/local/bin/git clone https://github.com/robbiehanson/CocoaAsyncSocket.git /var/folders/2p/dtc9s94148j8px03g4gkxpkr0000gn/T/d20221001-8728-969mqt --template= --single-branch --depth 1 --branch 7.6.5</span><br><span class="line"></span><br><span class="line">Cloning into &#x27;/var/folders/2p/dtc9s94148j8px03g4gkxpkr0000gn/T/d20221001-8728-969mqt&#x27;...</span><br><span class="line">fatal: unable to access &#x27;https://github.com/robbiehanson/CocoaAsyncSocket.git/&#x27;: HTTP/2 stream 1 was not closed cleanly before end of the underlying stream</span><br></pre></td></tr></table></figure>
+
+<p>解决方法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod install</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>由于网络问题，不断安装中断，每次报类似的错误，继续输入pod install，就会继续安装，直到安装成功</p>
+</blockquote>
+<h4 id="4-hermes-engine的安装问题"><a href="#4-hermes-engine的安装问题" class="headerlink" title="4.hermes-engine的安装问题"></a>4.hermes-engine的安装问题</h4><blockquote>
+<p>这个有490多M，每次安装都失败，报错信息都一致。这个折腾了好久好久….</p>
+</blockquote>
+<p>报错信息：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[!] Error installing hermes-engine</span><br><span class="line">[!] /usr/bin/curl -f -L -o /var/folders/2p/dtc9s94148j8px03g4gkxpkr0000gn/T/d20221001-67147-8lkp1c/file.tgz https://github.com/facebook/react-native/releases/download/v0.70.1/hermes-runtime-darwin-v0.70.1.tar.gz --create-dirs --netrc-optional --retry 2 -A &#x27;CocoaPods/1.11.3 cocoapods-downloader/1.5.1&#x27;</span><br><span class="line"></span><br><span class="line">  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current</span><br><span class="line">                                 Dload  Upload   Total   Spent    Left  Speed</span><br><span class="line">  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0</span><br><span class="line">  0  496M    0 1343k    0     0   1299      0   4d 15h  0:17:38   4d 14h   894</span><br><span class="line">curl: (92) HTTP/2 stream 0 was not closed cleanly: PROTOCOL_ERROR (err 1)</span><br></pre></td></tr></table></figure>
+
+<p>解决方法：</p>
+<ol>
+<li>打开一个终端，先执行</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export http_proxy=&#x27;your.host:port&#x27; //your.host:port我的是127.0.0.1:1087</span><br><span class="line">export https_proxy=&#x27;your.host:port&#x27; your.host:port我的是127.0.0.1:1087</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>这个终端界面转到项目目录下，再执行<code>pod install --verbose</code></li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod install --verbose						// 在安装命令添加参数`--verbose`看打印详细信息</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/BUG_delete/article/details/110133505?spm=1001.2101.3001.6661.1&utm_medium=distribute.pc_relevant_t0.none-task-blog-2~default~CTRLIST~Rate-1-110133505-blog-82894101.t0_edu_mix&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2~default~CTRLIST~Rate-1-110133505-blog-82894101.t0_edu_mix&utm_relevant_index=1">Cocoapods安装私有库问题</a></p>
+</blockquote>
+<h5 id="安装完成"><a href="#安装完成" class="headerlink" title="安装完成"></a>安装完成</h5><p>命令行打印消息中看到自动执行<code>Generating Pods project</code></p>
+<p>命令行打印消息中看到自动执行<code>Integrating client project</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[!] Please close any current Xcode sessions and use `myapp.xcworkspace` for this project from now on.</span><br><span class="line"></span><br><span class="line">Integrating target `Pods-myapp` (`myapp.xcodeproj` project)</span><br><span class="line"></span><br><span class="line">Integrating target `Pods-myapp-myappTests` (`myapp.xcodeproj` project)</span><br><span class="line">  - Running post integrate hooks</span><br><span class="line">  - Writing Lockfile in `Podfile.lock`</span><br><span class="line">  - Writing Manifest in `Pods/Manifest.lock`</span><br><span class="line">  CDN: trunk Relative path: CocoaPods-version.yml exists! Returning local because checking is only performed in repo update</span><br><span class="line"></span><br><span class="line">-&gt; Pod installation complete! There are 59 dependencies from the Podfile and 49 total pods installed.</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>根据终端提示，如果想要使用刚添加的第三方库，必须打开<code>MyApp.xcworkspace</code>，而非之前的<code>MyApp.xcodeProj</code>。</p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/c19df91997fd">CocoaPods的安装与使用</a></p>
+<h4 id="5-运行项目"><a href="#5-运行项目" class="headerlink" title="5.运行项目"></a>5.运行项目</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yarn ios </span><br><span class="line">或</span><br><span class="line">yarn react-native run-ios</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="配置-ANDROID-SDK-ROOT-环境变量"><a href="#配置-ANDROID-SDK-ROOT-环境变量" class="headerlink" title="配置 ANDROID_SDK_ROOT 环境变量"></a>配置 ANDROID_SDK_ROOT 环境变量</h4><p>1.打开配置文件的命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vi ~/.zshrc</span><br><span class="line"></span><br><span class="line">vi /Users/yangyanyi/.zshrc</span><br></pre></td></tr></table></figure>
+
+<p>2.编辑配置文件，将以下代码粘贴到配置文件中</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 如果你不是通过Android Studio安装的sdk，则其路径可能不同，请自行确定清楚</span><br><span class="line">export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk</span><br><span class="line">export PATH=$PATH:$ANDROID_SDK_ROOT/emulator</span><br><span class="line">export PATH=$PATH:$ANDROID_SDK_ROOT/tools</span><br><span class="line">export PATH=$PATH:$ANDROID_SDK_ROOT/tools/bin</span><br><span class="line">export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools</span><br></pre></td></tr></table></figure>
+
+<p>3.保存后退出vi，参考：<a target="_blank" rel="noopener" href="https://wenku.baidu.com/view/e4705173bd23482fb4daa58da0116c175f0e1e80.html">Mac终端编辑完成后如何保存</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:wq</span><br></pre></td></tr></table></figure>
+
+<p>4.使用<code>source $HOME/.zshrc</code>命令来使环境变量设置立即生效（否则重启后才生效）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source $HOME/.zshrc</span><br></pre></td></tr></table></figure>
+
+<p>5.使用<code>echo $ANDROID_SDK_ROOT</code>检查此变量是否已正确设置</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo $ANDROID_SDK_ROOT</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>输入完，在终端成功显示：<code>/Users/yangyanyi/Library/Android/sdk</code></p>
+</blockquote>
+<h4 id="运行项目"><a href="#运行项目" class="headerlink" title="运行项目"></a>运行项目</h4><p>报错信息：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">FAILURE: Build failed with an exception.</span><br><span class="line"></span><br><span class="line">* What went wrong:</span><br><span class="line">A problem occurred configuring project &#x27;:react-native-gradle-plugin&#x27;.</span><br><span class="line">&gt; Could not resolve all files for configuration &#x27;:react-native-gradle-plugin:classpath&#x27;.</span><br><span class="line">   &gt; Could not download kotlin-gradle-plugin-1.6.10.jar (org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.10)</span><br><span class="line">      &gt; Could not get resource &#x27;https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-gradle-plugin/1.6.10/kotlin-gradle-plugin-1.6.10.jar&#x27;.</span><br><span class="line">         &gt; Could not GET &#x27;https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-gradle-plugin/1.6.10/kotlin-gradle-plugin-1.6.10.jar&#x27;.</span><br><span class="line">            &gt; Connect to repo.maven.apache.org:443 [repo.maven.apache.org/151.101.40.215] failed: connect timed out</span><br><span class="line">   &gt; Could not download kotlin-compiler-embeddable-1.6.10.jar (org.jetbrains.kotlin:kotlin-compiler-embeddable:1.6.10)</span><br><span class="line">      &gt; Could not get resource &#x27;https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-compiler-embeddable/1.6.10/kotlin-compiler-embeddable-1.6.10.jar&#x27;.</span><br><span class="line">         &gt; Could not GET &#x27;https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-compiler-embeddable/1.6.10/kotlin-compiler-embeddable-1.6.10.jar&#x27;.</span><br><span class="line">            &gt; Connect to repo.maven.apache.org:443 [repo.maven.apache.org/151.101.40.215] failed: connect timed out</span><br><span class="line"></span><br><span class="line">* Try:</span><br><span class="line">&gt; Run with --stacktrace option to get the stack trace.</span><br><span class="line">&gt; Run with --info or --debug option to get more log output.</span><br><span class="line">&gt; Run with --scan to get full insights.</span><br><span class="line"></span><br><span class="line">* Get more help at https://help.gradle.org</span><br><span class="line"></span><br><span class="line">BUILD FAILED in 12m 28s</span><br><span class="line"></span><br><span class="line">error Failed to install the app. Make sure you have the Android development environment set up: https://reactnative.dev/docs/environment-setup.</span><br><span class="line">Error: Command failed: ./gradlew app:installDebug -PreactNativeDevServerPort=8081</span><br><span class="line"></span><br><span class="line">FAILURE: Build failed with an exception.</span><br><span class="line"></span><br><span class="line">* What went wrong:</span><br><span class="line">A problem occurred configuring project &#x27;:react-native-gradle-plugin&#x27;.</span><br><span class="line">&gt; Could not resolve all files for configuration &#x27;:react-native-gradle-plugin:classpath&#x27;.</span><br><span class="line">   &gt; Could not download kotlin-gradle-plugin-1.6.10.jar (org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.10)</span><br><span class="line">      &gt; Could not get resource &#x27;https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-gradle-plugin/1.6.10/kotlin-gradle-plugin-1.6.10.jar&#x27;.</span><br><span class="line">         &gt; Could not GET &#x27;https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-gradle-plugin/1.6.10/kotlin-gradle-plugin-1.6.10.jar&#x27;.</span><br><span class="line">            &gt; Connect to repo.maven.apache.org:443 [repo.maven.apache.org/151.101.40.215] failed: connect timed out</span><br><span class="line">   &gt; Could not download kotlin-compiler-embeddable-1.6.10.jar (org.jetbrains.kotlin:kotlin-compiler-embeddable:1.6.10)</span><br><span class="line">      &gt; Could not get resource &#x27;https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-compiler-embeddable/1.6.10/kotlin-compiler-embeddable-1.6.10.jar&#x27;.</span><br><span class="line">         &gt; Could not GET &#x27;https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-compiler-embeddable/1.6.10/kotlin-compiler-embeddable-1.6.10.jar&#x27;.</span><br><span class="line">            &gt; Connect to repo.maven.apache.org:443 [repo.maven.apache.org/151.101.40.215] failed: connect timed out</span><br><span class="line"></span><br><span class="line">* Try:</span><br><span class="line">&gt; Run with --stacktrace option to get the stack trace.</span><br><span class="line">&gt; Run with --info or --debug option to get more log output.</span><br><span class="line">&gt; Run with --scan to get full insights.</span><br><span class="line"></span><br><span class="line">* Get more help at https://help.gradle.org</span><br><span class="line"></span><br><span class="line">BUILD FAILED in 12m 28s</span><br><span class="line"></span><br><span class="line">    at makeError (/Users/yangyanyi/Documents/Code/Gitee/reactive_native/myapp/node_modules/execa/index.js:174:9)</span><br><span class="line">    at /Users/yangyanyi/Documents/Code/Gitee/reactive_native/myapp/node_modules/execa/index.js:278:16</span><br><span class="line">    at processTicksAndRejections (node:internal/process/task_queues:96:5)</span><br><span class="line">    at async runOnAllDevices (/Users/yangyanyi/Documents/Code/Gitee/reactive_native/myapp/node_modules/@react-native-community/cli-platform-android/build/commands/runAndroid/runOnAllDevices.js:109:5)</span><br><span class="line">    at async Command.handleAction (/Users/yangyanyi/Documents/Code/Gitee/reactive_native/myapp/node_modules/@react-native-community/cli/build/index.js:142:9)</span><br><span class="line">info Run CLI with --verbose flag for more details.</span><br><span class="line">error Command failed with exit code 1.</span><br><span class="line">info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/React/" rel="tag"># React</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/10/01/MacOs%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/" rel="prev" title="MacOs相关笔记">
+      <i class="fa fa-chevron-left"></i> MacOs相关笔记
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/10/10/ad-manage-react-%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/" rel="next" title="ad_manage_react-项目笔记">
+      ad_manage_react-项目笔记 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#macOS%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="nav-number">1.</span> <span class="nav-text">macOS环境配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#iOS"><span class="nav-number">1.1.</span> <span class="nav-text">iOS</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-%E5%AE%89%E8%A3%85Homebrew"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.安装Homebrew</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E6%AD%A5%E9%AA%A4%EF%BC%9A"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">安装步骤：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%9C%AC%E6%AC%A1%E5%AE%89%E8%A3%85%E5%8F%82%E8%80%83%E5%86%85%E5%AE%B9%EF%BC%9A"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">本次安装参考内容：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E5%8F%82%E8%80%83%E5%86%85%E5%AE%B9%EF%BC%9A"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">相关参考内容：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E9%95%9C%E5%83%8F"><span class="nav-number">1.1.1.4.</span> <span class="nav-text">查看镜像</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%AE%89%E8%A3%85watchman"><span class="nav-number">1.2.</span> <span class="nav-text">2.安装watchman</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E5%AE%89%E8%A3%85cocoapods"><span class="nav-number">1.3.</span> <span class="nav-text">3.安装cocoapods</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-hermes-engine%E7%9A%84%E5%AE%89%E8%A3%85%E9%97%AE%E9%A2%98"><span class="nav-number">1.4.</span> <span class="nav-text">4.hermes-engine的安装问题</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E5%AE%8C%E6%88%90"><span class="nav-number">1.4.1.</span> <span class="nav-text">安装完成</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-%E8%BF%90%E8%A1%8C%E9%A1%B9%E7%9B%AE"><span class="nav-number">1.5.</span> <span class="nav-text">5.运行项目</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE-ANDROID-SDK-ROOT-%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="nav-number">1.6.</span> <span class="nav-text">配置 ANDROID_SDK_ROOT 环境变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C%E9%A1%B9%E7%9B%AE"><span class="nav-number">1.7.</span> <span class="nav-text">运行项目</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="winney"
+      src="/images/header.jpg">
+  <p class="site-author-name" itemprop="name">winney</p>
+  <div class="site-description" itemprop="description">Doing is better than saying.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">132</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">52</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">84</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://www.xiaochao.me/" title="https:&#x2F;&#x2F;www.xiaochao.me&#x2F;" rel="noopener" target="_blank">小超</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://winney07.github.io/" title="https:&#x2F;&#x2F;winney07.github.io&#x2F;" rel="noopener" target="_blank">winney07</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2015 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">winney07</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

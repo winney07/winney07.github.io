@@ -467,3 +467,24 @@ npm run build
 [react根据不同环境配置不同接口](https://blog.csdn.net/weixin_40302777/article/details/94579132)
 
 [三分钟教你搞定 React 项目多环境配置](https://www.ltonus.com/React/react-project-config.html)
+
+
+
+#### [React实现复制功能](https://blog.csdn.net/yasuifi/article/details/119648390)
+
+```
+npm i --save copy-to-clipboard
+```
+
+```
+import copy from 'copy-to-clipboard';
+
+
+handleClick = (e) => {
+  copy(e.target.value)
+}
+
+
+<input placeholder='请输入' onClick={this.handleClick}/> 
+```
+

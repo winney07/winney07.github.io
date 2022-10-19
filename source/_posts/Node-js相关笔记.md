@@ -12,6 +12,8 @@ tags:
 
 [Node.js中文网](http://nodejs.cn/)
 
+[Node.js 中文文档 | Node.js 中文网](https://www.nodeapp.cn/)
+
 [淘宝NPM镜像](https://npm.taobao.org/)
 
 Node.js&HTML5论坛
@@ -244,4 +246,17 @@ let params = {'delete_time': "0"};
 // 根据页码和每页显示条数筛选数据
 const sources = await Sources.find(params).sort('-create_time').skip(skip).limit(pageSize)
 ```
+
+#### [常用的Nodejs开发工具](http://www.bjpowernode.com/hot/2981.html)
+
+- Express.js
+- Socket.io
+- Meteor
+- Keystone
+- Koa.js
+- PM2.5
+- Electrode.js
+- Babel
+- Broccoli
+- Webpack
 

@@ -40,6 +40,8 @@ v6文档：https://reactrouter.com
 
 v5文档：https://v5.reactrouter.com/web/guides/quick-start
 
+[最全前端路由配置、中大型后台前端配置，vue-router react-router](https://baijiahao.baidu.com/s?id=1727136927711386422&wfr=spider&for=pc)
+
 ```
 // 入口文件index.js
 import React from "react";

@@ -179,6 +179,98 @@ module.exports = {
  modifyVars: { '@primary-color': '#f6c700' },
 ```
 
+报错信息：`Warning: [antd: Form.Item] `defaultValue` will not work on controlled Field. You should use `initialValues` of Form instead.`
+
+修改之前：
+
+```
+<Form.Item
+    name="username"
+>
+    <Input
+    type="text"
+    defaultValue= {user.name}
+    />
+</Form.Item>
+```
+
+解决方法：`initialValue`
+
+```
+<Form.Item
+    name="username"
+    initialValue={user.name}
+>
+    <Input
+    type="text"
+    // defaultValue= {user.name}
+    />
+</Form.Item>
+```
+
+或 `initialValues`
+
+```
+ <Form
+    name="normal_login"
+    className="login-form"
+    size="large"
+    initialValues={{
+        username: user.name,
+    }}
+    onFinish={onFinish}
+  >
+    <Form.Item
+        name="username"
+        // initialValue={user.name}
+    >
+        <Input
+        type="text"
+        // defaultValue= {user.name}
+        />
+    </Form.Item>
+</Form>  
+```
+
+#### 在react中引入外链H5页面
+
+1.使用`react-iframe`
+
+```
+import Iframe from "react-iframe";
+<Iframe 
+    url="https://www.qunar.com/"
+    width="100%"
+    height="100%"
+/>
+```
+
+2.直接使用`iframe`标签——项目中使用这种
+
+```
+<iframe  
+// scrolling="yes" 
+frameBorder="0" 
+title='外部页面'
+style={{width:'100%',height:"100vh", overflow:'hidden'}}
+src="https://www.qunar.com/"
+/>
+```
+
+#### 状态管理 - [Redux Toolkit](https://redux-toolkit.js.org/tutorials/quick-start)
+
+```
+yarn @reduxjs/toolkit react-redux
+```
+
+#### 复制功能-[copy-to-clipboard](https://www.npmjs.com/package/copy-to-clipboard)
+
+```
+import copy from 'copy-to-clipboard';
+
+copy(内容)
+```
+
 
 
 
@@ -187,5 +279,30 @@ module.exports = {
 
 ```
 yarn add antd-mobile
+```
+
+
+
+#### 打包
+
+1.相对地址
+
+```
+"homepage": "."
+```
+
+2.改为HashRouter
+
+
+
+本地查看
+
+```
+
+The build folder is ready to be deployed.
+You may serve it with a static server:
+
+yarn global add serve
+serve -s build
 ```
 

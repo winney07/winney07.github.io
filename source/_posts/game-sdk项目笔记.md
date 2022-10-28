@@ -281,8 +281,6 @@ copy(内容)
 yarn add antd-mobile
 ```
 
-
-
 #### 打包
 
 1.相对地址
@@ -292,8 +290,6 @@ yarn add antd-mobile
 ```
 
 2.改为HashRouter
-
-
 
 本地查看
 

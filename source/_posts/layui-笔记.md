@@ -1103,3 +1103,154 @@ renderLogo: function (data) {
 },
 ```
 
+#### 选择同一天，修改结束时间为23:59:59
+
+```
+laydate.render({
+range: true
+, type: ncV.timeType
+, elem: '[name="' + ncV.fieldAlias + '"]'
+, done: function(value, date, endDate){
+    var arr = value.split(' - ')
+        , day1 = arr[0].split(' ')[0]    // 开始日期
+        , day2 = arr[1].split(' ')[0];   // 结束日期
+    if(day1 === day2) {     // 同一天
+        var time1 = arr[0].split(' ')[1]      // 开始时间
+          , time2 = arr[1].split(' ')[1];     // 结束时间
+        // 判断是否都为0点，若是，将结束时间改为23:59:59
+        if(time1 === time2 && time1 === '00:00:00'){
+            setTimeout(function() {
+                document.querySelector('[name="' + ncV.fieldAlias + '"]').value = day1 + ' ' + time1 + ' - ' + day2 + ' ' + '23:59:59';
+            }, 150)
+        }
+    }
+}
+});
+```
+
+[layui表格编辑单元格时直接点击保存按钮问题](https://blog.csdn.net/javaXiaoAnRan/article/details/109632250)
+
+
+
+#### layui表格编辑单元格--满足校验再保存-不满足校验继续展示输入框
+
+```
+// 监听单元格编辑
+table.on('edit(subpackageTable)', function(obj){ 
+    console.log(obj.value); // 得到修改后的值
+    console.log(obj.field); // 当前编辑的字段名
+    console.log(obj.data); // 所在行的所有相关数据  
+
+    console.log(this)
+	
+	// 不满足校验
+    if(!/^[1-9]\d*$/.test(obj.value)) {
+        layer.msg('请输入大于0的正整数', {time: 1000});
+        $(this).parent('td').append('<input class="layui-input layui-table-edit"></input>');  // 因为单元格编辑，页面就是给它多了个input输入框  不满足条件时，再追加进去就可以
+    }
+
+});
+```
+
+#### [LayUI动态开启单元格可以编辑状态](https://blog.csdn.net/Klhz555/article/details/125582409)
+
+
+
+#### 动态修改-不满足条件的不可编辑
+
+需求是：
+
+>  输入的条件需为大于0的正整数，若满足，则设置成功，更新设置数；若不满足，提示“请输入大于0的正整数”，提示的同时，用户点击输入框外，设置失败，收起输入框，设置数显示原数（注：交互先试试，设置失败能否不收起输入框，直至输入正确，才支持收起并设置成功；）
+
+```
+// 表格渲染的done事件回调
+, done: function (res, curr, count) {
+	var _index = localStorage.getItem("edit_index");
+    if(_index) {
+        $('.layui-table tr[data-index="' + _index + '"] '  + '[data-field="ip_reg_limit"]').append('<input class="layui-input layui-table-edit"></input>');  // 继续保留输入框
+    }
+    for(var i in data) {
+        if(data[i]['status'] === 3) {
+            $('tr[data-index="' + i + '"]').find('td[data-field="ip_reg_limit"]').data('edit', false);
+        }
+    }
+}
+
+```
+
+注意：使用时，在cols中，edit要设置为text：`edit: 'text'`，不然要验证edit事件的不起作用
+
+```
+cols：[[
+{ field: 'ip_reg_limit', title: '同IP注册限制数', edit: 'text', minWidth: 120, templet:function(res){
+        if(res.status == 3 || res.ip_reg_limit == 0){
+            return '';
+        }else {
+            return '<a class="table-edit-btn">' + res.ip_reg_limit + '</a>';
+        }
+    }
+}
+]]
+
+// edit结束后，不管值有没有改变，都会自动重新渲染一次表格
+// 监听单元格编辑
+table.on('edit(subpackageTable)', function(obj){ 
+    // 判断是否为大于0正整数
+    if(!/^[1-9]\d*$/.test(obj.value)) {
+        layer.msg('请输入大于0的正整数', {time: 1000});
+        var _index = $(this).parent('td').parent('tr').data('index');   
+        localStorage.setItem('edit_index', _index);
+        // 更新表格内容
+        updateTable();
+    } else { 
+        localStorage.removeItem('edit_index');
+        $.post('/xy/package/ban', {id: obj.data.id,ip_reg_limit:obj.value}, function(res){
+            layer.msg(res.msg, {time: 1000});
+            if(res.code == 1) {
+                updateTable();
+            }
+        });
+    }
+});
+```
+
+#### 动态设置单元格是否可以编辑
+
+`$(".layui-table").find('td[data-field="advise"]').data('edit', false)`
+
+```
+// doUpdate 可编辑表格的ID名
+table.on('row(doUpdate)', function(obj){
+    // advise  需要编辑的字段名
+   if(obj.data.advise =='' ){
+       $(".layui-table").find('td[data-field="advise"]').data('edit', true)
+   }else{
+       $(".layui-table").find('td[data-field="advise"]').data('edit', false)
+   }
+});
+```
+
+
+
+[textarea标签换行符以br存入数据库 ，br转 textArea换行符](https://blog.csdn.net/weixin_44252738/article/details/91466402)
+
+textarea标签回车符是`/n`,在html里识别回车是`<br/>`，在存入数据库之前要进行转换成`<br/>`，在取出展示在html页面时才能显示换行。
+
+```
+var content = rules_content.replace(/\n/g,'<br />');
+
+$("#rules_content").html(content);  // 写入活动规则内容
+```
+
+#### xm-select.js引入到[EasyAdmin](http://easyadmin.99php.cn/docs/) [LAYUI MINI](http://layuimini.99php.cn/docs/) 中遇到的问题
+
+引入之后，会报 `xmSelect is not defined` 
+
+解决：将以下代码注释掉即可
+
+```
+// "object" === ("undefined" == typeof exports ? "undefined": _typeof(exports)) ? e.exports = t.c: "function" == typeof define && n(220) ? define(xmSelect) : window.layui && layui.define && layui.define((function(e) {
+//  e("xmSelect", t.c)
+// })),
+```
+

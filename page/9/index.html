@@ -193,6 +193,98 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/10/%E4%BC%98%E5%8C%96JS%E4%BB%A3%E7%A0%81%E7%9A%8434%E7%A7%8D%E6%96%B9%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="winney">
+      <meta itemprop="description" content="Doing is better than saying.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="winney">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/09/10/%E4%BC%98%E5%8C%96JS%E4%BB%A3%E7%A0%81%E7%9A%8434%E7%A7%8D%E6%96%B9%E6%B3%95/" class="post-title-link" itemprop="url">优化JS代码的34种方法</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-09-10 11:23:20 / 修改时间：11:52:35" itemprop="dateCreated datePublished" datetime="2021-09-10T11:23:20+08:00">2021-09-10</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/Javascript/" itemprop="url" rel="index"><span itemprop="name">Javascript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="优化JS代码的34种方法"><a href="#优化JS代码的34种方法" class="headerlink" title="优化JS代码的34种方法"></a>优化JS代码的34种方法</h3><h4 id="1-含有多个条件的if语句"><a href="#1-含有多个条件的if语句" class="headerlink" title="1. 含有多个条件的if语句"></a>1. 含有多个条件的if语句</h4><p>我们可以在数组中存储多个值，也可以使用数据的includes方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; longhand</span><br><span class="line">if (x&#x3D;&#x3D;&#x3D; &#39;abc&#39; || x &#x3D;&#x3D;&#x3D; &#39;def&#39; || x &#x3D;&#x3D;&#x3D; &#39;ghi&#39; || x &#x3D;&#x3D;&#x3D;jkl&#39;) &#123;</span><br><span class="line">	&#x2F;&#x2F; logic</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F; shorthand</span><br><span class="line">if ([ &#39;abc &#39;, &#39;def&#39;, &#39;ghi&#39;, &#39;jkl&#39; ].includes (x)) &#123;</span><br><span class="line">    &#x2F;&#x2F; logic</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="2-If-…-else的缩写法"><a href="#2-If-…-else的缩写法" class="headerlink" title="2. If … else的缩写法"></a>2. If … else的缩写法</h4><p>当我们在if-else条件下的逻辑比较简单时，我们可以使用三元条件运算符。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; Longhand</span><br><span class="line">let test: boolean;</span><br><span class="line"></span><br><span class="line">if(x &gt; 100)&#123;</span><br><span class="line">	test &#x3D; true;</span><br><span class="line">&#125;else &#123;</span><br><span class="line">    test &#x3D; false;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; shorthand</span><br><span class="line">let test &#x3D; (x &gt; 10) ? true : false;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; or we can use directly</span><br><span class="line">let test &#x3D; x &gt; 10;</span><br><span class="line"></span><br><span class="line">console.log (test) ;</span><br></pre></td></tr></table></figure>
+<p>如果包含嵌套条件，也可以使用这种方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let x &#x3D; 300,</span><br><span class="line">test2 &#x3D; (x &gt; 100) ? &#39;greater 100&#39; : (x&lt;50) ? &#39;less 50&#39; : &#39;between50 and 100&#39;;</span><br><span class="line"></span><br><span class="line">console.log (test2);    &#x2F;&#x2F; &quot;greater than 100&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="3-定义变量"><a href="#3-定义变量" class="headerlink" title="3. 定义变量"></a>3. 定义变量</h4><p>当我们想要定义两个变量，并且这两个变量拥有相同的值或者类型的话，我们可以运用此种简略的表达方式。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; Longhand</span><br><span class="line">let testl;</span><br><span class="line">let test2 &#x3D; 1;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; Shorthand</span><br><span class="line">let test1, test2 &#x3D; 1;</span><br></pre></td></tr></table></figure>
+<h4 id="4-关于Null-undefined的检查"><a href="#4-关于Null-undefined的检查" class="headerlink" title="4. 关于Null, undefined的检查"></a>4. 关于Null, undefined的检查</h4><p>当我们创建新的变量时，有时候需要检查我们引用变量的值是否为null或是undefined，js本身就有一种缩写法能实现这个功能</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; Longhand</span><br><span class="line">if (testl !&#x3D;&#x3D; null || test1 !&#x3D;&#x3D; undefined || test1 !&#x3D;&#x3D; &#39;&#39;) &#123;</span><br><span class="line">	let test2 - test1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; shorthand</span><br><span class="line">let test2 &#x3D; test1 || &#39;&#39;;</span><br></pre></td></tr></table></figure>
+<h4 id="5-Null值检查与指定默认赋值"><a href="#5-Null值检查与指定默认赋值" class="headerlink" title="5. Null值检查与指定默认赋值"></a>5. Null值检查与指定默认赋值</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let test1 &#x3D; null,</span><br><span class="line">	test2 &#x3D; test1 || &#39;&#39;;</span><br><span class="line">	</span><br><span class="line">console.log (&quot;null check&quot;, test2); &#x2F;&#x2F; output will be &quot;&quot;</span><br></pre></td></tr></table></figure>
+<h4 id="6-Undefined值检查与默认赋值"><a href="#6-Undefined值检查与默认赋值" class="headerlink" title="6. Undefined值检查与默认赋值"></a>6. Undefined值检查与默认赋值</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let testl &#x3D; undefined,</span><br><span class="line">	test2 &#x3D; testl l| &#39;&#39;;</span><br><span class="line">	</span><br><span class="line">console.log (&quot;undefined check&quot;, test2); &#x2F;&#x2F; output will be &quot;&quot;</span><br></pre></td></tr></table></figure>
+<p>正常值检查</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let test1 &#x3D; &#39;test&#39;,</span><br><span class="line">    test2 &#x3D; test1 || &#39;&#39;;</span><br><span class="line">    </span><br><span class="line">console.log(test2);  &#x2F;&#x2F; output: &#39;test&#39;</span><br></pre></td></tr></table></figure>
+<p>（现在我们可以在4、5、6条中使用 ?? 运算符了）</p>
+<h4 id="7-聚合运算符"><a href="#7-聚合运算符" class="headerlink" title="7. 聚合运算符"></a>7. 聚合运算符</h4><p>**??**是聚合运算符，如果左值为null或undefined，就返回右值。默认返回左值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const test&#x3D; null ?? &#39;default&#39;;</span><br><span class="line">console.log(test);</span><br><span class="line">&#x2F;&#x2F; expected output: &quot;default&quot;const test1 &#x3D;0 ?? 2;</span><br><span class="line">console.log(test1);</span><br><span class="line">&#x2F;&#x2F; expected output: 0</span><br></pre></td></tr></table></figure>
+<h4 id="8-为多个变量赋值"><a href="#8-为多个变量赋值" class="headerlink" title="8. 为多个变量赋值"></a>8. 为多个变量赋值</h4><p>当我们处理多个变量，想为不同的变量赋不同的值时，就会真正发现这种简略的表达方式的实用之处了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; Longhand</span><br><span class="line">let test1, test2, test3;</span><br><span class="line">test1 &#x3D; 1;</span><br><span class="line">test2 &#x3D; 2;</span><br><span class="line">test3 &#x3D; 3;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; Shorthand</span><br><span class="line">let [testl, test2, test3] &#x3D; [1，2，3];</span><br></pre></td></tr></table></figure>
+<h4 id="9-赋值运算符简略的表达方式"><a href="#9-赋值运算符简略的表达方式" class="headerlink" title="9. 赋值运算符简略的表达方式"></a>9. 赋值运算符简略的表达方式</h4><p>通常，我们会在程序中处理大量的算术运算符。而对于JavaScript变量的赋值运算符来说，这是其中一个实用的技巧。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; Longhand</span><br><span class="line">testl &#x3D; testl + l;</span><br><span class="line">test2 &#x3D; test2 - 1;</span><br><span class="line">test3 &#x3D; test3 *20;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; Shorthand</span><br><span class="line">test1++;</span><br><span class="line">test2--;</span><br><span class="line">test3 *&#x3D; 20;</span><br></pre></td></tr></table></figure>
+<h4 id="10-判断变量是否存在的缩写法"><a href="#10-判断变量是否存在的缩写法" class="headerlink" title="10. 判断变量是否存在的缩写法"></a>10. 判断变量是否存在的缩写法</h4>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/02/HTML5-%E7%AC%94%E8%AE%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -778,137 +870,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/06/23/%E7%AC%94%E8%AE%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="winney">
-      <meta itemprop="description" content="Doing is better than saying.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="winney">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/06/23/%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">笔记</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-06-23 18:00:16" itemprop="dateCreated datePublished" datetime="2021-06-23T18:00:16+08:00">2021-06-23</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-10-17 11:35:58" itemprop="dateModified" datetime="2022-10-17T11:35:58+08:00">2022-10-17</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_34764577/article/details/81184628">Chrome的插件扩展程序安装目录是什么？在哪个文件夹？</a></p>
-<h4 id="浏览器调试工具如何查看placeholder值"><a href="#浏览器调试工具如何查看placeholder值" class="headerlink" title="浏览器调试工具如何查看placeholder值"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_36485978/article/details/97897798">浏览器调试工具如何查看placeholder值</a></h4><h4 id="访问他人本地项目–使用火狐浏览器代理"><a href="#访问他人本地项目–使用火狐浏览器代理" class="headerlink" title="访问他人本地项目–使用火狐浏览器代理"></a>访问他人本地项目–使用火狐浏览器代理</h4><p>设置——常规——网络设置——手动配置代理</p>
-<p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/%E7%AC%94%E8%AE%B0/1.png" alt="火狐浏览器配置代理"></p>
-<h4 id="手机访问电脑本地项目——使用Charles代理"><a href="#手机访问电脑本地项目——使用Charles代理" class="headerlink" title="手机访问电脑本地项目——使用Charles代理"></a>手机访问电脑本地项目——使用Charles代理</h4><p><code>备注：使用手机端访问本地后台项目，在手机wifi里配置代理</code></p>
-<h5 id="注意：连接不成功，看一下端口号是否写错了"><a href="#注意：连接不成功，看一下端口号是否写错了" class="headerlink" title="注意：连接不成功，看一下端口号是否写错了"></a><code>注意：连接不成功，看一下端口号是否写错了</code></h5><p><code>首次连接，需要在Charles上授权（allow）</code></p>
-<ul>
-<li>电脑安装Charles，进行代理设置：“代理”——“代理设置”</li>
-</ul>
-<p><img src="https://raw.githubusercontent.com/winney07/Images/main/Note/Charles%E4%BB%A3%E7%90%86%E8%AE%BE%E7%BD%AE.png" alt="代理设置"></p>
-<ul>
-<li>在手机端要设置“HTTP代理”【注意：手机连接的WiFi要跟电脑端是在同一个路由】</li>
-</ul>
-<p><img src="https://raw.githubusercontent.com/winney07/Images/main/Note/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20210622185834.png" alt="img"> <img src="https://raw.githubusercontent.com/winney07/Images/main/Note/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_202106221858341.png" alt="img"> <img src="https://raw.githubusercontent.com/winney07/Images/main/Note/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_202106221858342.png" alt="img"></p>
-<ul>
-<li>配置好手机HTTP代理之后，在Charles中会弹出一个是否同意的一个确认框，选择同意之后；手机就可以访问本地的项目</li>
-</ul>
-<p>如果在手机中忽略过该WiFi，重新连接上该WiFi后要重新设置“HTTP代理”</p>
-<h2 id="Atom-工具使用"><a href="#Atom-工具使用" class="headerlink" title="Atom_工具使用"></a>Atom_工具使用</h2><p>由github发布的前端开发工具</p>
-<p>非常强大和非常开发的开发工具平台</p>
-<ul>
-<li>官网地址: <a target="_blank" rel="noopener" href="https://atom.io/">https://atom.io/</a></li>
-<li>百度网盘下载地址：<a target="_blank" rel="noopener" href="http://pan.baidu.com/s/1ntszCgT">http://pan.baidu.com/s/1ntszCgT</a></li>
-</ul>
-<p>Atom的插件和主题安装和配置</p>
-<h2 id="WebStorm10"><a href="#WebStorm10" class="headerlink" title="WebStorm10"></a>WebStorm10</h2><p>WebStorm是最专业的前端IDE开发工具</p>
-<p>WebStorm配置和快捷键</p>
-<h2 id="操作系统常用配置"><a href="#操作系统常用配置" class="headerlink" title="操作系统常用配置"></a>操作系统常用配置</h2><ul>
-<li><p>系统调整为最佳性能(建议设置)</p>
-</li>
-<li><ul>
-<li>开始菜单&gt;控制面板&gt;性能信息和工具&gt;调整视觉效果&gt;调整到最佳性能</li>
-</ul>
-</li>
-<li><p>文件夹显示设置(强烈建议设置)</p>
-</li>
-<li><ul>
-<li>列表显示文件夹（要用这种形式才比较专业）</li>
-<li>显示隐藏文件</li>
-<li>应用到所有文件</li>
-<li>操作：工具→文件夹选项&gt;隐藏已知文件类型.. (去掉）&gt;应用到所有文件夹</li>
-</ul>
-</li>
-</ul>
-<p>注意：隐藏已知文件类型的扩展名（这个一定要去掉），在标题栏显示完整路径（这个要勾选上）</p>
-<p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/%E7%AC%94%E8%AE%B0/2.png" alt="img"></p>
-<ul>
-<li><p>任务栏设置(建议设置)</p>
-</li>
-<li><ul>
-<li>任务栏右击&gt;锁定任务栏+任务栏使用小图标</li>
-</ul>
-</li>
-</ul>
-<h4 id="修改图片的相对路径"><a href="#修改图片的相对路径" class="headerlink" title="修改图片的相对路径"></a>修改图片的相对路径</h4><p>（可以不需要在Typora里面设置，直接写相对路径）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![备注文字](.&#x2F;images&#x2F;note6.png)</span><br></pre></td></tr></table></figure>
-<p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/%E7%AC%94%E8%AE%B0/3.png" alt="修改图片的相对路径"></p>
-<h4 id="浏览器无法播放flash"><a href="#浏览器无法播放flash" class="headerlink" title="浏览器无法播放flash"></a>浏览器无法播放flash</h4><p>安装Adobe Flash Player PPAPI</p>
-<h4 id="设置电脑桌面上的图标和文件随意摆放"><a href="#设置电脑桌面上的图标和文件随意摆放" class="headerlink" title="设置电脑桌面上的图标和文件随意摆放"></a>设置电脑桌面上的图标和文件随意摆放</h4><p>在桌面右击鼠标，选“查看”，把“自动排列图标”和“将图标与网格对齐”取消勾选就可以。</p>
-<h4 id="如何把文件夹里的文件名都复制下来"><a href="#如何把文件夹里的文件名都复制下来" class="headerlink" title="如何把文件夹里的文件名都复制下来"></a><a target="_blank" rel="noopener" href="https://jingyan.baidu.com/article/b24f6c82000491c7bfe5daff.html">如何把文件夹里的文件名都复制下来</a></h4><h4 id="备注信息的注意事项"><a href="#备注信息的注意事项" class="headerlink" title="备注信息的注意事项"></a>备注信息的注意事项</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">if(os &#x3D;&#x3D;&#x3D; 1)&#123;	&#x2F;&#x2F; iOS</span><br><span class="line">	&#x2F;&#x2F; iOS</span><br><span class="line">&#125; else if(os &#x3D;&#x3D;&#x3D; 2) &#123; &#x2F;&#x2F; 安卓</span><br><span class="line">	&#x2F;&#x2F; 安卓</span><br><span class="line">&#125; else if(os &#x3D;&#x3D;&#x3D; 3) &#123;&#x2F;&#x2F; H5小游戏        &#x2F;&#x2F; 这样写会影响后面的代码执行  &#123;与&#x2F;&#x2F;之间要有空格</span><br><span class="line">	&#x2F;&#x2F; H5小游戏</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="PHP输出某个变量"><a href="#PHP输出某个变量" class="headerlink" title="PHP输出某个变量"></a>PHP输出某个变量</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var channels &#x3D; &lt;?php echo json_encode($channels); ?&gt;;</span><br></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://www.icode9.com/content-4-1302901.html">接口测试工具Apifox 基础篇：配置环境</a></p>
-<h4 id="c-s和b-s的区别与联系"><a href="#c-s和b-s的区别与联系" class="headerlink" title="c/s和b/s的区别与联系"></a>c/s和b/s的区别与联系</h4><p>B/S就是“Browser/Server”的缩写，即“浏览器/服务器”模式。</p>
-<p>C/S就是“Client/Server”的缩写，即“客户端/服务器”模式。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/8/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/45/">45</a><a class="extend next" rel="next" href="/page/10/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/8/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/46/">46</a><a class="extend next" rel="next" href="/page/10/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -976,7 +941,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">135</span>
+          <span class="site-state-item-count">136</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -989,7 +954,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">86</span>
+        <span class="site-state-item-count">87</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

@@ -109,3 +109,79 @@ listen 8081
 #### Apache相对路径文件的放置
 
 ![Apache相对路径文件的放置](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Wampserver-%E7%AC%94%E8%AE%B0/note2.png)
+
+
+
+#### 权限问题——配置
+
+修改`wamp\bin\apache\apache2.4.23\conf\http.conf` 文件
+
+将`Require all denied` 注释掉，改为`Require all granted`
+
+```
+<Directory />
+    AllowOverride none
+    #Require all denied
+    Require all granted
+</Directory>
+```
+
+![权限问题](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Wampserver-%E7%AC%94%E8%AE%B0/1%E6%9D%83%E9%99%90%E9%97%AE%E9%A2%98.png)
+
+#### 工作目录-路径问题——配置
+
+修改`wamp\bin\apache\apache2.4.23\conf\http.conf` 文件
+
+将`DocumentRoot "${INSTALL_DIR}/www"` 和 `<Directory "${INSTALL_DIR}/www/">`  注释掉，更改了工作目录的路径
+
+```
+#DocumentRoot "${INSTALL_DIR}/www"
+#<Directory "${INSTALL_DIR}/www/">
+
+DocumentRoot "E:/work"
+<Directory "E:/work/">
+```
+
+![工作目录-路径问题](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Wampserver-%E7%AC%94%E8%AE%B0/2.%E5%B7%A5%E4%BD%9C%E7%9B%AE%E5%BD%95-%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98.png)
+
+#### 手机访问问题——配置
+
+修改`wamp\bin\apache\apache2.4.23\conf\http.conf` 文件
+
+在`Require local` 前面加上`Require all granted `和 ` Allow from all`
+
+```
+<Directory "E:/work/">
+    #
+    # Possible values for the Options directive are "None", "All",
+    # or any combination of:
+    #   Indexes Includes FollowSymLinks SymLinksifOwnerMatch ExecCGI MultiViews
+    #
+    # Note that "MultiViews" must be named *explicitly* --- "Options All"
+    # doesn't give it to you.
+    #
+    # The Options directive is both complicated and important.  Please see
+    # http://httpd.apache.org/docs/2.4/mod/core.html#options
+    # for more information.
+    #
+    Options +Indexes +FollowSymLinks +Multiviews
+
+    #
+    # AllowOverride controls what directives may be placed in .htaccess files.
+    # It can be "All", "None", or any combination of the keywords:
+    #   AllowOverride FileInfo AuthConfig Limit
+    #
+    AllowOverride all
+
+    #
+    # Controls who can get stuff from this server.
+    #
+    Require all granted
+    Allow from all
+
+#   onlineoffline tag - don't remove
+    Require local
+</Directory>
+```
+
+![手机访问问题](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Wampserver-%E7%AC%94%E8%AE%B0/3.%E6%89%8B%E6%9C%BA%E8%AE%BF%E9%97%AE%E9%97%AE%E9%A2%98.png)

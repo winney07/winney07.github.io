@@ -374,7 +374,20 @@ gba()和 opacity 都能实现透明效果，但它们最大的不同是opacity �
    <i class="iconfont icon-IOS"></i>
    ```
 
-   
+
+##### iconfont自定义命名图标class名
+
+1. 鼠标`移到需要修改的图标上`
+
+2. 选择`编辑图标`
+
+3. 修改`Font Class / Symbol` 为自己想要的class命名
+
+   例如：填写`exit`， 使用的时候就是：  `class="icon icon-edit"`
+
+4. 选择`仅保存`
+
+
 
 ### 前端轻松入门-CSS
 

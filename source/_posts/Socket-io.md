@@ -32,10 +32,6 @@ tags:
 - 主要使用WebSocket协议（基于WebSocket的库）
 - 事件驱动
 
-
-
-
-
 #### 测试
 
 [debug](https://github.com/visionmedia/debug)
@@ -63,6 +59,10 @@ yarn add uWebSockets.js@uNetworking/uWebSockets.js#v20.4.0
 ```
 
 ##### 初始化
+
+```
+https.createServer([options][, requestListener])
+```
 
 [https.createServer](https://nodejs.org/api/https.html#https_https_createserver_options_requestlistener)
 

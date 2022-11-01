@@ -10,6 +10,8 @@ categories:
 
 [Typescript-官网](https://www.typescriptlang.org/)
 
+[TypeScript中文网](https://www.tslang.cn/docs/home.html)
+
 [TypeScript 中文手册](https://typescript.bootcss.com/)
 
 [TypeScript React Starter](https://github.com/Microsoft/TypeScript-React-Starter/blob/master/tsconfig.json) 
@@ -1707,3 +1709,28 @@ cnpm install -g ts-node
 ts-node Demo1.ts
 ```
 
+#### typescript安装与配置
+
+查看版本：
+
+```
+tsc --version
+```
+
+创建tsconfig.json文件：
+
+```
+tsc --init
+```
+
+使用tsc命令的时候，会在执行tsc命令的当前目录下找，有没有tsconfig.json文件，如果有，就会读取里面的配置项，对当前目录文件进行编辑工作
+
+[tsconfig.json](https://www.tslang.cn/docs/handbook/tsconfig-json.html)
+
+[编译选项](https://www.tslang.cn/docs/handbook/compiler-options.html)
+
+`"module": "commonjs",`是不允许输出的，即设置`"module": "commonjs",`的时候，再设置`out:"build/out.js"`， 是会报错的，需要将module改为`"module": "system"`
+
+
+
+在编程的过程中发现错误

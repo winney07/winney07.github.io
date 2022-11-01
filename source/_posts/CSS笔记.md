@@ -1407,3 +1407,15 @@ tbody{
 body{-webkit-text-size-adjust:none;}
 ```
 
+#### 样式表清缓存
+
+```
+<link rel="stylesheet" type="text/css" href="/css/style.css?v={:date('ymdhis')}" />
+```
+
+php
+
+```
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=<?php echo time()?>" />
+```
+

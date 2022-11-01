@@ -12,6 +12,10 @@ categories:
 
 [万能标签](http://phome.net/doc/ecmsedu/template/ecmsinfo.html)
 
+[帝国网站管理系统(EmpireCMS)使用教程手册](http://www.phome.net/doc/manual/)
+
+[帝国网站管理系统(EmpireCMS)－安装手册](http://www.phome.net/doc/manual/install/)
+
 #### 帝国CMS模板的策划
 
 1、 确定网站的栏目

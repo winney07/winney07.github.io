@@ -6,9 +6,7 @@ tags:
 - 工作笔记
 ---
 
-
-
-
+[Bootstrap5](http://www.bootstrap.cn/doc/read/194)
 
 #### Bootstrap3与Bootstrap4的区别
 
@@ -82,3 +80,14 @@ Bootstrap5删除的一些类是：
 #### [Bootstrap Table](https://bootstrap-table.com/)
 
 [bootstrapTable的使用及表格的导出](https://blog.csdn.net/Mr_XiMu/article/details/106059687)
+
+
+
+
+
+[Bootstrap Modal](https://social.msdn.microsoft.com/Forums/en-US/f2f830ed-3e66-4774-aa14-3fb4cb6ef135/bootstrap-modal?forum=aspdotnetwebpages)
+
+[Bootstrap 模态框（Modal）插件](https://www.runoob.com/bootstrap/bootstrap-modal-plugin.html)
+
+[第26节 Bootstrap5模态弹框Modal组件用法](http://www.bootstrap.cn/doc/read/219.html)
+

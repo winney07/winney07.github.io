@@ -407,7 +407,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-10-31 18:02:41" itemprop="dateModified" datetime="2022-10-31T18:02:41+08:00">2022-10-31</time>
+                <time title="修改时间：2022-11-03 15:30:27" itemprop="dateModified" datetime="2022-11-03T15:30:27+08:00">2022-11-03</time>
               </span>
 
           
@@ -435,6 +435,9 @@
 </ol>
 <blockquote>
 <p>在CSS3规范中，为了区别伪元素和伪类，CSS3建议伪类用单冒号“:“，伪元素用双冒号”::“。</p>
+</blockquote>
+<blockquote>
+<p>通配符的穿透力很强，优先级高于继承的样式，会覆盖继承的样式，一般不用</p>
 </blockquote>
 <h4 id="可继承的样式"><a href="#可继承的样式" class="headerlink" title="可继承的样式"></a>可继承的样式</h4><ul>
 <li>font-size</li>
@@ -604,7 +607,10 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;* S导航条开始*&#x2F;</span><br><span class="line">ul &#123;</span><br><span class="line">	background-color: red;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;* E导航条结束*&#x2F;</span><br></pre></td></tr></table></figure>
 <p>文件头的注释：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;*</span><br><span class="line">* author:传智播客前端与移动开发学院</span><br><span class="line">* des：当前文件用于....</span><br><span class="line">* date：</span><br><span class="line">*&#x2F;</span><br></pre></td></tr></table></figure>
-<h3 id="彻底搞懂行高"><a href="#彻底搞懂行高" class="headerlink" title="彻底搞懂行高"></a>彻底搞懂行高</h3><p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/CSS%E7%AC%94%E8%AE%B0/1.png" alt="彻底搞懂行高"></p>
+<h3 id="彻底搞懂行高"><a href="#彻底搞懂行高" class="headerlink" title="彻底搞懂行高"></a>彻底搞懂行高</h3><p><code>line-height</code>：行间距</p>
+<p><code>line-height</code>属性用于设置行间距，就是行与行之间的距离，即字符的垂直间距，一般称为行高。<code>line-height</code>常用的属性值单位有三种，分别为像素px，相对值em和百分比%，实际工作中使用最多的是像素px。</p>
+<p>行高：文本顶部＋文本的底部＋一倍行距<br>行高：CSS的定义,两行文本之.间的基线的距离，就是行高。</p>
+<p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/CSS%E7%AC%94%E8%AE%B0/1.png" alt="彻底搞懂行高"></p>
 <h4 id="CSS的定义"><a href="#CSS的定义" class="headerlink" title="CSS的定义"></a>CSS的定义</h4><h5 id="什么是CSS？"><a href="#什么是CSS？" class="headerlink" title="什么是CSS？"></a>什么是CSS？</h5><ul>
 <li><p>CSS指层叠样式表(Cascading Style Sheets)</p>
 </li>
@@ -738,6 +744,10 @@
 <p>标签选择器低于类选择器。</p>
 <p>256个标签选择器相加  大于   一个类选择器</p>
 <p>256个类选择器相加   大于   一个ID选择器</p>
+<p>先判断id选择器的个数，以此类推</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.aside .aside-dt h1&#123;&#125;    &#x2F;&#x2F; 0,0,2,1   这里先比较id选择其，然后类，然后标签</span><br><span class="line">.aside #title-txt&#123;&#125;     &#x2F;&#x2F;  0,1,1,0   第二个有id选择器，后面就不比较了</span><br></pre></td></tr></table></figure>
+
+
 <h4 id="CSS字体样式属性"><a href="#CSS字体样式属性" class="headerlink" title="CSS字体样式属性"></a>CSS字体样式属性</h4><p>1、font-size：字号大小</p>
 <p>font-size属性用于设置字号，该属性的值可以使用相对长度单位，也可以使用绝对长度单位。其中，相对长顾单位比较常用，推荐使用像素单位px，绝对长度单位使用较少。</p>
 <p>可选参数值:<code> x-small | x-small | small | medium | large | x-large| xx-large| smaller | larger</code></p>
@@ -821,6 +831,311 @@
 <h4 id="样式表清缓存"><a href="#样式表清缓存" class="headerlink" title="样式表清缓存"></a>样式表清缓存</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel&#x3D;&quot;stylesheet&quot; type&#x3D;&quot;text&#x2F;css&quot; href&#x3D;&quot;&#x2F;css&#x2F;style.css?v&#x3D;&#123;:date(&#39;ymdhis&#39;)&#125;&quot; &#x2F;&gt;</span><br></pre></td></tr></table></figure>
 <p>php</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel&#x3D;&quot;stylesheet&quot; type&#x3D;&quot;text&#x2F;css&quot; href&#x3D;&quot;&#x2F;css&#x2F;style.css?v&#x3D;&lt;?php echo time()?&gt;&quot; &#x2F;&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="复合选择器"><a href="#复合选择器" class="headerlink" title="复合选择器"></a>复合选择器</h4><p>复合选择器是由两个或多个基础选择器，通过不同的方式组合而成的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">h3.title-msg&#123;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>后代选择器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.list li&#123;&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="并集选择器"><a href="#并集选择器" class="headerlink" title="并集选择器"></a>并集选择器</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">h2,h3&#123;&#125;</span><br></pre></td></tr></table></figure>
+<p>子元素选择器(子代选择器)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">h1 &gt; strong&#123;&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="单位"><a href="#单位" class="headerlink" title="单位"></a>单位</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">单位之间的关系: 1in &#x3D; 2.54cm &#x3D; 25.4 mm &#x3D; &#x3D; 96px</span><br></pre></td></tr></table></figure>
+<h4 id="兼容多系统下的字体"><a href="#兼容多系统下的字体" class="headerlink" title="兼容多系统下的字体"></a>兼容多系统下的字体</h4><p>在mac系统下，不显示微软雅黑字体</p>
+<p>Arial：mac下常用字体</p>
+<p>用逗号隔开，先从左到右去选择字体。如果没有该字体，则往后选择</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">font-family:&quot;微软雅黑&quot;, &quot;Arial&quot;;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>各种字体之间必须使用英文状态下的逗号隔开。</li>
+<li>中文字体需要加英文状态下的引号，英文字体一般不需要加引号。当需要设置英文字体时，英文字体名必须位于中文字体名之前。</li>
+<li>如果字体名中包含空格、#、$等符号，则该字体必须加英文状态下的单引号或双引号，例如：<code>font-farnily: &quot;Times New Roman&quot;;</code></li>
+<li>尽量使用系统默认字体，保证在任何用户的浏览器中都能正确显示。</li>
+</ul>
+<p>编码使用<code>utf-8</code>，也会出现乱码，所以将中文转为Unicode编码，解决兼容问题</p>
+<p>搜狐：将中文使用<code>encode(&quot;微软雅黑&quot;)</code>转换，将<code>%</code>换为<code>\</code>号，<code>\5FAE\8F6F\96C5\9ED1</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">font-family: PingFang SC,Arial,&quot;\5FAE\8F6F\96C5\9ED1&quot;,&quot;\5B8B\4F53&quot;,simsun,sans-serif;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>所以建议写英文名称或Unicode编码</p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.itdaan.com/blog/2017/07/02/4fa8ecfaed4fded5adc989565790e217.html">中文字体名称对照表(unicode码)及20个web安全字体</a></p>
+<table>
+<thead>
+<tr>
+<th>中文名</th>
+<th>英文名</th>
+<th>Unicode</th>
+<th>Unicode 2</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Mac OS</strong></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>华文细黑</td>
+<td>STHeiti Light [STXihei]</td>
+<td>\534E\6587\7EC6\9ED1</td>
+<td>华文细黑</td>
+</tr>
+<tr>
+<td>华文黑体</td>
+<td>STHeiti</td>
+<td>\534E\6587\9ED1\4F53</td>
+<td>华文黑体</td>
+</tr>
+<tr>
+<td>华文楷体</td>
+<td>STKaiti</td>
+<td>\534E\6587\6977\4F53</td>
+<td>华文楷体</td>
+</tr>
+<tr>
+<td>华文宋体</td>
+<td>STSong</td>
+<td>\534E\6587\5B8B\4F53</td>
+<td>华文宋体</td>
+</tr>
+<tr>
+<td>华文仿宋</td>
+<td>STFangsong</td>
+<td>\534E\6587\4EFF\5B8B</td>
+<td>华文仿宋</td>
+</tr>
+<tr>
+<td>丽黑 Pro</td>
+<td>LiHei Pro Medium</td>
+<td>\4E3D\9ED1 Pro</td>
+<td>丽黑 Pro</td>
+</tr>
+<tr>
+<td>丽宋 Pro</td>
+<td>LiSong Pro Light</td>
+<td>\4E3D\5B8B Pro</td>
+<td>丽宋 Pro</td>
+</tr>
+<tr>
+<td>标楷体</td>
+<td>BiauKai</td>
+<td>\6807\6977\4F53</td>
+<td>标楷体</td>
+</tr>
+<tr>
+<td>苹果丽中黑</td>
+<td>Apple LiGothic Medium</td>
+<td>\82F9\679C\4E3D\4E2D\9ED1</td>
+<td>苹果丽中黑</td>
+</tr>
+<tr>
+<td>苹果丽细宋</td>
+<td>Apple LiSung Light</td>
+<td>\82F9\679C\4E3D\7EC6\5B8B</td>
+<td>苹果丽细宋</td>
+</tr>
+<tr>
+<td><strong>Windows</strong></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>新细明体</td>
+<td>PMingLiU</td>
+<td>\65B0\7EC6\660E\4F53</td>
+<td>新细明体</td>
+</tr>
+<tr>
+<td>细明体</td>
+<td>MingLiU</td>
+<td>\7EC6\660E\4F53</td>
+<td>细明体</td>
+</tr>
+<tr>
+<td>标楷体</td>
+<td>DFKai-SB</td>
+<td>\6807\6977\4F53</td>
+<td>标楷体</td>
+</tr>
+<tr>
+<td>黑体</td>
+<td>SimHei</td>
+<td>\9ED1\4F53</td>
+<td>黑体</td>
+</tr>
+<tr>
+<td>宋体</td>
+<td>SimSun</td>
+<td>\5B8B\4F53</td>
+<td>宋体</td>
+</tr>
+<tr>
+<td>新宋体</td>
+<td>NSimSun</td>
+<td>\65B0\5B8B\4F53</td>
+<td>新宋体</td>
+</tr>
+<tr>
+<td>仿宋</td>
+<td>FangSong</td>
+<td>\4EFF\5B8B</td>
+<td>仿宋</td>
+</tr>
+<tr>
+<td>楷体</td>
+<td>KaiTi</td>
+<td>\6977\4F53</td>
+<td>楷体</td>
+</tr>
+<tr>
+<td>仿宋_GB2312</td>
+<td>FangSong_GB2312</td>
+<td>\4EFF\5B8B_GB2312</td>
+<td>仿宋_GB2312</td>
+</tr>
+<tr>
+<td>楷体_GB2312</td>
+<td>KaiTi_GB2312</td>
+<td>\6977\4F53_GB2312</td>
+<td>楷体_GB2312</td>
+</tr>
+<tr>
+<td>微软正黑体</td>
+<td>Microsoft JhengHei</td>
+<td>\5FAE\x8F6F\6B63\9ED1\4F53</td>
+<td>微软正黑体</td>
+</tr>
+<tr>
+<td>微软雅黑</td>
+<td>Microsoft YaHei</td>
+<td>\5FAE\8F6F\96C5\9ED1</td>
+<td>微软雅黑</td>
+</tr>
+<tr>
+<td><strong>Office</strong></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>隶书</td>
+<td>LiSu</td>
+<td>\96B6\4E66</td>
+<td>隶书</td>
+</tr>
+<tr>
+<td>幼圆</td>
+<td>YouYuan</td>
+<td>\5E7C\5706</td>
+<td>幼圆</td>
+</tr>
+<tr>
+<td>华文细黑</td>
+<td>STXihei</td>
+<td>\534E\6587\7EC6\9ED1</td>
+<td>华文细黑</td>
+</tr>
+<tr>
+<td>华文楷体</td>
+<td>STKaiti</td>
+<td>\534E\6587\6977\4F53</td>
+<td>华文楷体</td>
+</tr>
+<tr>
+<td>华文宋体</td>
+<td>STSong</td>
+<td>\534E\6587\5B8B\4F53</td>
+<td>华文宋体</td>
+</tr>
+<tr>
+<td>华文中宋</td>
+<td>STZhongsong</td>
+<td>\534E\6587\4E2D\5B8B</td>
+<td>华文中宋</td>
+</tr>
+<tr>
+<td>华文仿宋</td>
+<td>STFangsong</td>
+<td>\534E\6587\4EFF\5B8B</td>
+<td>华文仿宋</td>
+</tr>
+<tr>
+<td>方正舒体</td>
+<td>FZShuTi</td>
+<td>\65B9\6B63\8212\4F53</td>
+<td>方正舒体</td>
+</tr>
+<tr>
+<td>方正姚体</td>
+<td>FZYaoti</td>
+<td>\65B9\6B63\59DA\4F53</td>
+<td>方正姚体</td>
+</tr>
+<tr>
+<td>华文彩云</td>
+<td>STCaiyun</td>
+<td>\534E\6587\5F69\4E91</td>
+<td>华文彩云</td>
+</tr>
+<tr>
+<td>华文琥珀</td>
+<td>STHupo</td>
+<td>\534E\6587\7425\73C0</td>
+<td>华文琥珀</td>
+</tr>
+<tr>
+<td>华文隶书</td>
+<td>STLiti</td>
+<td>\534E\6587\96B6\4E66</td>
+<td>华文隶书</td>
+</tr>
+<tr>
+<td>华文行楷</td>
+<td>STXingkai</td>
+<td>\534E\6587\884C\6977</td>
+<td>华文行楷</td>
+</tr>
+<tr>
+<td>华文新魏</td>
+<td>STXinwei</td>
+<td>\534E\6587\65B0\9B4F</td>
+<td>华文新魏</td>
+</tr>
+</tbody></table>
+<h4 id="字体系列"><a href="#字体系列" class="headerlink" title="字体系列"></a>字体系列</h4><p>西方国家字母体系分为两类: serif以及sans serif。serif是有衬线字体，意思是在字的笔画开始、结束的地方有额外的装饰，而且笔画的粗细会有所不同。相反的，sans serif就没有这些额外的装饰，而且笔画的粗细差不多。</p>
+<p>为了更安全的设置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">font-famliy: tahoma,arial,&#39;Hiragino SansGB&#39;,\5b8b\4f53,sans-serif;</span><br></pre></td></tr></table></figure>
+<p>前面的字体都查找失败后，在系统中找一种<code>sans-serif</code>字体作为默认字体。<br>注意顺序，如果把<code>sans-serif</code>放前面去，后面的都失效了。<code>sans-serif</code>要放在最后面</p>
+<h4 id="font-weight设置字体的粗细"><a href="#font-weight设置字体的粗细" class="headerlink" title="font-weight设置字体的粗细"></a>font-weight设置字体的粗细</h4><p><code>font-weight</code>属性用于定义字体的粗细，其可用属性值: <code>normal、 bold、bolder、lighter、100~900 ( 100的整数倍)</code>，有继承性。<br><code>400:Normal</code><br><code>700: bold</code><br>字体的加粗跟字体有关，比如：一种字体只有两种粗细程度的变化，那么normal到bold和到bolder都是一样的效果。</p>
+<h4 id="font-综合设置字体样式"><a href="#font-综合设置字体样式" class="headerlink" title="font:综合设置字体样式"></a>font:综合设置字体样式</h4><p>font属性用于对字体样式进行综合设置，其基本语法格式如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">选择器&#123;font: font-style font-weight font-size&#x2F;line-height font-family&#125;</span><br></pre></td></tr></table></figure>
+<p>使用font属性时，必须按上面语法格式中的顺序书写，各个属性以空格隔开.<br><code>其中不需要设置的属性可以省略（取默认值)，但必须保留font-size和font-family属性，否则font属性将不起作用。</code><br>淘宝的字体设置：<code>font: 12px/1.5 tahoma,arial,&#39;Hiragino SansGB&quot;, \5b8b\4f53,sans-serif;</code></p>
+<h4 id="文字的间距"><a href="#文字的间距" class="headerlink" title="文字的间距"></a>文字的间距</h4><p><code>letter-spacing</code>属性用于定义字间距，所谓字间距就是字符与字符之间的空白。其属性值可为不同单位的数值，允许使用负值，默认为normal。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p&#123; letter-spacing: 10px; &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="单词间距"><a href="#单词间距" class="headerlink" title="单词间距"></a>单词间距</h4><ul>
+<li><code>word-spacing</code>属性用于定义英文单词之间的间距，<code>对中文字符无效</code>。和<code>letter-spacing</code>一样,其属性值可为不同单位的数值，允许使用负值，默认为normal.</li>
+<li><code>word-spacing</code>和<code>letter-spacing</code>均可对英文进行设置。不同的是<code>letter-spacing</code>定义的为字母之间的间距，而<code>word-spacing</code>定义的为英文单词之间的间距。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">p&#123; word-spacing: 20px; &#125;   </span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 如果中文字之间有空格的话，会把空格设置成20px宽度</span><br><span class="line">&lt;p&gt;单词 间距&lt;&#x2F;&gt;</span><br><span class="line">&lt;p&gt;I am a teacher.&lt;&#x2F;&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="文字有间距且居中的按钮样式"><a href="#文字有间距且居中的按钮样式" class="headerlink" title="文字有间距且居中的按钮样式"></a>文字有间距且居中的按钮样式</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">button&#123;</span><br><span class="line">    width: 130px;</span><br><span class="line">    height: 36px;</span><br><span class="line">    line-height: 1.5;</span><br><span class="line">    background-color: deepskyblue;</span><br><span class="line">    color: #fff;</span><br><span class="line">    border: none;</span><br><span class="line">    text-align: center;</span><br><span class="line">    word-spacing: 12px;</span><br><span class="line">    border-radius: 5px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;button&gt;提 交&lt;&#x2F;button&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/CSS%E7%AC%94%E8%AE%B0/word_spacing.png" alt="字间距"></p>
+<h4 id="text-indent：首行缩进"><a href="#text-indent：首行缩进" class="headerlink" title="text-indent：首行缩进"></a>text-indent：首行缩进</h4><p>text-indent属性用于设置段落首行文本的缩进，<code>只能设置于块级标签</code>。其属性值可为不同单位的数值、em字符宽度的倍数、或相对于浏览器窗口宽度的百分比%，允许使用负值,建议使用em作为设置单位.</p>
+<h4 id="网站的h1标题logo的seo的优化"><a href="#网站的h1标题logo的seo的优化" class="headerlink" title="网站的h1标题logo的seo的优化"></a>网站的h1标题logo的seo的优化</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">h1&#123; text-indent: 9999px&#125;     &#x2F;&#x2F; 一般用于网站的h1标题logo的seo的优化</span><br></pre></td></tr></table></figure>
+<h4 id="white-space-空白符处理"><a href="#white-space-空白符处理" class="headerlink" title="white-space-空白符处理"></a>white-space-空白符处理</h4><p>使用HTML制作网页时，不论源代码中有多少空格，在浏览器中只会显示一个字符的空白。在css中，使用white-space属性可设置空白符的处理方式，其属性值如下:</p>
+<ul>
+<li>normal：常规（默认值)，文本中的空格、空行无效，满行（到达区域边界〉后自动换行。</li>
+<li>pre：预格式化，按文档的书写格式保留空格、空行<code>原样显示</code>。(代码什么样式，就显示什么样式)</li>
+<li>nowrap：空格空行无效，强制文本不能换行，除非遇到换行标记<code>&lt;br/&gt;</code>。内容超出元素的边界也不换行，若超出浏览器页面则会自动增加滚动条。</li>
+</ul>
+<h4 id="盒模型"><a href="#盒模型" class="headerlink" title="盒模型"></a>盒模型</h4><p>所谓<code>盒子模型</code>就是把HTML页面中的元素看作是一个矩形的盒子，也就是一个盛装内容的容器。每个矩形都由元素的<code>内容、内边距( padding) 、边框( border）和外边距(margin）</code>组成。</p>
+<h4 id="border的妙用"><a href="#border的妙用" class="headerlink" title="border的妙用"></a>border的妙用</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">.box&#123;</span><br><span class="line">    width: 0;</span><br><span class="line">    height: 0;</span><br><span class="line">    border: 50px solid yellow;</span><br><span class="line"></span><br><span class="line">    border-top-color: green;</span><br><span class="line">    border-bottom-color: green;</span><br><span class="line"></span><br><span class="line">    &#x2F;* background-color: blue; *&#x2F;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/CSS%E7%AC%94%E8%AE%B0/border1.png" alt="border的妙用"></p>
+<p>沙漏斗：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.box&#123;</span><br><span class="line">    width: 0;</span><br><span class="line">    height: 0;</span><br><span class="line">    border: 50px solid transparent;</span><br><span class="line"></span><br><span class="line">    border-top-color: green;</span><br><span class="line">    border-bottom-color: green;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/CSS%E7%AC%94%E8%AE%B0/border2.png" alt="沙漏斗"></p>
+<p>倒三角：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.box&#123;</span><br><span class="line">    width: 0;</span><br><span class="line">    height: 0;</span><br><span class="line">    border: 50px solid transparent;</span><br><span class="line"></span><br><span class="line">    border-top-color: green;</span><br><span class="line">    border-bottom: 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/CSS%E7%AC%94%E8%AE%B0/border3.png" alt="倒三角"></p>
+<h4 id="3D透视-perspective"><a href="#3D透视-perspective" class="headerlink" title="3D透视-perspective"></a>3D透视-perspective</h4><p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/CSS%E7%AC%94%E8%AE%B0/perspective.png" alt="透视"></p>
+<p>画立方体</p>
 
       
     </div>

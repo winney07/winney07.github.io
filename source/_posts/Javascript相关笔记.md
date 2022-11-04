@@ -992,3 +992,46 @@ const rounded = Math.round(val * 1000) / 1000;
 - 它不应修改程序的状态或引起副作用（修改全局变量）。
 
 [jquery判断页面滚动条(scroll)是上滚还是下滚，且是否滚动到头部或者底部](https://www.haorooms.com/post/jquery_scroll_upanddown)
+
+
+
+[函数的三种声明方式](https://blog.csdn.net/Bellatrix99/article/details/115140968)
+
+1. function 命令
+
+```
+function print(s) {
+  console.log(s);
+}
+```
+2. 函数表达式
+
+```
+var print = function(s) {
+  console.log(s);
+};
+```
+3. Function 构造函数
+
+```
+var add = new Function(
+  'x',
+  'y',
+  'return x + y'
+);
+
+// 等同于
+function add(x, y) {
+  return x + y;
+}
+```
+
+JS的保留字和关键字
+
+Math对象中常用的方法
+
+冒泡排序
+
+浏览器是如何工作的
+
+![浏览器](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Javascript%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/browser.png)

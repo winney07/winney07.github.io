@@ -24,6 +24,8 @@ tags:
 > 在CSS3规范中，为了区别伪元素和伪类，CSS3建议伪类用单冒号“:“，伪元素用双冒号”::“。
 >
 
+> 通配符的穿透力很强，优先级高于继承的样式，会覆盖继承的样式，一般不用
+
 #### 可继承的样式
 
 - font-size
@@ -481,6 +483,13 @@ ul {
 
 ### 彻底搞懂行高
 
+`line-height`：行间距
+
+`line-height`属性用于设置行间距，就是行与行之间的距离，即字符的垂直间距，一般称为行高。`line-height`常用的属性值单位有三种，分别为像素px，相对值em和百分比%，实际工作中使用最多的是像素px。
+
+行高：文本顶部＋文本的底部＋一倍行距
+行高：CSS的定义,两行文本之.间的基线的距离，就是行高。
+
 ![彻底搞懂行高](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/CSS%E7%AC%94%E8%AE%B0/1.png)
 
 
@@ -786,6 +795,15 @@ ID选择器的优先级．仅次于内联样式。
 256个标签选择器相加  大于   一个类选择器
 
 256个类选择器相加   大于   一个ID选择器
+
+
+
+先判断id选择器的个数，以此类推
+
+```
+.aside .aside-dt h1{}    // 0,0,2,1   这里先比较id选择其，然后类，然后标签
+.aside #title-txt{}     //  0,1,1,0   第二个有id选择器，后面就不比较了
+```
 
 
 
@@ -1419,3 +1437,257 @@ php
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=<?php echo time()?>" />
 ```
 
+#### 复合选择器
+
+复合选择器是由两个或多个基础选择器，通过不同的方式组合而成的
+
+```
+h3.title-msg{
+	
+}
+```
+
+后代选择器
+
+```
+.list li{}
+```
+
+#### 并集选择器
+
+```
+h2,h3{}
+```
+
+子元素选择器(子代选择器)
+
+```
+h1 > strong{}
+```
+
+#### 单位
+
+```
+单位之间的关系: 1in = 2.54cm = 25.4 mm = = 96px
+```
+
+#### 兼容多系统下的字体 
+
+在mac系统下，不显示微软雅黑字体
+
+Arial：mac下常用字体
+
+用逗号隔开，先从左到右去选择字体。如果没有该字体，则往后选择
+
+```
+font-family:"微软雅黑", "Arial";
+```
+
+- 各种字体之间必须使用英文状态下的逗号隔开。
+- 中文字体需要加英文状态下的引号，英文字体一般不需要加引号。当需要设置英文字体时，英文字体名必须位于中文字体名之前。
+- 如果字体名中包含空格、#、$等符号，则该字体必须加英文状态下的单引号或双引号，例如：`font-farnily: "Times New Roman";`
+- 尽量使用系统默认字体，保证在任何用户的浏览器中都能正确显示。
+
+编码使用`utf-8`，也会出现乱码，所以将中文转为Unicode编码，解决兼容问题
+
+搜狐：将中文使用`encode("微软雅黑")`转换，将`%`换为`\`号，`\5FAE\8F6F\96C5\9ED1`
+
+```
+font-family: PingFang SC,Arial,"\5FAE\8F6F\96C5\9ED1","\5B8B\4F53",simsun,sans-serif;
+```
+
+> 所以建议写英文名称或Unicode编码
+
+[中文字体名称对照表(unicode码)及20个web安全字体](https://www.itdaan.com/blog/2017/07/02/4fa8ecfaed4fded5adc989565790e217.html)
+
+| 中文名      | 英文名                  | Unicode                    | Unicode 2   |
+| ----------- | ----------------------- | -------------------------- | ----------- |
+| **Mac OS**  |                         |                            |             |
+| 华文细黑    | STHeiti Light [STXihei] | \534E\6587\7EC6\9ED1       | 华文细黑    |
+| 华文黑体    | STHeiti                 | \534E\6587\9ED1\4F53       | 华文黑体    |
+| 华文楷体    | STKaiti                 | \534E\6587\6977\4F53       | 华文楷体    |
+| 华文宋体    | STSong                  | \534E\6587\5B8B\4F53       | 华文宋体    |
+| 华文仿宋    | STFangsong              | \534E\6587\4EFF\5B8B       | 华文仿宋    |
+| 丽黑 Pro    | LiHei Pro Medium        | \4E3D\9ED1 Pro             | 丽黑 Pro    |
+| 丽宋 Pro    | LiSong Pro Light        | \4E3D\5B8B Pro             | 丽宋 Pro    |
+| 标楷体      | BiauKai                 | \6807\6977\4F53            | 标楷体      |
+| 苹果丽中黑  | Apple LiGothic Medium   | \82F9\679C\4E3D\4E2D\9ED1  | 苹果丽中黑  |
+| 苹果丽细宋  | Apple LiSung Light      | \82F9\679C\4E3D\7EC6\5B8B  | 苹果丽细宋  |
+| **Windows** |                         |                            |             |
+| 新细明体    | PMingLiU                | \65B0\7EC6\660E\4F53       | 新细明体    |
+| 细明体      | MingLiU                 | \7EC6\660E\4F53            | 细明体      |
+| 标楷体      | DFKai-SB                | \6807\6977\4F53            | 标楷体      |
+| 黑体        | SimHei                  | \9ED1\4F53                 | 黑体        |
+| 宋体        | SimSun                  | \5B8B\4F53                 | 宋体        |
+| 新宋体      | NSimSun                 | \65B0\5B8B\4F53            | 新宋体      |
+| 仿宋        | FangSong                | \4EFF\5B8B                 | 仿宋        |
+| 楷体        | KaiTi                   | \6977\4F53                 | 楷体        |
+| 仿宋_GB2312 | FangSong_GB2312         | \4EFF\5B8B_GB2312          | 仿宋_GB2312 |
+| 楷体_GB2312 | KaiTi_GB2312            | \6977\4F53_GB2312          | 楷体_GB2312 |
+| 微软正黑体  | Microsoft JhengHei      | \5FAE\x8F6F\6B63\9ED1\4F53 | 微软正黑体  |
+| 微软雅黑    | Microsoft YaHei         | \5FAE\8F6F\96C5\9ED1       | 微软雅黑    |
+| **Office**  |                         |                            |             |
+| 隶书        | LiSu                    | \96B6\4E66                 | 隶书        |
+| 幼圆        | YouYuan                 | \5E7C\5706                 | 幼圆        |
+| 华文细黑    | STXihei                 | \534E\6587\7EC6\9ED1       | 华文细黑    |
+| 华文楷体    | STKaiti                 | \534E\6587\6977\4F53       | 华文楷体    |
+| 华文宋体    | STSong                  | \534E\6587\5B8B\4F53       | 华文宋体    |
+| 华文中宋    | STZhongsong             | \534E\6587\4E2D\5B8B       | 华文中宋    |
+| 华文仿宋    | STFangsong              | \534E\6587\4EFF\5B8B       | 华文仿宋    |
+| 方正舒体    | FZShuTi                 | \65B9\6B63\8212\4F53       | 方正舒体    |
+| 方正姚体    | FZYaoti                 | \65B9\6B63\59DA\4F53       | 方正姚体    |
+| 华文彩云    | STCaiyun                | \534E\6587\5F69\4E91       | 华文彩云    |
+| 华文琥珀    | STHupo                  | \534E\6587\7425\73C0       | 华文琥珀    |
+| 华文隶书    | STLiti                  | \534E\6587\96B6\4E66       | 华文隶书    |
+| 华文行楷    | STXingkai               | \534E\6587\884C\6977       | 华文行楷    |
+| 华文新魏    | STXinwei                | \534E\6587\65B0\9B4F       | 华文新魏    |
+
+#### 字体系列
+
+西方国家字母体系分为两类: serif以及sans serif。serif是有衬线字体，意思是在字的笔画开始、结束的地方有额外的装饰，而且笔画的粗细会有所不同。相反的，sans serif就没有这些额外的装饰，而且笔画的粗细差不多。
+
+为了更安全的设置：
+
+```
+font-famliy: tahoma,arial,'Hiragino SansGB',\5b8b\4f53,sans-serif;
+```
+
+前面的字体都查找失败后，在系统中找一种`sans-serif`字体作为默认字体。
+注意顺序，如果把`sans-serif`放前面去，后面的都失效了。`sans-serif`要放在最后面
+
+#### font-weight设置字体的粗细
+
+`font-weight`属性用于定义字体的粗细，其可用属性值: `normal、 bold、bolder、lighter、100~900 ( 100的整数倍)`，有继承性。
+`400:Normal`
+`700: bold`
+字体的加粗跟字体有关，比如：一种字体只有两种粗细程度的变化，那么normal到bold和到bolder都是一样的效果。
+
+#### font:综合设置字体样式
+
+font属性用于对字体样式进行综合设置，其基本语法格式如下：
+
+```
+选择器{font: font-style font-weight font-size/line-height font-family}
+```
+
+使用font属性时，必须按上面语法格式中的顺序书写，各个属性以空格隔开.
+`其中不需要设置的属性可以省略（取默认值)，但必须保留font-size和font-family属性，否则font属性将不起作用。`
+淘宝的字体设置：`font: 12px/1.5 tahoma,arial,'Hiragino SansGB", \5b8b\4f53,sans-serif;`
+
+#### 文字的间距
+
+`letter-spacing`属性用于定义字间距，所谓字间距就是字符与字符之间的空白。其属性值可为不同单位的数值，允许使用负值，默认为normal。
+
+```
+p{ letter-spacing: 10px; }
+```
+
+#### 单词间距
+
+- `word-spacing`属性用于定义英文单词之间的间距，`对中文字符无效`。和`letter-spacing`一样,其属性值可为不同单位的数值，允许使用负值，默认为normal.
+- `word-spacing`和`letter-spacing`均可对英文进行设置。不同的是`letter-spacing`定义的为字母之间的间距，而`word-spacing`定义的为英文单词之间的间距。
+
+```
+p{ word-spacing: 20px; }   
+
+// 如果中文字之间有空格的话，会把空格设置成20px宽度
+<p>单词 间距</>
+<p>I am a teacher.</>
+```
+
+#### 文字有间距且居中的按钮样式
+
+```
+button{
+    width: 130px;
+    height: 36px;
+    line-height: 1.5;
+    background-color: deepskyblue;
+    color: #fff;
+    border: none;
+    text-align: center;
+    word-spacing: 12px;
+    border-radius: 5px;
+}
+
+<button>提 交</button>
+```
+
+![字间距](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/CSS%E7%AC%94%E8%AE%B0/word_spacing.png)
+
+#### text-indent：首行缩进
+
+text-indent属性用于设置段落首行文本的缩进，`只能设置于块级标签`。其属性值可为不同单位的数值、em字符宽度的倍数、或相对于浏览器窗口宽度的百分比%，允许使用负值,建议使用em作为设置单位.
+
+#### 网站的h1标题logo的seo的优化
+
+```
+h1{ text-indent: 9999px}     // 一般用于网站的h1标题logo的seo的优化
+```
+
+#### white-space-空白符处理
+
+使用HTML制作网页时，不论源代码中有多少空格，在浏览器中只会显示一个字符的空白。在css中，使用white-space属性可设置空白符的处理方式，其属性值如下:
+
+- normal：常规（默认值)，文本中的空格、空行无效，满行（到达区域边界〉后自动换行。
+- pre：预格式化，按文档的书写格式保留空格、空行`原样显示`。(代码什么样式，就显示什么样式)
+- nowrap：空格空行无效，强制文本不能换行，除非遇到换行标记`<br/>`。内容超出元素的边界也不换行，若超出浏览器页面则会自动增加滚动条。
+
+#### 盒模型
+
+所谓`盒子模型`就是把HTML页面中的元素看作是一个矩形的盒子，也就是一个盛装内容的容器。每个矩形都由元素的`内容、内边距( padding) 、边框( border）和外边距(margin）`组成。
+
+#### border的妙用
+
+```
+.box{
+    width: 0;
+    height: 0;
+    border: 50px solid yellow;
+
+    border-top-color: green;
+    border-bottom-color: green;
+
+    /* background-color: blue; */
+}
+```
+
+![border的妙用](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/CSS%E7%AC%94%E8%AE%B0/border1.png)
+
+沙漏斗：
+
+```
+.box{
+    width: 0;
+    height: 0;
+    border: 50px solid transparent;
+
+    border-top-color: green;
+    border-bottom-color: green;
+}
+```
+
+![沙漏斗](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/CSS%E7%AC%94%E8%AE%B0/border2.png)
+
+倒三角：
+
+```
+.box{
+    width: 0;
+    height: 0;
+    border: 50px solid transparent;
+
+    border-top-color: green;
+    border-bottom: 0;
+}
+```
+
+![倒三角](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/CSS%E7%AC%94%E8%AE%B0/border3.png)
+
+
+
+#### 3D透视-perspective
+
+![透视](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/CSS%E7%AC%94%E8%AE%B0/perspective.png)
+
+画立方体

@@ -5,6 +5,26 @@ tags:
 - HTML5
 ---
 
+HTML5定义了一系列`新元素`，如新语义标签、智能表单、多媒体标签等，可以帮助开发者创建富互联网应用，还提供了一系列`Javascript API`，如地理定位、重力感应、硬件访问等，可以在浏览器内实现类原生应用，甚至结合Canvas我们可开发网页版游戏，同时结合`CSS3`的过渡、转换、动画等特性，可以极大的增强用户体验，提升开发功能的可应用性。,
+我们日常讨论的H5其实是一个`泛称`，它指的是由`HTML5 + CSS3 + Javascript`，等技术组合而成的一个`应用开发平台`。
+
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文字间距</title>
+</head>
+<body>
+   
+</body>
+</html>
+```
+
+
+
 #### HTML5新特性
 
 - 拖放(Drag and drop ) API.
@@ -1135,3 +1155,59 @@ ev.target.appendChild(document.getElementById(data));
 
 </body>
 ```
+
+#### HTML5标签兼容处理
+
+#### 微数据
+
+徼数据是在如 span、div的标签内添加属性，让机器（如搜索引擎）识别其含义，某些特定类型的信息，例如评论、人物信息或事件都有相应的属性，用来描述其含义，可以理解成新语义标签的一种补充。 
+
+```
+<div itemscope>
+	<ul></ul>
+</div>
+
+
+<div>
+	<span itemprop="description">评论内容</span>
+</div>
+```
+
+#### 表单类型
+
+[HTML5 的输入（input）类型](https://developer.mozilla.org/zh-CN/docs/Learn/Forms/HTML5_input_types)
+
+#### 获取元素
+
+[Document.querySelector()](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector)
+
+```
+document.querySelector(".myclass");
+```
+
+[Document.querySelectorAll()](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll)
+
+#### 类名操作
+
+[Element.classList](https://developer.mozilla.org/en-US/docs/Web/API/Element/classList)
+
+```
+const div = document.createElement("div");
+div.className = "foo";
+div.classList.remove("foo");
+div.classList.add("anotherclass");
+div.classList.toggle("visible");
+div.classList.replace("foo", "bar");
+```
+
+#### 自定义属性
+
+```
+data-*=""
+```
+
+##### WebApp
+
+使用HTML5编写的移动Web应用
+
+#### 全屏显示

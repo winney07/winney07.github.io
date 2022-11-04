@@ -2388,3 +2388,6 @@ adb remount
 adb install base.apk
 ```
 
+#### [Zepto](https://zeptojs.com/)
+
+> **Zepto**是一个轻量级的**针对现代高级浏览器的JavaScript库，** 它与jquery**有着类似的api**。 如果你会用jquery，那么你也会用zepto。

@@ -14,7 +14,7 @@ categories:
 
 [layer.comfirm弹窗按钮文字和事件](https://layer.layui.com/api.html#btn)
 
-#### layui表格的复选框全选和单选的功能
+#### layui表格的复选框全选和单选的功能-全选所有分页的数据
 
 1. 表格需要导出的，导出时，要将自定义的复选框去除
 
@@ -78,6 +78,44 @@ form.on('checkbox(accountList)', function(data){
 
 }); 
 
+```
+
+#### layui表格复选框全选-全选当前页面（layui自身功能）
+
+[触发复选框选择](https://www.layui.site/doc/modules/table.html#oncheckbox)
+
+````
+table.on('checkbox(test)', function(obj){
+  console.log(obj); //当前行的一些常用操作集合
+  console.log(obj.checked); //当前是否选中状态
+  console.log(obj.data); //选中行的相关数据
+  console.log(obj.type); //如果触发的是全选，则为：all，如果触发的是单选，则为：one
+});
+````
+
+[数据操作](https://www.layui.site/demo/table/operate.html)
+
+```
+ // 获取选中数据
+
+var checkStatus = table.checkStatus('idTest')
+,data = checkStatus.data;
+layer.alert(JSON.stringify(data));
+```
+
+```
+ //获取选中数目
+
+var checkStatus = table.checkStatus('idTest')
+,data = checkStatus.data;
+layer.msg('选中了：'+ data.length + ' 个');
+```
+
+```
+//验证是否全选
+
+var checkStatus = table.checkStatus('idTest');
+layer.msg(checkStatus.isAll ? '全选': '未全选')
 ```
 
 

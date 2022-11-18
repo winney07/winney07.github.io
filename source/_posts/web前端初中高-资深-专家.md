@@ -81,3 +81,84 @@ tabindex为-1时按tab获取不了焦点，但开发中js可以获取
 ```
 
 #### 五、全局属性
+
+
+
+初级WEB前端工程师
+
+- HTML5
+
+- CSS3
+
+- 响应式布局之Bootstrap
+
+  
+
+中级WEB前端工程师
+
+- JavaScript
+- jQuery
+- jQuery UI
+- Backbone
+- AngularJS
+- Bootstrap
+- ReactJS
+- VueJS
+
+高级WEB前端工程师
+
+- CSS工程化
+- 项目构建与部署
+- 前端常用的库和实用技术
+- 常见设计模式
+- 前端开发其他类别工程师配合
+- Web安全
+- Windows-Linux基础
+- NodeJS
+
+资深WEB前端工程师
+
+- 
+
+专家WEB前端工程师
+
+- Google V8引擎
+
+
+
+web前端开发实战
+
+- HTML5离线应用
+- MVC架构模式分析与设计
+- Fiddler工具使用
+- CSS深入理解
+- WEB在线文件管理器
+- 表单验证
+- 分页
+- 版本管理工具-git
+- Swift
+- 高仿微信主界面及消息提醒
+- 电商网站前端架构
+- FIS使用
+
+
+
+#### 离线Web App
+
+- Application Cache -本地缓存应用所需的文件
+- Local Storage & Session Storage-键值对（key-value）存储数据
+- Web SQL-关系数据库，通过SQL语句访问
+- IndexDB-索引数据库
+
+> FT中文网
+
+##### Application Cache
+
+Mainfest文件
+
+特点：
+
+- Mainfest文件有变化才更新
+- 一次必须更新Mainfest中的所有文件
+- 下次才生效
+

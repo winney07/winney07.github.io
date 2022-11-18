@@ -146,11 +146,20 @@ https://developer.android.com/studio/index.html·安装Android Studio (一直“
 
 
 ·配置ANDROID_HOME环境变量
-·打开Android Studio，点击菜单Tools → SDK Manager，找到Appearance &Behavior → System Settings → Android SDK
+·`打开Android Studio，点击菜单Tools → SDK Manager，找到Appearance &Behavior → System Settings → Android SDK`
 
 
 
 ·跟ANDROID_HOME相关的环境变量
-·%ANDROID_HOME%\platform-tools%ANDROID_HOME%\emulator
-·%ANDROID_HOME%\tools·%ANDROID_HOME%\tools\bin
+·`%ANDROID_HOME%\platform-tools%ANDROID_HOME%\emulator`
+·`%ANDROID_HOME%\tools·%ANDROID_HOME%\tools\bin`
 —L，A,G，。u
+
+
+
+react native 进阶
+
+react native 高级
+
+ECMAScript新功能
+

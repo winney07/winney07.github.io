@@ -548,3 +548,14 @@ git help add
 `.git`是做版本控制的，如果想去除，直接删了这个目录。
 
 是隐藏文件，在mac 用`open .git`打开（在.git的上层目录）
+
+
+
+Git基本工作流程
+
+Git初始化及仓库创建和操作
+
+Git管理远程仓库
+
+Github Pages搭建网站
+

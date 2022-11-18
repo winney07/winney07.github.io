@@ -8,6 +8,10 @@ categories:
 - jQuery
 ---
 
+
+
+[jQuery UI](https://www.jqueryui.org.cn/)
+
 #### 监听输入框的值变化事件
 
 ```
@@ -175,3 +179,15 @@ ID选择器：　　$('#id1')
 ```
 
 #### 
+
+
+
+#### jQuery自定义扩展
+
+
+
+#### 插件
+
+- jquery-ui
+- jquery-lazyload
+- jquery-color

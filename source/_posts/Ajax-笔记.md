@@ -114,3 +114,8 @@ export const xxxx = (params) => api({
 
 
 
+1. 同步和异步
+2. XMLHttpRequest对象创建
+3. HTTP请求
+4. XMLHttpRequest发送请求
+5. XMLHttpRequest取得响应

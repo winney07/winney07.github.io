@@ -1035,3 +1035,202 @@ Math对象中常用的方法
 浏览器是如何工作的
 
 ![浏览器](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Javascript%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/browser.png)
+
+
+
+#### JavaScript异常捕获
+
+```
+try {} catch(err) {}
+```
+
+``` 
+throw '错误提示'    // 抛出错误
+```
+
+#### 事件对象
+
+1. 事件对象：
+   	在触发DOM事件的时候都会产生一个对象
+
+2. 事件对象event：
+   1. type：获取事件类型
+   2. target：获取事件目标
+   3. stopPropagation()：阻止事件冒泡
+   4. preventDefault()：阻止事件默认行为
+
+#### 事件处理
+
+1. HTML事件处理：
+   直接添加到HTML结构中
+2. DOM0级事件处理
+   把一个函数赋值给一个事件处理程序属性
+3. DOM2级事件处理
+
+   - addEventListener(“事件名”,“事件处理函数”,“布尔值”);
+
+   - true：事件捕获
+
+   - false：事件冒泡
+
+   - removeEventListener();
+4. IE事件处理程序
+   - attachEvent
+   - detachEvent
+
+#### 事件流
+
+1. 事件流：
+   描述的是在页面中接受事件的顺序
+2. 事件冒泡：
+   由最具体的元素接收，然后逐级向上传播至最不具体的元素的节点（文档)
+3. 事件捕获：
+   最不具体的节点先接收事件,而最具体的节点应该是最后接收事件
+
+#### JavaScript内置对象
+
+##### String字符串对象
+
+1. String对象：
+
+   - String 对象用于处理已有的字符串
+
+   - 字符串可以使用单引号或单引号
+
+2. 在字符串中查找字符串：`indexOf()`
+
+3. 内容匹配：`match()`
+
+4. 替换内容：` replace()`
+
+5. 字符串大小写转换：`toUpperCase() / toLowerCase()`
+
+##### Math对象
+
+1. Math对象：
+   执行常见的算数任务
+2. 常用方法：
+   - round()：四舍五入
+   - random()：返回0~1之间的随机数
+   - max()：返回最高值。
+   - min()：返回中的最低值。
+   - abs()：返回绝对值。
+
+##### Array数组对象
+
+1. Array对象：
+   使用单独的变量名来存储一系列的值
+
+2. 数组的创建:
+   例：`var myArray=[ "Hello"," iwen" ,"ime"];`
+
+3. 数组的访问：
+   通过指定数组名以及索引号码,你可以访问某个特定的元素
+
+   注意:[0]是数组的第一个元素。[1]是数组的第二个元素。
+
+4. 数组常用方法：
+
+   - concat()：合并数组
+   - sort()：排序
+   - push()：末尾追加元素
+   - reverse()：数组元素翻转
+
+##### Date日期对象
+
+1. Date对象：
+   日期对象用于处理日期和时间
+2. 获得当日的日期
+3. 常用方法：
+   - getFullYear()：获取年份
+   - getTime()：获取毫秒
+   - setFullYear()：设置具体的日期
+   - getDay()：获取星期
+
+#### DOM对象控制HTML
+
+1、方法:
+
+- getElementsByName()一获取name
+- getElementsByTagName()—获取元素
+- getAttribute()—获取元素属性
+- setAttribute()一设置元素属性
+- childNodes()—访问子节点
+- parentNode()一访问父节点
+- createElement()—创建元素节点
+- createTextNode—创建文本节点
+- insertBefore()—插入节点
+- removeChild()—删除节点
+- offsetHeight—网页尺寸
+- scrollHeight—网页尺寸
+
+#### 认识面向对象
+
+1. 面向对象中的概念：
+   1. 一切事物皆对象
+   2. 对象具有封装和继承特性
+   3. 信息隐藏
+
+#### JavaScript浏览器对象
+
+##### History对象
+
+1. History对象：
+   window.history对象包含浏览器的历史(url)的集合
+2. History方法：
+   history.back()----与在浏览器点击后退按钮相同
+3. history.forward()-------与在浏览器中点击按钮向前相同
+4. history.go()------进入历史中的某个页面
+
+##### Location对象
+
+1. Location对象：
+   window.location对象用于获得当前页面的地址(URL)，并把浏览器重定向到新的页
+2. Location对象的属性：
+   - location.hostname返回web主机的域名
+   - location.pathname返回当前页面的路径和文件名
+   - location.port返回web主机的端口
+   - location.protocol返回所使用的web协议(http://或https://)
+   - location.href 展性返回当前页面的URL
+
+##### Screen对象
+
+1. Screen对象:
+   window.screen对象包含有关用户屏幕的信息
+
+2. 属性:
+
+   - screen.availWidth -可用的屏幕宽度
+
+   - screen.availHeight -可用的屏幕高度
+
+   - screen.Height -屏幕高度
+   - screen.Width -屏幕宽度
+
+##### Window对象
+
+1. window对象:
+
+   - window对象是BOM的核心, window对象指当前的浏览器窗口
+   - 所有JavaScript全局对象、函数以及变量均自动成为 window对象的成员
+   - 全局变量是window 对象的属性
+   - 全局函数是window对象的方法
+   - 甚至HTML DOM的 document也是window对象的属性之一
+
+2. window尺寸:
+   window.innerHeight -浏览器窗口的内部高度
+
+   window.innerWidth -浏览器窗口的内部宽度
+
+##### 计时器
+
+1. 计时事件:
+   通过使用JavaScript，我们有能力作到在一个设定的时间间隔之后来执行代码，而不是在函数被调用后立即执行,我们称之为计时事件
+2. 计时方法:
+   - setlnterval()-间隔指定的毫秒数不停地执行指定的代码
+     clearlntervall()-方法用于停止setlnterval()方法执行的函数代码
+   - setTimeout()-暂停指定的毫秒数后执行指定的代码
+     clearTimeoutl()-方法用于停止执行setTimeout()方法的函数代码
+
+#### JavaScript正则表达式
+

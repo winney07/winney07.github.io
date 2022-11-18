@@ -8,6 +8,10 @@ tags:
 
 
 
+[cube-css](https://css-tricks.com/cube-css/)
+
+ [CUBE CSS](https://cube.fyi/#what-does-cube-css-stand-for)
+
 #### CSS选择器
 
 1. id选择器
@@ -1428,7 +1432,7 @@ body{-webkit-text-size-adjust:none;}
 #### 样式表清缓存
 
 ```
-<link rel="stylesheet" type="text/css" href="/css/style.css?v={:date('ymdhis')}" />
+<link rel="stylesheet" type="text/css" href="/css/style.css?v={:date('Ymdhis')}" />
 ```
 
 php
@@ -1691,3 +1695,40 @@ h1{ text-indent: 9999px}     // 一般用于网站的h1标题logo的seo的优化
 ![透视](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/CSS%E7%AC%94%E8%AE%B0/perspective.png)
 
 画立方体
+
+
+
+#### CSS3 3D动画
+
+- 三维体
+- 立方体构建
+- 动画三维体
+- 立方体的构建方式
+- 长方体的构建
+- 三维贴图
+- 三维的透视
+
+
+
+#### OO CSS（面向对象的CSS）
+
+OO CSS的作用和注意事项―注意事项注意事项:
+1.不要直接定义子节点，应把共性声明放到父类
+
+2.结构和皮肤相分离。
+
+3.容器和内容相分离。
+
+4.抽象出可重用的元素，建好组件库，在组件库内寻找可用的元素组装页面
+
+5.往你想要扩展的对象本身增加class而不是他的父节点。
+
+6.对象应保持独立性。
+
+7.避免使用ID选择器，权重太高,无法重用
+
+8.避免位置相关的样式。
+
+9.保证选择器相同的权重。
+
+10.类名简短清晰语义化OO CSS的名字并不影响HTML语义化。

@@ -10,6 +10,10 @@ categories:
 
 #### [Vue.js-中文文档](https://cn.vuejs.org/)
 
+[vuejs2 官网讲解](https://github.com/bhnddowinf/vuejs2-learn)
+
+
+
 #### 找相关资源
 
 vue.js官网的资源列表中的[awesome -vue](https://github.com/vuejs/awesome-vue)里面
@@ -423,3 +427,9 @@ var app5 = new Vue({
 4. 代码风格统一
 5. JS变量命名规范
 6. CSS代码规范
+
+
+
+#### 项目实战
+
+慕课网 Vue 2.0 移动端音乐App【完整版】

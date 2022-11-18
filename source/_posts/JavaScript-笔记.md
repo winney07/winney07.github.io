@@ -1184,6 +1184,92 @@ a;   // 访问不了a
 f();
 ```
 
+
+
+放大镜效果——淘宝鼠标移到产品图上的放大显示效果
+
+360度全景图片——360度旋转图片——360度看产品——秒味课堂
+
+倒计时效果
+
+QQ幻灯片
+
+面向对象
+
+BOM
+
+DOM
+
+Ajax
+
+事件处理
+
+cookie
+
+事件详解
+
+正则表达式
+
+游戏开发
+
+拖放操作
+
+历史管理
+
+canvas
+
+响应式布局
+
+螺旋矩阵算法
+
+穿梭插件
+
+无刷新分页效果
+
+语音识别库-Jullus
+
+G码兑换
+
+围住神经猫游戏开发
+
+事件委托
+
+无缝切换
+
+操作iframe
+
+闭包
+
+数码时钟
+
+枚举算法
+
+网页进度条
+
+联动日历
+
+瀑布流
+
+
+
+vue 热更新
+
+vuex
+
+flux
+
+Smarty—PHP模板引擎
+
+tpl框架使用
+
+React+Redux 的综合配置
+
+angular + ionic
+
+
+
+
+
 [JavaScript中原型对象的彻底理解](https://blog.csdn.net/u012468376/article/details/53121081)
 
 [一张图理解prototype、proto和constructor的三角关系](https://www.cnblogs.com/xiaohuochai/p/5721552.html)
@@ -1246,3 +1332,4 @@ f();
 
 
 
+https://weui.io/#form_vcode

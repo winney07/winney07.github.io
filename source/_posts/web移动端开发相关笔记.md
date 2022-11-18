@@ -12,6 +12,8 @@ tags:
 
 [移动端](https://www.yuque.com/docs/share/27e13760-a250-4376-ab7e-072b8bae0b5b?# 《移动端》)-语雀笔记
 
+[移动前端知识总结](http://caibaojian.com/mobile-knowledge.html)
+
 #### 网站收集
 
 | [移动端Web解决方案](https://github.com/AlloyTeam/Mars)       | [移动前端开发收藏夹](https://github.com/hoosin/mobile-web-favorites) | [优化移动体验的HTML5技巧](https://www.oschina.net/translate/mobile-app-optimization-and-performance) |
@@ -2391,3 +2393,93 @@ adb install base.apk
 #### [Zepto](https://zeptojs.com/)
 
 > **Zepto**是一个轻量级的**针对现代高级浏览器的JavaScript库，** 它与jquery**有着类似的api**。 如果你会用jquery，那么你也会用zepto。
+
+
+
+#### 微信引导用户在浏览器中打开
+
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="wechat-enable-text-zoom-em" content="true">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,viewport-fit=cover">
+    <title>绑定成功</title>
+    <link rel="stylesheet" href="./css/weui.css">
+    <style>
+        #openBrowser{
+            background: rgba(0,0,0,0.75);
+            display: none;
+        }
+        .open-browser-img{
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="container">
+        <div class="weui-msg">
+            <div class="weui-msg__icon-area"><i class="weui-icon-success weui-icon_msg"></i></div>
+            <div class="weui-msg__text-area">
+                <h2 class="weui-msg__title">绑定成功</h2>
+            </div>
+        </div>
+    </div>
+     <!-- 引导用户在浏览器打开 -->
+     <div class="weui-mask" id="openBrowser">
+        <img class="open-browser-img" src="./images/open_browser.png" alt="在浏览器打开">
+    </div>
+    <script src="./js/zepto.min.js"></script>
+    <script>
+        
+        // IOS系统
+        var isIOS = navigator.userAgent.match(/iphone|ipad|ipod|mac/i);
+        var iosURL = 'https://itunes.apple.com/cn/app/id1221155886?mt=8'
+        , androidURL = 'http://nanopkg.vxinyou.com/android/output/twjy/zidou/twjy_zidou_1.0.35__twjy03_20221114154923.apk';
+        
+        // 判断是否为微信
+        function isWeixin() {
+            var WxObj = window.navigator.userAgent.toLowerCase();
+            if(WxObj.match(/microMessenger/i) == 'micromessenger') {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        // 下载安装包事件
+        function downloadPack() {
+            if(isIOS) {
+                window.location.href = iosURL;
+            }else{
+                if(isWeixin()){
+                    $('#openBrowser').show();
+                }else{
+                    window.location.href = androidURL;
+                }
+            }
+        }
+        
+        // 点击蒙层
+        // $('#openBrowser').click(function () {
+        //     $('#openBrowser').hide();
+        // });
+
+        // 下载安装包
+        downloadPack();
+    </script>
+</body>
+</html>
+```
+
+##### 从微信跳转到appstore下载App
+
+######  获取App在App Store的下载链接
+
+这个链接并非是在手机打开App Store后找到自己的App点击分享按钮之后点击"复制链接"得到的链接,而是一个itunes链接,基本格式是：https://itunes.apple.com/cn/app/idxxxxxxxxxx?mt=8 
+
+> 去到https://itunes.apple.com，可以搜索想要的应用，拿到链接上的id，拿来测试
+

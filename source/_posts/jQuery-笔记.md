@@ -178,7 +178,20 @@ ID选择器：　　$('#id1')
 :visible　　　　当前显示的元素
 ```
 
-#### 
+
+
+#### Tabs切换内容
+
+```
+$(".tab li").click(function(){
+    $(".tab li").eq($(this).index()).addClass("active").siblings().removeClass("active");
+    $(".tabContent div").hide().eq($(this).index()).show();
+})
+```
+
+
+
+
 
 
 

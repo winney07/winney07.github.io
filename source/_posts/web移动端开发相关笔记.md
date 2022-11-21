@@ -2483,3 +2483,37 @@ adb install base.apk
 
 > 去到https://itunes.apple.com，可以搜索想要的应用，拿到链接上的id，拿来测试
 
+
+
+#### meta标签
+
+```
+<meta http-equiv="Refresh"content="2;URL=http://www.haorooms.com"> //(注意后面的引号，分别在秒数的前面和网址的后面) 
+<meta http-equiv="Set-Cookie"content="cookie value=xxx;expires=Friday,12-Jan-200118:18:18GMT；path=/"> 
+<meta http-equiv="Window-target"content="_top"> 
+
+
+//(设置屏幕宽度为设备宽度，禁止用户手动调整缩放)
+<meta name="viewport" content="width=device-width,user-scalable=no" />
+
+//(设置屏幕密度为高频，中频，低频自动缩放，禁止用户手动调整缩放)
+<meta name="viewport" content="width=device-width,target-densitydpi=high-dpi,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+//name之format-detection忽略电话号码和邮箱<meta name="format-detection" content="telephone=no">
+
+
+//name之设置作者姓名及联系方式
+//说明：设置作者姓名及联系方式
+
+<meta name="author" contect="name, xxx@163.com" />
+
+<!-- 页面关键词 -->
+<meta name="keywords" content=""/>
+
+ <!-- 搜索引擎抓取 -->
+<meta name="robots" content="index,follow"/>
+
+// 开启对web app程序的支持<meta name="apple-mobile-web-app-capable" content="yes">
+
+// 改变顶部状态条的颜色；<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+```
+

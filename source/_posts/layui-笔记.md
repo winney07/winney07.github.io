@@ -1292,3 +1292,65 @@ $("#rules_content").html(content);  // 写入活动规则内容
 // })),
 ```
 
+#### 当合并表头，动态改变列数时
+
+只有一列时，数据会把合并的表头也展示出来，处理方式：
+
+```
+, done: function (res, curr, count) {
+    $(".layui-table tbody").find(".layui-table-col-special").remove();  // 当合并表头只有一列时
+    
+}
+```
+
+#### 动态改变合并表头合并列的数量时，colspan的数值的类型为字符串类型
+
+```
+var colspan_day = '1';  // colspan要使用字符串类型
+
+,{align: 'center', title: '次日', colspan: colspan_day }
+```
+
+#### 表格表头-合并列，只有一列时，列宽设置
+
+layui会自动在页面生成样式，自定义样式，覆盖它
+
+`注意：这种方法有个bug，从别的页面，切换到该页面，bug还是存在`
+
+```
+/* 针对合并表头只有一列时 */
+.laytable-cell-1-0-20,
+.laytable-cell-1-0-21,
+.laytable-cell-1-0-22,
+.laytable-cell-1-0-23,
+.laytable-cell-1-0-24,
+.laytable-cell-1-0-25{
+    width: auto !important;
+}
+```
+
+#### 表格表头-合并列，只有一列时，合并列的文字会出现换行，默认宽度为60px
+
+所以要给合并列加上宽度属性（根据实际情况自定义）：` width: 80`
+
+```
+,{align: 'center', title: '注册当天', width: 80, colspan: current_count}   
+,{align: 'center', title: '次日', width: 80, colspan: cols_count }
+,{align: 'center', title: '第3天', width: 80, colspan: cols_count }
+,{align: 'center', title: '第4天', width: 80, colspan: cols_count }
+,{align: 'center', title: '第5天', width: 80, colspan: cols_count }
+,{align: 'center', title: '第6天', width: 80, colspan: cols_count }
+,{align: 'center', title: '第7天', width: 80, colspan: cols_count }
+,{align: 'center', title: '第8-14天', width: 80, colspan: cols_count }
+,{align: 'center', title: '第15-30天', width: 80, colspan: cols_count }
+,{align: 'center', title: '第31-45天', width: 80, colspan: cols_count }
+,{align: 'center', title: '第46-60天', width: 80, colspan: cols_count }
+,{align: 'center', title: '第61-90天', width: 80, colspan: cols_count }
+,{align: 'center', title: '第91-180天', width: 80, colspan: cols_count }
+,{align: 'center', title: '第181-360天', width: 80,colspan: cols_count }
+```
+
+
+
+
+

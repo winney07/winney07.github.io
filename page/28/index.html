@@ -193,6 +193,139 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/08/24/Node-js%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="winney">
+      <meta itemprop="description" content="Doing is better than saying.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="winney">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/08/24/Node-js%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">Node.js相关笔记</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-08-24 12:18:15" itemprop="dateCreated datePublished" datetime="2020-08-24T12:18:15+08:00">2020-08-24</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-10-17 11:08:31" itemprop="dateModified" datetime="2022-10-17T11:08:31+08:00">2022-10-17</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a target="_blank" rel="noopener" href="https://nodejs.org/zh-cn/">Node.js官网</a></p>
+<p><a target="_blank" rel="noopener" href="https://cnodejs.org/">Cnode社区</a></p>
+<p><a target="_blank" rel="noopener" href="http://nodejs.cn/">Node.js中文网</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.nodeapp.cn/">Node.js 中文文档 | Node.js 中文网</a></p>
+<p><a target="_blank" rel="noopener" href="https://npm.taobao.org/">淘宝NPM镜像</a></p>
+<p>Node.js&amp;HTML5论坛</p>
+<p><strong>后端处理分页数据的接口</strong>   <a target="_blank" rel="noopener" href="https://www.cnblogs.com/fm060/p/8144758.html">参考博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.axis-studio.org/2017/12/29/element-express-mongoose%E5%AE%9E%E7%8E%B0%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2/index.html">element+express+mongoose实现分页查询</a></p>
+<h4 id="后端接口代码："><a href="#后端接口代码：" class="headerlink" title="后端接口代码："></a>后端接口代码：</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">app.get(<span class="string">&#x27;/api/getSources&#x27;</span>,<span class="keyword">async</span>(req, res)=&gt;&#123;</span><br><span class="line">    <span class="keyword">let</span> currentPage = <span class="built_in">parseInt</span>(req.query.currentPage) <span class="comment">// 转换前端传入当前页码</span></span><br><span class="line">    <span class="keyword">let</span> pageSize = <span class="built_in">parseInt</span>(req.query.pageSize) <span class="comment">// 转换前端传入的每页大小</span></span><br><span class="line">    <span class="keyword">let</span> skip = (currentPage-<span class="number">1</span>)*pageSize <span class="comment">// 实现分割查询的skip</span></span><br><span class="line">    <span class="keyword">let</span> params = &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 所有数据</span></span><br><span class="line">    <span class="keyword">var</span> allSources = <span class="keyword">await</span> Sources.find();</span><br><span class="line">    <span class="keyword">var</span> allCount = allSources.length;</span><br><span class="line">    <span class="keyword">var</span> allPage = <span class="built_in">Math</span>.ceil(allCount/pageSize);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 根据页码和每页显示条数筛选数据</span></span><br><span class="line">    <span class="keyword">const</span> sources = <span class="keyword">await</span> Sources.find(params).skip(skip).limit(pageSize)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> object =&#123;</span><br><span class="line">        allCount: allCount,</span><br><span class="line">        allPage: allPage,</span><br><span class="line">        page: currentPage,</span><br><span class="line">        data: sources</span><br><span class="line">    &#125;</span><br><span class="line">    res.send(object)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="前端请求接口代码："><a href="#前端请求接口代码：" class="headerlink" title="前端请求接口代码："></a>前端请求接口代码：</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 获取素材列表</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> getSources = <span class="function">(<span class="params">param</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> request(&#123;</span><br><span class="line">    method: <span class="string">&#x27;GET&#x27;</span>,</span><br><span class="line">    url: <span class="string">&#x27;/getSources&#x27;</span>,</span><br><span class="line">    params: param</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>.vue页面：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">&lt;el-pagination</span><br><span class="line">  @size-change=<span class="string">&quot;handleSizeChange&quot;</span></span><br><span class="line">  @current-change=<span class="string">&quot;handleCurrentChange&quot;</span></span><br><span class="line">  :current-page=<span class="string">&quot;currentPage&quot;</span></span><br><span class="line">  :page-sizes=<span class="string">&quot;[10, 15, 20, 25, 30]&quot;</span></span><br><span class="line">  :page-size=<span class="string">&quot;pageSize&quot;</span></span><br><span class="line">  layout=<span class="string">&quot;total, sizes, prev, pager, next, jumper&quot;</span></span><br><span class="line">  :total=<span class="string">&quot;allCount&quot;</span>&gt;</span><br><span class="line">&lt;/el-pagination&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">sourceList: [],</span><br><span class="line">allCount: <span class="number">0</span>,</span><br><span class="line">pageSize: <span class="number">10</span>,</span><br><span class="line">currentPage: <span class="number">1</span>,</span><br><span class="line">  </span><br><span class="line">created () &#123;</span><br><span class="line">  <span class="comment">// 渲染第一页的数据</span></span><br><span class="line">  <span class="built_in">this</span>.initData(<span class="built_in">this</span>.currentPage)</span><br><span class="line">&#125;,</span><br><span class="line">  </span><br><span class="line">initData (thisPage) &#123;</span><br><span class="line">  <span class="keyword">let</span> param = &#123;</span><br><span class="line">    currentPage: thisPage,</span><br><span class="line">    pageSize: <span class="built_in">this</span>.pageSize,</span><br><span class="line">  &#125;</span><br><span class="line">  getSources(param).then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(res)</span><br><span class="line">    <span class="built_in">this</span>.sourceList = res.data.data</span><br><span class="line">    <span class="built_in">this</span>.allCount = res.data.allCount</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;,</span><br><span class="line">  </span><br><span class="line"><span class="function"><span class="title">handleCurrentChange</span>(<span class="params">val</span>)</span> &#123;</span><br><span class="line">  <span class="comment">// console.log(`当前页: $&#123;val&#125;`);  </span></span><br><span class="line">  <span class="comment">// 渲染相应页码的数据</span></span><br><span class="line">  <span class="built_in">this</span>.initData(val)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="创建package-json："><a href="#创建package-json：" class="headerlink" title="创建package.json："></a>创建package.json：</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm init</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="http://javascript.ruanyifeng.com/nodejs/npm.html">npm模块管理器</a></p>
+<p><a target="_blank" rel="noopener" href="https://jingyan.baidu.com/article/91f5db1b3e1f991c7f05e395.html">我们安装了Nodejs是安装了什么</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/nimoc/gulp-book/blob/master/chapter1.md">安装 Node 和 gulp</a></p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p><a target="_blank" rel="noopener" href="https://nodejs.org/zh-cn/download/">node安装包下载地址</a></p>
+<ol>
+<li>下载.msi文件</li>
+<li>按”下一步”，”下一步”装好</li>
+<li>双击安装好的目录里面的”node.exe”，文件，输入node  （这一步好像不需要）</li>
+<li>创建一个app.js文件</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">&quot;http&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> hostname = <span class="string">&quot;127.0.0.1&quot;</span>;</span><br><span class="line"><span class="keyword">const</span> port = <span class="number">3000</span>;</span><br><span class="line"><span class="keyword">const</span> server = http.createServer(<span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">  res.statusCode = <span class="number">200</span>;</span><br><span class="line">  res.setHeader(<span class="string">&#x27;Content-Type&#x27;</span>, <span class="string">&#x27;text/plain&#x27;</span>);</span><br><span class="line">  res.end(<span class="string">&#x27;He1lo world\n&#x27;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">server.listen(port, hostname, <span class="function">()=&gt;</span> &#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">`Server running at http://<span class="subst">$&#123;hostname&#125;</span>:<span class="subst">$&#123;port&#125;</span>/`</span>)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<ol>
+<li>运行app.js：</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node app.js</span><br></pre></td></tr></table></figure>
+<ol>
+<li>在浏览器中预览</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="comment">//localhost:3000/ </span></span><br><span class="line">或者</span><br><span class="line">http:<span class="comment">//127.0.0.1:3000/</span></span><br></pre></td></tr></table></figure>
+<p>使用淘宝NPM镜像</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g cnpm --registry=https:<span class="comment">//registry.npm.taobao.org</span></span><br></pre></td></tr></table></figure>
+<p>清屏命令（清掉历史操作记录）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cls</span><br></pre></td></tr></table></figure>
+<p>取消命令继续执行</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ctrl +  C </span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_36423639/article/details/70230571">window下通过nvm-windows来安装多版本node</a></p>
+<p>[全栈最后一公里 - Scott 带你学习 Node.js 线上服务器部署与发布](<a target="_blank" rel="noopener" href="http://www.imooc.com/article/17554">http://www.imooc.com/article/17554</a> Scott)</p>
+<p><a target="_blank" rel="noopener" href="http://nqdeng.github.io/7-days-nodejs/">七天学会NodeJS</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.handlebarsjs.cn/">Handlebars-轻量的语义化模板</a></p>
+<p><strong>什么是异步I/O？</strong></p>
+<p>就是我们读取/写入文件或者操作数据库的时候，此时应该是异步的读取。CPU命令磁盘驱动器读取文件，CPU此时不能死等磁盘返回结果，如果死等CPU自己就被阻塞了，性能是极大的浪费。比如：PHP读取文件，性能就不高，因为被阻塞了。</p>
+<h3 id="Node-js创建第一个应用"><a href="#Node-js创建第一个应用" class="headerlink" title="Node.js创建第一个应用"></a>Node.js创建第一个应用</h3><p>如果我们使用PHP来编写后端的代码时，需要Apache 或者Nginx 的 HTTP服务器，来处理客户端的请求相应。不过对Node.js 来说，概念完全不一样了。使用 Node.js时，我们不仅仅在实现一个应用，同时还实现了整个HTTP服务器。</p>
+<ol>
+<li>引入http模块</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http= <span class="built_in">require</span>(<span class="string">&quot;http&quot;</span>);</span><br></pre></td></tr></table></figure>
+<ol>
+<li>创建服务器</li>
+</ol>
+<p>接下来我们使用http.createServer()方法创建服务器，并使用listen方法绑定8888端口。函数通过request, response参数来接收和响应数据。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">&#x27;http&#x27;</span>);</span><br><span class="line"></span><br><span class="line">http.createServer(functio (request, response)&#123;</span><br><span class="line">	<span class="comment">// 发送HTTP头部</span></span><br><span class="line">	<span class="comment">// HTTP状态值: 200 : oK</span></span><br><span class="line">  <span class="comment">// 设置HTTP头部，状态码是200，文件类型是html，字符集是utf8</span></span><br><span class="line">  response.writeHead(<span class="number">200</span>,&#123;<span class="string">&quot;Content-Type&quot;</span>:<span class="string">&quot;text/html;charset=UTF-8&quot;</span>&#125;);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 发送响应数据“Hello World&quot;</span></span><br><span class="line">  res.end(<span class="string">&quot;哈哈哈哈，我买了一个iPhone&quot;</span> +(<span class="number">1</span>+<span class="number">2</span>+<span class="number">3</span>)+<span class="string">&quot;s&quot;</span><span class="string">&quot;);</span></span><br><span class="line"><span class="string">          </span></span><br><span class="line"><span class="string">&#125;).listen(8888);</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">// 终端打印如下信息</span></span><br><span class="line"><span class="string">console.log(&quot;</span>Server running at http:<span class="comment">//127.0.0.1:8888/&quot;);</span></span><br></pre></td></tr></table></figure>
+<p>结束响应：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">res.end();</span><br></pre></td></tr></table></figure>
+<h3 id="node-js查询数据，倒序排序：sort-‘-字段名’"><a href="#node-js查询数据，倒序排序：sort-‘-字段名’" class="headerlink" title="node.js查询数据，倒序排序：sort(‘-字段名’)"></a>node.js查询数据，倒序排序：sort(‘-字段名’)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">let currentPage &#x3D; parseInt(req.query.currentPage) &#x2F;&#x2F; 转换前端传入当前页码</span><br><span class="line">let pageSize &#x3D; parseInt(req.query.pageSize) &#x2F;&#x2F; 转换前端传入的每页大小</span><br><span class="line">let skip &#x3D; (currentPage-1)*pageSize &#x2F;&#x2F; 实现分割查询的skip</span><br><span class="line">let params &#x3D; &#123;&#39;delete_time&#39;: &quot;0&quot;&#125;;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 根据页码和每页显示条数筛选数据</span><br><span class="line">const sources &#x3D; await Sources.find(params).sort(&#39;-create_time&#39;).skip(skip).limit(pageSize)</span><br></pre></td></tr></table></figure>
+<h4 id="常用的Nodejs开发工具"><a href="#常用的Nodejs开发工具" class="headerlink" title="常用的Nodejs开发工具"></a><a target="_blank" rel="noopener" href="http://www.bjpowernode.com/hot/2981.html">常用的Nodejs开发工具</a></h4><ul>
+<li>Express.js</li>
+<li>Socket.io</li>
+<li>Meteor</li>
+<li>Keystone</li>
+<li>Koa.js</li>
+<li>PM2.5</li>
+<li>Electrode.js</li>
+<li>Babel</li>
+<li>Broccoli</li>
+<li>Webpack</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2020/07/29/Vue3-Vite%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA%E7%AC%94%E8%AE%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -330,7 +463,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-11-18 11:47:07" itemprop="dateModified" datetime="2022-11-18T11:47:07+08:00">2022-11-18</time>
+                <time title="修改时间：2022-12-02 11:15:27" itemprop="dateModified" datetime="2022-12-02T11:15:27+08:00">2022-12-02</time>
               </span>
 
           
@@ -407,86 +540,8 @@
 <p><a target="_blank" rel="noopener" href="https://github.com/Tencent/weui.js/blob/master/docs/component/form.md#validate">weui.js验证函数</a></p>
 <p><a target="_blank" rel="noopener" href="http://mpvue.com/">mpvue</a></p>
 <h4 id="微信小程序-1"><a href="#微信小程序-1" class="headerlink" title="微信小程序"></a>微信小程序</h4><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1H34y1p7Fd">网易云音乐微信小程序【2022最新教程】</a></p>
+<p>贪吃蛇</p>
 
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/07/24/FastAdmin%E6%A1%86%E6%9E%B6-%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="winney">
-      <meta itemprop="description" content="Doing is better than saying.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="winney">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/07/24/FastAdmin%E6%A1%86%E6%9E%B6-%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">FastAdmin框架-使用笔记</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-07-24 19:25:00" itemprop="dateCreated datePublished" datetime="2020-07-24T19:25:00+08:00">2020-07-24</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-01-31 15:42:26" itemprop="dateModified" datetime="2022-01-31T15:42:26+08:00">2022-01-31</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/FastAdmin%E6%A1%86%E6%9E%B6/" itemprop="url" rel="index"><span itemprop="name">FastAdmin框架</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="在FastAdmin动态追加bootstrap-select下拉列表"><a href="#在FastAdmin动态追加bootstrap-select下拉列表" class="headerlink" title="在FastAdmin动态追加bootstrap-select下拉列表"></a>在FastAdmin动态追加bootstrap-select下拉列表</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;select data-rule&#x3D;&quot;required&quot; class&#x3D;&quot;form-control selectpicker&quot; data-live-search&#x3D;&quot;true&quot; name&#x3D;&quot;row[admin_role_name]&quot; data-url&#x3D;&quot;&quot; data-query-name&#x3D;&quot;&quot;&gt; &lt;&#x2F;select&gt;</span><br><span class="line"></span><br><span class="line">注：data-live-search&#x3D;&quot;true&quot;是添加可以模糊搜索功能</span><br></pre></td></tr></table></figure>
-<p>关键代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">define([&#39;jquery&#39;, &#39;bootstrap&#39;, &#39;backend&#39;, &#39;table&#39;, &#39;form&#39;], function ($, undefined, Backend, Table, Form) &#123;</span><br><span class="line">    var Controller &#x3D; &#123;</span><br><span class="line">      ......</span><br><span class="line">      ......</span><br><span class="line">      add: function () &#123;</span><br><span class="line">            &#x2F;&#x2F;关键代码：（要引入）</span><br><span class="line">            require([&#39;bootstrap-select&#39;, &#39;bootstrap-select-lang&#39;]);</span><br><span class="line"></span><br><span class="line">            &#x2F;&#x2F;渲染下拉框</span><br><span class="line">            var renderselect &#x3D; function (select, data, defaultOpt) &#123;</span><br><span class="line">                if(defaultOpt &amp;&amp; data.length&gt;0) &#123;</span><br><span class="line">                    var opt &#x3D; &#39;&lt;option value&#x3D;&quot;&quot;&gt;&#39; + defaultOpt + &#39;&lt;&#x2F;option&gt;&#39;;</span><br><span class="line">                &#125;</span><br><span class="line">                var html &#x3D; [opt] || [];</span><br><span class="line">                for (var i &#x3D; 0; i &lt; data.length; i++) &#123;</span><br><span class="line">                    html.push(&quot;&lt;option value&#x3D;&#39;&quot; + data[i] + &quot;&#39;&gt;&quot; + data[i] + &quot;&lt;&#x2F;option&gt;&quot;);</span><br><span class="line">                &#125;</span><br><span class="line">                $(select).html(html.join(&quot;&quot;));</span><br><span class="line">                $(&quot;.selectpicker&quot;).selectpicker(&#39;refresh&#39;);</span><br><span class="line">                return select;</span><br><span class="line">            &#125;;</span><br><span class="line"></span><br><span class="line">           $(&quot;select[name&#x3D;&#39;row[server_id]&#39;]&quot;).change(function () &#123;</span><br><span class="line">                var admin_id &#x3D; $(&quot;select[name&#x3D;&#39;row[admin_id]&#39;]&quot;).val();</span><br><span class="line">                var app_id &#x3D; $(&quot;select[name&#x3D;&#39;row[app_id]&#39;]&quot;).val();</span><br><span class="line">                var server_id &#x3D; $(&quot;select[name&#x3D;&#39;row[server_id]&#39;]&quot;).val();</span><br><span class="line"></span><br><span class="line">                $.ajax(&#123;</span><br><span class="line">                    url: &#39;&#x2F;admin&#x2F;boon&#x2F;resource&#x2F;role_name_lise&#39;,</span><br><span class="line">                    data: &#123;admin_id: admin_id, app_id: app_id, server_id: server_id&#125;,</span><br><span class="line">                    type: &#39;get&#39;,</span><br><span class="line">                    dataType: &#39;json&#39;,</span><br><span class="line">                    success: function (data, textStatus, xhr) &#123;</span><br><span class="line">                        var list &#x3D; data.data.list;</span><br><span class="line"></span><br><span class="line">                        renderselect($(&quot;select[name&#x3D;&#39;row[admin_role_name]&#39;]&quot;), list, &quot;请选择测试角色名&quot;);</span><br><span class="line">                        renderselect($(&quot;select[name&#x3D;&#39;row[player_role_name]&#39;]&quot;), list, &quot;请选择玩家角色名&quot;);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;);</span><br><span class="line">           &#125;);</span><br><span class="line">            </span><br><span class="line">           $(&quot;select[name&#x3D;&#39;row[admin_id]&#39;], select[name&#x3D;&#39;row[app_id]&#39;]&quot;).change(function () &#123;</span><br><span class="line">               console.log(&quot;dianji&quot;)</span><br><span class="line">               var list &#x3D; [];</span><br><span class="line">                renderselect($(&quot;select[name&#x3D;&#39;row[admin_role_name]&#39;]&quot;), list);</span><br><span class="line">                renderselect($(&quot;select[name&#x3D;&#39;row[player_role_name]&#39;]&quot;), list);</span><br><span class="line">           &#125;); </span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -572,20 +627,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">136</span>
+          <span class="site-state-item-count">137</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">51</span>
+        <span class="site-state-item-count">52</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">86</span>
+        <span class="site-state-item-count">87</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

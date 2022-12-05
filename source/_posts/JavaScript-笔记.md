@@ -8,6 +8,29 @@ categories:
 - JavaScript
 ---
 
+
+
+
+
+- JavaScript基础编程
+- 内置类使用、面向对象编程
+- 作用域链、原型链
+- 内存原理、函数高级运用
+- BOM模型、DOM模型
+- JSON结构及交互
+- Ajax技术及跨域技术
+- 错误处理及调试等
+
+#### 书籍
+
+《JavaScript高级程序设计》
+
+#### JavaScript组成
+
+- 核心（ECMAScript）
+- 文档对象模型（DOM）
+- 浏览器对象模型（BOM）
+
 #### [underscorejs中文网](https://www.underscore-js.com/)
 
 ```
@@ -1183,6 +1206,12 @@ a;   // 访问不了a
 })();
 f();
 ```
+
+
+
+- Hibird APP开发
+- 微信小程序
+- 网页游戏，flash，flex， ActionScript
 
 
 

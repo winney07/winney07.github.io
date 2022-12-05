@@ -8,6 +8,14 @@ categories:
 - Git
 ---
 
+
+
+在Git安装目录下，可以查看相关命令的使用（help）
+
+```
+Git/mingw64/share/doc/git-doc/
+```
+
 正确的github工作流
 
 #### 提交到远程仓库报错
@@ -529,6 +537,8 @@ git / git help
 git help -a
 ```
 
+> 向下翻页：F；向上翻页：B；退出：Q
+
 #### 查看使用手册：
 
 ```
@@ -543,11 +553,96 @@ git help -g
 git help add
 ```
 
-按Q可以退出
+> 按Q可以退出
+>
 
 `.git`是做版本控制的，如果想去除，直接删了这个目录。
 
 是隐藏文件，在mac 用`open .git`打开（在.git的上层目录）
+
+#### config
+
+> 这些提交会包含在git提交里面
+
+##### 查看config信息
+
+```
+git config --list
+```
+
+##### 配置name和email
+
+```
+git config --global user.name 'winney'
+git config --global user.email '...@..'
+```
+
+##### 重置
+
+```
+git config --unset --global user.name
+```
+
+##### 重新设置
+
+```
+git config --global user.name 'winney'
+```
+
+##### 设置ui
+
+```
+git config --global color.ui true
+```
+
+
+
+> 这些配置会保存到一个.gitconfig文件里
+
+```
+cat ~/.gitconfig      // ~：代表当前用户的主目录
+```
+
+
+
+#### 项目版本管理
+
+##### 初始化项目
+
+```
+mkdir 目录名
+cd 目录名
+git init   // 生成.git目录   用于版本控制  git需要或生成的东西都会放这里面   进行跟踪
+```
+
+> 如果不想用git跟踪这个项目，可以把.git目录删除掉
+
+查看`.git`目录
+
+```
+cd .git
+ls
+```
+
+> config目录：存储项目配置的信息
+
+Mac系统，视图中查看.git目录
+
+```
+open .git     //  回到项目的根目录，执行这句
+```
+
+> 因在Mac系统中，看不到隐藏的目录
+
+#### 提交
+
+```
+git commit -m '备注信息'
+```
+
+```
+git log       //  查看提交记录
+```
 
 
 

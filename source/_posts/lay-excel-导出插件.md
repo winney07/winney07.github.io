@@ -10,6 +10,12 @@ categories:
 
 # LAY-EXCEL 简单快捷的导出插件
 
+[excel导出操作演示](http://excel.wj2015.com/)
+
+[导出复杂表头的案例](https://kingxjs.github.io/layui-excel-merge/)
+
+[导出复杂表头-GitHub](https://github.com/kingxjs/layui-excel-merge/blob/master/index.html)
+
 现有导出前端库中，XLSX.JS功能强大但是操作颇为不便，于是封装了此插件，依赖jQuery，支持Layui插件形式加载，**导出仅需一句话**。
 
 导出excel功能基于 XLSX.js，下载功能基于 FileSaver，读取文件基于 H5的 FileReader。

@@ -1732,3 +1732,46 @@ OO CSS的作用和注意事项―注意事项注意事项:
 9.保证选择器相同的权重。
 
 10.类名简短清晰语义化OO CSS的名字并不影响HTML语义化。
+
+
+
+#### 让网站灰掉
+
+```
+ html{
+ 	-webkit-filter: grayscale(0.95);
+ 	-moz-filter: grayscale(0.95);
+ 	-ms-filter: grayscale(0.95);
+ 	-o-filter: grayscale(0.95);
+ }
+```
+
+[4.4号疫情哀悼日网页变灰色前端是如何实现的？](https://www.bilibili.com/read/cv5459739/)
+
+[网站都变成灰色了，这其中代码是怎么实现的？（发现文章，记录保存方便查看）](https://blog.csdn.net/baidu_39135917/article/details/114635450)
+
+```
+方式1：  通过js可以设定指定时间，自动变灰以及复原
+注意：以下代码需要引入jquery
+
+<script>
+    // 1.得到当前的时间
+    var nowTime = new Date().getTime();
+    // 2.设置结束的时间 是 2020年4月5号凌晨
+    var overTime = new Date('2020/04/05 00:00:00').getTime();
+    // 3.如果当前时间小于了结束时间，简单说就是当前时间还没到4.5号 零点
+    if (nowTime < overTime) {
+        // 4.把html 设置灰色滤镜
+        $("html").css({
+        '-webkit-filter': 'grayscale(100%)',
+        '-moz-filter': 'grayscale(100%)',
+        '-ms-filter': 'grayscale(100%)',
+        '-o-filter': 'grayscale(100%)',
+        // ie滤镜
+        'filter': 'progid:DXImageTransform.Microsoft.BasicImage(grayscale=1)',
+        // ie6 等低版本浏览器不需要加滤镜
+        '_filter': 'none' });
+    }
+</script> 
+```
+

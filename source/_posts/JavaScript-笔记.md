@@ -21,6 +21,38 @@ categories:
 - Ajax技术及跨域技术
 - 错误处理及调试等
 
+#### 实用技术
+
+##### JavaScript模块化
+
+- Seajs的应用
+- RequireJS的应用
+
+##### JavaScript数据推送
+
+- Comet-基于 HTTP 长连接的服务器推送技术
+- 基于WebSocket 的推送方案
+- SSE(Server-Send Event)-服务器推送数据的新方式
+
+##### JavaScript高级函数
+
+- 函数柯里化
+- JavaScript惰性函数
+- JavaScript级联函数
+
+##### JavaScript高级技巧
+
+- this的使用
+- 作用域和闭包
+- 按值传递和按引用传递
+
+##### JavaScript面向切面编程
+
+##### JavaScript多线程
+
+- WebWork
+- Concurrent.Thread.js
+
 #### 书籍
 
 《JavaScript高级程序设计》

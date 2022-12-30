@@ -1775,3 +1775,89 @@ OO CSS的作用和注意事项―注意事项注意事项:
 </script> 
 ```
 
+[Input输入框type=number时仍然可以输入特殊字符-、+、e的解决方案](https://blog.csdn.net/qq_31915745/article/details/106474148)
+
+> type = number 改成 type = text ，然后用正则一招制敌。限制只能输入数字和一个小数点。
+
+[解决type=number的input可以输入+-e符号的情况](https://blog.csdn.net/tang31415926/article/details/124683709)
+
+
+
+#### 前端CSS排序-flex布局-order
+
+> 需求：将有“立即领取”按钮的数据排在前面
+
+![排序](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/CSS%E7%AC%94%E8%AE%B0/flex-order.png)
+
+```
+<div class="bh-list-box">
+    <ul class="tab">
+        <li data-type="1" class="active">**红包</li>
+        <li data-type="2" class="">&&红包</li>
+        <li data-type="3" class="">$$红包</li>
+        <li data-type="4" class="">##红包</li>
+    </ul>
+    <ul class="hb-list show" data-type="1">
+        ......
+        <li>
+            <div class="left">
+                <img src="/Public/Images/hb_level.png" alt="等级红包">
+                <div class="hb-price">
+                    <strong>+0.5元</strong>
+                    <p>dj01创角1天内等级到1红包奖励0.5</p>
+                </div>
+            </div>
+            <div class="right">
+                <button type="button" class="hb-radius-btn get-btn" data-id="104460">立即领取</button>
+            </div>
+        </li>
+        .....
+    </ul>
+</div>
+```
+
+> 这里是用html渲染完成之后动态添加Class，因这代码未前后的分离，是用php写的，里面太多php判断
+
+> 正常情况下，只要加Class就可以
+
+```
+window.onload =  function() {
+    // 有立即领取对应li添加排序Class(order1)
+    $(".get-btn").parent('.right').parent('li').addClass('order1');
+}
+```
+
+```
+// 红包列表切换
+$(".bh-list-box .tab li").click(function(){
+    $(this).addClass("active").siblings().removeClass("active");
+    var type = $(this).data('type');
+    $(".hb-list[data-type='"+ type +"']").addClass('show').siblings(".hb-list").removeClass('show');
+})
+```
+
+```
+.hb-list{
+    padding: 0.68rem 0.469rem;
+    min-height: 4.267rem;
+    flex-direction: column;     // 注意:这里要用column
+    display: none;
+}
+.hb-list li{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    padding: 0.512rem 0;
+    order: 2;		// 注意：这里用-1不起作用，就用了2
+}
+.hb-list li.order1{
+    order: 1;     // 注意：order是由小到大排序的，最小是1
+}
+.hb-list.show{ 
+    display: flex;     // 注意：这里要用flex
+}
+```
+
+
+

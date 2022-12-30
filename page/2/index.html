@@ -307,6 +307,666 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/12/29/linux-%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="winney">
+      <meta itemprop="description" content="Doing is better than saying.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="winney">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/12/29/linux-%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">linux-相关笔记</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-12-29 16:22:52 / 修改时间：18:43:39" itemprop="dateCreated datePublished" datetime="2022-12-29T16:22:52+08:00">2022-12-29</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1AN4y177TC">Vue、 Nodejs Express 打包发布外网云服务器 (完结)</a></p>
+<h3 id="常用-Linux-命令的基本使用"><a href="#常用-Linux-命令的基本使用" class="headerlink" title="常用 Linux 命令的基本使用"></a>常用 Linux 命令的基本使用</h3><ul>
+<li>理解学习 Linux 终端命令的原因</li>
+<li>常用 Linux 命令体验</li>
+</ul>
+<h4 id="01-学习-Linux-终端命令的原因"><a href="#01-学习-Linux-终端命令的原因" class="headerlink" title="01. 学习 Linux 终端命令的原因"></a>01. 学习 Linux 终端命令的原因</h4><ul>
+<li>Linux 刚面世时并没有图形界面，所有的操作全靠命令完成，如 <strong>磁盘操作</strong>、<strong>文件存取</strong>、<strong>目录操作</strong>、<strong>进程管理</strong>、<strong>文件权限</strong> 设定等</li>
+<li>在职场中，大量的 <strong>服务器维护工作</strong> 都是在 <strong>远程</strong> 通过 <strong>SSH 客户端</strong> 来完成的，并没有图形界面，所有的维护工作都需要通过命令来完成</li>
+<li>在职场中，作为后端程序员，必须要或多或少的掌握一些 Linux 常用的终端命令</li>
+<li>Linux 发行版本的命令大概有 200 多个，但是常用的命令只有 10 多个而已</li>
+</ul>
+<h4 id="02-常用-Linux-命令的基本使用"><a href="#02-常用-Linux-命令的基本使用" class="headerlink" title="02. 常用 Linux 命令的基本使用"></a>02. 常用 Linux 命令的基本使用</h4><table>
+<thead>
+<tr>
+<th align="left">序号</th>
+<th align="left">命令</th>
+<th align="left">对应英文</th>
+<th align="left">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">01</td>
+<td align="left">ls</td>
+<td align="left">list</td>
+<td align="left">查看当前文件夹下的内容</td>
+</tr>
+<tr>
+<td align="left">02</td>
+<td align="left">pwd</td>
+<td align="left">print work directory</td>
+<td align="left">查看当前所在文件夹</td>
+</tr>
+<tr>
+<td align="left">03</td>
+<td align="left">cd [目录名]</td>
+<td align="left">change directory</td>
+<td align="left">切换文件夹</td>
+</tr>
+<tr>
+<td align="left">04</td>
+<td align="left">touch [文件名]</td>
+<td align="left">touch</td>
+<td align="left">如果文件不存在，新建文件</td>
+</tr>
+<tr>
+<td align="left">05</td>
+<td align="left">mkdir [目录名]</td>
+<td align="left">make directory</td>
+<td align="left">创建目录</td>
+</tr>
+<tr>
+<td align="left">06</td>
+<td align="left">rm [文件名]</td>
+<td align="left">remove</td>
+<td align="left">删除指定的文件名</td>
+</tr>
+<tr>
+<td align="left">07</td>
+<td align="left">clear</td>
+<td align="left">clear</td>
+<td align="left">清屏</td>
+</tr>
+</tbody></table>
+<h4 id="03-自动补全"><a href="#03-自动补全" class="headerlink" title="03. 自动补全"></a>03. 自动补全</h4><ul>
+<li>在敲出 <code>文件</code>／<code>目录</code>／<code>命令</code> 的前几个字母之后，按下 <code>tab</code> 键<ul>
+<li>如果输入的没有歧义，系统会自动补全</li>
+<li>如果还存在其他 <code>文件</code>／<code>目录</code>／<code>命令</code>，再按一下 <code>tab</code> 键，系统会提示可能存在的命令</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>小技巧</p>
+<ul>
+<li>按 <code>上</code>／<code>下</code> 光标键可以在曾经使用过的命令之间来回切换</li>
+<li>如果想要退出选择，并且不想执行当前选中的命令，可以按 <code>ctrl + c</code></li>
+</ul>
+</blockquote>
+<h2 id="文件和目录常用命令"><a href="#文件和目录常用命令" class="headerlink" title="文件和目录常用命令"></a>文件和目录常用命令</h2><h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><ul>
+<li>查看目录内容<ul>
+<li><code>ls</code></li>
+</ul>
+</li>
+<li>切换目录<ul>
+<li><code>cd</code></li>
+</ul>
+</li>
+<li>创建和删除操作<ul>
+<li><code>touch</code></li>
+<li><code>rm</code></li>
+<li><code>mkdir</code></li>
+</ul>
+</li>
+<li>拷贝和移动文件<ul>
+<li><code>cp</code></li>
+<li><code>mv</code></li>
+</ul>
+</li>
+<li>查看文件内容<ul>
+<li><code>cat</code></li>
+<li><code>more</code></li>
+<li><code>grep</code></li>
+</ul>
+</li>
+<li>其他<ul>
+<li><code>echo</code></li>
+<li>重定向 <code>&gt;</code> 和 <code>&gt;&gt;</code></li>
+<li>管道 <code>|</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="01-查看目录内容"><a href="#01-查看目录内容" class="headerlink" title="01. 查看目录内容"></a>01. 查看目录内容</h3><h4 id="1-1-终端实用技巧"><a href="#1-1-终端实用技巧" class="headerlink" title="1.1 终端实用技巧"></a>1.1 终端实用技巧</h4><h5 id="1-gt-自动补全"><a href="#1-gt-自动补全" class="headerlink" title="1&gt; 自动补全"></a>1&gt; 自动补全</h5><ul>
+<li>在敲出 <code>文件</code>／<code>目录</code>／<code>命令</code> 的前几个字母之后，按下 <code>tab</code> 键<ul>
+<li>如果输入的没有歧义，系统会自动补全</li>
+<li>如果还存在其他 <code>文件</code>／<code>目录</code>／<code>命令</code>，再按一下 <code>tab</code> 键，系统会提示可能存在的命令</li>
+</ul>
+</li>
+</ul>
+<h5 id="2-gt-曾经使用过的命令"><a href="#2-gt-曾经使用过的命令" class="headerlink" title="2&gt; 曾经使用过的命令"></a>2&gt; 曾经使用过的命令</h5><ul>
+<li>按 <code>上</code>／<code>下</code> 光标键可以在曾经使用过的命令之间来回切换</li>
+<li>如果想要退出选择，并且不想执行当前选中的命令，可以按 <code>ctrl + c</code></li>
+</ul>
+<h5 id="1-2-ls-命令说明"><a href="#1-2-ls-命令说明" class="headerlink" title="1.2 ls 命令说明"></a>1.2 <code>ls</code> 命令说明</h5><ul>
+<li><code>ls</code> 是英文单词 <strong>list</strong> 的简写，其功能为列出目录的内容，是用户最常用的命令之一，类似于 <strong>DOS</strong> 下的 <code>dir</code> 命令</li>
+</ul>
+<h4 id="Linux-下文件和目录的特点"><a href="#Linux-下文件和目录的特点" class="headerlink" title="Linux 下文件和目录的特点"></a>Linux 下文件和目录的特点</h4><ul>
+<li>Linux <strong>文件</strong> 或者 <strong>目录</strong> 名称最长可以有 <code>256</code> 个字符</li>
+<li>以 <code>.</code> 开头的文件为隐藏文件，需要用 -a 参数才能显示</li>
+<li><strong>.</strong> 代表当前目录</li>
+<li><strong>..</strong> 代表上一级目录</li>
+</ul>
+<h5 id="1-3-ls-常用选项"><a href="#1-3-ls-常用选项" class="headerlink" title="1.3 ls 常用选项"></a>1.3 ls 常用选项</h5><table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="left">含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">-a</td>
+<td align="left">显示指定目录下所有子目录与文件，包括隐藏文件</td>
+</tr>
+<tr>
+<td align="left">-l</td>
+<td align="left">以列表方式显示文件的详细信息</td>
+</tr>
+<tr>
+<td align="left">-h</td>
+<td align="left">配合 -l 以人性化的方式显示文件大小</td>
+</tr>
+</tbody></table>
+<h5 id="计算机中文件大小的表示方式（科普）"><a href="#计算机中文件大小的表示方式（科普）" class="headerlink" title="计算机中文件大小的表示方式（科普）"></a>计算机中文件大小的表示方式（科普）</h5><table>
+<thead>
+<tr>
+<th align="left">单位</th>
+<th align="left">英文</th>
+<th align="left">含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">字节</td>
+<td align="left">B（Byte）</td>
+<td align="left">在计算机中作为一个数字单元，一般为 8 位二进制数</td>
+</tr>
+<tr>
+<td align="left">千</td>
+<td align="left">K（Kibibyte）</td>
+<td align="left">1 KB = 1024 B，千字节 （1024 = 2 ** 10）</td>
+</tr>
+<tr>
+<td align="left">兆</td>
+<td align="left">M（Mebibyte）</td>
+<td align="left">1 MB = 1024 KB，百万字节</td>
+</tr>
+<tr>
+<td align="left">千兆</td>
+<td align="left">G（Gigabyte）</td>
+<td align="left">1 GB = 1024 MB，十亿字节，千兆字节</td>
+</tr>
+<tr>
+<td align="left">太</td>
+<td align="left">T（Terabyte）</td>
+<td align="left">1 TB = 1024 GB，万亿字节，太字节</td>
+</tr>
+<tr>
+<td align="left">拍</td>
+<td align="left">P（Petabyte）</td>
+<td align="left">1 PB = 1024 TB，千万亿字节，拍字节</td>
+</tr>
+<tr>
+<td align="left">艾</td>
+<td align="left">E（Exabyte）</td>
+<td align="left">1 EB = 1024 PB，百亿亿字节，艾字节</td>
+</tr>
+<tr>
+<td align="left">泽</td>
+<td align="left">Z（Zettabyte）</td>
+<td align="left">1 ZB = 1024 EB，十万亿亿字节，泽字节</td>
+</tr>
+<tr>
+<td align="left">尧</td>
+<td align="left">Y（Yottabyte）</td>
+<td align="left">1 YB = 1024 ZB，一亿亿亿字节，尧字节</td>
+</tr>
+</tbody></table>
+<h5 id="1-4-ls-通配符的使用"><a href="#1-4-ls-通配符的使用" class="headerlink" title="1.4 ls 通配符的使用"></a>1.4 ls 通配符的使用</h5><table>
+<thead>
+<tr>
+<th align="left">通配符</th>
+<th align="left">含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">*</td>
+<td align="left">代表任意个数个字符</td>
+</tr>
+<tr>
+<td align="left">?</td>
+<td align="left">代表任意一个字符，至少 1 个</td>
+</tr>
+<tr>
+<td align="left">[]</td>
+<td align="left">表示可以匹配字符组中的任一一个</td>
+</tr>
+<tr>
+<td align="left">[abc]</td>
+<td align="left">匹配 a、b、c 中的任意一个</td>
+</tr>
+<tr>
+<td align="left">[a-f]</td>
+<td align="left">匹配从 a 到 f 范围内的的任意一个字符</td>
+</tr>
+</tbody></table>
+<h3 id="02-切换目录"><a href="#02-切换目录" class="headerlink" title="02. 切换目录"></a>02. 切换目录</h3><h4 id="2-1-cd"><a href="#2-1-cd" class="headerlink" title="2.1 cd"></a>2.1 <code>cd</code></h4><ul>
+<li><code>cd</code> 是英文单词 <strong>change directory</strong> 的简写，其功能为更改当前的工作目录，也是用户最常用的命令之一</li>
+</ul>
+<blockquote>
+<p>注意：Linux 所有的 <strong>目录</strong> 和 <strong>文件名</strong> 都是大小写敏感的</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="left">命令</th>
+<th align="left">含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">cd</td>
+<td align="left">切换到当前用户的主目录(/home/用户目录)</td>
+</tr>
+<tr>
+<td align="left">cd ~</td>
+<td align="left">切换到当前用户的主目录(/home/用户目录)</td>
+</tr>
+<tr>
+<td align="left">cd .</td>
+<td align="left">保持在当前目录不变</td>
+</tr>
+<tr>
+<td align="left">cd ..</td>
+<td align="left">切换到上级目录</td>
+</tr>
+<tr>
+<td align="left">cd -</td>
+<td align="left">可以在最近两次工作目录之间来回切换</td>
+</tr>
+</tbody></table>
+<h4 id="2-2-相对路径和绝对路径"><a href="#2-2-相对路径和绝对路径" class="headerlink" title="2.2 相对路径和绝对路径"></a>2.2 相对路径和绝对路径</h4><ul>
+<li><strong>相对路径</strong> 在输入路径时，最前面不是 <strong>/</strong> 或者 <strong>~**，表示相对 **当前目录</strong> 所在的目录位置</li>
+<li><strong>绝对路径</strong> 在输入路径时，最前面是 <strong>/</strong> 或者 <strong>~**，表示从 **根目录/家目录</strong> 开始的具体目录位置</li>
+</ul>
+<h3 id="03-创建和删除操作"><a href="#03-创建和删除操作" class="headerlink" title="03. 创建和删除操作"></a>03. 创建和删除操作</h3><h4 id="3-1-touch"><a href="#3-1-touch" class="headerlink" title="3.1 touch"></a>3.1 <code>touch</code></h4><ul>
+<li>创建文件或修改文件时间<ul>
+<li>如果文件 <strong>不存在</strong>，可以创建一个空白文件</li>
+<li>如果文件 <strong>已经存在</strong>，可以修改文件的末次修改日期</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-2-mkdir"><a href="#3-2-mkdir" class="headerlink" title="3.2 mkdir"></a>3.2 <code>mkdir</code></h4><ul>
+<li>创建一个新的目录</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">选项</th>
+<th align="left">含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">-p</td>
+<td align="left">可以递归创建目录</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>新建目录的名称</strong> 不能与当前目录中 <strong>已有的目录或文件</strong> 同名</p>
+</blockquote>
+<h4 id="3-3-rm"><a href="#3-3-rm" class="headerlink" title="3.3 rm"></a>3.3 <code>rm</code></h4><ul>
+<li>删除文件或目录</li>
+</ul>
+<blockquote>
+<p>使用 <code>rm</code> 命令要小心，因为文件删除后不能恢复</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="left">选项</th>
+<th align="left">含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">-f</td>
+<td align="left">强制删除，忽略不存在的文件，无需提示</td>
+</tr>
+<tr>
+<td align="left">-r</td>
+<td align="left">递归地删除目录下的内容，<strong>删除文件夹</strong> 时必须加此参数</td>
+</tr>
+</tbody></table>
+<h3 id="04-拷贝和移动文件"><a href="#04-拷贝和移动文件" class="headerlink" title="04. 拷贝和移动文件"></a>04. 拷贝和移动文件</h3><table>
+<thead>
+<tr>
+<th align="left">序号</th>
+<th align="left">命令</th>
+<th align="left">对应英文</th>
+<th align="left">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">01</td>
+<td align="left">tree [目录名]</td>
+<td align="left">tree</td>
+<td align="left">以树状图列出文件目录结构</td>
+</tr>
+<tr>
+<td align="left">02</td>
+<td align="left">cp 源文件 目标文件</td>
+<td align="left">copy</td>
+<td align="left">复制文件或者目录</td>
+</tr>
+<tr>
+<td align="left">03</td>
+<td align="left">mv 源文件 目标文件</td>
+<td align="left">move</td>
+<td align="left">移动文件或者目录／文件或者目录重命名</td>
+</tr>
+</tbody></table>
+<h4 id="4-1-tree"><a href="#4-1-tree" class="headerlink" title="4.1 tree"></a>4.1 <code>tree</code></h4><ul>
+<li><code>tree</code> 命令可以以树状图列出文件目录结构</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">选项</th>
+<th align="left">含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">-d</td>
+<td align="left">只显示目录</td>
+</tr>
+</tbody></table>
+<h4 id="4-2-cp"><a href="#4-2-cp" class="headerlink" title="4.2 cp"></a>4.2 <code>cp</code></h4><ul>
+<li><code>cp</code> 命令的功能是将给出的 <strong>文件</strong> 或 <strong>目录</strong> 复制到另一个 <strong>文件</strong> 或 <strong>目录</strong> 中，相当于 <strong>DOS</strong> 下的 <code>copy</code> 命令</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">选项</th>
+<th align="left">含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">-i</td>
+<td align="left">覆盖文件前提示</td>
+</tr>
+<tr>
+<td align="left">-r</td>
+<td align="left">若给出的源文件是目录文件，则 cp 将递归复制该目录下的所有子目录和文件，目标文件必须为一个目录名</td>
+</tr>
+</tbody></table>
+<h4 id="4-3-mv"><a href="#4-3-mv" class="headerlink" title="4.3 mv"></a>4.3 <code>mv</code></h4><ul>
+<li><code>mv</code> 命令可以用来 <strong>移动</strong> <strong>文件</strong> 或 <strong>目录</strong>，也可以给 <strong>文件或目录重命名</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">选项</th>
+<th align="left">含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">-i</td>
+<td align="left">覆盖文件前提示</td>
+</tr>
+</tbody></table>
+<h3 id="05-查看文件内容"><a href="#05-查看文件内容" class="headerlink" title="05. 查看文件内容"></a>05. 查看文件内容</h3><table>
+<thead>
+<tr>
+<th align="left">序号</th>
+<th align="left">命令</th>
+<th align="left">对应英文</th>
+<th align="left">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">01</td>
+<td align="left">cat 文件名</td>
+<td align="left">concatenate</td>
+<td align="left">查看文件内容、创建文件、文件合并、追加文件内容等功能</td>
+</tr>
+<tr>
+<td align="left">02</td>
+<td align="left">more 文件名</td>
+<td align="left">more</td>
+<td align="left">分屏显示文件内容</td>
+</tr>
+<tr>
+<td align="left">03</td>
+<td align="left">grep 搜索文本 文件名</td>
+<td align="left">grep</td>
+<td align="left">搜索文本文件内容</td>
+</tr>
+</tbody></table>
+<h4 id="5-1-cat"><a href="#5-1-cat" class="headerlink" title="5.1 cat"></a>5.1 <code>cat</code></h4><ul>
+<li><code>cat</code> 命令可以用来 <strong>查看文件内容</strong>、<strong>创建文件</strong>、<strong>文件合并</strong>、<strong>追加文件内容</strong> 等功能</li>
+<li><code>cat</code> 会一次显示所有的内容，适合 <strong>查看内容较少</strong> 的文本文件</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">选项</th>
+<th align="left">含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">-b</td>
+<td align="left">对非空输出行编号</td>
+</tr>
+<tr>
+<td align="left">-n</td>
+<td align="left">对输出的所有行编号</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>Linux 中还有一个 <code>nl</code> 的命令和 <code>cat -b</code> 的效果等价</p>
+</blockquote>
+<h4 id="5-2-more"><a href="#5-2-more" class="headerlink" title="5.2 more"></a>5.2 <code>more</code></h4><ul>
+<li><code>more</code> 命令可以用于分屏显示文件内容，每次只显示一页内容</li>
+<li>适合于 <strong>查看内容较多</strong>的文本文件</li>
+</ul>
+<p>使用 <code>more</code> 的操作键：</p>
+<table>
+<thead>
+<tr>
+<th align="left">操作键</th>
+<th align="left">功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">空格键</td>
+<td align="left">显示手册页的下一屏</td>
+</tr>
+<tr>
+<td align="left">Enter 键</td>
+<td align="left">一次滚动手册页的一行</td>
+</tr>
+<tr>
+<td align="left">b</td>
+<td align="left">回滚一屏</td>
+</tr>
+<tr>
+<td align="left">f</td>
+<td align="left">前滚一屏</td>
+</tr>
+<tr>
+<td align="left">q</td>
+<td align="left">退出</td>
+</tr>
+<tr>
+<td align="left">/word</td>
+<td align="left">搜索 <strong>word</strong> 字符串</td>
+</tr>
+</tbody></table>
+<h4 id="5-3-grep"><a href="#5-3-grep" class="headerlink" title="5.3 grep"></a>5.3 <code>grep</code></h4><ul>
+<li>Linux 系统中 <code>grep</code> 命令是一种强大的文本搜索工具</li>
+<li><code>grep</code>允许对文本文件进行 <strong>模式</strong>查找，所谓模式查找，又被称为正则表达式，在就业班会详细讲解</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">选项</th>
+<th align="left">含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">-n</td>
+<td align="left">显示匹配行及行号</td>
+</tr>
+<tr>
+<td align="left">-v</td>
+<td align="left">显示不包含匹配文本的所有行（相当于求反）</td>
+</tr>
+<tr>
+<td align="left">-i</td>
+<td align="left">忽略大小写</td>
+</tr>
+</tbody></table>
+<ul>
+<li>常用的两种模式查找</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="left">含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">^a</td>
+<td align="left">行首，搜寻以 <strong>a</strong> 开头的行</td>
+</tr>
+<tr>
+<td align="left">ke$</td>
+<td align="left">行尾，搜寻以 <strong>ke</strong> 结束的行</td>
+</tr>
+</tbody></table>
+<h3 id="06-其他"><a href="#06-其他" class="headerlink" title="06. 其他"></a>06. 其他</h3><h4 id="6-1-echo-文字内容"><a href="#6-1-echo-文字内容" class="headerlink" title="6.1 echo 文字内容"></a>6.1 <code>echo 文字内容</code></h4><ul>
+<li><code>echo</code> 会在终端中显示参数指定的文字，通常会和 <strong>重定向</strong> 联合使用</li>
+</ul>
+<h4 id="6-2-重定向-gt-和-gt-gt"><a href="#6-2-重定向-gt-和-gt-gt" class="headerlink" title="6.2 重定向 &gt; 和 &gt;&gt;"></a>6.2 重定向 <code>&gt;</code> 和 <code>&gt;&gt;</code></h4><ul>
+<li>Linux 允许将命令执行结果 <strong>重定向</strong>到一个 <strong>文件</strong></li>
+<li>将本应显示在<strong>终端上的内容</strong> <strong>输出／追加</strong> 到<strong>指定文件中</strong></li>
+</ul>
+<p>其中</p>
+<ul>
+<li><code>&gt;</code> 表示输出，会覆盖文件原有的内容</li>
+<li><code>&gt;&gt;</code> 表示追加，会将内容追加到已有文件的末尾</li>
+</ul>
+<h4 id="6-3-管道"><a href="#6-3-管道" class="headerlink" title="6.3 管道 |"></a>6.3 管道 <code>|</code></h4><ul>
+<li>Linux 允许将 <strong>一个命令的输出</strong> 可以<strong>通过管道</strong> 做为 <strong>另一个命令的输入</strong></li>
+<li>可以理解现实生活中的管子，管子的一头塞东西进去，另一头取出来，这里 <code>|</code> 的左右分为两端，左端塞东西（写），右端取东西（读）</li>
+</ul>
+<p>常用的管道命令有：</p>
+<ul>
+<li><code>more</code>：分屏显示内容</li>
+<li><code>grep</code>：在命令执行结果的基础上查询指定的文本</li>
+</ul>
+<h3 id="vi常用命令"><a href="#vi常用命令" class="headerlink" title="vi常用命令"></a>vi常用命令</h3><h4 id="打开和新建文件"><a href="#打开和新建文件" class="headerlink" title="打开和新建文件"></a>打开和新建文件</h4><ul>
+<li>在终端中输入 <code>vi</code> <strong>在后面跟上文件名</strong> 即可</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vi 文件名</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="三种工作模式"><a href="#三种工作模式" class="headerlink" title="三种工作模式"></a>三种工作模式</h4><p>vi 有三种基本工作模式：</p>
+<h5 id="命令模式"><a href="#命令模式" class="headerlink" title="命令模式"></a>命令模式</h5><p>打开文件首先进入命令模式，是使用 vi 的 入口 通过 命令 对文件进行常规的编辑操作，例如：定位、翻页、复制、粘贴、删除…… 在其他图形编辑器下，通过 快捷键 或者 鼠标 实现的操作，都在 命令模式 下实现</p>
+<h5 id="末行模式-——-执行-保存、退出-等操作"><a href="#末行模式-——-执行-保存、退出-等操作" class="headerlink" title="末行模式 —— 执行 保存、退出 等操作"></a>末行模式 —— 执行 保存、退出 等操作</h5><p>要退出 vi 返回到控制台，需要在末行模式下输入命令 末行模式 是 vi 的 出口</p>
+<h5 id="编辑模式-——-正常的编辑文字"><a href="#编辑模式-——-正常的编辑文字" class="headerlink" title="编辑模式 —— 正常的编辑文字"></a>编辑模式 —— 正常的编辑文字</h5><h4 id="末行模式命令"><a href="#末行模式命令" class="headerlink" title="末行模式命令"></a>末行模式命令</h4><p>先按esc退出编辑模式，然后输入<code>shift + ：</code>， 最后输入下面的命令：</p>
+<table>
+<thead>
+<tr>
+<th align="left">命令</th>
+<th align="left">英文</th>
+<th align="left">功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">w</td>
+<td align="left">write</td>
+<td align="left">保存</td>
+</tr>
+<tr>
+<td align="left">q</td>
+<td align="left">quit</td>
+<td align="left">退出，如果没有保存，不允许退出</td>
+</tr>
+<tr>
+<td align="left">q!</td>
+<td align="left">quit</td>
+<td align="left">强行退出，不保存退出</td>
+</tr>
+<tr>
+<td align="left">wq</td>
+<td align="left">write &amp; quit</td>
+<td align="left">保存并退出</td>
+</tr>
+<tr>
+<td align="left">x</td>
+<td align="left"></td>
+<td align="left">保存并退出</td>
+</tr>
+</tbody></table>
+<h3 id="上传和下载文件"><a href="#上传和下载文件" class="headerlink" title="上传和下载文件"></a>上传和下载文件</h3><p>执行命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install lrzsz</span><br></pre></td></tr></table></figure>
+<p>rz -y 覆盖上传文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rz -y</span><br></pre></td></tr></table></figure>
+<p>sz 下载文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sz [文件名]</span><br></pre></td></tr></table></figure>
+<p>出现找不到源可以运行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository main</span><br><span class="line">sudo add-apt-repository universe</span><br><span class="line">sudo add-apt-repository restricted</span><br><span class="line">sudo add-apt-repository multiverse</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 先执行上面4句，安装完成之后，再执行下面这句</span><br><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure>
+<h4 id="安装压缩解压软件"><a href="#安装压缩解压软件" class="headerlink" title="安装压缩解压软件"></a>安装压缩解压软件</h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_32899267/article/details/115932585">ubuntu php zip 安装教程,Ubuntu安装zip解压软件</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install zip unzip</span><br></pre></td></tr></table></figure>
+<h5 id="压缩文件"><a href="#压缩文件" class="headerlink" title="压缩文件"></a>压缩文件</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zip a.zip a.txt</span><br></pre></td></tr></table></figure>
+<h5 id="解压文件"><a href="#解压文件" class="headerlink" title="解压文件"></a>解压文件</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unzip a.zip</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/25/Vue3-x%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -373,103 +1033,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/04/%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="winney">
-      <meta itemprop="description" content="Doing is better than saying.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="winney">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/08/04/%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" class="post-title-link" itemprop="url">服务器个人博客</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-08-04 16:48:21" itemprop="dateCreated datePublished" datetime="2022-08-04T16:48:21+08:00">2022-08-04</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-08-05 18:10:29" itemprop="dateModified" datetime="2022-08-05T18:10:29+08:00">2022-08-05</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="使用宝塔和wordpress搭建个人博客"><a href="#使用宝塔和wordpress搭建个人博客" class="headerlink" title="使用宝塔和wordpress搭建个人博客"></a>使用宝塔和wordpress搭建个人博客</h2><h3 id="1-宝塔的安装"><a href="#1-宝塔的安装" class="headerlink" title="1.宝塔的安装"></a>1.宝塔的安装</h3><h4 id="1-1安装方式"><a href="#1-1安装方式" class="headerlink" title="1.1安装方式"></a>1.1安装方式</h4><ol>
-<li><a target="_blank" rel="noopener" href="https://www.code-nav.cn/">编程导航</a> 搜”宝塔“</li>
-<li>选择”<strong>Linux面板</strong>“（<a target="_blank" rel="noopener" href="https://www.bt.cn/new/download.html">选择安装</a> ）</li>
-<li>选“安装脚本”</li>
-<li>复制 “<strong>Centos安装脚本</strong>” 的代码</li>
-<li>粘贴命令，直接安装【在git上登录服务器，切换到opt目录（cd /opt）】</li>
-<li>把面板地址和用户名密码记住</li>
-</ol>
-<h4 id="1-2-8888端口不可以访问-要做以下两个配置"><a href="#1-2-8888端口不可以访问-要做以下两个配置" class="headerlink" title="1.2 8888端口不可以访问-要做以下两个配置"></a>1.2 8888端口不可以访问-要做以下两个配置</h4><ol>
-<li><h5 id="在腾讯云控制台，配置安全组"><a href="#在腾讯云控制台，配置安全组" class="headerlink" title="在腾讯云控制台，配置安全组"></a>在腾讯云控制台，配置安全组</h5><p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image.png" alt="配置安全组"></p>
-</li>
-<li><h5 id="在腾讯云控制台，配置防火墙"><a href="#在腾讯云控制台，配置防火墙" class="headerlink" title="在腾讯云控制台，配置防火墙"></a>在腾讯云控制台，配置防火墙</h5><p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image2.png" alt="配置防火墙"></p>
-</li>
-</ol>
-<h3 id="2-登录面板地址后"><a href="#2-登录面板地址后" class="headerlink" title="2.登录面板地址后"></a>2.登录面板地址后</h3><h4 id="2-1注册宝塔账号"><a href="#2-1注册宝塔账号" class="headerlink" title="2.1注册宝塔账号"></a>2.1注册宝塔账号</h4><h4 id="2-2安装推荐套件（使用默认推荐即可）"><a href="#2-2安装推荐套件（使用默认推荐即可）" class="headerlink" title="2.2安装推荐套件（使用默认推荐即可）"></a>2.2安装推荐套件（使用默认推荐即可）</h4><p><code>备注：安装LNMP(推荐)</code></p>
-<p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image3.png" alt="配置防火墙"></p>
-<h3 id="3-网站-添加站点"><a href="#3-网站-添加站点" class="headerlink" title="3.网站-添加站点"></a>3.网站-添加站点</h3><h3 id="4-WordPress安装"><a href="#4-WordPress安装" class="headerlink" title="4. WordPress安装"></a>4. WordPress安装</h3><p><code>备注：1.先把刚建的站点删除，以免冲突； </code></p>
-<p>4.1<a target="_blank" rel="noopener" href="https://wordpress.org/download/">wordpress官网</a>下载安装包（ .tar.gz格式的）</p>
-<p>4.2将 .tar.gz文件上传到站点根目录</p>
-<p>4.3鼠标放上 .tar.gz文件，选择“解压”</p>
-<p>4.4进入解压后的文件夹，将里面的文件全部复制到站点根目录</p>
-<p>4.5安装包和解压后的文件夹可以删掉了</p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_33468857/article/details/124652515">宝塔wordpress安装及使用（宝塔wordpress建站教程）</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/JunyouYH/article/details/123448276">宝塔面板安装wordpress详细教程</a></p>
-<h4 id="添加子域名"><a href="#添加子域名" class="headerlink" title="添加子域名"></a>添加子域名</h4><p>在阿里云-控制台-域名解析-解析设置，添加记录值</p>
-<p><code>注：需要等10分钟，才生效</code></p>
-<h4 id="VuePress"><a href="#VuePress" class="headerlink" title="VuePress"></a><a target="_blank" rel="noopener" href="https://vuepress.vuejs.org/zh/">VuePress</a></h4><p><a target="_blank" rel="noopener" href="https://github.com/vuejs/vuepress/tree/master/packages/%40vuepress/core">极简静态网站生成器</a></p>
-<p>可以直接 云开发</p>
-<p><a target="_blank" rel="noopener" href="https://github.com/Tencent/cloudbase-framework?site=vuepress#%E9%A1%B9%E7%9B%AE%E7%A4%BA%E4%BE%8B">https://github.com/Tencent/cloudbase-framework?site=vuepress#%E9%A1%B9%E7%9B%AE%E7%A4%BA%E4%BE%8B</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/46/">46</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/47/">47</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -537,7 +1104,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">137</span>
+          <span class="site-state-item-count">139</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -550,7 +1117,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">87</span>
+        <span class="site-state-item-count">88</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

@@ -1859,5 +1859,116 @@ $(".bh-list-box .tab li").click(function(){
 }
 ```
 
+#### CSS实现背景图片高斯模糊效果
 
+[backdrop-filter](https://developer.mozilla.org/zh-CN/docs/Web/CSS/backdrop-filter)
+
+[CSS实现背景图片模糊——毛玻璃效果 | 浅谈CSS属性 filter、backdrop-filter](https://blog.csdn.net/m0_62159662/article/details/127839543)
+
+摘自：[CSS实现背景图片高斯模糊效果](https://blog.csdn.net/apple_54470279/article/details/124471956)， 若涉及到版权问题，可联系立即删除。
+
+```
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>高斯模糊效果</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: url(./images/bg.jpg);
+            background-size: cover;
+        }
+        body::before {
+            content: "";
+            position: absolute; /* 一定要用绝对定位 */
+            width: 100%;
+            height: 100%;
+            backdrop-filter: blur(30px); /* 模糊半径 */
+        }
+        .img-show {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 750px;
+            height: 450px;
+            border: 2px solid #bebebe;
+            border-radius: 15px;
+            box-shadow: 8px 8px 20px rgba(0, 0, 0, .3), -8px -8px 20px rgba(0, 0, 0, .3);
+            background: url(./images/show.jpg);
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+    <div class="img-show"></div>
+</body>
+</html>
+```
+
+[css实现背景模糊效果](https://blog.csdn.net/YoungMan_09/article/details/124001477)
+
+
+
+#### linear-gradient伪元素给图片加蒙层
+
+[linear-gradient()](https://developer.mozilla.org/zh-CN/docs/Web/CSS/gradient/linear-gradient)
+
+摘自：[linear-gradient伪元素给图片加蒙层方法简单掌握](https://blog.csdn.net/qq_40200829/article/details/125227789)，若涉及到版权问题，可联系立即删除。
+
+```
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+         .box::after
+        /* 注意要把伪元素加在父盒子上面，不能加在图片上，否则无效 */
+        
+        {
+        	background-image: linear-gradient( to bottom, transparent, rgba(0, 0, 0, 0.8));
+            /* 第一个参数表示渐变方向，第二个参数是渐变开始颜色，第三个参数是渐变结束颜色 */
+            /* 定位子绝父相 */
+            position: absolute;
+            /* 定位子绝父相 */
+            width: 500px;
+            height: 400px;
+            /* 注意伪元素作为子元素盒子用绝对定位并且宽高和要覆盖的父级元素一致 */
+            content: "";
+            top: 0;
+            left: 0;
+            
+        }
+        .box {
+            /* 定位子绝父相 */
+            position: relative;
+            /* 定位子绝父相 */
+            width: 500px;
+            height: 400px;
+            margin: 0 auto;
+        }
+        
+        .box img {
+            width: 500px;
+            height: 400px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <img src="./huawei.jpg" alt="" />
+    </div>
+</body>
+
+</html>
+```
 

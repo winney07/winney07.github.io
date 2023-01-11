@@ -5,6 +5,17 @@ tags:
  Vue3
 ---
 
+
+
+#### 《Vue.js 3.x高效前端开发（视频教学版)》
+
+[资源下载链接](https://www.wqyunpan.com/preview-wx.html?id=206715&code=051Zs3ll2zWxAa41Qall2hmqw74Zs3lY&state=wx
+)
+
+> 本书配套源码、PPT课件、教学视频、教学教案、上机习题及答案、Vue.js 3.x常见错误及解决方法、30个企业级实战项目源码、就业面试题及解答、Vue.js 3.x开发经验及技巧汇总等丰富的学习和教学资源，需要`使用微信扫描下面二维码下载`，可按扫描后的页面提示，把链接转发到自己的邮箱中下载。如果有疑问，请联系booksaga@163.com，邮件主题写“Vue.js 3.x高效前端开发”。
+
+![课程链接](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Vue3-0-%E7%AC%94%E8%AE%B0/wx-code.png)
+
 #### [Vue3.x--系列学习](https://www.kancloud.cn/cyyspring/vue3/2696499)
 
 #### [vue3+ts(2)：TypeScript 语法汇总](https://zhuanlan.zhihu.com/p/360553463)

@@ -1,6 +1,6 @@
 ---
 title: Javascript常用代码
-date: 2018-03-20 05:28:46
+date: 2018-08-20 10:28:46
 tags:
 - Javascript
 ---

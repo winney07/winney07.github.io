@@ -1,6 +1,6 @@
 ---
 title: web移动端开发相关笔记
-date: 2018-06-18 11:40:08
+date: 2018-08-22 11:40:08
 tags:
 - 移动端开发
 - 工作笔记
@@ -24,6 +24,10 @@ tags:
 | [移动端web开发技巧](http://www.imooc.com/article/1115)       |                                                              |                                                              |
 
 #### 移动端H5页面适配问题总结
+
+[移动端页面的适配](https://zhuanlan.zhihu.com/p/141964516)
+
+[再聊移动端页面的适配](https://www.w3cplus.com/css/vw-for-layout.html)
 
 ##### 移动端H5页面使用rem做适配
 

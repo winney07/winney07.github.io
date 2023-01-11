@@ -1,5 +1,5 @@
 ---
-TypeScript 函数泛型-难点title: TypeScript--笔记
+title: TypeScript--笔记
 date: 2022-05-16 15:48:09
 tags:
 -  TypeScript

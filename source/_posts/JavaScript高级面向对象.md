@@ -740,7 +740,7 @@ var o1 = new Object();
 a.constructor
 ```
 
-**typeof**
+[**typeof**](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/typeof)
 
 ```javascript
 typeof 1;      // number
@@ -749,7 +749,7 @@ var f=function(){};
 typeof f;				// function
 ```
 
-**是不是某个构造器的实例：instance of**
+**是不是某个构造器的实例：[instance of](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/instanceof)**
 
 ```javascript
 var o = {};

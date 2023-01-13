@@ -260,3 +260,66 @@ const sources = await Sources.find(params).sort('-create_time').skip(skip).limit
 - Broccoli
 - Webpack
 
+
+
+#### [JSON Server](https://www.npmjs.com/package/json-server)——模拟服务端接口数据
+
+> 一般用在前后端分离后，前端人员可以不依赖 `API`开发，而在本地搭建一个 `JSON`服务，自己产生测试数据。
+
+> 一个在本地运行，可以存储 `json`数据的 `server`。
+
+1. 安装
+
+   ```
+   npm install -g json-server
+   ```
+
+2. 通过查看版本号，来测试是否安装成功
+
+   ```
+   json-server -v
+   ```
+
+3. 创建json数据 --` db.json`
+
+   ```
+   {
+     "posts": [
+       {
+         "title": "title",
+         "id": 1
+       },
+     ],
+     "comments": [
+       {
+         "id": 1,
+         "body": "some comment",
+         "postId": 1
+       }
+     ],
+     "profile": {
+       "name": "typicode"
+     }
+   }
+   ```
+
+4. 开始服务——进入到` db.json`文件所在的目录，执行以下代码
+
+   ```
+   json-server --watch db.json
+   ```
+
+   `json-server `默认是 3000端口，我们也可以自己指定端口，指令如下：
+
+   ```
+   json-server --watch db.json --port 5000(端口号)
+   ```
+
+5. 查看接口返回数据
+
+   ```
+   http://localhost:5000/posts
+   ```
+
+6. 增删改查相关操作，[看语雀中的笔记](https://www.yuque.com/winney07/vp9xtm/ppi9zu#d8Beu)
+

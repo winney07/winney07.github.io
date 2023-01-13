@@ -297,6 +297,8 @@ export default [
 
 ### 5.配置前端跨域代理
 
+`proxy`
+
 ```
 server: {
     proxy: {

@@ -488,3 +488,28 @@ handleClick = (e) => {
 <input placeholder='请输入' onClick={this.handleClick}/> 
 ```
 
+#### Lazy和Suspense
+
+1、`React.lazy`
+
+`React.lazy`函数能让你像渲染常规组件一样处理动态引入（的组件）。
+
+什么意思呢？其实就是懒加载。
+
+（1）为什么代码要分割
+
+当你的程序越来越大，代码量越来越多。一个页面上堆积了很多功能，也许有些功能很可能都用不到，但是一样下载加载到页面上，所以这里面肯定有优化空间。就如图片懒加载的理论。
+
+（2）实现原理
+
+当Webpack 解析到该语法时，它会自动地开始进行代码分割(Code Splitting)，分割成一个文件，当使用到这个文件的时候会这段代码才会被异步加载。
+
+（3）解决方案
+
+在`React.lazy`和常用的三方包`react-loadable`，都是使用了这个原理，然后配合webpack进行代码打包拆分达到异步加载，这样首屏渲染的速度将大大的提高。
+
+由于`React.lazy`不支持服务端渲染，所以这时候`react-loadable`就是不错的选择。
+
+2、如何使用`React.lazy`
+
+下面示例代码使用`create-react-app`脚手架搭建

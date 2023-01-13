@@ -777,3 +777,55 @@ appsId.json文件：
 
 在服务器上跑node服务，配置mongodb啊，你本地怎么运行的，服务器就怎么运行，只不过服务器上的node服务也好nginx也好，读取的是打包压缩后的静态项目资源，`服务器也就是可以通过外网ip访问的的一台电脑`
 
+#### [路由懒加载](https://router.vuejs.org/zh/guide/advanced/lazy-loading.html)
+
+```
+// 将
+// import UserDetails from './views/UserDetails.vue'
+// 替换成
+const UserDetails = () => import('./views/UserDetails.vue')
+
+const router = createRouter({
+  // ...
+  routes: [{ path: '/users/:id', component: UserDetails }],
+})
+```
+
+#### 状态管理
+
+[provide](https://cn.vuejs.org/api/options-composition.html#provide)/[inject](https://cn.vuejs.org/api/options-composition.html#inject)跨级通信
+
+```
+// App.vue
+
+<script>
+import Home from "./views/Home.vue";
+import store from "./store";
+// vue3中如何设置状态管理
+// provide/inject跨级通信
+export default{
+    provide: {
+    	store,
+    },
+    components: {
+    	Home,
+    },
+};
+</script>
+
+<template>
+    <Home />
+</template>
+```
+
+```
+// Home.vue
+<template>
+    <div>{{store.state.msg}}</div>
+</template
+<script>
+export default {
+    inject:['store']
+</script>
+```
+

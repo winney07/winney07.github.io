@@ -40,6 +40,8 @@ $.ajax({
 
 #### axios 的简单封装
 
+[axios中文文档|axios中文网](http://www.axios-js.com/zh-cn/docs/)
+
 1.首先引入 axios
 
 ```jsx
@@ -119,3 +121,14 @@ export const xxxx = (params) => api({
 3. HTTP请求
 4. XMLHttpRequest发送请求
 5. XMLHttpRequest取得响应
+
+
+
+#### [Fetch API](https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API)
+
+
+
+#### async和await
+
+作用：简化promise对象的使用：不用再使用then()来指定成功/失败的回调函数，以同步编码(没有回调函数)方式实现异步流程
+

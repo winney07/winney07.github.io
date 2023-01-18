@@ -513,3 +513,41 @@ handleClick = (e) => {
 2、如何使用`React.lazy`
 
 下面示例代码使用`create-react-app`脚手架搭建
+
+
+
+#### 富文本编辑器
+
+[react-draft-wysiwyg](https://github.com/jpuri/react-draft-wysiwyg)——GitHub
+
+```
+npm install --save react-draft-wysiwyg draft-js
+```
+
+```
+import { Editor } from "react-draft-wysiwyg";
+import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+<Editor
+  editorState={editorState}
+  toolbarClassName="toolbarClassName"
+  wrapperClassName="wrapperClassName"
+  editorClassName="editorClassName"
+  onEditorStateChange={this.onEditorStateChange}
+/>;
+```
+
+[react-draft-wysiwyg-文档](https://jpuri.github.io/react-draft-wysiwyg/#/docs?_k=jjqinp)
+
+
+
+#### [enzyme](https://github.com/enzymejs/enzyme)——GitHub
+
+用于 React 的 JS 测试工具
+
+[React测试框架之enzyme](https://blog.csdn.net/weixin_33860553/article/details/88004644)
+
+[Enzyme学习笔记](https://blog.csdn.net/weixin_37972723/article/details/102076907)
+
+[React 测试利器之 Enzyme](https://blog.csdn.net/chenzhizhuo/article/details/104196969)
+
+[全网最细：Jest+Enzyme测试React组件（包含交互、DOM、样式测试）](https://blog.csdn.net/m0_46995864/article/details/125365202)

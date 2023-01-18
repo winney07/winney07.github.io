@@ -42,6 +42,8 @@ $.ajax({
 
 [axios中文文档|axios中文网](http://www.axios-js.com/zh-cn/docs/)
 
+axios：基于promise的http库
+
 1.首先引入 axios
 
 ```jsx
@@ -126,9 +128,36 @@ export const xxxx = (params) => api({
 
 #### [Fetch API](https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API)
 
-
+fetch返回promise对象
 
 #### async和await
 
 作用：简化promise对象的使用：不用再使用then()来指定成功/失败的回调函数，以同步编码(没有回调函数)方式实现异步流程
+
+##### 哪里写await?
+
+在返回promise的表达式左侧写await：不想要promise，想要promise异步执行的成功的value数据
+
+##### 哪里写async?
+
+await所在函数(最近的)定义的左侧写async
+
+
+
+#### 跨域-代理
+
+配置跨域的方式：
+
+服务端最常用的两种：
+
+1. cors配置跨域
+2. nginx反向代理处理跨域
+
+`前端的代理，只能本地调试使用`
+
+> Vite搭建的Vue项目，在本地使用代理解决了跨域问题，打包到线上的跨域问题怎么解决？ 
+>
+> 跨域的地址不属于自己服务器的连接，是别人服务器的连接
+>
+> ——服务器要配置地址（需要服务端来处理）
 

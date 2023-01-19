@@ -23,6 +23,16 @@ tags:
 | [移动设备适配库2](http://detectmobilebrowsers.com/)          | [jQuery Mobile Demos](https://demos.jquerymobile.com/1.4.3/) | [zepto源码注释](https://www.cnblogs.com/sky000/archive/2013/03/29/2988952.html) |
 | [移动端web开发技巧](http://www.imooc.com/article/1115)       |                                                              |                                                              |
 
+#### 在移动端页面显示控制台（调试）-Vcode
+
+[移动端h5网页、微信网页调试之利用vConsole真机调试+显示控制台打印信息、调试接口(附带vue项目里的具体使用方法)](https://blog.csdn.net/qq_22182989/article/details/125338389)
+
+```
+<script type="text/javascript" src='https://unpkg.com/vconsole@3.15.0/dist/vconsole.min.js'></script>
+
+var vConsole = new window.VConsole(); 
+```
+
 #### 移动端H5页面适配问题总结
 
 [移动端页面的适配](https://zhuanlan.zhihu.com/p/141964516)

@@ -41,6 +41,99 @@ tsc -v
 
 
 
+JavaScript，只是一个脚本语言，并非设计用于开发大型 web应用，JavaScript。没有提供类和模块的概念，而TypeScript，扩展了JavaScript，实现了这些特性。
+
+#### Typescript，主要特点包括：
+
+Typescript，是微软推出的开源语言，使用Apache授权协议
+
+TypeScript，是Javascript的超集.
+
+Typescript，增加了可选类型、类和模块
+
+Typescript，可编译成可读的、标准的Javascript
+
+Typescript，支持开发大规模Javascript应用
+
+Typescript，设计用于开发大型应用，并保证编译后的JavaScript代码兼容性
+
+Typescript，扩展了Javascript的语法，因此已有的avascript代码可直接与
+
+TypeScript，一起运行无需更改
+
+TypeScript，文件扩展名是ts，而Typescript编译器会编译成js文件
+
+Typescript，语法与Jscript. .NET相同
+
+#### typescript中定义函数
+
+> 在现在编程领域，强调开发人员能够开发高可靠性，高复用，可测试，易于维护
+> 的代码，对编程人员来说一个基本的要求。而原生的javascript做到以上的几点非常不容易，那么，typescript是以原生javascript为基础，提供了一个满足以上几点的js扩展框架，极大的增强了javascript的设计和开发能力。
+
+在javascript编程中最为重要的一个对象就是function
+我们都知道function,他是一个特除的对象，我们可以用function来帮助我们实现抽象层，function在原生的定义上面其代码的可读性并不强，
+在typescript里面，对function做了进一步讲法上的扩展，这些扩展大大的增加了我们代码的可读性和可维护性
+
+1. 函数类型(有名函数,匿名函数)
+2. 可选/默认参数
+3. 可变参数
+4. 函数重载
+5. Lambads和this关键字
+
+##### 有名函数
+
+```
+function test(){}
+```
+
+##### 匿名函数
+
+```
+var test2 = function(){}
+```
+
+##### 可选参数，在参数后加？
+
+```
+function test2(n:string, age?:number):string{
+	return "ok";
+}
+```
+
+##### 默认值
+
+```
+function test3(n:string, age=19):number{
+	return age;
+}
+```
+
+#### typescript的类
+
+```
+// ts的写法
+class Person {
+	// 类的成员属性
+	name:string;
+	age:number;
+	instrestes:string[];
+	
+	// 类的实例方法
+	say():void{
+		alert(this.name + ": say hello class!")
+	}
+}
+
+// 原生js的写法
+function Person(){
+	this.name = "";
+	this.age = "";
+}
+Person.prototype.say = function() {
+	alert(this.name + ": say hello class!")
+}
+```
+
 #### 定义接口
 
 ```

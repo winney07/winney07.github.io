@@ -1,10 +1,11 @@
 ---
 title: docsify
-date: 2021-06-10 11:00:09
-tags: docsify
+date: 2020-08-24 17:54:50
+tags:
+- docsify
 ---
 
-#### docsify
+#### [官网文档](https://docsify.js.org/#/zh-cn/quickstart)
 
 [docsify中文文档](https://docsify.js.org/#/zh-cn/)
 
@@ -27,8 +28,6 @@ tags: docsify
 - 兼容 IE10+
 - 支持 SSR ([example](https://links.jianshu.com/go?to=https%3A%2F%2Fgithub.com%2Fdocsifyjs%2Fdocsify-ssr-demo))
 
-
-
 #### 生成文档的工具：
 
 阿里的语雀、DokuWiki、MDwiki、HDwiki
@@ -39,9 +38,7 @@ tags: docsify
 
 [使用Vue全家桶+Node.js搭建的小型全栈项目](https://hanxueqing.github.io/Douban-Movie/#/?id=使用vue全家桶nodejs搭建的小型全栈项目)
 
-
-
-##### 安装
+#### 安装
 
 全局安装`docsify-cli`工具，可以方便地创建及在本地预览生成的文档。
 
@@ -49,7 +46,7 @@ tags: docsify
 npm i docsify-cli -g
 ```
 
-##### 初始化项目
+#### 初始化项目
 
 如果想在项目的 `./docs` 目录里写文档，直接通过 `init` 初始化项目。
 
@@ -57,7 +54,7 @@ npm i docsify-cli -g
 docsify init ./docs
 ```
 
-##### 本地预览
+#### 本地预览
 
 通过运行 `docsify serve` 启动一个本地服务器，可以方便地实时预览效果。默认访问地址 [http://localhost:3000](http://localhost:3000/) 
 
@@ -65,28 +62,36 @@ docsify init ./docs
 docsify serve docs
 ```
 
-##### 定制侧边栏
+#### 添加左侧导航栏-loadSidebar: true
 
-1. 在项目根目录（与index.html同目录）创建`_sidebar.md`文件
-
-2. 配置 `loadSidebar` 选项
+1. 修改docs/index.html，配置 `loadSidebar` 选项
 
    ```
-    window.$docsify = {
-       loadSidebar: true
-     }
+   window.$docsify = {
+     loadSidebar: true,  // 开启左侧导航栏
+     name: '',
+     repo: ''
+   }
    ```
 
-3. 编辑`_sidebar.md` 文件
+2. 在根目录(docs)（与index.html同目录）中，新建`_sidebar.md`文件
 
    ```
-   <!-- docs/_sidebar.md -->
+   * 常用网址     // 分组名
    
-   * [首页](zh-cn/)
-   * [指南](zh-cn/guide)
+     * [Vue](website/vue.md)   // 链接到对应文件
+   * 收藏博客
+   
+     * [javascript](blogs/javascript.md)
+   * 常用软件
+   
+     * [web前端](software/web.md)
+   * 笔记
+   
+     [web前端](software/web.md)
    ```
 
-4. 配置 `alias` 避免不必要的回退过程 （即访问非根目录的页面时，会报`_sidebar.md`文件是404)
+3. 配置 `alias` 避免不必要的回退过程 （即访问非根目录的页面时，会报`_sidebar.md`文件是404)
 
    ```
    window.$docsify = {
@@ -94,11 +99,10 @@ docsify serve docs
        alias: {
          '/.*/_sidebar.md': '/_sidebar.md'
        }
-     }
+   }
    ```
 
-
-
+4. 新建对应的文件（如：`website/vue.md` 【新建website目录，新建vue.md】）
 
 #### [docsify 侧边栏目录扩展](https://www.cnblogs.com/baby123/p/14361402.html)
 
@@ -173,21 +177,39 @@ echo "hello"
 
 
 
-#### 加入搜索功能
+#### 添加搜索功能
 
-```
-<script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
+1. 修改`window.$docsify`（在`docs/index.html`）
 
-search: {
-    noData: {
-      '/': '没有结果!'
-    },
-    paths: 'auto',
-    placeholder: {
-      '/': '搜索'
-    }
-}
-```
+   ```
+   window.$docsify = {
+       loadSidebar: true,
+       name: '',
+       repo: '',
+       search: {   // 添加
+           noData: {
+             '/': '无匹配结果'
+           },
+           paths: 'auto',
+           placeholder: {
+             '/': '搜索'
+           }
+       }
+     }
+   ```
+
+2. 添加`search.min.js`插件（在`docs/index.html`）
+
+   ```
+   <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
+   ```
+
+   ```
+   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/sidebar.min.css" />
+   ```
+
+
+
 
 #### 部署到服务器
 
@@ -197,3 +219,124 @@ search: {
 
 [使用docsify 写开源文档+部署到云服务器](https://juejin.cn/post/6844904115466682375)
 
+
+
+#### 配置参考
+
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>工作文档</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="description" content="Description">
+  <link rel="shortcut icon" href="./favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/sidebar.min.css" />
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/sidebar-folder.min.css" />
+  <style>
+    a{
+      text-decoration: none;
+    }
+    a:hover{
+      text-decoration: underline;
+    }
+    .sidebar ul li a{
+      /* color: #0088CC !important; */
+      font-weight: normal;
+    }
+    .content td a, .content p a{
+      font-weight: normal;
+    }
+    .markdown-section blockquote p{
+      font-weight: normal;
+    }
+    .markdown-section h5{
+      font-size: 1.05rem;
+      margin-top: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    .markdown-section hr{
+      margin: 2em 0 0.5rem;
+    }
+    .sidebar-nav ul:not(.app-sub-sidebar)>li.folder::before{
+      display: none;
+    }
+    .sidebar-nav ul:not(.app-sub-sidebar)>li.file::before{
+      background: none;
+    }
+    .sidebar-nav ul:not(.app-sub-sidebar)>li::before{
+      content: "-";
+      top: -1px;
+      left: -10px;
+      width: 10px;
+      height: 10px;
+    }
+    .sidebar-nav ul:not(.app-sub-sidebar)>li.open::before{
+      transform: none;
+    }
+    .markdown-section p{
+      margin: 0;
+    }
+    .markdown-section th{
+      background-color: #f8f8f8;
+      color: #909399;
+    }
+    .markdown-section pre{
+      padding: 0 0.6rem;
+      margin: 0.6em 0;
+    }
+    .markdown-section pre>code{
+      padding: 0.4rem 5px;
+    }
+    .markdown-section code, .markdown-section output:after, .markdown-section pre{
+      font-family: 'Source Sans Pro,Helvetica Neue,Arial,sans-serif';
+    }
+    /* .sidebar{
+      width: 200px;
+    }
+    .sidebar-toggle{
+      width: 184px;
+    }
+    .content{
+      left: 200px;
+    }
+    .markdown-section{
+      max-width: 90%;
+    } */
+  </style>
+</head>
+<body>
+  <div id="app"></div>
+  <script>
+    window.$docsify = {
+      // name: '工作文档',
+      auto2top: true,
+      repo: '',
+      loadSidebar: true,
+      sidebarDisplayLevel: 0,
+      // subMaxLevel: 2,
+      alias: {
+        '/.*/_sidebar.md': '/_sidebar.md'
+      },
+      search: {
+          noData: {
+            '/': '无匹配结果'
+          },
+          paths: 'auto',
+          placeholder: {
+            '/': '搜索'
+          }
+      }
+    }
+  </script>
+  <!-- Docsify v4 -->
+  <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/docsify-sidebar-collapse.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
+</body>
+</html>
+```

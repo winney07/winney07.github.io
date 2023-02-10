@@ -60,7 +60,7 @@ npm install -g cnpm --registry=https://registry.npm.taobao.org
 
 快速安装：
 ```bash
-mkdir webpack-demo && cd webpack-demo
+mkdir webpack-demo && cd webpack-demo    //  要再git bash中运行 && 
 npm init -y
 npm install webpack webpack-cli --save-dev
 ```
@@ -105,7 +105,7 @@ document.body.appendChild(component());
 ```
 > 我们还需要调整 package.json 文件，以便确保我们安装包是私有的(private)，并且移除 main 入口。这可以防止意外发布你的代码。
 
-*<div style="background:#DCF2FD;color:#618ca0;padding:6px;">如果你想要了解 package.json 内在机制的更多信息，我们推荐阅读 {% link npm 文档 https://docs.npmjs.com/files/package.json %}。</div>*
+`<div style="background:#DCF2FD;color:#618ca0;padding:6px;">如果你想要了解 package.json 内在机制的更多信息，我们推荐阅读 {% link npm 文档 https://docs.npmjs.com/files/package.json %}。</div>`
 
 ###### package.json
 ```bash
@@ -161,6 +161,91 @@ plugins: [
 ```
 
 
+
+------
+
+#### 打包压缩js文件-步骤
+
+1. 全局安装`webpack-cli`
+
+   ```
+   npm install webpack-cli –g
+   ```
+
+2. 创建项目目录 + 切换到项目目录
+
+   ```
+   mkdir webpack_demo && cd webpack_demo     //  && 符号，要在git bash中才能运行
+   ```
+
+3. 初始化`package.json`文件
+
+   ```
+   npm init -y
+   ```
+
+4. 安装依赖包
+
+   ```
+   npm install webpack webpack-cli --save-dev
+   ```
+
+5. 修改`package.json`文件
+
+   ```
+   "scripts": {
+       "test": "echo \"Error: no test specified\" && exit 1",
+    +  "build": "webpack"       // 添加这个命令  
+   },
+   ```
+
+   > 在命令行，直接输入`webpack`，进行打包。   没有添加该命令前，输入`npm run build`，进行打包
+
+6. 在根目录创建`src/index.js`
+
+   ```
+   function component() {
+       var element = document.createElement('div');
+   
+       // Lodash（目前通过一个 script 脚本引入）对于执行这一行是必需的
+       element.innerHTML = _.join(['Hello', 'webpack'], ' ');
+   
+       return element;
+   }
+   
+   document.body.appendChild(component());
+   ```
+
+7. 在根目录创建`webpack.config.js`
+
+   ```
+   const path = require('path');
+   
+   module.exports = {
+     entry: './src/index.js',     // 配置输入路径
+     mode: 'production',
+     output: {          // 配置输出路径
+       filename: 'bundle.js',
+       path: path.resolve(__dirname, 'dist')
+     }
+   };
+   ```
+
+8. 执行打包命令
+
+   ```
+   webpack     
+   ```
+
+   或
+
+   ```
+   npm run build
+   ```
+
+9. 查看打包后文件
+
+   在根目录会生成`dist/bundle.js`
 
 ------
 

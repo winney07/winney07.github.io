@@ -193,123 +193,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/12/Parcel%E6%89%93%E5%8C%85TypeScript/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="winney">
-      <meta itemprop="description" content="Doing is better than saying.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="winney">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/11/12/Parcel%E6%89%93%E5%8C%85TypeScript/" class="post-title-link" itemprop="url">Parcel打包TypeScript</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-11-12 10:46:45" itemprop="dateCreated datePublished" datetime="2020-11-12T10:46:45+08:00">2020-11-12</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-01-12 17:59:39" itemprop="dateModified" datetime="2021-01-12T17:59:39+08:00">2021-01-12</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/TypeScript/" itemprop="url" rel="index"><span itemprop="name">TypeScript</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="用-Parcel-打包-TypeScript-代码"><a href="#用-Parcel-打包-TypeScript-代码" class="headerlink" title="用 Parcel 打包 TypeScript 代码"></a>用 Parcel 打包 TypeScript 代码</h4><blockquote>
-<h4 id="建立一个新项目"><a href="#建立一个新项目" class="headerlink" title="建立一个新项目"></a>建立一个新项目</h4></blockquote>
-<ol>
-<li>教学需要，这里我们重新建立一个项目<code>TSTest</code>,在桌面新建立一个文件夹，然后在<code>VSCode</code>中打开。</li>
-<li>打开终端，输入<code>npm init -y</code>,创建<code>package.json</code>文件</li>
-<li>在终端中输入<code>tsc --init</code>,创建<code>tsconfig.json</code>文件</li>
-<li>修改<code>tsconfig.json</code>配置<code>rootDir</code>和<code>outDir</code>.</li>
-<li>新建<code>src</code>文件夹，在里边建立<code>index.html</code>,<code>page.ts</code>文件</li>
-<li>编写<code>index.html</code>文件，并引入<code>page.ts</code>文件</li>
-<li>编写<code>page.ts</code>文件</li>
-</ol>
-<p>index.html</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=<span class="string">&quot;en&quot;</span>&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;meta charset=<span class="string">&quot;UTF-8&quot;</span> /&gt;</span><br><span class="line">    &lt;meta name=<span class="string">&quot;viewport&quot;</span> content=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span> /&gt;</span><br><span class="line">    &lt;script src=<span class="string">&quot;./page.ts&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">  &lt;body&gt;&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-<p>page.ts</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> teacher: string = <span class="string">&quot;jspang&quot;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(teacher);</span><br></pre></td></tr></table></figure>
-<blockquote>
-<h4 id="Parcel-的安装和使用"><a href="#Parcel-的安装和使用" class="headerlink" title="Parcel 的安装和使用"></a>Parcel 的安装和使用</h4></blockquote>
-<p><code>npm</code>或者<code>yarn</code>来进行安装</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add --dev parcel@next</span><br></pre></td></tr></table></figure>
-<p>修改package.json</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;test&quot;</span>: <span class="string">&quot;parcel ./src/index.html&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>然后打开终端输入<code>yarn test</code>,这时候终端会给出一个地址<code>http://localhost:1234</code>,把地址放到浏览器上，可以看到浏览器的控制台会输出<code>jspang</code>。</p>
-<p>这说明<code>Parcel</code>会自动对<code>index.html</code>中引入的<code>TypeScript</code>文件进行编译，然后打包好后，就可以直接使用了。</p>
-<h4 id="在-TypeScript-中使用-JQuery"><a href="#在-TypeScript-中使用-JQuery" class="headerlink" title="在 TypeScript 中使用 JQuery"></a>在 TypeScript 中使用 JQuery</h4><blockquote>
-<h4 id="引入-JQuery-框架库"><a href="#引入-JQuery-框架库" class="headerlink" title="引入 JQuery 框架库"></a>引入 JQuery 框架库</h4></blockquote>
-<p>直接在<code>index.html</code>加入<code>&lt;script&gt;</code>标签</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">&quot;https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js&quot;</span>&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<p>有了 jquery 框架，就可以在<code>TypeScript</code>文件中进行使用<code>JQuery</code>的语法</p>
-<p>然后在<code>page.ts</code>文件中编写如下代码</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> teacher: string = <span class="string">&quot;jspang&quot;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(teacher);</span><br><span class="line"></span><br><span class="line">$(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  alert(<span class="string">&quot;jspang&quot;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>写完后到终端中输入<code>yarn test</code>进行编译和启动服务。然后在地址栏输入了<code>http://localhost:1234</code>,可以看到程序可以正常输出，也没有任何的报错。</p>
-<blockquote>
-<h4 id="安装-types-jquery-解决方法"><a href="#安装-types-jquery-解决方法" class="headerlink" title="安装 types/jquery(解决方法)"></a>安装 types/jquery(解决方法)</h4></blockquote>
-<p>第一种：就是安装别人写好的文件</p>
-<p>但是在<code>vscode</code>中是会报错的，这时候就需要我们安装类型文件<code>type file</code>,直接可以用 npm 进行安装。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i @types/jquery</span><br></pre></td></tr></table></figure>
-<p>第二种:简单粗暴</p>
-<p>还有一种简单粗暴的方法的方式就是直接在<code>page.ts</code>文件的头部加入这句代码：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">declare <span class="keyword">var</span> $: any;</span><br></pre></td></tr></table></figure>
-<p>第三种：自己写一个<code>.d.ts</code>声明文件的类库，如果你用的类库很少见，就需要自己写了。这个写起来还是很麻烦的。 比如 JQuery 就有几十个接口，如果你要写，这个文件会写很长，所以原则就是有别人写好的就直接用，实在没有就用粗暴的方法，如果实在不行，再考虑写<code>.d.ts</code>声明文件。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/09/%E5%85%83%E7%BB%84%E7%9A%84%E4%BD%BF%E7%94%A8%E5%92%8C%E7%B1%BB%E5%9E%8B%E7%BA%A6%E6%9D%9F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -470,6 +353,74 @@
   
   
 
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/10/19/%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="winney">
+      <meta itemprop="description" content="Doing is better than saying.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="winney">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/10/19/%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0/" class="post-title-link" itemprop="url">博客文章</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-10-19 14:20:13" itemprop="dateCreated datePublished" datetime="2020-10-19T14:20:13+08:00">2020-10-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-11-18 11:35:21" itemprop="dateModified" datetime="2022-11-18T11:35:21+08:00">2022-11-18</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="掘金"><a href="#掘金" class="headerlink" title="掘金"></a>掘金</h4><p><a target="_blank" rel="noopener" href="https://juejin.cn/user/1978776660216136">全栈然叔</a></p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903683411410951">前端常用插件、工具类库汇总，不要重复造轮子啦！！！</a></p>
+<p><a target="_blank" rel="noopener" href="http://caibaojian.com/web-frontend-roads.html">前端开发需要学什么？web前端开发学习路线</a></p>
+<p><a target="_blank" rel="noopener" href="http://caibaojian.com/mobile-knowledge.html">移动前端知识总结</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
 
   
   <nav class="pagination">
@@ -541,7 +492,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">140</span>
+          <span class="site-state-item-count">139</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -554,7 +505,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">89</span>
+        <span class="site-state-item-count">91</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

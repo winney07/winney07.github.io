@@ -193,131 +193,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/05/26/vue%E9%A1%B9%E7%9B%AE%E8%AE%B0%E5%BD%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="winney">
-      <meta itemprop="description" content="Doing is better than saying.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="winney">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/05/26/vue%E9%A1%B9%E7%9B%AE%E8%AE%B0%E5%BD%95/" class="post-title-link" itemprop="url">vue项目记录</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-05-26 16:35:23" itemprop="dateCreated datePublished" datetime="2020-05-26T16:35:23+08:00">2020-05-26</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-09-05 10:38:41" itemprop="dateModified" datetime="2022-09-05T10:38:41+08:00">2022-09-05</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/Vue-js/" itemprop="url" rel="index"><span itemprop="name">Vue.js</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="在项目中引入阿里图库"><a href="#在项目中引入阿里图库" class="headerlink" title="在项目中引入阿里图库"></a>在项目中引入阿里图库</h3><ol>
-<li>在阿里图库中，选好图标，建立好项目</li>
-<li>将整个项目的图标下载到本地解压</li>
-<li>在Vue.js项目的assets目录中，新建一个icon目录，将解压后文件夹里面的文件复制到这个目录下</li>
-<li>在main.js文件里引入iconfont.css, import ‘@/assets/icon/iconfont.css’</li>
-<li>在项目中引入图标的时候要加上iconfont类，然后再添加图标本身的类名</li>
-</ol>
-<h3 id="链接文字的写法-路由跳转"><a href="#链接文字的写法-路由跳转" class="headerlink" title="链接文字的写法(路由跳转)"></a>链接文字的写法(路由跳转)</h3><h5 id="不传参"><a href="#不传参" class="headerlink" title="不传参"></a>不传参</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">声明式：&lt;router-link :to&#x3D;&quot;&#123;name:&#39;index&#39;&#125;&#125;&quot;&gt;    或者    &lt;router-link to&#x3D;&#39;&#x2F;index&#39;&gt;</span><br><span class="line"></span><br><span class="line">编程式：router.push(...)</span><br><span class="line">方法一: this.$router.push(&#123;path:&#39;路径&#39;)&#125;;</span><br><span class="line">方法二：this.$router.push(&#123;name:&#39;组件名&#39;)&#125;;</span><br></pre></td></tr></table></figure>
-<h5 id="传参"><a href="#传参" class="headerlink" title="传参"></a>传参</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">声明式：&lt;router-link :to&#x3D;&quot;&#123;name:&#39;index&#39;,query:&#123;id:&#39;xxx&#39;,name:&#39;xxx&#39;&#125;&#125;&quot;&gt;</span><br><span class="line">编程式：router.push(...)</span><br><span class="line"></span><br><span class="line">方法一：this.$router.push(&#123;path:&#39;xxx&#39;,query:&#123;aa:xx, bb: xx&#125;&#125;);   &#x2F;&#x2F;带查询参数，类似于 “？” 的形式传值</span><br><span class="line"></span><br><span class="line">方法二：this.$router.push(&#123;path:&#39;xxx&#39;,params:&#123;aa:xx, bb: xx&#125;&#125;); </span><br><span class="line"></span><br><span class="line">注：以上两种方法的query跳转路径也可以写成name:&#39;组件名&#39;的形式</span><br><span class="line"></span><br><span class="line">在query中放入需要传递的参数即可，多个参数之间用逗号隔开；</span><br><span class="line"></span><br><span class="line">取值：this.$route.query.xx   (可在跳转的页面取得所传递的值)；</span><br></pre></td></tr></table></figure>
-<h3 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">component: () &#x3D;&gt; import(&#39;@&#x2F;views&#x2F;dashboard&#x2F;console&#x2F;index.vue&#39;),</span><br><span class="line">可以简写为：</span><br><span class="line">component: () &#x3D;&gt; import(&#39;@&#x2F;views&#x2F;dashboard&#x2F;console&#39;),</span><br></pre></td></tr></table></figure>
-<h3 id="Vue-js-组件中绑定点击事件不生效的解决方法"><a href="#Vue-js-组件中绑定点击事件不生效的解决方法" class="headerlink" title="Vue.js 组件中绑定点击事件不生效的解决方法"></a>Vue.js 组件中绑定点击事件不生效的解决方法</h3><p>在使用组件（比如 element UI）的过程中，会发现无法通过 @click 绑定标签的点击事件。</p>
-<p>因为 Vue.js 使用的是一套自己的事件传递机制，所以我们需要添加 @click.native 来绑定 DOM 原生事件。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;el-dropdown-item icon&#x3D;&quot;el-icon-unlock&quot; @click.native&#x3D;&quot;resetPass&quot;&gt;&lt;&#x2F;el-dropdown-item&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="Vuex的store的使用"><a href="#Vuex的store的使用" class="headerlink" title="Vuex的store的使用"></a>Vuex的store的使用</h3><p>注意：改变store值，要使用mutations，不要直接改变<br>store.js文件：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">export default new Vuex.Store(&#123;</span><br><span class="line">  state: &#123;</span><br><span class="line">    isCollapse: false,</span><br><span class="line">    isMobile: false</span><br><span class="line">  &#125;,</span><br><span class="line">  mutations: &#123;</span><br><span class="line">    toggleCollapse(state) &#123;</span><br><span class="line">      state.isCollapse &#x3D;  !state.isCollapse;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<h4 id="在页面中的使用："><a href="#在页面中的使用：" class="headerlink" title="在页面中的使用："></a>在页面中的使用：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">在页面中引入：</span><br><span class="line">import &#123; mapState , mapMutations &#125; from &#39;vuex&#39;;</span><br><span class="line"></span><br><span class="line">引入state：</span><br><span class="line">computed: &#123;</span><br><span class="line">  ...mapState([&#39;isCollapse&#39;,&#39;isMobile&#39;])</span><br><span class="line">&#125;,</span><br><span class="line"></span><br><span class="line">引入方法：</span><br><span class="line">methods: &#123;</span><br><span class="line">  ...mapMutations([&#39;toggleCollapse&#39;])</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">页面结构中，直接使用：</span><br><span class="line">:class&#x3D;&quot;&#123;&#39;sider-collapse&#39;:isCollapse&#125;&quot;</span><br><span class="line"></span><br><span class="line">在事件中直接使用：</span><br><span class="line">this.toggleCollapse();</span><br><span class="line"></span><br><span class="line">如果要传参：</span><br><span class="line">this.toggleCollapse(&#123;</span><br><span class="line">  param: this.isCollapse</span><br><span class="line">&#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="emit的使用"><a href="#emit的使用" class="headerlink" title="$emit的使用"></a>$emit的使用</h3><p>通过 Event Bus 进行组件间通信，来折叠侧边栏</p>
-<p>bus.js:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import Vue from &#39;vue&#39;;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 使用 Event Bus</span><br><span class="line">const bus &#x3D; new Vue();</span><br><span class="line"></span><br><span class="line">export default bus;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">在点击事件的组件中：</span><br><span class="line">引入：</span><br><span class="line">import bus from &#39;..&#x2F;public&#x2F;bus&#39;;</span><br><span class="line"></span><br><span class="line">页面结构中：</span><br><span class="line">@click&#x3D;&quot;collapseChage&quot;</span><br><span class="line">v-show&#x3D;&quot;!isCollapse&quot;</span><br><span class="line"></span><br><span class="line">数据，方法：</span><br><span class="line">data() &#123; </span><br><span class="line">  return &#123;</span><br><span class="line">      isCollapse: false,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br><span class="line">methods: &#123;</span><br><span class="line">  &#x2F;&#x2F; 侧边栏折叠</span><br><span class="line">  collapseChage() &#123;</span><br><span class="line">      this.isCollapse &#x3D; !this.isCollapse;</span><br><span class="line">      bus.$emit(&#39;toggleCollapse&#39;, this.isCollapse);</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">在需要用到这个状态的组件中：</span><br><span class="line">引入：</span><br><span class="line">import bus from &#39;..&#x2F;public&#x2F;bus&#39;;</span><br><span class="line">数据：</span><br><span class="line">data() &#123; </span><br><span class="line">  return &#123;</span><br><span class="line">      isCollapse: false,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br><span class="line"></span><br><span class="line">页面结构：</span><br><span class="line">:class&#x3D;&quot;&#123;&#39;content-collapse&#39;:isCollapse&#125;&quot;</span><br><span class="line"></span><br><span class="line">监听toggleCollapse事件：</span><br><span class="line">created() &#123;</span><br><span class="line">  bus.$on(&#39;toggleCollapse&#39;, msg &#x3D;&gt; &#123;</span><br><span class="line">      this.isCollapse &#x3D; msg;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="如何将element-ui中的表格和分页器连接起来"><a href="#如何将element-ui中的表格和分页器连接起来" class="headerlink" title="如何将element-ui中的表格和分页器连接起来"></a>如何将element-ui中的表格和分页器连接起来</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">&lt;el-table </span><br><span class="line">    :data&#x3D;&quot;tableData.slice((query.pageIndex - 1)*query.pageSize, query.pageIndex * query.pageSize)&quot;</span><br><span class="line">    border</span><br><span class="line">    class&#x3D;&quot;table&quot;</span><br><span class="line">    ref&#x3D;&quot;multipleTable&quot;</span><br><span class="line">    header-cell-class-name&#x3D;&quot;table-header&quot;</span><br><span class="line">    @selection-change&#x3D;&quot;handleSelectionChange&quot;</span><br><span class="line">&gt;</span><br><span class="line">	&lt;el-table-column type&#x3D;&quot;selection&quot; width&#x3D;&quot;55&quot; align&#x3D;&quot;center&quot;&gt;&lt;&#x2F;el-table-column&gt;</span><br><span class="line">    &lt;el-table-column prop&#x3D;&quot;id&quot; label&#x3D;&quot;ID&quot; width&#x3D;&quot;55&quot; align&#x3D;&quot;center&quot;&gt;&lt;&#x2F;el-table-column&gt;</span><br><span class="line">    &lt;el-table-column prop&#x3D;&quot;name&quot; label&#x3D;&quot;用户名&quot; &gt;&lt;&#x2F;el-table-column&gt;</span><br><span class="line">    &lt;el-table-column label&#x3D;&quot;账户余额&quot; &gt;</span><br><span class="line">    	&lt;template slot-scope&#x3D;&quot;scope&quot;&gt;￥&#123;&#123;scope.row.money&#125;&#125;&lt;&#x2F;template&gt;</span><br><span class="line">    &lt;&#x2F;el-table-column&gt;</span><br><span class="line">&lt;&#x2F;el-table&gt;</span><br><span class="line"></span><br><span class="line">&lt;div class&#x3D;&quot;pagination&quot; &gt;</span><br><span class="line">    &lt;el-pagination</span><br><span class="line">        background</span><br><span class="line">        @size-change&#x3D;&quot;handleSizeChange&quot;</span><br><span class="line">        @current-change&#x3D;&quot;handleCurrentchange&quot;</span><br><span class="line">        :current-page&#x3D;&quot;query.pageIndex&quot;</span><br><span class="line">        :page-sizes&#x3D;&quot;[10, 15, 20, 30]&quot;</span><br><span class="line">        :page-size&#x3D;&quot;query.pageSize</span><br><span class="line">        layout&#x3D;&quot;total, sizes, prev, pager, next, jumper&quot;</span><br><span class="line">        :total&#x3D;&quot;pageTotal&quot;&gt;</span><br><span class="line">    &lt;&#x2F;el-pagination&gt;</span><br><span class="line">&lt;&#x2F;div&gt; </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">export default&#123;</span><br><span class="line">	name :&#39;basetable&#39;,</span><br><span class="line">    data() &#123;</span><br><span class="line">        return (</span><br><span class="line">            query:&#123;</span><br><span class="line">                address:&#39;&#39;,</span><br><span class="line">                name:&#39;&#39;,</span><br><span class="line">                pageIndex:1,   &#x2F;&#x2F; 当前页</span><br><span class="line">                pageSize: 10,	&#x2F;&#x2F; 每页显示条数</span><br><span class="line">                tableData: [],</span><br><span class="line">             &#125;</span><br><span class="line">        &#125;</span><br><span class="line">     &#125;,</span><br><span class="line">     &#x2F;&#x2F; 分页导航</span><br><span class="line">     handleCurrentChange(val) &#123;</span><br><span class="line">        this.$set(this.query,&#39;pageIndex&#39;, val);</span><br><span class="line">        this.getData();</span><br><span class="line">     &#125;,</span><br><span class="line">     handleSizeChange(val) &#123;</span><br><span class="line">        this.$set(this.query,&#39;pageSize&#39;, val);</span><br><span class="line">        this.getData();</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="在vue项目中使用sass的配置方法"><a href="#在vue项目中使用sass的配置方法" class="headerlink" title="在vue项目中使用sass的配置方法"></a>在vue项目中使用sass的配置方法</h4><h5 id="1、安装sass的依赖包"><a href="#1、安装sass的依赖包" class="headerlink" title="1、安装sass的依赖包"></a>1、安装sass的依赖包</h5><p><code>sass-loader依赖于node-sass</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install sass-loader node-sass --save-dev</span><br></pre></td></tr></table></figure>
-<h5 id="2、在build文件夹下的webpack-base-conf-js的rules里面添加配置"><a href="#2、在build文件夹下的webpack-base-conf-js的rules里面添加配置" class="headerlink" title="2、在build文件夹下的webpack.base.conf.js的rules里面添加配置"></a>2、在build文件夹下的webpack.base.conf.js的rules里面添加配置</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"> test: &#x2F;\.sass$&#x2F;,</span><br><span class="line"> loaders: [&#39;style&#39;, &#39;css&#39;, &#39;scss&#39;]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>如下图所示：</p>
-<h5 id="3、在APP-vue中修改style标签"><a href="#3、在APP-vue中修改style标签" class="headerlink" title="3、在APP.vue中修改style标签"></a>3、在APP.vue中修改style标签</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;style lang&#x3D;&quot;scss&quot;&gt;</span><br><span class="line">   $blue:red;</span><br><span class="line">    .common-header&#123;</span><br><span class="line">        color: $blue;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br></pre></td></tr></table></figure>
-<h5 id="4、运行项目"><a href="#4、运行项目" class="headerlink" title="4、运行项目"></a>4、运行项目</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
-<h5 id="注意："><a href="#注意：" class="headerlink" title="注意："></a><code>注意：</code></h5><p>如有以下报错，是版本的问题影响的：</p>
-<p><code>Module build failed: TypeError: this.getResolve is not a function at Object.loader 安装node-sass运行报错</code></p>
-<ul>
-<li><strong>解决方法</strong>： 选择更低版本的sass-loader</li>
-<li><strong>卸载当前版本</strong>：npm uninstall sass-loader</li>
-<li><strong>安装指定版本</strong>：npm install sass-loader<a href="">@7.3.1 </a> –save-dev </li>
-</ul>
-<p>参考： <a target="_blank" rel="noopener" href="https://blog.csdn.net/ze1024/article/details/100516650">安装node-sass运行报错</a></p>
-<h4 id="Vue项目设置每个页面的title"><a href="#Vue项目设置每个页面的title" class="headerlink" title="Vue项目设置每个页面的title"></a>Vue项目设置每个页面的title</h4><h5 id="1、在项目目录下安装vue-wechat-title"><a href="#1、在项目目录下安装vue-wechat-title" class="headerlink" title="1、在项目目录下安装vue-wechat-title"></a>1、在项目目录下安装vue-wechat-title</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm i vue-wechat-title --save-dev</span><br></pre></td></tr></table></figure>
-<h5 id="2、在main-js中-使用vue-wechat-title"><a href="#2、在main-js中-使用vue-wechat-title" class="headerlink" title="2、在main.js中 使用vue-wechat-title"></a>2、在main.js中 使用vue-wechat-title</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Vue.use(require(&#39;vue-wechat-title&#39;))     &#x2F;&#x2F;实例化参数</span><br></pre></td></tr></table></figure>
-<h5 id="3、在router的配置中设置"><a href="#3、在router的配置中设置" class="headerlink" title="3、在router的配置中设置"></a>3、在router的配置中设置</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">      path: &#39;&#x2F;home&#39;,</span><br><span class="line">      name: &#39;Home&#39;,</span><br><span class="line">      component: Home,</span><br><span class="line">      meta: &#123;</span><br><span class="line">        title: &#39;主页&#39;       &#x2F;&#x2F;页面标题</span><br><span class="line">      &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-<h5 id="4、在每个vue页面中加入"><a href="#4、在每个vue页面中加入" class="headerlink" title="4、在每个vue页面中加入"></a>4、在每个vue页面中加入</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> &lt;div class&#x3D;&quot;content content-box&quot;&gt;</span><br><span class="line">      &lt;div v-wechat-title&#x3D;&quot;$route.meta.title&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
-<h6 id="【参考】：-vue项目设置每个页面的title"><a href="#【参考】：-vue项目设置每个页面的title" class="headerlink" title="【参考】： vue项目设置每个页面的title"></a>【参考】： <a target="_blank" rel="noopener" href="https://www.cnblogs.com/itgezhu/p/10817502.html">vue项目设置每个页面的title</a></h6><h4 id="Vue-js-ElementUI导航写法"><a href="#Vue-js-ElementUI导航写法" class="headerlink" title="Vue.js + ElementUI导航写法"></a>Vue.js + ElementUI导航写法</h4><h5 id="方法一（基本的）："><a href="#方法一（基本的）：" class="headerlink" title="方法一（基本的）："></a>方法一（基本的）：</h5><blockquote>
-<p>ElementUI导航通常会和vue-router一起使用，所以与官网的示例的写法不太一样。具体写法如下:</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;el-menu :default-active&#x3D;&quot;$route.path&quot; class&#x3D;&quot;el-menu-vertical-demo&quot; router&gt;</span><br><span class="line">   &lt;el-menu-item v-for&#x3D;&quot;item in items&quot; :index&#x3D;&quot;item.src&quot;&gt;&#123;&#123;item.name&#125;&#125;            </span><br><span class="line">   &lt;&#x2F;el-menu-item&gt;</span><br><span class="line"> &lt;&#x2F;el-menu&gt;</span><br></pre></td></tr></table></figure>
-<p><strong>data里则是正常的数据即可：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">data()&#123;</span><br><span class="line">      return&#123;</span><br><span class="line">        items:[</span><br><span class="line">          &#123;src:&#39;&#x2F;gameinfo&#x2F;index&#39;,name:&#39;基本信息&#39;&#125;,</span><br><span class="line">          &#123;src:&#39;&#x2F;gameversion&#x2F;index&#39;,name:&#39;版本管理&#39;&#125;,</span><br><span class="line">          &#123;src:&#39;&#x2F;gameplatform&#x2F;index&#39;,name:&#39;渠道管理&#39;&#125;,</span><br><span class="line">          &#123;src:&#39;&#x2F;gameproduct&#x2F;index&#39;,name:&#39;充值产品&#39;&#125;,</span><br><span class="line">          &#123;src:&#39;&#x2F;gameplugin&#x2F;index&#39;,name:&#39;插件管理&#39;&#125;</span><br><span class="line">        ]</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p>【参考】： <a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42488404/article/details/83414761">VUE elementUi导航写法</a></p>
-<h5 id="方法二-加上图标的-："><a href="#方法二-加上图标的-：" class="headerlink" title="方法二(加上图标的)："></a>方法二(加上图标的)：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;el-menu :default-active&#x3D;&quot;$route.path&quot; class&#x3D;&quot;el-menu-vertical-demo&quot; router&gt;</span><br><span class="line">    &lt;el-menu-item v-for&#x3D;&quot;(item, i) in items&quot; :key&#x3D;&quot;i&quot; :index&#x3D;&quot;item.path&quot;&gt;</span><br><span class="line">        &lt;template&gt;</span><br><span class="line">            &lt;i :class&#x3D;&quot;item.icon&quot;&gt;&lt;&#x2F;i&gt;</span><br><span class="line">            &lt;span slot&#x3D;&quot;title&quot;&gt; &#123;&#123; item.title &#125;&#125;&lt;&#x2F;span&gt;</span><br><span class="line">        &lt;&#x2F;template&gt;          </span><br><span class="line">    &lt;&#x2F;el-menu-item&gt;</span><br><span class="line">&lt;&#x2F;el-menu&gt;</span><br></pre></td></tr></table></figure>
-<p><strong>data里面</strong>：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">items:[</span><br><span class="line">    &#123; </span><br><span class="line">        path:&#39;&#x2F;gameinfo&#x2F;index&#39;,</span><br><span class="line">        title:&#39;基本信息&#39;,</span><br><span class="line">        icon:&#39;iconfont icon-info&#39;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123; </span><br><span class="line">        path:&#39;&#x2F;gameversion&#x2F;index&#39;,</span><br><span class="line">        title:&#39;版本管理&#39;,</span><br><span class="line">        icon:&#39;iconfont icon-version&#39;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123; </span><br><span class="line">        path:&#39;&#x2F;gameplatform&#x2F;index&#39;,</span><br><span class="line">        title:&#39;渠道管理&#39;,</span><br><span class="line">        icon:&#39;iconfont icon-channel&#39;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123; </span><br><span class="line">        path:&#39;&#x2F;gameproduct&#x2F;index&#39;,</span><br><span class="line">        title:&#39;充值产品&#39;,</span><br><span class="line">        icon:&#39;iconfont icon-recharge&#39;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123; </span><br><span class="line">        path:&#39;&#x2F;gameplugin&#x2F;index&#39;,</span><br><span class="line">        title:&#39;插件管理&#39;,</span><br><span class="line">        icon:&#39;el-icon-cpu&#39;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123; </span><br><span class="line">        path:&#39;&#x2F;package&#x2F;index&#39;,</span><br><span class="line">        title:&#39;打包管理&#39;,</span><br><span class="line">        icon:&#39;iconfont icon-packageKit&#39;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123; </span><br><span class="line">        path:&#39;&#x2F;order&#x2F;index&#39;,</span><br><span class="line">        title:&#39;订单查询&#39;,</span><br><span class="line">        icon:&#39;iconfont icon-orderQuery&#39;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123; </span><br><span class="line">        path:&#39;&#x2F;gameinfo&#x2F;index&#39;,</span><br><span class="line">        title:&#39;切换至ios&#39;,</span><br><span class="line">        icon:&#39;iconfont icon-android&#39;</span><br><span class="line">    &#125;,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2020/05/25/hexo%E5%AE%9E%E7%8E%B0%E6%96%87%E7%AB%A0%E7%BD%AE%E9%A1%B6%E5%8A%9F%E8%83%BD/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -481,6 +356,76 @@
   
   
 
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/05/24/AntDesignUI%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="winney">
+      <meta itemprop="description" content="Doing is better than saying.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="winney">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/24/AntDesignUI%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">AntDesignUI相关笔记</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-05-24 16:19:49" itemprop="dateCreated datePublished" datetime="2020-05-24T16:19:49+08:00">2020-05-24</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-10-12 17:57:22" itemprop="dateModified" datetime="2022-10-12T17:57:22+08:00">2022-10-12</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a target="_blank" rel="noopener" href="https://ant.design/components/alert-cn/">文字滚动，轮播效果</a></p>
+<p><a target="_blank" rel="noopener" href="https://ant.design/components/alert-cn/#components-alert-demo-loop-banner">轮播的公告</a></p>
+<p>配合 <a target="_blank" rel="noopener" href="https://npmjs.com/package/react-text-loop-next">react-text-loop-next</a> 或 <a target="_blank" rel="noopener" href="https://npmjs.com/package/react-fast-marquee">react-fast-marquee</a> 实现消息轮播通知栏。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm i --save react-text-loop-next react-fast-marquee</span><br></pre></td></tr></table></figure>
+<h4 id="key报错"><a href="#key报错" class="headerlink" title="key报错"></a>key报错</h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/AS_TS/article/details/107981367">antd key报错 Each child in a list should have a unique “key“ prop.</a></p>
+<p>Table表格，Select选择器中的Option，<code>map()</code> 遍历渲染，Modal 对话框    需要添加key</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
 
   
   <nav class="pagination">
@@ -552,7 +497,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">140</span>
+          <span class="site-state-item-count">139</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -565,7 +510,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">89</span>
+        <span class="site-state-item-count">91</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

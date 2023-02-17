@@ -338,7 +338,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-02-06 16:33:42" itemprop="dateModified" datetime="2023-02-06T16:33:42+08:00">2023-02-06</time>
+                <time title="修改时间：2023-02-17 16:57:52" itemprop="dateModified" datetime="2023-02-17T16:57:52+08:00">2023-02-17</time>
               </span>
 
           
@@ -486,8 +486,10 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen       443 ssl http2;</span><br><span class="line">    listen       [::]:443 ssl http2;</span><br><span class="line">    server_name  _;</span><br><span class="line">   # root         &#x2F;usr&#x2F;share&#x2F;nginx&#x2F;html;   # 原来填写的路径</span><br><span class="line">    root         &#x2F;usr&#x2F;webcode&#x2F;wx;   # 在wx目录中新建index.html内容</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
+
 </li>
 </ol>
+<h5 id="下载文件"><a href="#下载文件" class="headerlink" title="下载文件"></a>下载文件</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sz app3.js       &#x2F;&#x2F; sz 文件名</span><br></pre></td></tr></table></figure>
 <h5 id="设置-HTTP-请求自动跳转-HTTPS（可选）"><a href="#设置-HTTP-请求自动跳转-HTTPS（可选）" class="headerlink" title="设置 HTTP 请求自动跳转 HTTPS（可选）"></a>设置 HTTP 请求自动跳转 HTTPS（可选）</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">server_name  www.winney07.cn;</span><br><span class="line">return 301 https:&#x2F;&#x2F;$host$request_uri;</span><br></pre></td></tr></table></figure>
 <p>输入<code>nginx.conf</code>之后，报以下警告</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">nginx: [warn] conflicting server name &quot;www.winney07.cn&quot; on 0.0.0.0:80, ignored</span><br><span class="line">nginx: the configuration file &#x2F;etc&#x2F;nginx&#x2F;nginx.conf syntax is ok</span><br><span class="line">nginx: configuration file &#x2F;etc&#x2F;nginx&#x2F;nginx.conf test is successful</span><br><span class="line">[root@VM-8-7-centos nginx]# systemctl reload nginx</span><br></pre></td></tr></table></figure>
@@ -609,31 +611,174 @@
 </blockquote>
 <p>启用https的服务器上运行了http服务，在申请https后没有将express应用由默认的http更换为https，将下方代码加入到app.js中修改一下路径即可</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 引入部分</span><br><span class="line">const express&#x3D;require(&#39;express&#39;);</span><br><span class="line">const bodyParser&#x3D;require(&#39;body-parser&#39;);</span><br><span class="line">const cors&#x3D;require(&quot;cors&quot;);</span><br><span class="line">const session&#x3D;require(&quot;express-session&quot;);</span><br><span class="line">&#x2F;&#x2F; const userRouter&#x3D;require(&quot;.&#x2F;routes&#x2F;user&quot;);</span><br><span class="line">const fs&#x3D;require(&#39;fs&#39;);</span><br><span class="line">&#x2F;&#x2F;创建web服务器</span><br><span class="line">var server&#x3D;express();</span><br><span class="line">&#x2F;&#x2F; server.listen(3000);</span><br><span class="line">var http&#x3D;require(&#39;http&#39;);</span><br><span class="line">var https&#x3D;require(&#39;https&#39;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;根据项目的路径导入生成的证书文件下面的key和pem是下载证书得到的</span><br><span class="line">var privateKey  &#x3D; fs.readFileSync(&#39;key.key&#39;, &#39;utf8&#39;);</span><br><span class="line">var certificate &#x3D; fs.readFileSync(&#39;pem.pem&#39;, &#39;utf8&#39;);</span><br><span class="line">var credentials &#x3D; &#123;key: privateKey, cert: certificate&#125;;</span><br><span class="line"> </span><br><span class="line">var httpServer &#x3D; http.createServer(server);</span><br><span class="line">var httpsServer &#x3D; https.createServer(credentials, server);</span><br><span class="line"> </span><br><span class="line">&#x2F;&#x2F;可以分别设置http、https的访问端口号</span><br><span class="line">var PORT &#x3D; 3000;</span><br><span class="line">var SSLPORT &#x3D; 3001;</span><br><span class="line"> </span><br><span class="line">&#x2F;&#x2F;创建http服务器</span><br><span class="line">httpServer.listen(PORT, function() &#123;</span><br><span class="line">    console.log(&#39;HTTP Server is running on: http:&#x2F;&#x2F;localhost:%s&#39;, PORT);</span><br><span class="line">&#125;);</span><br><span class="line"> </span><br><span class="line">&#x2F;&#x2F;创建https服务器</span><br><span class="line">httpsServer.listen(SSLPORT, function() &#123;</span><br><span class="line">    console.log(&#39;HTTPS Server is running on: https:&#x2F;&#x2F;localhost:%s&#39;, SSLPORT);</span><br><span class="line">&#125;);</span><br><span class="line"> </span><br><span class="line">&#x2F;&#x2F;可以根据请求判断是http还是https</span><br><span class="line">server.get(&#39;&#x2F;&#39;, function (req, res) &#123;</span><br><span class="line">    if(req.protocol &#x3D;&#x3D;&#x3D; &#39;https&#39;) &#123;</span><br><span class="line">        res.status(200).send(&#39;This is https visit!&#39;);</span><br><span class="line">    &#125;</span><br><span class="line">    else &#123;</span><br><span class="line">        res.status(200).send(&#39;This is http visit!&#39;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;使用body-parser中间件</span><br><span class="line">server.use(bodyParser.urlencoded(&#123;</span><br><span class="line">    extended:false</span><br><span class="line">&#125;))</span><br><span class="line">&#x2F;&#x2F;托管静态目录</span><br><span class="line">server.use(express.static(&quot;public&quot;))</span><br><span class="line">&#x2F;&#x2F;解决跨域问题</span><br><span class="line">server.use(cors(&#123;</span><br><span class="line">    origin:[&quot;http:&#x2F;&#x2F;127.0.0.1:8081&quot;,&quot;http:&#x2F;&#x2F;localhost:8081&quot;,&quot;http:&#x2F;&#x2F;127.0.0.1:8080&quot;,&quot;http:&#x2F;&#x2F;localhost:8080&quot;],</span><br><span class="line">    credentials:true</span><br><span class="line">&#125;))</span><br><span class="line">&#x2F;&#x2F; session功能</span><br><span class="line">server.use(session(&#123;</span><br><span class="line">    secret:&quot;128字符串&quot;,</span><br><span class="line">    resave:true,</span><br><span class="line">    saveUninitialized:true</span><br><span class="line">&#125;))</span><br><span class="line">&#x2F;&#x2F;挂载路由</span><br><span class="line">&#x2F;&#x2F; server.use(&#39;&#x2F;user&#39;,userRouter);</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-
 <p>上传证书和密码到接口相关目录</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;usr&#x2F;local&#x2F;src&#x2F;webCode&#x2F;wx</span><br><span class="line">mkdir private</span><br><span class="line">cd private</span><br><span class="line">rz -y   &#x2F;&#x2F; 上传证书和密码文件</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;usr&#x2F;local&#x2F;src&#x2F;webCode&#x2F;wx</span><br><span class="line">mkdir private</span><br><span class="line">cd private</span><br><span class="line">rz -y   &#x2F;&#x2F; 上传证书和密码文件</span><br></pre></td></tr></table></figure>
 
 
 
 
 
 
-
-
-<p>待整理命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">vi &#x2F;etc&#x2F;sysconfig&#x2F;iptables</span><br><span class="line">sudo vi &#x2F;etc&#x2F;sysconfig&#x2F;iptables</span><br><span class="line">ssh -V</span><br><span class="line">groupadd sftp</span><br><span class="line">sudo useradd -g sftp -s &#x2F;sbin&#x2F;nologin silent</span><br><span class="line">sudo useradd -g sftp -s &#x2F;sbin&#x2F;nologin silent     &#x2F;&#x2F; 再执行一次，可以看到useradd: user &#39;silent&#39; already exists</span><br><span class="line">cd &#x2F;data&#x2F;</span><br><span class="line">ll</span><br></pre></td></tr></table></figure>
+<h4 id="待整理命令："><a href="#待整理命令：" class="headerlink" title="待整理命令："></a>待整理命令：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">vi &#x2F;etc&#x2F;sysconfig&#x2F;iptables</span><br><span class="line">sudo vi &#x2F;etc&#x2F;sysconfig&#x2F;iptables</span><br><span class="line">ssh -V</span><br><span class="line">groupadd sftp</span><br><span class="line">sudo useradd -g sftp -s &#x2F;sbin&#x2F;nologin silent</span><br><span class="line">sudo useradd -g sftp -s &#x2F;sbin&#x2F;nologin silent     &#x2F;&#x2F; 再执行一次，可以看到useradd: user &#39;silent&#39; already exists</span><br><span class="line">cd &#x2F;data&#x2F;</span><br><span class="line">ll</span><br></pre></td></tr></table></figure>
 <p>接：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir -p &#x2F;data&#x2F;sftp&#x2F;silent</span><br><span class="line">sudo usermod -d &#x2F;data&#x2F;sftp&#x2F;silent silent</span><br><span class="line">sudo vi &#x2F;etc&#x2F;ssh&#x2F;sshd_config</span><br><span class="line">sudo chown root:sftp &#x2F;data&#x2F;sftp&#x2F;silent</span><br><span class="line">sudo chmod 755 &#x2F;data&#x2F;sftp&#x2F;silent</span><br><span class="line">sudo mkdir &#x2F;data&#x2F;sftp&#x2F;silent&#x2F;upload</span><br><span class="line">sudo chown silent:sftp &#x2F;data&#x2F;sftp&#x2F;silent&#x2F;upload</span><br><span class="line">sudo vi &#x2F;etc&#x2F;selinux&#x2F;config</span><br><span class="line">sudo setenforce 0</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">sudo chmod 755 &#x2F;data&#x2F;sftp&#x2F;silent&#x2F;upload</span><br></pre></td></tr></table></figure>
 
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/2204018">MongoDB：安装配置</a></p>
+<p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1392673">MongoDB 安装配置</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.dnjc.cc/m/104600.html">使用腾讯云服务器快速搭建MongoDB数据库</a></p>
+<p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/news/386130">MongoDB的安装与使用（一）</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44843687/article/details/122222609">CentOS7.6 腾讯云服务器安装MongoDB 5.05</a></p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6860424108732055560">腾讯云CentOs搭建NodeJs服务器—安装 mongodb</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.gxlcms.com/sql_question-406163.html">腾讯云CentOS 7.2 64位安装Mongodb</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/woju/p/15670404.html">腾讯云服务器CentOS7 安装mongodb</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/870aeeabf61e">腾讯云服务器（CentOS)安装配置mongodb</a></p>
+<p><a target="_blank" rel="noopener" href="http://www.zyiz.net/tech/detail-268723.html">腾讯云服务器CentOS7 安装mongodb</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.pudn.com/news/62aef03fca7ee606dcd336d0.html">腾讯云~安装MongoDB</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_54783667/article/details/123986420">如何在Linux上下载MongoDB</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.runoob.com/mongodb/mongodb-linux-install.html">Linux平台安装MongoDB</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/mouday/article/details/90670432">Linux平台安装MongoDB</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.mongodb.com/try/download/shell">MongoDB安装包下载</a></p>
+<h3 id="Linux安装MongoDB的详细过程"><a href="#Linux安装MongoDB的详细过程" class="headerlink" title="Linux安装MongoDB的详细过程"></a>Linux安装MongoDB的详细过程</h3><p>参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_38568503/article/details/127885059">Linux安装MongoDB（简单详细）</a></p>
+<ol>
+<li><p><a target="_blank" rel="noopener" href="https://www.mongodb.com/">MongoDB官网</a>，选择社区（Community Edition）</p>
+<p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8-%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/0-%E8%BF%9B%E5%8E%BB%E7%A4%BE%E5%8C%BA.png" alt="进去社区"></p>
+</li>
+</ol>
+<ol start="2">
+<li><p>选择对应的安装包：<a target="_blank" rel="noopener" href="https://www.mongodb.com/try/download/community">https://www.mongodb.com/try/download/community</a></p>
+<p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8-%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/0%E9%80%89%E6%8B%A9%E5%8C%85.png" alt="选择包"></p>
+</li>
+<li><p>复制下载链接</p>
+</li>
+<li><p>在服务器<code>/usr/local</code>下创建mongodb目录</p>
+<blockquote>
+<p>（我是为了避免文件太乱，在mongodb目录中下载，也可以不用这样操作）</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;usr&#x2F;local</span><br><span class="line">mkdir mongodb</span><br><span class="line">cd mongodb</span><br></pre></td></tr></table></figure></li>
+<li><p>执行下载命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https:&#x2F;&#x2F;fastdl.mongodb.org&#x2F;linux&#x2F;mongodb-linux-x86_64-rhel70-3.4.24.tgz</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls       &#x2F;&#x2F; 可以看到在目录中</span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8-%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/1.%E4%B8%8B%E8%BD%BD.png" alt="下载成功"></p>
+</li>
+<li><p>解压</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf mongodb-linux-x86_64-rhel70-3.4.24.tgz</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls   &#x2F;&#x2F; </span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8-%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/2.%E8%A7%A3%E5%8E%8B%E6%88%90%E5%8A%9F.png" alt="解压成功"></p>
+</li>
+<li><p>移动 MongoDB 安装目录（重命名，移动解压后的文件到<code>mongodb3.4</code>）</p>
+<blockquote>
+<p>将解压后的 mongodb-linux-x86_64-rhel70-3.4.24 中的所有文件全部移动到 <code>/usr/local/mongodb3.4 </code>中 。注意：<code>/*</code>是所有子文件</p>
+</blockquote>
+<blockquote>
+<p>我根据mongodb的版本，在<code>/usr/local</code>下重新创建一个mongodb3.4目录，因为我在mongodb目录中下载了好多个安装失败的包，避免错乱。  如果你直接安装3.4.24版本的，可以不用创建mongodb3.4目录，直接将解压后的东西，移到mongodb目录就行。</p>
+<p>即：mv mongodb-linux-x86_64-rhel70-3.4.24/*  /usr/local/mongodb</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir mongodb3.4</span><br><span class="line"></span><br><span class="line">mv mongodb-linux-x86_64-rhel70-3.4.24&#x2F;* &#x2F;usr&#x2F;local&#x2F;mongodb3.4</span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8-%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/3%E9%87%8D%E5%91%BD%E5%90%8D--%E7%A7%BB%E5%8A%A8%E8%A7%A3%E5%8E%8B%E5%90%8E%E7%9A%84%E6%96%87%E4%BB%B6.png" alt="移动解压后的文件"></p>
+</li>
+<li><p>设置 MongoDB 环境变量</p>
+<p>配置环境变量的启动：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim &#x2F;etc&#x2F;profile</span><br></pre></td></tr></table></figure>
+
+<p>在文件中增加以下配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export MONGODB_HOME&#x3D;&#x2F;usr&#x2F;local&#x2F;mongodb3.4</span><br><span class="line">export PATH&#x3D;$MONGODB_HOME&#x2F;bin:$PATH</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>我是添加在文件的最后面</p>
+</blockquote>
+</li>
+<li><p>使系统环境变量立即生效</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source &#x2F;etc&#x2F;profile</span><br></pre></td></tr></table></figure></li>
+<li><p>验证是否成功</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongo -version</span><br></pre></td></tr></table></figure>
+<p>成功会显示以下内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">MongoDB shell version v3.4.24</span><br><span class="line">git version: 865b4f6a96d0f5425e39a18337105f33e8db504d</span><br><span class="line">OpenSSL version: OpenSSL 1.0.1e-fips 11 Feb 2013</span><br><span class="line">allocator: tcmalloc</span><br><span class="line">modules: none</span><br><span class="line">build environment:</span><br><span class="line">    distmod: rhel70</span><br><span class="line">    distarch: x86_64</span><br><span class="line">    target_arch: x86_64</span><br></pre></td></tr></table></figure>
+<p>如图：</p>
+<p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8-%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/4.%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE--%E9%AA%8C%E8%AF%81%E6%98%AF%E5%90%A6%E6%88%90%E5%8A%9F.png" alt="安装成功"></p>
+<blockquote>
+<p>安装成功 可以使用mongod mongo 等等命令直接进行操作</p>
+</blockquote>
+</li>
+<li><p>创建 MongoDB 必要目录</p>
+<p>在<code>mongodb3.4</code>目录下创建data和logs目录，以及日志文件mongodb.log</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">cd mongodb3.4 #进入文件夹</span><br><span class="line">mkdir data</span><br><span class="line">mkdir logs</span><br><span class="line"></span><br><span class="line">cd data</span><br><span class="line">mkdir db</span><br><span class="line"></span><br><span class="line">touch &#x2F;usr&#x2F;local&#x2F;mongodb&#x2F;logs&#x2F;mongodb.log</span><br><span class="line">&#x2F;&#x2F; 或者</span><br><span class="line">cd logs</span><br><span class="line">vi mongodb.log      &#x2F;&#x2F; 创建文件    要使用:wq 保存退出才创建成功</span><br></pre></td></tr></table></figure></li>
+<li><p>添加 MongoDB 配置文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim &#x2F;etc&#x2F;mongodb.conf</span><br></pre></td></tr></table></figure>
+<p>添加一下常用配置：</p>
+<blockquote>
+<p>下面的mongodb目录改为==》mongodb3.4(我设置的目录)</p>
+</blockquote>
+<p><code>mongodb.conf</code>的内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#数据存储路径</span><br><span class="line">dbpath&#x3D;&#x2F;usr&#x2F;local&#x2F;mongodb3.4&#x2F;data&#x2F;db</span><br><span class="line">#日志文件路径</span><br><span class="line">logpath&#x3D;&#x2F;usr&#x2F;local&#x2F;mongodb3.4&#x2F;logs&#x2F;mongodb.log</span><br><span class="line">#端口号</span><br><span class="line">port&#x3D;27017</span><br><span class="line">fork&#x3D;true</span><br><span class="line">journal&#x3D;false</span><br><span class="line">storageEngine&#x3D;mmapv1</span><br></pre></td></tr></table></figure></li>
+<li><p>启动和关闭 MongoDB</p>
+<p>启动MongoDB（-conf 使用配置文件方式启动）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongod --config &#x2F;etc&#x2F;mongodb.conf</span><br></pre></td></tr></table></figure>
+<p>关闭MongoDB（-conf 使用配置文件方式关闭 ）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongod --shutdown -f &#x2F;etc&#x2F;mongodb.conf</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ol>
+<h4 id="报错信息处理"><a href="#报错信息处理" class="headerlink" title="报错信息处理"></a>报错信息处理</h4><p>启动失败，报错信息：</p>
+<p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8-%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/5.%E5%90%AF%E5%8A%A8MongoDB-%E5%A4%B1%E8%B4%A5.png" alt="启动失败"></p>
+<blockquote>
+<p>原因：端口号冲突 </p>
+<p>可以查看是否有进程占用该端口，修改端口，重新执行<code>mongod --config /etc/mongodb.conf</code></p>
+<p>解决方案：杀死进程，重新执行</p>
+<p>解决方案：通过mongod –repair检查具体错误</p>
+</blockquote>
+<p>查看进程：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -tpnl</span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8-%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/6.%E6%9F%A5%E7%9C%8B%E8%BF%9B%E7%A8%8B.png" alt="查看进程"></p>
+<p>杀死进程：</p>
+<blockquote>
+<p>可以杀死进程来关闭：kill -2 或者kill -15 进程号</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">kill -2 11672</span><br><span class="line">kill -2 23771</span><br><span class="line">kill -2 21206</span><br><span class="line">kill -2 13084</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>这么多个mongodb进程，因为我多次修改<code>/etc/mongodb.conf</code>里面的端口，又多次执行<code>mongod --config /etc/mongodb.conf</code> </p>
+</blockquote>
+<p>再次执行<code>netstat -tpnl</code>，就看不到有<code>mongodb</code>的进程了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -tpnl</span><br></pre></td></tr></table></figure>
+<p>再次执行<code>mongod --config /etc/mongodb.conf</code></p>
+<p>成功界面如图：</p>
+<p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8-%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/7.%E5%86%8D%E6%AC%A1%E5%90%AF%E5%8A%A8MongoDB-%E6%88%90%E5%8A%9F.png" alt="成功"></p>
+<p>测试mongo</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongo</span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8-%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/8.mongo%E6%B5%8B%E8%AF%95.png" alt="mongo"></p>
+<h4 id="报错处理相关知识"><a href="#报错处理相关知识" class="headerlink" title="报错处理相关知识"></a>报错处理相关知识</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#查看进程</span><br><span class="line">ps -ef | grep mongod</span><br></pre></td></tr></table></figure>
+<p>删除文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -f mongod.lock</span><br></pre></td></tr></table></figure>
+<p>  <a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_36349646/article/details/104993000">mongodb: mongod 启动报错[about to fork child process, waiting until server is ready for connections]</a></p>
+<p>  命令行mongod启动报错</p>
+<p>  可能的问题原因：</p>
+<ul>
+<li>已经有mongd进程在运行了</li>
+<li>配置错误(如dbpath log等)</li>
+<li>权限不足等问题</li>
+<li>mongod.lock文件</li>
+</ul>
+<ol>
+<li><p>查看是否有进程已经在运行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 方法一 查看进程是否存在</span><br><span class="line">ps -ef | grep mongod</span><br><span class="line"></span><br><span class="line"># 方法二 使用 mongo 命令连接</span><br><span class="line"># 能成功连接就表明有进程在</span><br><span class="line">mongo</span><br></pre></td></tr></table></figure>
+<p>一开始安装4.2.8版本的，运行<code>mongo -version</code>，报以下类似错误</p>
+</li>
+</ol>
+<p>[/usr/lib64/libssl.so.10: no versioninformation availabl](/usr/lib64/libssl.so.10: no versioninformation availabl)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mongo: &#x2F;usr&#x2F;lib64&#x2F;libssl.so.10: no versioninformation available (required by mongo)</span><br><span class="line">mongo: &#x2F;usr&#x2F;lib64&#x2F;libcrypto.so.10: noversion information available (required by mongo)</span><br><span class="line">mongo: &#x2F;usr&#x2F;lib64&#x2F;libcrypto.so.10: noversion information available (required by mongo)</span><br></pre></td></tr></table></figure>
+<p>原因：<strong>openssl library 不是最新版</strong></p>
+<blockquote>
+<p>解决办法：我安装低版本(3.4.24)的mongodb。因为我不知道升级openssl library ，会对服务器有什么影响</p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://baijiahao.baidu.com/s?id=1754447517334563145&wfr=spider&for=pc">linux文件重命名命令</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.php.cn/linux-486977.html">linux怎样判断是文件还是目录</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls -l       &#x2F;&#x2F; 命令查看文件、目录详细信息</span><br></pre></td></tr></table></figure>
+<p>当为[ d ]则是目录</p>
+<p>当为[ - ]则是文件；</p>
+<p>若是[ l ]则表示为链接文档(link file)；</p>
+<p>若是[ b ]则表示为装置文件里面的可供储存的接口设备(可随机存取装置)；</p>
+<p>若是[ c ]则表示为装置文件里面的串行端口设备，例如键盘、鼠标(一次性读取装置)。</p>
 
       
     </div>
@@ -676,10 +821,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2022-12-29 16:22:52 / 修改时间：18:43:39" itemprop="dateCreated datePublished" datetime="2022-12-29T16:22:52+08:00">2022-12-29</time>
+              <time title="创建时间：2022-12-29 16:22:52" itemprop="dateCreated datePublished" datetime="2022-12-29T16:22:52+08:00">2022-12-29</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-02-17 19:14:36" itemprop="dateModified" datetime="2023-02-17T19:14:36+08:00">2023-02-17</time>
+              </span>
 
           
 
@@ -1295,6 +1446,14 @@
 <h5 id="压缩文件"><a href="#压缩文件" class="headerlink" title="压缩文件"></a>压缩文件</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zip a.zip a.txt</span><br></pre></td></tr></table></figure>
 <h5 id="解压文件"><a href="#解压文件" class="headerlink" title="解压文件"></a>解压文件</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unzip a.zip</span><br></pre></td></tr></table></figure>
 
+
+<p><a target="_blank" rel="noopener" href="https://www.php.cn/linux-490062.html">linux文件创建命令是什么</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">文件创建命令是：1、“vi 文件名”命令，该命令输入保存之后文件才被创建；2、“touch 文件名”命令，该命令用于更改文件或目录的时间，若文件不存在会自动创建；3、“echo 文件内容 &gt; 文件名”命令，该命令会将指定内容写入文件中。</span><br></pre></td></tr></table></figure>
+<h4 id="以长格式显示目录下的内容列表"><a href="#以长格式显示目录下的内容列表" class="headerlink" title="以长格式显示目录下的内容列表"></a>以长格式显示目录下的内容列表</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ll    &#x2F;&#x2F; 即ls -l</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>在linux中，“ll”命令指的是“ls -l”命令，它是“ls -l”命令的一个别名，用于以长格式显示目录下的内容列表；输出的信息从左到右依次包括文件名，文件类型、权限模式、硬连接数、所有者、组、文件大小和文件的最后修改时间等。</p>
+</blockquote>
+
       
     </div>
 
@@ -1380,7 +1539,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">139</span>
+          <span class="site-state-item-count">140</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1393,7 +1552,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">91</span>
+        <span class="site-state-item-count">92</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

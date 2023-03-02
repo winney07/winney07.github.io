@@ -208,3 +208,106 @@ mongorestore -h 127.0.0.1 -d testDemo D:\software\MangoDB\backup\123\company
 [参考教程](https://blog.csdn.net/u010874036/article/details/51921206)
 
 [Install MongoDB Community Edition on Windows](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/)
+
+
+
+#### 本地环境安装MongoDB
+
+[Windows 平台安装 MongoDB](https://www.runoob.com/mongodb/mongodb-window-install.html)
+
+创建数据目录和日志目录
+
+在`G:\Install\WEB\mongodb`目录中，创建`logs`目录，创建`data`目录，在`data`目录中创建`db`
+
+设置数据库位置：
+
+```
+PS G:\Install\WEB\mongodb\bin> mongod --dbpath  G:\Install\WEB\mongodb\data\db
+```
+
+创建配置文件：
+
+创建一个配置文件位于 `G:\Install\WEB\mongodb\mongod.cfg`：
+
+```
+systemLog:
+    destination: file
+    path: G:\Install\WEB\mongodb\log\mongod.log
+storage:
+    dbPath: G:\Install\WEB\mongodb\data\db
+```
+
+安装 MongoDB服务：
+
+```
+mongod.exe --config "G:\Install\WEB\mongodb\mongod.cfg" --install
+```
+
+如果你需要进入MongoDB后台管理，你需要先打开mongodb装目录的下的bin目录，然后执行mongo.exe文件，MongoDB Shell是MongoDB自带的交互式Javascript shell,用来对MongoDB进行操作和管理的交互式环境。
+
+```
+mongo
+```
+
+启动成功的显示：
+
+```
+MongoDB shell version v4.4.5
+connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("9dbb699d-fa7d-4bf4-8106-db865dca07be") }
+MongoDB server version: 4.4.5
+```
+
+查看数据库：
+
+```
+show dbs
+```
+
+
+
+
+
+
+
+```
+PS G:\Install\WEB\mongodb\bin> mongo.exe
+```
+
+成功启动
+
+```
+connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("050a7c9b-12e7-4023-9836-c62ee46b86f9") }
+MongoDB server version: 4.4.5
+```
+
+
+
+需要安装[mongod](https://www.npmjs.com/package/mongod)
+
+```
+https://www.npmjs.com/package/mongod
+```
+
+
+
+
+
+[用免费的MongoDB+腾讯云搭建后台服务](https://www.bilibili.com/video/BV1Sp4y1a7BX)
+
+https://github.com/sunwu51/bili/tree/master/linux%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7/mongoDBTest
+
+[极简配置express+MongoDB](https://cloud.tencent.com/developer/article/1414746)
+
+[vue+express+mongodb部署到腾讯云服务器](https://blog.csdn.net/q850593913/article/details/105490576)
+
+[腾讯云CentOS7.2部署Express+MongoDB项目](https://www.docin.com/p-2838085923.html)
+
+[腾讯云轻量应用服务器部署vue+express+mongoose前后端分离项目](https://blog.csdn.net/u012914342/article/details/113482812)
+
+[Linux踩坑记录，随缘更新](https://www.cnblogs.com/tourey-fatty/p/12551540.html)
+
+> 百度搜索“腾讯云CentOS部署Express+MongoDB项目”
+
+[如何将node+mongodb项目部署在腾讯云服务器，并进行性能优化的](https://cloud.tencent.com/developer/article/1494192)

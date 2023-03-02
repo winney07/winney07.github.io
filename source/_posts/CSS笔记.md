@@ -17,13 +17,13 @@ tags:
 1. id选择器
 2. 类选择器
 3. 标签选择器
-4. 相邻选择器（+）
-5. 子选择器（>）
-6. 后代选择器（li a)
-7. 通配符选择器（*）
-8. 属性选择器（button[disabled="true"])
-8. 伪类选择器（a:hover、li:nth-child）表示一种状态
-8. 伪元素选择器（li:before、":after"、":first-letter"、":first-line"、":selecton"）表示文档某个部分的表现
+4. 相邻选择器`（+）`
+5. 子选择器`（>）`
+6. 后代选择器`（li a)`
+7. 通配符选择器`（*）`
+8. 属性选择器`（button[disabled="true"])`
+8. 伪类选择器`（a:hover、li:nth-child）`表示一种状态
+8. 伪元素选择器`（li:before、":after"、":first-letter"、":first-line"、":selecton"）`表示文档某个部分的表现
 
 > 在CSS3规范中，为了区别伪元素和伪类，CSS3建议伪类用单冒号“:“，伪元素用双冒号”::“。
 >
@@ -1970,5 +1970,27 @@ $(".bh-list-box .tab li").click(function(){
 </body>
 
 </html>
+```
+
+#### 移动端数字1和0的宽度不一样
+
+[ios移动端数字1和0的宽度是不一样的，如何处理](https://zhidao.baidu.com/question/1613326378744906467.html)
+
+[移动端页面数字占用空间不同的问题](https://blog.csdn.net/weixin_55014951/article/details/126839214)
+
+[ios移动端数字1和0的宽度是不一样的，如何处理](https://www.jianshu.com/p/be3987345343)
+
+[Width of Dates are not the same because width of number 1 and 2 are different?](https://stackoverflow.com/questions/54948652/width-of-dates-are-not-the-same-because-width-of-number-1-and-2-are-different)
+
+给元素设置等距字体：
+
+```
+font-family:"Helvetica Neue";
+```
+
+以下字体也可以，只是字体的样式与平时看到不太一样：
+
+```
+font-family: Consolas, Monaco, monospace;
 ```
 

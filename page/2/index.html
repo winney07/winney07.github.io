@@ -338,7 +338,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-02-17 16:57:52" itemprop="dateModified" datetime="2023-02-17T16:57:52+08:00">2023-02-17</time>
+                <time title="修改时间：2023-02-20 19:16:14" itemprop="dateModified" datetime="2023-02-20T19:16:14+08:00">2023-02-20</time>
               </span>
 
           
@@ -747,6 +747,86 @@
 <p>测试mongo</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongo</span><br></pre></td></tr></table></figure>
 <p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8-%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/8.mongo%E6%B5%8B%E8%AF%95.png" alt="mongo"></p>
+<h4 id="在MongoDB-Shell中的使用"><a href="#在MongoDB-Shell中的使用" class="headerlink" title="在MongoDB Shell中的使用"></a>在MongoDB Shell中的使用</h4><ul>
+<li><p>MongoDB Shell 是 MongoDB 自带的一种交互式 JavaScript 命令行管理工具</p>
+</li>
+<li><p>可以通过 MongoDB shell 或者各语言驱动访问数据库，并进行读写、查询等操作</p>
+</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://www.runoob.com/mongodb/mongodb-databases-documents-collections.html">数据库</a></p>
+<p>“show dbs” 命令可以显示所有数据的列表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; show dbs</span><br><span class="line">local  0.078GB</span><br><span class="line">test   0.078GB</span><br><span class="line">&gt; </span><br></pre></td></tr></table></figure>
+<p>执行 <strong>“db”</strong> 命令可以显示当前数据库对象或集合。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; db</span><br><span class="line">test</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+<p>运行”use”命令，可以连接到一个指定的数据库。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; use local</span><br><span class="line">switched to db local</span><br><span class="line">&gt; db</span><br><span class="line">local</span><br><span class="line">&gt; </span><br></pre></td></tr></table></figure>
+<p>本项目中，切换到db目录中，查看里面的数据库文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># cd &#x2F;usr&#x2F;local&#x2F;mongodb3.4&#x2F;data&#x2F;db</span><br><span class="line"># ls</span><br><span class="line">&#x2F;&#x2F; 输出：</span><br><span class="line">admin.0  admin.ns  diagnostic.data  local.0  local.ns  mongod.lock  storage.bson</span><br></pre></td></tr></table></figure>
+<h3 id="读写数据库"><a href="#读写数据库" class="headerlink" title="读写数据库"></a><a target="_blank" rel="noopener" href="https://cloud.tencent.com/document/product/240/64306">读写数据库</a></h3><h4 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h4><p>MongoDB 创建数据库的语法格式如下： </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use DATABASE_NAME</span><br></pre></td></tr></table></figure>
+<p>创建一个名为 myFirstDB 的数据库，并插入文档。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; use myFirstDB</span><br><span class="line">switched to db myFirstDB</span><br><span class="line">&gt; db.myFirstDB.insert(&#123;<span class="string">&quot;test&quot;</span>:<span class="string">&quot;myFirstDB&quot;</span>&#125;)</span><br><span class="line">WriteResult(&#123; <span class="string">&quot;nInserted&quot;</span> : 1 &#125;)</span><br></pre></td></tr></table></figure>
+<p>查询已创建的数据库。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; show dbs</span><br></pre></td></tr></table></figure>
+<h4 id="创建集合"><a href="#创建集合" class="headerlink" title="创建集合"></a>创建集合</h4><p>MongoDB 中使用 createCollection() 方法来创建集合。 语法格式：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.createCollection(name, options)</span><br></pre></td></tr></table></figure>
+<p>参数说明：</p>
+<p>name：要创建的集合名称。</p>
+<p>options：可选参数, 指定有关内存大小及索引的选项。</p>
+<table>
+<thead>
+<tr>
+<th>options 字段</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>capped</td>
+<td>BOOL</td>
+<td>指是否设置集合的最大字节数。如果为 true，需设置 size 参数。默认为 false。</td>
+</tr>
+<tr>
+<td>autoIndexId</td>
+<td>BOOL</td>
+<td>设置是否自动创建索引。如为 true，自动在 _id 字段创建索引。默认为 false。</td>
+</tr>
+<tr>
+<td>size</td>
+<td>数值</td>
+<td>设置集合的最大字节数。</td>
+</tr>
+<tr>
+<td>max</td>
+<td>数值</td>
+<td>设置集合包含文档的最大数量。</td>
+</tr>
+</tbody></table>
+<p>在 myFirstDB 数据库中创建 FirstCol 集合示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">use myFirstDB</span><br><span class="line">db.createCollection(&quot;FirstCol&quot;)</span><br></pre></td></tr></table></figure>
+<p>查看创建的集合：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; show collections</span><br><span class="line">FirstCol</span><br></pre></td></tr></table></figure>
+<p>创建集合 FirstCol，最大字节数为 6142800B，文档最大个数为10000个，示例如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.createCollection(&quot;FirstCol&quot;, &#123; capped : true, autoIndexId : true, size : 6142800, max : 10000 &#125; )</span><br></pre></td></tr></table></figure>
+<h4 id="插入文档"><a href="#插入文档" class="headerlink" title="插入文档"></a>插入文档</h4><p>MongoDB 使用 insert() 或 save() 方法向集合中插入文档，示例如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; db.FirstCol.insert(&#123;name:<span class="string">&quot;李四&quot;</span>,sex:<span class="string">&quot;女&quot;</span>,age:25,status:<span class="string">&quot;A&quot;</span>&#125;)</span><br></pre></td></tr></table></figure>
+<p>查看集合中插入的文档：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; db.FirstCol.find()</span><br></pre></td></tr></table></figure>
+<p>db.collection.insertMany() 用于向集合插入一个或多个文档，语法格式如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">db.collection.insertMany(</span><br><span class="line"> [ &lt;document 1&gt; , &lt;document 2&gt;, ... ]</span><br><span class="line"> )</span><br></pre></td></tr></table></figure>
+<p>示例如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; db.FirstCol.insertMany([&#123;name:<span class="string">&quot;李三&quot;</span>,sex:<span class="string">&quot;女&quot;</span>,age:25,status:<span class="string">&quot;A&quot;</span>&#125;,&#123;name:<span class="string">&quot;王六&quot;</span>,sex:<span class="string">&quot;男&quot;</span>,age:26,status:<span class="string">&quot;B&quot;</span>&#125;,&#123;name:<span class="string">&quot;王五&quot;</span>,sex:<span class="string">&quot;男&quot;</span>,age:26,status:<span class="string">&quot;A&quot;</span>,groups:[<span class="string">&quot;news&quot;</span>,<span class="string">&quot;sports&quot;</span>]&#125;])</span><br></pre></td></tr></table></figure>
+<h4 id="更新数据库"><a href="#更新数据库" class="headerlink" title="更新数据库"></a>更新数据库</h4><p>MongoDB使用 update() 更新集合中的文档。</p>
+<p>更新 FirstCol 集合 name 为李三的数据，示例如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; db.FirstCol.update(&#123;name:<span class="string">&quot;李三&quot;</span>,sex:<span class="string">&quot;女&quot;</span>,age:25,status:<span class="string">&quot;A&quot;</span>&#125;,&#123;<span class="variable">$set</span>:&#123;<span class="string">&#x27;age&#x27;</span>:28&#125;&#125;)</span><br></pre></td></tr></table></figure>
+<p>查询修改结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.FirstCol.find().pretty()</span><br></pre></td></tr></table></figure>
+<h4 id="删除数据库"><a href="#删除数据库" class="headerlink" title="删除数据库"></a>删除数据库</h4><p>MongoDB 使用 remove() 删除集合中的文档。示例如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; db.FirstCol.remove(&#123;name:<span class="string">&quot;李三&quot;</span>,sex:<span class="string">&quot;女&quot;</span>,age:28,status:<span class="string">&quot;A&quot;</span>&#125;)</span><br></pre></td></tr></table></figure>
+<p>查询删除结果：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; db.FirstCol.find().pretty()</span><br></pre></td></tr></table></figure>
+<p>更多操作方法，请参见 <a target="_blank" rel="noopener" href="https://docs.mongodb.com/manual/reference/command/">MongoDB 官网文档</a>。</p>
+<h3 id="连接-MongoDB-实例"><a href="#连接-MongoDB-实例" class="headerlink" title="连接 MongoDB 实例"></a>连接 MongoDB 实例</h3><p><a target="_blank" rel="noopener" href="https://www.shuzhiduo.com/A/gVdnwbK8zW/">node.js(express)连接mongoDB入门指导</a></p>
 <h4 id="报错处理相关知识"><a href="#报错处理相关知识" class="headerlink" title="报错处理相关知识"></a>报错处理相关知识</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#查看进程</span><br><span class="line">ps -ef | grep mongod</span><br></pre></td></tr></table></figure>
 <p>删除文件</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -f mongod.lock</span><br></pre></td></tr></table></figure>
@@ -779,6 +859,26 @@
 <p>若是[ l ]则表示为链接文档(link file)；</p>
 <p>若是[ b ]则表示为装置文件里面的可供储存的接口设备(可随机存取装置)；</p>
 <p>若是[ c ]则表示为装置文件里面的串行端口设备，例如键盘、鼠标(一次性读取装置)。</p>
+<p>用xshell登录服务器</p>
+<p><a target="_blank" rel="noopener" href="https://www.docin.com/p-2838085923.html">腾讯云CentOS7.2部署Express+MongoDB项目</a></p>
+<p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1538013">我是如何成功搭建 express+mongodb 的简洁博客网站后端的</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/yelao/p/10792179.html">MongoDB + mongo-express 环境搭建记</a></p>
+<h5 id="mongo-shell"><a href="#mongo-shell" class="headerlink" title="mongo shell"></a>mongo shell</h5><p>如果你需要进入MongoDB后台管理，你需要先打开mongodb装目录的下的bin目录，然后执行mongo命令文件。</p>
+<p>MongoDB Shell是MongoDB自带的交互式Javascript shell,用来对MongoDB进行操作和管理的交互式环境。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@qizhuang-virtual-machine:&#x2F;# mongo</span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">root@qizhuang-virtual-machine:&#x2F;# mongo</span><br><span class="line">MongoDB shell version v4.0.9</span><br><span class="line">connecting to: mongodb:&#x2F;&#x2F;127.0.0.1:27017&#x2F;?gssapiServiceName&#x3D;mongodb</span><br><span class="line">Implicit session: session &#123; &quot;id&quot; : UUID(&quot;9eb5b47f-f872-4525-8906-8ea79bacd38b&quot;) &#125;</span><br><span class="line">MongoDB server version: 4.0.9&gt; # 此处可以进行一些交互式操作</span><br></pre></td></tr></table></figure>
+<h6 id="mongod-配置文件"><a href="#mongod-配置文件" class="headerlink" title="mongod 配置文件"></a>mongod 配置文件</h6><p><strong>注意：</strong>1. ip   2. auth</p>
+<p>参考： <a target="_blank" rel="noopener" href="https://www.cnblogs.com/zhoujinyi/p/3130231.html">https://www.cnblogs.com/zhoujinyi/p/3130231.html</a></p>
+<h6 id="mongodb-角色预授权"><a href="#mongodb-角色预授权" class="headerlink" title="mongodb 角色预授权"></a>mongodb 角色预授权</h6><p>注意：1. root角色  2. 在某个库下创建的用户隶属于这个库</p>
+<p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/kk185800961/article/details/45619863">https://blog.csdn.net/kk185800961/article/details/45619863</a></p>
+<h6 id="mongo-express"><a href="#mongo-express" class="headerlink" title="mongo-express"></a>mongo-express</h6><p>参考 <strong>centos7下使用mongo-express/adminMongo通过WEB管理MongoDB（可视化）</strong>：<a target="_blank" rel="noopener" href="https://blog.csdn.net/Algorithmguy/article/details/81905224">https://blog.csdn.net/Algorithmguy/article/details/81905224</a></p>
+<p><strong>docker mongo-express</strong>：<a target="_blank" rel="noopener" href="https://docs.docker-cn.com/samples/mongo-express/">https://docs.docker-cn.com/samples/mongo-express/</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Algorithmguy/article/details/81905224">centos7下使用mongo-express/adminMongo通过WEB管理MongoDB（可视化）</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/437626dafad2">使用mongo-express图形化界面远程管理数据库</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/b3b6eb9dc11a">在CentOS 7(腾讯云)部署node+mongodb项目全过程（上）</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/c0c4ece47556">在CentOS 7(腾讯云)部署node+mongodb项目全过程（下）</a></p>
+<p>使用pm2让nodeJS项目永久运行在服务器上</p>
 
       
     </div>
@@ -829,7 +929,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-02-17 19:14:36" itemprop="dateModified" datetime="2023-02-17T19:14:36+08:00">2023-02-17</time>
+                <time title="修改时间：2023-02-22 17:26:16" itemprop="dateModified" datetime="2023-02-22T17:26:16+08:00">2023-02-22</time>
               </span>
 
           
@@ -844,6 +944,7 @@
 
       
           <p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1AN4y177TC">Vue、 Nodejs Express 打包发布外网云服务器 (完结)</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.linuxcool.com/">Linux命令大全(手册)</a></p>
 <h3 id="常用-Linux-命令的基本使用"><a href="#常用-Linux-命令的基本使用" class="headerlink" title="常用 Linux 命令的基本使用"></a>常用 Linux 命令的基本使用</h3><ul>
 <li>理解学习 Linux 终端命令的原因</li>
 <li>常用 Linux 命令体验</li>
@@ -1471,7 +1572,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/47/">47</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/48/">48</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1539,7 +1640,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">140</span>
+          <span class="site-state-item-count">142</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1552,7 +1653,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">92</span>
+        <span class="site-state-item-count">96</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

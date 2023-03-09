@@ -316,3 +316,30 @@
 
 
 注：db.json文件不需要上传到GitHub，克隆项目，运行项目时，会重新生成。
+
+
+
+
+
+报错：
+
+```
+ 14 files changed, 8968 insertions(+), 8866 deletions(-)
+kex_exchange_identification: Connection closed by remote host
+Connection closed by 20.205.243.166 port 22
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+FATAL {
+  err: Error: Spawn failed
+      at ChildProcess.<anonymous> (H:\Github\winney07.github.io\node_modules\hexo-deployer-git\node_modules\hexo-util\lib\spawn.js:51:21)
+      at ChildProcess.emit (node:events:390:28)
+      at ChildProcess.cp.emit (H:\Github\winney07.github.io\node_modules\cross-spawn\lib\enoent.js:34:29)
+      at Process.ChildProcess._handle.onexit (node:internal/child_process:290:12) {
+    code: 128
+  }
+} Something's wrong. Maybe you can find the solution here: %s https://hexo.io/docs/troubleshooting.html
+
+```
+

@@ -1211,3 +1211,14 @@ data-*=""
 使用HTML5编写的移动Web应用
 
 #### 全屏显示
+
+
+
+
+
+#### 设置苹果手机将网页添加到主屏幕的图标
+
+```
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+```
+

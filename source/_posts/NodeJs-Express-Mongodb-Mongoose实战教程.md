@@ -2303,15 +2303,410 @@ show dbs
 
 #### MongoDB数据库创建、删除、表(集合)、创建删除、数据的增、删、改、查
 
+test(数据库)
 
+- user
+- admin
+- article
 
+表（集合）：user、admin、article
 
+##### 1、使用数据库、创建数据库
+
+```
+user test
+```
+
+如果真的想把这个数据库创建成功，`那么必须插入一个数据`。
+
+数据库中不能直接插入数据，只能往集合(collections)中插入数据。下面命令表示给 test数据库的user表中插入数据。
+
+```
+db.user.insert({"name":"zhangsan","age":20});
+```
+
+##### 2、查看数据库
+
+```
+show dbs
+```
+
+##### 3、显示当前的数据集合（mysql中叫表）
+
+```
+show collections
+```
+
+##### 4、删除集合，删除指定的集合   删除表
+
+```
+删除集合  db.COLLECTION_NAME.DROP()
+
+db.user.drop();
+```
+
+##### 5、删除数据库，删除当前所在的数据库
+
+```
+db.dropDatabase();
+```
+
+##### 三、插入（增加）数据
+
+插入数据，随着数据的插入，数据库创建成功了，集合也创建成功了
+
+```
+db.表名.insert({"name":"zhangsan","age":20});
+```
+
+##### 四、查找数据
+
+1、查找所有记录
+
+```
+db.user.find();
+```
+
+相当于：`select * from user;`
+
+```
+> db.user.find();
+{ "_id" : ObjectId("6409aade3631637f8390508f"), "name" : "zhangsan", "age" : 20 }
+{ "_id" : ObjectId("6409ab7e3631637f83905090"), "name" : "zhangsan", "age" : 30 }
+{ "_id" : ObjectId("6409ab883631637f83905091"), "name" : "zhangsan", "age" : 40 }
+{ "_id" : ObjectId("6409ab903631637f83905092"), "name" : "zhangsan", "age" : 20 }
+{ "_id" : ObjectId("6409ac5105d810a057af99e4"), "name" : "zhangsan", "age" : 22 }
+```
+
+2、查询去掉后的当前聚集集合中的某列的重复数据
+
+```
+db.user.distinct("name");
+```
+
+会过滤掉name中的相同数据
+
+相当于：`select distinct name from user;`
+
+```
+> db.user.distinct("name");
+[ "zhangsan" ]
+```
+
+3、查询`age=22`的记录
+
+```
+db.user.find({"age":22})
+```
+
+相当于：`select * from user where age = 22;`
+
+```
+> db.user.find({"age":22})
+{ "_id" : ObjectId("6409ac9005d810a057af99e6"), "name" : "zhangsan", "age" : 22 }
+```
+
+4、查询`age>22`的记录
+
+```
+db.user.find({age:{$gt:22}});
+```
+
+相当于：`select * from user where age >22;`
+
+5、查询age<22的记录
+
+```
+db.user.find({age:{$lt:22}});
+```
+
+相当于：`select * from user where age <22;`
+
+6、查询age>=25的记录
+
+```
+db.user.find({age:{$gte:25}});
+```
+
+相当于：`select * from user where age >=25;`
+
+7、查询age<=25的记录
+
+```
+db.user.find({age:{$lte:25}});
+```
+
+8、查询age>=23并且age <=26的记录    （注意书写格式）
+
+```
+db.user.find({age:{$gte:23,$lte:26}});
+```
+
+9、查询name中包含mongo的数据       （模糊查询用于搜索）
+
+```
+db.user.find({name:/mongo/});
+```
+
+> //相当于%%
+>
+> `select * from user where name like '%mongo%';`
+
+10、查询name中以mongo开头的，  `^`符号
+
+```
+db.user.find({name:/^mongo/});
+```
+
+`select * from user where name like 'mongo%';`
+
+查询name中以mongo结束的， ` $`符号
+
+```
+db.user.find({name:/mongo$/});
+```
+
+11、查询指定列name、age数据
+
+```
+db.user.find({},{name:1, age:1});
+```
+
+```
+db.user.find({"age":{$gt:20}},{age:1});
+```
+
+```
+db.user.find({"age":{$gt:20}},{name:1});
+```
+
+```
+db.user.find({"age":{$gt:20}},{name:1, age:1});
+```
+
+相当于：`select name, age from user;`
+
+当然name也可以用`true`或`false`，当用`true`的情况下和 `name:1`效果一样，如果用`false`就是排除name，显示name以外的列信息。
+
+12、查询指定列name、age数据，`age>25`
+
+```
+db.user.find({"age":{$gt:25}},{name:1, age:1});
+```
+
+相当于：`select name, age from user where age >25;`
+
+13、按照年龄排序   1 升序   -1  降序
+
+升序：
+
+```
+db.user.find().sort({age:1});
+```
+
+降序：
+
+```
+db.user.find().sort({age:-1});
+```
+
+14、查询`name = zhangsan, age = 22`的数据
 
 查询数据库的条件，可以写多个
 
+```
+db.user.find({name:'zhangsan', age:22});
+```
 
+15、查询前5条数据
 
+```
+db.user.find().limit(5);
+```
 
+相当于：`select top 5 * from user;`
+
+新增100条数据：(类似js代码)
+
+```
+> for(var i = 1; i<100; i++) {
+...
+... db.admin.insert({"name":"zhang" + i, "age": i})
+... };
+```
+
+```
+> db.admin.find()
+{ "_id" : ObjectId("640aa65d3ac7e1046e8f888c"), "name" : "zhang1", "age" : 1 }
+{ "_id" : ObjectId("640aa65d3ac7e1046e8f888d"), "name" : "zhang2", "age" : 2 }
+{ "_id" : ObjectId("640aa65d3ac7e1046e8f888e"), "name" : "zhang3", "age" : 3 }
+{ "_id" : ObjectId("640aa65d3ac7e1046e8f888f"), "name" : "zhang4", "age" : 4 }
+{ "_id" : ObjectId("640aa65d3ac7e1046e8f8890"), "name" : "zhang5", "age" : 5 }
+{ "_id" : ObjectId("640aa65d3ac7e1046e8f8891"), "name" : "zhang6", "age" : 6 }
+{ "_id" : ObjectId("640aa65d3ac7e1046e8f8892"), "name" : "zhang7", "age" : 7 }
+{ "_id" : ObjectId("640aa65d3ac7e1046e8f8893"), "name" : "zhang8", "age" : 8 }
+{ "_id" : ObjectId("640aa65d3ac7e1046e8f8894"), "name" : "zhang9", "age" : 9 }
+{ "_id" : ObjectId("640aa65d3ac7e1046e8f8895"), "name" : "zhang10", "age" : 10 }
+{ "_id" : ObjectId("640aa65d3ac7e1046e8f8896"), "name" : "zhang11", "age" : 11 }
+{ "_id" : ObjectId("640aa65d3ac7e1046e8f8897"), "name" : "zhang12", "age" : 12 }
+{ "_id" : ObjectId("640aa65d3ac7e1046e8f8898"), "name" : "zhang13", "age" : 13 }
+{ "_id" : ObjectId("640aa65d3ac7e1046e8f8899"), "name" : "zhang14", "age" : 14 }
+{ "_id" : ObjectId("640aa65d3ac7e1046e8f889a"), "name" : "zhang15", "age" : 15 }
+{ "_id" : ObjectId("640aa65d3ac7e1046e8f889b"), "name" : "zhang16", "age" : 16 }
+{ "_id" : ObjectId("640aa65d3ac7e1046e8f889c"), "name" : "zhang17", "age" : 17 }
+{ "_id" : ObjectId("640aa65d3ac7e1046e8f889d"), "name" : "zhang18", "age" : 18 }
+{ "_id" : ObjectId("640aa65d3ac7e1046e8f889e"), "name" : "zhang19", "age" : 19 }
+{ "_id" : ObjectId("640aa65d3ac7e1046e8f889f"), "name" : "zhang20", "age" : 20 }
+Type "it" for more
+```
+
+16、查询10条以后的数据
+
+```
+db.admin.find().skip(10);
+```
+
+17、查询在5~10之间的数据
+
+```
+> db.admin.find().limit(4).skip(5);
+{ "_id" : ObjectId("640aa65d3ac7e1046e8f8891"), "name" : "zhang6", "age" : 6 }
+{ "_id" : ObjectId("640aa65d3ac7e1046e8f8892"), "name" : "zhang7", "age" : 7 }
+{ "_id" : ObjectId("640aa65d3ac7e1046e8f8893"), "name" : "zhang8", "age" : 8 }
+{ "_id" : ObjectId("640aa65d3ac7e1046e8f8894"), "name" : "zhang9", "age" : 9 }
+>
+```
+
+```
+db.admin.find().limit(10).skip(5);
+```
+
+可用于分页，limit是pageSize，skip是第几页减1*pageSize
+
+pageSize：每页显示的条数
+
+```
+db.admin.find().limit(10).skip(0);    		// 第一页   (n-1)*10
+db.admin.find().limit(10).skip(10);		 	// 第二页
+db.admin.find().limit(10).skip(20); 		// 第三页
+```
+
+18、or与查询
+
+```
+db.user.find({$or:[{age:22},{age:25}]});
+```
+
+相当于：`select * from user where age = 22 or age =25;`
+
+19、findOne查询第一条数据
+
+```
+db.user.findOne();
+```
+
+相当于：`select top 1* from user;`
+
+```
+db.user.find().limit(1);
+```
+
+20、查询某个结果集的记录条数    统计数量
+
+```
+db.user.find().count();
+```
+
+```
+db.user.find({age:{$gte:25}}).count();
+```
+
+相当于：`select count(*) from user where age >=20;`
+
+如果要返回限制之后的记录数量，要使用`count(true)`或者`count(非0)`
+
+```
+db.user.find().skip(10).limit(5).count(true);
+```
+
+#### 四、修改数据
+
+```
+ db.student.insert({"name":"liming", "age":20, sex:"男", "score":{"shuxue":70, "yuwen":80, "yingyu":86}});
+```
+
+```
+> db.student.find()                                                                      
+{ "_id" : ObjectId("640acb7319e76fb47ee3df38"), "name" : "小明", "age" : 33, "score" : { "shuxue" : 70, "yuwen" : 80, "yingyu" : 86 }, "sex" : "男" }
+{ "_id" : ObjectId("640acebb19e76fb47ee3df39"), "name" : "xiaoming", "age" : 20, "sex" : "男", "score" : { "shuxue" : 70, "yuwen" : 80, "yingyu" : 86 } }
+{ "_id" : ObjectId("640acedf19e76fb47ee3df3a"), "name" : "Lisi", "age" : 20, "sex" : "女", "score" : { "shuxue" : 70, "yuwen" : 80, "yingyu" : 86 } }
+{ "_id" : ObjectId("640aceea19e76fb47ee3df3b"), "name" : "lisa", "age" : 20, "sex" : "女", "score" : { "shuxue" : 70, "yuwen" : 80, "yingyu" : 86 } }
+{ "_id" : ObjectId("640aceff19e76fb47ee3df3c"), "name" : "liming", "age" : 20, "sex" : "男", "score" : { "shuxue" : 70, "yuwen" : 80, "yingyu" : 86 } }
+>
+```
+
+`注意：要加上$set，如果不加上，会直接替换整条数据`
+
+修改里面还有查询条件。你要改谁，要告诉mongo。
+
+查找名字叫做小明的，把年龄更改为16岁：
+
+```
+db.student.update({"name":"小明"}, {$set:{age:16}})
+
+db.student.update({"name":"小明"}, {$set:{"sex":"男"}})
+```
+
+查找数学成绩是70，把年龄更改为33岁：
+
+```
+db.student.update({"score.shuxue":70}, {$set:{age:33}})
+```
+
+更改所有匹配项目：`{multi: true}`
+By default, the update() method updates a single document. To update multiple documents, use the multi option in the update() method.
+
+```
+db.student.update({"sex":"男"},{$set:{"age":33}}, {multi: true});
+```
+
+完整替换，`不出现$set关键字了`： `注意`
+
+```
+db.student.update({"name":"小明"}, {"name":"大明","age":16}); 
+
+// 原数据：
+{ "_id" : ObjectId("640acb7319e76fb47ee3df38"), "name" : "小明", "age" : 33, "score" : { "shuxue" : 70, "yuwen" : 80, "yingyu" : 86 }, "sex" : "男" }
+//  直接替换为：
+{ "_id" : ObjectId("640acb7319e76fb47ee3df38"), "name" : "大明", "age" : 16 }
+```
+
+`db.users.update({name: "Lisi"},{$inc: {age: 50]}, false, true);`
+
+相当于：` update users set age = age + 50 where name = 'Lisi';`
+
+`db.users.update({name: 'Lisi'}, {$inc: {age: 50}, $set: {name: 'hoho'}}, false, true);`
+
+相当于：`update users set age = age + 50, name = 'hoho' where name = 'Lisi';`
+
+#### 五、删除数据
+
+```
+db.collectionsNames.remove({"borough":"Manhattan"});
+db.users.remove({age: 132});
+```
+
+By default, the remove() method removes all documents that match the remove condition. Use the justOne option to limit the remove operation to only one of fhe matching documents.
+
+`{justOne: true}`
+
+```
+db.restaurants.remove({"borough": "Queens"}, {justOne: true})
+```
+
+```
+ db.student.remove({"sex":"男"},{justOne:true})
+```
 
 删除数据，如果不加条件，是全部都删除
 
@@ -2319,3 +2714,8 @@ show dbs
 db.admin.remove({});      // 全部删除
 ```
 
+#### MongoDb大数据查询优化、MongoDB索引、复合索引、唯一索引、explain分析查询速度
+
+
+
+查询6万多条数据，不加索引，查询时间500多毫秒，加上索引，10毫秒左右

@@ -303,6 +303,26 @@
 
     themes里面的apple-touch-icon-next.png
 
+    1. `\themes\next\layout\_partials\head\head.swig`
+    
+       ```
+       {%- if theme.favicon.apple_touch_icon %}
+         <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for(theme.favicon.apple_touch_icon) }}">
+       {%- endif %}
+       ```
+    
+    2. `\themes\next\_config.yml`
+    
+       ```
+       favicon:
+         small: /images/favicon-16x16-next.png
+         medium: /images/favicon-32x32-next.png
+         apple_touch_icon: /images/apple-touch-icon-next.png
+         safari_pinned_tab: /images/logo.svg
+       ```
+    
+       
+    
     
 
 > hexo d 部署的代码到main分支，也就是博客网页访问的内容
@@ -341,5 +361,11 @@ FATAL {
   }
 } Something's wrong. Maybe you can find the solution here: %s https://hexo.io/docs/troubleshooting.html
 
+```
+
+重新再执行一次以下代码：
+
+```
+hexo clean && hexo g && hexo d
 ```
 

@@ -1350,7 +1350,38 @@ layui会自动在页面生成样式，自定义样式，覆盖它
 ,{align: 'center', title: '第181-360天', width: 80,colspan: cols_count }
 ```
 
+#### 表格固定列与表格对应列不对齐
+
+渠道回收数据：
+
+![固定列不对齐](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/layui-%E7%AC%94%E8%AE%B0/note9.png)
 
 
 
+1. 给日期列添加unresize属性
+
+   ```
+   {field: 'date', title: '日期',  width: 100, rowspan: 2, height: 81, unresize:true, fixed:'left'}
+   ```
+
+2. 给固定列添加宽度
+
+   ```
+   .fx_w112 .layui-table-fixed{  width: 112px;}
+   ```
+
+3. 动态加上fx_w112 
+
+   ```
+   // 修改第一列固定表头的高度
+    if(targets_page_len !== 0) {
+     $('.table-container').addClass('rowspan_2').removeClass('rowspan_1');
+     $('.table-container').removeClass('fx_w112');  
+   } else{
+     $('.table-container').addClass('rowspan_1').removeClass('rowspan_2');
+     $('.table-container').addClass('fx_w112');   // 修改固定列的宽度
+   }
+   ```
+
+> 给日期列添加unresize属性，是因为后面给它添加固定宽度112，如果可以拖拽修改宽度，就会矛盾。 
 

@@ -57,6 +57,9 @@ tags:
 - 创建和删除操作
   - `touch`
   - `rm`
+    - `rm 文件名`，回车后输入`yes`
+    - `rm -rf 目录名`： 将会删除目录以及其下所有文件夹，包括文件   【[Linux rm命令 删除文件夹](https://blog.csdn.net/sqbzo/article/details/8990404)】
+    - `使用这个rm -rf的时候一定要格外小心，linux没有回收站的`
   - `mkdir`
 - 拷贝和移动文件
   - `cp`
@@ -185,6 +188,10 @@ tags:
 | 01   | tree [目录名]      | tree     | 以树状图列出文件目录结构             |
 | 02   | cp 源文件 目标文件 | copy     | 复制文件或者目录                     |
 | 03   | mv 源文件 目标文件 | move     | 移动文件或者目录／文件或者目录重命名 |
+
+```
+mv api2.js backup/api2.js     // 当前目录下的api2.js移到backup目录下
+```
 
 #### 4.1 `tree`
 

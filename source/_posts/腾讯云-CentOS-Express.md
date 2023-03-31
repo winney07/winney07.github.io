@@ -23,3 +23,10 @@ tags:
 #### 本地开发
 
 [安装](https://www.expressjs.com.cn/starter/installing.html)
+
+#### 运行
+
+```
+nvm  use 16.13.0       // 要先执行这句，才能使用node命令
+```
+

@@ -311,3 +311,9 @@ https://github.com/sunwu51/bili/tree/master/linux%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%
 > 百度搜索“腾讯云CentOS部署Express+MongoDB项目”
 
 [如何将node+mongodb项目部署在腾讯云服务器，并进行性能优化的](https://cloud.tencent.com/developer/article/1494192)
+
+
+
+
+
+[mongoose中的Schema和Model](https://blog.csdn.net/weixin_37823121/article/details/82789106)

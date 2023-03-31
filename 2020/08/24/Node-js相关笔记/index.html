@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="Node.js官网 Cnode社区 Node.js中文网 Node.js 中文文档 | Node.js 中文网 淘宝NPM镜像 Node.js&amp;HTML5论坛 npmmirror 镜像站   或 npm.taobao.org 后端处理分页数据的接口   参考博客 element+express+mongoose实现分页查询 后端接口代码：12345678910111213141516171">
+  <meta name="description" content="Node.js官网 Cnode社区 Node.js中文网 Node.js 中文文档 | Node.js 中文网 淘宝NPM镜像 Node.js&amp;HTML5论坛 npmmirror 镜像站   或 npm.taobao.org 后端处理分页数据的接口   参考博客 element+express+mongoose实现分页查询 MongoDB With Node.js | MongoDB 后端">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Node.js相关笔记">
 <meta property="og:url" content="http://example.com/2020/08/24/Node-js%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="winney">
-<meta property="og:description" content="Node.js官网 Cnode社区 Node.js中文网 Node.js 中文文档 | Node.js 中文网 淘宝NPM镜像 Node.js&amp;HTML5论坛 npmmirror 镜像站   或 npm.taobao.org 后端处理分页数据的接口   参考博客 element+express+mongoose实现分页查询 后端接口代码：12345678910111213141516171">
+<meta property="og:description" content="Node.js官网 Cnode社区 Node.js中文网 Node.js 中文文档 | Node.js 中文网 淘宝NPM镜像 Node.js&amp;HTML5论坛 npmmirror 镜像站   或 npm.taobao.org 后端处理分页数据的接口   参考博客 element+express+mongoose实现分页查询 MongoDB With Node.js | MongoDB 后端">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-08-24T04:18:15.000Z">
-<meta property="article:modified_time" content="2023-03-02T03:10:31.824Z">
+<meta property="article:modified_time" content="2023-03-23T08:23:50.558Z">
 <meta property="article:author" content="winney">
 <meta property="article:tag" content="工作笔记">
 <meta property="article:tag" content="Node.js">
@@ -227,7 +227,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-03-02 11:10:31" itemprop="dateModified" datetime="2023-03-02T11:10:31+08:00">2023-03-02</time>
+                <time title="修改时间：2023-03-23 16:23:50" itemprop="dateModified" datetime="2023-03-23T16:23:50+08:00">2023-03-23</time>
               </span>
 
           
@@ -250,6 +250,7 @@
 <p><a target="_blank" rel="noopener" href="https://npmmirror.com/">npmmirror 镜像站</a>   或 npm.taobao.org</p>
 <p><strong>后端处理分页数据的接口</strong>   <a target="_blank" rel="noopener" href="https://www.cnblogs.com/fm060/p/8144758.html">参考博客</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.axis-studio.org/2017/12/29/element-express-mongoose%E5%AE%9E%E7%8E%B0%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2/index.html">element+express+mongoose实现分页查询</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.mongodb.com/languages/mongodb-with-nodejs">MongoDB With Node.js | MongoDB</a></p>
 <h4 id="后端接口代码："><a href="#后端接口代码：" class="headerlink" title="后端接口代码："></a>后端接口代码：</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">app.get(<span class="string">&#x27;/api/getSources&#x27;</span>,<span class="keyword">async</span>(req, res)=&gt;&#123;</span><br><span class="line">    <span class="keyword">let</span> currentPage = <span class="built_in">parseInt</span>(req.query.currentPage) <span class="comment">// 转换前端传入当前页码</span></span><br><span class="line">    <span class="keyword">let</span> pageSize = <span class="built_in">parseInt</span>(req.query.pageSize) <span class="comment">// 转换前端传入的每页大小</span></span><br><span class="line">    <span class="keyword">let</span> skip = (currentPage-<span class="number">1</span>)*pageSize <span class="comment">// 实现分割查询的skip</span></span><br><span class="line">    <span class="keyword">let</span> params = &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 所有数据</span></span><br><span class="line">    <span class="keyword">var</span> allSources = <span class="keyword">await</span> Sources.find();</span><br><span class="line">    <span class="keyword">var</span> allCount = allSources.length;</span><br><span class="line">    <span class="keyword">var</span> allPage = <span class="built_in">Math</span>.ceil(allCount/pageSize);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 根据页码和每页显示条数筛选数据</span></span><br><span class="line">    <span class="keyword">const</span> sources = <span class="keyword">await</span> Sources.find(params).skip(skip).limit(pageSize)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> object =&#123;</span><br><span class="line">        allCount: allCount,</span><br><span class="line">        allPage: allPage,</span><br><span class="line">        page: currentPage,</span><br><span class="line">        data: sources</span><br><span class="line">    &#125;</span><br><span class="line">    res.send(object)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <h4 id="前端请求接口代码："><a href="#前端请求接口代码：" class="headerlink" title="前端请求接口代码："></a>前端请求接口代码：</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 获取素材列表</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> getSources = <span class="function">(<span class="params">param</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> request(&#123;</span><br><span class="line">    method: <span class="string">&#x27;GET&#x27;</span>,</span><br><span class="line">    url: <span class="string">&#x27;/getSources&#x27;</span>,</span><br><span class="line">    params: param</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>.vue页面：</p>
@@ -433,7 +434,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">142</span>
+          <span class="site-state-item-count">145</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -446,7 +447,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">96</span>
+        <span class="site-state-item-count">99</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

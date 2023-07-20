@@ -2,10 +2,10 @@
 title: IE浏览器table中的TD无数据边框不显示问题
 date: 2019-07-19 11:43:34
 tags:
-- 兼容
-categories: 
-- 工作笔记
-- 兼容
+- IE兼容
+categories:
+- 兼容性处理
+- IE兼容
 ---
 在IE(目前发现是ie9,ie10)浏览器下，无数据的时候：
 ![在IE(目前发现是ie9,ie10)浏览器下，无数据的时候](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/IE%E6%B5%8F%E8%A7%88%E5%99%A8table%E4%B8%AD%E7%9A%84TD%E6%97%A0%E6%95%B0%E6%8D%AE%E8%BE%B9%E6%A1%86%E4%B8%8D%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98/1.png)

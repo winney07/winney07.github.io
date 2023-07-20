@@ -4,8 +4,7 @@ date: 2019-07-04 16:00:29
 tags:
 - 阮一峰-ES6
 categories: 
-- 工作笔记
-- 阮一峰-ES6
+- JavaScript
 ---
 [阮一峰-ECMAScript 6](http://es6.ruanyifeng.com/)
 

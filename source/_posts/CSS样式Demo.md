@@ -3,7 +3,8 @@ title: CSS样式Demo
 date: 2019-08-22 10:57:59
 tags:
 - CSS
-- 工作笔记
+categories: 
+- CSS
 ---
 
 #### 使用flex布局实现上下布局，整屏背景图设置—图片会变形

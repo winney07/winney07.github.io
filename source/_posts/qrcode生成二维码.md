@@ -2,10 +2,9 @@
 title: qrcode生成二维码
 date: 2021-01-27 11:09:11
 tags:
-- 插件
+- qrcode
 categories: 
-- 工作笔记
-- 插件
+- 工具
 ---
 
 ####  qrcode生成二维码

@@ -2,10 +2,9 @@
 title: web前端初中高+资深+专家
 date: 2021-01-21 17:31:35
 tags:
-- 听课笔记
+- 前端优化
 categories:
-- 工作笔记
-- 听课笔记
+- 前端优化
 ---
 
 课程网址：[【极客学院】web前端工程师 初级+中级+高级+资深+专家级（五部分完）](https://www.bilibili.com/video/av46236917?from=search&seid=11530041288730825105)

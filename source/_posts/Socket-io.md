@@ -4,6 +4,8 @@ date: 2021-08-17 11:30:39
 tags:
 - Node.js
 - Socket.io
+categories:
+- Socket
 ---
 
 [Socket.io-官网](https://socket.io/)

@@ -3,7 +3,9 @@ title: Pinia
 date: 2022-06-17 11:12:54
 tags:
 - Pinia
-- Vue3
+categories: 
+- 前端开发框架
+- Vue.js
 ---
 
 [Pinia-官网](https://pinia.vuejs.org/)

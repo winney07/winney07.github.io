@@ -2,10 +2,12 @@
 title: NodeJs-Express-Mongodb-Mongoose实战教程
 date: 2021-03-02 11:03:04
 tags:
-- nodejs
+- node.js
 - express
 - mongodb
 - mongoose
+categories: 
+- node.js
 ---
 
 课程链接：[nodejs教程_2020年最新NodeJs+Express+Mongodb+Mongoose入门实战教程](https://www.bilibili.com/video/BV16f4y1U7oT)
@@ -5171,7 +5173,7 @@ mongoose 默认参数：增加数据的时候，如果不传入数据会使用�
 
 
 
-mongoose 预定义模式修饰符Getters与 Setters修饰符
+mongoose 预定义模式修饰符`Getters`与 `Setters`修饰符
 
 
 

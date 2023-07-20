@@ -2,8 +2,9 @@
 title: Node.js相关笔记
 date: 2020-08-24 12:18:15
 tags:
-- Node.js
-- 工作笔记
+- node.js
+categories: 
+- node.js
 ---
 
 [Node.js官网](https://nodejs.org/zh-cn/)
@@ -335,3 +336,12 @@ const sources = await Sources.find(params).sort('-create_time').skip(skip).limit
 
 6. 增删改查相关操作，[看语雀中的笔记](https://www.yuque.com/winney07/vp9xtm/ppi9zu#d8Beu)
 
+
+
+#### 截屏保存图片插件
+
+[casperjs](https://www.npmjs.com/package/casperjs)
+
+phantomjs
+
+[capture-phantomjs](https://www.npmjs.com/package/capture-phantomjs)

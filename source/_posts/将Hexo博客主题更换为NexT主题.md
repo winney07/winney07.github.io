@@ -4,7 +4,7 @@ date: 2018-08-01 17:10:28
 tags:
 - Hexo
 categories: 
-- 工作笔记
+- 文档网站生成工具
 - Hexo
 ---
 1、{% link 下载NexT主题  https://gitforwindows.org/ %}，下载解压后，将该文件夹命名为next，把这个文件夹放置到博客目录的themes 文件夹下，如图所示：

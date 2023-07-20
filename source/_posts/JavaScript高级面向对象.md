@@ -2,10 +2,9 @@
 title: JavaScript高级面向对象
 date: 2021-01-21 17:46:22
 tags:
-- 听课笔记
-categories:
-- 工作笔记
-- 听课笔记
+- JavaScript
+categories: 
+- JavaScript
 ---
 
 ### 1.面向对象编程介绍

@@ -4,6 +4,9 @@ date: 2022-08-04 10:36:44
 tags:
 - Vite
 - Vue3
+categories:
+- 前端开发框架
+- Vue.js
 ---
 
 配置文件：`vite.config.ts`

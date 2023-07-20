@@ -4,8 +4,8 @@ date: 2019-06-19 15:30:15
 tags:
 - 《Vue2实践揭秘》
 categories: 
-- 工作笔记
-- 《Vue2实践揭秘》
+- 前端开发框架
+- Vue.js
 ---
 #### 1、安装有npm
 {% link node.js官网  https://nodejs.org/en/ %}

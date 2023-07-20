@@ -3,7 +3,11 @@ title: AI自动代码补全插件
 date: 2023-03-21 11:04:41
 tags:
 - VScode 
-- AI
+- 插件
+categories:
+- 代码编辑器 
+- VScode 
+- 插件
 ---
 
 #### Tabnine

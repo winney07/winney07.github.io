@@ -4,7 +4,7 @@ date: 2020-11-12 10:46:45
 tags:
 - TypeScript
 categories: 
-- 工作笔记
+- JavaScript
 - TypeScript
 ---
 

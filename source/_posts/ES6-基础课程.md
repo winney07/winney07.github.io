@@ -4,8 +4,7 @@ date: 2019-07-10 15:13:45
 tags:
 - ES6
 categories: 
-- 工作笔记
-- ES6
+- JavaScript
 ---
 腾讯课堂学习笔记
 

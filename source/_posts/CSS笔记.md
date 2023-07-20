@@ -3,7 +3,8 @@ title: CSS笔记
 date: 2019-08-21 17:29:52
 tags:
 - CSS
-- 工作笔记
+categories: 
+- CSS
 ---
 
 
@@ -1994,3 +1995,48 @@ font-family:"Helvetica Neue";
 font-family: Consolas, Monaco, monospace;
 ```
 
+[移动端ios点击input/button时的【阴影/闪烁】解决方法](https://blog.csdn.net/YangBingX/article/details/81082817)
+
+[移动端点击元素出现闪烁](https://blog.csdn.net/xm1037782843/article/details/87920640)
+
+
+
+#### 圆角在safari中不生效
+
+```
+outline: 2px solid #333;
+border-radius: 10px;
+```
+
+> 圆角在PC浏览器是生效的
+
+解决：将`outline`改为`border`
+
+```
+border: 2px solid #333;
+border-radius: 10px;
+```
+
+[记录outline在safari下圆角失效解决](https://juejin.cn/post/7029239047524466719)
+
+
+
+#### 加载文件使用时间戳-清缓存
+
+```
+?t=<?php echo time()?>
+```
+
+#### 移动端-华为手机-文字不居中
+
+```
+height: 40px;
+line-height:40px;
+```
+
+> 对一个元素设置以上属性，在某些属性中，不居中显示
+
+解决方法：
+
+1. 对文字的标签使用padding
+2. 其他的使用margin

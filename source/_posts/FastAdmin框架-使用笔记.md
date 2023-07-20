@@ -2,9 +2,9 @@
 title: FastAdmin框架-使用笔记
 date: 2020-07-24 19:25:00
 tags:
-- FastAdmin框架
+- FastAdmin
 categories: 
-- 工作笔记
+- 前端UI框架
 - FastAdmin框架
 ---
 

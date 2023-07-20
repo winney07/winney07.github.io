@@ -2,8 +2,9 @@
 title: web移动端开发相关笔记
 date: 2018-08-22 11:40:08
 tags:
-- 移动端开发
-- 工作笔记
+- 移动端
+categories:
+- 移动端
 ---
 
 #### [移动端开发的资源与小技巧](https://github.com/jtyjty99999/mobileTech)

@@ -2,9 +2,9 @@
 title: yarn-笔记
 date: 2021-04-24 15:43:06
 tags:
-- 包管理器
+- yarn
 categories:
-- 学习笔记
+- 资源管理器
 - yarn
 ---
 

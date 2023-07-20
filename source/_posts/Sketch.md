@@ -3,6 +3,9 @@ title: Sketch
 date: 2021-10-20 14:36:00
 tags:
 - Sketch
+categories:
+- 工具
+- Sketch
 ---
 
 [Sketch官方用户手册](https://www.sketch.com/docs/)

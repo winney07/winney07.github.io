@@ -2,10 +2,10 @@
 title: gulp学习笔记
 date: 2019-07-11 11:50:39
 tags:
-- Gulp
+- gulp
 categories: 
-- 工作笔记
-- Gulp
+- 前端构建工具
+- gulp
 ---
 [前端自动化构建工具 Gulp 视频教程](https://www.bilibili.com/video/av64407974?from=search&seid=17812780048673997573)
 

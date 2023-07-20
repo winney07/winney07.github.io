@@ -4,6 +4,9 @@ date: 2022-05-01 16:26:09
 tags:
 - NuxtJS
 - Vue3
+categories: 
+- 前端开发框架
+- NuxtJS
 ---
 
 [NuxtJS官网](https://nuxtjs.org/)

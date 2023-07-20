@@ -3,6 +3,9 @@ title: linux-相关笔记
 date: 2022-12-29 16:22:52
 tags:
 - linux
+categories: 
+- 常用命令
+- linux
 ---
 
 [Vue、 Nodejs Express 打包发布外网云服务器 (完结)](https://www.bilibili.com/video/BV1AN4y177TC)
@@ -405,3 +408,12 @@ ll    // 即ls -l
 ```
 
 > 在linux中，“ll”命令指的是“ls -l”命令，它是“ls -l”命令的一个别名，用于以长格式显示目录下的内容列表；输出的信息从左到右依次包括文件名，文件类型、权限模式、硬连接数、所有者、组、文件大小和文件的最后修改时间等。
+
+
+
+#### 查找文件
+
+https://www.knowbaike.com/it/61089.html
+
+
+

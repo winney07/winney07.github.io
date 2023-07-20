@@ -2,8 +2,10 @@
 title: AntDesignUI相关笔记
 date: 2020-05-24 16:19:49
 tags:
-- AntDesignUI
-- 工作笔记
+- Ant Design
+categories:
+- 前端UI框架 
+- Ant Design 
 ---
 
 [文字滚动，轮播效果](https://ant.design/components/alert-cn/)

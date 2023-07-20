@@ -3,6 +3,9 @@ title: Sublime Text相关笔记
 date: 2019-08-24 16:36:46
 tags:
 - Sublime Text
+categories:
+- 代码编辑器
+- Sublime Text
 ---
 
 

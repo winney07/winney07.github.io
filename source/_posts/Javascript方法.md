@@ -2,10 +2,9 @@
 title: Javascript方法
 date: 2020-04-07 14:23:17
 tags:
-- Javascript
+- JavaScript
 categories: 
-- 工作笔记
-- Javascript
+- JavaScript
 ---
 
 #### [关于< input type=“number” />可以输入字母e](https://www.cnblogs.com/ysx215/p/14654648.html)

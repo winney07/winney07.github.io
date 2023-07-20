@@ -4,8 +4,7 @@ date: 2020-07-09 14:50:35
 tags:
 - HTML中的特殊符号
 categories: 
-- 工作笔记
-- HTML中的特殊符号
+- HTML
 ---
 #### [HTML 特殊符号编码对照表](https://tool.chinaz.com/tools/htmlchar.aspx)
 

@@ -5,6 +5,9 @@ tags:
 - Vue3
 - Vite
 - Vant
+categories:
+- 前端开发框架
+- Vue.js
 ---
 
 [vue3使用vite2移动端项目](https://zhuanlan.zhihu.com/p/351888882)
@@ -67,6 +70,12 @@ export default defineConfig({
   ]
 })
 
+```
+
+#### 引入vant的样式
+
+```
+import 'vant/lib/index.css';
 ```
 
 ##### 引入函数组件的样式
@@ -157,6 +166,8 @@ module.exports = {
   },
 };
 ```
+
+`注意：添加完文件之后，要重启项目`
 
 报错：
 

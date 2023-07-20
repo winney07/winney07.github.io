@@ -4,7 +4,6 @@ date: 2021-02-05 14:22:52
 tags:
 - JavaScript
 categories: 
-- 工作笔记
 - JavaScript
 ---
 
@@ -1133,3 +1132,32 @@ categories:
 
 ​       
 
+
+
+#### import导出·导入
+
+```
+// 导出
+var common = {};
+
+/**
+ * 获取用户key
+ * @param identification
+ * @returns {string}
+ */
+common.getUserKey = function (identification) {
+    return this.USER_PREFIX + '-' + identification;
+}
+
+module.exports = common;
+```
+
+```
+// 导入
+import * as common from './common.js';
+
+// 使用
+common.getUserKey('h5-sdk.hugenstar')
+```
+
+[JS模块化——模块暴露与模块引入](https://blog.csdn.net/zxd1435513775/article/details/106334253)

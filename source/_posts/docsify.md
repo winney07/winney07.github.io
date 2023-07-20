@@ -3,6 +3,9 @@ title: docsify
 date: 2020-08-24 17:54:50
 tags:
 - docsify
+categories: 
+- 文档网站生成工具
+- docsify
 ---
 
 #### [官网文档](https://docsify.js.org/#/zh-cn/quickstart)

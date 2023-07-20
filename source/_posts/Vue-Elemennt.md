@@ -5,8 +5,8 @@ tags:
 - Vue
 - Element
 categories: 
-- 工作笔记
-- Vue
+- 前端开发框架
+- Vue.js
 ---
 
 #### vue是否安装成功

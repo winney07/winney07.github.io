@@ -4,8 +4,8 @@ date: 2020-05-25 14:39:52
 tags:
 - 常用命令
 categories: 
-- 工作笔记
-- 常用命令
+- 文档网站生成工具
+- Hexo
 ---
 ### 修改generator.js
 ```

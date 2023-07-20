@@ -2,7 +2,10 @@
 title: ChatGPT
 date: 2023-03-22 14:14:48
 tags:
-- AI
+- ChatGPT
+categories:
+- 人工智能
+- ChatGPT
 ---
 
 插件：

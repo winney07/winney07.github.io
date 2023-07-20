@@ -3,7 +3,9 @@ title: MiniUI-笔记
 date: 2019-08-16 14:50:14
 tags:
 - MiniUI
-- 工作笔记
+categories: 
+- 前端UI框架
+- MiniUI
 ---
 
 [MiniUI官网](http://www.miniui.com/)

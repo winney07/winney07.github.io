@@ -3,7 +3,9 @@ title: Bootstrap相关笔记
 date: 2018-08-18 11:04:21
 tags:
 - Bootstrap
-- 工作笔记
+categories:
+- 前端UI框架 
+- Bootstrap
 ---
 
 [Bootstrap5](http://www.bootstrap.cn/doc/read/194)

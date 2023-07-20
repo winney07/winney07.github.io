@@ -3,6 +3,8 @@ title: Javascript常用代码
 date: 2018-08-20 10:28:46
 tags:
 - Javascript
+categories: 
+- JavaScript
 ---
 
 在谷歌浏览器控制台（console）中，编写多行代码时，实现换行的快捷键：`shift + 回车`
@@ -1130,5 +1132,14 @@ for(var i = 0; i < mp; i++)
 }
 //animation loop
 setInterval(draw, 33);
+```
+
+#### 判断一个数组的某个对象是否具体某个属性，如果没有就追加对象
+
+```
+// records是对象数组
+if (!records.some(obj => obj.username === value.username)) {
+    records.push(value);
+}
 ```
 

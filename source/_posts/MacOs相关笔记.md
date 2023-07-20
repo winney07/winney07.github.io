@@ -3,6 +3,8 @@ title: MacOs相关笔记
 date: 2021-10-01 06:59:49
 tags:
 - Mac
+categories: 
+- Mac
 ---
 
 #### Mac系统——iOS环境

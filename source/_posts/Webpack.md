@@ -4,7 +4,7 @@ date: 2019-11-20 11:14:04
 tags:
 - webpack
 categories:
-- 工作笔记
+- 前端构建工具
 - webpack
 ---
 [webpack中文官网](https://www.webpackjs.com/)
@@ -1719,4 +1719,133 @@ module.exports = {
 
 
 
-#### 
+
+
+#### 报错处理
+
+使用require引入，报错：[Critical dependency: require function is used in a way in which dependencies cannot be statically extracted](https://github.com/webpack/webpack/issues/8164)
+
+解决：将require引入改为import
+
+```
+
+```
+
+### 使用webpack进行打包
+
+```
+npm install webpack webpack-cli --save-dev
+```
+
+根目录创建一个名为 `webpack.config.js` 的文件
+
+```
+const path = require('path');
+
+module.exports = {
+  entry: './src/main.js',
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'sdk.js',
+    library: 'mySDK',
+    libraryTarget: 'umd'
+  },
+  module: {
+    rules: [
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader'
+      },
+      {
+        test: /\.js$/,
+        loader: 'babel-loader',
+        exclude: /node_modules/
+      }
+    ]
+  },
+  resolve: {
+    alias: {
+      vue$: 'vue/dist/vue.esm.js'
+    },
+    extensions: ['*', '.js', '.vue', '.json']
+  },
+  devtool: 'source-map'
+};
+```
+
+
+
+```
+npm i babel-loader vue-loader --save
+```
+
+
+
+报错：
+
+```
+[webpack-cli] Failed to load 'H:\Gitee\vue3_demo\H5_SDK_Vite\webpack.config.js' config
+[webpack-cli] ReferenceError: require is not defined in ES module scope, you can use import instead
+This file is being treated as an ES module because it has a '.js' file extension and 'H:\Gitee\vue3_demo\H5_SDK_Vite\package.json' contains "type": "module". To treat it as a CommonJS script, rename it to use the '.cjs' file extension.
+```
+
+解决：将package.json文件中的type属性去掉
+
+
+
+修改`"private": false,`
+
+
+
+```
+npm i css-loader style-loader --save
+```
+
+处理less
+
+```
+rules: [
+    {
+        test: /\.less$/,
+        use:[
+            {
+                loader: 'style-loader'
+            }, {
+                loader: 'css-loader'
+            }, {
+                loader: 'less-loader'
+            }
+        ]
+    },
+]
+```
+
+
+
+```
+npm i url-loader --save
+```
+
+```
+npm install vue-style-loader
+```
+
+
+
+
+
+```
+You may need an additional loader to handle the result of these loaders.
+|
+>  .wrapper {
+|     display: flex;
+|     align-items: center;
+ @ ./src/App.vue 4:0-74
+ @ ./src/main.js 4:0-28 6:22-25
+```
+
+
+
+```
+npm install vue vue-loader vue-style-loader --save-dev
+```

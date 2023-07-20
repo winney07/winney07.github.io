@@ -3,6 +3,8 @@ title: Javascript相关笔记
 date: 2019-09-04 11:31:48
 tags:
 - Javascript
+categories: 
+- JavaScript
 ---
 
 #### 基础知识
@@ -1237,4 +1239,24 @@ throw '错误提示'    // 抛出错误
 
 
 
+
+[在一个JS文件中引用另一个JS文件](https://blog.csdn.net/fuhanghang/article/details/126965142)
+
+[原生JS添加Class类名 删除类名](https://cloud.tencent.com/developer/article/1939268)
+
+```
+document.getElementById("myDIV").classList.add("mystyle");
+```
+
+```
+document.getElementById("myDIV").classList.add("mystyle", "anotherClass", "thirdClass");
+```
+
+```
+document.getElementById("myDIV").classList.remove("mystyle");
+```
+
+```
+myDiv.classList.contains('myCssClass'); //return true or false
+```
 

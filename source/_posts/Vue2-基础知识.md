@@ -4,8 +4,8 @@ date: 2021-02-20 10:56:26
 tags:
 - 《Vue2实践揭秘》
 categories:
-- 工作笔记
-- 《Vue2实践揭秘》
+- 前端开发框架
+- Vue.js
 ---
 
 #### [Vue.js-中文文档](https://cn.vuejs.org/)

@@ -245,10 +245,15 @@
       #Search
       search:
         path: search.xml
-        field: post
+        field: all
         format: html
         limit: 10000
       ```
+      > `path`：索引文件路径，相对于根目录
+      > `field`：搜索范围，默认是post，另外可以选择page、all，设置成all表示搜索所有页面
+      > `limit`：最大搜索条目数
+      >
+      > 这里把field改为all
 
     - 修改next主题配置文件（themes\next\\\_config.yml找到 local_search 项，将它的enable修改为true）
 

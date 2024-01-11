@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="js字符串连接换行符没有效果解决办法1234var a &#x3D; &#39;aaaaa&#39;, b &#x3D; &#39;bbbbb&#39;, c &#x3D; &#39;ccccc&#39;;var arr &#x3D; [a,b,c];var str &#x3D; arr.join(&quot;\n&quot;);console.log(str);   js 去掉字符串前后空格js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jQuery-笔记">
+<meta property="og:url" content="http://example.com/2019/03/07/jQuery-%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="winney">
+<meta property="og:description" content="js字符串连接换行符没有效果解决办法1234var a &#x3D; &#39;aaaaa&#39;, b &#x3D; &#39;bbbbb&#39;, c &#x3D; &#39;ccccc&#39;;var arr &#x3D; [a,b,c];var str &#x3D; arr.join(&quot;\n&quot;);console.log(str);   js 去掉字符串前后空格js">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/jQuery-%E7%AC%94%E8%AE%B0/1.png">
+<meta property="article:published_time" content="2019-03-07T07:01:55.000Z">
+<meta property="article:modified_time" content="2024-01-11T08:04:43.580Z">
+<meta property="article:author" content="winney">
+<meta property="article:tag" content="jQuery">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/jQuery-%E7%AC%94%E8%AE%B0/1.png">
+
+<link rel="canonical" href="http://example.com/2019/03/07/jQuery-%E7%AC%94%E8%AE%B0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>jQuery-笔记 | winney</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">winney</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">It is never too old to learn.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <img alt="winney" src="/images/blog-head.jpg">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2019/03/07/jQuery-%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="winney">
+      <meta itemprop="description" content="Doing is better than saying.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="winney">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          jQuery-笔记
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-03-07 15:01:55" itemprop="dateCreated datePublished" datetime="2019-03-07T15:01:55+08:00">2019-03-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-01-11 16:04:43" itemprop="dateModified" datetime="2024-01-11T16:04:43+08:00">2024-01-11</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/jQuery/" itemprop="url" rel="index"><span itemprop="name">jQuery</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h4 id="js字符串连接换行符没有效果解决办法"><a href="#js字符串连接换行符没有效果解决办法" class="headerlink" title="js字符串连接换行符没有效果解决办法"></a>js字符串连接换行符没有效果解决办法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var a &#x3D; &#39;aaaaa&#39;, b &#x3D; &#39;bbbbb&#39;, c &#x3D; &#39;ccccc&#39;;</span><br><span class="line">var arr &#x3D; [a,b,c];</span><br><span class="line">var str &#x3D; arr.join(&quot;\n&quot;);</span><br><span class="line">console.log(str);  </span><br></pre></td></tr></table></figure>
+<h4 id="js-去掉字符串前后空格"><a href="#js-去掉字符串前后空格" class="headerlink" title="js 去掉字符串前后空格"></a>js 去掉字符串前后空格</h4><h6 id="js去掉字符串前后空格的五种方法"><a href="#js去掉字符串前后空格的五种方法" class="headerlink" title="js去掉字符串前后空格的五种方法"></a><a target="_blank" rel="noopener" href="https://www.cnblogs.com/yingjie13/p/3534615.html">js去掉字符串前后空格的五种方法</a></h6><h6 id="js-去掉字符串前后空格-1"><a href="#js-去掉字符串前后空格-1" class="headerlink" title="js 去掉字符串前后空格"></a><a target="_blank" rel="noopener" href="https://www.cnblogs.com/mingforyou/p/3930638.html">js 去掉字符串前后空格</a></h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">使用jquery</span><br><span class="line"></span><br><span class="line">$.trim(str) </span><br><span class="line"></span><br><span class="line">jquery内部实现为：</span><br><span class="line"></span><br><span class="line">function trim(str)&#123;   </span><br><span class="line">    return str.replace(&#x2F;^(\s|\u00A0)+&#x2F;,&#39;&#39;).replace(&#x2F;(\s|\u00A0)+$&#x2F;,&#39;&#39;);   </span><br><span class="line">&#125;</span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">　　 function trim(str)&#123; &#x2F;&#x2F;删除左右两端的空格</span><br><span class="line">　　   return str.replace(&#x2F;(^s*)|(s*$)&#x2F;g, &quot;&quot;);</span><br><span class="line">　　 &#125;</span><br><span class="line">　　 function ltrim(str)&#123; &#x2F;&#x2F;删除左边的空格</span><br><span class="line">　　   return str.replace(&#x2F;(^s*)&#x2F;g,&quot;&quot;);</span><br><span class="line">　　 &#125;</span><br><span class="line">　　 function rtrim(str)&#123; &#x2F;&#x2F;删除右边的空格</span><br><span class="line">　　   return str.replace(&#x2F;(s*$)&#x2F;g,&quot;&quot;);</span><br><span class="line">　　 &#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line">JS 去字符串空格 总结</span><br><span class="line"></span><br><span class="line">str为要去除空格的字符串:</span><br><span class="line">去除所有空格: </span><br><span class="line">str &#x3D; str.replace(&#x2F;\s+&#x2F;g,&quot;&quot;); </span><br><span class="line">去除两头空格: </span><br><span class="line">str &#x3D; str.replace(&#x2F;^\s+|\s+$&#x2F;g,&quot;&quot;);</span><br><span class="line">去除左空格：</span><br><span class="line">str&#x3D;str.replace( &#x2F;^\s*&#x2F;, &#39;&#39;);</span><br><span class="line">去除右空格：</span><br><span class="line">str&#x3D;str.replace(&#x2F;(\s*$)&#x2F;g, &quot;&quot;);</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://www.jqueryui.org.cn/">jQuery UI</a></p>
+<h4 id="监听输入框的值变化事件"><a href="#监听输入框的值变化事件" class="headerlink" title="监听输入框的值变化事件"></a>监听输入框的值变化事件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(&quot;.search-input&quot;).bind(&#39;input porpertychange&#39;,function()&#123;</span><br><span class="line">	.....</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>不足：输入中文时，每输入一个字母，都会触发</p>
+<h4 id="监听输入框的值变化-优化"><a href="#监听输入框的值变化-优化" class="headerlink" title="监听输入框的值变化-优化"></a>监听输入框的值变化-优化</h4><p>改为使用compositionstart和compositionend</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 搜索框</span><br><span class="line">var flag &#x3D; true;</span><br><span class="line">$(&quot;.optionList .searchIpt&quot;).on(&quot;compositionstart&quot;, function() &#123;</span><br><span class="line">    flag &#x3D; false;</span><br><span class="line">&#125;);</span><br><span class="line">$(&quot;.optionList .searchIpt&quot;).on(&quot;compositionend&quot;, function() &#123;</span><br><span class="line">    flag &#x3D; true;</span><br><span class="line">&#125;);</span><br><span class="line">$(&quot;.optionList .searchIpt&quot;).on(&quot;keyup&quot;, function() &#123;</span><br><span class="line">    if(flag) &#123;</span><br><span class="line">        var text &#x3D; $(this).val().trim();</span><br><span class="line">        &#x2F;&#x2F; 匹配查询结果</span><br><span class="line">        searchCheck(text, &quot;.searchIpt&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="回到页面顶部"><a href="#回到页面顶部" class="headerlink" title="回到页面顶部"></a>回到页面顶部</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">window.onscroll &#x3D; function()&#123;</span><br><span class="line">    if (document.documentElement.scrollTop || document.body.scrollTop &gt; 0) &#123;</span><br><span class="line">        document.getElementById(&quot;test&quot;).style.display&#x3D;&#39;block&#39;;</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        document.getElementById(&quot;test&quot;).style.display&#x3D;&#39;none&#39;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">test.onclick &#x3D; function()&#123;</span><br><span class="line">    document.body.scrollTop &#x3D; document.documentElement.scrollTop &#x3D; 0;</span><br><span class="line">    document.getElementById(&quot;test&quot;).style.display &#x3D; &quot;none&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="过滤选择器"><a href="#过滤选择器" class="headerlink" title="过滤选择器"></a>过滤选择器</h4><p><a target="_blank" rel="noopener" href="https://www.lmlphp.com/user/58650/article/item/808868/">jQuery 学习之路（2）：选择器与过滤器</a></p>
+<p>一、基本选择器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">标签选择器：　　$(&#39;button&#39;)</span><br><span class="line"></span><br><span class="line">ID选择器：　　$(&#39;#id1&#39;)</span><br><span class="line"></span><br><span class="line">类选择器：　　$(&#39;.class1&#39;)</span><br><span class="line"></span><br><span class="line">多重选择器：　　$(&#39;#id1,.class1,button&#39;)</span><br><span class="line"></span><br><span class="line">全体选择器：　　$(&#39;*&#39;) </span><br></pre></td></tr></table></figure>
+<p>基本选择器完全根据 CSS 选择器的规范而来，对于了解 CSS 的用户非常容易掌握。</p>
+<p><strong>二、层次选择器</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">子选择器：　　$(&#39;parent &gt; child&#39;)　　　　　　　　</span><br><span class="line">后代选择器：　　$(&#39;ancester descendant&#39;)</span><br><span class="line">单一兄弟选择器：　　$(&#39;prev + next&#39;)</span><br><span class="line">所有兄弟选择器：　　$(&#39;prev ~ siblings&#39;)</span><br></pre></td></tr></table></figure>
+<p>　　子选择器和后代选择器的区别：子选择器是后代选择器的子集，前者只筛选出符合条件的直接子元素，后者筛选出符合条件的所有子孙元素。<br>　　单一兄弟选择器与所有兄弟选择器类似，前者只筛选出符合条件的下一个同辈元素，后者筛选出符合条件的后面的所有的同辈元素。</p>
+<p><strong>三、属性选择器</strong></p>
+<p>　　属性选择器可以筛选出包含特定属性的元素，或者根据属性的值的格式来筛选出元素。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">属性包含：　　　　　　　　[attr]</span><br><span class="line">属性值为指定字符串：　　　　[attr &#x3D; &quot;value&quot;]</span><br><span class="line">属性值不为指定字符串：　　　　[attr !&#x3D; &quot;value&quot;]</span><br><span class="line">属性值以指定字符串开始：　　　　[attr ^&#x3D; &quot;value&quot;]</span><br><span class="line">属性值以指定字符串结束：　　　　[attr $&#x3D; &quot;value&quot;]</span><br><span class="line">属性值包含指定字符串：　　　　[attr *&#x3D; &quot;value&quot;]</span><br><span class="line">多属性筛选：　　　　　　　　[attr1 *&#x3D; &quot;value1&quot;][attr2 &#x3D; &quot;value2&quot;]</span><br></pre></td></tr></table></figure>
+<p>　　其中，[name != “value”] 的实现效率较低，可以使用 :not([attr = ‘value’]) 的形式</p>
+<p><strong>四、基本过滤器</strong></p>
+<p>　　有些过滤器的实现并不高效，原因参见官网，对于这部分过滤器，建议使用 .filter(selector) 来调用，如 $(‘div’).filter(‘:hidden’) ，后面所有的这类过滤器都以红色特殊标出。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">:animated　　　　    当前执行动画的元素</span><br><span class="line">:eq(index)　　　　    取出指定索引的元素（jQuery 对象是集合，索引从0开始）</span><br><span class="line">:gt(index)　　　　　　取出索引大于指定值的元素</span><br><span class="line">:lt(index)　　　　　　　　取出索引小于指定值的元素</span><br><span class="line">:first 　　　　　 取出第一个元素，即索引为0的元素</span><br><span class="line">:last　　　　　　取出最后一个元素，即索引为 size()-1 的元素</span><br><span class="line">:even　　　　　　取出索引为偶数的元素</span><br><span class="line">:odd　　　　　　取出索引为奇数的元素</span><br><span class="line">:header　　　　　取出所有标题元素，如 h1,h2,h3 等</span><br><span class="line">:root　　　　　　取出根元素</span><br><span class="line">:not(selector)　　取出所有不匹配指定过滤器的元素　</span><br><span class="line">:focus　　　　　　　　　　当前得到焦点的元素</span><br></pre></td></tr></table></figure>
+<p><strong>五、子元素过滤器</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">:first-child　　　　　　　　是其父元素的第一个子元素</span><br><span class="line">:last-child　　　　　　　　是其父元素的最后一个元素</span><br><span class="line">:first-of-type　　　　　　　　是同辈同类元素中的第一个元素</span><br><span class="line">:last-of-type　　　　　　　　是同辈同类元素中的最后一个元素</span><br><span class="line">:only-child　　　　　　　　是其父元素的唯一子元素</span><br><span class="line">:only-of-type　　　　　　在同辈元素中，没有同类元素的元素，即此元素是同辈元素中唯一的该类型元素</span><br><span class="line">:nth-child(index)　　　　其父元素的第 index 元素，该 index 从 1 开始</span><br><span class="line">:nth-last-child(index)　　　　其父元素的倒数第 index 元素，该 index 从 1 开始</span><br><span class="line">:nth-of-type(index)　　　　　　是同辈的同类元素中的第 index 元素，该 index 从 1 开始</span><br><span class="line">:nth-last-of-type(index)　　　　是同辈的同类元素中倒数第 index 元素，该 index 从 1 开始</span><br></pre></td></tr></table></figure>
+<p><strong>六、内容过滤器</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">:contains(text)　　　　　　包含指定字符串的元素</span><br><span class="line">:empty　　　　　　　　　　没有子元素的元素</span><br><span class="line">:has(selector)　　　　　　 包含至少一个指定的选择器匹配的元素</span><br><span class="line">:parent　　　　　　　　　　包含至少一个子节点的（一个元素或文本）元素</span><br></pre></td></tr></table></figure>
+<p><strong>七、表单过滤器</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">:input</span><br><span class="line">:text</span><br><span class="line">:password</span><br><span class="line">:button</span><br><span class="line">:reset</span><br><span class="line">:submit</span><br><span class="line">:radio</span><br><span class="line">:checkbox</span><br><span class="line">:checked</span><br><span class="line">:selected</span><br><span class="line">:file</span><br><span class="line">:image</span><br><span class="line">:focus</span><br><span class="line">:enabled</span><br><span class="line">:disabled</span><br></pre></td></tr></table></figure>
+<p><strong>八、可见性过滤器</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">:hidden　　　　当前隐藏的元素</span><br><span class="line">:visible　　　　当前显示的元素</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="Tabs切换内容"><a href="#Tabs切换内容" class="headerlink" title="Tabs切换内容"></a>Tabs切换内容</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$(&quot;.tab li&quot;).click(function()&#123;</span><br><span class="line">    $(&quot;.tab li&quot;).eq($(this).index()).addClass(&quot;active&quot;).siblings().removeClass(&quot;active&quot;);</span><br><span class="line">    $(&quot;.tabContent div&quot;).hide().eq($(this).index()).show();</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+<h4 id="jQuery自定义扩展"><a href="#jQuery自定义扩展" class="headerlink" title="jQuery自定义扩展"></a>jQuery自定义扩展</h4><h4 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h4><ul>
+<li>jquery-ui</li>
+<li>jquery-lazyload</li>
+<li>jquery-color</li>
+</ul>
+<h4 id="jquery获取name属性为数组的值"><a href="#jquery获取name属性为数组的值" class="headerlink" title="jquery获取name属性为数组的值"></a>jquery获取name属性为数组的值</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;nameArr[]&quot; value&#x3D;&quot;1&quot; title&#x3D;&quot;标题1&quot;&gt;</span><br><span class="line">&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;nameArr[]&quot; value&#x3D;&quot;2&quot; title&#x3D;&quot;标题2&quot;&gt;</span><br><span class="line"></span><br><span class="line">var inputs &#x3D; $(&#39;input[name^&#x3D;&quot;nameArr&quot;]&#39;);</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/jQuery-%E7%AC%94%E8%AE%B0/1.png" alt="需求"></p>
+<h5 id="新增按钮事件"><a href="#新增按钮事件" class="headerlink" title="新增按钮事件"></a>新增按钮事件</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">$(&quot;#hb-setting&quot;).on(&quot;click&quot;, &quot;#drawCard-add&quot;, function () &#123;</span><br><span class="line">    var i &#x3D; $(this).data(&#39;index&#39;) + 1;  &#x2F;&#x2F; name值的下标</span><br><span class="line">    var li &#x3D; &#39;&lt;div class&#x3D;&quot;layui-form-item gear-item&quot;&gt;&#39;+</span><br><span class="line">                &#39;&lt;label class&#x3D;&quot;layui-form-label&quot;&gt;&lt;&#x2F;label&gt;&#39;+</span><br><span class="line">                &#39;&lt;div class&#x3D;&quot;layui-input-block&quot;&gt;&#39;+</span><br><span class="line">                    &#39;&lt;div class&#x3D;&quot;layui-input-inline&quot;&gt;&#39;+</span><br><span class="line">                        &#39;&lt;input type&#x3D;&quot;number&quot; name&#x3D;&quot;gear7[&#39;+ i +&#39;]&quot; min&#x3D;&quot;0&quot; lay-verify&#x3D;&quot;required&quot; lay-reqText&#x3D;&quot;...&quot; placeholder&#x3D;&quot;请输入...&quot; class&#x3D;&quot;layui-input&quot;&gt;&#39;+</span><br><span class="line">                    &#39;&lt;&#x2F;div&gt;&#39;+</span><br><span class="line">                    &#39;&lt;div class&#x3D;&quot;layui-input-inline&quot;&gt;&#39;+</span><br><span class="line">                        &#39;&lt;input type&#x3D;&quot;number&quot; name&#x3D;&quot;reg_day7[&#39;+ i +&#39;]&quot; min&#x3D;&quot;0&quot; lay-verify&#x3D;&quot;required&quot; lay-reqText&#x3D;&quot;...&quot; placeholder&#x3D;&quot;请输入...&quot; class&#x3D;&quot;layui-input&quot;&gt;&#39;+</span><br><span class="line">                    &#39;&lt;&#x2F;div&gt;&#39;+</span><br><span class="line">                    &#39;&lt;div class&#x3D;&quot;layui-input-inline&quot;&gt;&#39;+</span><br><span class="line">                        &#39;&lt;input type&#x3D;&quot;number&quot; name&#x3D;&quot;draw_card_times7[&#39;+ i +&#39;]&quot; min&#x3D;&quot;0&quot; lay-verify&#x3D;&quot;draw_card_times&quot; placeholder&#x3D;&quot;请输入...&quot; class&#x3D;&quot;layui-input&quot;&gt;&#39;+</span><br><span class="line">                    &#39;&lt;&#x2F;div&gt;&#39;+</span><br><span class="line">                    &#39;&lt;div class&#x3D;&quot;layui-input-inline&quot;&gt;&#39;+</span><br><span class="line">                        &#39;&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;money7[&#39;+ i +&#39;]&quot; lay-verify&#x3D;&quot;drawCard_money&quot; placeholder&#x3D;&quot;请输入...&quot; class&#x3D;&quot;layui-input&quot;&gt;&#39;+</span><br><span class="line">                    &#39;&lt;&#x2F;div&gt;&#39;+</span><br><span class="line">                    &#39;&lt;div class&#x3D;&quot;layui-input-inline w154&quot;&gt;&#39;+</span><br><span class="line">                        &#39;&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;frontend_money7[&#39;+ i +&#39;]&quot; placeholder&#x3D;&quot;请输入前端展示金额&quot; class&#x3D;&quot;layui-input&quot;&gt;&#39;+</span><br><span class="line">                    &#39;&lt;&#x2F;div&gt;&#39;+</span><br><span class="line">                    &#39;&lt;div class&#x3D;&quot;layui-input-inline w154&quot;&gt;&#39;+</span><br><span class="line">                        &#39;&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;describe7[&#39;+ i +&#39;]&quot; lay-verify&#x3D;&quot;required&quot; lay-reqText&#x3D;&quot;...&quot; placeholder&#x3D;&quot;请输入...&quot; class&#x3D;&quot;layui-input&quot;&gt;&#39;+</span><br><span class="line">                    &#39;&lt;&#x2F;div&gt;&#39;+</span><br><span class="line">                    &#39;&lt;div class&#x3D;&quot;layui-inline&quot;&gt;&#39;+</span><br><span class="line">                        &#39;&lt;i class&#x3D;&quot;layui-icon layui-icon-add-circle&quot; id&#x3D;&quot;drawCard-add&quot; data-index&#x3D;&quot;&#39;+ i +&#39;&quot;&gt;&lt;&#x2F;i&gt; &#39;+</span><br><span class="line">                    &#39; &lt;&#x2F;div&gt;&#39;+</span><br><span class="line">                &#39;&lt;&#x2F;div&gt;&#39;+</span><br><span class="line">            &#39;&lt;&#x2F;div&gt;&#39;;</span><br><span class="line"></span><br><span class="line">    $(this).removeAttr(&quot;id&quot;);</span><br><span class="line">    $(this).removeClass(&quot;layui-icon-add-circle&quot;);</span><br><span class="line">    $(this).addClass(&quot;layui-icon-reduce-circle&quot;);</span><br><span class="line">    $(this).addClass(&quot;drawCard-del&quot;);</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 在前面追加元素</span><br><span class="line">    $(&quot;#drawCard_hb_tr&quot;).before(li);</span><br><span class="line"></span><br><span class="line">    form.render(); &#x2F;&#x2F;更新全部</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 活动状态为“关闭”时——不强制要求输入档位内容</span><br><span class="line">    var name_arr &#x3D; [&#39;gear7&#39;, &#39;reg_day7&#39;, &#39;describe7&#39;, &#39;cash_notice7&#39;];</span><br><span class="line">    updateVerify($(&#39;[name&#x3D;&quot;reward_7&quot;]&#39;).val(), name_arr);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h5 id="更新表单的验证条件函数"><a href="#更新表单的验证条件函数" class="headerlink" title="更新表单的验证条件函数"></a>更新表单的验证条件函数</h5><p>开启状态，必填，关闭状态，不必填</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 更新表单的验证条件</span><br><span class="line"> function updateVerify(status, name_arr) &#123;</span><br><span class="line">    for(var i in name_arr) &#123;</span><br><span class="line">        &#x2F;&#x2F; 关闭状态，不强制要求输入档位内容</span><br><span class="line">        if(status &#x3D;&#x3D;&#x3D; &quot;0&quot;) &#123;</span><br><span class="line">            $(&#39;[name^&#x3D;&quot;&#39; + name_arr[i]+ &#39;&quot;]&#39;).removeAttr(&quot;lay-verify&quot;);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            $(&#39;[name^&#x3D;&quot;&#39; + name_arr[i]+ &#39;&quot;]&#39;).attr(&quot;lay-verify&quot;, &quot;required&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    form.render(); &#x2F;&#x2F; 更新表单元素</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<h5 id="减去按钮事件"><a href="#减去按钮事件" class="headerlink" title="减去按钮事件"></a>减去按钮事件</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 删除按钮</span><br><span class="line">$(&quot;#hb-setting&quot;).on(&quot;click&quot;, &quot;.drawCard-del&quot;, function () &#123;</span><br><span class="line">    var idx &#x3D; $(this).data(&#39;index&#39;);  &#x2F;&#x2F; 当前被删除的index</span><br><span class="line">    $(this).parent(&quot;.layui-inline&quot;).parent(&quot;.layui-input-block&quot;).parent(&quot;.layui-form-item&quot;).remove();   &#x2F;&#x2F; 删除当前列的元素</span><br><span class="line"></span><br><span class="line">    updateGearIndex(idx, &quot;#drawCard-add&quot;);      </span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 更新档位中的name值&#x2F;减号&#x2F;加号的下标</span><br><span class="line">function updateGearIndex(idx, add_btn) &#123;</span><br><span class="line">    var gear_items &#x3D; $(&#39;.layui-show&#39;).find(&quot;.gear-item&quot;);  &#x2F;&#x2F; 档位配置的所有列</span><br><span class="line">    var gear_len &#x3D; gear_items.length;  &#x2F;&#x2F; 档位的列数</span><br><span class="line">    &#x2F;&#x2F; 更新下标</span><br><span class="line">    for(var j &#x3D; idx; j &lt; gear_len; j++) &#123;</span><br><span class="line">        var inputs &#x3D; $(gear_items[j]).find(&#39;.layui-input-block&#39;).children().find(&#39;input&#39;);   &#x2F;&#x2F; 当前横列的所有input</span><br><span class="line">        $(gear_items[j]).find(&#39;.layui-icon-reduce-circle&#39;).attr(&#39;data-index&#39;, j);    &#x2F;&#x2F; 修改减号的index——都减1</span><br><span class="line"></span><br><span class="line">        for(var k &#x3D; 0; k &lt; inputs.length; k++) &#123;</span><br><span class="line">            var name &#x3D; $(inputs[k]).attr(&#39;name&#39;);</span><br><span class="line">            $(inputs[k]).attr(&quot;name&quot;, setCharOnIndex(name, name.length - 2, j));    &#x2F;&#x2F; 修改name值的下标-减1</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    form.render(); &#x2F;&#x2F;更新全部</span><br><span class="line"></span><br><span class="line">     &#x2F;&#x2F; 修改加号的data-index属性</span><br><span class="line">    $(add_btn).attr(&#39;data-index&#39;, gear_len -1);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="切换状态事件"><a href="#切换状态事件" class="headerlink" title="切换状态事件"></a>切换状态事件</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"> &#x2F;&#x2F; 监听活动状态-等级红包</span><br><span class="line"> form.on(&#39;select(reward_1)&#39;, function(data)&#123;</span><br><span class="line">    var name_arr &#x3D; [&#39;gear1&#39;, &#39;reg_day1&#39;, &#39;level1&#39;, &#39;describe1&#39;, &#39;cash_notice1&#39;];</span><br><span class="line"></span><br><span class="line">    updateVerify(data.value, name_arr);</span><br><span class="line"></span><br><span class="line">    upateLabelIcon(data.value, [&#39;cash_level1&#39;, &#39;cash_notice1&#39;]);</span><br><span class="line">&#125;); </span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 更新表单元素是否必填的 * 图标</span><br><span class="line">function upateLabelIcon(status, name_arr2) &#123;</span><br><span class="line">    for(var i in name_arr2) &#123;</span><br><span class="line">        if(status &#x3D;&#x3D;&#x3D; &quot;0&quot;) &#123;</span><br><span class="line">            $(&#39;[name&#x3D;&quot;&#39; + name_arr2[i] + &#39;&quot;]&#39;).parent(&quot;.layui-input-block&quot;).siblings(&quot;.layui-form-label&quot;).removeClass(&quot;required&quot;);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            $(&#39;[name&#x3D;&quot;&#39; + name_arr2[i] + &#39;&quot;]&#39;).parent(&quot;.layui-input-block&quot;).siblings(&quot;.layui-form-label&quot;).addClass(&quot;required&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Lucky_Freedom/article/details/110231690">jquery获取name属性为数组的值（天王老子来了我也这样写）…</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&#x2F;&#x2F;补充一下知识</span><br><span class="line">$(&quot;input[name^&#x3D;&#39;news&#39;]&quot;)         选择所有的name属性以&#39;news&#39;开头的input元素 </span><br><span class="line">$(&quot;input[name$&#x3D;&#39;news&#39;]&quot;)         选择所有的name属性以&#39;news&#39;结尾的input元素 </span><br><span class="line">$(&quot;input[name*&#x3D;&#39;man&#39;]&quot;)          选择所有的name属性包含&#39;news&#39;的input元素</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;下面是代码</span><br><span class="line">var jurisdiction&#x3D;&#123;&#125;;&#x2F;&#x2F;创建一个空对象</span><br><span class="line">$(&#39;input[name^&#x3D;&quot;jurisdiction&quot;]:checked&#39;).each(function(index,element)&#123;	&#x2F;&#x2F;index下标 element 当前选中的元素</span><br><span class="line">  jurisdiction[index] &#x3D; $(this).val();&#x2F;&#x2F;压入对象数组</span><br><span class="line">&#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/lfbin5566/article/details/115966302">jquery js 获取input name为数组或者属性相同的值</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;nameArr[]&quot; value&#x3D;&quot;1&quot; title&#x3D;&quot;标题1&quot;&gt;</span><br><span class="line">&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;nameArr[]&quot; value&#x3D;&quot;2&quot; title&#x3D;&quot;标题2&quot;&gt;</span><br><span class="line"> </span><br><span class="line">&lt;input type&#x3D;&quot;text&quot; id&#x3D;&quot;video_url0&quot; value&#x3D;&quot;0&quot; name&#x3D;&quot;nameArr0&quot; class&#x3D;&quot;video_url&quot; placeholder&#x3D;&quot;请上传活动视频&quot;&gt;</span><br><span class="line">&lt;input type&#x3D;&quot;text&quot; id&#x3D;&quot;video_url1&quot; value&#x3D;&quot;1&quot; name&#x3D;&quot;nameArr1&quot; class&#x3D;&quot;video_url&quot; placeholder&#x3D;&quot;请上传活动视频&quot;&gt;</span><br><span class="line">&lt;input type&#x3D;&quot;text&quot; id&#x3D;&quot;video_url2&quot; value&#x3D;&quot;2&quot; name&#x3D;&quot;nameArr2&quot; class&#x3D;&quot;video_url&quot;</span><br><span class="line">placeholder&#x3D;&quot;请上传活动视频&quot;&gt;</span><br><span class="line"> </span><br><span class="line">$(&quot;input[name^&#x3D;&#39;nameArr&#39;]&quot;)&#x2F;&#x2F;获取所有的name属性以&#39;nameArr&#39;开头的input元素 </span><br><span class="line">$(&quot;input[name$&#x3D;&#39;nameArr&#39;]&quot;)&#x2F;&#x2F;获取所有的name属性以&#39;nameArr&#39;结尾的input元素 </span><br><span class="line">$(&quot;input[name*&#x3D;&#39;nameArr&#39;]&quot;)&#x2F;&#x2F;获取所有的name属性包含&#39;nameArr&#39;的input元素</span><br><span class="line"> </span><br><span class="line">&#x2F;&#x2F;创建一个空数组</span><br><span class="line">var data_arr &#x3D; [];</span><br><span class="line">&#x2F;&#x2F;index下标 element 当前选中的元素</span><br><span class="line">$(&#39;input[name^&#x3D;&quot;nameArr&quot;]&#39;).each(function(index,element)&#123;</span><br><span class="line">    &#x2F;&#x2F;压入数组	</span><br><span class="line">    data_arr[index] &#x3D; $(this).val();</span><br><span class="line">&#125;);</span><br><span class="line">console.log(data_arr);</span><br><span class="line"> </span><br><span class="line"> </span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/jQuery/" rel="tag"># jQuery</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2018/09/14/JS%E5%88%A4%E6%96%AD%E5%BD%93%E5%89%8D%E8%AE%BE%E5%A4%87/" rel="prev" title="JS判断当前设备">
+      <i class="fa fa-chevron-left"></i> JS判断当前设备
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/03/22/%E5%89%8D%E7%AB%AF%E6%8F%92%E4%BB%B6%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/" rel="next" title="前端插件相关笔记">
+      前端插件相关笔记 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#js%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BF%9E%E6%8E%A5%E6%8D%A2%E8%A1%8C%E7%AC%A6%E6%B2%A1%E6%9C%89%E6%95%88%E6%9E%9C%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">js字符串连接换行符没有效果解决办法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#js-%E5%8E%BB%E6%8E%89%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%89%8D%E5%90%8E%E7%A9%BA%E6%A0%BC"><span class="nav-number">2.</span> <span class="nav-text">js 去掉字符串前后空格</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#js%E5%8E%BB%E6%8E%89%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%89%8D%E5%90%8E%E7%A9%BA%E6%A0%BC%E7%9A%84%E4%BA%94%E7%A7%8D%E6%96%B9%E6%B3%95"><span class="nav-number">2.0.1.</span> <span class="nav-text">js去掉字符串前后空格的五种方法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#js-%E5%8E%BB%E6%8E%89%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%89%8D%E5%90%8E%E7%A9%BA%E6%A0%BC-1"><span class="nav-number">2.0.2.</span> <span class="nav-text">js 去掉字符串前后空格</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9B%91%E5%90%AC%E8%BE%93%E5%85%A5%E6%A1%86%E7%9A%84%E5%80%BC%E5%8F%98%E5%8C%96%E4%BA%8B%E4%BB%B6"><span class="nav-number">3.</span> <span class="nav-text">监听输入框的值变化事件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9B%91%E5%90%AC%E8%BE%93%E5%85%A5%E6%A1%86%E7%9A%84%E5%80%BC%E5%8F%98%E5%8C%96-%E4%BC%98%E5%8C%96"><span class="nav-number">4.</span> <span class="nav-text">监听输入框的值变化-优化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9B%9E%E5%88%B0%E9%A1%B5%E9%9D%A2%E9%A1%B6%E9%83%A8"><span class="nav-number">5.</span> <span class="nav-text">回到页面顶部</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%87%E6%BB%A4%E9%80%89%E6%8B%A9%E5%99%A8"><span class="nav-number">6.</span> <span class="nav-text">过滤选择器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Tabs%E5%88%87%E6%8D%A2%E5%86%85%E5%AE%B9"><span class="nav-number">7.</span> <span class="nav-text">Tabs切换内容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#jQuery%E8%87%AA%E5%AE%9A%E4%B9%89%E6%89%A9%E5%B1%95"><span class="nav-number">8.</span> <span class="nav-text">jQuery自定义扩展</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8F%92%E4%BB%B6"><span class="nav-number">9.</span> <span class="nav-text">插件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#jquery%E8%8E%B7%E5%8F%96name%E5%B1%9E%E6%80%A7%E4%B8%BA%E6%95%B0%E7%BB%84%E7%9A%84%E5%80%BC"><span class="nav-number">10.</span> <span class="nav-text">jquery获取name属性为数组的值</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%96%B0%E5%A2%9E%E6%8C%89%E9%92%AE%E4%BA%8B%E4%BB%B6"><span class="nav-number">10.1.</span> <span class="nav-text">新增按钮事件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0%E8%A1%A8%E5%8D%95%E7%9A%84%E9%AA%8C%E8%AF%81%E6%9D%A1%E4%BB%B6%E5%87%BD%E6%95%B0"><span class="nav-number">10.2.</span> <span class="nav-text">更新表单的验证条件函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%87%8F%E5%8E%BB%E6%8C%89%E9%92%AE%E4%BA%8B%E4%BB%B6"><span class="nav-number">10.3.</span> <span class="nav-text">减去按钮事件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%88%87%E6%8D%A2%E7%8A%B6%E6%80%81%E4%BA%8B%E4%BB%B6"><span class="nav-number">10.4.</span> <span class="nav-text">切换状态事件</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="winney"
+      src="/images/header.jpg">
+  <p class="site-author-name" itemprop="name">winney</p>
+  <div class="site-description" itemprop="description">Doing is better than saying.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">109</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">55</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">51</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://www.xiaochao.me/" title="https:&#x2F;&#x2F;www.xiaochao.me&#x2F;" rel="noopener" target="_blank">小超</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.winney07.cn/" title="https:&#x2F;&#x2F;www.winney07.cn&#x2F;" rel="noopener" target="_blank">winney07</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://blog.csdn.net/winney07" title="https:&#x2F;&#x2F;blog.csdn.net&#x2F;winney07" rel="noopener" target="_blank">CSDN</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://winney07.lofter.com/" title="http:&#x2F;&#x2F;winney07.lofter.com&#x2F;" rel="noopener" target="_blank">乐乎</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2015 – 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">winney07</span>
+</div>
+  <div class="powered-by"><a href="https://beian.miit.gov.cn/" target="_blank">粤ICP备2022033775号-1</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

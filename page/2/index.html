@@ -193,7 +193,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/08/10/%E6%97%A5%E6%9C%9F%E5%AF%B9%E8%B1%A1Date%E7%9A%84%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/10/22/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8-%E6%9E%84%E5%BB%BA%E8%BF%9E%E6%8E%A5mongodb%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%8E%A5%E5%8F%A3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -207,7 +207,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/08/10/%E6%97%A5%E6%9C%9F%E5%AF%B9%E8%B1%A1Date%E7%9A%84%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/" class="post-title-link" itemprop="url">日期对象Date的常用方法</a>
+            <a href="/2022/10/22/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8-%E6%9E%84%E5%BB%BA%E8%BF%9E%E6%8E%A5mongodb%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%8E%A5%E5%8F%A3/" class="post-title-link" itemprop="url">云服务器-构建连接mongodb数据库的接口</a>
         </h2>
 
         <div class="post-meta">
@@ -217,14 +217,222 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-08-10 11:22:26" itemprop="dateCreated datePublished" datetime="2020-08-10T11:22:26+08:00">2020-08-10</time>
+              <time title="创建时间：2022-10-22 11:12:23" itemprop="dateCreated datePublished" datetime="2022-10-22T11:12:23+08:00">2022-10-22</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-07-20 11:28:41" itemprop="dateModified" datetime="2023-07-20T11:28:41+08:00">2023-07-20</time>
+                <time title="修改时间：2023-09-04 19:08:49" itemprop="dateModified" datetime="2023-09-04T19:08:49+08:00">2023-09-04</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/" itemprop="url" rel="index"><span itemprop="name">云服务器</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="云服务器数据库"><a href="#云服务器数据库" class="headerlink" title="云服务器数据库"></a>云服务器数据库</h3><ol>
+<li><p>进入<code>mongo</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongo</span><br></pre></td></tr></table></figure></li>
+<li><p>查看已有数据库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt; show dbs</span><br><span class="line">admin      0.078GB</span><br><span class="line">local      0.078GB</span><br><span class="line">myFirstDB  0.078GB</span><br><span class="line">shopping   0.078GB</span><br><span class="line">test       0.078GB</span><br></pre></td></tr></table></figure></li>
+<li><p>查看当前数据库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; db</span><br><span class="line">test</span><br></pre></td></tr></table></figure></li>
+<li><p>查看当前数据库的所有集合</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; show collections</span><br><span class="line">system.indexes</span><br><span class="line">users</span><br></pre></td></tr></table></figure></li>
+<li><p>查找某个集合的所有数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; db.users.find()</span><br><span class="line">&#123; &quot;_id&quot; : ObjectId(&quot;64255dec03b14a5ae59ad213&quot;), &quot;name&quot; : &quot;zhangsan&quot;, &quot;age&quot; : 20 &#125;</span><br><span class="line">&#123; &quot;_id&quot; : ObjectId(&quot;642650ee5d48a1118feb04d1&quot;), &quot;name&quot; : &quot;张三AAAAAA&quot;, &quot;age&quot; : 18, &quot;sex&quot; : &quot;男&quot;, &quot;__v&quot; : 0 &#125;</span><br><span class="line">&#123; &quot;_id&quot; : ObjectId(&quot;6426aa7de101e51497b40037&quot;), &quot;name&quot; : &quot;张三BBBBBB&quot;, &quot;age&quot; : 26, &quot;sex&quot; : &quot;女&quot;, &quot;__v&quot; : 0 &#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>创建数据库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; use wedding</span><br><span class="line">switched to db wedding</span><br><span class="line">&gt; db</span><br><span class="line">wedding</span><br></pre></td></tr></table></figure></li>
+<li><p>创建集合</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; db.createCollection(&#39;blessing&#39;)</span><br><span class="line">&#123; &quot;ok&quot; : 1 &#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>向集合中插入文档</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; db.blessing.insert(&#123;&quot;name&quot;:&quot;张三&quot;, &quot;bless&quot;: &quot;快乐快乐快乐快乐&quot;&#125;)</span><br><span class="line">WriteResult(&#123; &quot;nInserted&quot; : 1 &#125;)</span><br></pre></td></tr></table></figure></li>
+<li><p>查看集合中插入的文档：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; db.blessing.find()</span><br><span class="line">&#123; &quot;_id&quot; : ObjectId(&quot;64dc9dcfc7acd67531cafb17&quot;), &quot;name&quot; : &quot;张三&quot;, &quot;bless&quot; : &quot;快乐快乐快乐快乐&quot; &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+</li>
+</ol>
+<h3 id="express接口搭建"><a href="#express接口搭建" class="headerlink" title="express接口搭建"></a>express接口搭建</h3><p>接口所在目录：<code>/usr/local/src/webCode/wx</code></p>
+<p>接口文件所在位置：<code>/usr/local/src/webCode/wx/server/wedding/blessing.js</code></p>
+<h5 id="node命令使用之前"><a href="#node命令使用之前" class="headerlink" title="node命令使用之前"></a>node命令使用之前</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvm  use 16.13.0</span><br></pre></td></tr></table></figure>
+<h4 id="运行接口"><a href="#运行接口" class="headerlink" title="运行接口"></a>运行接口</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node api.js</span><br></pre></td></tr></table></figure>
+<h4 id="解决跨域问题"><a href="#解决跨域问题" class="headerlink" title="解决跨域问题"></a>解决跨域问题</h4><p><code>Access to XMLHttpRequest at &#39;https://www.winney07.cn:8080/wedding/blessing/getBlessingList&#39; from origin &#39;http://192.168.1.15:5500&#39; has been blocked by CORS policy: Response to preflight request doesn&#39;t pass access control check: No &#39;Access-Control-Allow-Origin&#39; header is present on the requested resource.</code></p>
+<p>使用的是<code>https</code>协议，在微信开发者中，请求<code>https://www.winney07.cn:8080/wedding/blessing/getBlessingList</code>接口，是可以得到数据的。</p>
+<h4 id="解决方法："><a href="#解决方法：" class="headerlink" title="解决方法："></a>解决方法：</h4><ol>
+<li>服务端——接口响应前加上</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">res.header(&quot;Access-Control-Allow-Origin&quot;, &quot;*&quot;);              	&#x2F;&#x2F; 允许任意外源访问</span><br><span class="line">res.header(&quot;Access-Control-Allow-Headers&quot;, &quot;Content-Type&quot;);		&#x2F;&#x2F; 自定义请求首部字段</span><br><span class="line">res.header(&quot;Access-Control-Allow-Methods&quot;, &quot;*&quot;);    		 	&#x2F;&#x2F; 允许所有请求方法</span><br><span class="line">res.header(&quot;Content-Type&quot;, &quot;application&#x2F;json;charset&#x3D;utf-8&quot;);	&#x2F;&#x2F; 设置数据返回类型为json，字符集为utf8</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>前端——使用Fetch请求</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">fetch(&quot;https:&#x2F;&#x2F;www.winney07.cn:8080&#x2F;wedding&#x2F;blessing&#x2F;getBlessingList&quot;,&#123;</span><br><span class="line">   method:&#39;GET&#39;</span><br><span class="line">&#125;).then(response &#x3D;&gt; &#123;</span><br><span class="line">    if (!response.ok) &#123;</span><br><span class="line">        throw new Error(&#39;Network response was not ok&#39;);</span><br><span class="line">    &#125;</span><br><span class="line">    return response.json(); &#x2F;&#x2F; 解析响应数据为 JSON 格式</span><br><span class="line">&#125;)</span><br><span class="line">.then(data &#x3D;&gt; &#123;</span><br><span class="line">    console.log(&#39;Response data:&#39;, data);</span><br><span class="line">    &#x2F;&#x2F; 在这里处理获取到的响应数据</span><br><span class="line">&#125;)</span><br><span class="line">.catch(error &#x3D;&gt; &#123;</span><br><span class="line">    console.error(&#39;Fetch error:&#39;, error);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>fetch</code> 规范主要在三个方面与 <code>jQuery.ajax()</code> 不同：</p>
+<ul>
+<li>从 <code>fetch()</code> 返回的 Promise <strong>不会因 HTTP 的错误状态而被拒绝</strong>，即使响应是 HTTP <code>404</code> 或 <code>500</code>。相反，它将正常兑现（<code>ok</code> 状态会被设置为 <code>false</code>），并且只有在网络故障或者有任何阻止请求完成时，才拒绝。</li>
+</ul>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API">Fetch API</a></p>
+<h4 id="接口一直保持运行状态"><a href="#接口一直保持运行状态" class="headerlink" title="接口一直保持运行状态"></a>接口一直保持运行状态</h4><p>要保持云服务器上的 Express 接口一直运行，使其在服务器启动后保持运行状态，而不需要手动运行 <code>node api.js</code>。</p>
+<p><strong>使用进程管理工具</strong></p>
+<p>在服务器上安装 <code>pm2</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g pm2</span><br></pre></td></tr></table></figure>
+<p>然后，在项目文件夹中运行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pm2 start api.js</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/25/Vue3-x%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="winney">
+      <meta itemprop="description" content="Doing is better than saying.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="winney">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/08/25/Vue3-x%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/" class="post-title-link" itemprop="url">Vue3.x知识图谱</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-08-25 06:53:01" itemprop="dateCreated datePublished" datetime="2022-08-25T06:53:01+08:00">2022-08-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-07-03 14:48:51" itemprop="dateModified" datetime="2023-07-03T14:48:51+08:00">2023-07-03</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6/" itemprop="url" rel="index"><span itemprop="name">前端开发框架</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6/Vue-js/" itemprop="url" rel="index"><span itemprop="name">Vue.js</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><img src="https://raw.githubusercontent.com/winney07/Images/main/Note/V1_01%E5%AD%A6%E5%89%8D%E4%BA%86%E8%A7%A3.png" alt="学前了解"></p>
+<p><img src="https://raw.githubusercontent.com/winney07/Images/main/Note/V1_02%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86.png" alt="基础知识"></p>
+<p><img src="https://raw.githubusercontent.com/winney07/Images/main/Note/V1_03%E7%BB%84%E4%BB%B6%E7%9B%B8%E5%85%B3%E8%AF%AD%E6%B3%95.png" alt="组件相关语法"></p>
+<p><img src="https://raw.githubusercontent.com/winney07/Images/main/Note/V1_04%E9%AB%98%E7%BA%A7%E8%AF%AD%E6%B3%95.png" alt="高级语法"></p>
+<p><img src="https://raw.githubusercontent.com/winney07/Images/main/Note/V1_05%E9%AB%98%E7%BA%A7%E8%AF%AD%E6%B3%95.png" alt="高级语法"></p>
+<p><img src="https://raw.githubusercontent.com/winney07/Images/main/Note/V1_06%E9%85%8D%E5%A5%97%E5%B7%A5%E5%85%B7.png" alt="配套工具"></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/10/%E8%8E%B7%E5%8F%96hash%E9%93%BE%E6%8E%A5%EF%BC%88hash%E7%89%87%E6%AE%B5%EF%BC%89%E7%9A%84%E5%8F%82%E6%95%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="winney">
+      <meta itemprop="description" content="Doing is better than saying.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="winney">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/08/10/%E8%8E%B7%E5%8F%96hash%E9%93%BE%E6%8E%A5%EF%BC%88hash%E7%89%87%E6%AE%B5%EF%BC%89%E7%9A%84%E5%8F%82%E6%95%B0/" class="post-title-link" itemprop="url">获取hash链接（hash片段）的参数</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-08-10 11:25:26" itemprop="dateCreated datePublished" datetime="2022-08-10T11:25:26+08:00">2022-08-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-09-27 14:58:09" itemprop="dateModified" datetime="2023-09-27T14:58:09+08:00">2023-09-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -247,312 +455,36 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="创建Date实例"><a href="#创建Date实例" class="headerlink" title="创建Date实例"></a>创建Date实例</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let date &#x3D; new Date();		&#x2F;&#x2F; Fri Jul 14 2023 15:23:52 GMT+0800 (中国标准时间)</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let date &#x3D; new Date(1689321710307);		&#x2F;&#x2F; Fri Jul 14 2023 16:01:50 GMT+0800 (中国标准时间)</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let date &#x3D; new Date(&#39;2023-07-14 16:10:40&#39;);	 &#x2F;&#x2F; Fri Jul 14 2023 16:10:40 GMT+0800 (中国标准时间)</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let date &#x3D; new Date(2023, 6, 14, 15, 23, 52);  &#x2F;&#x2F; Fri Jul 14 2023 15:23:52 GMT+0800 (中国标准时间)</span><br></pre></td></tr></table></figure>
-<h3 id="格式化"><a href="#格式化" class="headerlink" title="格式化"></a>格式化</h3><h4 id="1-Date对象方法"><a href="#1-Date对象方法" class="headerlink" title="1. Date对象方法"></a>1. Date对象方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let LDS &#x3D; date.toLocaleDateString();	&#x2F;&#x2F; 2023&#x2F;7&#x2F;14</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let LS &#x3D; date.toLocaleString();			&#x2F;&#x2F; 2023&#x2F;7&#x2F;14 15:23:52</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let LTS &#x3D; date.toLocaleTimeString(); 	&#x2F;&#x2F; 15:23:52</span><br></pre></td></tr></table></figure>
-<h4 id="2-封装方法"><a href="#2-封装方法" class="headerlink" title="2. 封装方法"></a>2. 封装方法</h4><p>格式：<code>2023-07-14</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function formatDate(date) &#123;</span><br><span class="line">    const year &#x3D; date.getFullYear();</span><br><span class="line">    const month &#x3D; String(date.getMonth() + 1).padStart(2, &#39;0&#39;);</span><br><span class="line">    const day &#x3D; String(date.getDate()).padStart(2, &#39;0&#39;);</span><br><span class="line"></span><br><span class="line">    return &#96;$&#123;year&#125;-$&#123;month&#125;-$&#123;day&#125;&#96;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const date &#x3D; new Date();</span><br><span class="line">const formattedDate &#x3D; formatDate(date);</span><br><span class="line">console.log(formattedDate); 	&#x2F;&#x2F;	2023-07-14</span><br></pre></td></tr></table></figure>
-<p>格式：<code>2023-07-14 15:30:45</code>：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">function formatDate(date, format) &#123;</span><br><span class="line">    const year &#x3D; date.getFullYear();</span><br><span class="line">    const month &#x3D; String(date.getMonth() + 1).padStart(2, &#39;0&#39;);</span><br><span class="line">    const day &#x3D; String(date.getDate()).padStart(2, &#39;0&#39;);</span><br><span class="line">    const hours &#x3D; String(date.getHours()).padStart(2, &#39;0&#39;);</span><br><span class="line">    const minutes &#x3D; String(date.getMinutes()).padStart(2, &#39;0&#39;);</span><br><span class="line">    const seconds &#x3D; String(date.getSeconds()).padStart(2, &#39;0&#39;);</span><br><span class="line"></span><br><span class="line">    return format</span><br><span class="line">        .replace(&#39;YYYY&#39;, year)</span><br><span class="line">        .replace(&#39;MM&#39;, month)</span><br><span class="line">        .replace(&#39;DD&#39;, day)</span><br><span class="line">        .replace(&#39;HH&#39;, hours)</span><br><span class="line">        .replace(&#39;mm&#39;, minutes)</span><br><span class="line">        .replace(&#39;ss&#39;, seconds);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const date &#x3D; new Date();</span><br><span class="line">const formattedDate &#x3D; formatDate(date, &#39;YYYY-MM-DD HH:mm:ss&#39;);</span><br><span class="line">console.log(formattedDate); &#x2F;&#x2F; 2023-07-14 15:30:45</span><br></pre></td></tr></table></figure>
-<p>格式：<code>2023-07-14 15:30:45</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">function formatDate(date, separator &#x3D; &#39;-&#39;) &#123;</span><br><span class="line">    const year &#x3D; date.getFullYear();</span><br><span class="line">    const month &#x3D; String(date.getMonth() + 1).padStart(2, &#39;0&#39;);</span><br><span class="line">    const day &#x3D; String(date.getDate()).padStart(2, &#39;0&#39;);</span><br><span class="line">    const hours &#x3D; String(date.getHours()).padStart(2, &#39;0&#39;);</span><br><span class="line">    const minutes &#x3D; String(date.getMinutes()).padStart(2, &#39;0&#39;);</span><br><span class="line">    const seconds &#x3D; String(date.getSeconds()).padStart(2, &#39;0&#39;);</span><br><span class="line"></span><br><span class="line">    const formattedDate &#x3D; [year, month, day].join(separator);</span><br><span class="line">    const formattedTime &#x3D; [hours, minutes, seconds].join(&#39;:&#39;);</span><br><span class="line"></span><br><span class="line">    return formattedDate + &#39; &#39; + formattedTime;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const date &#x3D; new Date();</span><br><span class="line">const formattedDate &#x3D; formatDate(date, &#39;-&#39;);</span><br><span class="line">console.log(formattedDate); &#x2F;&#x2F; 2023-07-14 15:30:45</span><br></pre></td></tr></table></figure>
+          <p><strong>URL 结构</strong>：URL 由多个部分组成，包括协议（如 <code>http</code> 或 <code>https</code>）、主机名（如 <code>www.example.com</code>）、端口号（可选，默认为 80 或 443）、路径（如 <code>/path/to/page</code>）、查询字符串（如 <code>?id=123&amp;name=John</code>）以及哈希片段（如 <code>#section2</code>）。</p>
+<h4 id="window-location-hash"><a href="#window-location-hash" class="headerlink" title="window.location.hash"></a><code>window.location.hash</code></h4><p>通过 <code>window.location.hash</code> 属性来访问当前 URL 的哈希片段。这个属性返回包括 <code>#</code> 符号的哈希部分，例如 <code>#section2</code>。</p>
+<h4 id="获取hash片段中的参数的方法"><a href="#获取hash片段中的参数的方法" class="headerlink" title="获取hash片段中的参数的方法"></a>获取hash片段中的参数的方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">function getHashParams() &#123;</span><br><span class="line">    const hash &#x3D; window.location.hash.substr(1); &#x2F;&#x2F; 去掉开头的 #</span><br><span class="line">    const params &#x3D; &#123;&#125;;</span><br><span class="line"></span><br><span class="line">    if (hash) &#123;</span><br><span class="line">        const parts &#x3D; hash.split(&#39;?&#39;); &#x2F;&#x2F; 以 ? 分割</span><br><span class="line">        const path &#x3D; parts[0]; &#x2F;&#x2F; 获取路径部分</span><br><span class="line">        params.path &#x3D; path; &#x2F;&#x2F; 存储路径</span><br><span class="line"></span><br><span class="line">        if (parts.length &gt; 1) &#123;</span><br><span class="line">            const queryString &#x3D; parts[1]; &#x2F;&#x2F; 获取查询参数部分</span><br><span class="line">            const paramPairs &#x3D; queryString.split(&#39;&amp;&#39;);</span><br><span class="line"></span><br><span class="line">            paramPairs.forEach(pair &#x3D;&gt; &#123;</span><br><span class="line">                const [key, value] &#x3D; pair.split(&#39;&#x3D;&#39;);</span><br><span class="line">                params[key] &#x3D; decodeURIComponent(value || &#39;&#39;); &#x2F;&#x2F; 解码参数值</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return params;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const params &#x3D; getHashParams();</span><br><span class="line">console.log(window.location.hash); &#x2F;&#x2F;URL 中的哈希链接</span><br><span class="line">console.log(params.path); &#x2F;&#x2F; 输出路径</span><br><span class="line">console.log(params.id); &#x2F;&#x2F; 输出 id 参数的值</span><br><span class="line">console.log(params.name); &#x2F;&#x2F; 输出 name 参数的值</span><br></pre></td></tr></table></figure>
+<h4 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h4><ol>
+<li><p>链接1：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;127.0.0.1:5500&#x2F;hash.html#?id&#x3D;2&amp;name&#x3D;winney</span><br></pre></td></tr></table></figure>
+<p>输出结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#?id&#x3D;2&amp;name&#x3D;winney</span><br><span class="line"></span><br><span class="line">2</span><br><span class="line">winney</span><br></pre></td></tr></table></figure></li>
+<li><p>链接2：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;127.0.0.1:5500&#x2F;hash.html#&#x2F;?id&#x3D;2&amp;name&#x3D;winney</span><br></pre></td></tr></table></figure>
+<p>输出结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#&#x2F;?id&#x3D;2&amp;name&#x3D;winney</span><br><span class="line">&#x2F;</span><br><span class="line">2</span><br><span class="line">winney</span><br></pre></td></tr></table></figure></li>
+<li><p>链接3：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;127.0.0.1:5500&#x2F;hash.html#&#x2F;test&#x2F;text.html?id&#x3D;2&amp;name&#x3D;winney</span><br></pre></td></tr></table></figure>
+<p>输出结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#&#x2F;test&#x2F;text.html?id&#x3D;2&amp;name&#x3D;winney</span><br><span class="line">&#x2F;test&#x2F;text.html</span><br><span class="line">2</span><br><span class="line">winney</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>后面两种方法，传参方式不一样，实现效果一样。</p>
+<p>注意：查询参数前需要加上<code>?</code>号</p>
 </blockquote>
-<blockquote>
-<p><strong><code>padStart()</code></strong> 方法用另一个字符串填充当前字符串（如果需要的话，会重复多次），以便产生的字符串达到给定的长度。从当前字符串的左侧开始填充。</p>
-<p>参数：<code>targetLength</code>：当前字符串需要填充到的目标长度；<code>padString</code>：填充字符串。默认值为 “ “（空格）</p>
-</blockquote>
-<h3 id="获取时间戳（当前时间的毫秒数）"><a href="#获取时间戳（当前时间的毫秒数）" class="headerlink" title="获取时间戳（当前时间的毫秒数）"></a>获取时间戳（当前时间的毫秒数）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let t &#x3D; date.getTime();		&#x2F;&#x2F; 1689319432759</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let now &#x3D; Date.now();    	&#x2F;&#x2F; 1689319432759</span><br></pre></td></tr></table></figure>
-<blockquote>
-<ol>
-<li><code>Date.now()</code>: 静态方法，直接通过 <code>Date.now()</code> 调用，返回的是当前时间的毫秒数，不需要创建 <code>Date</code> 对象实例。</li>
-<li><code>Date.getTime()</code>:  <code>Date</code> 对象的实例方法，需要先创建一个 <code>Date</code> 对象，然后通过该对象调用 <code>getTime()</code> 方法，返回的是该日期对象表示的时间的毫秒数。</li>
-</ol>
-<p>总结来说，<code>Date.now()</code> 更方便和直接，可以直接获取当前时间的毫秒数，而 <code>date.getTime()</code> 则是通过 <code>date</code> 对象获取该对象表示的时间的毫秒数。</p>
-</blockquote>
-<h3 id="获取年份"><a href="#获取年份" class="headerlink" title="获取年份"></a>获取年份</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let y &#x3D; date.getFullYear();		&#x2F;&#x2F; 2023</span><br></pre></td></tr></table></figure>
-<h3 id="获取月份"><a href="#获取月份" class="headerlink" title="获取月份"></a>获取月份</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let m &#x3D; date.getMonth() + 1;	&#x2F;&#x2F; 7</span><br></pre></td></tr></table></figure>
-<h3 id="获取月中的哪一日"><a href="#获取月中的哪一日" class="headerlink" title="获取月中的哪一日"></a>获取月中的哪一日</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let d &#x3D; date.getDate();		&#x2F;&#x2F; 14</span><br></pre></td></tr></table></figure>
-<h3 id="获取小时"><a href="#获取小时" class="headerlink" title="获取小时"></a>获取小时</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let h &#x3D; date.getHours();	&#x2F;&#x2F; 15</span><br></pre></td></tr></table></figure>
-<h3 id="获取分钟"><a href="#获取分钟" class="headerlink" title="获取分钟"></a>获取分钟</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let min &#x3D; date.getMinutes();   &#x2F;&#x2F; 23</span><br></pre></td></tr></table></figure>
-<h3 id="获取秒数"><a href="#获取秒数" class="headerlink" title="获取秒数"></a>获取秒数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let s &#x3D; date.getSeconds();		&#x2F;&#x2F; 52</span><br></pre></td></tr></table></figure>
-<h3 id="获取星期几"><a href="#获取星期几" class="headerlink" title="获取星期几"></a>获取星期几</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let day &#x3D; date.getDay();		&#x2F;&#x2F; 5</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/07/09/HTML%E7%89%B9%E6%AE%8A%E7%AC%A6%E5%8F%B7/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="winney">
-      <meta itemprop="description" content="Doing is better than saying.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="winney">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/07/09/HTML%E7%89%B9%E6%AE%8A%E7%AC%A6%E5%8F%B7/" class="post-title-link" itemprop="url">HTML特殊符号</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-07-09 14:50:35" itemprop="dateCreated datePublished" datetime="2020-07-09T14:50:35+08:00">2020-07-09</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-07-20 11:24:17" itemprop="dateModified" datetime="2023-07-20T11:24:17+08:00">2023-07-20</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/HTML/" itemprop="url" rel="index"><span itemprop="name">HTML</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="常用的特殊符号"><a href="#常用的特殊符号" class="headerlink" title="常用的特殊符号"></a>常用的特殊符号</h2><table>
-<thead>
-<tr>
-<th>特殊符号</th>
-<th>HTML写法</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td></td>
-<td><code>&amp;nbsp;</code></td>
-<td>空格</td>
-</tr>
-<tr>
-<td>&amp;</td>
-<td><code>&amp;amp;</code></td>
-<td>和、与</td>
-</tr>
-<tr>
-<td>“</td>
-<td><code>&amp;quot;</code></td>
-<td>英文双引号</td>
-</tr>
-<tr>
-<td>‘</td>
-<td><code>&amp;apos;</code></td>
-<td>英文单引号</td>
-</tr>
-<tr>
-<td>&gt;</td>
-<td><code>&amp;gt;</code></td>
-<td>大于</td>
-</tr>
-<tr>
-<td>≥</td>
-<td><code>&amp;ge;</code></td>
-<td>大于等于</td>
-</tr>
-<tr>
-<td>＜</td>
-<td><code>&amp;lt;</code></td>
-<td>小于</td>
-</tr>
-<tr>
-<td>≤</td>
-<td><code>&amp;le;</code></td>
-<td>小于等于</td>
-</tr>
-<tr>
-<td>≠</td>
-<td><code>&amp;ne;</code></td>
-<td>不等于</td>
-</tr>
-<tr>
-<td>¥</td>
-<td><code>&amp;yen;</code></td>
-<td>人民币符号</td>
-</tr>
-<tr>
-<td>&infin;</td>
-<td><code>&amp;infin;</code></td>
-<td>无穷</td>
-</tr>
-</tbody></table>
-<p><a target="_blank" rel="noopener" href="https://tool.chinaz.com/tools/htmlchar.aspx">HTML 特殊符号编码对照表</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/charsets/ref_utf_currency.asp">货币符号</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/charsets/ref_utf_letterlike.asp">字母符号</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/charsets/ref_utf_arrows.asp">箭头</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/charsets/ref_utf_math.asp">数学运算符</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/charsets/ref_utf_geometric.asp">几何形状</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/charsets/ref_utf_symbols.asp">杂项符号</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/charsets/ref_emoji_smileys.asp">笑脸表情符号</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/charsets/ref_html_entities_4.asp">完整的 HTML 4 实体参考手册</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/charsets/ref_html_entities_4.asp">特殊符号</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2019/09/14/%E4%BF%AE%E6%94%B9layui-select%E4%B8%8B%E6%8B%89%E6%A1%86%E7%9A%84placeholder%E6%8F%90%E7%A4%BA%E8%AF%AD/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="winney">
-      <meta itemprop="description" content="Doing is better than saying.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="winney">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/09/14/%E4%BF%AE%E6%94%B9layui-select%E4%B8%8B%E6%8B%89%E6%A1%86%E7%9A%84placeholder%E6%8F%90%E7%A4%BA%E8%AF%AD/" class="post-title-link" itemprop="url">修改layui-select下拉框的placeholder提示语</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-09-14 15:45:23" itemprop="dateCreated datePublished" datetime="2019-09-14T15:45:23+08:00">2019-09-14</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-07-20 14:27:40" itemprop="dateModified" datetime="2023-07-20T14:27:40+08:00">2023-07-20</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CSS/" itemprop="url" rel="index"><span itemprop="name">CSS</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="使用option"><a href="#使用option" class="headerlink" title="使用option"></a>使用option</h3><p>HTML：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class&#x3D;&quot;layui-form-item&quot;&gt;</span><br><span class="line">    &lt;label class&#x3D;&quot;layui-form-label&quot;&gt;账号：&lt;&#x2F;label&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;layui-input-block&quot;&gt;</span><br><span class="line">        &lt;select name&#x3D;&quot;account&quot; lay-filter&#x3D;&quot;account&quot;&gt;</span><br><span class="line">            &lt;option value&#x3D;&quot;&quot;&gt;请选择账号&lt;&#x2F;option&gt;</span><br><span class="line">        &lt;&#x2F;select&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p><code>&lt;option value=&quot;&quot;&gt;请选择账号&lt;/option&gt;</code> ，value值为空</p>
-</blockquote>
-<p>如图所示：</p>
-<p><img src="https://raw.githubusercontent.com/winney07/Images/main/blog/layui-select/%E4%BD%BF%E7%94%A8option%E5%8A%A0%E4%B8%8Aplaceholder.png" alt="使用option加上placeholder.png (395×188) (raw.githubusercontent.com)"></p>
-<h3 id="使用定位元素模拟placeholder"><a href="#使用定位元素模拟placeholder" class="headerlink" title="使用定位元素模拟placeholder"></a>使用定位元素模拟placeholder</h3><blockquote>
-<p>”所属项目“默认不选择。”账号“下拉框的数据，是根据所选的”所属项目“进行动态渲染。</p>
-<p>因”所属项目“默认不选择，”账号“初始化时没有下拉框列表数据。需求还要求不显示可选项，也就是<code>&lt;option value=&quot;&quot;&gt;请选择账号&lt;/option&gt;</code> 也不显示。</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class&#x3D;&quot;layui-form-item&quot;&gt;</span><br><span class="line">    &lt;label class&#x3D;&quot;layui-form-label&quot;&gt;账号：&lt;&#x2F;label&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;layui-input-block&quot;&gt;</span><br><span class="line">        &lt;select name&#x3D;&quot;account&quot; lay-filter&#x3D;&quot;account&quot;&gt;</span><br><span class="line">        &lt;&#x2F;select&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
-<ol>
-<li><p>如果不加option选项，下拉框默认样式如下图所示：</p>
-<p><img src="https://raw.githubusercontent.com/winney07/Images/main/blog/layui-select/select%E6%A1%86%E6%B2%A1%E6%9C%89%E9%80%89%E9%A1%B9%E6%97%B6%E5%88%9D%E5%A7%8B%E5%8C%96%E6%A0%B7%E5%AD%90.png" alt="select框没有选项时初始化样子.png (389×180) (raw.githubusercontent.com)"></p>
-<blockquote>
-<p>项目中使用的是layui是<code>v2.5.6 </code>版本。而更换版本，可能会带来其他影响，而且layui也停更了。</p>
-</blockquote>
-</li>
-<li><p>所以使用定位元素覆盖掉默认的<code>placeholder</code></p>
-<p>HTML:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class&#x3D;&quot;layui-form-item&quot;&gt;</span><br><span class="line">    &lt;label class&#x3D;&quot;layui-form-label&quot;&gt;账号：&lt;&#x2F;label&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;layui-input-block&quot; id&#x3D;&quot;account-select&quot;&gt;</span><br><span class="line">        &lt;div class&#x3D;&quot;account-placeholder&quot;&gt;请选择账号&lt;&#x2F;div&gt;</span><br><span class="line">        &lt;select name&#x3D;&quot;account&quot; lay-filter&#x3D;&quot;account&quot;&gt;&lt;&#x2F;select&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
-<p>CSS：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">#account-select&#123;</span><br><span class="line">    position: relative;</span><br><span class="line">&#125;</span><br><span class="line">#account-select .account-placeholder &#123;</span><br><span class="line">    position: absolute;</span><br><span class="line">    left: 3px;</span><br><span class="line">    top: 3px;</span><br><span class="line">    z-index: 10;</span><br><span class="line">    padding-left: 8px;</span><br><span class="line">    height: 32px;</span><br><span class="line">    line-height: 32px;</span><br><span class="line">    width: 184px;</span><br><span class="line">    pointer-events: none;</span><br><span class="line">    color: rgb(117, 117, 117);</span><br><span class="line">    background-color: #fff;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="https://raw.githubusercontent.com/winney07/Images/main/blog/layui-select/%E5%AE%9A%E4%BD%8D%E5%85%83%E7%B4%A0%E6%A8%A1%E6%8B%9Fplaceholder0.png" alt="定位元素模拟placeholder0.png (390×214) (raw.githubusercontent.com)"></p>
-<p><img src="https://raw.githubusercontent.com/winney07/Images/main/blog/layui-select/%E5%AE%9A%E4%BD%8D%E5%85%83%E7%B4%A0%E6%A8%A1%E6%8B%9Fplaceholder.png" alt="定位元素模拟placeholder.png (376×389) (raw.githubusercontent.com)"></p>
-</li>
-<li><p><code>select</code>框初始化时设置为<code>disabled</code></p>
-<blockquote>
-<p>如上图所示，使用了定位元素挡住了默认的placeholder，但是还是会显示”没有选项“这一项。</p>
-<p>所以干脆初始化时，将<code>select</code>框初始化时设置为<code>disabled</code></p>
-</blockquote>
-<p>HTML：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class&#x3D;&quot;layui-form-item&quot;&gt;</span><br><span class="line">    &lt;label class&#x3D;&quot;layui-form-label&quot;&gt;账号：&lt;&#x2F;label&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;layui-input-block&quot; id&#x3D;&quot;account-select&quot;&gt;</span><br><span class="line">        &lt;div class&#x3D;&quot;account-placeholder&quot;&gt;请选择账号&lt;&#x2F;div&gt;</span><br><span class="line">        &lt;select name&#x3D;&quot;account&quot; lay-filter&#x3D;&quot;account&quot; disabled&gt;&lt;&#x2F;select&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
-<h4 id="其他细节处理"><a href="#其他细节处理" class="headerlink" title="其他细节处理"></a>其他细节处理</h4></li>
-<li><p>点击下拉框时，弹出”需要选择所属项目“的提示语</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 点击账号下拉框</span><br><span class="line">layui.$(&quot;#account-select&quot;).on(&#39;click&#39;, &#39;.layui-form-select&#39;, function()&#123;</span><br><span class="line">    var project &#x3D; layui.$(&#39;[name&#x3D;&quot;project&quot;]:checked&#39;).val();</span><br><span class="line">    if(!project) &#123;</span><br><span class="line">        layer.msg(&#39;需选择所属项目&#39;, &#123;time: 1000&#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
-<li><p>向下箭头为禁用的样式，修改为正常样式：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#account-select .layui-select-disabled .layui-edge&#123;</span><br><span class="line">    border-top-color: #c2c2c2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>鼠标放在select框上，是禁止图标，然而鼠标移到下拉框的向下箭头，光标显示为小手；</p>
-<p>如图所示：</p>
-<p><img src="https://raw.githubusercontent.com/winney07/Images/main/blog/layui-select/%E9%BC%A0%E6%A0%87%E7%A7%BB%E5%88%B0%E4%B8%8B%E6%8B%89%E6%A1%86%E7%9A%84%E5%90%91%E4%B8%8B%E7%AE%AD%E5%A4%B4-%E6%98%BE%E7%A4%BA%E5%B0%8F%E6%89%8B.png" alt="鼠标移到下拉框的向下箭头-显示小手.png (339×129) (raw.githubusercontent.com)"></p>
-<p>解决：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#account-select .layui-select-disabled .layui-edge&#123;</span><br><span class="line">    cursor: not-allowed;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>选择”所属项目“时，追加对应的数据，同时需要去除<code>select</code>框的<code>disabled</code>属性，以及隐藏模拟<code>placeholder</code>的定位元素</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 渲染 select 框的数据</span><br><span class="line"> function renderSelectData(dataList) &#123;</span><br><span class="line">    var selectElem &#x3D; layui.$(&#39;select[name&#x3D;&quot;account&quot;]&#39;);</span><br><span class="line">    selectElem.empty(); &#x2F;&#x2F; 清空原有选项</span><br><span class="line">    selectElem.append(&#39;&lt;option value&#x3D;&quot;&quot;&gt;请选择账号&lt;&#x2F;option&gt;&#39;);</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 添加新的选项</span><br><span class="line">    layui.$.each(dataList, function(index, item) &#123;</span><br><span class="line">        var optionElem &#x3D; layui.$(&#39;&lt;option&gt;&#39;);</span><br><span class="line">        optionElem.val(item.value);</span><br><span class="line">        optionElem.text(item.name);</span><br><span class="line">        selectElem.append(optionElem);</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    layui.form.render(&#39;select&#39;); &#x2F;&#x2F; 重新渲染 select 框</span><br><span class="line">&#125;</span><br><span class="line">var accountList &#x3D; &#123;</span><br><span class="line">    &quot;1&quot;: [</span><br><span class="line">        &#123; value: 1, name: &#39;项目AAA_account1&#39;&#125;,</span><br><span class="line">        &#123; value: 2, name: &#39;项目AAA_account2&#39;&#125;,</span><br><span class="line">        &#123; value: 3, name: &#39;项目AAA_account3&#39;&#125;,</span><br><span class="line">    ],</span><br><span class="line">    &quot;2&quot;: [</span><br><span class="line">        &#123; value: 4, name: &#39;项目BBB_account1&#39;&#125;,</span><br><span class="line">        &#123; value: 5, name: &#39;项目BBB_account2&#39;&#125;,</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F; 监听单选框</span><br><span class="line">form.on(&#39;radio(project)&#39;, function(data)&#123;</span><br><span class="line">    &#x2F;&#x2F; 渲染账号下拉列表</span><br><span class="line">    renderSelectData(accountList[data.value]);</span><br><span class="line"></span><br><span class="line">    layui.$(&#39;select[name&#x3D;&quot;account&quot;]&#39;).removeAttr(&#39;disabled&#39;);</span><br><span class="line">    form.render(&#39;select&#39;);</span><br><span class="line">    layui.$(&#39;.account-placeholder&#39;).hide();	&#x2F;&#x2F; 隐藏模拟的placeholder</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>最终效果：</p>
-<p><img src="https://raw.githubusercontent.com/winney07/Images/main/blog/layui-select/%E9%BC%A0%E6%A0%87%E7%A7%BB%E4%B8%8A%E6%98%BE%E7%A4%BA%E7%A6%81%E6%AD%A2%E5%9B%BE%E6%A0%87%E6%95%88%E6%9E%9C.png" alt="鼠标移上显示禁止图标效果.png (347×274) (raw.githubusercontent.com)"></p>
 </li>
 </ol>
+<p><code>getHashParams()</code>方法适合以上3种情况的hash链接获取参数</p>
+<p>如果不使用<code>params.id</code>这种方法获取参数对应的值，也可以使用解构赋值获取需要的参数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const &#123; id, name &#125; &#x3D; params;</span><br></pre></td></tr></table></figure>
+<h4 id="根据参数名获取对应的值"><a href="#根据参数名获取对应的值" class="headerlink" title="根据参数名获取对应的值"></a>根据参数名获取对应的值</h4><p><code>getHashParams()</code>方法是一次性返回全部参数。如果想通过传参数名来获取参数对应的值，可以给<code>getHashParams()</code>方法添加参数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;*</span><br><span class="line">** @param paramName&#123;string&#125;    &#x2F;&#x2F; 参数名</span><br><span class="line">*&#x2F;</span><br><span class="line">function getHashParams(paramName) &#123;</span><br><span class="line">    const hash &#x3D; window.location.hash.substr(1); &#x2F;&#x2F; 去掉开头的 #</span><br><span class="line">    const params &#x3D; &#123;&#125;;</span><br><span class="line"></span><br><span class="line">    if (hash) &#123;</span><br><span class="line">        const parts &#x3D; hash.split(&#39;?&#39;); &#x2F;&#x2F; 以 ? 分割</span><br><span class="line">        const path &#x3D; parts[0]; &#x2F;&#x2F; 获取路径部分</span><br><span class="line">        params.path &#x3D; path; &#x2F;&#x2F; 存储路径</span><br><span class="line"></span><br><span class="line">        if (parts.length &gt; 1) &#123;</span><br><span class="line">            const queryString &#x3D; parts[1]; &#x2F;&#x2F; 获取查询参数部分</span><br><span class="line">            const paramPairs &#x3D; queryString.split(&#39;&amp;&#39;);</span><br><span class="line"></span><br><span class="line">            paramPairs.forEach(pair &#x3D;&gt; &#123;</span><br><span class="line">                const [key, value] &#x3D; pair.split(&#39;&#x3D;&#39;);</span><br><span class="line">                params[key] &#x3D; decodeURIComponent(value || &#39;&#39;); &#x2F;&#x2F; 解码参数值</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 如果提供了参数名称，返回特定参数的值；否则返回所有参数</span><br><span class="line">    if (paramName) &#123;</span><br><span class="line">        return params[paramName] || null; &#x2F;&#x2F; 返回特定参数的值或 null（如果参数不存在）</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        return params;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const id &#x3D; getHashParams(&#39;id&#39;);</span><br><span class="line">console.log(id); &#x2F;&#x2F; 输出 id 参数的值</span><br><span class="line">var params_all &#x3D; getHashParams();</span><br><span class="line">console.log(params_all); &#x2F;&#x2F; 输出所有参数</span><br><span class="line">const age &#x3D; getHashParams(&#39;age&#39;);</span><br><span class="line">console.log(age); &#x2F;&#x2F; 输出 age 参数的值</span><br></pre></td></tr></table></figure>
+<p>链接：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;127.0.0.1:5500&#x2F;hash.html#&#x2F;test&#x2F;text.html?id&#x3D;2&amp;name&#x3D;winney</span><br></pre></td></tr></table></figure>
+<p>结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">2</span><br><span class="line">&#123;path: &#39;&#x2F;test&#x2F;text.html&#39;, id: &#39;2&#39;, name: &#39;winney&#39;&#125;</span><br><span class="line">null</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -571,7 +503,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/37/">37</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -639,20 +571,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-count">109</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">55</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">51</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -671,7 +603,7 @@
           <a href="https://www.winney07.cn/" title="https:&#x2F;&#x2F;www.winney07.cn&#x2F;" rel="noopener" target="_blank">winney07</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://blog.csdn.net/winney07" title="https:&#x2F;&#x2F;blog.csdn.net&#x2F;winney07" rel="noopener" target="_blank">CSDNL</a>
+          <a href="https://blog.csdn.net/winney07" title="https:&#x2F;&#x2F;blog.csdn.net&#x2F;winney07" rel="noopener" target="_blank">CSDN</a>
         </li>
         <li class="links-of-blogroll-item">
           <a href="http://winney07.lofter.com/" title="http:&#x2F;&#x2F;winney07.lofter.com&#x2F;" rel="noopener" target="_blank">乐乎</a>
@@ -698,7 +630,7 @@
 <div class="copyright">
   
   &copy; 2015 – 
-  <span itemprop="copyrightYear">2023</span>
+  <span itemprop="copyrightYear">2024</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

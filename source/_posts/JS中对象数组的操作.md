@@ -1,14 +1,12 @@
 ---
 title: JS中对象数组的操作
-date: 2023-07-09 13:44:34
+date: 2019-08-09 11:47:26
 tags:
 - JavaScript
 categories: 
 - JavaScript
 ---
-## 判断数组中的某对象某属性是否等于某值
-
-> 如果不等于就向数组追加新对象
+#### 判断一个对象数组的某个对象是否具体某个属性，如果没有就追加对象
 
 ```
 // records是对象数组
@@ -17,60 +15,57 @@ if (!records.some(obj => obj.username === value.username)) {
 }
 ```
 
-## 过滤掉数组中满足条件的某个对象
+#### js高效修改对象数组里的对象属性名
 
 ```
-records = records.filter(obj => obj.username !== value.username);
-```
-
-#### 使用场景
-
-在用户登录界面，显示用户历史登录账号记录列表（平台可用多个账号），便于用户快速登录。在注册页面，进行记录：
-
-需要缓存的数据格式：
-
-```
-var records = [
-    { username: "ceshi1234", password: "123456" },
-    { username: "ceshi000", password: "123456" },
-    { username: "ceshi33", password: "123456" },
-    { username: "ceshi21", password: "123456" },
-    { username: "ceshi22", password: "123456" }
-];
-```
-
-```
-const common ={
-	getStorage: (key) => {  
-        var data = localStorage.getItem(key);
-        try {
-            return JSON.parse(data);
-        } catch (err) {
-            return data;
-        }
+appList: [
+    {
+        list:[
+            {id: 118, name: "测试1", group_id: 4, os: 2}
+            {id: 120, name: "测试11", group_id: 4, os: 2}
+            {id: 123, name: "测试111", group_id: 4, os: 1}
+        ]
+        name: "测试1111"
     },
-    setLoginRecordStorage: function(key, value){
-        // 获取当前用户登录记录
-        let records = common.getStorage(key) || [];
-
-        if(records.length === 0) {  // 未缓存过的记录
-            records.push(value);
-        } else{
-            // 判断当前账号是否已缓存过
-            if (!records.some(obj => obj.username === value.username)) {
-                // 未缓存过该账号
-                records.unshift(value);
-            } else{
-                // 已缓存过账号-先删除-再追加到最新
-                records = records.filter(obj => obj.username !== value.username);
-                // 倒序，最后登录的在最前面
-                records.unshift(value);    
-            }   
-        }
-
-        common.setStorage(key, records);
-    }
-}
+    {
+        list:[
+            {id: 118, name: "测试2", group_id: 4, os: 2}
+            {id: 120, name: "测试22", group_id: 4, os: 2}
+            {id: 123, name: "测试222", group_id: 4, os: 1}
+        ]
+        name: "测试2222"
+    },
+]
 ```
 
-## 根据某个属性进行排序
+（因为插件的要求）改为：
+
+```
+productArr: [
+    {
+        children:[
+            {value: 118, name: "测试1", group_value: 4, os: 2}
+            {value: 120, name: "测试11", group_value: 4, os: 2}
+            {value: 123, name: "测试111", group_value: 4, os: 1}
+        ]
+        name: "测试1111"
+    },
+    {
+        children:[
+            {value: 118, name: "测试2", group_value: 4, os: 2}
+            {value: 120, name: "测试22", group_value: 4, os: 2}
+            {value: 123, name: "测试222", group_value: 4, os: 1}
+        ]
+        name: "测试2222"
+    },
+]
+```
+
+代码：
+
+```
+var productArr = JSON.parse(JSON.stringify(appList).replace(/list/g, 'children'));
+productArr = JSON.parse(JSON.stringify(productArr).replace(/id/g, 'value'));
+```
+
+###### 【参考】： [js高效修改对象数组里的对象属性名](https://blog.csdn.net/Mr_JavaScript/article/details/85236957)

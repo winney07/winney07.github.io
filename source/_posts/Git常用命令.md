@@ -166,13 +166,13 @@ git clone -b <branch_name> <remote_repository_url>
    ```
    git remote -v
    ```
-
+	这将显示当前本地仓库关联的远程仓库信息，包括远程仓库的名称（通常是 `origin`）和对应的 URL。
 2. 移除当前关联的远程仓库：
 
    ```
    git remote remove origin
    ```
-
+	这将移除本地仓库当前关联的远程仓库（假设当前远程仓库的名称是 `origin`）
 3. 添加新的远程仓库地址：
 
    ```
@@ -184,20 +184,23 @@ git clone -b <branch_name> <remote_repository_url>
    ```
    git remote -v
    ```
-
+	现在，您的本地仓库已经重新关联到新的远程仓库。在将代码推送到远程仓库时，可以使用 `git push` 命令，例如：
 5. 将代码推送到远程仓库：
 
    ```
    git push -u origin master
    ```
-
+	其中，`origin` 是新远程仓库的名称，`master` 是要推送的分支名。
+   
+   
+   
    请注意，如果您之前的本地分支与远程仓库有相关联，新关联的远程仓库可能不会自动与这些分支关联。如果需要将旧的本地分支与新的远程仓库关联，您可以使用 git branch --set-upstream-to 命令。例如：
-
+   
    ```
    git branch --set-upstream-to=origin/master master
    ```
-
+   
    这将把本地 `master` 分支与新的远程仓库的 `master` 分支关联起来。
-
+   
    `请确保在进行这些操作之前备份您的本地仓库，以防意外情况。`
 

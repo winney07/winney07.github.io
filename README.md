@@ -374,3 +374,12 @@ FATAL {
 hexo clean && hexo g && hexo d
 ```
 
+
+
+### [一个github账号怎么实现多个静态网站](https://blog.csdn.net/qq_39583550/article/details/128546569)
+
+1. 往仓库里面放入`index.html`文件
+2. 设置里面开启github page
+3. 此时就可以通过`username.github.io/仓库名`访问了(部署需要时间, 需要稍等片刻哦)
+
+在新创建的仓库中，选择`“Setting"——>”Pages"——>"**Branch**"选择"main"(选择网页所在分支)`

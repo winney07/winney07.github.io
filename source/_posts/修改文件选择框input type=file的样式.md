@@ -142,3 +142,6 @@ myImgEL.addEventListener('change', (event) => {
 });
 ```
 
+
+
+想鼠标移上去，显示手指手势，设置了`cursor: pointer;`不起作用，解决方法：将input的字体大小设置为0：`font-size: 0`

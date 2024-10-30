@@ -193,7 +193,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/15/HighChart%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/08/22/%E5%AF%BC%E5%87%BA%E8%A1%A8%E6%A0%BC%E5%8A%9F%E8%83%BD/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -207,7 +207,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/01/15/HighChart%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">HighChart相关笔记</a>
+            <a href="/2020/08/22/%E5%AF%BC%E5%87%BA%E8%A1%A8%E6%A0%BC%E5%8A%9F%E8%83%BD/" class="post-title-link" itemprop="url">导出表格功能</a>
         </h2>
 
         <div class="post-meta">
@@ -217,14 +217,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-01-15 15:26:30" itemprop="dateCreated datePublished" datetime="2021-01-15T15:26:30+08:00">2021-01-15</time>
+              <time title="创建时间：2020-08-22 11:12:23" itemprop="dateCreated datePublished" datetime="2020-08-22T11:12:23+08:00">2020-08-22</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-08-24 18:09:23" itemprop="dateModified" datetime="2022-08-24T18:09:23+08:00">2022-08-24</time>
+                <time title="修改时间：2024-10-30 13:18:11" itemprop="dateModified" datetime="2024-10-30T13:18:11+08:00">2024-10-30</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -232,11 +232,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/HighChart/" itemprop="url" rel="index"><span itemprop="name">HighChart</span></a>
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
                 </span>
             </span>
 
@@ -251,64 +247,13 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h4 id="修改导出excel表表头的表名"><a href="#修改导出excel表表头的表名" class="headerlink" title="修改导出excel表表头的表名"></a>修改导出excel表表头的表名</h4><ol>
-<li><p>默认情况下，标题显示为Chart</p>
-<p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/HighChart%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/table1.png" alt="标题显示为Chart"></p>
-</li>
-<li><p>加上title属性之后，标题显示为title属性的值</p>
-<p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/HighChart%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/table2.png" alt="标题显示为title属性的值"></p>
-</li>
-<li><p>如果不想标题显示在页面中，就加样式：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.highcharts-title&#123;</span><br><span class="line">    display:none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <h3 id="使用window-open-url-‘-self’-导出表格"><a href="#使用window-open-url-‘-self’-导出表格" class="headerlink" title="使用window.open(url, ‘_self’)导出表格"></a>使用<code>window.open(url, ‘_self’)</code>导出表格</h3><p>使用<code>window.open(url, ‘_self’)</code>导出表格后，页面会刷新，本来存放的<code>localStorage</code>会被清（因为刷新页面做了清空表格筛选条件和页码）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 监听手动刷新页面事件(按浏览器的刷新按钮||使用js方法刷新页面)</span><br><span class="line">window.onbeforeunload = function(event)&#123;</span><br><span class="line">    // 清空表格缓存的页码数据</span><br><span class="line">    removeItem(&quot;pages&quot;);</span><br><span class="line">    // 清空表格筛选条件缓存数据</span><br><span class="line">    removeItem(&quot;formData&quot;);</span><br><span class="line">    console.log(&#x27;刷新了页面&#x27;)</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
+<p>解决方法：使用<code>sessionStorage</code>临时缓存一份</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// 在导出表格前，先临时拷贝localStorage缓存数据到sessionStorage</span><br><span class="line">// 使用window.open导出表格，会将localStorage中的formData清空</span><br><span class="line">sessionStorage.setItem(&#x27;formData&#x27;, JSON.stringify(getItem(&#x27;formData&#x27;)));</span><br><span class="line">sessionStorage.setItem(&#x27;pages&#x27;, JSON.stringify(getItem(&#x27;pages&#x27;)));</span><br><span class="line">// 导出表格后，从sessionStorage中拷贝数据再次缓存到locaStorage</span><br><span class="line">setItem(&#x27;formData&#x27;, sessionStorage.getItem(&#x27;formData&#x27;));</span><br><span class="line">setItem(&#x27;pages&#x27;, sessionStorage.getItem(&#x27;pages&#x27;));</span><br></pre></td></tr></table></figure>
 
-
-</li>
-</ol>
-<h4 id="修改下载的excel表名"><a href="#修改下载的excel表名" class="headerlink" title="修改下载的excel表名"></a>修改下载的excel表名</h4><p>设置title对象的text属性为图表的名称</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">title: &#123;</span><br><span class="line">    text: filename</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
-
-<p>若不想表名显示在页面的图表中，可以用样式将它隐藏</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">display：none</span><br></pre></td></tr></table></figure>
-
-<h4 id="修改导出后的excel表的第一列的标题Category"><a href="#修改导出后的excel表的第一列的标题Category" class="headerlink" title="修改导出后的excel表的第一列的标题Category"></a>修改导出后的excel表的第一列的标题Category</h4><ol>
-<li><p>第一列的标题默认是Category</p>
-<p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/HighChart%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/table3.png" alt=" 第一列的标题默认是Category"></p>
-</li>
-<li><p>修改modules 中的export-data.src.js（导出excel表功能的js，未压缩版）</p>
-<blockquote>
-<p>调试可知，dataRows的值决定了标题的显示；而dataRows的值由topHeaders和subHeaders决定，所以动态将它的值修改。</p>
-</blockquote>
-<p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/HighChart%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/table4.png" alt="修改modules 中的export-data.src.js"></p>
-</li>
-<li><p>给options添加一个excelTitle0属性值</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">topHeaders[0] = this.options.exporting.excelTitle0;</span><br><span class="line">subHeaders[0] = this.options.exporting.excelTitle0;    </span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">// Find longest row</span><br><span class="line">for (var i = 0, len = rows.length; i &lt; len; ++i) &#123;</span><br><span class="line">	if (rows[i].length &gt; rowLength) &#123;</span><br><span class="line">		rowLength = rows[i].length;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">topHeaders[0] = this.options.exporting.excelTitle0;</span><br><span class="line">subHeaders[0] = this.options.exporting.excelTitle0;</span><br><span class="line">// Add header</span><br><span class="line">html += getTableHeaderHTML(</span><br><span class="line">	topHeaders ,</span><br><span class="line">	subHeaders ,</span><br><span class="line">	Math.max(rowLength, subHeaders.length)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在下载excel表格之前，动态设置excelTitle0属性</p>
- <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">function getCategory() &#123;</span><br><span class="line">	var category = $(this).data(&quot;category&quot;);</span><br><span class="line">	if(category == &quot;&quot; || category == undefined)&#123;</span><br><span class="line">		var val = $(&quot;#dateRange&quot;).val();</span><br><span class="line">		var start = val.substring(0, 10);</span><br><span class="line">		var end = val.substring(13, 24);</span><br><span class="line">        // 算两个日期之间的间隔</span><br><span class="line">        var inter = getDays(start, end);</span><br><span class="line"></span><br><span class="line">        if(inter = 0) &#123;</span><br><span class="line">            category = &quot;小时&quot;;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            category = &quot;日期&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">     &#125;</span><br><span class="line">    return category;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Highcharts.charts[chartId].options.exporting.excelTitle0 = getCategory.call(this);</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ol>
-<h4 id="修改数据表格category值"><a href="#修改数据表格category值" class="headerlink" title="修改数据表格category值"></a>修改数据表格category值</h4><p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/HighChart%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/table7.png" alt="修改数据表格category值"></p>
-<p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/HighChart%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/table8.png" alt="修改数据表格category值"></p>
-<p>1、给点击按钮加上data-category属性：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;eptWrap rc&quot; data-chart=&quot;Ø&quot; data-category=&quot;渠道&quot;&gt;</span><br><span class="line">    &lt;span class= &quot;eptList&quot; &gt;&lt;/span&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;div class&quot;eptwrap ml10 down-file&quot; data-chart=&quot;0&quot; data-category=&quot;渠道&quot;&gt;</span><br><span class="line">    &lt;span class=&quot;eptout&quot;&gt;&lt;/span&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
-
-<p>2、重新调用hightcharts修改category属性的方法：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">function getCategory() &#123;</span><br><span class="line">	var category = $(this).data(&quot;category&quot;);</span><br><span class="line">	if(category == &quot;&quot; || category == undefined)&#123;</span><br><span class="line">		var val = $(&quot;#dateRange&quot;).val();</span><br><span class="line">		var start = val.substring(0, 10);</span><br><span class="line">		var end = val.substring(13, 24);</span><br><span class="line">        // 算两个日期之间的间隔</span><br><span class="line">        var inter = getDays(start, end);</span><br><span class="line"></span><br><span class="line">        if(inter = 0) &#123;</span><br><span class="line">            category = &quot;小时&quot;;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            category = &quot;日期&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">     &#125;</span><br><span class="line">    return category;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Highcharts.charts[chartId].options.exporting.excelTitle0 = getCategory.call(this);</span><br></pre></td></tr></table></figure>
-
-<h4 id="修改条形图柱子的宽度"><a href="#修改条形图柱子的宽度" class="headerlink" title="修改条形图柱子的宽度"></a>修改条形图柱子的宽度</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">plotOptions: &#123;</span><br><span class="line">  bar: &#123;</span><br><span class="line">     maxPointWidth: 20</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/HighChart%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/table11.png" alt="修改条形图柱子的宽度"></p>
-<h4 id="在条形图柱子后面加上数值"><a href="#在条形图柱子后面加上数值" class="headerlink" title="在条形图柱子后面加上数值"></a>在条形图柱子后面加上数值</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">plotOptions: &#123;</span><br><span class="line">  bar: &#123;</span><br><span class="line">     dataLabels: &#123;</span><br><span class="line">     	enabled: true,</span><br><span class="line">     	allowOverlap: true   // 允许数据标签重叠</span><br><span class="line">     &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/HighChart%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/table12.png" alt="在条形图柱子后面加上数值"></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/wade01274536/article/details/50419114">将Highcharts图表数据生成Table表格</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/eengel/article/details/73497208">重绘</a></p>
+<h4 id="通过url导出服务器端文件"><a href="#通过url导出服务器端文件" class="headerlink" title="通过url导出服务器端文件"></a>通过<code>url</code>导出服务器端文件</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">// window.location.href= url;</span><br><span class="line">// 或</span><br><span class="line">window.open(url, &#x27;_self&#x27;)</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -328,7 +273,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/15/IE%E5%85%BC%E5%AE%B9%E6%80%A7%E5%A4%84%E7%90%86/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/08/16/%E3%80%90WEB%E5%89%8D%E7%AB%AFCSS%E3%80%91%E6%96%87%E6%9C%AC%E7%9B%B8%E5%85%B3%E6%A0%B7%E5%BC%8F%E7%9A%84%E5%A4%84%E7%90%86/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -342,7 +287,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/01/15/IE%E5%85%BC%E5%AE%B9%E6%80%A7%E5%A4%84%E7%90%86/" class="post-title-link" itemprop="url">IE兼容性处理</a>
+            <a href="/2020/08/16/%E3%80%90WEB%E5%89%8D%E7%AB%AFCSS%E3%80%91%E6%96%87%E6%9C%AC%E7%9B%B8%E5%85%B3%E6%A0%B7%E5%BC%8F%E7%9A%84%E5%A4%84%E7%90%86/" class="post-title-link" itemprop="url">【WEB前端CSS】文本相关样式的处理</a>
         </h2>
 
         <div class="post-meta">
@@ -352,14 +297,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-01-15 15:09:48" itemprop="dateCreated datePublished" datetime="2021-01-15T15:09:48+08:00">2021-01-15</time>
+              <time title="创建时间：2020-08-16 16:12:23" itemprop="dateCreated datePublished" datetime="2020-08-16T16:12:23+08:00">2020-08-16</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-08-24 18:09:23" itemprop="dateModified" datetime="2022-08-24T18:09:23+08:00">2022-08-24</time>
+                <time title="修改时间：2024-10-30 13:18:11" itemprop="dateModified" datetime="2024-10-30T13:18:11+08:00">2024-10-30</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -367,11 +312,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/IE%E5%85%BC%E5%AE%B9/" itemprop="url" rel="index"><span itemprop="name">IE兼容</span></a>
+                  <a href="/categories/CSS/" itemprop="url" rel="index"><span itemprop="name">CSS</span></a>
                 </span>
             </span>
 
@@ -386,443 +327,150 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h4 id="js判断浏览器是否为IE浏览器"><a href="#js判断浏览器是否为IE浏览器" class="headerlink" title="js判断浏览器是否为IE浏览器"></a>js判断浏览器是否为IE浏览器</h4><p>IE6-8和IE11都适用：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function isIE() &#123; //ie?</span><br><span class="line">     if (!!window.ActiveXObject || &quot;ActiveXObject&quot; in window)</span><br><span class="line">            &#123; return true; &#125;</span><br><span class="line">     else</span><br><span class="line">            &#123; return false; &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+          <p>单行文字溢出使用省略号显示</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;ellipsis&quot;&gt;</span><br><span class="line">    超出部分省略号显示超出部分省略号显示超出部分省略号显示超出部分省略号显示超出部分省略号显示超出部分省略号显示超出部分省略号显示超出部分省略号显示超出部分省略号显示超出部分省略号显示超出部分省略号显示</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/08/10/%E6%97%A5%E6%9C%9F%E5%AF%B9%E8%B1%A1Date%E7%9A%84%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="winney">
+      <meta itemprop="description" content="Doing is better than saying.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="winney">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/08/10/%E6%97%A5%E6%9C%9F%E5%AF%B9%E8%B1%A1Date%E7%9A%84%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/" class="post-title-link" itemprop="url">日期对象Date的常用方法</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-08-10 11:22:26" itemprop="dateCreated datePublished" datetime="2020-08-10T11:22:26+08:00">2020-08-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-10-30 13:18:11" itemprop="dateModified" datetime="2024-10-30T13:18:11+08:00">2024-10-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="创建Date实例"><a href="#创建Date实例" class="headerlink" title="创建Date实例"></a>创建Date实例</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let date = new Date();		// Fri Jul 14 2023 15:23:52 GMT+0800 (中国标准时间)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let date = new Date(1689321710307);		// Fri Jul 14 2023 16:01:50 GMT+0800 (中国标准时间)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let date = new Date(&#x27;2023-07-14 16:10:40&#x27;);	 // Fri Jul 14 2023 16:10:40 GMT+0800 (中国标准时间)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let date = new Date(2023, 6, 14, 15, 23, 52);  // Fri Jul 14 2023 15:23:52 GMT+0800 (中国标准时间)</span><br></pre></td></tr></table></figure>
+
+<h3 id="格式化"><a href="#格式化" class="headerlink" title="格式化"></a>格式化</h3><h4 id="1-Date对象方法"><a href="#1-Date对象方法" class="headerlink" title="1. Date对象方法"></a>1. Date对象方法</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let LDS = date.toLocaleDateString();	// 2023/7/14</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let LS = date.toLocaleString();			// 2023/7/14 15:23:52</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let LTS = date.toLocaleTimeString(); 	// 15:23:52</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-封装方法"><a href="#2-封装方法" class="headerlink" title="2. 封装方法"></a>2. 封装方法</h4><p>格式：<code>2023-07-14</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function formatDate(date) &#123;</span><br><span class="line">    const year = date.getFullYear();</span><br><span class="line">    const month = String(date.getMonth() + 1).padStart(2, &#x27;0&#x27;);</span><br><span class="line">    const day = String(date.getDate()).padStart(2, &#x27;0&#x27;);</span><br><span class="line"></span><br><span class="line">    return `$&#123;year&#125;-$&#123;month&#125;-$&#123;day&#125;`;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const date = new Date();</span><br><span class="line">const formattedDate = formatDate(date);</span><br><span class="line">console.log(formattedDate); 	//	2023-07-14</span><br></pre></td></tr></table></figure>
+
+<p>格式：<code>2023-07-14 15:30:45</code>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">function formatDate(date, format) &#123;</span><br><span class="line">    const year = date.getFullYear();</span><br><span class="line">    const month = String(date.getMonth() + 1).padStart(2, &#x27;0&#x27;);</span><br><span class="line">    const day = String(date.getDate()).padStart(2, &#x27;0&#x27;);</span><br><span class="line">    const hours = String(date.getHours()).padStart(2, &#x27;0&#x27;);</span><br><span class="line">    const minutes = String(date.getMinutes()).padStart(2, &#x27;0&#x27;);</span><br><span class="line">    const seconds = String(date.getSeconds()).padStart(2, &#x27;0&#x27;);</span><br><span class="line"></span><br><span class="line">    return format</span><br><span class="line">        .replace(&#x27;YYYY&#x27;, year)</span><br><span class="line">        .replace(&#x27;MM&#x27;, month)</span><br><span class="line">        .replace(&#x27;DD&#x27;, day)</span><br><span class="line">        .replace(&#x27;HH&#x27;, hours)</span><br><span class="line">        .replace(&#x27;mm&#x27;, minutes)</span><br><span class="line">        .replace(&#x27;ss&#x27;, seconds);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const date = new Date();</span><br><span class="line">const formattedDate = formatDate(date, &#x27;YYYY-MM-DD HH:mm:ss&#x27;);</span><br><span class="line">console.log(formattedDate); // 2023-07-14 15:30:45</span><br></pre></td></tr></table></figure>
+
+<p>格式：<code>2023-07-14 15:30:45</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">function formatDate(date, separator = &#x27;-&#x27;) &#123;</span><br><span class="line">    const year = date.getFullYear();</span><br><span class="line">    const month = String(date.getMonth() + 1).padStart(2, &#x27;0&#x27;);</span><br><span class="line">    const day = String(date.getDate()).padStart(2, &#x27;0&#x27;);</span><br><span class="line">    const hours = String(date.getHours()).padStart(2, &#x27;0&#x27;);</span><br><span class="line">    const minutes = String(date.getMinutes()).padStart(2, &#x27;0&#x27;);</span><br><span class="line">    const seconds = String(date.getSeconds()).padStart(2, &#x27;0&#x27;);</span><br><span class="line"></span><br><span class="line">    const formattedDate = [year, month, day].join(separator);</span><br><span class="line">    const formattedTime = [hours, minutes, seconds].join(&#x27;:&#x27;);</span><br><span class="line"></span><br><span class="line">    return formattedDate + &#x27; &#x27; + formattedTime;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const date = new Date();</span><br><span class="line">const formattedDate = formatDate(date, &#x27;-&#x27;);</span><br><span class="line">console.log(formattedDate); // 2023-07-14 15:30:45</span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p>window.ActiveXObject：判断浏览器是否支持ActiveX控件，只有IE浏览器里面支持ActiveX控件<br>如果浏览器支持ActiveX控件，可以利用 var xml = new ActiveXObject(“Microsoft.XMLHTTP”); 创建XMLHttpRequest 对象（这是在IE7以前的版本中）；</p>
-<p>在较新的IE版本中可以利用 var xml = new ActiveXObject(“Msxml2.XMLHTTP”)的形式创建XMLHttpRequest对象;</p>
-<p>而在IE7及非IE浏览器中可以利用v ar xml=new XMLHttpRequest()创建XMLHttpRequest对象。</p>
+<p>后面两种方法，传参方式不一样，实现效果一样。</p>
 </blockquote>
-<h4 id="IE浏览器固定定位（fixed）的弹窗"><a href="#IE浏览器固定定位（fixed）的弹窗" class="headerlink" title="IE浏览器固定定位（fixed）的弹窗"></a>IE浏览器固定定位（fixed）的弹窗</h4><p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/IE%E5%85%BC%E5%AE%B9%E6%80%A7%E5%A4%84%E7%90%86/ie-fixed.png" alt="IE浏览器固定定位（fixed）的弹窗"></p>
-<p>解决：</p>
+<blockquote>
+<p><strong><code>padStart()</code></strong> 方法用另一个字符串填充当前字符串（如果需要的话，会重复多次），以便产生的字符串达到给定的长度。从当前字符串的左侧开始填充。</p>
+<p>参数：<code>targetLength</code>：当前字符串需要填充到的目标长度；<code>padString</code>：填充字符串。默认值为 “ “（空格）</p>
+</blockquote>
+<h3 id="获取时间戳（当前时间的毫秒数）"><a href="#获取时间戳（当前时间的毫秒数）" class="headerlink" title="获取时间戳（当前时间的毫秒数）"></a>获取时间戳（当前时间的毫秒数）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let t = date.getTime();		// 1689319432759</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let now = Date.now();    	// 1689319432759</span><br></pre></td></tr></table></figure>
+
+<blockquote>
 <ol>
-<li>使用相对定位（absolute），弹出蒙层</li>
-<li>body使用overflow:hidden样式，让body溢出隐藏，控制页面不滚动。</li>
+<li><code>Date.now()</code>: 静态方法，直接通过 <code>Date.now()</code> 调用，返回的是当前时间的毫秒数，不需要创建 <code>Date</code> 对象实例。</li>
+<li><code>Date.getTime()</code>:  <code>Date</code> 对象的实例方法，需要先创建一个 <code>Date</code> 对象，然后通过该对象调用 <code>getTime()</code> 方法，返回的是该日期对象表示的时间的毫秒数。</li>
 </ol>
-<h4 id="去除IE10中输入框和密码框的X按钮和小眼睛"><a href="#去除IE10中输入框和密码框的X按钮和小眼睛" class="headerlink" title="去除IE10中输入框和密码框的X按钮和小眼睛"></a>去除IE10中输入框和密码框的X按钮和小眼睛</h4><p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/IE%E5%85%BC%E5%AE%B9%E6%80%A7%E5%A4%84%E7%90%86/ie10-input.png" alt="去除IE10中输入框和密码框的X按钮和小眼睛"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">方法：</span><br><span class="line">/*去除IE输入框的X标记*/</span><br><span class="line">input[type=text]::-ms-clear &#123;display: none;&#125;</span><br><span class="line"></span><br><span class="line">/*去除IE输入框的小眼睛标记*/</span><br><span class="line">input[type=password]::-ms-reveal &#123;display: none;&#125;</span><br><span class="line"></span><br><span class="line">如果想要单独去除某个输入框的话，可以把input[type=text]改为.target-class即可。</span><br></pre></td></tr></table></figure>
-
-<h4 id="去掉a标签点击-active-状态的背景色"><a href="#去掉a标签点击-active-状态的背景色" class="headerlink" title="去掉a标签点击(active)状态的背景色"></a>去掉a标签点击(active)状态的背景色</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">ie浏览器，点击a标签时，点击状态，有个背景色</span><br><span class="line">想去掉这个样式：</span><br><span class="line">设置：</span><br><span class="line">a:active&#123;</span><br><span class="line">    -webkit-tap-highlight-color: rgba(0,0,0,0);</span><br><span class="line">    -webkit-tap-highlight-color: transparent;</span><br><span class="line">    outline: none;</span><br><span class="line">    background: none;</span><br><span class="line">    text-decoration: none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="复选框-input-type-”check”"><a href="#复选框-input-type-”check”" class="headerlink" title="复选框 input type=”check”"></a>复选框 input type=”check”</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">普通浏览器：</span><br><span class="line">&lt;input type=&quot;checkbox&quot; checked=&quot;&quot; /&gt;</span><br><span class="line">在IE浏览器中checked属性的写法是大写的:</span><br><span class="line">&lt;input type=&quot;checkbox&quot; CHECKED=&quot;&quot; /&gt;</span><br><span class="line"></span><br><span class="line">所以js获取checked时，要考虑ie的情况。</span><br></pre></td></tr></table></figure>
-
-<h4 id="ie-下input输入框readonly失效-光标仍可聚焦"><a href="#ie-下input输入框readonly失效-光标仍可聚焦" class="headerlink" title="ie 下input输入框readonly失效,光标仍可聚焦"></a>ie 下input输入框readonly失效,光标仍可聚焦</h4><blockquote>
-<p>ie下input输入框设置了readonly属性,但是鼠标还可以点击光标聚焦,</p>
-<p>改为bootstrap的disable属性后,无法聚焦但是表单提交又失效,无法传递参数,</p>
-<p>而且聚焦后,backspace按键默认触发浏览器的返回功能,</p>
-<p>后改为增加屈性unselectable=’on’,可以解决.</p>
+<p>总结来说，<code>Date.now()</code> 更方便和直接，可以直接获取当前时间的毫秒数，而 <code>date.getTime()</code> 则是通过 <code>date</code> 对象获取该对象表示的时间的毫秒数。</p>
 </blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$(&quot;#config_name&#x27;+index).attr(&quot;readonly&quot;, &quot;readonly&quot;);</span><br><span class="line">$(&quot;#config_name&#x27;+index ).attr(&quot;unselectable&quot;, &quot;on&quot;);</span><br></pre></td></tr></table></figure>
+<h3 id="获取年份"><a href="#获取年份" class="headerlink" title="获取年份"></a>获取年份</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let y = date.getFullYear();		// 2023</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;pre name=&quot;code&quot; class=&quot;javascript&quot;&gt;$(&#x27;#config_name&#x27;+index) .removeAttr(&quot;unselectable&quot;);</span><br></pre></td></tr></table></figure>
+<h3 id="获取月份"><a href="#获取月份" class="headerlink" title="获取月份"></a>获取月份</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let m = date.getMonth() + 1;	// 7</span><br></pre></td></tr></table></figure>
 
-<h4 id="文件上传按钮（input-type-“file”）"><a href="#文件上传按钮（input-type-“file”）" class="headerlink" title="文件上传按钮（input type= “file”）"></a>文件上传按钮（input type= “file”）</h4><p>美化后的按钮，在在ie浏览器下要双击才能打开</p>
-<p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/IE%E5%85%BC%E5%AE%B9%E6%80%A7%E5%A4%84%E7%90%86/input-file.png" alt="文件上传按钮-兼容性"></p>
-<p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/IE%E5%85%BC%E5%AE%B9%E6%80%A7%E5%A4%84%E7%90%86/input-file2.png" alt="文件上传按钮-兼容性"></p>
-<p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/IE%E5%85%BC%E5%AE%B9%E6%80%A7%E5%A4%84%E7%90%86/input-file3.png" alt="文件上传按钮-兼容性"></p>
-<blockquote>
-<p>目的是让选择文件的文字铺满该按钮，可以点击</p>
-</blockquote>
-<h4 id="a标签添加事件的注意事项"><a href="#a标签添加事件的注意事项" class="headerlink" title="a标签添加事件的注意事项"></a>a标签添加事件的注意事项</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;javascript:void(0);&quot; class=&quot;refresh-icon&quot;&gt;&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="获取月中的哪一日"><a href="#获取月中的哪一日" class="headerlink" title="获取月中的哪一日"></a>获取月中的哪一日</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let d = date.getDate();		// 14</span><br></pre></td></tr></table></figure>
 
-<blockquote>
-<p>当不添加链接的时候，只是为了触发事件的时候，要加上void(0);不然在IE浏览器会报错</p>
-</blockquote>
-<h4 id="解决IE下a标签点击有虚线边框的问题"><a href="#解决IE下a标签点击有虚线边框的问题" class="headerlink" title="解决IE下a标签点击有虚线边框的问题"></a>解决IE下a标签点击有虚线边框的问题</h4><p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/zhangxianya1/article/details/47128007">解决IE下a标签点击有虚线边框的问题</a></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a:focus&#123;outline:none;&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="获取小时"><a href="#获取小时" class="headerlink" title="获取小时"></a>获取小时</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let h = date.getHours();	// 15</span><br></pre></td></tr></table></figure>
 
-<h4 id="IE上设置input-type-file文件上传区域的光标不闪烁"><a href="#IE上设置input-type-file文件上传区域的光标不闪烁" class="headerlink" title="IE上设置input type = file文件上传区域的光标不闪烁"></a>IE上设置input type = file文件上传区域的光标不闪烁</h4><p>我们使用文件上传时,时常自定义图标,这时候通常会把input的透明度设置为0,然后覆盖在一个按钮上实现自定义图标，但是在IE上使用时会出现光标闪烁问题</p>
-<p>解决办法: css设置font-size为0</p>
-<h4 id="js判断浏览器是否为IE浏览器-1"><a href="#js判断浏览器是否为IE浏览器-1" class="headerlink" title="js判断浏览器是否为IE浏览器"></a>js判断浏览器是否为IE浏览器</h4><p>IE6-8和IE11都适用:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function isIE() &#123;</span><br><span class="line">	if (!!window.Activexobject || &quot;Activexobject&quot; in window)</span><br><span class="line"> 		return true;</span><br><span class="line"> 	&#125;</span><br><span class="line">	else&#123;</span><br><span class="line"> 		return false;</span><br><span class="line"> 	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="获取分钟"><a href="#获取分钟" class="headerlink" title="获取分钟"></a>获取分钟</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let min = date.getMinutes();   // 23</span><br></pre></td></tr></table></figure>
 
-<blockquote>
-<p>window.ActiveXObject：判断浏览器是否支持ActiveX控件，只有IE浏览器里面支持ActiveX控件 如果浏览器支持ActiveX控件，可以利用 var xml = new ActiveXObject(“Microsoft.XMLHTTP”); 创建XMLHttpRequest 对象（这是在IE7以前的版本中）；</p>
-<p>在较新的IE版本中可以利用 var xml = new ActiveXObject(“Msxml2.XMLHTTP”)的形式创建XMLHttpRequest对象;</p>
-<p>而在IE7及非IE浏览器中可以利用v ar xml=new XMLHttpRequest()创建XMLHttpRequest对象。</p>
-</blockquote>
-<h4 id="IE不支持remove-方法。"><a href="#IE不支持remove-方法。" class="headerlink" title="IE不支持remove()方法。"></a>IE不支持remove()方法。</h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/mengtianqq/article/details/79744394">ie浏览器的不能使用remove()方法去删除</a></p>
-<blockquote>
-<p>1.因为ie浏览器没有remove()方法，可以使用 removeChild()方法去删除;</p>
-<p>注意removeChild()的使用者是当前节点上一级，比如像删除节点node，使用的方法是：node.parentNode.removeChild(）；</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function deleteRow(node)&#123;</span><br><span class="line">	 node.parentNode.removeChild(node);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="获取秒数"><a href="#获取秒数" class="headerlink" title="获取秒数"></a>获取秒数</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let s = date.getSeconds();		// 52</span><br></pre></td></tr></table></figure>
 
-<h4 id="IE对于域名带下划线访问问题"><a href="#IE对于域名带下划线访问问题" class="headerlink" title="IE对于域名带下划线访问问题"></a><a target="_blank" rel="noopener" href="http://www.360doc.com/content/14/0826/17/432969_404801617.shtml">IE对于域名带下划线访问问题</a></h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qidizi/article/details/44494169">ie 浏览器无法保存cookie,且与域名包含了下划线(_)有关系的问题</a></p>
-<p><a target="_blank" rel="noopener" href="https://datatracker.ietf.org/doc/html/rfc3696#section-2">https://datatracker.ietf.org/doc/html/rfc3696#section-2</a></p>
-<blockquote>
-<p>项目中用到cookie传递参数到服务器端，用ip localhost等访问均正常，由于项目以后要用域名访问，果断修改hosts文件，添加k_test.com进行域名映射测试，当再次通过IE浏览器打开项目后，悲剧的事情发生了，居然无法登陆，再次用ip 、 localhost访问，都正常，百思不得其解，这个问题正正纠结了一下午，试了各种测试，都没有结果，第二天一大早，灵机—动，换了个google浏览器，奇迹发生了，居然可以登陆了，然后再试IE，问题依旧，盯着域名看了半天，想起应该换个域名了，果断去掉下划线，IE能正常访问了，纠结差不多一天的问题终于得到了解决，百度了一下域名下划线，果然IE浏览器确实存在这方面的问题，虽然是一个小小的问题，但纠结了一天，确实很郁闷，谨以此告诫自己以后的人生中多注重细节。</p>
-</blockquote>
-<h4 id="IE7局部滚动区域下绝对定位或相对定位元素不随滚动条滚动的bug"><a href="#IE7局部滚动区域下绝对定位或相对定位元素不随滚动条滚动的bug" class="headerlink" title="IE7局部滚动区域下绝对定位或相对定位元素不随滚动条滚动的bug"></a>IE7局部滚动区域下绝对定位或相对定位元素不随滚动条滚动的bug</h4><p>解决方法： </p>
-<p>如果.scrollArea{}是滚动区域，那么在样式里面加上ie7的hack：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.scrollArea&#123;*position:relative;*left:0;*top:0;&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="获取星期几"><a href="#获取星期几" class="headerlink" title="获取星期几"></a>获取星期几</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let day = date.getDay();		// 5</span><br></pre></td></tr></table></figure>
 
-<h4 id="文件上传按钮的美化"><a href="#文件上传按钮的美化" class="headerlink" title="文件上传按钮的美化"></a>文件上传按钮的美化</h4><blockquote>
-<p>input框，type为file  </p>
-<p>（兼容性）页面中的上传，在ie浏览器下要双击才能打开</p>
-</blockquote>
-<p><img src="https://raw.githubusercontent.com/winney07/Images/main/Note/%E4%B8%8A%E4%BC%A0%E6%8C%89%E9%92%AE%E7%BE%8E%E5%8C%96%E6%A0%B7%E5%BC%8F.png" alt="文件上传按钮的美化"></p>
-<p><img src="https://raw.githubusercontent.com/winney07/Images/main/Note/%E4%B8%8A%E4%BC%A0%E6%8C%89%E9%92%AE%E7%BE%8E%E5%8C%96-%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95.png" alt="解决方法"></p>
-<p><img src="https://raw.githubusercontent.com/winney07/Images/main/Note/%E4%B8%8A%E4%BC%A0%E6%8C%89%E9%92%AE-IE%E6%94%BE%E5%A4%A7.png" alt="按钮放大"></p>
-<p><img src="https://raw.githubusercontent.com/winney07/Images/main/Note/%E4%B8%8A%E4%BC%A0%E6%8C%89%E9%92%AE-IE%E5%A4%A7%E5%B0%8F%E9%97%AE%E9%A2%98.png" alt="大小问题"></p>
-<p>目的是让选择文件的文字铺满该按钮，可以点击：</p>
-<p><img src="https://raw.githubusercontent.com/winney07/Images/main/Note/%E4%B8%8A%E4%BC%A0%E6%8C%89%E9%92%AE-IE%E4%B8%8D%E9%93%BA%E6%BB%A1.png" alt="不铺满"></p>
-<p><img src="https://raw.githubusercontent.com/winney07/Images/main/Note/%E4%B8%8A%E4%BC%A0%E6%8C%89%E9%92%AE-IE-font-size%E5%AF%BC%E8%87%B4.png" alt="font-size导致"></p>
+<h3 id="时间戳转换格式"><a href="#时间戳转换格式" class="headerlink" title="时间戳转换格式"></a>时间戳转换格式</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">//时间戳转换格式</span><br><span class="line">function formatDateTime(timeStamp) &#123; </span><br><span class="line">    var date = new Date();</span><br><span class="line">    date.setTime(timeStamp * 1000);</span><br><span class="line">    var y = date.getFullYear();    </span><br><span class="line">    var m = date.getMonth() + 1;    </span><br><span class="line">    m = m &lt; 10 ? (&#x27;0&#x27; + m) : m;    </span><br><span class="line">    var d = date.getDate();    </span><br><span class="line">    d = d &lt; 10 ? (&#x27;0&#x27; + d) : d;    </span><br><span class="line">    var h = date.getHours();  </span><br><span class="line">    h = h &lt; 10 ? (&#x27;0&#x27; + h) : h;  </span><br><span class="line">    var minute = date.getMinutes();  </span><br><span class="line">    var second = date.getSeconds();  </span><br><span class="line">    minute = minute &lt; 10 ? (&#x27;0&#x27; + minute) : minute;    </span><br><span class="line">    second = second &lt; 10 ? (&#x27;0&#x27; + second) : second;   </span><br><span class="line">    return y + &#x27;-&#x27; + m + &#x27;-&#x27; + d+&#x27; &#x27;+h+&#x27;:&#x27;+minute+&#x27;:&#x27;+second;    </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-      
-    </div>
+<h4 id="js获取当前时间-昨天、今天、明天"><a href="#js获取当前时间-昨天、今天、明天" class="headerlink" title="js获取当前时间(昨天、今天、明天)"></a><a target="_blank" rel="noopener" href="https://www.cnblogs.com/menxiaojin/p/13753525.html">js获取当前时间(昨天、今天、明天)</a></h4><h4 id="获取时间戳-valueOf"><a href="#获取时间戳-valueOf" class="headerlink" title="获取时间戳-valueOf()"></a>获取时间戳-valueOf()</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var d = new Date().valueOf();</span><br></pre></td></tr></table></figure>
 
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+<h4 id="new-Date-方法"><a href="#new-Date-方法" class="headerlink" title="new Date()方法"></a>new Date()方法</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">new Date().toDateString()</span><br><span class="line">Wed Mar 02 2020</span><br><span class="line">new Date().toLocaleDateString()</span><br><span class="line">2020/3/2</span><br><span class="line">new Date().toLocaleTimeString()</span><br><span class="line">17:50:21</span><br><span class="line">new Date().toLocaleString();</span><br><span class="line">2020/3/2 17:46:52</span><br><span class="line">new Date().toTimeString()</span><br><span class="line">17:50:59 GMT+0800 (中国标准时间)</span><br><span class="line">new Date().toUTCString()</span><br><span class="line">Wed, 02 Mar 2020 09:51:30 GMT</span><br></pre></td></tr></table></figure>
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/14/Git-%E7%AC%94%E8%AE%B0/">
+<h4 id="获取明天的日期并格式化"><a href="#获取明天的日期并格式化" class="headerlink" title="获取明天的日期并格式化"></a>获取明天的日期并格式化</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">// 格式化日期</span><br><span class="line">function format(t, symbol)&#123;</span><br><span class="line">    var year = t.getFullYear()       // 年份</span><br><span class="line">        , month = t.getMonth() + 1   // 月份</span><br><span class="line">        , date = t.getDate()         // 日</span><br><span class="line">        , symbol = symbol || &#x27;-&#x27;;    // 分隔符，默认为-</span><br><span class="line">    month = month &lt; 10 ? &#x27;0&#x27; + month : month;</span><br><span class="line">    date = date &lt; 10 ? &#x27;0&#x27; + date : date;</span><br><span class="line">    return year + symbol + month + symbol + date;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var now = new Date()               // 获取当前时间</span><br><span class="line">    , time_stamp = now.setDate(now.getDate() +  1)</span><br><span class="line">    , tomorrow = format(new Date(time_stamp));  // 明天</span><br></pre></td></tr></table></figure>
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="winney">
-      <meta itemprop="description" content="Doing is better than saying.">
-    </span>
+<h4 id="获取前后相隔n天的日期"><a href="#获取前后相隔n天的日期" class="headerlink" title="获取前后相隔n天的日期"></a>获取前后相隔n天的日期</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line">* 根据间隔天数获取日期</span><br><span class="line">* @param interval：间隔天数</span><br><span class="line">* @param symbol：日期格式分隔符（默认：-）</span><br><span class="line">* interval为-1：昨天</span><br><span class="line">* interval为0：今天</span><br><span class="line">* interval为1：明天</span><br><span class="line">*/</span><br><span class="line"></span><br><span class="line">function getDate(interval, symbol) &#123;</span><br><span class="line">    // getDate: 返回月份的某一天</span><br><span class="line">    // setDate：设置为月份的某一天</span><br><span class="line">    var now = new Date()               // 获取当前时间</span><br><span class="line">        , time_stamp = now.setDate(now.getDate() +  parseInt(interval))</span><br><span class="line">        , date = new Date(time_stamp);  // 根据间隔天数获取的日期</span><br><span class="line">    // 返回格式化后日期</span><br><span class="line">    return format(date);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="winney">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/01/14/Git-%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">Git-笔记</a>
-        </h2>
+<h4 id="根据某天的前后几天获取日期"><a href="#根据某天的前后几天获取日期" class="headerlink" title="根据某天的前后几天获取日期"></a>根据某天的前后几天获取日期</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line">* 根据某天的前/后几天</span><br><span class="line">* @param interval：间隔天数</span><br><span class="line">* @param value：某天的日期</span><br><span class="line">* @param symbol：日期格式分隔符（默认：-）</span><br><span class="line">* interval为-1：昨天</span><br><span class="line">* interval为0：今天</span><br><span class="line">* interval为1：明天</span><br><span class="line">*/</span><br><span class="line">function getPreDate(interval, value, symbol) &#123;</span><br><span class="line">    // getDate: 返回月份的某一天</span><br><span class="line">    // setDate：设置为月份的某一天</span><br><span class="line">    var now = new Date(value)               // 获取当前时间</span><br><span class="line">        , time_stamp = now.setDate(now.getDate() +  parseInt(interval))</span><br><span class="line">        , date = new Date(time_stamp);  // 根据间隔天数获取的日期</span><br><span class="line">    // 返回格式化后日期</span><br><span class="line">    return format(date);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-01-14 14:47:55" itemprop="dateCreated datePublished" datetime="2021-01-14T14:47:55+08:00">2021-01-14</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-08-24 18:09:23" itemprop="dateModified" datetime="2022-08-24T18:09:23+08:00">2022-08-24</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/Git/" itemprop="url" rel="index"><span itemprop="name">Git</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="提交到远程仓库报错"><a href="#提交到远程仓库报错" class="headerlink" title="提交到远程仓库报错"></a>提交到远程仓库报错</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">OpenSSL SSL_connect: Connection was reset in connection to github.com:443</span><br><span class="line"> </span><br><span class="line"> 或</span><br><span class="line"> </span><br><span class="line">OpenSSL SSL_connect: Connection was reset in connection to github.com:403</span><br></pre></td></tr></table></figure>
-
-<p>解决方法，将.git/config：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[remote &quot;origin&quot;]</span><br><span class="line">	url = https://github.com/winney07/winney07.github.io.git</span><br></pre></td></tr></table></figure>
-
-<p>改为：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[remote &quot;origin&quot;]</span><br><span class="line">	url = git@github.com:winney07/winney07.github.io.git</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="Github创建仓库"><a href="#Github创建仓库" class="headerlink" title="Github创建仓库"></a>Github创建仓库</h4><p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Git-%E7%AC%94%E8%AE%B0/create.png" alt="Github创建仓库"></p>
-<h3 id="Git常用命令速查表"><a href="#Git常用命令速查表" class="headerlink" title="Git常用命令速查表"></a>Git常用命令速查表</h3><h4 id="创建版本库"><a href="#创建版本库" class="headerlink" title="创建版本库"></a>创建版本库</h4><ol>
-<li><p>克隆远程版本库</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone &lt;url&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>初始化本地版本库</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<h4 id="修改和提交"><a href="#修改和提交" class="headerlink" title="修改和提交"></a>修改和提交</h4><ol>
-<li><p>查看状态</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>查看变更内容</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>跟踪所有改动过的文件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>跟踪指定的文件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add &lt;file&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>文件改名</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git mv &lt;old&gt; &lt;new&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>删除文件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rm &lt;file&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>停止跟踪文件但不删除</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rm --cached &lt;file&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>提交所有更新过的文件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m &quot;commit message&quot;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>修改最后一次提交</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit --amend</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ol>
-<h4 id="查看提交历史"><a href="#查看提交历史" class="headerlink" title="查看提交历史"></a>查看提交历史</h4><ol>
-<li><p>查看提交历史</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>查看指定文件的提交历史</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log -p &lt;file&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>以列表方式查看指定文件的提交历史</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git blame &lt;file&gt;</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ol>
-<h4 id="撤销"><a href="#撤销" class="headerlink" title="撤销"></a>撤销</h4><ol>
-<li><p>撤销工作目录中所有未提交文件的修改内容</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard HEAD</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>撤销指定的未提交文件的修改内容</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout HEAD &lt;file&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>撤销指定的提交</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git revert &lt;commit&gt;</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ol>
-<h4 id="分支与标签"><a href="#分支与标签" class="headerlink" title="分支与标签"></a>分支与标签</h4><ol>
-<li><p>显示所有本地分支</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>切换到指定分支或标签</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout &lt;branch/tag&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>创建新分支</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch &lt;new-branch&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>删除本地分支</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -d &lt;branch&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>列出所有本地标签</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>给予最新提交创建标签</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag &lt;tagname&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>删除标签</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag -d &lt;tagname&gt;</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ol>
-<h4 id="合并与衍合"><a href="#合并与衍合" class="headerlink" title="合并与衍合"></a>合并与衍合</h4><ol>
-<li><p>合并指定分支到当前分支</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge &lt;branch&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>衍合指定分支到当前分支</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase &lt;branch&gt;</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ol>
-<h4 id="远程操作"><a href="#远程操作" class="headerlink" title="远程操作"></a>远程操作</h4><ol>
-<li><p>查看远程版本库信息</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote -v</span><br></pre></td></tr></table></figure>
-
-
-</li>
-<li><p>查看指定远程版本库信息</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote show &lt;remote&gt;</span><br></pre></td></tr></table></figure>
-
-
-</li>
-<li><p>添加远程版本库</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add &lt;remote&gt; &lt;url&gt;</span><br></pre></td></tr></table></figure>
-
-
-</li>
-<li><p>从远程库获取代码</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git fetch &lt;remote&gt;</span><br></pre></td></tr></table></figure>
-
-
-</li>
-<li><p>下载代码及快速合并</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull &lt;remote&gt; &lt;branch&gt;</span><br></pre></td></tr></table></figure>
-
-
-</li>
-<li><p>上传代码及快速合并</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push &lt;remote&gt; &lt;branch&gt;</span><br></pre></td></tr></table></figure>
-
-
-</li>
-<li><p>删除远程分支或标签</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull &lt;remote&gt; : &lt;branch/tag-name&gt;</span><br></pre></td></tr></table></figure>
-
-
-</li>
-<li><p>上传所有标签</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push --tags</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ol>
-<h3 id="管理分支"><a href="#管理分支" class="headerlink" title="管理分支"></a>管理分支</h3><h4 id="1、查看本地分支"><a href="#1、查看本地分支" class="headerlink" title="1、查看本地分支"></a>1、查看本地分支</h4><p>使用 git branch命令，如下：</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>git branch</span><br><span class="line">* master</span><br></pre></td></tr></table></figure>
-
-<p>*<strong>标识的是你当前所在的分支。</strong></p>
-<h4 id="2、查看远程分支"><a href="#2、查看远程分支" class="headerlink" title="2、查看远程分支"></a>2、查看远程分支</h4><p>命令如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -r</span><br></pre></td></tr></table></figure>
-
-<h4 id="3、查看所有分支"><a href="#3、查看所有分支" class="headerlink" title="3、查看所有分支"></a>3、查看所有分支</h4><p>命令如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -a</span><br></pre></td></tr></table></figure>
-
-<h4 id="2、本地创建新的分支"><a href="#2、本地创建新的分支" class="headerlink" title="2、本地创建新的分支"></a>2、本地创建新的分支</h4><p>命令如下：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch <span class="selector-attr">[branch name]</span></span><br></pre></td></tr></table></figure>
-
-<p>例如：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch save</span><br></pre></td></tr></table></figure>
-
-<h4 id="3、切换到新的分支"><a href="#3、切换到新的分支" class="headerlink" title="3、切换到新的分支"></a>3、切换到新的分支</h4><p>命令如下：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout <span class="selector-attr">[branch name]</span></span><br></pre></td></tr></table></figure>
-
-<p>例如：</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>git checkout save</span><br></pre></td></tr></table></figure>
-
-<h4 id="4、创建-切换分支"><a href="#4、创建-切换分支" class="headerlink" title="4、创建+切换分支"></a>4、创建+切换分支</h4><p>创建分支的同时切换到该分支上，命令如下：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -<span class="selector-tag">b</span> <span class="selector-attr">[branch name]</span></span><br></pre></td></tr></table></figure>
-
-<p>git checkout -b [branch name] 的效果相当于以下两步操作：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git branch <span class="selector-attr">[branch name]</span></span><br><span class="line">git checkout <span class="selector-attr">[branch name]</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="5、将新分支推送到github"><a href="#5、将新分支推送到github" class="headerlink" title="5、将新分支推送到github"></a>5、将新分支推送到github</h4><p>命令如下：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin <span class="selector-attr">[branch name]</span></span><br></pre></td></tr></table></figure>
-
-<p>例如：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin save</span><br></pre></td></tr></table></figure>
-
-<h4 id="6、删除本地分支"><a href="#6、删除本地分支" class="headerlink" title="6、删除本地分支"></a>6、删除本地分支</h4><p>命令如下：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -d <span class="selector-attr">[branch name]</span></span><br></pre></td></tr></table></figure>
-
-<p>例如：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -d save</span><br></pre></td></tr></table></figure>
-
-<h4 id="7、删除github远程分支"><a href="#7、删除github远程分支" class="headerlink" title="7、删除github远程分支"></a>7、删除github远程分支</h4><p>命令如下：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin :[branch name]</span><br></pre></td></tr></table></figure>
-
-<p>分支名前的冒号代表删除。<br> 例如：</p>
-<p>git push origin :save</p>
-<h4 id="查看配置信息"><a href="#查看配置信息" class="headerlink" title="查看配置信息"></a>查看配置信息</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --list</span><br></pre></td></tr></table></figure>
-
-<h4 id="查看状态"><a href="#查看状态" class="headerlink" title="查看状态"></a>查看状态</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure>
-
-<h4 id="提交工作区文件到暂存区"><a href="#提交工作区文件到暂存区" class="headerlink" title="提交工作区文件到暂存区"></a>提交工作区文件到暂存区</h4><ol>
-<li><p>提交工作区中所有文件到暂存区</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>提交工作区中指定文件到暂存区</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add &lt;file1&gt; &lt;file2&gt; </span><br></pre></td></tr></table></figure>
-</li>
-<li><p>提交工作区中某个文件夹中所有文件到暂存区</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add [dir]</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<h4 id="提交到本地仓库"><a href="#提交到本地仓库" class="headerlink" title="提交到本地仓库"></a>提交到本地仓库</h4><ol>
-<li><p>将暂存区中的文件提交到本地仓库中，即打上新版本</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m &quot;commit_info&quot;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>将所有已经使用git管理过的文件暂存后一并提交，跳过add到暂存区的过程</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -a -m “commit_info”</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>提交文件时，发现漏掉几个文件，或者注释写错了，可以撤销上一次提交</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit --amend</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<h4 id="查看本地仓库关联的远程仓库"><a href="#查看本地仓库关联的远程仓库" class="headerlink" title="查看本地仓库关联的远程仓库"></a>查看本地仓库关联的远程仓库</h4><ol>
-<li><p>查看本地仓库关联的远程仓库</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>查看远程仓库的url地址</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote -v</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ol>
-<h4 id="解决git-pull后本地写的代码没了的问题"><a href="#解决git-pull后本地写的代码没了的问题" class="headerlink" title="解决git pull后本地写的代码没了的问题"></a>解决git pull后本地写的代码没了的问题</h4><p>第一步：git reflog</p>
-<p>第二步：git reset –hard HEAD@{n}   (HEAD:为版本号，就前面那一串数字，n是你要回退到的引用位置)</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard 84ef223</span><br></pre></td></tr></table></figure>
-
-<h4 id="创建分支，回退到某个版本"><a href="#创建分支，回退到某个版本" class="headerlink" title="创建分支，回退到某个版本"></a>创建分支，回退到某个版本</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git branch pagination 96ba9b3</span><br><span class="line">git branch 分支名称 版本号</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>如果为了测试原来的代码，将它回退到某个版本，但是为了不影响当前分支里面的内容，创建一个新的分支。  如果git branch 分支名称，不加版本号，会在当前版本下创建分支。   如果需要回退到某个版本，需要在创建分支的时候加上版本号。</p>
-</blockquote>
-<p>如果要切换回原来的分支(master)，要先对新创建的分支(pagination)的内容提交，这个提交只会提交到pagination分支里面，不会影响到master分支</p>
-<p>提交：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m &quot;复习&quot;</span><br></pre></td></tr></table></figure>
-
-<p>切换：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout master</span><br></pre></td></tr></table></figure>
-
-<h4 id="解决pre-commit-hook-failed-add-–no-verify-的问题"><a href="#解决pre-commit-hook-failed-add-–no-verify-的问题" class="headerlink" title="解决pre -commit hook failed (add –no-verify)的问题"></a><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/aac394600727">解决pre -commit hook failed (add –no-verify)的问题</a></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd .git</span><br><span class="line"></span><br><span class="line">rm hooks/pre-commit</span><br></pre></td></tr></table></figure>
-
-
-
-<p>git commit 不单保存了当前的版本号还保存了他的父版本号</p>
-<h4 id="查看命令："><a href="#查看命令：" class="headerlink" title="查看命令："></a>查看命令：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git / git help</span><br></pre></td></tr></table></figure>
-
-<h4 id="查看所有命令："><a href="#查看所有命令：" class="headerlink" title="查看所有命令："></a>查看所有命令：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git help -a</span><br></pre></td></tr></table></figure>
-
-<h4 id="查看使用手册："><a href="#查看使用手册：" class="headerlink" title="查看使用手册："></a>查看使用手册：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git help -g</span><br></pre></td></tr></table></figure>
-
-<h4 id="查看某个命令的详细使用："><a href="#查看某个命令的详细使用：" class="headerlink" title="查看某个命令的详细使用："></a>查看某个命令的详细使用：</h4><p>如：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git help add</span><br></pre></td></tr></table></figure>
-
-<p>按Q可以退出</p>
-<p><code>.git</code>是做版本控制的，如果想去除，直接删了这个目录。</p>
-<p>是隐藏文件，在mac 用<code>open .git</code>打开（在.git的上层目录）</p>
+<h4 id="实现倒计时功能"><a href="#实现倒计时功能" class="headerlink" title="实现倒计时功能"></a>实现倒计时功能</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">// 倒计时功能</span><br><span class="line">var div = document.getElementById(&quot;showtime&quot;);</span><br><span class="line">setInterval (function () &#123;</span><br><span class="line">    div.innerHTML = showtime();</span><br><span class="line">&#125;, 1000); </span><br><span class="line"></span><br><span class="line">var showtime = function () &#123;</span><br><span class="line">    var nowTime = new Date(),  // 获取当前时间</span><br><span class="line">        // endTime = new Date(&quot;2022/8/20&quot;);  // 定义结束时间  </span><br><span class="line">        endTime = new Date(&quot;2022/8/20 23:59:59&quot;);  // 定义结束具体时间——即8月21凌晨结束</span><br><span class="line">    var time = endTime.getTime() - nowTime.getTime(),  // 距离结束时间的毫秒数</span><br><span class="line">        d = Math.floor(time/(1000*60*60*24)),  // 计算天数</span><br><span class="line">        h = Math.floor(time/(1000*60*60)%24),  // 计算小时数</span><br><span class="line">        m = Math.floor(time/(1000*60)%60),  // 计算分钟数</span><br><span class="line">        s = Math.floor(time/1000%60);  // 计算秒数</span><br><span class="line"></span><br><span class="line">    h = h &lt; 10 ? &quot;0&quot; + h : h;</span><br><span class="line">    m = m &lt; 10 ? &quot;0&quot; + m : m;</span><br><span class="line">    s = s &lt; 10 ? &quot;0&quot; + s : s;</span><br><span class="line">    return d + &quot;天&quot; + h + &quot;:&quot; + m + &quot;:&quot; + s;  //返回倒计时的字符串</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -841,7 +489,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/21/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><span class="page-number current">22</span><a class="page-number" href="/page/23/">23</a><span class="space">&hellip;</span><a class="page-number" href="/page/44/">44</a><a class="extend next" rel="next" href="/page/23/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/21/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><span class="page-number current">22</span><a class="page-number" href="/page/23/">23</a><span class="space">&hellip;</span><a class="page-number" href="/page/38/">38</a><a class="extend next" rel="next" href="/page/23/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -909,20 +557,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">132</span>
+          <span class="site-state-item-count">113</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">52</span>
+        <span class="site-state-item-count">56</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">84</span>
+        <span class="site-state-item-count">52</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -938,7 +586,13 @@
           <a href="https://www.xiaochao.me/" title="https:&#x2F;&#x2F;www.xiaochao.me&#x2F;" rel="noopener" target="_blank">小超</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://winney07.github.io/" title="https:&#x2F;&#x2F;winney07.github.io&#x2F;" rel="noopener" target="_blank">winney07</a>
+          <a href="https://www.winney07.cn/" title="https:&#x2F;&#x2F;www.winney07.cn&#x2F;" rel="noopener" target="_blank">winney07</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://blog.csdn.net/winney07" title="https:&#x2F;&#x2F;blog.csdn.net&#x2F;winney07" rel="noopener" target="_blank">CSDN</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://winney07.lofter.com/" title="http:&#x2F;&#x2F;winney07.lofter.com&#x2F;" rel="noopener" target="_blank">乐乎</a>
         </li>
     </ul>
   </div>
@@ -962,13 +616,13 @@
 <div class="copyright">
   
   &copy; 2015 – 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2024</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">winney07</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  <div class="powered-by"><a href="https://beian.miit.gov.cn/" target="_blank">粤ICP备2022033775号-1</a>
   </div>
 
         

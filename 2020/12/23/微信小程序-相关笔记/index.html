@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="本地目录 实战项目目录：H:\Gitee\wx_code 参考项目目录：H:\Test_Code\wx_code  云服务器目录&#x2F;usr&#x2F;local&#x2F;src&#x2F;webCode&#x2F;wx node命令使用之前1nvm  use 16.13.0  接口管理使用apifox 接口文档项目设置——数据管理——导出数据——Markdown格式 UI框架 Vant Weapp TDesign  开源项目微信小程序开">
+<meta property="og:type" content="article">
+<meta property="og:title" content="微信小程序-相关笔记">
+<meta property="og:url" content="http://example.com/2020/12/23/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="winney">
+<meta property="og:description" content="本地目录 实战项目目录：H:\Gitee\wx_code 参考项目目录：H:\Test_Code\wx_code  云服务器目录&#x2F;usr&#x2F;local&#x2F;src&#x2F;webCode&#x2F;wx node命令使用之前1nvm  use 16.13.0  接口管理使用apifox 接口文档项目设置——数据管理——导出数据——Markdown格式 UI框架 Vant Weapp TDesign  开源项目微信小程序开">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/%E5%BE%AE%E4%BF%A1%E5%BC%80%E5%8F%91%E8%80%85%E5%B7%A5%E5%85%B7-%E9%9D%99%E9%9F%B3.png">
+<meta property="article:published_time" content="2020-12-23T06:55:36.000Z">
+<meta property="article:modified_time" content="2024-10-30T05:18:11.889Z">
+<meta property="article:author" content="winney">
+<meta property="article:tag" content="微信小程序">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/%E5%BE%AE%E4%BF%A1%E5%BC%80%E5%8F%91%E8%80%85%E5%B7%A5%E5%85%B7-%E9%9D%99%E9%9F%B3.png">
+
+<link rel="canonical" href="http://example.com/2020/12/23/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>微信小程序-相关笔记 | winney</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">winney</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">It is never too old to learn.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <img alt="winney" src="/images/blog-head.jpg">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/23/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="winney">
+      <meta itemprop="description" content="Doing is better than saying.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="winney">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          微信小程序-相关笔记
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-12-23 14:55:36" itemprop="dateCreated datePublished" datetime="2020-12-23T14:55:36+08:00">2020-12-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-10-30 13:18:11" itemprop="dateModified" datetime="2024-10-30T13:18:11+08:00">2024-10-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BE%AE%E4%BF%A1%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">微信开发</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BE%AE%E4%BF%A1%E5%BC%80%E5%8F%91/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" itemprop="url" rel="index"><span itemprop="name">微信小程序</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h4 id="本地目录"><a href="#本地目录" class="headerlink" title="本地目录"></a>本地目录</h4><ul>
+<li>实战项目目录：<code>H:\Gitee\wx_code</code></li>
+<li>参考项目目录：<code>H:\Test_Code\wx_code</code></li>
+</ul>
+<h4 id="云服务器目录"><a href="#云服务器目录" class="headerlink" title="云服务器目录"></a>云服务器目录</h4><p><code>/usr/local/src/webCode/wx</code></p>
+<h4 id="node命令使用之前"><a href="#node命令使用之前" class="headerlink" title="node命令使用之前"></a>node命令使用之前</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvm  use 16.13.0</span><br></pre></td></tr></table></figure>
+
+<h4 id="接口管理"><a href="#接口管理" class="headerlink" title="接口管理"></a>接口管理</h4><p>使用<code>apifox</code></p>
+<h5 id="接口文档"><a href="#接口文档" class="headerlink" title="接口文档"></a>接口文档</h5><p>项目设置——数据管理——导出数据——Markdown格式</p>
+<h4 id="UI框架"><a href="#UI框架" class="headerlink" title="UI框架"></a>UI框架</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://vant-contrib.gitee.io/vant-weapp/#/home">Vant Weapp</a></li>
+<li><a target="_blank" rel="noopener" href="https://tdesign.tencent.com/miniprogram/getting-started">TDesign</a></li>
+</ul>
+<h4 id="开源项目"><a href="#开源项目" class="headerlink" title="开源项目"></a>开源项目</h4><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903461968936974">微信小程序开源项目库集合</a></p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903816219852814">企业级微信小程序实战详解</a></p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903860587233293">微信小程序开源项目排行榜</a></p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903876865294350">微信小程序实战-音乐播放器</a></p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904119119921160">微信小程序初始化项目架构</a></p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903479211720711">微信小程序项目实战（商城）</a></p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6968623114917773325">微信小程序实战之仿今日头条</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1nE41117BQ">课程链接</a></p>
+<p><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/devtools/sandbox.html">开发测试号</a></p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/wxamp/sandbox?doc=1">申请小程序测试号</a></p>
+<h4 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h4><ol>
+<li>注册【使用未在微信公众平台使用过的邮箱，注册】</li>
+<li>需要有AppID【开发——开发管理——开发设置】</li>
+<li>新建项目【开发阶段，若没有AppID，可使用测试号，上线的时候改为自己的AppID就行】<ul>
+<li>在微信开发者工具的右上角【详情】中，可以更改AppID</li>
+</ul>
+</li>
+</ol>
+<h4 id=""><a href="#" class="headerlink" title=""></a></h4><h4 id="编译模式："><a href="#编译模式：" class="headerlink" title="编译模式："></a>编译模式：</h4><p>普通编译：默认打开的是首页</p>
+<p>如果想调试某个页面，可以添加编译模式</p>
+<h4 id="基础库"><a href="#基础库" class="headerlink" title="基础库"></a>基础库</h4><p>在本地设置中，可以查看到【调试基础库】，根据对应的版本，查找对应的api</p>
+<p>开发阶段，在本地设置中，将”不校验合法域名、web-view(业务域名)、TLS版本以及HITPS证书“勾选上</p>
+<h4 id="页面路径"><a href="#页面路径" class="headerlink" title="页面路径"></a>页面路径</h4><p>在模拟器的下方，可以看到页面路径和页面参数</p>
+<h4 id="结构目录"><a href="#结构目录" class="headerlink" title="结构目录"></a>结构目录</h4><p><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/framework/structure.html">目录结构</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tree /f</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">├─pages						_____________页面文件夹</span><br><span class="line">│  ├─index					_____________首页</span><br><span class="line">│  │      index.js			_____________首页的逻辑文件</span><br><span class="line">│  │      index.json		_____________首页的配置文件</span><br><span class="line">│  │      index.wxml		_____________首页的结构文件</span><br><span class="line">│  │      index.wxss		_____________首页的样式文件</span><br><span class="line">│  │</span><br><span class="line">│  └─logs					_____________日志 页面</span><br><span class="line">│          logs.js</span><br><span class="line">│          logs.json</span><br><span class="line">│          logs.wxml</span><br><span class="line">│          logs.wxss</span><br><span class="line">│</span><br><span class="line">└─utils						_____________第三方的工具js(可以删除的)</span><br><span class="line">│       util.js</span><br><span class="line">│  .eslintrc.js</span><br><span class="line">│  app.js					_____________项目的全局入口文件</span><br><span class="line">│  app.json					_____________全局配置文件</span><br><span class="line">│  app.wxss					_____________全局样式文件</span><br><span class="line">│  project.config.json		_____________项目的配置文件  如appid</span><br><span class="line">│  project.private.config.json</span><br><span class="line">│  sitemap.json				_____________微信索引配置文件</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/framework/sitemap.html">sitemap配置</a>     用来配置小程序及其页面是否允许被微信索引</p>
+<p><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/framework/config.html#%E5%85%A8%E5%B1%80%E9%85%8D%E7%BD%AE">app.json</a></p>
+<h4 id="快速新建目录及里面的相关文件"><a href="#快速新建目录及里面的相关文件" class="headerlink" title="快速新建目录及里面的相关文件"></a>快速新建目录及里面的相关文件</h4><p>在<code>app.json</code>中的pages属性中，添加<code>&quot;pages/demo/demo&quot;</code>，保存之后，会在pages目录中自动创建demo目录，以及<code>demo.wxml、demo.wxss、demo.js、demo.json</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&quot;pages&quot;:[</span><br><span class="line">    &quot;pages/index/index&quot;,</span><br><span class="line">    &quot;pages/logs/logs&quot;,</span><br><span class="line">    &quot;pages/demo/demo&quot;</span><br><span class="line">],</span><br></pre></td></tr></table></figure>
+
+
+
+<p><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/reference/wxml/data.html">数据绑定</a></p>
+<p><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/reference/wxml/list.html">列表渲染</a></p>
+<p><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/reference/wxml/conditional.html">条件渲染</a></p>
+<p><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/reference/wxml/template.html">模板</a></p>
+<p><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/reference/wxml/import.html">引用，import和include</a></p>
+<p><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxml/event.html">事件详解</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;view id=&quot;tapTest&quot; data-hi=&quot;Weixin&quot; bindtap=&quot;tapName&quot;&gt; Click me! &lt;/view&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Page(&#123;</span><br><span class="line">  tapName: function(event) &#123;</span><br><span class="line">    console.log(event)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+
+
+<p><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxml/event.html">dataset</a></p>
+<p>在 WXML 中，这些自定义数据以 <code>data-</code> 开头，多个单词由连字符 <code>-</code> 连接。这种写法中，连字符写法会转换成驼峰写法，而大写字符会自动转成小写字符。如：</p>
+<ul>
+<li><code>data-element-type</code> ，最终会呈现为 <code>event.currentTarget.dataset.elementType</code> ；</li>
+<li><code>data-elementType</code> ，最终会呈现为 <code>event.currentTarget.dataset.elementtype</code> 。</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/framework/config.html#%E9%A1%B5%E9%9D%A2%E9%85%8D%E7%BD%AE">页面配置</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;navigationBarBackgroundColor&quot;: &quot;#ffffff&quot;,</span><br><span class="line">  &quot;navigationBarTextStyle&quot;: &quot;black&quot;,</span><br><span class="line">  &quot;navigationBarTitleText&quot;: &quot;微信接口功能演示&quot;,</span><br><span class="line">  &quot;backgroundColor&quot;: &quot;#eeeeee&quot;,</span><br><span class="line">  &quot;backgroundTextStyle&quot;: &quot;light&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="封装-wx-request方法"><a href="#封装-wx-request方法" class="headerlink" title="封装 wx.request方法"></a>封装 wx.request方法</h4><p><code>utils/request.js</code>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">//request.js</span><br><span class="line">const baseUrl = &#x27;https://www.winney07.cn:8080/&#x27;</span><br><span class="line"></span><br><span class="line">const request = (url, method, data) =&gt; &#123;</span><br><span class="line">  return new Promise((resolve, reject) =&gt; &#123;</span><br><span class="line">    wx.request(&#123;</span><br><span class="line">      url: baseUrl + url,</span><br><span class="line">      method: method,</span><br><span class="line">      data: data,</span><br><span class="line">      success: res =&gt; &#123;</span><br><span class="line">        resolve(res.data)</span><br><span class="line">      &#125;,</span><br><span class="line">      fail: err =&gt; &#123;</span><br><span class="line">        reject(err)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const get = (url, data) =&gt; &#123;</span><br><span class="line">  return request(url, &#x27;GET&#x27;, data)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const post = (url, data) =&gt; &#123;</span><br><span class="line">  return request(url, &#x27;POST&#x27;, data)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">  baseUrl,</span><br><span class="line">  request,</span><br><span class="line">  get,</span><br><span class="line">  post</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">import request from &#x27;../../utils/request.js&#x27;</span><br><span class="line"></span><br><span class="line">// 请求接口，获取数据</span><br><span class="line">async getData() &#123;</span><br><span class="line">    const swiperList = await request.get(&#x27;shopping/swiper&#x27;);</span><br><span class="line">    const tabList = await request.get(&#x27;shopping/good/tabList&#x27;);</span><br><span class="line">    const goodList = await request.get(&#x27;shopping/good/getGoodList&#x27;);</span><br><span class="line">    this.setData(&#123;</span><br><span class="line">      swiperList,</span><br><span class="line">      tabList,</span><br><span class="line">      goodList</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;,</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line">* 生命周期函数--监听页面加载</span><br><span class="line">*/</span><br><span class="line">onLoad(options) &#123;</span><br><span class="line">    this.getData();</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<h4 id="父子组件之间传值"><a href="#父子组件之间传值" class="headerlink" title="父子组件之间传值"></a>父子组件之间传值</h4><p>父组件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;good-list goodsList=&quot;&#123;&#123;goodsList&#125;&#125;&quot;&gt;&lt;/good-list&gt;</span><br></pre></td></tr></table></figure>
+
+<p>子组件.js：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Component(&#123;</span><br><span class="line">  properties: &#123;</span><br><span class="line">    goodsList: &#123;</span><br><span class="line">      type: Array,</span><br><span class="line">      value: []</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>子组件.wxml：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;view class=&quot;good-list&quot;&gt;</span><br><span class="line">  &lt;block</span><br><span class="line">  wx:for=&quot;&#123;&#123; goodsList &#125;&#125;&quot;</span><br><span class="line">  wx:key=&quot;index&quot;&gt;</span><br><span class="line">    &lt;good-card class=&quot;good-item&quot; i=&quot;&#123;&#123;index&#125;&#125;&quot; data=&quot;&#123;&#123;item&#125;&#125;&quot;&gt;&lt;/good-card&gt;</span><br><span class="line">  &lt;/block&gt;</span><br><span class="line">&lt;/view&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="事件监听"><a href="#事件监听" class="headerlink" title="事件监听"></a>事件监听</h3><h4 id="传参"><a href="#传参" class="headerlink" title="传参"></a>传参</h4><p><code>goods/category/index</code>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;van-grid-item </span><br><span class="line">    use-slot </span><br><span class="line">    class=&quot;grid-item&quot; </span><br><span class="line">    data-groupid=&quot;&#123;&#123;item.groupId&#125;&#125;&quot; </span><br><span class="line">    bindtap=&quot;toList&quot;&gt;</span><br><span class="line">    </span><br><span class="line">    .....</span><br><span class="line">    .....</span><br><span class="line">    .....</span><br><span class="line">&lt;/van-grid-item&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">toList(event) &#123;</span><br><span class="line">    console.log(&#x27;event&#x27;);</span><br><span class="line">    console.log(event.currentTarget.dataset);		// &#123;groupid: &quot;249480&quot;&#125;</span><br><span class="line">    let groupid = event.currentTarget.dataset.groupid;</span><br><span class="line">    wx.navigateTo(&#123;</span><br><span class="line">      url: `/pages/goods/list/index?groupid=$&#123;groupid&#125;`</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>在元素中自定义的<code>data-</code>属性，在<code>event.currentTarget.dataset</code>中。</p>
+</blockquote>
+<h4 id="获取URL传来的参数："><a href="#获取URL传来的参数：" class="headerlink" title="获取URL传来的参数："></a>获取URL传来的参数：</h4><p><code>goods/list/index.js</code>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">onLoad(options) &#123;</span><br><span class="line">    console.log(&#x27;options&#x27;); </span><br><span class="line">    console.log(options);      // &#123;groupid: &quot;249480&quot;&#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="微信小游戏"><a href="#微信小游戏" class="headerlink" title="微信小游戏"></a>微信小游戏</h3><p><a target="_blank" rel="noopener" href="http://www.mpgcw.com/9101.html">微信小游戏账号注册教程</a></p>
+<blockquote>
+<p>在微信开发者中，创建小游戏项目，进入项目后，界面是黑色的。</p>
+</blockquote>
+<p>需要注册个测试号（这个测试号是针对小游戏的）</p>
+<ol>
+<li><p><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/devtools/sandbox.html">开发测试号</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/wxamp/sandbox?doc=1">申请小程序测试号</a></p>
+</li>
+<li><p>在微信开发中创建小游戏项目时，选择<code>”测试号“</code>，进入项目，即可正常显示</p>
+</li>
+</ol>
+<p><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/community/develop/doc/00028edbe3c58081e7cc834705b801">微信公众平台用户信息相关接口调整公告</a></p>
+<h4 id="报错信息"><a href="#报错信息" class="headerlink" title="报错信息"></a>报错信息</h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44183483/article/details/119330629">微信小程序编译遇到 ReferenceError: regeneratorRuntime is not defined 解决办法</a></p>
+<p> 解析方法：</p>
+<p>打包前，在js文件中加入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import regeneratorRuntime from &quot;./runtime&quot;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="在地图上显示当前位置"><a href="#在地图上显示当前位置" class="headerlink" title="在地图上显示当前位置"></a>在地图上显示当前位置</h4><ol>
+<li>在<code>.json</code>页面中进行配置<code>permission</code></li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    &quot;pages&quot;:[</span><br><span class="line">        &quot;pages/index/index&quot;,</span><br><span class="line">        &quot;pages/logs/logs&quot;</span><br><span class="line">    ],</span><br><span class="line">    &quot;permission&quot;: &#123;</span><br><span class="line">        &quot;scope.userLocation&quot;: &#123;</span><br><span class="line">          &quot;desc&quot;: &quot;你的位置信息将用于小程序位置接口的效果展示&quot; // 高速公路行驶持续后台定位</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>获取位置</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">wx.getLocation(&#123;</span><br><span class="line">  type: &#x27;wgs84&#x27;,</span><br><span class="line">  success: (res) =&gt; &#123;</span><br><span class="line">    var latitude = res.latitude // 纬度</span><br><span class="line">    var longitude = res.longitude // 经度</span><br><span class="line">    console.log(&#x27;维度&#x27;)</span><br><span class="line">    console.log(latitude)</span><br><span class="line">    console.log(&#x27;经度&#x27;)</span><br><span class="line">    console.log(longitude)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="微信开发者工具-关闭声音"><a href="#微信开发者工具-关闭声音" class="headerlink" title="微信开发者工具-关闭声音"></a>微信开发者工具-关闭声音</h4><p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/%E5%BE%AE%E4%BF%A1%E5%BC%80%E5%8F%91%E8%80%85%E5%B7%A5%E5%85%B7-%E9%9D%99%E9%9F%B3.png" alt="关闭声音"></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag"># 微信小程序</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/12/14/vue%E9%A1%B9%E7%9B%AE%E5%A4%84%E7%90%86%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82/" rel="prev" title="Vue项目处理跨域请求">
+      <i class="fa fa-chevron-left"></i> Vue项目处理跨域请求
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/01/08/%E7%BD%91%E7%AB%99%E7%B4%A0%E6%9D%90/" rel="next" title="网站素材">
+      网站素材 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%AC%E5%9C%B0%E7%9B%AE%E5%BD%95"><span class="nav-number">1.</span> <span class="nav-text">本地目录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9B%AE%E5%BD%95"><span class="nav-number">2.</span> <span class="nav-text">云服务器目录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#node%E5%91%BD%E4%BB%A4%E4%BD%BF%E7%94%A8%E4%B9%8B%E5%89%8D"><span class="nav-number">3.</span> <span class="nav-text">node命令使用之前</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8E%A5%E5%8F%A3%E7%AE%A1%E7%90%86"><span class="nav-number">4.</span> <span class="nav-text">接口管理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3"><span class="nav-number">4.1.</span> <span class="nav-text">接口文档</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#UI%E6%A1%86%E6%9E%B6"><span class="nav-number">5.</span> <span class="nav-text">UI框架</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE"><span class="nav-number">6.</span> <span class="nav-text">开源项目</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A4"><span class="nav-number">7.</span> <span class="nav-text">步骤</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">8.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BC%96%E8%AF%91%E6%A8%A1%E5%BC%8F%EF%BC%9A"><span class="nav-number">9.</span> <span class="nav-text">编译模式：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E5%BA%93"><span class="nav-number">10.</span> <span class="nav-text">基础库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A1%B5%E9%9D%A2%E8%B7%AF%E5%BE%84"><span class="nav-number">11.</span> <span class="nav-text">页面路径</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%93%E6%9E%84%E7%9B%AE%E5%BD%95"><span class="nav-number">12.</span> <span class="nav-text">结构目录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BF%AB%E9%80%9F%E6%96%B0%E5%BB%BA%E7%9B%AE%E5%BD%95%E5%8F%8A%E9%87%8C%E9%9D%A2%E7%9A%84%E7%9B%B8%E5%85%B3%E6%96%87%E4%BB%B6"><span class="nav-number">13.</span> <span class="nav-text">快速新建目录及里面的相关文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B0%81%E8%A3%85-wx-request%E6%96%B9%E6%B3%95"><span class="nav-number">14.</span> <span class="nav-text">封装 wx.request方法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8"><span class="nav-number">14.1.</span> <span class="nav-text">使用</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E4%B9%8B%E9%97%B4%E4%BC%A0%E5%80%BC"><span class="nav-number">15.</span> <span class="nav-text">父子组件之间传值</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6%E7%9B%91%E5%90%AC"><span class="nav-number"></span> <span class="nav-text">事件监听</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BC%A0%E5%8F%82"><span class="nav-number">1.</span> <span class="nav-text">传参</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96URL%E4%BC%A0%E6%9D%A5%E7%9A%84%E5%8F%82%E6%95%B0%EF%BC%9A"><span class="nav-number">2.</span> <span class="nav-text">获取URL传来的参数：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BE%AE%E4%BF%A1%E5%B0%8F%E6%B8%B8%E6%88%8F"><span class="nav-number"></span> <span class="nav-text">微信小游戏</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8A%A5%E9%94%99%E4%BF%A1%E6%81%AF"><span class="nav-number">1.</span> <span class="nav-text">报错信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%A8%E5%9C%B0%E5%9B%BE%E4%B8%8A%E6%98%BE%E7%A4%BA%E5%BD%93%E5%89%8D%E4%BD%8D%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">在地图上显示当前位置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BE%AE%E4%BF%A1%E5%BC%80%E5%8F%91%E8%80%85%E5%B7%A5%E5%85%B7-%E5%85%B3%E9%97%AD%E5%A3%B0%E9%9F%B3"><span class="nav-number">3.</span> <span class="nav-text">微信开发者工具-关闭声音</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="winney"
+      src="/images/header.jpg">
+  <p class="site-author-name" itemprop="name">winney</p>
+  <div class="site-description" itemprop="description">Doing is better than saying.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">113</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">56</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">52</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://www.xiaochao.me/" title="https:&#x2F;&#x2F;www.xiaochao.me&#x2F;" rel="noopener" target="_blank">小超</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.winney07.cn/" title="https:&#x2F;&#x2F;www.winney07.cn&#x2F;" rel="noopener" target="_blank">winney07</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://blog.csdn.net/winney07" title="https:&#x2F;&#x2F;blog.csdn.net&#x2F;winney07" rel="noopener" target="_blank">CSDN</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://winney07.lofter.com/" title="http:&#x2F;&#x2F;winney07.lofter.com&#x2F;" rel="noopener" target="_blank">乐乎</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2015 – 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">winney07</span>
+</div>
+  <div class="powered-by"><a href="https://beian.miit.gov.cn/" target="_blank">粤ICP备2022033775号-1</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

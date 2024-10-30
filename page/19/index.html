@@ -193,7 +193,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/20/MangoDB/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/09/15/%E6%B5%8F%E8%A7%88%E5%99%A8%E8%B0%83%E8%AF%95%E6%8A%80%E5%B7%A7/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -207,7 +207,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/01/20/MangoDB/" class="post-title-link" itemprop="url">MangoDB</a>
+            <a href="/2020/09/15/%E6%B5%8F%E8%A7%88%E5%99%A8%E8%B0%83%E8%AF%95%E6%8A%80%E5%B7%A7/" class="post-title-link" itemprop="url">浏览器调试技巧</a>
         </h2>
 
         <div class="post-meta">
@@ -217,14 +217,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-01-20 11:22:42" itemprop="dateCreated datePublished" datetime="2021-01-20T11:22:42+08:00">2021-01-20</time>
+              <time title="创建时间：2020-09-15 11:02:02" itemprop="dateCreated datePublished" datetime="2020-09-15T11:02:02+08:00">2020-09-15</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-08-24 18:09:23" itemprop="dateModified" datetime="2022-08-24T18:09:23+08:00">2022-08-24</time>
+                <time title="修改时间：2024-10-30 13:18:11" itemprop="dateModified" datetime="2024-10-30T13:18:11+08:00">2024-10-30</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -232,11 +232,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/MangoDB/" itemprop="url" rel="index"><span itemprop="name">MangoDB</span></a>
+                  <a href="/categories/WEB%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">WEB前端</span></a>
                 </span>
             </span>
 
@@ -251,363 +247,291 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p><a target="_blank" rel="noopener" href="https://www.mongodb.com/">mongoDB官网</a>    <a target="_blank" rel="noopener" href="https://www.mongodb.org.cn/">mongoDB中文官网</a>  </p>
-<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>参考教程：<a target="_blank" rel="noopener" href="https://blog.csdn.net/mar_ljh/article/details/79286913">安装mongodb3.6之Installing MongoDB Compass…</a></p>
-<p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/MangoDB/note2.png" alt="安装教程"></p>
-<h4 id="环境变量配置"><a href="#环境变量配置" class="headerlink" title="环境变量配置"></a>环境变量配置</h4><p>环境变量加在“系统变量”中</p>
-<p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/MangoDB/note3.png" alt="环境变量加在“系统变量”中"></p>
-<h5 id="安装compass"><a href="#安装compass" class="headerlink" title="安装compass"></a><a target="_blank" rel="noopener" href="https://docs.mongodb.com/manual/reference/program/install_compass/index.html">安装compass</a></h5><h4 id="备份与删除"><a href="#备份与删除" class="headerlink" title="备份与删除"></a>备份与删除</h4><p>备份：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongodump -h 127.0.0.1 -d company -o D:\software\MangoDB\backup\123</span><br></pre></td></tr></table></figure>
-
-<p>恢复：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongorestore -h 127.0.0.1 -d testDemo D:\software\MangoDB\backup\123\company</span><br></pre></td></tr></table></figure>
-
-
-
-<p>  <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/av21989676?from=search&seid=13644841351714946278">【尚硅谷】前端视频_MongoDB夯实基础视频</a></p>
-<ul>
-<li><p>基本概念</p>
-<p>数据库（database）</p>
-<p>集合（collection）</p>
-<p>文档（documen）</p>
-<pre><code>-在MongoDB中，数据庳和集合都不需要手动创建，
-    当我们创建文档时，如果文档所在的集合或数据库不存在会自动创建数据庳和集合
-</code></pre>
-</li>
-<li><p>基本指令</p>
-<ul>
-<li>show dbs</li>
-<li>show databases<br>-显示当前的所有数据库</li>
-<li>use 数据库名<br>-进入到指定的数据库中</li>
-<li>db<br>-db表示的是当前所处的数据库</li>
-<li>show collections<br>-显示数据库中所有的集合</li>
-</ul>
-</li>
-</ul>
-<h4 id="数据库（Database）"><a href="#数据库（Database）" class="headerlink" title="数据库（Database）"></a>数据库（Database）</h4><ul>
-<li>数据库是按照数据结构来组织、存储和管理数据的仓库。</li>
-<li>我们的程序都是在内存中运行的，一旦程序运行结束或者计算机断电，程序运行中的数据都会丢失。</li>
-<li>所以我们就需要将一些程序运行的数据持久化到硬盘之中，以确保数据的安全性。而数据库就是数据持久化的最佳选择。</li>
-<li>说白了，数据库就是存储数据的仓库。</li>
-</ul>
-<h4 id="数据库分类"><a href="#数据库分类" class="headerlink" title="数据库分类"></a>数据库分类</h4><p>数据库主要分成两种:</p>
-<ul>
-<li><p>关系型数据库(RDBMS)</p>
-<ul>
-<li><p>MySQL、Oracle、DB2、SQL Server …..</p>
-</li>
-<li><p>关系数据库中全都是表</p>
-</li>
-</ul>
-</li>
-<li><p>非关系型数据库(NoSQL Not Only SQL)</p>
-<ul>
-<li>MongoDB、Redis……</li>
-<li>键值对数据库</li>
-<li>文档数据库MongoDB</li>
-</ul>
-</li>
-</ul>
-<h4 id="数据库-database"><a href="#数据库-database" class="headerlink" title="数据库(database)"></a>数据库(database)</h4><ul>
-<li><p>数据库的服务器</p>
-<ul>
-<li><p>服务器用来保存数据</p>
-</li>
-<li><p>mongod用来启动服务器</p>
-</li>
-</ul>
-</li>
-<li><p>数据库的客户端</p>
-<ul>
-<li><p>客户端用来操作服务器，对数据进行增删剧改查的操作</p>
-</li>
-<li><p>mongo用来启动客户端</p>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="MongoDB简介"><a href="#MongoDB简介" class="headerlink" title="MongoDB简介"></a>MongoDB简介</h4><ul>
-<li>MongoDB是为快速开发互联网Web应用而设计的数据库系统。</li>
-<li>MongoDB的设计目标是极简、灵活、作为Web应用栈的一部分。</li>
-<li>MongoDB的数据模型是面向文档的，所谓文档是一种类似于JSON的结构，简单理解MongoDB这个数据库中存的是各种各样的JSON。(BSON )</li>
-</ul>
-<h4 id="三个概念"><a href="#三个概念" class="headerlink" title="三个概念"></a>三个概念</h4><ul>
-<li><p>数据库( database )<br>– 数据库是一个仓库，在仓库中可以存放集合。</p>
-</li>
-<li><p>集合( collection )<br>– 集合类似于数组，在集合中可以存放文档。</p>
-</li>
-<li><p>文档( document )</p>
-<p>– 文档数据库中的最小单位，我们存储和操作的内容都是文档。</p>
-</li>
-</ul>
-<h4 id="下载MongoDB"><a href="#下载MongoDB" class="headerlink" title="下载MongoDB"></a>下载MongoDB</h4><ul>
-<li><p>下载地址</p>
-<p> <a target="_blank" rel="noopener" href="https://www.mongodb.org/dl/win32/">https://www.mongodb.org/dl/win32/</a></p>
-</li>
-<li><p>MongoDB的版本偶数版本为稳定版，奇数版本为开发版。</p>
-</li>
-<li><p>MongoDB对于32位系统支持不佳，所以3.2版本以后没有再对32位系统的支持。</p>
-</li>
-</ul>
-<h5 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h5><ul>
-<li>结构化查询语言</li>
-<li>关系数据库全都同SQL来操作</li>
-</ul>
-<p>1.安装MongoDB</p>
-<ul>
-<li>安装</li>
-<li>配置环境交量<br>C: \Program Files\MongoDB\Server\3.2\bin</li>
-<li>在c盘根日录<ul>
-<li>创建一个文件夹data</li>
-<li>在data中创建一个文件夹db</li>
-</ul>
-</li>
-<li>打开cmd命令行窗口<ul>
-<li>输入mongod启动mongodb服务器</li>
-<li>32位注意：<br>启动服务器时，需要输入如下内容：<br>mongod –storageEngine=mmapv1</li>
-</ul>
-</li>
-<li>在打开一个cmd窗口<br>输入mongo连接mongodb ，出现  &gt;</li>
-</ul>
-<h4 id="启动MongoDB"><a href="#启动MongoDB" class="headerlink" title="启动MongoDB"></a>启动MongoDB</h4><ul>
-<li><p>在C盘根目录下创建data文件夹，在data下创建db文件夹</p>
-</li>
-<li><p>打开CMD命令行窗口，输入mongod</p>
-</li>
-<li><p>32位系统第一次启动∶</p>
-<p>mongod –storageEngine=mmapv1</p>
-</li>
-</ul>
-<blockquote>
-<p>端口号最大不要超过65535</p>
-<p>mongod –dbpath 数据库路径 </p>
-<p>如果不想使用默认的端口号， 可以 mongod –dbpath 数据库路径 –port 端口号</p>
-</blockquote>
-<p><strong>注：先开数据库，再开客户端  先 mongod 再mongo</strong></p>
-<p>将MongoDB设置为系统服务，可以白动在后台启动，不需要每次都手动启动</p>
+          <p><code>这里以Chrome浏览器做演示</code></p>
+<h3 id="一、展开某元素的所有子节点"><a href="#一、展开某元素的所有子节点" class="headerlink" title="一、展开某元素的所有子节点"></a>一、展开某元素的所有子节点</h3><p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/%E6%B5%8F%E8%A7%88%E5%99%A8%E8%B0%83%E8%AF%95%E6%8A%80%E5%B7%A7/%E5%B1%95%E5%BC%80%E6%89%80%E6%9C%89%E5%AD%90%E8%8A%82%E7%82%B9.png" alt="展开所有子节点.png (952×488) (raw.githubusercontent.com)"></p>
 <ol>
-<li><p>在c盘根目录创建data<br>在data 下创建db和log文件夹</p>
+<li>选中需要被展开的元素前面的三角箭头</li>
+<li>按下键盘上的‘Alt’键</li>
+<li>单击鼠标</li>
+<li><code>”modal-dialog&quot;</code>里面的子节点都展开</li>
+</ol>
+<h4 id="收起"><a href="#收起" class="headerlink" title="收起"></a>收起</h4><ol>
+<li>选中需要被展开的元素前面的三角箭头，单击鼠标，再单击鼠标，看到里面的子节点都是展开状态。</li>
+<li>选中需要被展开的元素前面的三角箭头，按下键盘上的‘Alt’键，单击鼠标，再单击鼠标，看到里面的子节点是收起状态。</li>
+</ol>
+<h3 id="二、控制台写多行代码"><a href="#二、控制台写多行代码" class="headerlink" title="二、控制台写多行代码"></a>二、控制台写多行代码</h3><p>在控制台，编写多行代码时，实现换行的快捷键：<code>Shift + Enter</code></p>
+<p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/%E6%B5%8F%E8%A7%88%E5%99%A8%E8%B0%83%E8%AF%95%E6%8A%80%E5%B7%A7/%E6%8E%A7%E5%88%B6%E5%8F%B0%E5%86%99%E5%A4%9A%E8%A1%8C%E4%BB%A3%E7%A0%81%E5%BF%AB%E6%8D%B7%E9%94%AE.png" alt="控制台写多行代码快捷键.png (448×264) (raw.githubusercontent.com)"></p>
+<h3 id="三、全局搜索资源中的匹配代码-匹配文本"><a href="#三、全局搜索资源中的匹配代码-匹配文本" class="headerlink" title="三、全局搜索资源中的匹配代码/匹配文本"></a>三、全局搜索资源中的匹配代码/匹配文本</h3><p>快捷键：<code>Ctrl + Shift + F</code></p>
+<p><code>注意：输入快捷键之前，在浏览器已经按了F12，也就是已经打开浏览器的开发者工具</code></p>
+<p>如果没有打开浏览器的开发者工具就按<code>Ctrl + Shift + F</code>，输入法会切换到繁体字，如果不小心切换到繁体字状态，可以再按一次<code>Ctrl + Shift + F</code>，就切回来简体。（前提是操作系统中使用 Ctrl + Shift + F 快捷键来切换输入法的字体，如果不是，忽略）</p>
+<p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/%E6%B5%8F%E8%A7%88%E5%99%A8%E8%B0%83%E8%AF%95%E6%8A%80%E5%B7%A7/%E5%85%A8%E5%B1%80%E6%90%9C%E7%B4%A2%E8%B5%84%E6%BA%90%E5%8C%B9%E9%85%8D%E6%96%87%E6%9C%AC1.png" alt="全局搜索资源匹配文本1.png (896×360) (raw.githubusercontent.com)"></p>
+<p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/%E6%B5%8F%E8%A7%88%E5%99%A8%E8%B0%83%E8%AF%95%E6%8A%80%E5%B7%A7/%E5%85%A8%E5%B1%80%E6%90%9C%E7%B4%A2%E8%B5%84%E6%BA%90%E5%8C%B9%E9%85%8D%E6%96%87%E6%9C%AC2.png" alt="全局搜索资源匹配文本2.png (715×582) (raw.githubusercontent.com)"></p>
+<blockquote>
+<p> 这效果类似于在代码编辑器中，对项目进行全局搜索一样。但是有时在查看学习和了解别人网站时，可以使用这种全局搜索查找。</p>
+</blockquote>
+<h3 id="四、控制台中复制变量"><a href="#四、控制台中复制变量" class="headerlink" title="四、控制台中复制变量"></a>四、控制台中复制变量</h3><p>有时候在控制台打印出来的变量值，想复制到其他地方。简单的变量，直接选中复制即可。但是对于对象数组这样的变量，选中复制粘贴之后，不是想要的效果。如果想复制对象数组这样的变量值，使用<code>copy(变量名)</code>，然后粘贴即可。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">copy(变量名)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/%E6%B5%8F%E8%A7%88%E5%99%A8%E8%B0%83%E8%AF%95%E6%8A%80%E5%B7%A7/%E6%8E%A7%E5%88%B6%E5%8F%B0%E5%A4%8D%E5%88%B6%E5%A4%8D%E6%9D%82%E5%8F%98%E9%87%8F.png" alt="控制台复制复杂变量.png (564×512) (raw.githubusercontent.com)"></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/white0710/p/6686290.html">兼容各个浏览器的事件监听代码</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_34764577/article/details/81184628">Chrome的插件扩展程序安装目录是什么？在哪个文件夹？</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_36485978/article/details/97897798">浏览器调试工具如何查看placeholder值</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/read/cv13356084">打包备份/转移安装微软Edge和谷歌Chrome浏览器的扩展程序/插件【手把手保姆级教程】</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/09/04/%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="winney">
+      <meta itemprop="description" content="Doing is better than saying.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="winney">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/04/%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">设置代理相关笔记</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-09-04 10:36:44" itemprop="dateCreated datePublished" datetime="2020-09-04T10:36:44+08:00">2020-09-04</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-10-30 13:18:11" itemprop="dateModified" datetime="2024-10-30T13:18:11+08:00">2024-10-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/WEB%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">WEB前端</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="访问他人本地项目–使用火狐浏览器代理"><a href="#访问他人本地项目–使用火狐浏览器代理" class="headerlink" title="访问他人本地项目–使用火狐浏览器代理"></a>访问他人本地项目–使用火狐浏览器代理</h4><p>设置——常规——网络设置——手动配置代理</p>
+<p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/%E7%AC%94%E8%AE%B0/1.png" alt="火狐浏览器配置代理"></p>
+<h4 id="手机访问电脑本地项目——使用Charles代理"><a href="#手机访问电脑本地项目——使用Charles代理" class="headerlink" title="手机访问电脑本地项目——使用Charles代理"></a>手机访问电脑本地项目——使用Charles代理</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">备注：使用手机端访问本地后台项目，在手机wifi里配置代理</span><br></pre></td></tr></table></figure>
+
+<h5 id="注意：连接不成功，看一下端口号是否写错了"><a href="#注意：连接不成功，看一下端口号是否写错了" class="headerlink" title="注意：连接不成功，看一下端口号是否写错了"></a><code>注意：连接不成功，看一下端口号是否写错了</code></h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">首次连接，需要在Charles上授权（allow）</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>电脑安装Charles，进行代理设置：“代理”——“代理设置”</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/winney07/Images/main/Note/Charles%E4%BB%A3%E7%90%86%E8%AE%BE%E7%BD%AE.png" alt="代理设置"></p>
+<ul>
+<li>在手机端要设置“HTTP代理”【注意：手机连接的WiFi要跟电脑端是在同一个路由】</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/winney07/Images/main/Note/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20210622185834.png" alt="img"><img src="https://raw.githubusercontent.com/winney07/Images/main/Note/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_202106221858341.png" alt="img"><img src="https://raw.githubusercontent.com/winney07/Images/main/Note/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_202106221858342.png" alt="img"></p>
+<ul>
+<li>配置好手机HTTP代理之后，在Charles中会弹出一个是否同意的一个确认框，选择同意之后；手机就可以访问本地的项目</li>
+</ul>
+<p>如果在手机中忽略过该WiFi，重新连接上该WiFi后要重新设置“HTTP代理”</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/08/24/docsify/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="winney">
+      <meta itemprop="description" content="Doing is better than saying.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="winney">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/08/24/docsify/" class="post-title-link" itemprop="url">docsify</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-08-24 17:54:50" itemprop="dateCreated datePublished" datetime="2020-08-24T17:54:50+08:00">2020-08-24</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-10-30 13:18:11" itemprop="dateModified" datetime="2024-10-30T13:18:11+08:00">2024-10-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%96%87%E6%A1%A3%E7%BD%91%E7%AB%99%E7%94%9F%E6%88%90%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index"><span itemprop="name">文档网站生成工具</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%96%87%E6%A1%A3%E7%BD%91%E7%AB%99%E7%94%9F%E6%88%90%E5%B7%A5%E5%85%B7/docsify/" itemprop="url" rel="index"><span itemprop="name">docsify</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="官网文档"><a href="#官网文档" class="headerlink" title="官网文档"></a><a target="_blank" rel="noopener" href="https://docsify.js.org/#/zh-cn/quickstart">官网文档</a></h4><p><a target="_blank" rel="noopener" href="https://docsify.js.org/#/zh-cn/">docsify中文文档</a></p>
+<p>摘自<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/4883e95aa903">视觉派pie</a> 、<a target="_blank" rel="noopener" href="https://www.imooc.com/article/287154">Docsify快速搭建个人博客</a></p>
+<blockquote>
+<p>文档网站生成工具、快速搭建个人博客</p>
+</blockquote>
+<blockquote>
+<p>docsify 是一个动态生成文档网站的工具。不同于 GitBook、Hexo 的地方是它不会将 <code>.md</code> 转成 <code>.html</code> 文件，所有转换工作都是在运行时进行。</p>
+<p>这将非常实用，如果只是需要快速的搭建一个小型的文档网站，或者不想因为生成的一堆 <code>.html</code> 文件“污染” commit 记录，只需要创建一个 <code>index.html</code> 就可以开始写文档而且直接部署在<a target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=https://docsify.js.org/%23/zh-cn/deploy">GitHub Pages</a>。</p>
+</blockquote>
+<h4 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h4><ul>
+<li>无需构建，写完文档直接发布</li>
+<li>容易使用并且轻量 (~19kB gzipped)</li>
+<li>智能的全文搜索</li>
+<li>提供多套主题</li>
+<li>丰富的 API</li>
+<li>支持 Emoji</li>
+<li>兼容 IE10+</li>
+<li>支持 SSR (<a target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=https://github.com/docsifyjs/docsify-ssr-demo">example</a>)</li>
+</ul>
+<h4 id="生成文档的工具："><a href="#生成文档的工具：" class="headerlink" title="生成文档的工具："></a>生成文档的工具：</h4><p>阿里的语雀、DokuWiki、MDwiki、HDwiki</p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/84b46b67031d">使用Typora+docsify+GitHub Pages搭建团队知识库</a></p>
+<h5 id="文档案例"><a href="#文档案例" class="headerlink" title="文档案例"></a>文档案例</h5><p><a target="_blank" rel="noopener" href="https://hanxueqing.github.io/Douban-Movie/#/?id=%E4%BD%BF%E7%94%A8vue%E5%85%A8%E5%AE%B6%E6%A1%B6nodejs%E6%90%AD%E5%BB%BA%E7%9A%84%E5%B0%8F%E5%9E%8B%E5%85%A8%E6%A0%88%E9%A1%B9%E7%9B%AE">使用Vue全家桶+Node.js搭建的小型全栈项目</a></p>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>全局安装<code>docsify-cli</code>工具，可以方便地创建及在本地预览生成的文档。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i docsify-cli -g</span><br></pre></td></tr></table></figure>
+
+<h4 id="初始化项目"><a href="#初始化项目" class="headerlink" title="初始化项目"></a>初始化项目</h4><p>如果想在项目的 <code>./docs</code> 目录里写文档，直接通过 <code>init</code> 初始化项目。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docsify init ./docs</span><br></pre></td></tr></table></figure>
+
+<h4 id="本地预览"><a href="#本地预览" class="headerlink" title="本地预览"></a>本地预览</h4><p>通过运行 <code>docsify serve</code> 启动一个本地服务器，可以方便地实时预览效果。默认访问地址 <a target="_blank" rel="noopener" href="http://localhost:3000/">http://localhost:3000</a> </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docsify serve docs</span><br></pre></td></tr></table></figure>
+
+<h4 id="添加左侧导航栏-loadSidebar-true"><a href="#添加左侧导航栏-loadSidebar-true" class="headerlink" title="添加左侧导航栏-loadSidebar: true"></a>添加左侧导航栏-loadSidebar: true</h4><ol>
+<li><p>修改docs/index.html，配置 <code>loadSidebar</code> 选项</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">window.$docsify = &#123;</span><br><span class="line">  loadSidebar: true,  // 开启左侧导航栏</span><br><span class="line">  name: &#x27;&#x27;,</span><br><span class="line">  repo: &#x27;&#x27;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>创建配置文件<br>在目录C: \Program Files\MongoDB\Server\3.2下添加一个配置文件mongod.cfg</p>
+<li><p>在根目录(docs)（与index.html同目录）中，新建<code>_sidebar.md</code>文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">* 常用网址     // 分组名</span><br><span class="line"></span><br><span class="line">  * [Vue](website/vue.md)   // 链接到对应文件</span><br><span class="line">* 收藏博客</span><br><span class="line"></span><br><span class="line">  * [javascript](blogs/javascript.md)</span><br><span class="line">* 常用软件</span><br><span class="line"></span><br><span class="line">  * [web前端](software/web.md)</span><br><span class="line">* 笔记</span><br><span class="line"></span><br><span class="line">  [web前端](software/web.md)</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>以管理员的身份打开命令行窗口</p>
+<li><p>配置 <code>alias</code> 避免不必要的回退过程 （即访问非根目录的页面时，会报<code>_sidebar.md</code>文件是404)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">window.$docsify = &#123;</span><br><span class="line">    loadSidebar: true,</span><br><span class="line">    alias: &#123;</span><br><span class="line">      &#x27;/.*/_sidebar.md&#x27;: &#x27;/_sidebar.md&#x27;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>执行如下的命令</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sc.exe  create MongoDB binPath=&quot;\&quot;C:\Program Files mongoDB\Server\3.2\bin\mongod.exo\&quot; --service --config=\&quot;C:Program Files\MongoDB\Server\3.2\mongod.cfg\&quot;&quot; DisplayName= &quot;MongoDB&quot; start= &quot;auto&quot;</span><br><span class="line"></span><br><span class="line">sc.exe create MongoDB binPath=&quot;\&quot;mongod的bin目录\mongod.exe\&quot;--service --config=\&quot;mongo的安装目录\mongod.cfg\&quot;&quot; DisplayName=&quot;MongoDB&quot; start= “auto&quot;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>启动mongodb服务</p>
-</li>
-<li><p>如果启动失败，证明上边的操作有误,<br>在控制台输入sc delete MongoDB别除之前配置的服务然后从第—步再来一次</p>
+<li><p>新建对应的文件（如：<code>website/vue.md</code> 【新建website目录，新建vue.md】）</p>
 </li>
 </ol>
-<p><a target="_blank" rel="noopener" href="https://docs.mongodb.com/manual/crud/">增删改查</a></p>
-<h4 id="数据库服务器—mongoDB"><a href="#数据库服务器—mongoDB" class="headerlink" title="数据库服务器—mongoDB"></a>数据库服务器—mongoDB</h4><p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/MangoDB/note1.png" alt="数据库服务器—mongoDB"></p>
-<h4 id="安装mongodb以及设置为windows服务-详细步骤"><a href="#安装mongodb以及设置为windows服务-详细步骤" class="headerlink" title="安装mongodb以及设置为windows服务 详细步骤"></a>安装mongodb以及设置为windows服务 详细步骤</h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u010874036/article/details/51921206">参考教程</a></p>
-<p><a target="_blank" rel="noopener" href="https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/">Install MongoDB Community Edition on Windows</a></p>
+<h4 id="docsify-侧边栏目录扩展"><a href="#docsify-侧边栏目录扩展" class="headerlink" title="docsify 侧边栏目录扩展"></a><a target="_blank" rel="noopener" href="https://www.cnblogs.com/baby123/p/14361402.html">docsify 侧边栏目录扩展</a></h4><p>官方文档没有介绍左侧目录的折叠问题，可以使用这个开源：</p>
+<p>git地址 <a target="_blank" rel="noopener" href="https://github.com/iPeng6/docsify-sidebar-collapse">https://github.com/iPeng6/docsify-sidebar-collapse</a></p>
+<p>代码如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel=&quot;stylesheet&quot; href=&quot;//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/sidebar.min.css&quot; /&gt;</span><br><span class="line">&lt;link rel=&quot;stylesheet&quot; href=&quot;//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/sidebar-folder.min.css&quot; /&gt;</span><br><span class="line"></span><br><span class="line">&lt;script src=&quot;//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/docsify-sidebar-collapse.min.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 
-      
-    </div>
+<p>使用sidebarDisplayLevel设置默认折叠的层级：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">window.$docsify = &#123;</span><br><span class="line">      sidebarDisplayLevel: 1,   // 如果想收起的是第一层级，设置为0</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+<p>然后根据自己需求修改样式。</p>
+<h4 id="侧边栏三层级配置"><a href="#侧边栏三层级配置" class="headerlink" title="侧边栏三层级配置"></a>侧边栏三层级配置</h4><p>参考<a target="_blank" rel="noopener" href="https://cpury.com/1408.html">docsify侧边栏折叠</a></p>
+<p>_sidebar.md：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">* 项目</span><br><span class="line">    * [管理后台](project/manage.md)</span><br><span class="line">        * [新广告后台](project/ad_admin.md)</span><br><span class="line">        * [纳米盒应用后台2.0](project/AppManage2.0.md)</span><br><span class="line">        * [纳米盒管理后台](project/manage_new.md)</span><br><span class="line">        * [黄豆芽办公系统](project/ai.huangdouya.com.md)</span><br><span class="line">        * [黄豆芽sdk运营后台](project/hanteng-manage.vxinyou.com.md)</span><br><span class="line">        * [切支付](project/check_pay.md)</span><br></pre></td></tr></table></figure>
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/19/%E7%BD%91%E9%A1%B5%E7%89%B9%E6%95%88/">
+<p>manage.md：（里面写什么都可以）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">## 新广告后台</span><br><span class="line">## 纳米盒应用后台2.0</span><br><span class="line">## 纳米盒管理后台</span><br><span class="line">## 黄豆芽办公系统</span><br><span class="line">## 黄豆芽sdk运营后台</span><br><span class="line">## 切支付</span><br></pre></td></tr></table></figure>
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="winney">
-      <meta itemprop="description" content="Doing is better than saying.">
-    </span>
+<h4 id="添加代码高亮"><a href="#添加代码高亮" class="headerlink" title="添加代码高亮"></a>添加代码高亮</h4><p>引入js文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=&quot;//cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="winney">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/01/19/%E7%BD%91%E9%A1%B5%E7%89%B9%E6%95%88/" class="post-title-link" itemprop="url">网页特效</a>
-        </h2>
+<p>参考<a target="_blank" rel="noopener" href="https://docsify.js.org/#/zh-cn/language-highlight">代码高亮</a></p>
+<p>写代码的时候要加上bash</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">​```bash</span><br><span class="line">echo &quot;hello&quot;</span><br><span class="line">​```</span><br></pre></td></tr></table></figure>
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-01-19 17:04:46" itemprop="dateCreated datePublished" datetime="2021-01-19T17:04:46+08:00">2021-01-19</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-08-24 18:09:23" itemprop="dateModified" datetime="2022-08-24T18:09:23+08:00">2022-08-24</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
-                </span>
-            </span>
 
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="轻松解决网站大部分特效展示问题"><a href="#轻松解决网站大部分特效展示问题" class="headerlink" title="轻松解决网站大部分特效展示问题"></a>轻松解决网站大部分特效展示问题</h4><p><a target="_blank" rel="noopener" href="http://www.superslide2.com/index.html">SuperSlide</a>     <a target="_blank" rel="noopener" href="https://www.swiper.com.cn/">Swiper</a>     <a target="_blank" rel="noopener" href="https://github.com/nolimits4web/swiper">Swiper-github</a></p>
-<h4 id="拖拽排序图片"><a href="#拖拽排序图片" class="headerlink" title="拖拽排序图片"></a>拖拽排序图片</h4><p><a target="_blank" rel="noopener" href="https://www.jq22.com/jquery-info572">模仿360首页导航Div排序插件</a></p>
-<p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/%E7%BD%91%E9%A1%B5%E7%89%B9%E6%95%88/note1.png" alt="移动替换效果"></p>
-<p><a target="_blank" rel="noopener" href="https://www.jq22.com/jquery-info14968">jquery 拖拽排序</a></p>
-<h4 id="鼠标点击网页出现爱心特效"><a href="#鼠标点击网页出现爱心特效" class="headerlink" title="鼠标点击网页出现爱心特效"></a>鼠标点击网页出现爱心特效</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line">(function(window,document,undefined)&#123;</span><br><span class="line">    var hearts = [];</span><br><span class="line">    window.requestAnimationFrame = (function()&#123;</span><br><span class="line">        return window.requestAnimationFrame ||</span><br><span class="line">        window.webkitRequestAnimationFrame ||</span><br><span class="line">        window.mozRequestAnimationFrame ||</span><br><span class="line">        window.oRequestAnimationFrame ||</span><br><span class="line">        window.msRequestAnimationFrame ||</span><br><span class="line">        function (callback)&#123;</span><br><span class="line">            setTimeout(callback,1000/60);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)();</span><br><span class="line">    init();</span><br><span class="line">    function init()&#123;</span><br><span class="line">        css(&quot;.heart&#123;width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);&#125;.heart:after,.heart:before&#123;content: &#x27;&#x27;;width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: absolute;&#125;.heart:after&#123;top: -5px;&#125;.heart:before&#123;left: -5px;&#125;&quot;);</span><br><span class="line">        attachEvent();</span><br><span class="line">        gameloop();</span><br><span class="line">    &#125;</span><br><span class="line">    function gameloop()&#123;</span><br><span class="line">        for(var i=0;i&lt;hearts.length;i++)&#123;</span><br><span class="line">            if(hearts[i].alpha &lt;=0)&#123;</span><br><span class="line">                document.body.removeChild(hearts[i].el);</span><br><span class="line">                hearts.splice(i,1);</span><br><span class="line">                continue;</span><br><span class="line">            &#125;</span><br><span class="line">            hearts[i].y--;</span><br><span class="line">            hearts[i].scale += 0.004;</span><br><span class="line">            hearts[i].alpha -= 0.013;</span><br><span class="line">            hearts[i].el.style.cssText = &quot;left:&quot;+hearts[i].x+&quot;px;top:&quot;+hearts[i].y+&quot;px;opacity:&quot;+hearts[i].alpha+&quot;;transform:scale(&quot;+hearts[i].scale+&quot;,&quot;+hearts[i].scale+&quot;) rotate(45deg);background:&quot;+hearts[i].color;</span><br><span class="line">        &#125;</span><br><span class="line">        requestAnimationFrame(gameloop);</span><br><span class="line">    &#125;</span><br><span class="line">    function attachEvent()&#123;</span><br><span class="line">        var old = typeof window.onclick===&quot;function&quot; &amp;&amp; window.onclick;</span><br><span class="line">        window.onclick = function(event)&#123;</span><br><span class="line">            old &amp;&amp; old();</span><br><span class="line">            createHeart(event);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    function createHeart(event)&#123;</span><br><span class="line">        var d = document.createElement(&quot;div&quot;);</span><br><span class="line">        d.className = &quot;heart&quot;;</span><br><span class="line">        hearts.push(&#123;</span><br><span class="line">            el : d,</span><br><span class="line">            x : event.clientX - 5,</span><br><span class="line">            y : event.clientY - 5,</span><br><span class="line">            scale : 1,</span><br><span class="line">            alpha : 1,</span><br><span class="line">            color : randomColor()</span><br><span class="line">        &#125;);</span><br><span class="line">        document.body.appendChild(d);</span><br><span class="line">    &#125;</span><br><span class="line">    function css(css)&#123;</span><br><span class="line">        var style = document.createElement(&quot;style&quot;);</span><br><span class="line">        style.type=&quot;text/css&quot;;</span><br><span class="line">        try&#123;</span><br><span class="line">            style.appendChild(document.createTextNode(css));</span><br><span class="line">        &#125;catch(ex)&#123;</span><br><span class="line">            style.styleSheet.cssText = css;</span><br><span class="line">        &#125;</span><br><span class="line">        document.getElementsByTagName(&#x27;head&#x27;)[0].appendChild(style);</span><br><span class="line">    &#125;</span><br><span class="line">    function randomColor()&#123;</span><br><span class="line">        return &quot;rgb(&quot;+(~~(Math.random()*255))+&quot;,&quot;+(~~(Math.random()*255))+&quot;,&quot;+(~~(Math.random()*255))+&quot;)&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)(window,document);</span><br></pre></td></tr></table></figure>
-
-<h4 id="TouchSlide"><a href="#TouchSlide" class="headerlink" title="TouchSlide"></a>TouchSlide</h4><p><a target="_blank" rel="noopener" href="http://www.superslide2.com/TouchSlide/">TouchSlide</a></p>
-<p>触屏滑动特效插件，移动端滑动特效，触屏焦点图，触屏Tab切换，触屏多图切换等</p>
-<h4 id="点击鼠标，图片落在鼠标点击的位置"><a href="#点击鼠标，图片落在鼠标点击的位置" class="headerlink" title="点击鼠标，图片落在鼠标点击的位置"></a>点击鼠标，图片落在鼠标点击的位置</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=&quot;images/beetle.gif&quot; id=&quot;pic&quot; style=&quot;visibility:hidden;position:absolute&quot;&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">    function show()&#123;</span><br><span class="line">        pic.style.left = event.x + &quot;px&quot;;</span><br><span class="line">        pic.style.top  = event.y + &quot;px&quot;;</span><br><span class="line">        pic.style.visibility = &quot;visible&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    document.onclick = show;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
-<h4 id="鼠标移到文字上，出现提示信息"><a href="#鼠标移到文字上，出现提示信息" class="headerlink" title="鼠标移到文字上，出现提示信息"></a>鼠标移到文字上，出现提示信息</h4><ul>
-<li><p>使用title属性</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;#&quot; title=&quot;提示信息&quot;&gt;超链接文字&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="添加搜索功能"><a href="#添加搜索功能" class="headerlink" title="添加搜索功能"></a>添加搜索功能</h4><ol>
+<li><p>修改<code>window.$docsify</code>（在<code>docs/index.html</code>）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">window.$docsify = &#123;</span><br><span class="line">    loadSidebar: true,</span><br><span class="line">    name: &#x27;&#x27;,</span><br><span class="line">    repo: &#x27;&#x27;,</span><br><span class="line">    search: &#123;   // 添加</span><br><span class="line">        noData: &#123;</span><br><span class="line">          &#x27;/&#x27;: &#x27;无匹配结果&#x27;</span><br><span class="line">        &#125;,</span><br><span class="line">        paths: &#x27;auto&#x27;,</span><br><span class="line">        placeholder: &#123;</span><br><span class="line">          &#x27;/&#x27;: &#x27;搜索&#x27;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>自定义事件和自定义样式</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;tip&quot; &gt;这是提示信息&lt;/div&gt;</span><br><span class="line">&lt;a href=&quot;#&quot; onMouseOver=&quot;mm()&quot; onmouseout=&quot;tip.style.visibility=&#x27;hidden&#x27;&quot;&gt;超链接文字&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+<li><p>添加<code>search.min.js</code>插件（在<code>docs/index.html</code>）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=&quot;//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">a:link&#123;text-decoration: none;&#125;</span><br><span class="line">#tip&#123;</span><br><span class="line">    background:#fcfcfc;</span><br><span class="line">    position:absolute;</span><br><span class="line">    width:auto;</span><br><span class="line">    height:auto;</span><br><span class="line">    visibility:hidden;</span><br><span class="line">    font-size: 12px;</span><br><span class="line">    border:1px solid #ccc;</span><br><span class="line">    padding: 2px 6px;</span><br><span class="line">    border-radius:4px;</span><br><span class="line">    box-shadow: 2px 4px 7px #ccc;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel=&quot;stylesheet&quot; href=&quot;//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/sidebar.min.css&quot; /&gt;</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">    function mm()&#123;  </span><br><span class="line">        tip.style.visibility=&#x27;visible&#x27;;</span><br><span class="line">        tip.style.top = (event.y+10) + &quot;px&quot;;</span><br><span class="line">        tip.style.left = (event.x+10) + &quot;px&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+
 
 </li>
-</ul>
-<h4 id="按←↑→↓键移到图片位置"><a href="#按←↑→↓键移到图片位置" class="headerlink" title="按←↑→↓键移到图片位置"></a>按←↑→↓键移到图片位置</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;img id=&quot;pic&quot; src=&quot;images/beetle.gif&quot; style=&quot;position:absolute;left:100px;top:100px;&quot;&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">    function move()&#123;</span><br><span class="line">        var key = event.keyCode;</span><br><span class="line">        var x = parseInt(pic.style.left);</span><br><span class="line">        var y = parseInt(pic.style.top);</span><br><span class="line">        var step = 10;</span><br><span class="line">        if (key == 37)  pic.style.left = x - step + &quot;px&quot;;</span><br><span class="line">        if (key == 38)  pic.style.top  = y - step + &quot;px&quot;;</span><br><span class="line">        if (key == 39)  pic.style.left = x + step + &quot;px&quot;;</span><br><span class="line">        if (key == 40)  pic.style.top  = y + step + &quot;px&quot;;</span><br><span class="line"></span><br><span class="line">        console.log(key)</span><br><span class="line">        console.log(x)</span><br><span class="line">        console.log(y)</span><br><span class="line">    &#125;</span><br><span class="line">    document.onkeydown=move;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
-<h4 id="文字滚动效果"><a href="#文字滚动效果" class="headerlink" title="文字滚动效果"></a>文字滚动效果</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;marquee direction =&quot;left&quot; onMouseOver=&quot;this.stop()&quot; onMouseOut=&quot;this.start()&quot; scrollamount=3&gt;JavaScript特效制作最新JavaScript特效常用HTML标签讲解ASP入门教程Dreamweaver 8 教程</span><br><span class="line">&lt;/marquee&gt;</span><br></pre></td></tr></table></figure>
-
-<h4 id="使用鼠标拖到图片到相应位置"><a href="#使用鼠标拖到图片到相应位置" class="headerlink" title="使用鼠标拖到图片到相应位置"></a>使用鼠标拖到图片到相应位置</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=&quot;images/beetle.gif&quot;  style=&quot;position:absolute;left:0px;top:0px;&quot; onMouseDown=&quot;dragImage(this)&quot;&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">    var down = false;</span><br><span class="line">    var x,y,imgID;</span><br><span class="line"></span><br><span class="line">    function dragImage(obj)&#123;</span><br><span class="line">        imgID = obj;</span><br><span class="line">        x = event.x - parseInt(imgID.style.left);</span><br><span class="line">        y = event.y - parseInt(imgID.style.top);</span><br><span class="line"></span><br><span class="line">        down=true;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function cancelDrag()&#123;  down=false; &#125;</span><br><span class="line"></span><br><span class="line">    function moveImage()&#123;</span><br><span class="line">        if(down)&#123;</span><br><span class="line">            //要加上单位“px”，不然图片不能移动</span><br><span class="line">            imgID.style.left  = (event.x - x) + &quot;px&quot;;</span><br><span class="line">            imgID.style.top   = (event.y - y) + &quot;px&quot;;   </span><br><span class="line"></span><br><span class="line">            event.returnValue = false;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    document.onmousemove = moveImage;</span><br><span class="line">    document.onmouseup = cancelDrag;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
-<p><a target="_blank" rel="noopener" href="https://gitee.com/winney/work/blob/master/effects/follow-mouse/mousemove.html">跟随鼠标移动的文字</a></p>
-<h4 id="tpanorama-全景图"><a href="#tpanorama-全景图" class="headerlink" title="tpanorama-全景图"></a>tpanorama-全景图</h4><p><a target="_blank" rel="noopener" href="https://github.com/ConardLi/tpanorama">github地址</a></p>
-<p><a target="_blank" rel="noopener" href="http://www.bootstrapmb.com/item/5657/preview">效果预览</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/19/CMS-%E7%AC%94%E8%AE%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="winney">
-      <meta itemprop="description" content="Doing is better than saying.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="winney">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/01/19/CMS-%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">CMS-笔记</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-01-19 16:49:48" itemprop="dateCreated datePublished" datetime="2021-01-19T16:49:48+08:00">2021-01-19</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-08-24 18:09:23" itemprop="dateModified" datetime="2022-08-24T18:09:23+08:00">2022-08-24</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/CMS/" itemprop="url" rel="index"><span itemprop="name">CMS</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><a target="_blank" rel="noopener" href="http://www.phome.net/">帝国cms官网</a></p>
-<p><a target="_blank" rel="noopener" href="http://phome.net/doc/ecmsedu/template/ecmsinfo.html">万能标签</a></p>
-<h4 id="帝国CMS模板的策划"><a href="#帝国CMS模板的策划" class="headerlink" title="帝国CMS模板的策划"></a>帝国CMS模板的策划</h4><p>1、 确定网站的栏目</p>
-<p>2、 添加自定义字段</p>
-<p>3、 定制系统模型</p>
-<p><a target="_blank" rel="noopener" href="http://www.phome.net/doc/manual/install/">帝国网站管理系统(EmpireCMS)－安装手册</a></p>
-<h5 id="采集教程"><a href="#采集教程" class="headerlink" title="采集教程"></a>采集教程</h5><p><a target="_blank" rel="noopener" href="https://www.jb51.net/cms/44793_2.html">帝国cms采集图文教程(上,中,下)全集</a></p>
-<p><a target="_blank" rel="noopener" href="http://www.baiwanzhan.com/site/t125853/?tdsourcetag=s_pctim_aiomsg">百万站官网资料-帝国cms采集图文教程（上）</a></p>
-<p>采集思路:</p>
-<p>1.先确定你的服务器是否支持采集</p>
-<p>2.寻找响应速度快的目标网站,当然首先要看准目标网站是否防采集的</p>
-<p>3.查看源文件,写正则</p>
-<p>4.正则写好,先预览,预览正常后再采集</p>
-<p>影响采集速度:</p>
-<p>1.本身空间的质量与速度</p>
-<p>2.本身网站的数据大小,即数据库的使用情况.</p>
-<p>3.目标网站的速度及代码结构</p>
-
+</ol>
+<h4 id="部署到服务器"><a href="#部署到服务器" class="headerlink" title="部署到服务器"></a>部署到服务器</h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_34568812/article/details/112002961">如何把 Docsify 文档部署到服务器?</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/84b46b67031d">使用Typora+docsify+GitHub Pages搭建团队知识库</a></p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904115466682375">使用docsify 写开源文档+部署到云服务器</a></p>
+<h4 id="配置参考"><a href="#配置参考" class="headerlink" title="配置参考"></a>配置参考</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;title&gt;工作文档&lt;/title&gt;</span><br><span class="line">  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge,chrome=1&quot; /&gt;</span><br><span class="line">  &lt;meta name=&quot;description&quot; content=&quot;Description&quot;&gt;</span><br><span class="line">  &lt;link rel=&quot;shortcut icon&quot; href=&quot;./favicon.ico&quot; /&gt;</span><br><span class="line">  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0, minimum-scale=1.0&quot;&gt;</span><br><span class="line">  &lt;link rel=&quot;stylesheet&quot; href=&quot;//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css&quot;&gt;</span><br><span class="line">  &lt;link rel=&quot;stylesheet&quot; href=&quot;//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/sidebar.min.css&quot; /&gt;</span><br><span class="line">  &lt;link rel=&quot;stylesheet&quot; href=&quot;//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/sidebar-folder.min.css&quot; /&gt;</span><br><span class="line">  &lt;style&gt;</span><br><span class="line">    a&#123;</span><br><span class="line">      text-decoration: none;</span><br><span class="line">    &#125;</span><br><span class="line">    a:hover&#123;</span><br><span class="line">      text-decoration: underline;</span><br><span class="line">    &#125;</span><br><span class="line">    .sidebar ul li a&#123;</span><br><span class="line">      /* color: #0088CC !important; */</span><br><span class="line">      font-weight: normal;</span><br><span class="line">    &#125;</span><br><span class="line">    .content td a, .content p a&#123;</span><br><span class="line">      font-weight: normal;</span><br><span class="line">    &#125;</span><br><span class="line">    .markdown-section blockquote p&#123;</span><br><span class="line">      font-weight: normal;</span><br><span class="line">    &#125;</span><br><span class="line">    .markdown-section h5&#123;</span><br><span class="line">      font-size: 1.05rem;</span><br><span class="line">      margin-top: 0.5rem;</span><br><span class="line">      margin-bottom: 1rem;</span><br><span class="line">    &#125;</span><br><span class="line">    .markdown-section hr&#123;</span><br><span class="line">      margin: 2em 0 0.5rem;</span><br><span class="line">    &#125;</span><br><span class="line">    .sidebar-nav ul:not(.app-sub-sidebar)&gt;li.folder::before&#123;</span><br><span class="line">      display: none;</span><br><span class="line">    &#125;</span><br><span class="line">    .sidebar-nav ul:not(.app-sub-sidebar)&gt;li.file::before&#123;</span><br><span class="line">      background: none;</span><br><span class="line">    &#125;</span><br><span class="line">    .sidebar-nav ul:not(.app-sub-sidebar)&gt;li::before&#123;</span><br><span class="line">      content: &quot;-&quot;;</span><br><span class="line">      top: -1px;</span><br><span class="line">      left: -10px;</span><br><span class="line">      width: 10px;</span><br><span class="line">      height: 10px;</span><br><span class="line">    &#125;</span><br><span class="line">    .sidebar-nav ul:not(.app-sub-sidebar)&gt;li.open::before&#123;</span><br><span class="line">      transform: none;</span><br><span class="line">    &#125;</span><br><span class="line">    .markdown-section p&#123;</span><br><span class="line">      margin: 0;</span><br><span class="line">    &#125;</span><br><span class="line">    .markdown-section th&#123;</span><br><span class="line">      background-color: #f8f8f8;</span><br><span class="line">      color: #909399;</span><br><span class="line">    &#125;</span><br><span class="line">    .markdown-section pre&#123;</span><br><span class="line">      padding: 0 0.6rem;</span><br><span class="line">      margin: 0.6em 0;</span><br><span class="line">    &#125;</span><br><span class="line">    .markdown-section pre&gt;code&#123;</span><br><span class="line">      padding: 0.4rem 5px;</span><br><span class="line">    &#125;</span><br><span class="line">    .markdown-section code, .markdown-section output:after, .markdown-section pre&#123;</span><br><span class="line">      font-family: &#x27;Source Sans Pro,Helvetica Neue,Arial,sans-serif&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">    /* .sidebar&#123;</span><br><span class="line">      width: 200px;</span><br><span class="line">    &#125;</span><br><span class="line">    .sidebar-toggle&#123;</span><br><span class="line">      width: 184px;</span><br><span class="line">    &#125;</span><br><span class="line">    .content&#123;</span><br><span class="line">      left: 200px;</span><br><span class="line">    &#125;</span><br><span class="line">    .markdown-section&#123;</span><br><span class="line">      max-width: 90%;</span><br><span class="line">    &#125; */</span><br><span class="line">  &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;div id=&quot;app&quot;&gt;&lt;/div&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    window.$docsify = &#123;</span><br><span class="line">      // name: &#x27;工作文档&#x27;,</span><br><span class="line">      auto2top: true,</span><br><span class="line">      repo: &#x27;&#x27;,</span><br><span class="line">      loadSidebar: true,</span><br><span class="line">      sidebarDisplayLevel: 0,</span><br><span class="line">      // subMaxLevel: 2,</span><br><span class="line">      alias: &#123;</span><br><span class="line">        &#x27;/.*/_sidebar.md&#x27;: &#x27;/_sidebar.md&#x27;</span><br><span class="line">      &#125;,</span><br><span class="line">      search: &#123;</span><br><span class="line">          noData: &#123;</span><br><span class="line">            &#x27;/&#x27;: &#x27;无匹配结果&#x27;</span><br><span class="line">          &#125;,</span><br><span class="line">          paths: &#x27;auto&#x27;,</span><br><span class="line">          placeholder: &#123;</span><br><span class="line">            &#x27;/&#x27;: &#x27;搜索&#x27;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">  &lt;!-- Docsify v4 --&gt;</span><br><span class="line">  &lt;script src=&quot;//cdn.jsdelivr.net/npm/docsify@4&quot;&gt;&lt;/script&gt;</span><br><span class="line">  &lt;script src=&quot;//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">  &lt;script src=&quot;//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/docsify-sidebar-collapse.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">  &lt;script src=&quot;//cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -625,7 +549,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/18/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><span class="page-number current">19</span><a class="page-number" href="/page/20/">20</a><span class="space">&hellip;</span><a class="page-number" href="/page/44/">44</a><a class="extend next" rel="next" href="/page/20/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/18/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><span class="page-number current">19</span><a class="page-number" href="/page/20/">20</a><span class="space">&hellip;</span><a class="page-number" href="/page/38/">38</a><a class="extend next" rel="next" href="/page/20/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -693,20 +617,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">132</span>
+          <span class="site-state-item-count">113</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">52</span>
+        <span class="site-state-item-count">56</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">84</span>
+        <span class="site-state-item-count">52</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -722,7 +646,13 @@
           <a href="https://www.xiaochao.me/" title="https:&#x2F;&#x2F;www.xiaochao.me&#x2F;" rel="noopener" target="_blank">小超</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://winney07.github.io/" title="https:&#x2F;&#x2F;winney07.github.io&#x2F;" rel="noopener" target="_blank">winney07</a>
+          <a href="https://www.winney07.cn/" title="https:&#x2F;&#x2F;www.winney07.cn&#x2F;" rel="noopener" target="_blank">winney07</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://blog.csdn.net/winney07" title="https:&#x2F;&#x2F;blog.csdn.net&#x2F;winney07" rel="noopener" target="_blank">CSDN</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://winney07.lofter.com/" title="http:&#x2F;&#x2F;winney07.lofter.com&#x2F;" rel="noopener" target="_blank">乐乎</a>
         </li>
     </ul>
   </div>
@@ -746,13 +676,13 @@
 <div class="copyright">
   
   &copy; 2015 – 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2024</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">winney07</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  <div class="powered-by"><a href="https://beian.miit.gov.cn/" target="_blank">粤ICP备2022033775号-1</a>
   </div>
 
         

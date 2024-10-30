@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="官网文档docsify中文文档 摘自视觉派pie 、Docsify快速搭建个人博客  文档网站生成工具、快速搭建个人博客   docsify 是一个动态生成文档网站的工具。不同于 GitBook、Hexo 的地方是它不会将 .md 转成 .html 文件，所有转换工作都是在运行时进行。 这将非常实用，如果只是需要快速的搭建一个小型的文档网站，或者不想因为生成的一堆 .html 文件“污染” com">
+<meta property="og:type" content="article">
+<meta property="og:title" content="docsify">
+<meta property="og:url" content="http://example.com/2020/08/24/docsify/index.html">
+<meta property="og:site_name" content="winney">
+<meta property="og:description" content="官网文档docsify中文文档 摘自视觉派pie 、Docsify快速搭建个人博客  文档网站生成工具、快速搭建个人博客   docsify 是一个动态生成文档网站的工具。不同于 GitBook、Hexo 的地方是它不会将 .md 转成 .html 文件，所有转换工作都是在运行时进行。 这将非常实用，如果只是需要快速的搭建一个小型的文档网站，或者不想因为生成的一堆 .html 文件“污染” com">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-08-24T09:54:50.000Z">
+<meta property="article:modified_time" content="2024-10-30T05:18:11.884Z">
+<meta property="article:author" content="winney">
+<meta property="article:tag" content="docsify">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2020/08/24/docsify/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>docsify | winney</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">winney</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">It is never too old to learn.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <img alt="winney" src="/images/blog-head.jpg">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/08/24/docsify/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="winney">
+      <meta itemprop="description" content="Doing is better than saying.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="winney">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          docsify
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-08-24 17:54:50" itemprop="dateCreated datePublished" datetime="2020-08-24T17:54:50+08:00">2020-08-24</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-10-30 13:18:11" itemprop="dateModified" datetime="2024-10-30T13:18:11+08:00">2024-10-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%96%87%E6%A1%A3%E7%BD%91%E7%AB%99%E7%94%9F%E6%88%90%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index"><span itemprop="name">文档网站生成工具</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%96%87%E6%A1%A3%E7%BD%91%E7%AB%99%E7%94%9F%E6%88%90%E5%B7%A5%E5%85%B7/docsify/" itemprop="url" rel="index"><span itemprop="name">docsify</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h4 id="官网文档"><a href="#官网文档" class="headerlink" title="官网文档"></a><a target="_blank" rel="noopener" href="https://docsify.js.org/#/zh-cn/quickstart">官网文档</a></h4><p><a target="_blank" rel="noopener" href="https://docsify.js.org/#/zh-cn/">docsify中文文档</a></p>
+<p>摘自<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/4883e95aa903">视觉派pie</a> 、<a target="_blank" rel="noopener" href="https://www.imooc.com/article/287154">Docsify快速搭建个人博客</a></p>
+<blockquote>
+<p>文档网站生成工具、快速搭建个人博客</p>
+</blockquote>
+<blockquote>
+<p>docsify 是一个动态生成文档网站的工具。不同于 GitBook、Hexo 的地方是它不会将 <code>.md</code> 转成 <code>.html</code> 文件，所有转换工作都是在运行时进行。</p>
+<p>这将非常实用，如果只是需要快速的搭建一个小型的文档网站，或者不想因为生成的一堆 <code>.html</code> 文件“污染” commit 记录，只需要创建一个 <code>index.html</code> 就可以开始写文档而且直接部署在<a target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=https://docsify.js.org/%23/zh-cn/deploy">GitHub Pages</a>。</p>
+</blockquote>
+<h4 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h4><ul>
+<li>无需构建，写完文档直接发布</li>
+<li>容易使用并且轻量 (~19kB gzipped)</li>
+<li>智能的全文搜索</li>
+<li>提供多套主题</li>
+<li>丰富的 API</li>
+<li>支持 Emoji</li>
+<li>兼容 IE10+</li>
+<li>支持 SSR (<a target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=https://github.com/docsifyjs/docsify-ssr-demo">example</a>)</li>
+</ul>
+<h4 id="生成文档的工具："><a href="#生成文档的工具：" class="headerlink" title="生成文档的工具："></a>生成文档的工具：</h4><p>阿里的语雀、DokuWiki、MDwiki、HDwiki</p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/84b46b67031d">使用Typora+docsify+GitHub Pages搭建团队知识库</a></p>
+<h5 id="文档案例"><a href="#文档案例" class="headerlink" title="文档案例"></a>文档案例</h5><p><a target="_blank" rel="noopener" href="https://hanxueqing.github.io/Douban-Movie/#/?id=%E4%BD%BF%E7%94%A8vue%E5%85%A8%E5%AE%B6%E6%A1%B6nodejs%E6%90%AD%E5%BB%BA%E7%9A%84%E5%B0%8F%E5%9E%8B%E5%85%A8%E6%A0%88%E9%A1%B9%E7%9B%AE">使用Vue全家桶+Node.js搭建的小型全栈项目</a></p>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>全局安装<code>docsify-cli</code>工具，可以方便地创建及在本地预览生成的文档。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i docsify-cli -g</span><br></pre></td></tr></table></figure>
+
+<h4 id="初始化项目"><a href="#初始化项目" class="headerlink" title="初始化项目"></a>初始化项目</h4><p>如果想在项目的 <code>./docs</code> 目录里写文档，直接通过 <code>init</code> 初始化项目。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docsify init ./docs</span><br></pre></td></tr></table></figure>
+
+<h4 id="本地预览"><a href="#本地预览" class="headerlink" title="本地预览"></a>本地预览</h4><p>通过运行 <code>docsify serve</code> 启动一个本地服务器，可以方便地实时预览效果。默认访问地址 <a target="_blank" rel="noopener" href="http://localhost:3000/">http://localhost:3000</a> </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docsify serve docs</span><br></pre></td></tr></table></figure>
+
+<h4 id="添加左侧导航栏-loadSidebar-true"><a href="#添加左侧导航栏-loadSidebar-true" class="headerlink" title="添加左侧导航栏-loadSidebar: true"></a>添加左侧导航栏-loadSidebar: true</h4><ol>
+<li><p>修改docs/index.html，配置 <code>loadSidebar</code> 选项</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">window.$docsify = &#123;</span><br><span class="line">  loadSidebar: true,  // 开启左侧导航栏</span><br><span class="line">  name: &#x27;&#x27;,</span><br><span class="line">  repo: &#x27;&#x27;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在根目录(docs)（与index.html同目录）中，新建<code>_sidebar.md</code>文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">* 常用网址     // 分组名</span><br><span class="line"></span><br><span class="line">  * [Vue](website/vue.md)   // 链接到对应文件</span><br><span class="line">* 收藏博客</span><br><span class="line"></span><br><span class="line">  * [javascript](blogs/javascript.md)</span><br><span class="line">* 常用软件</span><br><span class="line"></span><br><span class="line">  * [web前端](software/web.md)</span><br><span class="line">* 笔记</span><br><span class="line"></span><br><span class="line">  [web前端](software/web.md)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置 <code>alias</code> 避免不必要的回退过程 （即访问非根目录的页面时，会报<code>_sidebar.md</code>文件是404)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">window.$docsify = &#123;</span><br><span class="line">    loadSidebar: true,</span><br><span class="line">    alias: &#123;</span><br><span class="line">      &#x27;/.*/_sidebar.md&#x27;: &#x27;/_sidebar.md&#x27;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>新建对应的文件（如：<code>website/vue.md</code> 【新建website目录，新建vue.md】）</p>
+</li>
+</ol>
+<h4 id="docsify-侧边栏目录扩展"><a href="#docsify-侧边栏目录扩展" class="headerlink" title="docsify 侧边栏目录扩展"></a><a target="_blank" rel="noopener" href="https://www.cnblogs.com/baby123/p/14361402.html">docsify 侧边栏目录扩展</a></h4><p>官方文档没有介绍左侧目录的折叠问题，可以使用这个开源：</p>
+<p>git地址 <a target="_blank" rel="noopener" href="https://github.com/iPeng6/docsify-sidebar-collapse">https://github.com/iPeng6/docsify-sidebar-collapse</a></p>
+<p>代码如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel=&quot;stylesheet&quot; href=&quot;//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/sidebar.min.css&quot; /&gt;</span><br><span class="line">&lt;link rel=&quot;stylesheet&quot; href=&quot;//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/sidebar-folder.min.css&quot; /&gt;</span><br><span class="line"></span><br><span class="line">&lt;script src=&quot;//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/docsify-sidebar-collapse.min.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>使用sidebarDisplayLevel设置默认折叠的层级：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">window.$docsify = &#123;</span><br><span class="line">      sidebarDisplayLevel: 1,   // 如果想收起的是第一层级，设置为0</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后根据自己需求修改样式。</p>
+<h4 id="侧边栏三层级配置"><a href="#侧边栏三层级配置" class="headerlink" title="侧边栏三层级配置"></a>侧边栏三层级配置</h4><p>参考<a target="_blank" rel="noopener" href="https://cpury.com/1408.html">docsify侧边栏折叠</a></p>
+<p>_sidebar.md：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">* 项目</span><br><span class="line">    * [管理后台](project/manage.md)</span><br><span class="line">        * [新广告后台](project/ad_admin.md)</span><br><span class="line">        * [纳米盒应用后台2.0](project/AppManage2.0.md)</span><br><span class="line">        * [纳米盒管理后台](project/manage_new.md)</span><br><span class="line">        * [黄豆芽办公系统](project/ai.huangdouya.com.md)</span><br><span class="line">        * [黄豆芽sdk运营后台](project/hanteng-manage.vxinyou.com.md)</span><br><span class="line">        * [切支付](project/check_pay.md)</span><br></pre></td></tr></table></figure>
+
+<p>manage.md：（里面写什么都可以）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">## 新广告后台</span><br><span class="line">## 纳米盒应用后台2.0</span><br><span class="line">## 纳米盒管理后台</span><br><span class="line">## 黄豆芽办公系统</span><br><span class="line">## 黄豆芽sdk运营后台</span><br><span class="line">## 切支付</span><br></pre></td></tr></table></figure>
+
+<h4 id="添加代码高亮"><a href="#添加代码高亮" class="headerlink" title="添加代码高亮"></a>添加代码高亮</h4><p>引入js文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=&quot;//cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>参考<a target="_blank" rel="noopener" href="https://docsify.js.org/#/zh-cn/language-highlight">代码高亮</a></p>
+<p>写代码的时候要加上bash</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">​```bash</span><br><span class="line">echo &quot;hello&quot;</span><br><span class="line">​```</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="添加搜索功能"><a href="#添加搜索功能" class="headerlink" title="添加搜索功能"></a>添加搜索功能</h4><ol>
+<li><p>修改<code>window.$docsify</code>（在<code>docs/index.html</code>）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">window.$docsify = &#123;</span><br><span class="line">    loadSidebar: true,</span><br><span class="line">    name: &#x27;&#x27;,</span><br><span class="line">    repo: &#x27;&#x27;,</span><br><span class="line">    search: &#123;   // 添加</span><br><span class="line">        noData: &#123;</span><br><span class="line">          &#x27;/&#x27;: &#x27;无匹配结果&#x27;</span><br><span class="line">        &#125;,</span><br><span class="line">        paths: &#x27;auto&#x27;,</span><br><span class="line">        placeholder: &#123;</span><br><span class="line">          &#x27;/&#x27;: &#x27;搜索&#x27;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加<code>search.min.js</code>插件（在<code>docs/index.html</code>）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=&quot;//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel=&quot;stylesheet&quot; href=&quot;//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/sidebar.min.css&quot; /&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+
+</li>
+</ol>
+<h4 id="部署到服务器"><a href="#部署到服务器" class="headerlink" title="部署到服务器"></a>部署到服务器</h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_34568812/article/details/112002961">如何把 Docsify 文档部署到服务器?</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/84b46b67031d">使用Typora+docsify+GitHub Pages搭建团队知识库</a></p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904115466682375">使用docsify 写开源文档+部署到云服务器</a></p>
+<h4 id="配置参考"><a href="#配置参考" class="headerlink" title="配置参考"></a>配置参考</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;title&gt;工作文档&lt;/title&gt;</span><br><span class="line">  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge,chrome=1&quot; /&gt;</span><br><span class="line">  &lt;meta name=&quot;description&quot; content=&quot;Description&quot;&gt;</span><br><span class="line">  &lt;link rel=&quot;shortcut icon&quot; href=&quot;./favicon.ico&quot; /&gt;</span><br><span class="line">  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0, minimum-scale=1.0&quot;&gt;</span><br><span class="line">  &lt;link rel=&quot;stylesheet&quot; href=&quot;//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css&quot;&gt;</span><br><span class="line">  &lt;link rel=&quot;stylesheet&quot; href=&quot;//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/sidebar.min.css&quot; /&gt;</span><br><span class="line">  &lt;link rel=&quot;stylesheet&quot; href=&quot;//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/sidebar-folder.min.css&quot; /&gt;</span><br><span class="line">  &lt;style&gt;</span><br><span class="line">    a&#123;</span><br><span class="line">      text-decoration: none;</span><br><span class="line">    &#125;</span><br><span class="line">    a:hover&#123;</span><br><span class="line">      text-decoration: underline;</span><br><span class="line">    &#125;</span><br><span class="line">    .sidebar ul li a&#123;</span><br><span class="line">      /* color: #0088CC !important; */</span><br><span class="line">      font-weight: normal;</span><br><span class="line">    &#125;</span><br><span class="line">    .content td a, .content p a&#123;</span><br><span class="line">      font-weight: normal;</span><br><span class="line">    &#125;</span><br><span class="line">    .markdown-section blockquote p&#123;</span><br><span class="line">      font-weight: normal;</span><br><span class="line">    &#125;</span><br><span class="line">    .markdown-section h5&#123;</span><br><span class="line">      font-size: 1.05rem;</span><br><span class="line">      margin-top: 0.5rem;</span><br><span class="line">      margin-bottom: 1rem;</span><br><span class="line">    &#125;</span><br><span class="line">    .markdown-section hr&#123;</span><br><span class="line">      margin: 2em 0 0.5rem;</span><br><span class="line">    &#125;</span><br><span class="line">    .sidebar-nav ul:not(.app-sub-sidebar)&gt;li.folder::before&#123;</span><br><span class="line">      display: none;</span><br><span class="line">    &#125;</span><br><span class="line">    .sidebar-nav ul:not(.app-sub-sidebar)&gt;li.file::before&#123;</span><br><span class="line">      background: none;</span><br><span class="line">    &#125;</span><br><span class="line">    .sidebar-nav ul:not(.app-sub-sidebar)&gt;li::before&#123;</span><br><span class="line">      content: &quot;-&quot;;</span><br><span class="line">      top: -1px;</span><br><span class="line">      left: -10px;</span><br><span class="line">      width: 10px;</span><br><span class="line">      height: 10px;</span><br><span class="line">    &#125;</span><br><span class="line">    .sidebar-nav ul:not(.app-sub-sidebar)&gt;li.open::before&#123;</span><br><span class="line">      transform: none;</span><br><span class="line">    &#125;</span><br><span class="line">    .markdown-section p&#123;</span><br><span class="line">      margin: 0;</span><br><span class="line">    &#125;</span><br><span class="line">    .markdown-section th&#123;</span><br><span class="line">      background-color: #f8f8f8;</span><br><span class="line">      color: #909399;</span><br><span class="line">    &#125;</span><br><span class="line">    .markdown-section pre&#123;</span><br><span class="line">      padding: 0 0.6rem;</span><br><span class="line">      margin: 0.6em 0;</span><br><span class="line">    &#125;</span><br><span class="line">    .markdown-section pre&gt;code&#123;</span><br><span class="line">      padding: 0.4rem 5px;</span><br><span class="line">    &#125;</span><br><span class="line">    .markdown-section code, .markdown-section output:after, .markdown-section pre&#123;</span><br><span class="line">      font-family: &#x27;Source Sans Pro,Helvetica Neue,Arial,sans-serif&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">    /* .sidebar&#123;</span><br><span class="line">      width: 200px;</span><br><span class="line">    &#125;</span><br><span class="line">    .sidebar-toggle&#123;</span><br><span class="line">      width: 184px;</span><br><span class="line">    &#125;</span><br><span class="line">    .content&#123;</span><br><span class="line">      left: 200px;</span><br><span class="line">    &#125;</span><br><span class="line">    .markdown-section&#123;</span><br><span class="line">      max-width: 90%;</span><br><span class="line">    &#125; */</span><br><span class="line">  &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;div id=&quot;app&quot;&gt;&lt;/div&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    window.$docsify = &#123;</span><br><span class="line">      // name: &#x27;工作文档&#x27;,</span><br><span class="line">      auto2top: true,</span><br><span class="line">      repo: &#x27;&#x27;,</span><br><span class="line">      loadSidebar: true,</span><br><span class="line">      sidebarDisplayLevel: 0,</span><br><span class="line">      // subMaxLevel: 2,</span><br><span class="line">      alias: &#123;</span><br><span class="line">        &#x27;/.*/_sidebar.md&#x27;: &#x27;/_sidebar.md&#x27;</span><br><span class="line">      &#125;,</span><br><span class="line">      search: &#123;</span><br><span class="line">          noData: &#123;</span><br><span class="line">            &#x27;/&#x27;: &#x27;无匹配结果&#x27;</span><br><span class="line">          &#125;,</span><br><span class="line">          paths: &#x27;auto&#x27;,</span><br><span class="line">          placeholder: &#123;</span><br><span class="line">            &#x27;/&#x27;: &#x27;搜索&#x27;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">  &lt;!-- Docsify v4 --&gt;</span><br><span class="line">  &lt;script src=&quot;//cdn.jsdelivr.net/npm/docsify@4&quot;&gt;&lt;/script&gt;</span><br><span class="line">  &lt;script src=&quot;//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">  &lt;script src=&quot;//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/docsify-sidebar-collapse.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">  &lt;script src=&quot;//cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/docsify/" rel="tag"># docsify</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/08/24/Node-js%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/" rel="prev" title="Node.js相关笔记">
+      <i class="fa fa-chevron-left"></i> Node.js相关笔记
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/08/25/%E6%8A%80%E6%9C%AF%E8%83%96%E6%B5%8F%E8%A7%88%E5%99%A8%E6%94%B6%E8%97%8F%E5%A4%B9%E5%85%AC%E5%BC%80/" rel="next" title="技术胖浏览器收藏夹公开">
+      技术胖浏览器收藏夹公开 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%98%E7%BD%91%E6%96%87%E6%A1%A3"><span class="nav-number">1.</span> <span class="nav-text">官网文档</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%89%B9%E6%80%A7"><span class="nav-number">2.</span> <span class="nav-text">特性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E6%96%87%E6%A1%A3%E7%9A%84%E5%B7%A5%E5%85%B7%EF%BC%9A"><span class="nav-number">3.</span> <span class="nav-text">生成文档的工具：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%96%87%E6%A1%A3%E6%A1%88%E4%BE%8B"><span class="nav-number">3.1.</span> <span class="nav-text">文档案例</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">4.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E9%A1%B9%E7%9B%AE"><span class="nav-number">5.</span> <span class="nav-text">初始化项目</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%AC%E5%9C%B0%E9%A2%84%E8%A7%88"><span class="nav-number">6.</span> <span class="nav-text">本地预览</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E5%B7%A6%E4%BE%A7%E5%AF%BC%E8%88%AA%E6%A0%8F-loadSidebar-true"><span class="nav-number">7.</span> <span class="nav-text">添加左侧导航栏-loadSidebar: true</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#docsify-%E4%BE%A7%E8%BE%B9%E6%A0%8F%E7%9B%AE%E5%BD%95%E6%89%A9%E5%B1%95"><span class="nav-number">8.</span> <span class="nav-text">docsify 侧边栏目录扩展</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BE%A7%E8%BE%B9%E6%A0%8F%E4%B8%89%E5%B1%82%E7%BA%A7%E9%85%8D%E7%BD%AE"><span class="nav-number">9.</span> <span class="nav-text">侧边栏三层级配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E4%BB%A3%E7%A0%81%E9%AB%98%E4%BA%AE"><span class="nav-number">10.</span> <span class="nav-text">添加代码高亮</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E6%90%9C%E7%B4%A2%E5%8A%9F%E8%83%BD"><span class="nav-number">11.</span> <span class="nav-text">添加搜索功能</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%83%A8%E7%BD%B2%E5%88%B0%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">12.</span> <span class="nav-text">部署到服务器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E5%8F%82%E8%80%83"><span class="nav-number">13.</span> <span class="nav-text">配置参考</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="winney"
+      src="/images/header.jpg">
+  <p class="site-author-name" itemprop="name">winney</p>
+  <div class="site-description" itemprop="description">Doing is better than saying.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">113</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">56</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">52</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://www.xiaochao.me/" title="https:&#x2F;&#x2F;www.xiaochao.me&#x2F;" rel="noopener" target="_blank">小超</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.winney07.cn/" title="https:&#x2F;&#x2F;www.winney07.cn&#x2F;" rel="noopener" target="_blank">winney07</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://blog.csdn.net/winney07" title="https:&#x2F;&#x2F;blog.csdn.net&#x2F;winney07" rel="noopener" target="_blank">CSDN</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://winney07.lofter.com/" title="http:&#x2F;&#x2F;winney07.lofter.com&#x2F;" rel="noopener" target="_blank">乐乎</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2015 – 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">winney07</span>
+</div>
+  <div class="powered-by"><a href="https://beian.miit.gov.cn/" target="_blank">粤ICP备2022033775号-1</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

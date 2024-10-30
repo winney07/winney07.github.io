@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="使用宝塔和wordpress搭建个人博客1.宝塔的安装1.1安装方式 编程导航 搜”宝塔“ 选择”Linux面板“（选择安装 ） 选“安装脚本” 复制 “Centos安装脚本” 的代码 粘贴命令，直接安装【在git上登录服务器，切换到opt目录（cd &#x2F;opt）】 把面板地址和用户名密码记住  1.2 8888端口不可以访问-要做以下两个配置 在腾讯云控制台，配置安全组  在腾讯云控制台，配置防火">
+<meta property="og:type" content="article">
+<meta property="og:title" content="宝塔和wordpress搭建个人博客">
+<meta property="og:url" content="http://example.com/2022/08/04/%E5%AE%9D%E5%A1%94%E5%92%8Cwordpress%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/index.html">
+<meta property="og:site_name" content="winney">
+<meta property="og:description" content="使用宝塔和wordpress搭建个人博客1.宝塔的安装1.1安装方式 编程导航 搜”宝塔“ 选择”Linux面板“（选择安装 ） 选“安装脚本” 复制 “Centos安装脚本” 的代码 粘贴命令，直接安装【在git上登录服务器，切换到opt目录（cd &#x2F;opt）】 把面板地址和用户名密码记住  1.2 8888端口不可以访问-要做以下两个配置 在腾讯云控制台，配置安全组  在腾讯云控制台，配置防火">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image2.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image3.png">
+<meta property="article:published_time" content="2022-08-04T08:48:21.000Z">
+<meta property="article:modified_time" content="2024-10-30T05:18:11.921Z">
+<meta property="article:author" content="winney">
+<meta property="article:tag" content="云服务器">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image.png">
+
+<link rel="canonical" href="http://example.com/2022/08/04/%E5%AE%9D%E5%A1%94%E5%92%8Cwordpress%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>宝塔和wordpress搭建个人博客 | winney</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">winney</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">It is never too old to learn.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <img alt="winney" src="/images/blog-head.jpg">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/04/%E5%AE%9D%E5%A1%94%E5%92%8Cwordpress%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="winney">
+      <meta itemprop="description" content="Doing is better than saying.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="winney">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          宝塔和wordpress搭建个人博客
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-08-04 16:48:21" itemprop="dateCreated datePublished" datetime="2022-08-04T16:48:21+08:00">2022-08-04</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-10-30 13:18:11" itemprop="dateModified" datetime="2024-10-30T13:18:11+08:00">2024-10-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/" itemprop="url" rel="index"><span itemprop="name">云服务器</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="使用宝塔和wordpress搭建个人博客"><a href="#使用宝塔和wordpress搭建个人博客" class="headerlink" title="使用宝塔和wordpress搭建个人博客"></a>使用宝塔和wordpress搭建个人博客</h2><h3 id="1-宝塔的安装"><a href="#1-宝塔的安装" class="headerlink" title="1.宝塔的安装"></a>1.宝塔的安装</h3><h4 id="1-1安装方式"><a href="#1-1安装方式" class="headerlink" title="1.1安装方式"></a>1.1安装方式</h4><ol>
+<li><a target="_blank" rel="noopener" href="https://www.code-nav.cn/">编程导航</a> 搜”宝塔“</li>
+<li>选择”<strong>Linux面板</strong>“（<a target="_blank" rel="noopener" href="https://www.bt.cn/new/download.html">选择安装</a> ）</li>
+<li>选“安装脚本”</li>
+<li>复制 “<strong>Centos安装脚本</strong>” 的代码</li>
+<li>粘贴命令，直接安装【在git上登录服务器，切换到opt目录（cd /opt）】</li>
+<li>把面板地址和用户名密码记住</li>
+</ol>
+<h4 id="1-2-8888端口不可以访问-要做以下两个配置"><a href="#1-2-8888端口不可以访问-要做以下两个配置" class="headerlink" title="1.2 8888端口不可以访问-要做以下两个配置"></a>1.2 8888端口不可以访问-要做以下两个配置</h4><ol>
+<li><h5 id="在腾讯云控制台，配置安全组"><a href="#在腾讯云控制台，配置安全组" class="headerlink" title="在腾讯云控制台，配置安全组"></a>在腾讯云控制台，配置安全组</h5><p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image.png" alt="配置安全组"></p>
+</li>
+<li><h5 id="在腾讯云控制台，配置防火墙"><a href="#在腾讯云控制台，配置防火墙" class="headerlink" title="在腾讯云控制台，配置防火墙"></a>在腾讯云控制台，配置防火墙</h5><p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image2.png" alt="配置防火墙"></p>
+</li>
+</ol>
+<h3 id="2-登录面板地址后"><a href="#2-登录面板地址后" class="headerlink" title="2.登录面板地址后"></a>2.登录面板地址后</h3><h4 id="2-1注册宝塔账号"><a href="#2-1注册宝塔账号" class="headerlink" title="2.1注册宝塔账号"></a>2.1注册宝塔账号</h4><h4 id="2-2安装推荐套件（使用默认推荐即可）"><a href="#2-2安装推荐套件（使用默认推荐即可）" class="headerlink" title="2.2安装推荐套件（使用默认推荐即可）"></a>2.2安装推荐套件（使用默认推荐即可）</h4><p><code>备注：安装LNMP(推荐)</code></p>
+<p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/image3.png" alt="配置防火墙"></p>
+<h3 id="3-网站-添加站点"><a href="#3-网站-添加站点" class="headerlink" title="3.网站-添加站点"></a>3.网站-添加站点</h3><h3 id="4-WordPress安装"><a href="#4-WordPress安装" class="headerlink" title="4. WordPress安装"></a>4. WordPress安装</h3><p><code>备注：1.先把刚建的站点删除，以免冲突； </code></p>
+<p>4.1<a target="_blank" rel="noopener" href="https://wordpress.org/download/">wordpress官网</a>下载安装包（ .tar.gz格式的）</p>
+<p>4.2将 .tar.gz文件上传到站点根目录</p>
+<p>4.3鼠标放上 .tar.gz文件，选择“解压”</p>
+<p>4.4进入解压后的文件夹，将里面的文件全部复制到站点根目录</p>
+<p>4.5安装包和解压后的文件夹可以删掉了</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_33468857/article/details/124652515">宝塔wordpress安装及使用（宝塔wordpress建站教程）</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/JunyouYH/article/details/123448276">宝塔面板安装wordpress详细教程</a></p>
+<h4 id="添加子域名"><a href="#添加子域名" class="headerlink" title="添加子域名"></a>添加子域名</h4><p>在阿里云-控制台-域名解析-解析设置，添加记录值</p>
+<p><code>注：需要等10分钟，才生效</code></p>
+<h4 id="VuePress"><a href="#VuePress" class="headerlink" title="VuePress"></a><a target="_blank" rel="noopener" href="https://vuepress.vuejs.org/zh/">VuePress</a></h4><p><a target="_blank" rel="noopener" href="https://github.com/vuejs/vuepress/tree/master/packages/%40vuepress/core">极简静态网站生成器</a></p>
+<p>可以直接 云开发</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/Tencent/cloudbase-framework?site=vuepress#%E9%A1%B9%E7%9B%AE%E7%A4%BA%E4%BE%8B">https://github.com/Tencent/cloudbase-framework?site=vuepress#%E9%A1%B9%E7%9B%AE%E7%A4%BA%E4%BE%8B</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag"># 云服务器</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/08/04/Vite%E9%85%8D%E7%BD%AE/" rel="prev" title="Vite配置">
+      <i class="fa fa-chevron-left"></i> Vite配置
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/08/10/layui%E8%A1%A8%E6%A0%BC%E5%AE%9E%E7%8E%B0%E5%85%A8%E9%80%89%E6%89%80%E6%9C%89%E9%A1%B5%E9%9D%A2%E6%95%B0%E6%8D%AE%E7%9A%84%E5%8A%9F%E8%83%BD/" rel="next" title="layui表格实现全选所有页面数据的功能">
+      layui表格实现全选所有页面数据的功能 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%AE%9D%E5%A1%94%E5%92%8Cwordpress%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2"><span class="nav-number">1.</span> <span class="nav-text">使用宝塔和wordpress搭建个人博客</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%AE%9D%E5%A1%94%E7%9A%84%E5%AE%89%E8%A3%85"><span class="nav-number">1.1.</span> <span class="nav-text">1.宝塔的安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1%E5%AE%89%E8%A3%85%E6%96%B9%E5%BC%8F"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1安装方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-8888%E7%AB%AF%E5%8F%A3%E4%B8%8D%E5%8F%AF%E4%BB%A5%E8%AE%BF%E9%97%AE-%E8%A6%81%E5%81%9A%E4%BB%A5%E4%B8%8B%E4%B8%A4%E4%B8%AA%E9%85%8D%E7%BD%AE"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.2 8888端口不可以访问-要做以下两个配置</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9C%A8%E8%85%BE%E8%AE%AF%E4%BA%91%E6%8E%A7%E5%88%B6%E5%8F%B0%EF%BC%8C%E9%85%8D%E7%BD%AE%E5%AE%89%E5%85%A8%E7%BB%84"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">在腾讯云控制台，配置安全组</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9C%A8%E8%85%BE%E8%AE%AF%E4%BA%91%E6%8E%A7%E5%88%B6%E5%8F%B0%EF%BC%8C%E9%85%8D%E7%BD%AE%E9%98%B2%E7%81%AB%E5%A2%99"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">在腾讯云控制台，配置防火墙</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E7%99%BB%E5%BD%95%E9%9D%A2%E6%9D%BF%E5%9C%B0%E5%9D%80%E5%90%8E"><span class="nav-number">1.2.</span> <span class="nav-text">2.登录面板地址后</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1%E6%B3%A8%E5%86%8C%E5%AE%9D%E5%A1%94%E8%B4%A6%E5%8F%B7"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1注册宝塔账号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2%E5%AE%89%E8%A3%85%E6%8E%A8%E8%8D%90%E5%A5%97%E4%BB%B6%EF%BC%88%E4%BD%BF%E7%94%A8%E9%BB%98%E8%AE%A4%E6%8E%A8%E8%8D%90%E5%8D%B3%E5%8F%AF%EF%BC%89"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2安装推荐套件（使用默认推荐即可）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E7%BD%91%E7%AB%99-%E6%B7%BB%E5%8A%A0%E7%AB%99%E7%82%B9"><span class="nav-number">1.3.</span> <span class="nav-text">3.网站-添加站点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-WordPress%E5%AE%89%E8%A3%85"><span class="nav-number">1.4.</span> <span class="nav-text">4. WordPress安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E5%AD%90%E5%9F%9F%E5%90%8D"><span class="nav-number">1.4.1.</span> <span class="nav-text">添加子域名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#VuePress"><span class="nav-number">1.4.2.</span> <span class="nav-text">VuePress</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="winney"
+      src="/images/header.jpg">
+  <p class="site-author-name" itemprop="name">winney</p>
+  <div class="site-description" itemprop="description">Doing is better than saying.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">113</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">56</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">52</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://www.xiaochao.me/" title="https:&#x2F;&#x2F;www.xiaochao.me&#x2F;" rel="noopener" target="_blank">小超</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.winney07.cn/" title="https:&#x2F;&#x2F;www.winney07.cn&#x2F;" rel="noopener" target="_blank">winney07</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://blog.csdn.net/winney07" title="https:&#x2F;&#x2F;blog.csdn.net&#x2F;winney07" rel="noopener" target="_blank">CSDN</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://winney07.lofter.com/" title="http:&#x2F;&#x2F;winney07.lofter.com&#x2F;" rel="noopener" target="_blank">乐乎</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2015 – 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">winney07</span>
+</div>
+  <div class="powered-by"><a href="https://beian.miit.gov.cn/" target="_blank">粤ICP备2022033775号-1</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

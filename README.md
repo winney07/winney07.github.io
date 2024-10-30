@@ -88,6 +88,8 @@
    hexo s
    ```
 
+   `如果想在4002端口允许：hexo s -p 4002 `
+
 10. 将winney07.github.io-backup目录下的内容拷贝到winney07.github.io，即.git文件夹和README.md文件
 
     ```

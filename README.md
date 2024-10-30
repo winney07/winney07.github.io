@@ -3,7 +3,7 @@
 
 <span style="color:red;">备注：如果用hexo重新搭建一个博客，创建仓库后可以：1、先创建hexo分支，2、然后将hexo设置为默认分支，3、然后git clone到本地，4、然后再做其他操作</span>
 
-
+`⚠️注：hexo分支是存放源文件的：用git提交；main分支是存放播客文章的：用hexo提交`
 
 #### 步骤
 
@@ -264,7 +264,7 @@
         enable: true
       ```
 
-24. 创建分支hexo（用于存放博客的源文件） [参考教程](https://www.cnblogs.com/kaerxifa/p/11045573.html)
+24. **创建分支hexo（用于存放博客的源文件）** [参考教程](https://www.cnblogs.com/kaerxifa/p/11045573.html)
 
     ```
     创建hexo分支：
@@ -296,7 +296,7 @@
     可以看到已经切换到hexo分支
     ```
 
-27. 将博客源文件提交到hexo分支
+27. **将博客源文件提交到hexo分支**
 
     ```
     git add .

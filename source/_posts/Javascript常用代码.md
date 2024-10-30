@@ -1,8 +1,10 @@
 ---
 title: Javascript常用代码
-date: 2018-03-20 05:28:46
+date: 2018-08-20 10:28:46
 tags:
 - Javascript
+categories: 
+- JavaScript
 ---
 
 在谷歌浏览器控制台（console）中，编写多行代码时，实现换行的快捷键：`shift + 回车`
@@ -779,3 +781,365 @@ pop()方法
 [**compositionend**](https://developer.mozilla.org/zh-CN/docs/Web/Events/compositionend)
 
 ![keyup](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Javascript%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81/keyup.png)
+
+
+
+#### 获取url的参数
+
+```
+function parseParams(url){
+    if( url == undefined){
+        url = window.location.href;
+    }   
+    var indexOfQ = url.indexOf('?');
+    if( indexOfQ == -1){
+        return {}; 
+    }   
+    var search = url.slice(indexOfQ + 1); 
+    var hashes = search.split('&');
+    var params = {};
+    for(var i = 0; i < hashes.length; i++){
+        var hash = hashes[i].split('=', 2); 
+        if ( hash.length == 1){ 
+            params[hash[0]] = ''; 
+        } else {
+            params[hash[0]] = decodeURIComponent(hash[1]).replace(/\+/g, " ");
+        } 
+    }
+    return params;
+}
+
+
+
+function getParam(key){
+    var params = parseParams();
+    return params[key];
+}
+```
+
+#### 设备判断
+
+```
+var ua = navigator.userAgent.toLowerCase(); 
+// 设备判断
+var browser = {
+   versions: function () {
+       var u = navigator.userAgent, app = navigator.appVersion;
+       return {//移动终端浏览器版本信息
+           trident: u.indexOf('Trident') > -1, //IE内核
+           presto: u.indexOf('Presto') > -1, //opera内核
+           webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+           gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+           mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+           ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+           android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或uc浏览器
+           iPhone: u.indexOf('iPhone') > -1, //是否为iPhone或者QQHD浏览器
+           iPad: u.indexOf('iPad') > -1, //是否iPad
+           webApp: u.indexOf('Safari') == -1 //是否web应该程序，没有头部与底部
+       };
+   }(),
+   language: (navigator.browserLanguage || navigator.language).toLowerCase()
+}
+```
+
+#### 显示弹窗时，禁止页面滚动
+
+```
+// 遮罩层
+var tipIos = document.getElementById("tipIos");		//ios提示语
+var tipAndroid = document.getElementById("tipAndroid");		//安卓提示语
+var mask = document.getElementById("mask");		//透明度遮罩层
+var mo=function(e){e.preventDefault();};		//默认事件
+
+// 显示遮罩层和提示语
+function showMask(){
+    mask.style.display="block";		//透明度遮罩层
+    document.body.style.overflow='hidden';		//溢出隐藏        
+    document.addEventListener("touchmove",mo,false);		//禁止页面滑动
+    //根据不同平台显示不同提示语
+    if(navigator.userAgent.match(/(iPhone|iPod|iPad);?/i)){
+        tipIos.style.display="block";
+        
+    }else if(navigator.userAgent.match(/android/i)){
+        tipAndroid.style.display="block";
+    }
+
+}
+// 隐藏遮罩层和提示语
+function hide(){
+  tipIos.style.display="none";
+  tipAndroid.style.display="none";
+  mask.style.display="none";
+  document.body.style.overflow='';		//出现滚动条
+  document.removeEventListener("touchmove",mo,false);  
+}
+```
+
+#### 错误提示
+
+```
+// 提示信息
+function errorShow(){
+   document.getElementById("error").style.display="block";
+   window.setTimeout(function() {
+        document.getElementById("error").style.display="none";
+   },2500)
+   
+}
+```
+
+#### 打开App/安装App
+
+```
+   // 打开APP/安装APP
+function openApp(){
+    if (ua.match(/MicroMessenger/i) == "micromessenger") {	//微信
+        showMask();	 //显示提示语
+    }else if(ua.match(/WeiBo/i) == "weibo"){//微博
+        showMask();	 //显示提示语
+    }else if(browser.versions.ios){//ios浏览器
+        window.location.href = "quanminguijinshu://";//ios app协议
+        window.setTimeout(function() {
+            window.location.href = "https://itunes.apple.com/cn/app/***?mt=8";//ios下载链
+        },2000)
+        document.getElementById("error").innerHTML="正在尝试打开APP";
+        errorShow();    //提示信息
+    }else if(browser.versions.android){//安卓浏览器
+       // window.location.href = "myapp://xxx/openwith?data=mydata";//android app协议
+        window.location.href = "myapp1://xxx/openwith1?data=mydata";//android app协议
+        document.getElementById("error").innerHTML="正在尝试打开APP";
+        errorShow();    //提示信息
+        window.setTimeout(function() {
+            document.getElementById("error").innerHTML="您还没下载我们的APP";
+            errorShow();
+        }, 3500)
+        window.setTimeout(function() {
+           window.location.href = "http://***/downloads/qmgjsh_wd.apk";	//android下载地址
+       },4000)    
+    }else{	//PC端
+        document.getElementById("btn1").href="http://***";	//跳转官网
+       	document.getElementById("btn3").href="http://***";	//跳官网页面
+		document.getElementById("footer").href="http://***";	//跳官网页面
+        document.getElementById("btn-logo").href="http://***";	//跳官网页面
+     // document.getElementById("btn3").href="eia1013.html?platform=else";	//跳初请页面
+    }
+} 
+```
+
+```
+// 获取参数platform的值
+function getPlatform(){
+    var params = parseParams();
+    var platform = params.platform;
+    return platform;
+}
+
+//platform的值
+var platform = getPlatform();
+// 活动页面分享之后
+if(platform =="else"){
+   //  document.getElementById("btn3").href="adp1102.html?platform=else";//跳初请页面
+    //分享TOP小弹窗
+     document.getElementById("TopBer").style.display="block";   //document.getElementById("Oa").style.paddingBottom="1.4rem"; 
+    if(browser.versions.ios){
+        document.getElementById("btn1").href="javascript:;";
+        if(ua.match(/QQ/i) == "qq"){
+           document.getElementById("btn1").href="quanminguijinshu://";
+        }
+        document.getElementById("btn3").href="javascript:;";
+        if(ua.match(/QQ/i) == "qq"){
+           document.getElementById("btn3").href="quanminguijinshu://";
+        } 
+		document.getElementById("footer").href="javascript:;";
+        if(ua.match(/QQ/i) == "qq"){
+           document.getElementById("footer").href="quanminguijinshu://";
+        }
+        document.getElementById("btn-logo").href="javascript:;";
+        if(ua.match(/QQ/i) == "qq"){
+           document.getElementById("btn-logo").href="quanminguijinshu://";
+        }
+    }
+    if(browser.versions.android){
+       document.getElementById("btn").href="javascript:;";
+       document.getElementById("btn2").href="javascript:;";
+     //   document.getElementById("btn-logo").href="javascript:;";
+    }
+    //点击按钮时触发打开APP/安装APP
+    document.getElementById("btn1").onclick = function(){
+        openApp();
+    }
+    document.getElementById("btn3").onclick = function(){
+        openApp();
+    }
+    document.getElementById("footer").onclick = function(){
+        openApp();
+    };
+	document.getElementById("btn-logo").onclick = function(){
+        openApp();
+    }
+}else{//在平台内
+   document.getElementById("btn1").href="open_index=cz";//跳交易页面
+    document.getElementById("btn3").href="open_index=3";//跳直播间页面
+	document.getElementById("footer").href="open_index=3";//跳直播间页面
+ //  document.getElementById("btn-logo").href="open_index=3";//跳直播间页面
+ //  document.getElementById("btn3").href="adp1102.html";//跳初请页面
+}
+```
+
+#### 判断是否为微信
+
+```
+// 判断是否为微信
+function isWechat(){
+    var ua = navigator.userAgent.toLowerCase();
+    return ua.indexOf('micromessenger') != -1;
+}
+```
+
+#### 判断是否为iPhone
+
+```
+// 判断是否为iPhone
+function isIphone(){
+    var ua = navigator.userAgent.toLowerCase();
+
+    var params = parseParams();
+    var channel_id = params.channel_id;
+   
+    if(channel_id == '9ff9' || channel_id == '9ff8'){
+        return true;
+    }
+
+    return ua.indexOf('iphone') != -1 || ua.indexOf('ipad') != -1;
+}
+```
+
+#### 判断是否为PC端
+
+```
+// 判断是否为PC端
+function isPC() {
+    var userAgentInfo = navigator.userAgent;
+    var Agents = ["Android", "iPhone",
+                "SymbianOS", "Windows Phone",
+                "iPad", "iPod"];
+    var flag = true;
+    for (var v = 0; v < Agents.length; v++) {
+        if (userAgentInfo.indexOf(Agents[v]) > 0) {
+            flag = false;
+            break;
+        }
+    }
+    return flag;
+}
+```
+
+
+
+#### 添加雪花动画
+
+```
+<style>
+    body{background-color: #999;}
+</style>
+
+<canvas id="canvas"></canvas>
+
+//添加雪花动画
+//canvas init
+var canvas = document.getElementById("canvas");
+var ctx = canvas.getContext("2d");
+
+//canvas dimensions
+var W = window.innerWidth;
+var H = window.innerHeight;
+canvas.width = W;
+canvas.height = H;
+
+//snowflake particles
+var mp = 60; //max particles
+var particles = [];
+for(var i = 0; i < mp; i++)
+{
+particles.push({
+  x: Math.random()*W, //x-coordinate
+  y: Math.random()*H, //y-coordinate
+  r: Math.random()*4+1, //radius
+  d: Math.random()*mp //density
+})
+}
+
+//Lets draw the flakes
+function draw()
+{
+ctx.clearRect(0, 0, W, H);
+
+ctx.fillStyle = "rgba(255, 255, 255, 0.6)";
+ctx.strokeStyle = 'rgba(255, 255, 255, 0.4)';
+ctx.lineWidth = '0.01';
+ctx.beginPath();
+for(var i = 0; i < mp; i++)
+{
+  var p = particles[i];
+  ctx.moveTo(p.x, p.y);
+  ctx.arc(p.x, p.y, p.r, 0, Math.PI*2, true);
+}
+ctx.fill();
+ctx.stroke();
+update();
+}
+
+//Function to move the snowflakes
+//angle will be an ongoing incremental flag. Sin and Cos functions will be applied to it to create vertical and horizontal movements of the flakes
+var angle = 0;
+function update()
+{
+angle += 0.01;
+for(var i = 0; i < mp; i++)
+{
+  var p = particles[i];
+  //Updating X and Y coordinates
+  //We will add 1 to the cos function to prevent negative values which will lead flakes to move upwards
+  //Every particle has its own density which can be used to make the downward movement different for each flake
+  //Lets make it more random by adding in the radius
+  p.y += Math.cos(angle+p.d) + 1 + p.r/6;
+  p.x += Math.sin(angle) * 2; 
+
+  //Sending flakes back from the top when it exits
+  //Lets make it a bit more organic and let flakes enter from the left and right also.
+  if(p.x > W+5 || p.x < -5 || p.y > H)
+  {
+    if(i%3 > 0) //66.67% of the flakes
+    {
+      particles[i] = {x: Math.random()*W, y: -10, r: p.r, d: p.d};
+    }
+    else
+    {
+      //If the flake is exitting from the right
+      if(Math.sin(angle) > 0)
+      {
+        //Enter from the left
+        particles[i] = {x: -5, y: Math.random()*H, r: p.r, d: p.d};
+      }
+      else
+      {
+        //Enter from the right
+        particles[i] = {x: W+5, y: Math.random()*H, r: p.r, d: p.d};
+      }
+    }
+  }
+}
+}
+//animation loop
+setInterval(draw, 33);
+```
+
+#### 判断一个数组的某个对象是否具体某个属性，如果没有就追加对象
+
+```
+// records是对象数组
+if (!records.some(obj => obj.username === value.username)) {
+    records.push(value);
+}
+```
+

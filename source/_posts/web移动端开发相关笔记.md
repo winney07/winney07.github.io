@@ -1,9 +1,10 @@
 ---
 title: web移动端开发相关笔记
-date: 2018-06-18 11:40:08
+date: 2018-08-22 11:40:08
 tags:
-- 移动端开发
-- 工作笔记
+- 移动端
+categories:
+- 移动端
 ---
 
 #### [移动端开发的资源与小技巧](https://github.com/jtyjty99999/mobileTech)
@@ -23,7 +24,21 @@ tags:
 | [移动设备适配库2](http://detectmobilebrowsers.com/)          | [jQuery Mobile Demos](https://demos.jquerymobile.com/1.4.3/) | [zepto源码注释](https://www.cnblogs.com/sky000/archive/2013/03/29/2988952.html) |
 | [移动端web开发技巧](http://www.imooc.com/article/1115)       |                                                              |                                                              |
 
+#### 在移动端页面显示控制台（调试）-Vcode
+
+[移动端h5网页、微信网页调试之利用vConsole真机调试+显示控制台打印信息、调试接口(附带vue项目里的具体使用方法)](https://blog.csdn.net/qq_22182989/article/details/125338389)
+
+```
+<script type="text/javascript" src='https://unpkg.com/vconsole@3.15.0/dist/vconsole.min.js'></script>
+
+var vConsole = new window.VConsole(); 
+```
+
 #### 移动端H5页面适配问题总结
+
+[移动端页面的适配](https://zhuanlan.zhihu.com/p/141964516)
+
+[再聊移动端页面的适配](https://www.w3cplus.com/css/vw-for-layout.html)
 
 ##### 移动端H5页面使用rem做适配
 
@@ -77,7 +92,7 @@ tags:
       ```
 
       `注意：页面不写meta[name="viewport"]标签,代码自动判断插入`
-   
+
    3. iPhone6中，`data-dpr="2"`，html的字体`style="font-size: 46.875px;"`
 
       ```
@@ -85,9 +100,9 @@ tags:
       
       // 使用26px除以46.875就是0.55rem（设计稿中，多少px，除以46.875就是多少rem）
       ```
-   
+
    `如果需要适配横屏`，修改`mobile-util.js`
-   
+
    ```
    // 横竖屏字体设置
    if (window.orientation == 90 || window.orientation == -90) {
@@ -410,8 +425,6 @@ header{
 	font-size: 16rem;
 }
 ```
-
-
 
 ## 移动端经验总结
 
@@ -1062,6 +1075,8 @@ if(strstr($_SERVER['HTTP_USER_AGENT'],'iPhone') || strstr($_SERVER['HTTP_USER_AG
 
 ### 阻止旋转屏幕时自动调整字体大小
 
+### 
+
 ```
 html, body, form, fieldset, p, div, h1, h2, h3, h4, h5, h6 {-webkit-text-size-adjust:none;}
 ```
@@ -1293,6 +1308,8 @@ a[i].addEventListener(‘touchstart’,function(){},false);
 #### 消除transition闪屏
 
 两个方法：使用css3动画的时尽量利用3D加速，从而使得动画变得流畅。动画过程中的动画闪白可以通过 backface-visibility 隐藏。
+
+
 
 ```
 -webkit-transform-style: preserve-3d;
@@ -2037,7 +2054,9 @@ has3d = false
 3.过长的滚动内容，导致卡顿和app直接闪退
 
 1. 不要使用checkDOMChanges。虽然checkDOMChanges很方便，定时检测容器长度是否变化来refresh，但这也意味着你要消耗一个Interval的内存空间
+
 2. 隐藏iscroll滚动条，配置时设置hScrollbar和vScrollbar为false。
+
 3. 不得已的情况下，去掉各种效果，momentum、useTransform、useTransition都设置为false
 
    4.左右滚动时，不能正确响应正文上下拉动
@@ -2369,6 +2388,8 @@ Device-pixel-ratio:2
 
 [adb 出现 adb.exe: more than one device/emulator 解决方法](https://blog.csdn.net/weixin_64094652/article/details/126032471)
 
+](https://blog.csdn.net/weixin_64094652/article/details/126032471)
+
 ```
 依次输入以下命令，再重新启动模拟器
 
@@ -2390,7 +2411,7 @@ adb remount
 adb install base.apk
 ```
 
-#### [Zepto](https://zeptojs.com/)
+[Zepto](https://zeptojs.com/)
 
 > **Zepto**是一个轻量级的**针对现代高级浏览器的JavaScript库，** 它与jquery**有着类似的api**。 如果你会用jquery，那么你也会用zepto。
 
@@ -2482,4 +2503,160 @@ adb install base.apk
 这个链接并非是在手机打开App Store后找到自己的App点击分享按钮之后点击"复制链接"得到的链接,而是一个itunes链接,基本格式是：https://itunes.apple.com/cn/app/idxxxxxxxxxx?mt=8 
 
 > 去到https://itunes.apple.com，可以搜索想要的应用，拿到链接上的id，拿来测试
+
+
+
+#### meta标签
+
+```
+<meta http-equiv="Refresh"content="2;URL=http://www.haorooms.com"> //(注意后面的引号，分别在秒数的前面和网址的后面) 
+<meta http-equiv="Set-Cookie"content="cookie value=xxx;expires=Friday,12-Jan-200118:18:18GMT；path=/"> 
+<meta http-equiv="Window-target"content="_top"> 
+
+
+//(设置屏幕宽度为设备宽度，禁止用户手动调整缩放)
+<meta name="viewport" content="width=device-width,user-scalable=no" />
+
+//(设置屏幕密度为高频，中频，低频自动缩放，禁止用户手动调整缩放)
+<meta name="viewport" content="width=device-width,target-densitydpi=high-dpi,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+//name之format-detection忽略电话号码和邮箱<meta name="format-detection" content="telephone=no">
+
+
+//name之设置作者姓名及联系方式
+//说明：设置作者姓名及联系方式
+
+<meta name="author" contect="name, xxx@163.com" />
+
+<!-- 页面关键词 -->
+<meta name="keywords" content=""/>
+
+ <!-- 搜索引擎抓取 -->
+<meta name="robots" content="index,follow"/>
+
+// 开启对web app程序的支持<meta name="apple-mobile-web-app-capable" content="yes">
+
+// 改变顶部状态条的颜色；<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+```
+
+#### [Flexible.js可伸缩布局实现方法详解](https://www.jb51.net/article/199635.htm)
+
+```
+;(function(win, lib) {
+  var doc = win.document;
+  var docEl = doc.documentElement;
+  var metaEl = doc.querySelector('meta[name="viewport"]');
+  var flexibleEl = doc.querySelector('meta[name="flexible"]');
+  var dpr = 0;
+  var scale = 0;
+  var tid;
+  var flexible = lib.flexible || (lib.flexible = {});
+   
+  if (metaEl) {
+    console.warn('将根据已有的meta标签来设置缩放比例');
+    var match = metaEl.getAttribute('content').match(/initial\-scale=([\d\.]+)/);
+    if (match) {
+      scale = parseFloat(match[1]);
+      dpr = parseInt(1 / scale);
+    }
+  } else if (flexibleEl) {
+    var content = flexibleEl.getAttribute('content');
+    if (content) {
+      var initialDpr = content.match(/initial\-dpr=([\d\.]+)/);
+      var maximumDpr = content.match(/maximum\-dpr=([\d\.]+)/);
+      if (initialDpr) {
+        dpr = parseFloat(initialDpr[1]);
+        scale = parseFloat((1 / dpr).toFixed(2));  
+      }
+      if (maximumDpr) {
+        dpr = parseFloat(maximumDpr[1]);
+        scale = parseFloat((1 / dpr).toFixed(2));  
+      }
+    }
+  }
+ 
+  if (!dpr && !scale) {
+    var isAndroid = win.navigator.appVersion.match(/android/gi);
+    var isIPhone = win.navigator.appVersion.match(/iphone/gi);
+    var devicePixelRatio = win.devicePixelRatio;
+    if (isIPhone) {
+      // iOS下，对于2和3的屏，用2倍的方案，其余的用1倍方案
+      if (devicePixelRatio >= 3 && (!dpr || dpr >= 3)) {        
+        dpr = 3;
+      } else if (devicePixelRatio >= 2 && (!dpr || dpr >= 2)){
+        dpr = 2;
+      } else {
+        dpr = 1;
+      }
+    } else {
+      // 其他设备下，仍旧使用1倍的方案
+      dpr = 1;
+    }
+    scale = 1 / dpr;
+  }
+ 
+  docEl.setAttribute('data-dpr', dpr);
+  if (!metaEl) {
+    metaEl = doc.createElement('meta');
+    metaEl.setAttribute('name', 'viewport');
+    metaEl.setAttribute('content', 'initial-scale=' + scale + ', maximum-scale=' + scale + ', minimum-scale=' + scale + ', user-scalable=no');
+    if (docEl.firstElementChild) {
+      docEl.firstElementChild.appendChild(metaEl);
+    } else {
+      var wrap = doc.createElement('div');
+      wrap.appendChild(metaEl);
+      doc.write(wrap.innerHTML);
+    }
+  }
+ 
+  function refreshRem(){
+    var width = docEl.getBoundingClientRect().width;
+    if (width / dpr > 540) {
+      width = 540 * dpr;
+    }
+    var rem = width / 10;
+    docEl.style.fontSize = rem + 'px';
+    flexible.rem = win.rem = rem;
+  }
+ 
+  win.addEventListener('resize', function() {
+    clearTimeout(tid);
+    tid = setTimeout(refreshRem, 300);
+  }, false);
+  win.addEventListener('pageshow', function(e) {
+    if (e.persisted) {
+      clearTimeout(tid);
+      tid = setTimeout(refreshRem, 300);
+    }
+  }, false);
+ 
+  if (doc.readyState === 'complete') {
+    doc.body.style.fontSize = 12 * dpr + 'px';
+  } else {
+    doc.addEventListener('DOMContentLoaded', function(e) {
+      doc.body.style.fontSize = 12 * dpr + 'px';
+    }, false);
+  }
+   
+ 
+  refreshRem();
+ 
+  flexible.dpr = win.dpr = dpr;
+  flexible.refreshRem = refreshRem;
+  flexible.rem2px = function(d) {
+    var val = parseFloat(d) * this.rem;
+    if (typeof d === 'string' && d.match(/rem$/)) {
+      val += 'px';
+    }
+    return val;
+  }
+  flexible.px2rem = function(d) {
+    var val = parseFloat(d) / this.rem;
+    if (typeof d === 'string' && d.match(/px$/)) {
+      val += 'rem';
+    }
+    return val;
+  }
+ 
+})(window, window['lib'] || (window['lib'] = {}));
+```
 

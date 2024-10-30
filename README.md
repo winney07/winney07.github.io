@@ -247,10 +247,15 @@
       #Search
       search:
         path: search.xml
-        field: post
+        field: all
         format: html
         limit: 10000
       ```
+      > `path`：索引文件路径，相对于根目录
+      > `field`：搜索范围，默认是post，另外可以选择page、all，设置成all表示搜索所有页面
+      > `limit`：最大搜索条目数
+      >
+      > 这里把field改为all
 
     - 修改next主题配置文件（themes\next\\\_config.yml找到 local_search 项，将它的enable修改为true）
 
@@ -305,6 +310,26 @@
 
     themes里面的apple-touch-icon-next.png
 
+    1. `\themes\next\layout\_partials\head\head.swig`
+    
+       ```
+       {%- if theme.favicon.apple_touch_icon %}
+         <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for(theme.favicon.apple_touch_icon) }}">
+       {%- endif %}
+       ```
+    
+    2. `\themes\next\_config.yml`
+    
+       ```
+       favicon:
+         small: /images/favicon-16x16-next.png
+         medium: /images/favicon-32x32-next.png
+         apple_touch_icon: /images/apple-touch-icon-next.png
+         safari_pinned_tab: /images/logo.svg
+       ```
+    
+       
+    
     
 
 > hexo d 部署的代码到main分支，也就是博客网页访问的内容
@@ -318,3 +343,45 @@
 
 
 注：db.json文件不需要上传到GitHub，克隆项目，运行项目时，会重新生成。
+
+
+
+
+
+报错：
+
+```
+ 14 files changed, 8968 insertions(+), 8866 deletions(-)
+kex_exchange_identification: Connection closed by remote host
+Connection closed by 20.205.243.166 port 22
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+FATAL {
+  err: Error: Spawn failed
+      at ChildProcess.<anonymous> (H:\Github\winney07.github.io\node_modules\hexo-deployer-git\node_modules\hexo-util\lib\spawn.js:51:21)
+      at ChildProcess.emit (node:events:390:28)
+      at ChildProcess.cp.emit (H:\Github\winney07.github.io\node_modules\cross-spawn\lib\enoent.js:34:29)
+      at Process.ChildProcess._handle.onexit (node:internal/child_process:290:12) {
+    code: 128
+  }
+} Something's wrong. Maybe you can find the solution here: %s https://hexo.io/docs/troubleshooting.html
+
+```
+
+重新再执行一次以下代码：
+
+```
+hexo clean && hexo g && hexo d
+```
+
+
+
+### [一个github账号怎么实现多个静态网站](https://blog.csdn.net/qq_39583550/article/details/128546569)
+
+1. 往仓库里面放入`index.html`文件
+2. 设置里面开启github page
+3. 此时就可以通过`username.github.io/仓库名`访问了(部署需要时间, 需要稍等片刻哦)
+
+在新创建的仓库中，选择`“Setting"——>”Pages"——>"**Branch**"选择"main"(选择网页所在分支)`

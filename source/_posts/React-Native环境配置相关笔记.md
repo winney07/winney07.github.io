@@ -2,7 +2,10 @@
 title: React-Native环境配置相关笔记
 date: 2021-10-02 08:10:40
 tags:
-- React
+- React Native
+categories:
+- 前端开发框架
+- React Native
 ---
 
 ### macOS环境配置

@@ -1,9 +1,10 @@
 ---
 title: 视频剪辑-Adobe-Pr
 date: 2021-04-01 17:24:46
-tags: Adobe-Pr
+tags: 
+- Adobe-Pr
 categories: 
-- 工作笔记
+- 视频剪辑
 ---
 
 ####  Adobe Premiere 

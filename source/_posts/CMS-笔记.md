@@ -51,3 +51,9 @@ categories:
 2.本身网站的数据大小,即数据库的使用情况.
 
 3.目标网站的速度及代码结构
+
+
+
+#### URL地址栏-新闻自动生成的目录修改
+
+![cms](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/CMS-%E7%AC%94%E8%AE%B0/CMS1.png)

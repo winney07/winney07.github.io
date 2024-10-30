@@ -4,6 +4,8 @@ date: 2021-08-17 11:30:39
 tags:
 - Node.js
 - Socket.io
+categories:
+- Socket
 ---
 
 [Socket.io-官网](https://socket.io/)
@@ -103,3 +105,63 @@ https://cdnjs.com/libraries/socket.io
 [ping/pong模式_PING的完整形式是什么？](ping/pong模式_PING的完整形式是什么？)
 
 [socket.io中的pingtimeout和pingInterval](https://qa.1r1g.com/sf/ask/3490608271/#)
+
+
+
+#### `vue.config.js`
+
+```
+module.exports = {
+    devServer: {
+        proxy: {
+            '/socket.io': {
+                target: 'http://localhost:3000' ,
+                changeOrigin: true
+            }
+        }
+    }
+}
+```
+
+#### `src/socket/index.js`
+
+```
+import io from 'socket.io-client'
+
+// 模块的作用:收发消息
+// 创建连接
+const socket = io()
+
+// 进行连接建立的监听
+socket.on("connect', () => {
+ 	console.log('和服务器已建立连接...')
+})
+
+// 将来便于其他模块使用socket对象，去发消息
+export default socket
+```
+
+#### 目标：构建Socket.io模块
+
+基本语法:
+1.创建连接:` const socket = io[ 地址]`
+
+2.发送消息: `socket.emit(消息type类型，消息内容，接收到消息的回调函致)`
+
+3.监听消息:`socket.on(事件type类型，接收到消息的回调国数)`
+
+为什么需要这个模块:
+
+1. 用on 鉴听事件，`接收服务器`消息
+2. 用emit`发送消息到服务器`
+
+构建步骤：
+
+1. 安装依赖包：`yarn add socket.io-client`
+
+2. 创建`src/socket/index.js `模块文件，编写模块内容
+3. `main.js `中导入
+
+4. `vue.config.js` 配置网络代理
+5. 启动后台server，`测试接口`
+

@@ -3,6 +3,9 @@ title: React Native相关笔记
 date: 2021-09-28 10:35:24
 tags:
 - React Native
+categories:
+- 前端开发框架
+- React Native
 ---
 
 [React Native官网](https://reactnative.dev/)

@@ -1,7 +1,11 @@
 ---
 title: Markdown
 date: 2021-06-10 14:26:57
-tags: Markdown
+tags: 
+- Markdown
+categories: 
+- 文档网站生成工具
+- Markdown
 ---
 
 #### Markdown合并表格单元格
@@ -100,3 +104,13 @@ Markdown本身不支持单元格合并
 ##### [docsify](https://docsify.js.org/#/)
 
 #### 语雀
+
+#### 修改图片的相对路径
+
+（可以不需要在Typora里面设置，直接写相对路径）
+
+```
+![备注文字](./images/note6.png)
+```
+
+![修改图片的相对路径](https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/%E7%AC%94%E8%AE%B0/3.png)

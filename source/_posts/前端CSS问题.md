@@ -2,10 +2,9 @@
 title: 前端CSS问题
 date: 2020-06-30 17:35:17
 tags:
-- css问题
+- CSS
 categories: 
-- 工作笔记
-- css问题
+- CSS
 ---
 
 
@@ -734,45 +733,6 @@ input {
 64         }
 65     });
 66 }
-```
-
-
-
-#### 修改input type="file"按钮样式
-
-html结构：
-
-```
-<div class="iconBtn">
-	<span>上传子活动文件</span>
-	<input class="inputFile" type="file" name="semfile">
-</div>
-```
-
-css样式：
-
-```
-.iconBtn {
-    position: relative;
-    border: 1px solid #c9c9c9;
-    border-radius: 3px;
-    font-size: 12px;
-    padding: 6px 10px 7px;
-    color: #666;
-    display: inline-block;
-    cursor: pointer;
-    background-color: #fbfbfb;
-}
-.inputFile {
-    position: absolute;
-    opacity: 0;
-    filter: alpha(opacity=0);
-    width: 100%;
-    left: 0;
-    top: 0;
-    height: 100%;
-    cursor: pointer;
-}
 ```
 
 #### 头部和底部固定定位，中间内容区滚动展示

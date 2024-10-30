@@ -3,7 +3,9 @@ title: Vite配置
 date: 2022-08-04 10:36:44
 tags:
 - Vite
-- Vue3
+categories:
+- 前端开发框架
+- Vue.js
 ---
 
 配置文件：`vite.config.ts`
@@ -297,6 +299,8 @@ export default [
 
 ### 5.配置前端跨域代理
 
+`proxy`
+
 ```
 server: {
     proxy: {
@@ -312,6 +316,22 @@ server: {
 ```
 axios.get('/ss').then(res => {
     console.log(res);
+})
+```
+
+```
+export default defineConfig({
+	plugins:[vue()],
+	server:{	//中转服务器
+        proxy:{		//通过代理实现跨域
+        // https://i.maoyan.com
+            '/path':{
+                target:'https://i.maoyan.com',		//替换的服务端地址
+                changeOrigin:true,		//开启代理，允许跨域
+                rewrite: path=>path.replace(/^\/path/,'')		//设置重写的路径
+             }
+        }
+    }
 })
 ```
 

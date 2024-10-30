@@ -2,10 +2,9 @@
 title: Javascript方法
 date: 2020-04-07 14:23:17
 tags:
-- Javascript
+- JavaScript
 categories: 
-- 工作笔记
-- Javascript
+- JavaScript
 ---
 
 #### [关于< input type=“number” />可以输入字母e](https://www.cnblogs.com/ysx215/p/14654648.html)
@@ -2086,3 +2085,15 @@ window.onscroll=function(){
 </html>
 ```
 
+#### 拷贝数组，不影响原数组
+
+```
+var cols = getIndexs()
+, colsOld = $.extend(true,[],cols);// 不受影响的表头
+```
+
+### [slice](https://so.csdn.net/so/search?q=slice&spm=1001.2101.3001.7020)()
+
+返回一个索引和另一个索引之间的数据(不改变原数组),slice(start,end)有两个参数(start必需,end选填),都是索引,返回值不包括end
+
+[js截取数组slice(),splice()两种方法](https://blog.csdn.net/qq_43627981/article/details/99625825/)

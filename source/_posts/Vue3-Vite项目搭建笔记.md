@@ -4,6 +4,9 @@ date: 2020-07-29 10:53:07
 tags:
 - Vue3
 - Vite
+categories:
+- 前端开发框架
+- Vue.js
 ---
 
 [Vite官网](https://vitejs.dev/)

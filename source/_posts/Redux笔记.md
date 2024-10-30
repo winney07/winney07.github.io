@@ -4,8 +4,8 @@ date: 2021-04-12 14:24:57
 tags: 
 - Redux
 categories:
-- 学习笔记
-- Redux
+- 前端开发框架
+- React
 ---
 
 [Redux-Github](https://github.com/reduxjs)

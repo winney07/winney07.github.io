@@ -4,16 +4,16 @@ date: 2020-05-26 16:35:23
 tags:
 - Vue.js
 categories:
-- 工作笔记
+- 前端开发框架
 - Vue.js
 ---
 
 ### 在项目中引入阿里图库
 1. 在阿里图库中，选好图标，建立好项目
 2. 将整个项目的图标下载到本地解压
-3. 在Vue.js项目的assets目录中，新建一个icon目录，将解压后文件夹里面的文件复制到这个目录下
-4. 在main.js文件里引入iconfont.css, import '@/assets/icon/iconfont.css'
-5. 在项目中引入图标的时候要加上iconfont类，然后再添加图标本身的类名
+3. 在`Vue.js`项目的`assets`目录中，新建一个icon目录，将解压后文件夹里面的文件复制到这个目录下
+4. 在`main.js`文件里引入`iconfont.css`, `import '@/assets/icon/iconfont.css'`
+5. 在项目中引入图标的时候要加上`iconfont`类，然后再添加图标本身的类名
 
 ### 链接文字的写法(路由跳转)
 ##### 不传参

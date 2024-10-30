@@ -1,7 +1,11 @@
 ---
 title: Element-UI笔记
 date: 2021-05-13 11:36:28
-tags: Element-UI
+tags: 
+- Element
+categories: 
+- 前端UI框架
+- Element
 ---
 
 #### 安装

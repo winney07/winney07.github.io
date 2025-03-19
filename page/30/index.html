@@ -193,6 +193,117 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2019/08/22/CSS%E6%A0%B7%E5%BC%8FDemo/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="winney">
+      <meta itemprop="description" content="Doing is better than saying.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="winney">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/08/22/CSS%E6%A0%B7%E5%BC%8FDemo/" class="post-title-link" itemprop="url">CSS样式Demo</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-08-22 10:57:59" itemprop="dateCreated datePublished" datetime="2019-08-22T10:57:59+08:00">2019-08-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-10-30 13:18:11" itemprop="dateModified" datetime="2024-10-30T13:18:11+08:00">2024-10-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CSS/" itemprop="url" rel="index"><span itemprop="name">CSS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="使用flex布局实现上下布局，整屏背景图设置—图片会变形"><a href="#使用flex布局实现上下布局，整屏背景图设置—图片会变形" class="headerlink" title="使用flex布局实现上下布局，整屏背景图设置—图片会变形"></a>使用flex布局实现上下布局，整屏背景图设置—图片会变形</h4><p>优点：铺满</p>
+<p>缺点：图片变形</p>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>contain</td>
+<td>此时会保持图像的纵横比并将图像缩放成将适合背景定位区域的最大大小。</td>
+</tr>
+<tr>
+<td>cover</td>
+<td>此时会保持图像的纵横比并将图像缩放成将完全覆盖背景定位区域的最小大小。</td>
+</tr>
+</tbody></table>
+<p><code>注：使用 background-size: cover;  ，背景图会根据屏幕高度铺满，图片会发生变形</code></p>
+<p><img src="https://raw.githubusercontent.com/winney07/Images/main/Note/%E4%B8%8A%E4%B8%8B%E5%B8%83%E5%B1%80%EF%BC%8C%E8%83%8C%E6%99%AF%E5%9B%BE%E8%AE%BE%E7%BD%AE1.png" alt="背景图设置"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1&quot;&gt;</span><br><span class="line"></span><br><span class="line">// 结构</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;header&gt;</span><br><span class="line">        &lt;h1&gt;上下布局，背景图设置&lt;/h1&gt;</span><br><span class="line">    &lt;/header&gt;</span><br><span class="line">    &lt;div class=&quot;content&quot;&gt;</span><br><span class="line">       &lt;div class=&quot;form-box&quot;&gt;</span><br><span class="line">       &lt;/div&gt;     </span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">// 样式</span><br><span class="line">&lt;style&gt;</span><br><span class="line">*&#123;</span><br><span class="line">    padding: 0;</span><br><span class="line">    margin: 0;</span><br><span class="line">&#125;</span><br><span class="line">html, body&#123;</span><br><span class="line">    font-size: 0.13333333vw;</span><br><span class="line">    height: 100vh;</span><br><span class="line">    font-family: &#x27;Microsoft YaHei&#x27;;</span><br><span class="line">&#125;</span><br><span class="line">body&#123;</span><br><span class="line">    background-color: #f1f1f1;</span><br><span class="line">    display: flex;</span><br><span class="line">    flex-direction: column;</span><br><span class="line">&#125;</span><br><span class="line">header&#123;</span><br><span class="line">    height: 88rem;</span><br><span class="line">    line-height: 88rem;</span><br><span class="line">    text-align: center;</span><br><span class="line">    font-size: 18em;</span><br><span class="line">&#125;</span><br><span class="line">.content&#123;</span><br><span class="line">    flex: 1;</span><br><span class="line">    background: url(./images/pubuliu/24.jpg) center center no-repeat;</span><br><span class="line">    background-size: cover;</span><br><span class="line">&#125;</span><br><span class="line">.form-box&#123;</span><br><span class="line">    width: 90%;</span><br><span class="line">    margin: 200rem auto 0;</span><br><span class="line">    min-height: 600rem;</span><br><span class="line">    background-color: #fff;</span><br><span class="line">    border-radius: 5rem;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="使用img和定位，设置背景图–图片不变形"><a href="#使用img和定位，设置背景图–图片不变形" class="headerlink" title="使用img和定位，设置背景图–图片不变形"></a>使用img和定位，设置背景图–图片不变形</h4><p>优点：图片不 变形</p>
+<p>缺点：不铺满</p>
+<p><img src="https://raw.githubusercontent.com/winney07/Images/main/Note/%E4%B8%8A%E4%B8%8B%E5%B8%83%E5%B1%80%EF%BC%8C%E8%83%8C%E6%99%AF%E5%9B%BE%E8%AE%BE%E7%BD%AE2.png" alt="设置背景图"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// 结构</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;header&gt;</span><br><span class="line">        &lt;h1&gt;使用img和定位，设置背景图--图片不变形&lt;/h1&gt;</span><br><span class="line">    &lt;/header&gt;</span><br><span class="line">    &lt;img src=&quot;./images/pubuliu/24.jpg&quot; alt=&quot;&quot; class=&quot;bg&quot;&gt;</span><br><span class="line">    &lt;div class=&quot;content&quot;&gt;</span><br><span class="line">       &lt;div class=&quot;form-box&quot;&gt;</span><br><span class="line">       &lt;/div&gt;     </span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">// 样式</span><br><span class="line">&lt;style&gt;</span><br><span class="line">*&#123;</span><br><span class="line">    padding: 0;</span><br><span class="line">    margin: 0;</span><br><span class="line">&#125;</span><br><span class="line">html, body&#123;</span><br><span class="line">    font-size: 0.13333333vw;</span><br><span class="line">    height: 100vh;</span><br><span class="line">    font-family: &#x27;Microsoft YaHei&#x27;;</span><br><span class="line">&#125;</span><br><span class="line">body&#123;</span><br><span class="line">    background-color: #f1f1f1;</span><br><span class="line">&#125;</span><br><span class="line">header&#123;</span><br><span class="line">    height: 88rem;</span><br><span class="line">    line-height: 88rem;</span><br><span class="line">    text-align: center;</span><br><span class="line">    font-size: 18em;</span><br><span class="line">&#125;</span><br><span class="line">.bg&#123;</span><br><span class="line">    width: 100%;</span><br><span class="line">&#125;</span><br><span class="line">.content&#123;</span><br><span class="line">    position: absolute;</span><br><span class="line">    top: 200rem;</span><br><span class="line">    left: 5%;</span><br><span class="line">    z-index: 100;</span><br><span class="line">    width: 90%;</span><br><span class="line">    min-height: 600rem;</span><br><span class="line">    background-color: #fff;</span><br><span class="line">    border-radius: 5rem;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="直接给body设置背景图–图片会变形"><a href="#直接给body设置背景图–图片会变形" class="headerlink" title="直接给body设置背景图–图片会变形"></a>直接给body设置背景图–图片会变形</h4><p>优点：铺满</p>
+<p>缺点：图片变形</p>
+<p><img src="https://raw.githubusercontent.com/winney07/Images/main/Note/%E4%B8%8A%E4%B8%8B%E5%B8%83%E5%B1%80%EF%BC%8C%E8%83%8C%E6%99%AF%E5%9B%BE%E8%AE%BE%E7%BD%AE3.png" alt="设置背景"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// 结构</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;header&gt;</span><br><span class="line">        &lt;h1&gt;直接给body设置背景图--图片会变形&lt;/h1&gt;</span><br><span class="line">    &lt;/header&gt;</span><br><span class="line">    &lt;div class=&quot;content&quot;&gt;</span><br><span class="line">       &lt;div class=&quot;form-box&quot;&gt;</span><br><span class="line">       &lt;/div&gt;     </span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">// 样式</span><br><span class="line">&lt;style&gt;</span><br><span class="line">*&#123;</span><br><span class="line">    padding: 0;</span><br><span class="line">    margin: 0;</span><br><span class="line">&#125;</span><br><span class="line">html, body&#123;</span><br><span class="line">    font-size: 0.13333333vw;</span><br><span class="line">    height: 100vh;</span><br><span class="line">    font-family: &#x27;Microsoft YaHei&#x27;;</span><br><span class="line">&#125;</span><br><span class="line">body&#123;</span><br><span class="line">    background-color: #f1f1f1;</span><br><span class="line">    background: url(./images/pubuliu/24.jpg) center center no-repeat;</span><br><span class="line">    background-size: cover;</span><br><span class="line">    padding-top: 88rem;</span><br><span class="line">    box-sizing: border-box;</span><br><span class="line">&#125;</span><br><span class="line">header&#123;</span><br><span class="line">    position: absolute;</span><br><span class="line">    top: 0;</span><br><span class="line">    left: 0;</span><br><span class="line">    width: 100%;</span><br><span class="line">    height: 88rem;</span><br><span class="line">    line-height: 88rem;</span><br><span class="line">    text-align: center;</span><br><span class="line">    font-size: 18em;</span><br><span class="line">    background-color: #fff;</span><br><span class="line">&#125;</span><br><span class="line">.content&#123;</span><br><span class="line">    margin: 200rem auto 0;</span><br><span class="line">    width: 90%;</span><br><span class="line">    min-height: 600rem;</span><br><span class="line">    background-color: #fff;</span><br><span class="line">    border-radius: 5rem;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2019/08/16/MiniUI-%E7%AC%94%E8%AE%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -502,118 +613,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2019/08/14/%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%E9%80%89%E6%8B%A9%E6%A1%86input%20type=file%E7%9A%84%E6%A0%B7%E5%BC%8F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="winney">
-      <meta itemprop="description" content="Doing is better than saying.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="winney">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/08/14/%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%E9%80%89%E6%8B%A9%E6%A1%86input%20type=file%E7%9A%84%E6%A0%B7%E5%BC%8F/" class="post-title-link" itemprop="url">修改文件选择框input type=file的样式</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-08-14 14:56:23" itemprop="dateCreated datePublished" datetime="2019-08-14T14:56:23+08:00">2019-08-14</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-10-30 13:18:11" itemprop="dateModified" datetime="2024-10-30T13:18:11+08:00">2024-10-30</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CSS/" itemprop="url" rel="index"><span itemprop="name">CSS</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>文件选择框(input type=”file”)的默认样式跟项目中的样式不是很搭，所以需要修改文件选择框的样式。</p>
-<p>效果图：</p>
-<p><img src="https://images.winney07.cn/blog/input-file-btn.png" alt="文件选择框"></p>
-<h2 id="方式一，使用-file-selector-button"><a href="#方式一，使用-file-selector-button" class="headerlink" title="方式一，使用::file-selector-button"></a>方式一，使用::file-selector-button</h2><p>HTML:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;file&quot; id=&quot;default-btn&quot;&gt;</span><br></pre></td></tr></table></figure>
-
-<p>CSS:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#default-btn::file-selector-button&#123;</span><br><span class="line">    padding: 6px 10px;</span><br><span class="line">    background-color: #1E9FFF;</span><br><span class="line">    border: 1px solid #1E9FFF;</span><br><span class="line">    border-radius: 3px;</span><br><span class="line">    cursor: pointer;</span><br><span class="line">    color: #fff;</span><br><span class="line">    font-size: 12px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这种方法，文件选择框右侧默认就显示“未选择文件”的文字。如果您想隐藏这些文字，可以设置选择框<code>input</code>元素的<code>font-size：0</code>，即：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#default-btn&#123;</span><br><span class="line">    font-size: 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>了解更多关于<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/::file-selector-button">::file-selector-button</a></p>
-<h2 id="方式二，使用label标签"><a href="#方式二，使用label标签" class="headerlink" title="方式二，使用label标签"></a>方式二，使用label标签</h2><p>HTML：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;span&gt;</span><br><span class="line">    &lt;label for=&quot;fileInput&quot; class=&quot;input-button&quot; title=&quot;选择您的头像图片进行上传&quot;&gt;选择文件&lt;/label&gt;</span><br><span class="line">    &lt;input id=&quot;fileInput&quot; type=&quot;file&quot; style=&quot;display: none;&quot;&gt;</span><br><span class="line">&lt;/span&gt;</span><br><span class="line">&lt;span id=&quot;fileName&quot;&gt;&lt;/span&gt;</span><br></pre></td></tr></table></figure>
-
-<p>CSS： </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">.input-button &#123;</span><br><span class="line">    display: inline-block;</span><br><span class="line">    padding: 6px 10px;</span><br><span class="line">    background-color: #1E9FFF;</span><br><span class="line">    border: 1px solid #1E9FFF;</span><br><span class="line">    border-radius: 3px;</span><br><span class="line">    cursor: pointer;</span><br><span class="line">    color: #fff;</span><br><span class="line">    font-size: 12px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="方式三，使用相对定位-透明"><a href="#方式三，使用相对定位-透明" class="headerlink" title="方式三，使用相对定位+透明"></a>方式三，使用相对定位+透明</h2><p>HTML：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;span class=&quot;inputBtn&quot;&gt;</span><br><span class="line">    &lt;span&gt;选择文件&lt;/span&gt;</span><br><span class="line">    &lt;input class=&quot;inputFile&quot; type=&quot;file&quot; id=&quot;myImg&quot; name=&quot;myImg&quot; title=&quot;选择您的头像图片进行上传&quot;&gt;</span><br><span class="line">    &lt;/span&gt;</span><br><span class="line">&lt;span id=&quot;fileName&quot;&gt;&lt;/span&gt;</span><br></pre></td></tr></table></figure>
-
-<p>CSS：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">.inputBtn &#123;  </span><br><span class="line">    position: relative;  </span><br><span class="line">    display: inline-block;  </span><br><span class="line">    padding: 6px 10px;  </span><br><span class="line">    border: 1px solid #1E9FFF;  </span><br><span class="line">    border-radius: 3px;  </span><br><span class="line">    background-color: #1E9FFF;  </span><br><span class="line">    cursor: pointer;  </span><br><span class="line">    font-size: 12px;  </span><br><span class="line">    color: #fff;  </span><br><span class="line">&#125;  </span><br><span class="line">.inputBtn:hover&#123;  </span><br><span class="line">    border: 1px solid #3aa9fb;  </span><br><span class="line">    background-color: #3aa9fb;  </span><br><span class="line">&#125;  </span><br><span class="line">.inputFile &#123;  </span><br><span class="line">    position: absolute;  </span><br><span class="line">    left: 0;  </span><br><span class="line">    top: 0;  </span><br><span class="line">    width: 100%;  </span><br><span class="line">    height: 100%;  </span><br><span class="line">    opacity: 0;  </span><br><span class="line">    filter: alpha(opacity=0);  </span><br><span class="line">&#125;  </span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>方法三无法修改鼠标移上去时的手势，即input框设置为`cursor: pointer`不生效。因为方法三将input框的透明度设置为0，实际上还是在按钮上方的。如果项目没有要求鼠标移上去时的手势，就忽略这个问题。</p>
-</blockquote>
-<h2 id="显示上传文件的文件名称："><a href="#显示上传文件的文件名称：" class="headerlink" title="显示上传文件的文件名称："></a>显示上传文件的文件名称：</h2><blockquote>
-<p>针对方法二和方法三</p>
-</blockquote>
-<p>效果图：</p>
-<p><img src="https://images.winney07.cn/blog/input-file-btn2.png" alt="显示文件名称"></p>
-<p>默认的文件选择框上传完文件之后，在右侧会显示上传文件的文件名称。如果需求需要显示，则可以按以下方式实现，如果不需要可忽略。   </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">const myImgEL = document.getElementById(&#x27;myImg&#x27;);  </span><br><span class="line">const fileNameEL = document.getElementById(&#x27;fileName&#x27;);  </span><br><span class="line">myImgEL.addEventListener(&#x27;change&#x27;, (event) =&gt; &#123;</span><br><span class="line">    // event.target.value的值打印是C:\fakepath\head.jpg</span><br><span class="line">    // var name = event.target.value.split(&#x27;\\&#x27;)[2];	// 这种方式也可以  </span><br><span class="line">    // console.log(name);</span><br><span class="line">    const fileName = event.target.value.match(/[^\\|/]*$/)[0];</span><br><span class="line">    console.log(fileName)</span><br><span class="line">    fileNameEL.innerHTML = fileName;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-
-
-<p>想鼠标移上去，显示手指手势，设置了<code>cursor: pointer;</code>不起作用，解决方法：将input的字体大小设置为0：<code>font-size: 0</code></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -685,7 +684,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">113</span>
+          <span class="site-state-item-count">114</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -738,7 +737,7 @@
 <div class="copyright">
   
   &copy; 2015 – 
-  <span itemprop="copyrightYear">2024</span>
+  <span itemprop="copyrightYear">2025</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

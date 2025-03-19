@@ -193,6 +193,89 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2018/08/02/Hexo-NexT%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2%E7%9B%B8%E5%85%B3%E8%AE%BE%E7%BD%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="winney">
+      <meta itemprop="description" content="Doing is better than saying.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="winney">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/08/02/Hexo-NexT%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2%E7%9B%B8%E5%85%B3%E8%AE%BE%E7%BD%AE/" class="post-title-link" itemprop="url">Hexo-NexT主题博客相关设置</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-08-02 14:28:04" itemprop="dateCreated datePublished" datetime="2018-08-02T14:28:04+08:00">2018-08-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-10-30 13:18:11" itemprop="dateModified" datetime="2024-10-30T13:18:11+08:00">2024-10-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Git/" itemprop="url" rel="index"><span itemprop="name">Git</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="一、添加文章版权声明功能"><a href="#一、添加文章版权声明功能" class="headerlink" title="一、添加文章版权声明功能"></a>一、添加文章版权声明功能</h2><p>打开博客目录下的主题配置文件<code>（/themes/next/_config.yml）</code>，找到<code>Declare license on posts</code> 标签，进行配置：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Declare license on posts</span></span><br><span class="line">post_copyright:</span><br><span class="line">  <span class="built_in">enable</span>: <span class="literal">true</span>    <span class="comment">#激活版权声明模块</span></span><br><span class="line">  license: CC BY-NC-SA 3.0     <span class="comment">#版权许可协议</span></span><br><span class="line">  license_url: https://winney07.github.io/      <span class="comment">#声明的文章的可点击链接（域名）</span></span><br></pre></td></tr></table></figure>
+<p>配置完后，执行以下命令，在浏览器中访问，效果如图所示：<br><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Hexo-NexT%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2%E7%9B%B8%E5%85%B3%E8%AE%BE%E7%BD%AE/next-set1.png" alt="版本声明设置"></p>
+<h2 id="二、设置favicon图标"><a href="#二、设置favicon图标" class="headerlink" title="二、设置favicon图标"></a>二、设置favicon图标</h2><p>1、选择一个<code>favicon</code>制作网站完成制作，例如：<a target="_blank" rel="noopener" href="http://www.bitbug.net/">比特虫</a> ，制作一个<code>16*16</code>，一个<code>32*32</code>的；<br>2、两个不同尺寸大小的文件，重名为<code>favicon-16x16-next.png</code>和<code>favicon-32x32-next.png</code>；<br>2、将重命名的两个图片文件放到博客目录下的<code>themes/next/source/images</code>中（覆盖原来的两个默认的）<br>如图所示：<br><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Hexo-NexT%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2%E7%9B%B8%E5%85%B3%E8%AE%BE%E7%BD%AE/favicon.png" alt="设置favicon图标"></p>
+<h2 id="三、添加头像"><a href="#三、添加头像" class="headerlink" title="三、添加头像"></a>三、添加头像</h2><p>1、把想要设置的头像图片放到<code>hexo/themes/next/source/images</code>目录下;<br>2、在<code>hexo/themes/next/layout/_macro</code>目录中找到<code>sidebar.swig</code>文件;<br>3、在<code>sidebar.swig</code>文件中找到类名为：<code>site-overview-wrap sidebar-panel sidebar-panel-active</code>的<code>section</code>标签，进行如图所示的修改：<br><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Hexo-NexT%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2%E7%9B%B8%E5%85%B3%E8%AE%BE%E7%BD%AE/user-head.png" alt="添加头像"><br>效果如图所示：(若想去掉边框，可以根据头像标签的类名，全局搜索，找到对应的样式进行修改)<br><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Hexo-NexT%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2%E7%9B%B8%E5%85%B3%E8%AE%BE%E7%BD%AE/user-header.png" alt="修改头像样式"></p>
+<h2 id="四、添加友情链接"><a href="#四、添加友情链接" class="headerlink" title="四、添加友情链接"></a>四、添加友情链接</h2><p>打开主题配置文件<code>（/themes/next/_config.yml）</code>，找到以下内容进行修改：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Blog rolls</span></span><br><span class="line">links_icon: <span class="built_in">link</span></span><br><span class="line">links_title: 友情链接 </span><br><span class="line"><span class="comment"># links_layout: block   //块状显示（选择了行内显示，这个要注释掉，不然会报错）</span></span><br><span class="line">links_layout: inline    //行内显示</span><br><span class="line">links:</span><br><span class="line">  小超: https://www.xiaochao.me/</span><br><span class="line">  Github: https://www.github.com</span><br></pre></td></tr></table></figure>
+<p>如图所示：<br><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Hexo-NexT%E4%B8%BB%E9%A2%98%E5%8D%9A%E5%AE%A2%E7%9B%B8%E5%85%B3%E8%AE%BE%E7%BD%AE/friend-link.png" alt="添加友情链接"></p>
+<h2 id="五、调整hexo页面宽度"><a href="#五、调整hexo页面宽度" class="headerlink" title="五、调整hexo页面宽度"></a>五、调整hexo页面宽度</h2><p>博客在浏览器上的留白太多，因此想增加文章的宽度。</p>
+<p>打开<code>/Hexo/themes/hexo-theme-next/source//css/_variables/custom.styl</code> 添加两行代码即可：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$main-desktop = 1400px </span><br><span class="line">$content-desktop = 1100px</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2018/08/02/%E5%9C%A8Hexo%E5%8D%9A%E5%AE%A2%E4%B8%AD%E5%8F%91%E5%B8%83%E6%96%87%E7%AB%A0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -385,205 +468,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2018/08/01/Hexo-GitHub-Pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="winney">
-      <meta itemprop="description" content="Doing is better than saying.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="winney">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/08/01/Hexo-GitHub-Pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" class="post-title-link" itemprop="url">Hexo-GitHub-Pages-搭建个人博客</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-08-01 11:01:02" itemprop="dateCreated datePublished" datetime="2018-08-01T11:01:02+08:00">2018-08-01</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-10-30 13:18:11" itemprop="dateModified" datetime="2024-10-30T13:18:11+08:00">2024-10-30</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Git/" itemprop="url" rel="index"><span itemprop="name">Git</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="一、准备工作"><a href="#一、准备工作" class="headerlink" title="一、准备工作"></a>一、准备工作</h2><h3 id="1-安装Node-js"><a href="#1-安装Node-js" class="headerlink" title="1. 安装Node.js"></a>1. 安装Node.js</h3><ol>
-<li><p>下载Node.js：<a target="_blank" rel="noopener" href="https://nodejs.org/en/download/">官网下载地址</a>（这里以Windows 为例）：<br><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Hexo-GitHub-Pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/download.png" alt="下载Node.js"></p>
-</li>
-<li><p> 双击下载好的<code>.msi</code>文件，按下一步下一步，安装好就可以；</p>
-</li>
-<li><p>在cmd命令窗口，输入下面的这个命令，如果能够显示Node.js的版本，说明安装成功了。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Hexo-GitHub-Pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/node-v.png" alt="查看node版本"></p>
-<h3 id="2-安装Git"><a href="#2-安装Git" class="headerlink" title="2. 安装Git"></a>2. 安装Git</h3></li>
-<li><p> 下载Git：<a target="_blank" rel="noopener" href="https://gitforwindows.org/">官网下载地址</a>（这里以Windows 为例，我是在这里下载的） 你也可以到<a target="_blank" rel="noopener" href="https://git-scm.com/downloads">官网下载</a>  ；</p>
-</li>
-<li><p>双击下载好的Git安装包，按下一步下一步，进行安装即可；</p>
-</li>
-<li><p>在cmd命令窗口，输入下面的这个命令，如果能够显示Git的版本，说明安装成功了。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git -version</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Hexo-GitHub-Pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/git-v.png" alt="查看git版本"></p>
-</li>
-<li><p>想对Git有更多的了解，可以从下面几个网站学习，若你有更好的网站，也可以推荐给我：</p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://git-scm.com/book/zh/v2">官网</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.w3cschool.cn/git/">W3Cschool</a></li>
-<li> <a target="_blank" rel="noopener" href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000">廖雪峰网站教程</a></li>
-</ul>
-</li>
-</ol>
-<h2 id="二、Hexo搭建博客"><a href="#二、Hexo搭建博客" class="headerlink" title="二、Hexo搭建博客"></a>二、Hexo搭建博客</h2><h3 id="1-安装Hexo"><a href="#1-安装Hexo" class="headerlink" title="1. 安装Hexo"></a>1. 安装Hexo</h3><ol>
-<li><p>在计算机中，新建一个<code>winneyBlog</code>文件夹，用于存放自己的博客内容。</p>
-</li>
-<li><p>在<code>winneyBlog</code>文件夹内，鼠标右键，选择<code>Git Bash</code>,进入到命令窗口<br><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Hexo-GitHub-Pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/blog-path.png" alt="博客目录-进入命令窗口"></p>
-</li>
-<li><p>在命令窗口中，输入下面代码：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
-
-<p>如图所示：<br><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Hexo-GitHub-Pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/hexo-cli.png" alt="安装hexo-cli"></p>
-</li>
-</ol>
-<h3 id="2-初始化Hexo"><a href="#2-初始化Hexo" class="headerlink" title="2. 初始化Hexo"></a>2. 初始化Hexo</h3><ol>
-<li><p>在命令窗口中，输入下面代码：(会在<code>winneyBlog</code>目录下，新建了一个<code>hexo</code>文件夹)</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init hexo</span><br></pre></td></tr></table></figure>
-
-<p>如图所示：<br><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Hexo-GitHub-Pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/hexo-init.png" alt="初始化hexo"></p>
-</li>
-</ol>
-<h3 id="3-配置Hexo"><a href="#3-配置Hexo" class="headerlink" title="3. 配置Hexo"></a>3. 配置Hexo</h3><ol>
-<li><p>进入hexo文件夹</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd hexo</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>安装依赖</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>部署形成的文件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>如图所示：<br><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Hexo-GitHub-Pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/hexo-gen.png" alt="部署形成的文件"></p>
-</li>
-</ol>
-<h3 id="4-启动服务器"><a href="#4-启动服务器" class="headerlink" title="4. 启动服务器"></a>4. 启动服务器</h3><ol>
-<li><p>在命令窗口执行下面代码：</p>
-<p>如图所示：（想要进行别的命令操作，可以按<code>Ctrl + C</code>停止服务器）<br><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Hexo-GitHub-Pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/hexo-server.png" alt="启动服务器"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在浏览器地址栏中输入<a target="_blank" rel="noopener" href="http://localhost:4000/">http://localhost:4000/</a>  （默认端口是4000），如果能够看到如图所示的效果，说明初始化的Hexo博客搭建成功了。<br>如图所示：<br><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Hexo-GitHub-Pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/hexo-blog.png" alt="浏览器中查看博客"> </p>
-</li>
-</ol>
-<h2 id="三、将本地的-Hexo-博客部署到-GitHub-Pages上"><a href="#三、将本地的-Hexo-博客部署到-GitHub-Pages上" class="headerlink" title="三、将本地的 Hexo 博客部署到 GitHub Pages上"></a>三、将本地的 Hexo 博客部署到 GitHub Pages上</h2><ol>
-<li><p>新建一个仓库，仓库名为<code>winney07.github.io</code>（这个仓库的名称必须严格按照 <code>username.github.io</code> 的格式来命名）【前提是你要有一个Github账号】<br>如图所示：（因为我已经创建过这个库了，所以会显示红色警告，只是后来为了截图，重新写一个同名的）<br><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Hexo-GitHub-Pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/hexo-git.png" alt="创建仓库"></p>
-</li>
-<li><p>进入已经创建好的仓库（点击自己的头像，选择Your profile，点击刚创建好的那个仓库进去仓库里面），点击settings，找到GitHub Pages 选项，点击 Choose a theme 选择一个主题（可以选择也可以不选择，根据自己的需求决定是否操作这一步）<br>如图所示：<br><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Hexo-GitHub-Pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/git-pages.png" alt="配置Github Pages"></p>
-</li>
-<li><p>配置Git个人信息，在<code>winneyBlog</code>目录下，鼠标右键，选择<code>Git Bash</code>，进入命令窗口，输入下面的命令</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;Github用户名&quot;       //自己Github的账号名</span><br><span class="line">git config --global user.email &quot;Github邮箱&quot;        //自己注册Github的邮箱地址</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>生成SSH KEY,意思是生成一个公钥和密钥，因为Github需要一个密钥才能与本地相连接。在命令窗口输入下面的命令，然后需要连续按3次回车生成密钥（每按一次回车你可以看到对应的信息） 【你也可以先查看是否已经有了ssh密钥：<code>cd ~/.ssh</code>   如果没有密钥则不会有此文件夹，有则备份删除】</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C  &quot;Github邮箱&quot;        //自己注册Github的邮箱地址</span><br></pre></td></tr></table></figure>
-
-<p>如图所示：<br><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Hexo-GitHub-Pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/ssh-key.png" alt="生成SSH KEY"></p>
-</li>
-<li><p>生成的SSH KEY会保存到 <code>C:/Users/电脑名用户名/.ssh</code> 目录中（根据你自己电脑用户名，打开对应的目录）<br><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Hexo-GitHub-Pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/win-user.png" alt="SSH KEY存放目录"><br>（1）打开.ssh 这个目录，打开 id_rsa.pub 文件，复制里面的全部内容（这些内容就是密钥）<br><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Hexo-GitHub-Pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/user-ssh.png" alt="打开 id_rsa.pub 文件"></p>
-</li>
-<li><p>在GitHub中添加<code>SSH keys</code></p>
-<ol>
-<li>打开Github，点击头像，选择<code>Settings</code>；<br><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Hexo-GitHub-Pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/set.png" alt="设置"></li>
-<li>选择<code>SSH and GPG keys</code>项,点击右上角<code>New SSH key</code>按钮，将刚刚复制到的密钥粘贴到<code>key</code>输入框中，title自己给它命一个名就好<br><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Hexo-GitHub-Pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/add-key.png" alt="添加ssh key 到仓库"></li>
-<li>最后点击<code>Add Key</code>，如果显示这样的界面，说明SSH KEY 配置成功：<br><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Hexo-GitHub-Pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/ssh-keys.png" alt="SSH KEY 配置成功"></li>
-</ol>
-</li>
-<li><p>修改全局配置文件</p>
-<ol>
-<li>在hexo文件夹下，找到<code>_config.yml</code>文件；<br>如图所示：<br><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Hexo-GitHub-Pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/config1.png" alt="_config.yml文件"></li>
-<li>复制仓库地址：<br>如图所示：<br><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Hexo-GitHub-Pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/git-href.png" alt="复制仓库地址"></li>
-<li>修改<code>_config.yml</code>文件里的deploy属性(目的是将本地hexo项目放到Github上)<br>如图所示：<br><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Hexo-GitHub-Pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/deploy.png" alt="修改_config.yml文件里的deploy属性"><br>注：【如果<code>repository</code>中填写的是<code>https</code>协议的，<code>hexo d</code>上传代码到Github时有下面类似错误，可以将<code>repository</code>改为<code>ssh</code>的链接】<br>如图所示：<br><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Hexo-GitHub-Pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/deploy-error.png" alt="报错信息"><br><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Hexo-GitHub-Pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/ssh-link.png" alt="使用 SSH链接"></li>
-</ol>
-</li>
-<li><p>安装<code>hexo-deployer-git</code> 插件，目的是将代码快速托管到Github上</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>将hexo项目托管到GitHub上（命令可以分开写也可以一起写）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo generate &amp;&amp; hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>  <strong>备注：</strong><br>  <code>hexo clean</code> ：清除缓存文件 (db.json) 和已生成的静态文件 (public)<br>  <code>hexo generate</code> ：部署之前预先生成静态文件，简写为<code>hexo g</code><br>  <code>hexo deploy</code> : 文件生成后立即部署网站，简写为<code>hexo d</code></p>
-</li>
-<li><p>在浏览器地址栏输入 <a target="_blank" rel="noopener" href="https://username.github.io/">https://username.github.io/</a> 即可访问，（username也就是你的Github账户名），如果能够正常访问，并且跟本地hexo项目显示的内容是一样的，那么说明你已经把本地hexo项目部署到Github上了。</p>
-</li>
-</ol>
-<h2 id="四、配置博客的个人信息"><a href="#四、配置博客的个人信息" class="headerlink" title="四、配置博客的个人信息"></a>四、配置博客的个人信息</h2><ol>
-<li><p>在hexo目录中，找到全局配置文件<code>_config.yml</code></p>
-</li>
-<li><p>配置信息如下所示：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br></pre></td><td class="code"><pre><span class="line"># Hexo Configuration</span><br><span class="line">## Docs: https://hexo.io/docs/configuration.html</span><br><span class="line">## Source: https://github.com/hexojs/hexo/</span><br><span class="line"></span><br><span class="line"># Site 站点信息配置</span><br><span class="line">title: winney     #站点名</span><br><span class="line">subtitle: It is never too old to learn.  #站点副标题</span><br><span class="line">description: Doing is better than saying.     #站点信息简介</span><br><span class="line">keywords: winneyBlog   博客</span><br><span class="line">author: winney   #站点作者</span><br><span class="line">language: zh-Hans     #站点语言，default默认是英文，zh-Hans是中文</span><br><span class="line">timezone: Asia/Shanghai      #时区</span><br><span class="line"></span><br><span class="line"># URL   博客地址</span><br><span class="line">## If your site is put in a subdirectory, set url as &#x27;http://yoursite.com/child&#x27; and root as &#x27;/child/&#x27;</span><br><span class="line">url: https://AAAAAAAAAA.github.io/</span><br><span class="line">root: /</span><br><span class="line">permalink: :year/:month/:day/:title/</span><br><span class="line">permalink_defaults:</span><br><span class="line"></span><br><span class="line"># Directory  目录设置</span><br><span class="line">source_dir: source</span><br><span class="line">public_dir: public</span><br><span class="line">tag_dir: tags</span><br><span class="line">archive_dir: archives</span><br><span class="line">category_dir: categories</span><br><span class="line">code_dir: downloads/code</span><br><span class="line">i18n_dir: :lang</span><br><span class="line">skip_render:</span><br><span class="line"></span><br><span class="line"># Writing 文章布局</span><br><span class="line">new_post_name: :title.md # File name of new posts</span><br><span class="line">default_layout: post</span><br><span class="line">titlecase: false # Transform title into titlecase</span><br><span class="line">external_link: true # Open external links in new tab</span><br><span class="line">filename_case: 0</span><br><span class="line">render_drafts: false</span><br><span class="line">post_asset_folder: true</span><br><span class="line">relative_link: false</span><br><span class="line">future: true</span><br><span class="line">highlight:</span><br><span class="line">  enable: true</span><br><span class="line">  line_number: true</span><br><span class="line">  auto_detect: false</span><br><span class="line">  tab_replace:</span><br><span class="line">  </span><br><span class="line"># Home page setting  主页设置</span><br><span class="line"># path: Root path for your blogs index page. (default = &#x27;&#x27;)</span><br><span class="line"># per_page: Posts displayed per page. (0 = disable pagination)</span><br><span class="line"># order_by: Posts order. (Order by date descending by default)</span><br><span class="line">index_generator:</span><br><span class="line">  path: &#x27;&#x27;</span><br><span class="line">  per_page: 3  #每页文章数量</span><br><span class="line">  order_by: -date</span><br><span class="line">  </span><br><span class="line"># Category &amp; Tag   分类和标签</span><br><span class="line">default_category: uncategorized</span><br><span class="line">category_map:</span><br><span class="line">tag_map:</span><br><span class="line"></span><br><span class="line"># Date / Time format  日期 / 时间格式</span><br><span class="line">## Hexo uses Moment.js to parse and display date</span><br><span class="line">## You can customize the date format as defined in</span><br><span class="line">## http://momentjs.com/docs/#/displaying/format/</span><br><span class="line">date_format: YYYY-MM-DD</span><br><span class="line">time_format: HH:mm:ss</span><br><span class="line"></span><br><span class="line"># Pagination    归档显示</span><br><span class="line">## Set per_page to 0 to disable pagination</span><br><span class="line">per_page: 10</span><br><span class="line">pagination_dir: page</span><br><span class="line"></span><br><span class="line"># Extensions  扩展</span><br><span class="line">## Plugins: https://hexo.io/plugins/</span><br><span class="line">## Themes: https://hexo.io/themes/</span><br><span class="line">theme: next</span><br><span class="line"></span><br><span class="line"># Deployment</span><br><span class="line">## Docs: https://hexo.io/docs/deployment.html</span><br><span class="line">deploy:</span><br><span class="line">  type: git    #部署的类型</span><br><span class="line">  repository: https://github.com/AAAAAAA/AAAAAAA.github.io.git    #仓库地址</span><br><span class="line">  branch: master    #分支名称</span><br><span class="line">  message: hexo deploy  #提交信息</span><br><span class="line"></span><br><span class="line">#Search</span><br><span class="line">search:</span><br><span class="line">  path: search.xml</span><br><span class="line">  field: post</span><br><span class="line">  format: html</span><br><span class="line">  limit: 10000</span><br></pre></td></tr></table></figure>
-
-<p>  <code>注意</code>：<code>.yml</code> 文件有严格的格式要求，文件里所有的配置都是：冒号 空格 值，并且冒号是英文状态下的输入。想了解更多的可以前往 官网 。</p>
-</li>
-<li><p>在博客目录下，右键点击Git Bash，进去命令窗口，输入下面的命令，即可在浏览器中看到刚刚设置的内容显示在页面中：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server    // 简写为 hexo s</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<h4 id="提交到远程仓库报错"><a href="#提交到远程仓库报错" class="headerlink" title="提交到远程仓库报错"></a>提交到远程仓库报错</h4><p>报403或者每次提交都要输入账号密码</p>
-<p>可以将<code>_config.yml</code>里的</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">repository: https://github.com/*********.github.io.git   #仓库地址</span><br></pre></td></tr></table></figure>
-
-<p>改为：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">repository: git@github.com:*********.github.io.git   #仓库地址</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -655,7 +539,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">113</span>
+          <span class="site-state-item-count">114</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -708,7 +592,7 @@
 <div class="copyright">
   
   &copy; 2015 – 
-  <span itemprop="copyrightYear">2024</span>
+  <span itemprop="copyrightYear">2025</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

@@ -193,6 +193,140 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2019/09/14/%E4%BF%AE%E6%94%B9layui-select%E4%B8%8B%E6%8B%89%E6%A1%86%E7%9A%84placeholder%E6%8F%90%E7%A4%BA%E8%AF%AD/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="winney">
+      <meta itemprop="description" content="Doing is better than saying.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="winney">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/09/14/%E4%BF%AE%E6%94%B9layui-select%E4%B8%8B%E6%8B%89%E6%A1%86%E7%9A%84placeholder%E6%8F%90%E7%A4%BA%E8%AF%AD/" class="post-title-link" itemprop="url">修改layui-select下拉框的placeholder提示语</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-09-14 15:45:23" itemprop="dateCreated datePublished" datetime="2019-09-14T15:45:23+08:00">2019-09-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-10-30 13:18:11" itemprop="dateModified" datetime="2024-10-30T13:18:11+08:00">2024-10-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CSS/" itemprop="url" rel="index"><span itemprop="name">CSS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="使用option"><a href="#使用option" class="headerlink" title="使用option"></a>使用option</h3><p>HTML：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;layui-form-item&quot;&gt;</span><br><span class="line">    &lt;label class=&quot;layui-form-label&quot;&gt;账号：&lt;/label&gt;</span><br><span class="line">    &lt;div class=&quot;layui-input-block&quot;&gt;</span><br><span class="line">        &lt;select name=&quot;account&quot; lay-filter=&quot;account&quot;&gt;</span><br><span class="line">            &lt;option value=&quot;&quot;&gt;请选择账号&lt;/option&gt;</span><br><span class="line">        &lt;/select&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>&lt;option value=&quot;&quot;&gt;请选择账号&lt;/option&gt;</code> ，value值为空</p>
+</blockquote>
+<p>如图所示：</p>
+<p><img src="https://raw.githubusercontent.com/winney07/Images/main/blog/layui-select/%E4%BD%BF%E7%94%A8option%E5%8A%A0%E4%B8%8Aplaceholder.png" alt="使用option加上placeholder.png (395×188) (raw.githubusercontent.com)"></p>
+<h3 id="使用定位元素模拟placeholder"><a href="#使用定位元素模拟placeholder" class="headerlink" title="使用定位元素模拟placeholder"></a>使用定位元素模拟placeholder</h3><blockquote>
+<p>”所属项目“默认不选择。”账号“下拉框的数据，是根据所选的”所属项目“进行动态渲染。</p>
+<p>因”所属项目“默认不选择，”账号“初始化时没有下拉框列表数据。需求还要求不显示可选项，也就是<code>&lt;option value=&quot;&quot;&gt;请选择账号&lt;/option&gt;</code> 也不显示。</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;layui-form-item&quot;&gt;</span><br><span class="line">    &lt;label class=&quot;layui-form-label&quot;&gt;账号：&lt;/label&gt;</span><br><span class="line">    &lt;div class=&quot;layui-input-block&quot;&gt;</span><br><span class="line">        &lt;select name=&quot;account&quot; lay-filter=&quot;account&quot;&gt;</span><br><span class="line">        &lt;/select&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><p>如果不加option选项，下拉框默认样式如下图所示：</p>
+<p><img src="https://raw.githubusercontent.com/winney07/Images/main/blog/layui-select/select%E6%A1%86%E6%B2%A1%E6%9C%89%E9%80%89%E9%A1%B9%E6%97%B6%E5%88%9D%E5%A7%8B%E5%8C%96%E6%A0%B7%E5%AD%90.png" alt="select框没有选项时初始化样子.png (389×180) (raw.githubusercontent.com)"></p>
+<blockquote>
+<p>项目中使用的是layui是<code>v2.5.6 </code>版本。而更换版本，可能会带来其他影响，而且layui也停更了。</p>
+</blockquote>
+</li>
+<li><p>所以使用定位元素覆盖掉默认的<code>placeholder</code></p>
+<p>HTML:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;layui-form-item&quot;&gt;</span><br><span class="line">    &lt;label class=&quot;layui-form-label&quot;&gt;账号：&lt;/label&gt;</span><br><span class="line">    &lt;div class=&quot;layui-input-block&quot; id=&quot;account-select&quot;&gt;</span><br><span class="line">        &lt;div class=&quot;account-placeholder&quot;&gt;请选择账号&lt;/div&gt;</span><br><span class="line">        &lt;select name=&quot;account&quot; lay-filter=&quot;account&quot;&gt;&lt;/select&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<p>CSS：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">#account-select&#123;</span><br><span class="line">    position: relative;</span><br><span class="line">&#125;</span><br><span class="line">#account-select .account-placeholder &#123;</span><br><span class="line">    position: absolute;</span><br><span class="line">    left: 3px;</span><br><span class="line">    top: 3px;</span><br><span class="line">    z-index: 10;</span><br><span class="line">    padding-left: 8px;</span><br><span class="line">    height: 32px;</span><br><span class="line">    line-height: 32px;</span><br><span class="line">    width: 184px;</span><br><span class="line">    pointer-events: none;</span><br><span class="line">    color: rgb(117, 117, 117);</span><br><span class="line">    background-color: #fff;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/winney07/Images/main/blog/layui-select/%E5%AE%9A%E4%BD%8D%E5%85%83%E7%B4%A0%E6%A8%A1%E6%8B%9Fplaceholder0.png" alt="定位元素模拟placeholder0.png (390×214) (raw.githubusercontent.com)"></p>
+<p><img src="https://raw.githubusercontent.com/winney07/Images/main/blog/layui-select/%E5%AE%9A%E4%BD%8D%E5%85%83%E7%B4%A0%E6%A8%A1%E6%8B%9Fplaceholder.png" alt="定位元素模拟placeholder.png (376×389) (raw.githubusercontent.com)"></p>
+</li>
+<li><p><code>select</code>框初始化时设置为<code>disabled</code></p>
+<blockquote>
+<p>如上图所示，使用了定位元素挡住了默认的placeholder，但是还是会显示”没有选项“这一项。</p>
+<p>所以干脆初始化时，将<code>select</code>框初始化时设置为<code>disabled</code></p>
+</blockquote>
+<p>HTML：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;layui-form-item&quot;&gt;</span><br><span class="line">    &lt;label class=&quot;layui-form-label&quot;&gt;账号：&lt;/label&gt;</span><br><span class="line">    &lt;div class=&quot;layui-input-block&quot; id=&quot;account-select&quot;&gt;</span><br><span class="line">        &lt;div class=&quot;account-placeholder&quot;&gt;请选择账号&lt;/div&gt;</span><br><span class="line">        &lt;select name=&quot;account&quot; lay-filter=&quot;account&quot; disabled&gt;&lt;/select&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h4 id="其他细节处理"><a href="#其他细节处理" class="headerlink" title="其他细节处理"></a>其他细节处理</h4><ol>
+<li><p>点击下拉框时，弹出”需要选择所属项目“的提示语</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// 点击账号下拉框</span><br><span class="line">layui.$(&quot;#account-select&quot;).on(&#x27;click&#x27;, &#x27;.layui-form-select&#x27;, function()&#123;</span><br><span class="line">    var project = layui.$(&#x27;[name=&quot;project&quot;]:checked&#x27;).val();</span><br><span class="line">    if(!project) &#123;</span><br><span class="line">        layer.msg(&#x27;需选择所属项目&#x27;, &#123;time: 1000&#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>向下箭头为禁用的样式，修改为正常样式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#account-select .layui-select-disabled .layui-edge&#123;</span><br><span class="line">    border-top-color: #c2c2c2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>鼠标放在select框上，是禁止图标，然而鼠标移到下拉框的向下箭头，光标显示为小手；</p>
+<p>如图所示：</p>
+<p><img src="https://raw.githubusercontent.com/winney07/Images/main/blog/layui-select/%E9%BC%A0%E6%A0%87%E7%A7%BB%E5%88%B0%E4%B8%8B%E6%8B%89%E6%A1%86%E7%9A%84%E5%90%91%E4%B8%8B%E7%AE%AD%E5%A4%B4-%E6%98%BE%E7%A4%BA%E5%B0%8F%E6%89%8B.png" alt="鼠标移到下拉框的向下箭头-显示小手.png (339×129) (raw.githubusercontent.com)"></p>
+<p>解决：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#account-select .layui-select-disabled .layui-edge&#123;</span><br><span class="line">    cursor: not-allowed;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>选择”所属项目“时，追加对应的数据，同时需要去除<code>select</code>框的<code>disabled</code>属性，以及隐藏模拟<code>placeholder</code>的定位元素</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">// 渲染 select 框的数据</span><br><span class="line"> function renderSelectData(dataList) &#123;</span><br><span class="line">    var selectElem = layui.$(&#x27;select[name=&quot;account&quot;]&#x27;);</span><br><span class="line">    selectElem.empty(); // 清空原有选项</span><br><span class="line">    selectElem.append(&#x27;&lt;option value=&quot;&quot;&gt;请选择账号&lt;/option&gt;&#x27;);</span><br><span class="line"></span><br><span class="line">    // 添加新的选项</span><br><span class="line">    layui.$.each(dataList, function(index, item) &#123;</span><br><span class="line">        var optionElem = layui.$(&#x27;&lt;option&gt;&#x27;);</span><br><span class="line">        optionElem.val(item.value);</span><br><span class="line">        optionElem.text(item.name);</span><br><span class="line">        selectElem.append(optionElem);</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    layui.form.render(&#x27;select&#x27;); // 重新渲染 select 框</span><br><span class="line">&#125;</span><br><span class="line">var accountList = &#123;</span><br><span class="line">    &quot;1&quot;: [</span><br><span class="line">        &#123; value: 1, name: &#x27;项目AAA_account1&#x27;&#125;,</span><br><span class="line">        &#123; value: 2, name: &#x27;项目AAA_account2&#x27;&#125;,</span><br><span class="line">        &#123; value: 3, name: &#x27;项目AAA_account3&#x27;&#125;,</span><br><span class="line">    ],</span><br><span class="line">    &quot;2&quot;: [</span><br><span class="line">        &#123; value: 4, name: &#x27;项目BBB_account1&#x27;&#125;,</span><br><span class="line">        &#123; value: 5, name: &#x27;项目BBB_account2&#x27;&#125;,</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br><span class="line">// 监听单选框</span><br><span class="line">form.on(&#x27;radio(project)&#x27;, function(data)&#123;</span><br><span class="line">    // 渲染账号下拉列表</span><br><span class="line">    renderSelectData(accountList[data.value]);</span><br><span class="line"></span><br><span class="line">    layui.$(&#x27;select[name=&quot;account&quot;]&#x27;).removeAttr(&#x27;disabled&#x27;);</span><br><span class="line">    form.render(&#x27;select&#x27;);</span><br><span class="line">    layui.$(&#x27;.account-placeholder&#x27;).hide();	// 隐藏模拟的placeholder</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>最终效果：</p>
+<p><img src="https://raw.githubusercontent.com/winney07/Images/main/blog/layui-select/%E9%BC%A0%E6%A0%87%E7%A7%BB%E4%B8%8A%E6%98%BE%E7%A4%BA%E7%A6%81%E6%AD%A2%E5%9B%BE%E6%A0%87%E6%95%88%E6%9E%9C.png" alt="鼠标移上显示禁止图标效果.png (347×274) (raw.githubusercontent.com)"></p>
+</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2019/09/12/WEB%E5%89%8D%E7%AB%AF-%E9%A1%B5%E9%9D%A2%E8%B7%B3%E8%BD%AC%E7%9A%84%E7%9B%B8%E5%85%B3%E5%A4%84%E7%90%86/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -345,117 +479,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2019/08/22/CSS%E6%A0%B7%E5%BC%8FDemo/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="winney">
-      <meta itemprop="description" content="Doing is better than saying.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="winney">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/08/22/CSS%E6%A0%B7%E5%BC%8FDemo/" class="post-title-link" itemprop="url">CSS样式Demo</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-08-22 10:57:59" itemprop="dateCreated datePublished" datetime="2019-08-22T10:57:59+08:00">2019-08-22</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-10-30 13:18:11" itemprop="dateModified" datetime="2024-10-30T13:18:11+08:00">2024-10-30</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CSS/" itemprop="url" rel="index"><span itemprop="name">CSS</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="使用flex布局实现上下布局，整屏背景图设置—图片会变形"><a href="#使用flex布局实现上下布局，整屏背景图设置—图片会变形" class="headerlink" title="使用flex布局实现上下布局，整屏背景图设置—图片会变形"></a>使用flex布局实现上下布局，整屏背景图设置—图片会变形</h4><p>优点：铺满</p>
-<p>缺点：图片变形</p>
-<table>
-<thead>
-<tr>
-<th>值</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>contain</td>
-<td>此时会保持图像的纵横比并将图像缩放成将适合背景定位区域的最大大小。</td>
-</tr>
-<tr>
-<td>cover</td>
-<td>此时会保持图像的纵横比并将图像缩放成将完全覆盖背景定位区域的最小大小。</td>
-</tr>
-</tbody></table>
-<p><code>注：使用 background-size: cover;  ，背景图会根据屏幕高度铺满，图片会发生变形</code></p>
-<p><img src="https://raw.githubusercontent.com/winney07/Images/main/Note/%E4%B8%8A%E4%B8%8B%E5%B8%83%E5%B1%80%EF%BC%8C%E8%83%8C%E6%99%AF%E5%9B%BE%E8%AE%BE%E7%BD%AE1.png" alt="背景图设置"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1&quot;&gt;</span><br><span class="line"></span><br><span class="line">// 结构</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;header&gt;</span><br><span class="line">        &lt;h1&gt;上下布局，背景图设置&lt;/h1&gt;</span><br><span class="line">    &lt;/header&gt;</span><br><span class="line">    &lt;div class=&quot;content&quot;&gt;</span><br><span class="line">       &lt;div class=&quot;form-box&quot;&gt;</span><br><span class="line">       &lt;/div&gt;     </span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">// 样式</span><br><span class="line">&lt;style&gt;</span><br><span class="line">*&#123;</span><br><span class="line">    padding: 0;</span><br><span class="line">    margin: 0;</span><br><span class="line">&#125;</span><br><span class="line">html, body&#123;</span><br><span class="line">    font-size: 0.13333333vw;</span><br><span class="line">    height: 100vh;</span><br><span class="line">    font-family: &#x27;Microsoft YaHei&#x27;;</span><br><span class="line">&#125;</span><br><span class="line">body&#123;</span><br><span class="line">    background-color: #f1f1f1;</span><br><span class="line">    display: flex;</span><br><span class="line">    flex-direction: column;</span><br><span class="line">&#125;</span><br><span class="line">header&#123;</span><br><span class="line">    height: 88rem;</span><br><span class="line">    line-height: 88rem;</span><br><span class="line">    text-align: center;</span><br><span class="line">    font-size: 18em;</span><br><span class="line">&#125;</span><br><span class="line">.content&#123;</span><br><span class="line">    flex: 1;</span><br><span class="line">    background: url(./images/pubuliu/24.jpg) center center no-repeat;</span><br><span class="line">    background-size: cover;</span><br><span class="line">&#125;</span><br><span class="line">.form-box&#123;</span><br><span class="line">    width: 90%;</span><br><span class="line">    margin: 200rem auto 0;</span><br><span class="line">    min-height: 600rem;</span><br><span class="line">    background-color: #fff;</span><br><span class="line">    border-radius: 5rem;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
-
-<h4 id="使用img和定位，设置背景图–图片不变形"><a href="#使用img和定位，设置背景图–图片不变形" class="headerlink" title="使用img和定位，设置背景图–图片不变形"></a>使用img和定位，设置背景图–图片不变形</h4><p>优点：图片不 变形</p>
-<p>缺点：不铺满</p>
-<p><img src="https://raw.githubusercontent.com/winney07/Images/main/Note/%E4%B8%8A%E4%B8%8B%E5%B8%83%E5%B1%80%EF%BC%8C%E8%83%8C%E6%99%AF%E5%9B%BE%E8%AE%BE%E7%BD%AE2.png" alt="设置背景图"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// 结构</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;header&gt;</span><br><span class="line">        &lt;h1&gt;使用img和定位，设置背景图--图片不变形&lt;/h1&gt;</span><br><span class="line">    &lt;/header&gt;</span><br><span class="line">    &lt;img src=&quot;./images/pubuliu/24.jpg&quot; alt=&quot;&quot; class=&quot;bg&quot;&gt;</span><br><span class="line">    &lt;div class=&quot;content&quot;&gt;</span><br><span class="line">       &lt;div class=&quot;form-box&quot;&gt;</span><br><span class="line">       &lt;/div&gt;     </span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">// 样式</span><br><span class="line">&lt;style&gt;</span><br><span class="line">*&#123;</span><br><span class="line">    padding: 0;</span><br><span class="line">    margin: 0;</span><br><span class="line">&#125;</span><br><span class="line">html, body&#123;</span><br><span class="line">    font-size: 0.13333333vw;</span><br><span class="line">    height: 100vh;</span><br><span class="line">    font-family: &#x27;Microsoft YaHei&#x27;;</span><br><span class="line">&#125;</span><br><span class="line">body&#123;</span><br><span class="line">    background-color: #f1f1f1;</span><br><span class="line">&#125;</span><br><span class="line">header&#123;</span><br><span class="line">    height: 88rem;</span><br><span class="line">    line-height: 88rem;</span><br><span class="line">    text-align: center;</span><br><span class="line">    font-size: 18em;</span><br><span class="line">&#125;</span><br><span class="line">.bg&#123;</span><br><span class="line">    width: 100%;</span><br><span class="line">&#125;</span><br><span class="line">.content&#123;</span><br><span class="line">    position: absolute;</span><br><span class="line">    top: 200rem;</span><br><span class="line">    left: 5%;</span><br><span class="line">    z-index: 100;</span><br><span class="line">    width: 90%;</span><br><span class="line">    min-height: 600rem;</span><br><span class="line">    background-color: #fff;</span><br><span class="line">    border-radius: 5rem;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
-
-<h4 id="直接给body设置背景图–图片会变形"><a href="#直接给body设置背景图–图片会变形" class="headerlink" title="直接给body设置背景图–图片会变形"></a>直接给body设置背景图–图片会变形</h4><p>优点：铺满</p>
-<p>缺点：图片变形</p>
-<p><img src="https://raw.githubusercontent.com/winney07/Images/main/Note/%E4%B8%8A%E4%B8%8B%E5%B8%83%E5%B1%80%EF%BC%8C%E8%83%8C%E6%99%AF%E5%9B%BE%E8%AE%BE%E7%BD%AE3.png" alt="设置背景"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// 结构</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;header&gt;</span><br><span class="line">        &lt;h1&gt;直接给body设置背景图--图片会变形&lt;/h1&gt;</span><br><span class="line">    &lt;/header&gt;</span><br><span class="line">    &lt;div class=&quot;content&quot;&gt;</span><br><span class="line">       &lt;div class=&quot;form-box&quot;&gt;</span><br><span class="line">       &lt;/div&gt;     </span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">// 样式</span><br><span class="line">&lt;style&gt;</span><br><span class="line">*&#123;</span><br><span class="line">    padding: 0;</span><br><span class="line">    margin: 0;</span><br><span class="line">&#125;</span><br><span class="line">html, body&#123;</span><br><span class="line">    font-size: 0.13333333vw;</span><br><span class="line">    height: 100vh;</span><br><span class="line">    font-family: &#x27;Microsoft YaHei&#x27;;</span><br><span class="line">&#125;</span><br><span class="line">body&#123;</span><br><span class="line">    background-color: #f1f1f1;</span><br><span class="line">    background: url(./images/pubuliu/24.jpg) center center no-repeat;</span><br><span class="line">    background-size: cover;</span><br><span class="line">    padding-top: 88rem;</span><br><span class="line">    box-sizing: border-box;</span><br><span class="line">&#125;</span><br><span class="line">header&#123;</span><br><span class="line">    position: absolute;</span><br><span class="line">    top: 0;</span><br><span class="line">    left: 0;</span><br><span class="line">    width: 100%;</span><br><span class="line">    height: 88rem;</span><br><span class="line">    line-height: 88rem;</span><br><span class="line">    text-align: center;</span><br><span class="line">    font-size: 18em;</span><br><span class="line">    background-color: #fff;</span><br><span class="line">&#125;</span><br><span class="line">.content&#123;</span><br><span class="line">    margin: 200rem auto 0;</span><br><span class="line">    width: 90%;</span><br><span class="line">    min-height: 600rem;</span><br><span class="line">    background-color: #fff;</span><br><span class="line">    border-radius: 5rem;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -527,7 +550,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">113</span>
+          <span class="site-state-item-count">114</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -580,7 +603,7 @@
 <div class="copyright">
   
   &copy; 2015 – 
-  <span itemprop="copyrightYear">2024</span>
+  <span itemprop="copyrightYear">2025</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

@@ -193,6 +193,261 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/10/01/MacOs%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="winney">
+      <meta itemprop="description" content="Doing is better than saying.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="winney">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/10/01/MacOs%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">MacOs相关笔记</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-10-01 06:59:49" itemprop="dateCreated datePublished" datetime="2021-10-01T06:59:49+08:00">2021-10-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-10-30 13:18:11" itemprop="dateModified" datetime="2024-10-30T13:18:11+08:00">2024-10-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Mac/" itemprop="url" rel="index"><span itemprop="name">Mac</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="Mac系统——iOS环境"><a href="#Mac系统——iOS环境" class="headerlink" title="Mac系统——iOS环境"></a>Mac系统——iOS环境</h4><h5 id="安装Homebrew"><a href="#安装Homebrew" class="headerlink" title="安装Homebrew"></a>安装Homebrew</h5><p>开源安装脚本库：<a target="_blank" rel="noopener" href="https://gitee.com/cunkai/HomebrewCN">https://gitee.com/cunkai/HomebrewCN</a></p>
+<p>复制以下内容到你的终端：<br>intel芯片：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/bin/zsh -c &quot;$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh)&quot;</span><br></pre></td></tr></table></figure>
+
+<p>M1芯片：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/bin/zsh -c &quot;$(curl -fsSL https://gitee.com/huwei1024/HomebrewCN/raw/master/Homebrew.sh)&quot;</span><br></pre></td></tr></table></figure>
+
+<p>回车运行，按照提示运行下去就可以了</p>
+<p>错误<br>做完上面的傻瓜式操作，理论上就OK了，但是我这边出现了安装完后用不了的错误</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">command not found : brew</span><br></pre></td></tr></table></figure>
+
+<p>经过检查后发现，是因为M1芯片的包安装位置不在是以前的<code>/usr/local/</code><br>而是<code>/opt/homebrew</code>，所以要将配置文件里的环境变量改过来</p>
+<p>1、首先进入根目录</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cd ~</span><br></pre></td></tr></table></figure>
+
+<p>2、创建.zshrc文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ touch .zshrc</span><br></pre></td></tr></table></figure>
+
+<p>3、打开文件进行编辑</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ open -e .zshrc</span><br></pre></td></tr></table></figure>
+
+<p>4、如果有旧的环境就修改，没有就新增</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export PATH=/opt/homebrew/bin:$PATH</span><br><span class="line">export PATH=/opt/homebrew/sbin:$PATH</span><br></pre></td></tr></table></figure>
+
+<p>5、保存<br>使用<code>command + s</code><br>6、生效环境变量</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ source .zshrc</span><br></pre></td></tr></table></figure>
+
+<p>7、测试</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ brew -v</span><br></pre></td></tr></table></figure>
+
+
+<p>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/sinat_38184748/article/details/114115441">MacOs M1安装Homebrew 在国内最简单方法</a>——使用这个安装成功</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/111014448">Homebrew国内如何自动安装（国内地址）（Mac &amp; Linux）</a></p>
+<p>旧文章：<a target="_blank" rel="noopener" href="https://blog.csdn.net/sinat_38184748/article/details/99450330?spm=1001.2014.3001.5502">macOS安装Homebrew太慢，换用清华镜像</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git config --global --add safe.directory /opt/homebrew/Homebrew/Library/Taps/homebrew/homebrew-core</span><br><span class="line"></span><br><span class="line">git config --global --add safe.directory /opt/homebrew/Homebrew/Library/Taps/homebrew/homebrew-cask</span><br></pre></td></tr></table></figure>
+
+
+<h5 id="查看镜像"><a href="#查看镜像" class="headerlink" title="查看镜像"></a>查看镜像</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd &quot;$(brew --repo)&quot; &amp;&amp; git remote -v</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h4 id="安装watchman"><a href="#安装watchman" class="headerlink" title="安装watchman"></a>安装watchman</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install watchman</span><br></pre></td></tr></table></figure>
+
+<h5 id="报错信息"><a href="#报错信息" class="headerlink" title="报错信息"></a>报错信息</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Disable this behaviour by setting HOMEBREW_NO_INSTALL_CLEANUP.</span><br><span class="line">Hide these hints with HOMEBREW_NO_ENV_HINTS (see `man brew`).</span><br></pre></td></tr></table></figure>
+
+<p>解决：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export HOMEBREW_NO_INSTALL_CLEANUP=TRUE</span><br></pre></td></tr></table></figure>
+
+<p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/zhengzaifeidelushang/article/details/126640559?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522166458144816782417056210%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fall.%2522%257D&request_id=166458144816782417056210&biz_id=&utm_medium=distribute.pc_search_result.none-task-code-2~all~first_rank_ecpm_v1~rank_v31_ecpm-2-126640559-0-null-null.142%5Ev51%5Econtrol,201%5Ev3%5Econtrol_1&utm_term=Disable%20this%20behaviour%20by%20setting%20HOMEBREW_NO_INSTALL_CLEANUP.%20Hide%20these%20hints%20with%20HOMEBREW_NO_ENV_HINTS%20(see%20%60man%20brew%60).">Mac系列之：Disable this behaviour by setting HOMEBREW_NO_INSTALL_CLEANUP. Hide these hints with HOMEBREW</a></p>
+<p>查看版本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">watchman -v</span><br></pre></td></tr></table></figure>
+
+<h4 id="安装cocoapods"><a href="#安装cocoapods" class="headerlink" title="安装cocoapods"></a>安装cocoapods</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install cocoapods</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<p>镜像地址</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://mirrors.tuna.tsinghua.edu.cn</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config set registry 镜像地址</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">npm ---- https://registry.npmjs.org/</span><br><span class="line">cnpm --- http://r.cnpmjs.org/</span><br><span class="line">taobao - https://registry.npmmirror.com</span><br><span class="line">edunpm - http://registry.enpmjs.org/</span><br><span class="line">eu ----- http://registry.npmjs.eu/</span><br><span class="line">au ----- http://registry.npmjs.org.au/</span><br><span class="line">sl ----- http://npm.strongloop.com/</span><br><span class="line">nj ----- https://registry.nodejitsu.com/</span><br><span class="line">pt ----- http://registry.npmjs.pt/</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p>切换回淘宝镜像</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config set registry https://registry.npmmirror.com/</span><br></pre></td></tr></table></figure>
+
+<p>先用淘宝镜像安装项目，</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx react-native init AwesomeProject</span><br></pre></td></tr></table></figure>
+
+<p><code>安装不了cocoapods</code></p>
+<p>切换到<code>https://registry.npmmirror.com/</code></p>
+<p>切换到项目目录</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd AwesomeProject</span><br></pre></td></tr></table></figure>
+
+<p>再安装cocoapods</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i cocoapods</span><br></pre></td></tr></table></figure>
+
+
+
+<p>报错信息：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">yarn run v1.22.19</span><br><span class="line">warning ../../../../../package.json: No license field</span><br><span class="line">$ react-native run-ios</span><br><span class="line">info Found Xcode project &quot;AwesomeProject.xcodeproj&quot;</span><br><span class="line">info Building (using &quot;xcodebuild -project AwesomeProject.xcodeproj -configuration Debug -scheme AwesomeProject -destination id=A7F04948-7FA8-45D1-B4A6-C26B21B6548A&quot;)</span><br><span class="line">error Failed to build iOS project. We ran &quot;xcodebuild&quot; command but it exited with error code 65. To debug build logs further, consider building your app with Xcode.app, by opening AwesomeProject.xcodeproj.</span><br><span class="line">Command line invocation:</span><br><span class="line">    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project AwesomeProject.xcodeproj -configuration Debug -scheme AwesomeProject -destination id=A7F04948-7FA8-45D1-B4A6-C26B21B6548A</span><br><span class="line"></span><br><span class="line">User defaults from command line:</span><br><span class="line">    IDEPackageSupportUseBuiltinSCM = YES</span><br><span class="line"></span><br><span class="line">Prepare packages</span><br><span class="line"></span><br><span class="line">Computing target dependency graph and provisioning inputs</span><br><span class="line"></span><br><span class="line">Create build description</span><br><span class="line">Build description signature: bf2f29ad51ca6266b44cbb8d643576b3</span><br><span class="line">Build description path: /Users/yangyanyi/Library/Developer/Xcode/DerivedData/AwesomeProject-fgqiuteczcwroxgbdakmwcrknckt/Build/Intermediates.noindex/XCBuildData/bf2f29ad51ca6266b44cbb8d643576b3-desc.xcbuild</span><br><span class="line"></span><br><span class="line">note: Building targets in dependency order</span><br><span class="line">/Users/yangyanyi/Documents/Code/Gitee/reactive_native/AwesomeProject/ios/Pods/Target Support Files/Pods-AwesomeProject/Pods-AwesomeProject.debug.xcconfig:1:1: error: unable to open configuration settings file</span><br><span class="line">/Users/yangyanyi/Documents/Code/Gitee/reactive_native/AwesomeProject/ios/Pods/Target Support Files/Pods-AwesomeProject/Pods-AwesomeProject.debug.xcconfig:1:1: error: unable to open configuration settings file</span><br><span class="line">/Users/yangyanyi/Documents/Code/Gitee/reactive_native/AwesomeProject/ios/Pods/Target Support Files/Pods-AwesomeProject/Pods-AwesomeProject.debug.xcconfig:1:1: error: unable to open configuration settings file</span><br><span class="line">/Users/yangyanyi/Documents/Code/Gitee/reactive_native/AwesomeProject/ios/Pods/Target Support Files/Pods-AwesomeProject/Pods-AwesomeProject.debug.xcconfig:1:1: error: unable to open configuration settings file</span><br><span class="line">warning: Unable to read contents of XCFileList &#x27;/Target Support Files/Pods-AwesomeProject/Pods-AwesomeProject-resources-Debug-output-files.xcfilelist&#x27; (in target &#x27;AwesomeProject&#x27; from project &#x27;AwesomeProject&#x27;)</span><br><span class="line">warning: Unable to read contents of XCFileList &#x27;/Target Support Files/Pods-AwesomeProject/Pods-AwesomeProject-frameworks-Debug-output-files.xcfilelist&#x27; (in target &#x27;AwesomeProject&#x27; from project &#x27;AwesomeProject&#x27;)</span><br><span class="line">error: Unable to load contents of file list: &#x27;/Target Support Files/Pods-AwesomeProject/Pods-AwesomeProject-resources-Debug-input-files.xcfilelist&#x27; (in target &#x27;AwesomeProject&#x27; from project &#x27;AwesomeProject&#x27;)</span><br><span class="line">error: Unable to load contents of file list: &#x27;/Target Support Files/Pods-AwesomeProject/Pods-AwesomeProject-resources-Debug-output-files.xcfilelist&#x27; (in target &#x27;AwesomeProject&#x27; from project &#x27;AwesomeProject&#x27;)</span><br><span class="line">error: Unable to load contents of file list: &#x27;/Target Support Files/Pods-AwesomeProject/Pods-AwesomeProject-frameworks-Debug-input-files.xcfilelist&#x27; (in target &#x27;AwesomeProject&#x27; from project &#x27;AwesomeProject&#x27;)</span><br><span class="line">error: Unable to load contents of file list: &#x27;/Target Support Files/Pods-AwesomeProject/Pods-AwesomeProject-frameworks-Debug-output-files.xcfilelist&#x27; (in target &#x27;AwesomeProject&#x27; from project &#x27;AwesomeProject&#x27;)</span><br><span class="line">warning: Run script build phase &#x27;[CP] Copy Pods Resources&#x27; will be run during every build because it does not specify any outputs. To address this warning, either add output dependencies to the script phase, or configure it to run in every build by unchecking &quot;Based on dependency analysis&quot; in the script phase. (in target &#x27;AwesomeProject&#x27; from project &#x27;AwesomeProject&#x27;)</span><br><span class="line">warning: Run script build phase &#x27;[CP] Embed Pods Frameworks&#x27; will be run during every build because it does not specify any outputs. To address this warning, either add output dependencies to the script phase, or configure it to run in every build by unchecking &quot;Based on dependency analysis&quot; in the script phase. (in target &#x27;AwesomeProject&#x27; from project &#x27;AwesomeProject&#x27;)</span><br><span class="line">warning: Run script build phase &#x27;Bundle React Native code and images&#x27; will be run during every build because it does not specify any outputs. To address this warning, either add output dependencies to the script phase, or configure it to run in every build by unchecking &quot;Based on dependency analysis&quot; in the script phase. (in target &#x27;AwesomeProject&#x27; from project &#x27;AwesomeProject&#x27;)</span><br><span class="line">warning: Run script build phase &#x27;Start Packager&#x27; will be run during every build because it does not specify any outputs. To address this warning, either add output dependencies to the script phase, or configure it to run in every build by unchecking &quot;Based on dependency analysis&quot; in the script phase. (in target &#x27;AwesomeProject&#x27; from project &#x27;AwesomeProject&#x27;)</span><br><span class="line"></span><br><span class="line">** BUILD FAILED **</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">info Run CLI with --verbose flag for more details.</span><br><span class="line">error Command failed with exit code 1.</span><br><span class="line">info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.</span><br></pre></td></tr></table></figure>
+
+<p>参考：<a target="_blank" rel="noopener" href="https://lightrun.com/answers/facebook-react-native-fresh-react-native-066-app-does-not-build-on-xcode-13-ios-116-compiler-error-on-sysuioo">Fresh react-native (0.66) app does not build on XCode 13, iOS 11.6: compiler error on SysUio.o</a>  </p>
+<p>参考：<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/55725042/error-failed-to-build-ios-project-we-ran-xcodebuild-command-but-it-exited-wit">error Failed to build iOS project. We ran “xcodebuild” command but it exited with error code 65. i can not Run my Project</a></p>
+<p>原因可能是没有安装cocoapods成功</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd ios </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod install</span><br></pre></td></tr></table></figure>
+
+<p>然后报错信息：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[!] Error installing CocoaAsyncSocket</span><br><span class="line">[!] /usr/local/bin/git clone https://github.com/robbiehanson/CocoaAsyncSocket.git /var/folders/2p/dtc9s94148j8px03g4gkxpkr0000gn/T/d20221001-8728-969mqt --template= --single-branch --depth 1 --branch 7.6.5</span><br><span class="line"></span><br><span class="line">Cloning into &#x27;/var/folders/2p/dtc9s94148j8px03g4gkxpkr0000gn/T/d20221001-8728-969mqt&#x27;...</span><br><span class="line">fatal: unable to access &#x27;https://github.com/robbiehanson/CocoaAsyncSocket.git/&#x27;: HTTP/2 stream 1 was not closed cleanly before end of the underlying stream</span><br></pre></td></tr></table></figure>
+
+<p>解决：</p>
+<p>(可能也不需要做下面这个设置，每次报以上错误的时候，一直pod install，直到安装成功)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global --unset http.proxy</span><br><span class="line">git config --global --unset https.proxy</span><br></pre></td></tr></table></figure>
+
+<p>参考：<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/48987512/ssl-connect-ssl-error-syscall-in-connection-to-github-com443">SSL_connect: SSL_ERROR_SYSCALL in connection to github.com:443</a></p>
+<h4 id="hermes-engine的安装问题"><a href="#hermes-engine的安装问题" class="headerlink" title="hermes-engine的安装问题"></a>hermes-engine的安装问题</h4><p>报错信息：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[!] Error installing hermes-engine</span><br><span class="line">[!] /usr/bin/curl -f -L -o /var/folders/2p/dtc9s94148j8px03g4gkxpkr0000gn/T/d20221001-67147-8lkp1c/file.tgz https://github.com/facebook/react-native/releases/download/v0.70.1/hermes-runtime-darwin-v0.70.1.tar.gz --create-dirs --netrc-optional --retry 2 -A &#x27;CocoaPods/1.11.3 cocoapods-downloader/1.5.1&#x27;</span><br><span class="line"></span><br><span class="line">  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current</span><br><span class="line">                                 Dload  Upload   Total   Spent    Left  Speed</span><br><span class="line">  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0</span><br><span class="line">  0  496M    0 1343k    0     0   1299      0   4d 15h  0:17:38   4d 14h   894</span><br><span class="line">curl: (92) HTTP/2 stream 0 was not closed cleanly: PROTOCOL_ERROR (err 1)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>这个问题折腾了好久好久好久好久……</p>
+</blockquote>
+<h5 id="解决方案："><a href="#解决方案：" class="headerlink" title="解决方案："></a>解决方案：</h5><ol>
+<li>打开一个终端，先执行</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export http_proxy=&#x27;your.host:port&#x27; //your.host:port我的是127.0.0.1:1087</span><br><span class="line">export https_proxy=&#x27;your.host:port&#x27; your.host:port我的是127.0.0.1:1087</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>这个终端界面转到项目目录下，再执行pod install –verbose</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod install --verbose</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>在安装命令添加参数<code>--verbose</code>看打印详细信息</p>
+</blockquote>
+<p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/BUG_delete/article/details/110133505?spm=1001.2101.3001.6661.1&utm_medium=distribute.pc_relevant_t0.none-task-blog-2~default~CTRLIST~Rate-1-110133505-blog-82894101.t0_edu_mix&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2~default~CTRLIST~Rate-1-110133505-blog-82894101.t0_edu_mix&utm_relevant_index=1">Cocoapods安装私有库问题</a></p>
+<h5 id="安装完成"><a href="#安装完成" class="headerlink" title="安装完成"></a>安装完成</h5><p>然后自动执行<code>Generating Pods project</code></p>
+<p>然后自动执行<code>Integrating client project</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[!] Please close any current Xcode sessions and use `myapp.xcworkspace` for this project from now on.</span><br><span class="line"></span><br><span class="line">Integrating target `Pods-myapp` (`myapp.xcodeproj` project)</span><br><span class="line"></span><br><span class="line">Integrating target `Pods-myapp-myappTests` (`myapp.xcodeproj` project)</span><br><span class="line">  - Running post integrate hooks</span><br><span class="line">  - Writing Lockfile in `Podfile.lock`</span><br><span class="line">  - Writing Manifest in `Pods/Manifest.lock`</span><br><span class="line">  CDN: trunk Relative path: CocoaPods-version.yml exists! Returning local because checking is only performed in repo update</span><br><span class="line"></span><br><span class="line">-&gt; Pod installation complete! There are 59 dependencies from the Podfile and 49 total pods installed.</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>根据终端提示，如果想要使用刚添加的第三方库，必须打开<code>MyApp.xcworkspace</code>，而非之前的<code>MyApp.xcodeProj</code>。</p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/c19df91997fd">CocoaPods的安装与使用</a></p>
+<h5 id="运行项目"><a href="#运行项目" class="headerlink" title="运行项目"></a>运行项目</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yarn ios </span><br><span class="line">或</span><br><span class="line">yarn react-native run-ios</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo insecure &gt;&gt; ~/.curlrc然后 pod install</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">解决办法：</span><br><span class="line">1.删除项目依赖包以及 yarn 缓存</span><br><span class="line">rm -rf node_modules &amp;&amp; yarn cache clean</span><br><span class="line">2.重新装包</span><br><span class="line">yarn install</span><br><span class="line">3.清除 React-Native 缓存</span><br><span class="line">rm -rf ~/.rncache</span><br></pre></td></tr></table></figure>
+
+
+
+<p>如果iOS使用的是Mac M1的架构，可能还会遇到Cocoapods 的一些兼容问题。如果在安装 pods依赖时出现问题，可以尝试运行下面的命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo arch -x86_64 gem install ffi</span><br><span class="line">arch -x86_64 pod install</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://www.jb51.net/article/263303.htm">详解React Native项目中启用Hermes引擎</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u010208471/article/details/92068560">解决 React-Native mac 运行报错 error Failed to build iOS project. We ran “xcodebuild” command but it exite</a></p>
+<p><a target="_blank" rel="noopener" href="https://developer.apple.com/forums/thread/682927">s</a></p>
+<p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/ask/sof/514376">更新到最新版本RN 0.64.0后，React本机应用程序将无法运行</a></p>
+<p><a target="_blank" rel="noopener" href="https://medium.com/alameda-dev/installing-react-native-mapbox-navigation-in-ios-e35d43c5987a">Installing React Native with Mapbox Navigation in iOS</a></p>
+<p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/LIUXIAOXIAOBO/article/details/82894101">[!] Error installing Fabric. /usr/bin/curl -f -L -o /var/folders</a></p>
+<p>参考：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/b079d6566c67">【解决】[!] Error installing Fabric. [!]/usr/bin/curl -f -L -o /var/folders</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u012477117/article/details/122241972">Pod Error installing Bugly</a></p>
+<p><a target="_blank" rel="noopener" href="http://www.caotama.com/670255.html">pod install 报错 :error installing AMapFoundation ,iOS 大佬们来看一下</a></p>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/65458086/failed-to-build-ios-project-we-ran-xcodebuild-command-but-it-exited-with-erro">Failed to build iOS project. We ran “xcodebuild” command but it exited with error code 65</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qingpingguo12/article/details/126137315">镜像切换</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/CaptainJava/article/details/109132783">Mac全自动安装brew一键配置国内镜像源</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/hh680821/article/details/104936180?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522166457782716782417034485%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=166457782716782417034485&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduend~default-2-104936180-null-null.142%5Ev51%5Econtrol,201%5Ev3%5Econtrol_1&utm_term=homebrew%E5%9B%BD%E5%86%85%E9%95%9C%E5%83%8F%E5%AE%89%E8%A3%85&spm=1018.2226.3001.4187">Mac HomeBrew国内镜像安装方法</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/yanue/V2rayU/releases/tag/3.3.0">科学上网</a></p>
+<p>淘宝镜像：<a target="_blank" rel="noopener" href="https://mirrors.aliyun.com/homebrew/?spm=a2c6h.13651104.0.0.1fc17608pdL2JD">https://mirrors.aliyun.com/homebrew/?spm=a2c6h.13651104.0.0.1fc17608pdL2JD</a></p>
+<h4 id="Mac系统下——Android-环境"><a href="#Mac系统下——Android-环境" class="headerlink" title="Mac系统下——Android 环境"></a><a target="_blank" rel="noopener" href="https://www.reactnative.cn/docs/environment-setup">Mac系统下——Android 环境</a></h4><p>Java Development Kit</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">brew tap homebrew/cask-versions</span><br><span class="line">brew install --cask zulu11</span><br></pre></td></tr></table></figure>
+
+<p>React Native 需要 Java Development Kit [JDK] 11。你可以在命令行中输入 <code>javac -version</code>（请注意是 javac，不是 java）来查看你当前安装的 JDK 版本</p>
+<h5 id="3-配置-ANDROID-SDK-ROOT-环境变量"><a href="#3-配置-ANDROID-SDK-ROOT-环境变量" class="headerlink" title="3. 配置 ANDROID_SDK_ROOT 环境变量"></a>3. 配置 ANDROID_SDK_ROOT 环境变量<a target="_blank" rel="noopener" href="https://www.reactnative.cn/docs/environment-setup#3-%E9%85%8D%E7%BD%AE-android_sdk_root-%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"></a></h5><p>React Native 需要通过环境变量来了解你的 Android SDK 装在什么路径，从而正常进行编译。</p>
+<p>具体的做法是把下面的命令加入到 shell 的配置文件中。如果你的 shell 是 zsh，则配置文件为<code>~/.zshrc</code>，如果是 bash 则为<code>~/.bash_profile</code>（可以使用<code>echo $0</code>命令查看你所使用的 shell。）：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">如果你不是通过Android Studio安装的sdk，则其路径可能不同，请自行确定清楚</span></span><br><span class="line">export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk</span><br><span class="line">export PATH=$PATH:$ANDROID_SDK_ROOT/emulator</span><br><span class="line">export PATH=$PATH:$ANDROID_SDK_ROOT/tools</span><br><span class="line">export PATH=$PATH:$ANDROID_SDK_ROOT/tools/bin</span><br><span class="line">export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools</span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>译注：~表示用户目录，即<code>/Users/你的用户名/</code>，而小数点开头的文件在 Finder 中是隐藏的，并且这个文件有可能并不存在。可在终端下使用<code>vi ~/.zshrc</code>命令创建或编辑。如不熟悉 vi 操作，请点击<a target="_blank" rel="noopener" href="http://www.eepw.com.cn/article/48018.htm">这里</a>学习。</p>
+</blockquote>
+<p>使用<code>source $HOME/.zshrc</code>命令来使环境变量设置立即生效（否则重启后才生效）。可以使用<code>echo $ANDROID_SDK_ROOT</code>检查此变量是否已正确设置。</p>
+<blockquote>
+<p>请确保你正确指定了 Android SDK 路径。你可以在 Android Studio 的”Preferences”菜单中查看 SDK 的真实路径，具体是<strong>Appearance &amp; Behavior</strong> → <strong>System Settings</strong> → <strong>Android SDK</strong>。</p>
+</blockquote>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/28/React-Native%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -553,134 +808,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/08/25/HTML%E9%A1%B5%E9%9D%A2%E4%B9%8B%E9%97%B4%E4%BC%A0%E5%8F%82-iframe%E7%88%B6%E5%AD%90%E9%A1%B5%E9%9D%A2%E4%BC%A0%E5%8F%82/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="winney">
-      <meta itemprop="description" content="Doing is better than saying.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="winney">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/08/25/HTML%E9%A1%B5%E9%9D%A2%E4%B9%8B%E9%97%B4%E4%BC%A0%E5%8F%82-iframe%E7%88%B6%E5%AD%90%E9%A1%B5%E9%9D%A2%E4%BC%A0%E5%8F%82/" class="post-title-link" itemprop="url">HTML页面之间传参-iframe父子页面传参</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-08-25 11:12:23" itemprop="dateCreated datePublished" datetime="2021-08-25T11:12:23+08:00">2021-08-25</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-10-30 13:18:11" itemprop="dateModified" datetime="2024-10-30T13:18:11+08:00">2024-10-30</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="A域名下的参数传给B域名下的页面"><a href="#A域名下的参数传给B域名下的页面" class="headerlink" title="A域名下的参数传给B域名下的页面"></a>A域名下的参数传给B域名下的页面</h4><p>场景1：推广页面要求一定要使用A域名，而推广页面的网页内容是在B域名下，而B域名推广页需要从A域名的推广链接上获取参数。</p>
-<blockquote>
-<p>这里是填写的推广链接是A域名下的，但是实际用户访问的页面是B域名下的<code>game.html</code>页面</p>
-</blockquote>
-<p>例如：</p>
-<p>A域名的推广链接：<a target="_blank" rel="noopener" href="http://a.com/iframeParentPage.html?app_id=70116&amp;user=admin&amp;age=18">http://A.com/iframeParentPage.html?app_id=70116&amp;user=admin&amp;age=18</a></p>
-<p>B域名推广页面：<a target="_blank" rel="noopener" href="http://b.com/game.html?game_id=10002&amp;platform_id=205&amp;type=game">http://B.com/game.html?game_id=10002&amp;platform_id=205&amp;type=game</a></p>
-<blockquote>
-<p>A、B域名在不同的主体下，不能把B域名下的页面放到A域名的服务器上。</p>
-<p>B域名需要拿到<code>app_id</code>等参数。</p>
-</blockquote>
-<ol>
-<li><p>A域名下<code>iframeParentPage.html</code>中获取参数：<code>window.location.search</code></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console.log(window.location.search);	// ?app_id=70116&amp;user=admin&amp;age=18</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>携带A域名下<code>iframeParentPage.html</code>中的参数，进行页面跳转</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">window.location.href = &quot;http://B.com/game.html?game_id=10002&amp;platform_id=205&amp;type=game&amp;&quot; + window.location.search.substring(1);</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>备注：</p>
-<ol>
-<li><p>使用<code>window.location.search.substring(1);</code>是要把<code>?</code>去掉</p>
-</li>
-<li><p>要在<code>type=game</code>后面加上<code>&amp;</code></p>
-</li>
-</ol>
-</blockquote>
-</li>
-<li><p>在B域名下的<code>game.html</code>页面中获取参数</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const queryParams = new URLSearchParams(window.location.search);</span><br><span class="line">console.log(&#x27;queryParams&#x27;);</span><br><span class="line">console.log(queryParams);</span><br><span class="line">console.log(queryParams.get(&#x27;app_id&#x27;));</span><br><span class="line">console.log(queryParams.get(&#x27;user&#x27;));</span><br><span class="line">console.log(queryParams.get(&#x27;age&#x27;));</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<h3 id="iframe嵌套页面-父子页面传参"><a href="#iframe嵌套页面-父子页面传参" class="headerlink" title="iframe嵌套页面-父子页面传参"></a><code>iframe</code>嵌套页面-父子页面传参</h3><h4 id="查询字符串（URL-参数）"><a href="#查询字符串（URL-参数）" class="headerlink" title="查询字符串（URL 参数）"></a>查询字符串（URL 参数）</h4><p>场景2：推广页面要求一定要使用A域名，而推广页面的网页内容是在B域名下，而B域名推广页需要从A域名的推广链接上获取参数。</p>
-<blockquote>
-<p>这里是填写的推广链接是A域名下的，但是实际用户访问的页面是A域名下<code>iframe</code>嵌套了B域名下的<code>game.html</code>的页面，也就是URL中显示的是A域名</p>
-</blockquote>
-<p>A域名下的页面：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;iframe title=&quot;游戏页面&quot; src=&quot;&quot; frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">document.querySelector(&#x27;iframe&#x27;).src= &quot;http://A.com/iframeParentPage.html?app_id=70116&amp;user=admin&amp;age=18&amp;&quot; + window.location.search.substring(1);</span><br></pre></td></tr></table></figure>
-
-<p>B域名下的页面：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const queryParams = new URLSearchParams(window.location.search);</span><br><span class="line">console.log(&#x27;queryParams&#x27;);</span><br><span class="line">console.log(queryParams);</span><br><span class="line">console.log(queryParams.get(&#x27;app_id&#x27;));</span><br><span class="line">console.log(queryParams.get(&#x27;user&#x27;));</span><br><span class="line">console.log(queryParams.get(&#x27;age&#x27;));</span><br></pre></td></tr></table></figure>
-
-<h4 id="同域名下-使用缓存"><a href="#同域名下-使用缓存" class="headerlink" title="同域名下-使用缓存"></a>同域名下-使用缓存</h4><p>A页面：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">localStorage.setItem(&#x27;params&#x27;, window.location.search.substring(1));</span><br></pre></td></tr></table></figure>
-
-<p>B页面：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var params = localStorage.getItem(&#x27;params&#x27;);</span><br><span class="line">console.log(params);</span><br><span class="line">const queryParams = new URLSearchParams(params);</span><br><span class="line">console.log(queryParams.get(&#x27;app_id&#x27;));</span><br><span class="line">console.log(queryParams.get(&#x27;user&#x27;));</span><br><span class="line">console.log(queryParams.get(&#x27;age&#x27;));</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>注意：不同域名，使用这个方法不可以。</p>
-<p>根据需要，使用<code>localStorage</code>或<code>sessionStorage</code></p>
-</blockquote>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -752,7 +879,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">113</span>
+          <span class="site-state-item-count">114</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -805,7 +932,7 @@
 <div class="copyright">
   
   &copy; 2015 – 
-  <span itemprop="copyrightYear">2024</span>
+  <span itemprop="copyrightYear">2025</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

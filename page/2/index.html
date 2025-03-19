@@ -193,6 +193,100 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/03/19/%E5%88%A0%E9%99%A4-GitHub-%E4%BB%93%E5%BA%93%E4%B8%AD%E6%9C%AC%E8%AF%A5ignore%E7%9A%84-DS-Store-%E6%96%87%E4%BB%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="winney">
+      <meta itemprop="description" content="Doing is better than saying.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="winney">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2025/03/19/%E5%88%A0%E9%99%A4-GitHub-%E4%BB%93%E5%BA%93%E4%B8%AD%E6%9C%AC%E8%AF%A5ignore%E7%9A%84-DS-Store-%E6%96%87%E4%BB%B6/" class="post-title-link" itemprop="url">删除 GitHub 仓库中本该ignore的.DS_Store 文件</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2025-03-19 14:51:45 / 修改时间：15:10:12" itemprop="dateCreated datePublished" datetime="2025-03-19T14:51:45+08:00">2025-03-19</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Git/" itemprop="url" rel="index"><span itemprop="name">Git</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p>前提：在提交文件到GitHub上之前，忘了加上.gitignore文件，把.DS_Store文件提交到github上面了</p>
+</blockquote>
+<blockquote>
+<p>说明：.DS_Store 是 macOS 系统生成的文件，用于存储文件夹的元数据（如图标位置等），通常不需要提交到 Git 仓库</p>
+</blockquote>
+<h2 id="删除-GitHub-仓库中已经提交的-DS-Store-文件"><a href="#删除-GitHub-仓库中已经提交的-DS-Store-文件" class="headerlink" title="删除 GitHub 仓库中已经提交的 .DS_Store 文件"></a>删除 GitHub 仓库中已经提交的 <code>.DS_Store</code> 文件</h2><p>⚠️ 注意：终端命令行操作路径是当前项目目录</p>
+<h5 id="步骤-1：创建-gitignore-文件（如果没有的话）"><a href="#步骤-1：创建-gitignore-文件（如果没有的话）" class="headerlink" title="步骤 1：创建 .gitignore 文件（如果没有的话）"></a><strong>步骤 1：创建 <code>.gitignore</code> 文件（如果没有的话）</strong></h5><p>在项目根目录下创建一个 <code>.gitignore</code> 文件，并添加以下内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 忽略 .DS_Store 文件</span><br><span class="line">.DS_Store</span><br></pre></td></tr></table></figure>
+
+<h5 id="步骤-2：删除已经提交的-DS-Store-文件"><a href="#步骤-2：删除已经提交的-DS-Store-文件" class="headerlink" title="步骤 2：删除已经提交的 .DS_Store 文件"></a><strong>步骤 2：删除已经提交的 <code>.DS_Store</code> 文件</strong></h5><h5 id="删除所有-DS-Store-文件"><a href="#删除所有-DS-Store-文件" class="headerlink" title="删除所有 .DS_Store 文件"></a>删除所有 <code>.DS_Store</code> 文件</h5><p> 运行以下命令递归删除项目中的 <code>.DS_Store</code> 文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -name &quot;.DS_Store&quot; -delete</span><br></pre></td></tr></table></figure>
+
+<h5 id="步骤-3：从-Git-仓库中移除-DS-Store-文件"><a href="#步骤-3：从-Git-仓库中移除-DS-Store-文件" class="headerlink" title="步骤 3：从 Git 仓库中移除 .DS_Store 文件"></a><strong>步骤 3：从 Git 仓库中移除 <code>.DS_Store</code> 文件</strong></h5><p>即使你删除了 <code>.DS_Store</code> 文件，这些文件仍然存在于 Git 的历史记录中。执行以下命令将它们从 Git 记录中删除：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rm --cached -r .</span><br></pre></td></tr></table></figure>
+
+<h5 id="步骤-4：重新添加文件到-Git"><a href="#步骤-4：重新添加文件到-Git" class="headerlink" title="步骤 4：重新添加文件到 Git"></a><strong>步骤 4：重新添加文件到 Git</strong></h5><p>在 <code>.gitignore</code> 文件生效后，重新添加文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></table></figure>
+
+<h5 id="步骤-5：提交更改"><a href="#步骤-5：提交更改" class="headerlink" title="步骤 5：提交更改"></a><strong>步骤 5：提交更改</strong></h5><p>提交此次删除 <code>.DS_Store</code> 文件的更改：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m &quot;Remove .DS_Store files and update .gitignore&quot;</span><br></pre></td></tr></table></figure>
+
+<h5 id="步骤-6：推送到-GitHub"><a href="#步骤-6：推送到-GitHub" class="headerlink" title="步骤 6：推送到 GitHub"></a><strong>步骤 6：推送到 GitHub</strong></h5><p>将更改推送到远程仓库：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin main</span><br></pre></td></tr></table></figure>
+
+<p>⚠️ 注意：<code>main</code> 是默认分支名，如果你的分支名是 <code>master</code> 或其他分支名，请替换 <code>main</code>。</p>
+<h4 id="完成！"><a href="#完成！" class="headerlink" title="完成！"></a><strong>完成！</strong></h4><p>现在 <code>.DS_Store</code> 文件已经从 GitHub 仓库中删除，并且 <code>.gitignore</code> 会阻止它们再次被提交！</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2024/03/21/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7%E5%90%8E%E5%8F%B0%E9%85%8D%E7%BD%AE/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -370,180 +464,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/02/28/webpack%E7%AC%94%E8%AE%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="winney">
-      <meta itemprop="description" content="Doing is better than saying.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="winney">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/02/28/webpack%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">webpack笔记</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2024-02-28 14:58:53" itemprop="dateCreated datePublished" datetime="2024-02-28T14:58:53+08:00">2024-02-28</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-10-30 13:18:11" itemprop="dateModified" datetime="2024-10-30T13:18:11+08:00">2024-10-30</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="将多个js文件合并成一个js文件的同时，不进行压缩"><a href="#将多个js文件合并成一个js文件的同时，不进行压缩" class="headerlink" title="将多个js文件合并成一个js文件的同时，不进行压缩"></a>将多个js文件合并成一个js文件的同时，不进行压缩</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">const path = require(&quot;path&quot;);</span><br><span class="line"></span><br><span class="line">module.exports = &#123;  </span><br><span class="line">  entry: &quot;./src/wanka/index.js&quot;,  // 入口文件</span><br><span class="line">  output: &#123;</span><br><span class="line">    path: path.resolve(__dirname, &quot;dist&quot;),</span><br><span class="line">    filename: &quot;bundle.js&quot;, // 输出的文件名</span><br><span class="line">  &#125;,</span><br><span class="line">  mode: &#x27;development&#x27;,</span><br><span class="line">  devtool: &#x27;source-map&#x27; // 设置为生成source map</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="import-动态导入"><a href="#import-动态导入" class="headerlink" title="import 动态导入"></a><a target="_blank" rel="noopener" href="https://webpack.js.org/api/module-methods/#magic-comments">import 动态导入</a></h4><p>根据当前渠道，打包对应的SDK</p>
-<p><code>common.js</code>：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export const pack_platform = &#x27;hongg&#x27;;   // 打包渠道名称</span><br></pre></td></tr></table></figure>
-
-<p><code>hongg/hongg.js</code>：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export class MYWXSDK &#123;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><code>./script/index.js</code></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">import &#123; pack_platform &#125; from &#x27;./common&#x27;</span><br><span class="line"></span><br><span class="line">class JMMiddleSDK &#123;</span><br><span class="line">	...</span><br><span class="line">	// 初始化参数</span><br><span class="line">    init(initData, callback) &#123;</span><br><span class="line">    	....</span><br><span class="line">    	</span><br><span class="line">    	// 根据渠道，动态引入对应的SDK</span><br><span class="line">    	import(/* webpackIgnore: true */`../src/$&#123;pack_platform&#125;/$&#123;pack_platform&#125;.js`).then(module =&gt; &#123;</span><br><span class="line">            const &#123; MYWXSDK &#125; = module;</span><br><span class="line">            // 使用 WXSDK 进行后续操作</span><br><span class="line">            console.log(&#x27;MYWXSDK&#x27;);</span><br><span class="line">            console.log(MYWXSDK);</span><br><span class="line">            this.platform = this.initData.platform;</span><br><span class="line">            this.wxsdk = new MYWXSDK(init);</span><br><span class="line">            this.wxsdk.init(init, callback);</span><br><span class="line">          &#125;).catch(err =&gt; &#123;</span><br><span class="line">            console.error(&#x27;报错：&#x27;, err);</span><br><span class="line">          &#125;);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<p><code>重点</code>：要在import路径参数前加<code>/* webpackIgnore: true */</code>参数，不然会遍历当前路径下的全部</p>
-<p><code>相对路径</code>： <code>../src/</code>， 以dist为当前路径设置的</p>
-<blockquote>
-<p>每次打包前，只要修改<code>common.js</code>需要打包的渠道名称</p>
-</blockquote>
-<p>动态导入要使用then：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import().then(module =&gt; &#123;</span><br><span class="line">	// module的使用</span><br><span class="line">&#125;).catch(err =&gt; &#123;</span><br><span class="line">    console.error(&#x27;报错：&#x27;, err);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>以上方法存在一个问题：当渠道sdk的js文件（<code>hongg/hongg.js</code>）中有引入第三方包时，如：<code>import HgSdk from &#39;./HgSdk.min.js&#39;;</code>，则打包时第三方的代码没有被打包进去</p>
-</blockquote>
-<h4 id="根据不同渠道，动态打包方法一"><a href="#根据不同渠道，动态打包方法一" class="headerlink" title="根据不同渠道，动态打包方法一"></a>根据不同渠道，动态打包方法一</h4><ol>
-<li><p>渠道sdk代码</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export class MYWXSDK &#123;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>每个渠道的class命名要一样，都是<code>MYWXSDK</code>（自定义为一样）</p>
-</blockquote>
-</li>
-<li><p><code>./src/scripts/index.js</code>：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import &#123; JMSDK &#125; from &#x27;./import&#x27;;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><code>package.json</code></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;build&quot;: &quot;cross-env CHANNEL=hongg webpack&quot;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>打包时，运行<code>npm run build</code>命令；  打包不同渠道，就将<code>CHANNEL的值改为对应的渠道名</code></p>
-</blockquote>
-</li>
-<li><p><code>webpack.config.js</code> ——定义环境变量 CHANNEL</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">const webpack = require(&#x27;webpack&#x27;);</span><br><span class="line"></span><br><span class="line">module.exports = &#123;</span><br><span class="line">    // 定义环境变量 CHANNEL</span><br><span class="line">    plugins: [</span><br><span class="line">        new webpack.DefinePlugin(&#123;</span><br><span class="line">            &#x27;process.env.CHANNEL&#x27;: JSON.stringify(process.env.CHANNEL)</span><br><span class="line">        &#125;)</span><br><span class="line">    ],</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>使用的时：process.env.CHANNEL即可拿到CHANNEL的值</p>
-</blockquote>
-</li>
-<li><p><code>webpack.config.js</code>——动态生成<code>import.js</code></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">const fs = require(&#x27;fs&#x27;);</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 创建渠道importJs文件</span><br><span class="line"> * @param &#123;*&#125; importJsPath </span><br><span class="line"> * @param &#123;*&#125; processEnv </span><br><span class="line"> */</span><br><span class="line">function createImportJs(importJsPath, processEnv) &#123;</span><br><span class="line">    const classPath = `../$&#123;processEnv.CHANNEL&#125;/$&#123;processEnv.CHANNEL&#125;.js`;</span><br><span class="line">    const createImportJsContent = &quot;import &#123; MYWXSDK &#125; from &#x27;&quot; + classPath + &quot;&#x27;; export function JMSDK(init) &#123;return new MYWXSDK (init);&#125;&quot;;</span><br><span class="line">    </span><br><span class="line">    fs.writeFile(importJsPath, createImportJsContent, &#x27;utf8&#x27;, (err) =&gt; &#123;</span><br><span class="line">        if (err) &#123;</span><br><span class="line">            console.error(&quot;import.js文件写入失败， 原因：&quot; + err);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            console.log(&#x27;import.js文件写入成功&#x27;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line">const importJsPath = &#x27;./src/scripts/import.js&#x27;;</span><br><span class="line">createImportJs(importJsPath, process.env)</span><br></pre></td></tr></table></figure>
-
-<p>在打包前，webpack入口文件index.js中引入的import.js已写入成功：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import &#123; MYWXSDK &#125; from &#x27;../hongg/hongg.js&#x27;; export function JMSDK(init) &#123;return new MYWXSDK (init);&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>打包命令</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run build</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<h5 id="优化打包方法1"><a href="#优化打包方法1" class="headerlink" title="优化打包方法1"></a>优化打包方法1</h5><ol>
-<li><p><code>package.json</code></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;build&quot;: &quot;cross-env CHANNEL=$npm_config_channel webpack&quot;,</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><code>webpack.config.js</code></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">module.exports = (env, argv) =&gt; &#123;</span><br><span class="line">    return&#123;</span><br><span class="line">        // 定义环境变量 CHANNEL————方法二</span><br><span class="line">        plugins: [</span><br><span class="line">            new webpack.DefinePlugin(&#123;</span><br><span class="line">                 // 可以在命令行中使用 --channel 参数来指定渠道 npm run build --channel=hongg</span><br><span class="line">                &#x27;process.env.CHANNEL&#x27;: JSON.stringify(argv.channel || process.env.CHANNEL)  </span><br><span class="line">            &#125;)</span><br><span class="line">        ],</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>打包命令——直接在这里指定渠道名，不需要修改<code>package.json</code>里的build命令中的CHANNEL</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run build --channel=hongg</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<h5 id="优化打包方法2"><a href="#优化打包方法2" class="headerlink" title="优化打包方法2"></a>优化打包方法2</h5><blockquote>
-<p>不需要在package.json中添加命令</p>
-</blockquote>
-<ol>
-<li><p><code>webpack.config.js</code></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">// 方法二</span><br><span class="line">const webpack = require(&#x27;webpack&#x27;);</span><br><span class="line">const fs = require(&#x27;fs&#x27;);</span><br><span class="line">/**</span><br><span class="line"> * 创建渠道importJs文件</span><br><span class="line"> * @param &#123;*&#125; importJsPath </span><br><span class="line"> * @param &#123;*&#125; channel   渠道名称</span><br><span class="line"> */</span><br><span class="line">function createImportJs(importJsPath, channel) &#123;</span><br><span class="line">    const classPath = `../$&#123;channel&#125;/$&#123;channel&#125;.js`;</span><br><span class="line">    const createImportJsContent = &quot;import &#123; MYWXSDK &#125; from &#x27;&quot; + classPath + &quot;&#x27;; export function JMSDK(init) &#123;return new MYWXSDK (init);&#125;&quot;;</span><br><span class="line"></span><br><span class="line">    fs.writeFile(importJsPath, createImportJsContent, &#x27;utf8&#x27;, (err) =&gt; &#123;</span><br><span class="line">        if (err) &#123;</span><br><span class="line">            console.error(&quot;import.js文件写入失败， 原因：&quot; + err);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            console.log(&#x27;import.js文件写入成功&#x27;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// webpakc打包配置</span><br><span class="line">module.exports = (env, argv) =&gt; &#123;</span><br><span class="line">    const importJsPath = &#x27;./src/scripts/import.js&#x27;;</span><br><span class="line">    createImportJs(importJsPath, env.channel);</span><br><span class="line"></span><br><span class="line">    return&#123;</span><br><span class="line">        // 定义环境变量 CHANNEL————方法二</span><br><span class="line">        plugins: [</span><br><span class="line">            new webpack.DefinePlugin(&#123;</span><br><span class="line">                // 可以在命令行中使用 --channel 参数来指定渠道  webpack --env channel=hongg</span><br><span class="line">                &#x27;process.env.CHANNEL&#x27;: JSON.stringify(env.channel || process.env.CHANNEL)  </span><br><span class="line">            &#125;)</span><br><span class="line">        ],</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ol>
-<h4 id="根据不用渠道，动态打包方法二"><a href="#根据不用渠道，动态打包方法二" class="headerlink" title="根据不用渠道，动态打包方法二"></a>根据不用渠道，动态打包方法二</h4><ol>
-<li><p><code>./src/scripts/index.js</code>：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import &#123; JMSDK &#125; from &#x27;./import&#x27;;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><code>script/handleSp.js</code></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">const fs = require(&#x27;fs&#x27;);</span><br><span class="line"></span><br><span class="line">module.exports = &#123;</span><br><span class="line">    /**</span><br><span class="line">     * 创建渠道importJs文件</span><br><span class="line">     * @param &#123;*&#125; importJsPath </span><br><span class="line">     * @param &#123;*&#125; processEnvEnviroment </span><br><span class="line">     */</span><br><span class="line">    createImportJs: function (importJsPath, processEnvEnviroment) &#123;</span><br><span class="line">        const params = processEnvEnviroment.split(&#x27;-&#x27;);</span><br><span class="line">        const className = params[0];</span><br><span class="line">        const classPath = params[1];</span><br><span class="line">        const createImportJsContent = &quot;import &#123; &quot; + className + &quot; &#125; from &#x27;&quot; + classPath + &quot;&#x27;; export function JMSDK(init) &#123;return new &quot; + className + &quot;(init);&#125;&quot;;</span><br><span class="line"></span><br><span class="line">        fs.writeFile(importJsPath, createImportJsContent, &#x27;utf8&#x27;, (err) =&gt; &#123;</span><br><span class="line">            if (err) &#123;</span><br><span class="line">                console.error(&quot;import.js文件写入失败， 原因：&quot; + err);</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                console.log(&#x27;import.js文件写入成功&#x27;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><code>webpack.config.js</code></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 处理自动渠道打包逻辑，生成import.js文件</span><br><span class="line">const hangleSp = require(&#x27;./src/scripts/handleSp.js&#x27;);</span><br><span class="line">const importJsPath = &#x27;./src/scripts/import.js&#x27;;</span><br><span class="line">const processEnvEnviroment = process.env.ENVIRONMENT;</span><br><span class="line">hangleSp.createImportJs(importJsPath, processEnvEnviroment);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><code>package.json</code></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;zidou&quot;: &quot;cross-env ENVIRONMENT=ZDWXSDK-../zidou/zidou npx webpack --stats-error-details&quot;,</span><br><span class="line">    &quot;feiqu&quot;: &quot;cross-env ENVIRONMENT=FQWXSDK-../feiqu/feiqu npx webpack --stats-error-details&quot;,</span><br><span class="line">    &quot;slang&quot;: &quot;cross-env ENVIRONMENT=SLWXSDK-../slang/slang npx webpack --stats-error-details&quot;,</span><br><span class="line">    &quot;lewan&quot;: &quot;cross-env ENVIRONMENT=LWWXSDK-../lewan/lewan npx webpack --stats-error-details&quot;,</span><br><span class="line">    &quot;vxiny&quot;: &quot;cross-env ENVIRONMENT=XYWXSDK-../vxiny/vxiny npx webpack --stats-error-details&quot;,</span><br><span class="line">    &quot;zhwan&quot;: &quot;cross-env ENVIRONMENT=ZWWXSDK-../zhwan/zhwan npx webpack --stats-error-details&quot;,</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>每次新增渠道，要新增命令， 每个渠道的sdk名称可不一样</p>
-</blockquote>
-</li>
-<li><p>打包命令</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run zidou		// npm run 渠道名称</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -615,7 +535,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">113</span>
+          <span class="site-state-item-count">114</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -668,7 +588,7 @@
 <div class="copyright">
   
   &copy; 2015 – 
-  <span itemprop="copyrightYear">2024</span>
+  <span itemprop="copyrightYear">2025</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

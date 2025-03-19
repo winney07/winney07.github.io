@@ -193,6 +193,115 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/15/jsTree%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="winney">
+      <meta itemprop="description" content="Doing is better than saying.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="winney">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/01/15/jsTree%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">jsTree笔记</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-01-15 18:01:30" itemprop="dateCreated datePublished" datetime="2021-01-15T18:01:30+08:00">2021-01-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-10-30 13:18:11" itemprop="dateModified" datetime="2024-10-30T13:18:11+08:00">2024-10-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF%E6%8F%92%E4%BB%B6/" itemprop="url" rel="index"><span itemprop="name">前端插件</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF%E6%8F%92%E4%BB%B6/jsTree/" itemprop="url" rel="index"><span itemprop="name">jsTree</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a target="_blank" rel="noopener" href="https://www.jstree.com.cn/">jsTree</a></p>
+<h4 id="清除上次操作记录"><a href="#清除上次操作记录" class="headerlink" title="清除上次操作记录"></a>清除上次操作记录</h4><p><strong>需求</strong>：当进来页面时，页面只展开第一级目录</p>
+<p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/jsTree%E7%AC%94%E8%AE%B0/note1.png" alt="jstree只展开第一级目录"></p>
+<p><strong>目前存在问题</strong>：当用户在树上操作了置换，重新刷新页面，进来置换，依然保持上次操作后的状态，如图：</p>
+<p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/jsTree%E7%AC%94%E8%AE%B0/note2.png" alt="依然保持上次操作后的状态"></p>
+<p>解决方法：</p>
+<p>在changed.jstree事件里面，让树重新刷新</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(&#x27;#jstree_demo_div&#x27;).on(&quot;changed.jstree&quot;, function (e, data) &#123;</span><br><span class="line">      $(&#x27;#jstree_demo_div&#x27;).jstree(&#x27;refresh&#x27;);</span><br><span class="line"> &#125;);</span><br></pre></td></tr></table></figure>
+
+<p>写法1：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(&#x27;#treeId&#x27;).jstree(true).refresh();</span><br></pre></td></tr></table></figure>
+
+<p>写法2：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(&#x27;#jstree_demo_div&#x27;).jstree(&#x27;refresh&#x27;);</span><br></pre></td></tr></table></figure>
+
+<h5 id="只展开第一级目录"><a href="#只展开第一级目录" class="headerlink" title="只展开第一级目录"></a>只展开第一级目录</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data[0].state.opened = true;</span><br><span class="line">rendertree_group_admin(data);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>state.opened是控制展开还是收起，设置第一级的state.opened为true。</p>
+</blockquote>
+<p>结合（解决jstree初始状态只展开第一级目录）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">on(&#x27;changed.jstree&#x27;, function (e, data) &#123;</span><br><span class="line">    // 清除树用户之前的操作记录</span><br><span class="line">    $(&#x27;#group_ admin&#x27;).jstree(&#x27;refresh&#x27;);</span><br><span class="line">    .....</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">success: function (ret)&#123;</span><br><span class="line">    if (ret.hasOwnProperty(&quot;code&quot;)) &#123;</span><br><span class="line">    	var data = ret.hasOwnProperty(&quot;data&quot;) &amp;&amp; ret.data != &quot;&quot; ? ret.data : &quot;&quot;;</span><br><span class="line">        if (ret.code === 1) &#123;</span><br><span class="line">            $(&quot;#group_admin&quot;).jstree(&quot;destroy&quot;);</span><br><span class="line">            data[Ø].state, opened = true;</span><br><span class="line">            rendertree_group_admin(data);</span><br><span class="line">         &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>存在bug：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 获取是否刚登录进来页面</span><br><span class="line">var isFirst = localStorage.getItem(&#x27;loginInPage&#x27;);</span><br><span class="line">if(isFirst == &#x27;true&#x27;)&#123;</span><br><span class="line">	// 清除树的用户之前的操作记录</span><br><span class="line">	$(&#x27;#group_admin&#x27;).jstree(&#x27;refresh&#x27;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="展开全部"><a href="#展开全部" class="headerlink" title="展开全部"></a>展开全部</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(&quot;#group_admin&quot;).jstree(&quot;close_all&quot;);</span><br></pre></td></tr></table></figure>
+
+<h5 id="收起全部"><a href="#收起全部" class="headerlink" title="收起全部"></a>收起全部</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(&quot;#group_admin&quot;).jstree(&quot;open_all&quot;);</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/15/HighChart%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -736,99 +845,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/14/Hexo%E5%8D%9A%E6%96%87%E7%BD%AE%E9%A1%B6%EF%BC%88%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%92%E5%BA%8F%EF%BC%89/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="winney">
-      <meta itemprop="description" content="Doing is better than saying.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="winney">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/01/14/Hexo%E5%8D%9A%E6%96%87%E7%BD%AE%E9%A1%B6%EF%BC%88%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%92%E5%BA%8F%EF%BC%89/" class="post-title-link" itemprop="url">Hexo博文置顶（自定义排序）</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-01-14 11:55:19" itemprop="dateCreated datePublished" datetime="2021-01-14T11:55:19+08:00">2021-01-14</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-10-30 13:18:11" itemprop="dateModified" datetime="2024-10-30T13:18:11+08:00">2024-10-30</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%96%87%E6%A1%A3%E7%BD%91%E7%AB%99%E7%94%9F%E6%88%90%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index"><span itemprop="name">文档网站生成工具</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%96%87%E6%A1%A3%E7%BD%91%E7%AB%99%E7%94%9F%E6%88%90%E5%B7%A5%E5%85%B7/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="Hexo博文置顶（自定义排序）"><a href="#Hexo博文置顶（自定义排序）" class="headerlink" title="Hexo博文置顶（自定义排序）"></a>Hexo博文置顶（自定义排序）</h4><blockquote>
-<p>使用的是<code>top</code>属性，<code>top</code>值越高，排序越在前，不设置<code>top</code>值得博文按照时间顺序排序。<br>修改Hexo文件夹下的node_modules/hexo-generator-index/lib/generator.js</p>
-</blockquote>
-<p>原来代码：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">const config = this.config;</span><br><span class="line">const posts = locals.posts.sort(config.index_ generator.order by);</span><br><span class="line"></span><br><span class="line">sort(posts.data, (a， b) =&gt; (b.sticky || 0) - (a.sticky || 0));</span><br><span class="line"></span><br><span class="line">const paginationDir.config.pagination_ dir || &#x27;page&#x27;;</span><br><span class="line">const path.config.index_ generator.path || &#x27;&#x27;;</span><br><span class="line"></span><br><span class="line">return pagination(path, posts, &#123;</span><br><span class="line">	perPage: config.index_ generator.per_page,</span><br><span class="line">	layout: [&#x27;index&#x27;, &#x27;archive&#x27;],</span><br><span class="line">	format: paginationDir + &#x27;/%d/&#x27;,</span><br><span class="line">	data: &#123;</span><br><span class="line">    	_index: true</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>改为：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">&#x27;use strict&#x27;;</span><br><span class="line"></span><br><span class="line">const pagination = require(&#x27;hexo-pagination&#x27;);</span><br><span class="line">const &#123; sort &#125; = require(&#x27;timsort&#x27;);</span><br><span class="line"></span><br><span class="line">module.exports = function(locals) &#123;</span><br><span class="line">  const config = this.config;</span><br><span class="line">  const posts = locals.posts.sort(config.index_generator.order_by);</span><br><span class="line"></span><br><span class="line">  // sort(posts.data, (a, b) =&gt; (b.sticky || 0) - (a.sticky || 0));</span><br><span class="line"></span><br><span class="line">  posts.data = posts.data.sort(function(a, b) &#123;</span><br><span class="line">    if(a.top &amp;&amp; b.top) &#123; // 两篇文章top都有定义</span><br><span class="line">        if(a.top == b.top) return b.date - a.date; // 若top值一样则按照文章日期降序排</span><br><span class="line">        else return b.top - a.top; // 否则按照top值降序排</span><br><span class="line">    &#125;</span><br><span class="line">    else if(a.top &amp;&amp; !b.top) &#123; // 以下是只有一篇文章top有定义，那么将有top的排在前面（这里用异或操作居然不行233）</span><br><span class="line">        return -1;</span><br><span class="line">    &#125;</span><br><span class="line">    else if(!a.top &amp;&amp; b.top) &#123;</span><br><span class="line">        return 1;</span><br><span class="line">    &#125;</span><br><span class="line">    else return b.date - a.date; // 都没定义按照文章日期降序排</span><br><span class="line">&#125;);</span><br><span class="line">  const paginationDir = config.pagination_dir || &#x27;page&#x27;;</span><br><span class="line">  const path = config.index_generator.path || &#x27;&#x27;;</span><br><span class="line"></span><br><span class="line">  return pagination(path, posts, &#123;</span><br><span class="line">    perPage: config.index_generator.per_page,</span><br><span class="line">    layout: [&#x27;index&#x27;, &#x27;archive&#x27;],</span><br><span class="line">    format: paginationDir + &#x27;/%d/&#x27;,</span><br><span class="line">    data: &#123;</span><br><span class="line">      __index: true</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>1、即在<code>const posts = locals.posts.sort(config.index_generator.order_by);</code>下面添加如下<code>javascript</code>代码：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">posts.data = posts.data.sort(function(a, b) &#123;</span><br><span class="line">      if(a.top &amp;&amp; b.top) &#123; // 两篇文章top都有定义</span><br><span class="line">          if(a.top == b.top) return b.date - a.date; // 若top值一样则按照文章日期降序排</span><br><span class="line">          else return b.top - a.top; // 否则按照top值降序排</span><br><span class="line">      &#125;</span><br><span class="line">      else if(a.top &amp;&amp; !b.top) &#123; // 以下是只有一篇文章top有定义，那么将有top的排在前面（这里用异或操作居然不行233）</span><br><span class="line">          return -1;</span><br><span class="line">      &#125;</span><br><span class="line">      else if(!a.top &amp;&amp; b.top) &#123;</span><br><span class="line">          return 1;</span><br><span class="line">      &#125;</span><br><span class="line">      else return b.date - a.date; // 都没定义按照文章日期降序排</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
-
-<p>2、在对应的md文件中添加top属性：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: 网站素材</span><br><span class="line">date: 2021-01-08 11:23:25</span><br><span class="line">tags:</span><br><span class="line">- 网站素材</span><br><span class="line">categories: </span><br><span class="line">- 工作笔记</span><br><span class="line">- 网站素材</span><br><span class="line">top: 102</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_32454537/article/details/79482920">参考文献</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -900,7 +916,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">113</span>
+          <span class="site-state-item-count">114</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -953,7 +969,7 @@
 <div class="copyright">
   
   &copy; 2015 – 
-  <span itemprop="copyrightYear">2024</span>
+  <span itemprop="copyrightYear">2025</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

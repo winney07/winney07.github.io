@@ -193,6 +193,147 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/08/10/%E6%97%A5%E6%9C%9F%E5%AF%B9%E8%B1%A1Date%E7%9A%84%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="winney">
+      <meta itemprop="description" content="Doing is better than saying.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="winney">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/08/10/%E6%97%A5%E6%9C%9F%E5%AF%B9%E8%B1%A1Date%E7%9A%84%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/" class="post-title-link" itemprop="url">日期对象Date的常用方法</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-08-10 11:22:26" itemprop="dateCreated datePublished" datetime="2020-08-10T11:22:26+08:00">2020-08-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-10-30 13:18:11" itemprop="dateModified" datetime="2024-10-30T13:18:11+08:00">2024-10-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="创建Date实例"><a href="#创建Date实例" class="headerlink" title="创建Date实例"></a>创建Date实例</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let date = new Date();		// Fri Jul 14 2023 15:23:52 GMT+0800 (中国标准时间)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let date = new Date(1689321710307);		// Fri Jul 14 2023 16:01:50 GMT+0800 (中国标准时间)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let date = new Date(&#x27;2023-07-14 16:10:40&#x27;);	 // Fri Jul 14 2023 16:10:40 GMT+0800 (中国标准时间)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let date = new Date(2023, 6, 14, 15, 23, 52);  // Fri Jul 14 2023 15:23:52 GMT+0800 (中国标准时间)</span><br></pre></td></tr></table></figure>
+
+<h3 id="格式化"><a href="#格式化" class="headerlink" title="格式化"></a>格式化</h3><h4 id="1-Date对象方法"><a href="#1-Date对象方法" class="headerlink" title="1. Date对象方法"></a>1. Date对象方法</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let LDS = date.toLocaleDateString();	// 2023/7/14</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let LS = date.toLocaleString();			// 2023/7/14 15:23:52</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let LTS = date.toLocaleTimeString(); 	// 15:23:52</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-封装方法"><a href="#2-封装方法" class="headerlink" title="2. 封装方法"></a>2. 封装方法</h4><p>格式：<code>2023-07-14</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function formatDate(date) &#123;</span><br><span class="line">    const year = date.getFullYear();</span><br><span class="line">    const month = String(date.getMonth() + 1).padStart(2, &#x27;0&#x27;);</span><br><span class="line">    const day = String(date.getDate()).padStart(2, &#x27;0&#x27;);</span><br><span class="line"></span><br><span class="line">    return `$&#123;year&#125;-$&#123;month&#125;-$&#123;day&#125;`;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const date = new Date();</span><br><span class="line">const formattedDate = formatDate(date);</span><br><span class="line">console.log(formattedDate); 	//	2023-07-14</span><br></pre></td></tr></table></figure>
+
+<p>格式：<code>2023-07-14 15:30:45</code>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">function formatDate(date, format) &#123;</span><br><span class="line">    const year = date.getFullYear();</span><br><span class="line">    const month = String(date.getMonth() + 1).padStart(2, &#x27;0&#x27;);</span><br><span class="line">    const day = String(date.getDate()).padStart(2, &#x27;0&#x27;);</span><br><span class="line">    const hours = String(date.getHours()).padStart(2, &#x27;0&#x27;);</span><br><span class="line">    const minutes = String(date.getMinutes()).padStart(2, &#x27;0&#x27;);</span><br><span class="line">    const seconds = String(date.getSeconds()).padStart(2, &#x27;0&#x27;);</span><br><span class="line"></span><br><span class="line">    return format</span><br><span class="line">        .replace(&#x27;YYYY&#x27;, year)</span><br><span class="line">        .replace(&#x27;MM&#x27;, month)</span><br><span class="line">        .replace(&#x27;DD&#x27;, day)</span><br><span class="line">        .replace(&#x27;HH&#x27;, hours)</span><br><span class="line">        .replace(&#x27;mm&#x27;, minutes)</span><br><span class="line">        .replace(&#x27;ss&#x27;, seconds);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const date = new Date();</span><br><span class="line">const formattedDate = formatDate(date, &#x27;YYYY-MM-DD HH:mm:ss&#x27;);</span><br><span class="line">console.log(formattedDate); // 2023-07-14 15:30:45</span><br></pre></td></tr></table></figure>
+
+<p>格式：<code>2023-07-14 15:30:45</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">function formatDate(date, separator = &#x27;-&#x27;) &#123;</span><br><span class="line">    const year = date.getFullYear();</span><br><span class="line">    const month = String(date.getMonth() + 1).padStart(2, &#x27;0&#x27;);</span><br><span class="line">    const day = String(date.getDate()).padStart(2, &#x27;0&#x27;);</span><br><span class="line">    const hours = String(date.getHours()).padStart(2, &#x27;0&#x27;);</span><br><span class="line">    const minutes = String(date.getMinutes()).padStart(2, &#x27;0&#x27;);</span><br><span class="line">    const seconds = String(date.getSeconds()).padStart(2, &#x27;0&#x27;);</span><br><span class="line"></span><br><span class="line">    const formattedDate = [year, month, day].join(separator);</span><br><span class="line">    const formattedTime = [hours, minutes, seconds].join(&#x27;:&#x27;);</span><br><span class="line"></span><br><span class="line">    return formattedDate + &#x27; &#x27; + formattedTime;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const date = new Date();</span><br><span class="line">const formattedDate = formatDate(date, &#x27;-&#x27;);</span><br><span class="line">console.log(formattedDate); // 2023-07-14 15:30:45</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>后面两种方法，传参方式不一样，实现效果一样。</p>
+</blockquote>
+<blockquote>
+<p><strong><code>padStart()</code></strong> 方法用另一个字符串填充当前字符串（如果需要的话，会重复多次），以便产生的字符串达到给定的长度。从当前字符串的左侧开始填充。</p>
+<p>参数：<code>targetLength</code>：当前字符串需要填充到的目标长度；<code>padString</code>：填充字符串。默认值为 “ “（空格）</p>
+</blockquote>
+<h3 id="获取时间戳（当前时间的毫秒数）"><a href="#获取时间戳（当前时间的毫秒数）" class="headerlink" title="获取时间戳（当前时间的毫秒数）"></a>获取时间戳（当前时间的毫秒数）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let t = date.getTime();		// 1689319432759</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let now = Date.now();    	// 1689319432759</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<ol>
+<li><code>Date.now()</code>: 静态方法，直接通过 <code>Date.now()</code> 调用，返回的是当前时间的毫秒数，不需要创建 <code>Date</code> 对象实例。</li>
+<li><code>Date.getTime()</code>:  <code>Date</code> 对象的实例方法，需要先创建一个 <code>Date</code> 对象，然后通过该对象调用 <code>getTime()</code> 方法，返回的是该日期对象表示的时间的毫秒数。</li>
+</ol>
+<p>总结来说，<code>Date.now()</code> 更方便和直接，可以直接获取当前时间的毫秒数，而 <code>date.getTime()</code> 则是通过 <code>date</code> 对象获取该对象表示的时间的毫秒数。</p>
+</blockquote>
+<h3 id="获取年份"><a href="#获取年份" class="headerlink" title="获取年份"></a>获取年份</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let y = date.getFullYear();		// 2023</span><br></pre></td></tr></table></figure>
+
+<h3 id="获取月份"><a href="#获取月份" class="headerlink" title="获取月份"></a>获取月份</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let m = date.getMonth() + 1;	// 7</span><br></pre></td></tr></table></figure>
+
+<h3 id="获取月中的哪一日"><a href="#获取月中的哪一日" class="headerlink" title="获取月中的哪一日"></a>获取月中的哪一日</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let d = date.getDate();		// 14</span><br></pre></td></tr></table></figure>
+
+<h3 id="获取小时"><a href="#获取小时" class="headerlink" title="获取小时"></a>获取小时</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let h = date.getHours();	// 15</span><br></pre></td></tr></table></figure>
+
+<h3 id="获取分钟"><a href="#获取分钟" class="headerlink" title="获取分钟"></a>获取分钟</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let min = date.getMinutes();   // 23</span><br></pre></td></tr></table></figure>
+
+<h3 id="获取秒数"><a href="#获取秒数" class="headerlink" title="获取秒数"></a>获取秒数</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let s = date.getSeconds();		// 52</span><br></pre></td></tr></table></figure>
+
+<h3 id="获取星期几"><a href="#获取星期几" class="headerlink" title="获取星期几"></a>获取星期几</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let day = date.getDay();		// 5</span><br></pre></td></tr></table></figure>
+
+<h3 id="时间戳转换格式"><a href="#时间戳转换格式" class="headerlink" title="时间戳转换格式"></a>时间戳转换格式</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">//时间戳转换格式</span><br><span class="line">function formatDateTime(timeStamp) &#123; </span><br><span class="line">    var date = new Date();</span><br><span class="line">    date.setTime(timeStamp * 1000);</span><br><span class="line">    var y = date.getFullYear();    </span><br><span class="line">    var m = date.getMonth() + 1;    </span><br><span class="line">    m = m &lt; 10 ? (&#x27;0&#x27; + m) : m;    </span><br><span class="line">    var d = date.getDate();    </span><br><span class="line">    d = d &lt; 10 ? (&#x27;0&#x27; + d) : d;    </span><br><span class="line">    var h = date.getHours();  </span><br><span class="line">    h = h &lt; 10 ? (&#x27;0&#x27; + h) : h;  </span><br><span class="line">    var minute = date.getMinutes();  </span><br><span class="line">    var second = date.getSeconds();  </span><br><span class="line">    minute = minute &lt; 10 ? (&#x27;0&#x27; + minute) : minute;    </span><br><span class="line">    second = second &lt; 10 ? (&#x27;0&#x27; + second) : second;   </span><br><span class="line">    return y + &#x27;-&#x27; + m + &#x27;-&#x27; + d+&#x27; &#x27;+h+&#x27;:&#x27;+minute+&#x27;:&#x27;+second;    </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="js获取当前时间-昨天、今天、明天"><a href="#js获取当前时间-昨天、今天、明天" class="headerlink" title="js获取当前时间(昨天、今天、明天)"></a><a target="_blank" rel="noopener" href="https://www.cnblogs.com/menxiaojin/p/13753525.html">js获取当前时间(昨天、今天、明天)</a></h4><h4 id="获取时间戳-valueOf"><a href="#获取时间戳-valueOf" class="headerlink" title="获取时间戳-valueOf()"></a>获取时间戳-valueOf()</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var d = new Date().valueOf();</span><br></pre></td></tr></table></figure>
+
+<h4 id="new-Date-方法"><a href="#new-Date-方法" class="headerlink" title="new Date()方法"></a>new Date()方法</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">new Date().toDateString()</span><br><span class="line">Wed Mar 02 2020</span><br><span class="line">new Date().toLocaleDateString()</span><br><span class="line">2020/3/2</span><br><span class="line">new Date().toLocaleTimeString()</span><br><span class="line">17:50:21</span><br><span class="line">new Date().toLocaleString();</span><br><span class="line">2020/3/2 17:46:52</span><br><span class="line">new Date().toTimeString()</span><br><span class="line">17:50:59 GMT+0800 (中国标准时间)</span><br><span class="line">new Date().toUTCString()</span><br><span class="line">Wed, 02 Mar 2020 09:51:30 GMT</span><br></pre></td></tr></table></figure>
+
+<h4 id="获取明天的日期并格式化"><a href="#获取明天的日期并格式化" class="headerlink" title="获取明天的日期并格式化"></a>获取明天的日期并格式化</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">// 格式化日期</span><br><span class="line">function format(t, symbol)&#123;</span><br><span class="line">    var year = t.getFullYear()       // 年份</span><br><span class="line">        , month = t.getMonth() + 1   // 月份</span><br><span class="line">        , date = t.getDate()         // 日</span><br><span class="line">        , symbol = symbol || &#x27;-&#x27;;    // 分隔符，默认为-</span><br><span class="line">    month = month &lt; 10 ? &#x27;0&#x27; + month : month;</span><br><span class="line">    date = date &lt; 10 ? &#x27;0&#x27; + date : date;</span><br><span class="line">    return year + symbol + month + symbol + date;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var now = new Date()               // 获取当前时间</span><br><span class="line">    , time_stamp = now.setDate(now.getDate() +  1)</span><br><span class="line">    , tomorrow = format(new Date(time_stamp));  // 明天</span><br></pre></td></tr></table></figure>
+
+<h4 id="获取前后相隔n天的日期"><a href="#获取前后相隔n天的日期" class="headerlink" title="获取前后相隔n天的日期"></a>获取前后相隔n天的日期</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line">* 根据间隔天数获取日期</span><br><span class="line">* @param interval：间隔天数</span><br><span class="line">* @param symbol：日期格式分隔符（默认：-）</span><br><span class="line">* interval为-1：昨天</span><br><span class="line">* interval为0：今天</span><br><span class="line">* interval为1：明天</span><br><span class="line">*/</span><br><span class="line"></span><br><span class="line">function getDate(interval, symbol) &#123;</span><br><span class="line">    // getDate: 返回月份的某一天</span><br><span class="line">    // setDate：设置为月份的某一天</span><br><span class="line">    var now = new Date()               // 获取当前时间</span><br><span class="line">        , time_stamp = now.setDate(now.getDate() +  parseInt(interval))</span><br><span class="line">        , date = new Date(time_stamp);  // 根据间隔天数获取的日期</span><br><span class="line">    // 返回格式化后日期</span><br><span class="line">    return format(date);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="根据某天的前后几天获取日期"><a href="#根据某天的前后几天获取日期" class="headerlink" title="根据某天的前后几天获取日期"></a>根据某天的前后几天获取日期</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line">* 根据某天的前/后几天</span><br><span class="line">* @param interval：间隔天数</span><br><span class="line">* @param value：某天的日期</span><br><span class="line">* @param symbol：日期格式分隔符（默认：-）</span><br><span class="line">* interval为-1：昨天</span><br><span class="line">* interval为0：今天</span><br><span class="line">* interval为1：明天</span><br><span class="line">*/</span><br><span class="line">function getPreDate(interval, value, symbol) &#123;</span><br><span class="line">    // getDate: 返回月份的某一天</span><br><span class="line">    // setDate：设置为月份的某一天</span><br><span class="line">    var now = new Date(value)               // 获取当前时间</span><br><span class="line">        , time_stamp = now.setDate(now.getDate() +  parseInt(interval))</span><br><span class="line">        , date = new Date(time_stamp);  // 根据间隔天数获取的日期</span><br><span class="line">    // 返回格式化后日期</span><br><span class="line">    return format(date);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="实现倒计时功能"><a href="#实现倒计时功能" class="headerlink" title="实现倒计时功能"></a>实现倒计时功能</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">// 倒计时功能</span><br><span class="line">var div = document.getElementById(&quot;showtime&quot;);</span><br><span class="line">setInterval (function () &#123;</span><br><span class="line">    div.innerHTML = showtime();</span><br><span class="line">&#125;, 1000); </span><br><span class="line"></span><br><span class="line">var showtime = function () &#123;</span><br><span class="line">    var nowTime = new Date(),  // 获取当前时间</span><br><span class="line">        // endTime = new Date(&quot;2022/8/20&quot;);  // 定义结束时间  </span><br><span class="line">        endTime = new Date(&quot;2022/8/20 23:59:59&quot;);  // 定义结束具体时间——即8月21凌晨结束</span><br><span class="line">    var time = endTime.getTime() - nowTime.getTime(),  // 距离结束时间的毫秒数</span><br><span class="line">        d = Math.floor(time/(1000*60*60*24)),  // 计算天数</span><br><span class="line">        h = Math.floor(time/(1000*60*60)%24),  // 计算小时数</span><br><span class="line">        m = Math.floor(time/(1000*60)%60),  // 计算分钟数</span><br><span class="line">        s = Math.floor(time/1000%60);  // 计算秒数</span><br><span class="line"></span><br><span class="line">    h = h &lt; 10 ? &quot;0&quot; + h : h;</span><br><span class="line">    m = m &lt; 10 ? &quot;0&quot; + m : m;</span><br><span class="line">    s = s &lt; 10 ? &quot;0&quot; + s : s;</span><br><span class="line">    return d + &quot;天&quot; + h + &quot;:&quot; + m + &quot;:&quot; + s;  //返回倒计时的字符串</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2020/07/29/Vue3-Vite%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA%E7%AC%94%E8%AE%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -694,153 +835,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/07/09/HTML%E7%89%B9%E6%AE%8A%E7%AC%A6%E5%8F%B7/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="winney">
-      <meta itemprop="description" content="Doing is better than saying.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="winney">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/07/09/HTML%E7%89%B9%E6%AE%8A%E7%AC%A6%E5%8F%B7/" class="post-title-link" itemprop="url">HTML特殊符号</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-07-09 14:50:35" itemprop="dateCreated datePublished" datetime="2020-07-09T14:50:35+08:00">2020-07-09</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-10-30 13:18:11" itemprop="dateModified" datetime="2024-10-30T13:18:11+08:00">2024-10-30</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/HTML/" itemprop="url" rel="index"><span itemprop="name">HTML</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="常用的特殊符号"><a href="#常用的特殊符号" class="headerlink" title="常用的特殊符号"></a>常用的特殊符号</h2><table>
-<thead>
-<tr>
-<th>特殊符号</th>
-<th>HTML写法</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td></td>
-<td><code>&amp;nbsp;</code></td>
-<td>空格</td>
-</tr>
-<tr>
-<td>&amp;</td>
-<td><code>&amp;amp;</code></td>
-<td>和、与</td>
-</tr>
-<tr>
-<td>“</td>
-<td><code>&amp;quot;</code></td>
-<td>英文双引号</td>
-</tr>
-<tr>
-<td>‘</td>
-<td><code>&amp;apos;</code></td>
-<td>英文单引号</td>
-</tr>
-<tr>
-<td>&gt;</td>
-<td><code>&amp;gt;</code></td>
-<td>大于</td>
-</tr>
-<tr>
-<td>≥</td>
-<td><code>&amp;ge;</code></td>
-<td>大于等于</td>
-</tr>
-<tr>
-<td>＜</td>
-<td><code>&amp;lt;</code></td>
-<td>小于</td>
-</tr>
-<tr>
-<td>≤</td>
-<td><code>&amp;le;</code></td>
-<td>小于等于</td>
-</tr>
-<tr>
-<td>≠</td>
-<td><code>&amp;ne;</code></td>
-<td>不等于</td>
-</tr>
-<tr>
-<td>¥</td>
-<td><code>&amp;yen;</code></td>
-<td>人民币符号</td>
-</tr>
-<tr>
-<td>&infin;</td>
-<td><code>&amp;infin;</code></td>
-<td>无穷</td>
-</tr>
-</tbody></table>
-<p><a target="_blank" rel="noopener" href="https://tool.chinaz.com/tools/htmlchar.aspx">HTML 特殊符号编码对照表</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/charsets/ref_utf_currency.asp">货币符号</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/charsets/ref_utf_letterlike.asp">字母符号</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/charsets/ref_utf_arrows.asp">箭头</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/charsets/ref_utf_math.asp">数学运算符</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/charsets/ref_utf_geometric.asp">几何形状</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/charsets/ref_utf_symbols.asp">杂项符号</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/charsets/ref_emoji_smileys.asp">笑脸表情符号</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/charsets/ref_html_entities_4.asp">完整的 HTML 4 实体参考手册</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/charsets/ref_html_entities_4.asp">特殊符号</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -912,7 +906,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">113</span>
+          <span class="site-state-item-count">114</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -965,7 +959,7 @@
 <div class="copyright">
   
   &copy; 2015 – 
-  <span itemprop="copyrightYear">2024</span>
+  <span itemprop="copyrightYear">2025</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

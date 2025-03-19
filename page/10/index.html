@@ -193,6 +193,134 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/08/25/HTML%E9%A1%B5%E9%9D%A2%E4%B9%8B%E9%97%B4%E4%BC%A0%E5%8F%82-iframe%E7%88%B6%E5%AD%90%E9%A1%B5%E9%9D%A2%E4%BC%A0%E5%8F%82/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="winney">
+      <meta itemprop="description" content="Doing is better than saying.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="winney">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/08/25/HTML%E9%A1%B5%E9%9D%A2%E4%B9%8B%E9%97%B4%E4%BC%A0%E5%8F%82-iframe%E7%88%B6%E5%AD%90%E9%A1%B5%E9%9D%A2%E4%BC%A0%E5%8F%82/" class="post-title-link" itemprop="url">HTML页面之间传参-iframe父子页面传参</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-08-25 11:12:23" itemprop="dateCreated datePublished" datetime="2021-08-25T11:12:23+08:00">2021-08-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-10-30 13:18:11" itemprop="dateModified" datetime="2024-10-30T13:18:11+08:00">2024-10-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="A域名下的参数传给B域名下的页面"><a href="#A域名下的参数传给B域名下的页面" class="headerlink" title="A域名下的参数传给B域名下的页面"></a>A域名下的参数传给B域名下的页面</h4><p>场景1：推广页面要求一定要使用A域名，而推广页面的网页内容是在B域名下，而B域名推广页需要从A域名的推广链接上获取参数。</p>
+<blockquote>
+<p>这里是填写的推广链接是A域名下的，但是实际用户访问的页面是B域名下的<code>game.html</code>页面</p>
+</blockquote>
+<p>例如：</p>
+<p>A域名的推广链接：<a target="_blank" rel="noopener" href="http://a.com/iframeParentPage.html?app_id=70116&amp;user=admin&amp;age=18">http://A.com/iframeParentPage.html?app_id=70116&amp;user=admin&amp;age=18</a></p>
+<p>B域名推广页面：<a target="_blank" rel="noopener" href="http://b.com/game.html?game_id=10002&amp;platform_id=205&amp;type=game">http://B.com/game.html?game_id=10002&amp;platform_id=205&amp;type=game</a></p>
+<blockquote>
+<p>A、B域名在不同的主体下，不能把B域名下的页面放到A域名的服务器上。</p>
+<p>B域名需要拿到<code>app_id</code>等参数。</p>
+</blockquote>
+<ol>
+<li><p>A域名下<code>iframeParentPage.html</code>中获取参数：<code>window.location.search</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console.log(window.location.search);	// ?app_id=70116&amp;user=admin&amp;age=18</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>携带A域名下<code>iframeParentPage.html</code>中的参数，进行页面跳转</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">window.location.href = &quot;http://B.com/game.html?game_id=10002&amp;platform_id=205&amp;type=game&amp;&quot; + window.location.search.substring(1);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>备注：</p>
+<ol>
+<li><p>使用<code>window.location.search.substring(1);</code>是要把<code>?</code>去掉</p>
+</li>
+<li><p>要在<code>type=game</code>后面加上<code>&amp;</code></p>
+</li>
+</ol>
+</blockquote>
+</li>
+<li><p>在B域名下的<code>game.html</code>页面中获取参数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const queryParams = new URLSearchParams(window.location.search);</span><br><span class="line">console.log(&#x27;queryParams&#x27;);</span><br><span class="line">console.log(queryParams);</span><br><span class="line">console.log(queryParams.get(&#x27;app_id&#x27;));</span><br><span class="line">console.log(queryParams.get(&#x27;user&#x27;));</span><br><span class="line">console.log(queryParams.get(&#x27;age&#x27;));</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="iframe嵌套页面-父子页面传参"><a href="#iframe嵌套页面-父子页面传参" class="headerlink" title="iframe嵌套页面-父子页面传参"></a><code>iframe</code>嵌套页面-父子页面传参</h3><h4 id="查询字符串（URL-参数）"><a href="#查询字符串（URL-参数）" class="headerlink" title="查询字符串（URL 参数）"></a>查询字符串（URL 参数）</h4><p>场景2：推广页面要求一定要使用A域名，而推广页面的网页内容是在B域名下，而B域名推广页需要从A域名的推广链接上获取参数。</p>
+<blockquote>
+<p>这里是填写的推广链接是A域名下的，但是实际用户访问的页面是A域名下<code>iframe</code>嵌套了B域名下的<code>game.html</code>的页面，也就是URL中显示的是A域名</p>
+</blockquote>
+<p>A域名下的页面：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;iframe title=&quot;游戏页面&quot; src=&quot;&quot; frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">document.querySelector(&#x27;iframe&#x27;).src= &quot;http://A.com/iframeParentPage.html?app_id=70116&amp;user=admin&amp;age=18&amp;&quot; + window.location.search.substring(1);</span><br></pre></td></tr></table></figure>
+
+<p>B域名下的页面：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const queryParams = new URLSearchParams(window.location.search);</span><br><span class="line">console.log(&#x27;queryParams&#x27;);</span><br><span class="line">console.log(queryParams);</span><br><span class="line">console.log(queryParams.get(&#x27;app_id&#x27;));</span><br><span class="line">console.log(queryParams.get(&#x27;user&#x27;));</span><br><span class="line">console.log(queryParams.get(&#x27;age&#x27;));</span><br></pre></td></tr></table></figure>
+
+<h4 id="同域名下-使用缓存"><a href="#同域名下-使用缓存" class="headerlink" title="同域名下-使用缓存"></a>同域名下-使用缓存</h4><p>A页面：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">localStorage.setItem(&#x27;params&#x27;, window.location.search.substring(1));</span><br></pre></td></tr></table></figure>
+
+<p>B页面：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var params = localStorage.getItem(&#x27;params&#x27;);</span><br><span class="line">console.log(params);</span><br><span class="line">const queryParams = new URLSearchParams(params);</span><br><span class="line">console.log(queryParams.get(&#x27;app_id&#x27;));</span><br><span class="line">console.log(queryParams.get(&#x27;user&#x27;));</span><br><span class="line">console.log(queryParams.get(&#x27;age&#x27;));</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：不同域名，使用这个方法不可以。</p>
+<p>根据需要，使用<code>localStorage</code>或<code>sessionStorage</code></p>
+</blockquote>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/08/22/%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -497,146 +625,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/08/17/Socket-io/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="winney">
-      <meta itemprop="description" content="Doing is better than saying.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="winney">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/08/17/Socket-io/" class="post-title-link" itemprop="url">Socket.io</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-08-17 11:30:39" itemprop="dateCreated datePublished" datetime="2021-08-17T11:30:39+08:00">2021-08-17</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-10-30 13:18:11" itemprop="dateModified" datetime="2024-10-30T13:18:11+08:00">2024-10-30</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Socket/" itemprop="url" rel="index"><span itemprop="name">Socket</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><a target="_blank" rel="noopener" href="https://socket.io/">Socket.io-官网</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.w3cschool.cn/socket/">socket.io官方文档-w3cschool</a></p>
-<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/29148869">socket.io官方文档中文版</a>——知乎博客</p>
-<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/099056f9785c">Socket.io入门（简单使用socket）</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/1aa181662a07">Socket.io进阶（简单使用广播、命名空间）</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.easemob.com/news/3674">什么是socketIO？</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.w3cschool.cn/socket/socket-ulbj2eii.html">socket.io 快速入门教程——聊天应用</a></p>
-<h4 id="WebSockets"><a href="#WebSockets" class="headerlink" title="WebSockets"></a>WebSockets</h4><h4 id="Socket-io"><a href="#Socket-io" class="headerlink" title="Socket.io"></a>Socket.io</h4><ul>
-<li>Javascript库</li>
-<li>面向实时Web应用</li>
-<li>服务器和客户端的双向通信</li>
-<li>主要使用WebSocket协议（基于WebSocket的库）</li>
-<li>事件驱动</li>
-</ul>
-<h4 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h4><p><a target="_blank" rel="noopener" href="https://github.com/visionmedia/debug">debug</a></p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://socket.io/zh-CN/docs/v4/testing/#example-with-mocha">mocha</a></li>
-<li><a target="_blank" rel="noopener" href="https://socket.io/zh-CN/docs/v4/testing/#example-with-jest">jest</a></li>
-<li><a target="_blank" rel="noopener" href="https://socket.io/zh-CN/docs/v4/testing/#example-with-tape">tape</a></li>
-</ul>
-<p>Socket.IO 客户端不是 WebSocket 实现，因此无法与 WebSocket 服务器建立连接，即使<code>transports: [&quot;websocket&quot;]</code></p>
-<p><a target="_blank" rel="noopener" href="https://www.npmjs.com/package/ws">ws</a></p>
-<h4 id="服务器"><a href="#服务器" class="headerlink" title="服务器"></a>服务器</h4><h5 id="1-安装"><a href="#1-安装" class="headerlink" title="1.安装"></a>1.安装</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add socket.io</span><br></pre></td></tr></table></figure>
-
-<p>使用 <code>µWebSockets.js &#123;#usage-with-µwebsocketsjs&#125;</code></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add uWebSockets.js@uNetworking/uWebSockets.js#v20.4.0</span><br></pre></td></tr></table></figure>
-
-<h5 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https.createServer([options][, requestListener])</span><br></pre></td></tr></table></figure>
-
-<p><a target="_blank" rel="noopener" href="https://nodejs.org/api/https.html#https_https_createserver_options_requestlistener">https.createServer</a></p>
-<p>Konva（基于canvas的绘图库）</p>
-<p><a target="_blank" rel="noopener" href="https://gitee.com/jepsonpp/draw-and-guess">https://gitee.com/jepsonpp/draw-and-guess</a></p>
-<p>socket发送一个connection，io收到了一个socket，就创立了连接（connected）</p>
-<p>socket发送一个disconnection，就失去了连接</p>
-<p>当socket发送一个input事件，携带着message数据，当io接收到之后，可能对message做相应的处理，然后返回data数据，当socket接收到data数据，可以对视图做更新处理。</p>
-<p>CDN</p>
-<p><a target="_blank" rel="noopener" href="https://cdnjs.com/libraries/socket.io">https://cdnjs.com/libraries/socket.io</a></p>
-<h4 id="博客文章"><a href="#博客文章" class="headerlink" title="博客文章"></a>博客文章</h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_47746452/article/details/126827806?spm=1001.2014.3001.5501">Vue 使用 Vue-socket.io 实现即时聊天应用（Vue3连接原理分析）</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_47746452/article/details/125600385?spm=1001.2014.3001.5501">Vue 使用 Apache Echarts 绘制地图（省市、地区）</a></p>
-<p><a target="_blank" rel="noopener" href="http://t.zoukankan.com/zhangmingda-p-12678630.html">WebSocket协议理解-数据包格式解析</a></p>
-<p><a href="ping/pong%E6%A8%A1%E5%BC%8F_PING%E7%9A%84%E5%AE%8C%E6%95%B4%E5%BD%A2%E5%BC%8F%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F">ping/pong模式_PING的完整形式是什么？</a></p>
-<p><a target="_blank" rel="noopener" href="https://qa.1r1g.com/sf/ask/3490608271/#">socket.io中的pingtimeout和pingInterval</a></p>
-<h4 id="vue-config-js"><a href="#vue-config-js" class="headerlink" title="vue.config.js"></a><code>vue.config.js</code></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">module.exports = &#123;</span><br><span class="line">    devServer: &#123;</span><br><span class="line">        proxy: &#123;</span><br><span class="line">            &#x27;/socket.io&#x27;: &#123;</span><br><span class="line">                target: &#x27;http://localhost:3000&#x27; ,</span><br><span class="line">                changeOrigin: true</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="src-socket-index-js"><a href="#src-socket-index-js" class="headerlink" title="src/socket/index.js"></a><code>src/socket/index.js</code></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import io from &#x27;socket.io-client&#x27;</span><br><span class="line"></span><br><span class="line">// 模块的作用:收发消息</span><br><span class="line">// 创建连接</span><br><span class="line">const socket = io()</span><br><span class="line"></span><br><span class="line">// 进行连接建立的监听</span><br><span class="line">socket.on(&quot;connect&#x27;, () =&gt; &#123;</span><br><span class="line"> 	console.log(&#x27;和服务器已建立连接...&#x27;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">// 将来便于其他模块使用socket对象，去发消息</span><br><span class="line">export default socket</span><br></pre></td></tr></table></figure>
-
-<h4 id="目标：构建Socket-io模块"><a href="#目标：构建Socket-io模块" class="headerlink" title="目标：构建Socket.io模块"></a>目标：构建Socket.io模块</h4><p>基本语法:<br>1.创建连接:<code> const socket = io[ 地址]</code></p>
-<p>2.发送消息: <code>socket.emit(消息type类型，消息内容，接收到消息的回调函致)</code></p>
-<p>3.监听消息:<code>socket.on(事件type类型，接收到消息的回调国数)</code></p>
-<p>为什么需要这个模块:</p>
-<ol>
-<li>用on 鉴听事件，<code>接收服务器</code>消息</li>
-<li>用emit<code>发送消息到服务器</code></li>
-</ol>
-<p>构建步骤：</p>
-<ol>
-<li><p>安装依赖包：<code>yarn add socket.io-client</code></p>
-</li>
-<li><p>创建<code>src/socket/index.js </code>模块文件，编写模块内容</p>
-</li>
-<li><p><code>main.js </code>中导入</p>
-</li>
-<li><p><code>vue.config.js</code> 配置网络代理</p>
-</li>
-<li><p>启动后台server，<code>测试接口</code></p>
-</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -708,7 +696,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">113</span>
+          <span class="site-state-item-count">114</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -761,7 +749,7 @@
 <div class="copyright">
   
   &copy; 2015 – 
-  <span itemprop="copyrightYear">2024</span>
+  <span itemprop="copyrightYear">2025</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

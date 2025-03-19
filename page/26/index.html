@@ -193,6 +193,91 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/05/21/JavaScript%E7%94%9F%E6%88%90%E9%9A%8F%E6%9C%BA%E5%AF%86%E7%A0%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="winney">
+      <meta itemprop="description" content="Doing is better than saying.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="winney">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/21/JavaScript%E7%94%9F%E6%88%90%E9%9A%8F%E6%9C%BA%E5%AF%86%E7%A0%81/" class="post-title-link" itemprop="url">JavaScript生成随机密码</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-05-21 15:12:23" itemprop="dateCreated datePublished" datetime="2020-05-21T15:12:23+08:00">2020-05-21</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-10-30 13:18:11" itemprop="dateModified" datetime="2024-10-30T13:18:11+08:00">2024-10-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="生成一个长度为N位的随机密码"><a href="#生成一个长度为N位的随机密码" class="headerlink" title="生成一个长度为N位的随机密码"></a>生成一个长度为N位的随机密码</h3><p>方法一：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function generateRandomPassword(length) &#123;</span><br><span class="line">  const charset = &#x27;0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz&#x27;;</span><br><span class="line">  let password = &#x27;&#x27;;</span><br><span class="line">  </span><br><span class="line">  for (let i = 0; i &lt; length; i++) &#123;</span><br><span class="line">    const randomIndex = Math.floor(Math.random() * charset.length);</span><br><span class="line">    password += charset[randomIndex];</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  return password;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const randomPassword = generateRandomPassword(10); // 生成一个10位的随机密码</span><br><span class="line">console.log(randomPassword); // 打印随机生成的密码</span><br></pre></td></tr></table></figure>
+
+<p>方法二：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">function generateRandomPassword(length) &#123;</span><br><span class="line">  const chars = &#x27;0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz&#x27;;</span><br><span class="line">  let password = &#x27;&#x27;;</span><br><span class="line"></span><br><span class="line">  for (let i = 0; i &lt; length; i++) &#123;</span><br><span class="line">    const charType = Math.floor(Math.random() * 3); // 0: 数字, 1: 大写字母, 2: 小写字母</span><br><span class="line">    let randomChar = &#x27;&#x27;;</span><br><span class="line"></span><br><span class="line">    if (charType === 0) &#123;</span><br><span class="line">      randomChar = String.fromCharCode(Math.floor(Math.random() * 10) + 48); // 48-57 是数字的 Unicode 范围</span><br><span class="line">    &#125; else if (charType === 1) &#123;</span><br><span class="line">      randomChar = String.fromCharCode(Math.floor(Math.random() * 26) + 65); // 65-90 是大写字母的 Unicode 范围</span><br><span class="line">    &#125; else if (charType === 2) &#123;</span><br><span class="line">      randomChar = String.fromCharCode(Math.floor(Math.random() * 26) + 97); // 97-122 是小写字母的 Unicode 范围</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    password += randomChar;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  return password;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const randomPassword = generateRandomPassword(10); // 生成一个10位的随机密码</span><br><span class="line">console.log(randomPassword); // 打印随机生成的密码</span><br></pre></td></tr></table></figure>
+
+<p>方法三：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">function getRandom(min, max) &#123;</span><br><span class="line">    return Math.round(Math.random() * (max - min) + min);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function getCode(length) &#123;</span><br><span class="line">    let code = &#x27;&#x27;;</span><br><span class="line">    for (var i = 0; i &lt; length; i++) &#123;</span><br><span class="line">        var type = getRandom(1, 3);</span><br><span class="line">        switch (type) &#123;</span><br><span class="line">            case 1:</span><br><span class="line">                code += String.fromCharCode(getRandom(48, 57));//数字</span><br><span class="line">                break;</span><br><span class="line">            case 2:</span><br><span class="line">                code += String.fromCharCode(getRandom(97, 122));//小写字母</span><br><span class="line">                break;</span><br><span class="line">            case 3:</span><br><span class="line">                code += String.fromCharCode(getRandom(65, 90));//大写字母</span><br><span class="line">                break;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return code;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var randomPassword = getCode(15);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>根据自己喜欢的风格，选其一就好</p>
+</blockquote>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2020/04/07/Javascript%E6%96%B9%E6%B3%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1002,98 +1087,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/03/22/%E5%89%8D%E7%AB%AFCSS%E5%A4%84%E7%90%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="winney">
-      <meta itemprop="description" content="Doing is better than saying.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="winney">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/03/22/%E5%89%8D%E7%AB%AFCSS%E5%A4%84%E7%90%86/" class="post-title-link" itemprop="url">前端CSS处理</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-03-22 10:12:23" itemprop="dateCreated datePublished" datetime="2020-03-22T10:12:23+08:00">2020-03-22</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-10-30 13:18:11" itemprop="dateModified" datetime="2024-10-30T13:18:11+08:00">2024-10-30</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CSS/" itemprop="url" rel="index"><span itemprop="name">CSS</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="要让一张图片在页面中以最佳效果铺满整屏，同时在不同设备上保持一致的显示效果"><a href="#要让一张图片在页面中以最佳效果铺满整屏，同时在不同设备上保持一致的显示效果" class="headerlink" title="要让一张图片在页面中以最佳效果铺满整屏，同时在不同设备上保持一致的显示效果"></a>要让一张图片在页面中以最佳效果铺满整屏，同时在不同设备上保持一致的显示效果</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">html, body &#123;</span><br><span class="line">    margin: 0;</span><br><span class="line">    padding: 0;</span><br><span class="line">    height: 100%;</span><br><span class="line">    overflow: hidden;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">img &#123;</span><br><span class="line">    width: 100%;</span><br><span class="line">    height: 100%;</span><br><span class="line">    object-fit: cover;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<h4 id="压缩字体文件的大小"><a href="#压缩字体文件的大小" class="headerlink" title="压缩字体文件的大小"></a>压缩字体文件的大小</h4><h3 id="处理CSS兼容性"><a href="#处理CSS兼容性" class="headerlink" title="处理CSS兼容性"></a>处理<code>CSS</code>兼容性</h3><blockquote>
-<p>如果一个浏览器在解析你所书写的 CSS 规则的过程中遇到了无法理解的属性或者值，它会忽略这些并继续解析下面的 CSS 声明。在你书写了错误的 CSS 代码（或者误拼写），又或者当浏览器遇到对于它来说很新的还没有支持的 CSS 代码的时候上述的情况同样会发生（直接忽略）。</p>
-<p>相似的，当浏览器遇到无法解析的选择器的时候，他会直接忽略整个选择器规则，然后解析下一个 CSS 选择器。</p>
-</blockquote>
-<blockquote>
-<p>这样做好处多多，代表着你使用最新的 CSS 优化的过程中浏览器遇到无法解析的规则也不会报错。当你为一个元素指定多个 CSS 样式的时候，浏览器会加载样式表中的最后的 CSS 代码进行渲染（样式表，优先级等请读者自行了解），也正因为如此，你可以为同一个元素指定多个 CSS 样式来解决有些浏览器不兼容新特性的问题（比如指定两个<code>width</code>）。</p>
-<p>这一特点在你想使用一个很新的 CSS 特性但是不是所有浏览器都支持的时候（浏览器兼容）非常有用，举例来说，一些老的浏览器不接收<code>calc()</code>(calculate 的缩写，CSS3 新增，为元素指定动态宽度、长度等，注意此处的动态是计算之后得一个值) 作为一个值。我可能使用它结合像素为一个元素设置了动态宽度（如下），老式的浏览器由于无法解析忽略这一行；新式的浏览器则会把这一行解析成像素值，并且覆盖第一行指定的宽度。</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.box &#123;</span><br><span class="line">  width: 500px;</span><br><span class="line">  width: calc(100% - 50px);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="控制用户是否可以选择文本-user-select"><a href="#控制用户是否可以选择文本-user-select" class="headerlink" title="控制用户是否可以选择文本-user-select"></a>控制用户是否可以选择文本-<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/user-select">user-select</a></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;你应该可以选中这段文本。&lt;/p&gt;</span><br><span class="line">&lt;p class=&quot;unselectable&quot;&gt;嘿嘿，你不能选中这段文本！&lt;/p&gt;</span><br><span class="line">&lt;p class=&quot;all&quot;&gt;点击一次就会选中这段文本。&lt;/p&gt;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">.unselectable &#123;</span><br><span class="line">  -webkit-user-select: none; /* Safari */</span><br><span class="line">  user-select: none;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.all &#123;</span><br><span class="line">  -webkit-user-select: all;</span><br><span class="line">  user-select: all;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1165,7 +1158,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">113</span>
+          <span class="site-state-item-count">114</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1218,7 +1211,7 @@
 <div class="copyright">
   
   &copy; 2015 – 
-  <span itemprop="copyrightYear">2024</span>
+  <span itemprop="copyrightYear">2025</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

@@ -193,6 +193,108 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/03/19/Node-Express-Mongoose/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="winney">
+      <meta itemprop="description" content="Doing is better than saying.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="winney">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/03/19/Node-Express-Mongoose/" class="post-title-link" itemprop="url">Node-Express-Mongoose</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2024-03-19 16:45:21" itemprop="dateCreated datePublished" datetime="2024-03-19T16:45:21+08:00">2024-03-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-10-30 13:18:11" itemprop="dateModified" datetime="2024-10-30T13:18:11+08:00">2024-10-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/node-js/" itemprop="url" rel="index"><span itemprop="name">node.js</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><code>app.js</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//uselNewUrlParser这个属性会在url里识别验证用户所需的db,未升级前是不需要指定的,升级到一定要指定。</span><br><span class="line">mongoose.connect(&#x27;mongodb://127.0.0.1:27017/egecms&#x27;,&#123; useNewUrlParser: true &#125;,function(err)&#123;</span><br><span class="line">    if(err)&#123;</span><br><span class="line">        console.log(err);</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    console.log( &#x27;数据库连接成功&quot;)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// 定义数据表（集合的）映射︰注意。字段名称必须和数据库保持一致</span><br><span class="line">var UserSchema=mongoose.Schema(&#123;</span><br><span class="line">    name:String,</span><br><span class="line">    age:Number,</span><br><span class="line">    status:&#123;</span><br><span class="line">        type:Number,</span><br><span class="line">        default:1</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line">// 定义model操作数据库</span><br></pre></td></tr></table></figure>
+
+<p><code>user.js</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var mongoose = require(&#x27;./db.js&#x27;);</span><br><span class="line">var UserSchema=mongoose.Schema(&#123;</span><br><span class="line">    name:String,</span><br><span class="line">    age:Number,</span><br><span class="line">    status:&#123;</span><br><span class="line">        type:Number,</span><br><span class="line">        default:1</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line">module.exports=mongoose.model( &quot;User&quot;, UserSchema, &quot;user&#x27;);</span><br></pre></td></tr></table></figure>
+
+<p><code>app.js</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var UserModel=require(&quot;./model/user.js&quot;);</span><br><span class="line"></span><br><span class="line">UserModel.find(&#123;&#125;,function(err,docs)&#123;</span><br><span class="line">    if(err)&#123;</span><br><span class="line">        console.log(err);</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    console.log(docs);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p><code>news.js</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">var mongoose=require(&#x27;./db.js&#x27;);</span><br><span class="line"></span><br><span class="line">var NewsSchema=mongoose.Schema(&#123;</span><br><span class="line">    title:&#123;</span><br><span class="line">        type:String,</span><br><span class="line">        trim:true	//定义 mongoose模式修饰符去掉空格</span><br><span class="line">    &#125;,</span><br><span class="line">    author: String,</span><br><span class="line">    pic:String,</span><br><span class="line">    content:String,</span><br><span class="line">    status:&#123;</span><br><span class="line">        type:Number,</span><br><span class="line">        default:1</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">module.exports=mongoose.model(&#x27;News&#x27;,NewsSchema, &#x27;news&#x27;);</span><br></pre></td></tr></table></figure>
+
+<p><code>app.js</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">console.time(&#x27;user&#x27;);</span><br><span class="line">var UserModel=require(&quot;./model/user.js&quot;);</span><br><span class="line">console.timeEnd(&#x27;user&#x27;);</span><br><span class="line">console.time(&#x27;news&#x27;);</span><br><span class="line">var NewsModel=require(&#x27;./model/news.js&#x27;);</span><br><span class="line">console.timeEnd(&#x27;news&#x27;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Mongoose预定义模式修饰符Getters与Setters自定义修饰符"><a href="#Mongoose预定义模式修饰符Getters与Setters自定义修饰符" class="headerlink" title="Mongoose预定义模式修饰符Getters与Setters自定义修饰符"></a>Mongoose预定义模式修饰符Getters与Setters自定义修饰符</h3><h4 id="一、mongoose预定义模式修饰符"><a href="#一、mongoose预定义模式修饰符" class="headerlink" title="一、mongoose预定义模式修饰符"></a>一、mongoose预定义模式修饰符</h4><p>lowercase、uppercase 、 trim</p>
+<p>mongoose提供的预定义模式修饰符，可以对我们增加的数据进行一些格式化。</p>
+<h4 id="二、Mongoose-Getters-与Setters自定义修饰符"><a href="#二、Mongoose-Getters-与Setters自定义修饰符" class="headerlink" title="二、Mongoose Getters 与Setters自定义修饰符"></a>二、Mongoose Getters 与Setters自定义修饰符</h4><p>除了mongoose内置的修饰符以外，我们还可以通过set(建议使用）修饰符在增加数据的时候对数据进行格式化。也可以通过get(不建议使用）在实例获取数据的时候对数据进行</p>
+<h3 id="Mongoose索引、Mongoose内置CURD方法、扩展Mongoose-Model的静态方法和实例方法"><a href="#Mongoose索引、Mongoose内置CURD方法、扩展Mongoose-Model的静态方法和实例方法" class="headerlink" title="Mongoose索引、Mongoose内置CURD方法、扩展Mongoose Model的静态方法和实例方法"></a>Mongoose索引、Mongoose内置CURD方法、扩展Mongoose Model的静态方法和实例方法</h3><h4 id="一、Mongoose索引"><a href="#一、Mongoose索引" class="headerlink" title="一、Mongoose索引"></a>一、Mongoose索引</h4><h4 id="二、Mongoose内置CURD"><a href="#二、Mongoose内置CURD" class="headerlink" title="二、Mongoose内置CURD"></a>二、Mongoose内置CURD</h4><h3 id="Mongoose数据校验"><a href="#Mongoose数据校验" class="headerlink" title="Mongoose数据校验"></a>Mongoose数据校验</h3><h4 id="一、Mongoose校验参数"><a href="#一、Mongoose校验参数" class="headerlink" title="一、Mongoose校验参数"></a>一、Mongoose校验参数</h4><ul>
+<li>required :表示这个数据必须传入</li>
+<li>max用于Number类型数据,最大值</li>
+<li>min:用于Number类型数据,最小值</li>
+<li>enum:枚举类型，要求数据必须满足枚举值<code>enum: [&#39;0&#39;,&#39;1&#39;,&#39;2&#39;]</code></li>
+<li>match:增加的数据必须符合match(正则)的规则</li>
+<li>maxlength:最大值</li>
+<li>minlength:最小值</li>
+</ul>
+<h3 id="Mongoose中使用aggregate聚合管道"><a href="#Mongoose中使用aggregate聚合管道" class="headerlink" title="Mongoose中使用aggregate聚合管道"></a>Mongoose中使用aggregate聚合管道</h3>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2024/02/28/webpack%E7%AC%94%E8%AE%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -503,93 +605,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/25/Vue3-x%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="winney">
-      <meta itemprop="description" content="Doing is better than saying.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="winney">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/08/25/Vue3-x%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/" class="post-title-link" itemprop="url">Vue3.x知识图谱</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-08-25 06:53:01" itemprop="dateCreated datePublished" datetime="2022-08-25T06:53:01+08:00">2022-08-25</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-10-30 13:18:11" itemprop="dateModified" datetime="2024-10-30T13:18:11+08:00">2024-10-30</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6/" itemprop="url" rel="index"><span itemprop="name">前端开发框架</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6/Vue-js/" itemprop="url" rel="index"><span itemprop="name">Vue.js</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><img src="https://raw.githubusercontent.com/winney07/Images/main/Note/V1_01%E5%AD%A6%E5%89%8D%E4%BA%86%E8%A7%A3.png" alt="学前了解"></p>
-<p><img src="https://raw.githubusercontent.com/winney07/Images/main/Note/V1_02%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86.png" alt="基础知识"></p>
-<p><img src="https://raw.githubusercontent.com/winney07/Images/main/Note/V1_03%E7%BB%84%E4%BB%B6%E7%9B%B8%E5%85%B3%E8%AF%AD%E6%B3%95.png" alt="组件相关语法"></p>
-<p><img src="https://raw.githubusercontent.com/winney07/Images/main/Note/V1_04%E9%AB%98%E7%BA%A7%E8%AF%AD%E6%B3%95.png" alt="高级语法"></p>
-<p><img src="https://raw.githubusercontent.com/winney07/Images/main/Note/V1_05%E9%AB%98%E7%BA%A7%E8%AF%AD%E6%B3%95.png" alt="高级语法"></p>
-<p><img src="https://raw.githubusercontent.com/winney07/Images/main/Note/V1_06%E9%85%8D%E5%A5%97%E5%B7%A5%E5%85%B7.png" alt="配套工具"></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/38/">38</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/39/">39</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -657,7 +676,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">114</span>
+          <span class="site-state-item-count">115</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

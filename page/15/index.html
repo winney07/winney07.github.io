@@ -193,6 +193,736 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/19/%E9%98%AE%E4%B8%80%E5%B3%B0Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="winney">
+      <meta itemprop="description" content="Doing is better than saying.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="winney">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/02/19/%E9%98%AE%E4%B8%80%E5%B3%B0Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">阮一峰Git学习笔记</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-02-19 15:36:35" itemprop="dateCreated datePublished" datetime="2021-02-19T15:36:35+08:00">2021-02-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-10-30 13:18:11" itemprop="dateModified" datetime="2024-10-30T13:18:11+08:00">2024-10-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index"><span itemprop="name">工具</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E5%85%B7/Git/" itemprop="url" rel="index"><span itemprop="name">Git</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>阮一峰网络日志：<a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2012/07/git.html">http://www.ruanyifeng.com/blog/2012/07/git.html</a></p>
+<h3 id="1、Git-工作流程"><a href="#1、Git-工作流程" class="headerlink" title="1、Git 工作流程"></a>1、Git 工作流程</h3><p>Git 作为一个源码管理系统，不可避免涉及到多人协作。</p>
+<p>协作必须有一个规范的工作流程，让大家有效地合作，使得项目井井有条地发展下去。”工作流程”在英语里，叫做”workflow”或者”flow”，原意是水流，比喻项目像水流那样，顺畅、自然地向前流动，不会发生冲击、对撞、甚至漩涡。</p>
+<p><img src="../images/clip_image002-1613720214906.png" alt="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015122301.png"></p>
+<p>本文介绍三种广泛使用的工作流程：</p>
+<ul>
+<li>Git flow</li>
+<li>Github flow</li>
+<li>Gitlab flow</li>
+</ul>
+<p>如果你对Git还不是很熟悉，可以先阅读下面的文章。</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2015/08/git-use-process.html">《Git 使用规范流程》</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html">《常用 Git 命令清单》</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2014/06/git_remote.html">《Git 远程操作详解》</a></li>
+</ul>
+<h4 id="一、功能驱动"><a href="#一、功能驱动" class="headerlink" title="一、功能驱动"></a>一、功能驱动</h4><p>本文的三种工作流程，有一个共同点：都采用<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Feature-driven_development">“功能驱动式开发”</a>（Feature-driven development，简称FDD）。</p>
+<p>它指的是，需求是开发的起点，先有需求再有功能分支（feature branch）或者补丁分支（hotfix branch）。完成开发后，该分支就合并到主分支，然后被删除。</p>
+<h4 id="二、Git-flow"><a href="#二、Git-flow" class="headerlink" title="二、Git flow"></a>二、Git flow</h4><p>最早诞生、并得到广泛采用的一种工作流程，就是<a target="_blank" rel="noopener" href="http://nvie.com/posts/a-successful-git-branching-model/">Git flow</a> 。</p>
+<h5 id="2-1-特点"><a href="#2-1-特点" class="headerlink" title="2.1 特点"></a>2.1 特点</h5><p>它最主要的特点有两个。</p>
+<p><img src="../images/clip_image003.png" alt="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015122302.png"></p>
+<p>首先，项目存在两个长期分支。</p>
+<ul>
+<li>主分支master</li>
+<li>开发分支develop</li>
+</ul>
+<p>前者用于存放对外发布的版本，任何时候在这个分支拿到的，都是稳定的分布版；后者用于日常开发，存放最新的开发版。</p>
+<p>其次，项目存在三种短期分支。</p>
+<ul>
+<li>功能分支（feature     branch）</li>
+<li>补丁分支（hotfix     branch）</li>
+<li>预发分支（release     branch）</li>
+</ul>
+<p>一旦完成开发，它们就会被合并进develop或master，然后被删除。</p>
+<p>Git flow 的详细介绍，请阅读我翻译的中文版<a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2012/07/git.html">《Git 分支管理策略》</a>。</p>
+<h5 id="2-2-评价"><a href="#2-2-评价" class="headerlink" title="2.2 评价"></a>2.2 评价</h5><p>Git flow的优点是清晰可控，缺点是相对复杂，需要同时维护两个长期分支。大多数工具都将master当作默认分支，可是开发是在develop分支进行的，这导致经常要切换分支，非常烦人。</p>
+<p>更大问题在于，这个模式是基于”版本发布”的，目标是一段时间以后产出一个新版本。但是，很多网站项目是”持续发布”，代码一有变动，就部署一次。这时，master分支和develop分支的差别不大，没必要维护两个长期分支。</p>
+<h4 id="三、Github-flow"><a href="#三、Github-flow" class="headerlink" title="三、Github flow"></a>三、Github flow</h4><p><a target="_blank" rel="noopener" href="http://scottchacon.com/2011/08/31/github-flow.html">Github flow</a> 是Git flow的简化版，专门配合”持续发布”。它是 Github.com 使用的工作流程。</p>
+<h5 id="3-1-流程"><a href="#3-1-流程" class="headerlink" title="3.1 流程"></a>3.1 流程</h5><p>它只有一个长期分支，就是master，因此用起来非常简单。</p>
+<p>官方推荐的<a target="_blank" rel="noopener" href="https://guides.github.com/introduction/flow/index.html">流程</a>如下。</p>
+<p><img src="../images/clip_image005.jpg" alt="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015122305.png"></p>
+<p>第一步：根据需求，从master拉出新分支，不区分功能分支或补丁分支。</p>
+<p>第二步：新分支开发完成后，或者需要讨论的时候，就向master发起一个<a target="_blank" rel="noopener" href="https://help.github.com/articles/using-pull-requests/">pull request</a>（简称PR）。</p>
+<p>第三步：Pull Request既是一个通知，让别人注意到你的请求，又是一种对话机制，大家一起评审和讨论你的代码。对话过程中，你还可以不断提交代码。</p>
+<p>第四步：你的Pull Request被接受，合并进master，重新部署后，原来你拉出来的那个分支就被删除。（先部署再合并也可。）</p>
+<h5 id="3-2-评价"><a href="#3-2-评价" class="headerlink" title="3.2 评价"></a>3.2 评价</h5><p>Github flow 的最大优点就是简单，对于”持续发布”的产品，可以说是最合适的流程。</p>
+<p>问题在于它的假设：master分支的更新与产品的发布是一致的。也就是说，master分支的最新代码，默认就是当前的线上代码。</p>
+<p>可是，有些时候并非如此，代码合并进入master分支，并不代表它就能立刻发布。比如，苹果商店的APP提交审核以后，等一段时间才能上架。这时，如果还有新的代码提交，master分支就会与刚发布的版本不一致。另一个例子是，有些公司有发布窗口，只有指定时间才能发布，这也会导致线上版本落后于master分支。</p>
+<p>上面这种情况，只有master一个主分支就不够用了。通常，你不得不在master分支以外，另外新建一个production分支跟踪线上版本。</p>
+<h4 id="四、Gitlab-flow"><a href="#四、Gitlab-flow" class="headerlink" title="四、Gitlab flow"></a>四、Gitlab flow</h4><p><a target="_blank" rel="noopener" href="http://doc.gitlab.com/ee/workflow/gitlab_flow.html">Gitlab flow</a> 是 Git flow 与 Github flow 的综合。它吸取了两者的优点，既有适应不同开发环境的弹性，又有单一主分支的简单和便利。它是 Gitlab.com 推荐的做法。</p>
+<h5 id="4-1-上游优先"><a href="#4-1-上游优先" class="headerlink" title="4.1 上游优先"></a>4.1 上游优先</h5><p>Gitlab flow 的最大原则叫做”上游优先”（upsteam first），即只存在一个主分支master，它是所有其他分支的”上游”。只有上游分支采纳的代码变化，才能应用到其他分支。</p>
+<p><a target="_blank" rel="noopener" href="https://www.chromium.org/chromium-os/chromiumos-design-docs/upstream-first">Chromium项目</a>就是一个例子，它明确规定，上游分支依次为：</p>
+<ol>
+<li>Linus Torvalds的分支</li>
+<li>子系统（比如netdev）的分支</li>
+<li>设备厂商（比如三星）的分支</li>
+</ol>
+<h5 id="4-2-持续发布"><a href="#4-2-持续发布" class="headerlink" title="4.2 持续发布"></a>4.2 持续发布</h5><p>Gitlab flow 分成两种情况，适应不同的开发流程。</p>
+<p><img src="../images/clip_image006.png" alt="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015122306.png"></p>
+<p>对于”持续发布”的项目，它建议在master分支以外，再建立不同的环境分支。比如，”开发环境”的分支是master，”预发环境”的分支是pre-production，”生产环境”的分支是production。</p>
+<p>开发分支是预发分支的”上游”，预发分支又是生产分支的”上游”。代码的变化，必须由”上游”向”下游”发展。比如，生产环境出现了bug，这时就要新建一个功能分支，先把它合并到master，确认没有问题，再cherry-pick到pre-production，这一步也没有问题，才进入production。</p>
+<p>只有紧急情况，才允许跳过上游，直接合并到下游分支。</p>
+<h5 id="4-3-版本发布"><a href="#4-3-版本发布" class="headerlink" title="4.3 版本发布"></a>4.3 版本发布</h5><p><img src="../images/clip_image007.png" alt="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015122307.png"></p>
+<p>对于”版本发布”的项目，建议的做法是每一个稳定版本，都要从master分支拉出一个分支，比如2-3-stable、2-4-stable等等。</p>
+<p>以后，只有修补bug，才允许将代码合并到这些分支，并且此时要更新小版本号。</p>
+<h4 id="五、一些小技巧"><a href="#五、一些小技巧" class="headerlink" title="五、一些小技巧"></a>五、一些小技巧</h4><h5 id="5-1-Pull-Request"><a href="#5-1-Pull-Request" class="headerlink" title="5.1 Pull Request"></a>5.1 Pull Request</h5><p><img src="../images/clip_image009.png" alt="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015122310.png"></p>
+<p>功能分支合并进master分支，必须通过Pull Request（Gitlab里面叫做 Merge Request）。</p>
+<p><img src="../images/clip_image011.jpg" alt="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015122308.png"></p>
+<p>前面说过，Pull Request本质是一种对话机制，你可以在提交的时候，@相关<a target="_blank" rel="noopener" href="https://github.com/blog/1004-mention-autocompletion">人员</a>或<a target="_blank" rel="noopener" href="https://github.com/blog/1121-introducing-team-mentions">团队</a>，引起他们的注意。</p>
+<h5 id="5-2-Protected-branch"><a href="#5-2-Protected-branch" class="headerlink" title="5.2 Protected branch"></a>5.2 Protected branch</h5><p>master分支应该受到保护，不是每个人都可以修改这个分支，以及拥有审批 Pull Request 的权力。</p>
+<p><a target="_blank" rel="noopener" href="https://help.github.com/articles/about-protected-branches/">Github</a> 和 <a target="_blank" rel="noopener" href="http://doc.gitlab.com/ce/permissions/permissions.html">Gitlab</a> 都提供”保护分支”（Protected branch）这个功能。</p>
+<h5 id="5-3-Issue"><a href="#5-3-Issue" class="headerlink" title="5.3 Issue"></a>5.3 Issue</h5><p>Issue 用于 Bug追踪和需求管理。建议先新建 Issue，再新建对应的功能分支。功能分支总是为了解决一个或多个 Issue。</p>
+<p>功能分支的名称，可以与issue的名字保持一致，并且以issue的编号起首，比如”15-require-a-password-to-change-it”。</p>
+<p><img src="../images/clip_image012.png" alt="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015122311.png"></p>
+<p>开发完成后，在提交说明里面，可以写上”fixes #14”或者”closes #67”。Github规定，只要commit message里面有下面这些<a target="_blank" rel="noopener" href="https://help.github.com/articles/closing-issues-via-commit-messages/">动词</a> + 编号，就会关闭对应的issue。</p>
+<ul>
+<li>close</li>
+<li>closes</li>
+<li>closed</li>
+<li>fix</li>
+<li>fixes</li>
+<li>fixed</li>
+<li>resolve</li>
+<li>resolves</li>
+<li>resolved</li>
+</ul>
+<p>这种方式还可以一次关闭多个issue，或者关闭其他代码库的issue，格式是username/repository#issue_number。</p>
+<p>Pull Request被接受以后，issue关闭，原始分支就应该删除。如果以后该issue重新打开，新分支可以复用原来的名字。</p>
+<h5 id="5-4-Merge节点"><a href="#5-4-Merge节点" class="headerlink" title="5.4 Merge节点"></a>5.4 Merge节点</h5><p>Git有两种合并：一种是”直进式合并”（fast forward），不生成单独的合并节点；另一种是”非直进式合并”（none fast-forword），会生成单独节点。</p>
+<p>前者不利于保持commit信息的清晰，也不利于以后的回滚，建议总是采用后者（即使用–no-ff参数）。只要发生合并，就要有一个单独的合并节点。</p>
+<h5 id="5-5-Squash-多个commit"><a href="#5-5-Squash-多个commit" class="headerlink" title="5.5 Squash 多个commit"></a>5.5 Squash 多个commit</h5><p>为了便于他人阅读你的提交，也便于cherry-pick或撤销代码变化，在发起Pull Request之前，应该把多个commit合并成一个。（前提是，该分支只有你一个人开发，且没有跟master合并过。）</p>
+<p><img src="../images/clip_image014.png" alt="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015122309.png"></p>
+<p>这可以采用rebase命令附带的squash操作，具体方法请参考我写的<a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2015/08/git-use-process.html">《Git 使用规范流程》</a>。</p>
+<h3 id="2、Git分支管理策略"><a href="#2、Git分支管理策略" class="headerlink" title="2、Git分支管理策略"></a>2、Git分支管理策略</h3><p>如果你严肃对待编程，就必定会使用”<a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2008/12/a_visual_guide_to_version_control.html">版本管理系统</a>“（Version Control System）。</p>
+<p>眼下最流行的”版本管理系统”，非<a target="_blank" rel="noopener" href="http://git-scm.com/">Git</a>莫属。</p>
+<p><img src="../images/clip_image015.png" alt="http://www.ruanyifeng.com/blogimg/asset/201207/bg2012070501.png"></p>
+<p>相比同类软件，Git有很多优点。其中很显著的一点，就是版本的分支（branch）和合并（merge）十分方便。有些传统的版本管理软件，分支操作实际上会生成一份现有代码的物理拷贝，而Git只生成一个指向当前版本（又称”快照”）的指针，因此非常快捷易用。</p>
+<p>但是，太方便了也会产生副作用。如果你不加注意，很可能会留下一个枝节蔓生、四处开放的版本库，到处都是分支，完全看不出主干发展的脉络。</p>
+<p><img src="../images/clip_image017.jpg" alt="http://www.ruanyifeng.com/blogimg/asset/201207/bg2012070502.png"></p>
+<p><a target="_blank" rel="noopener" href="http://nvie.com/">Vincent Driessen</a>提出了一个分支管理的<a target="_blank" rel="noopener" href="http://nvie.com/posts/a-successful-git-branching-model/">策略</a>，我觉得非常值得借鉴。它可以使得版本库的演进保持简洁，主干清晰，各个分支各司其职、井井有条。理论上，这些策略对所有的版本管理系统都适用，Git只是用来举例而已。如果你不熟悉Git，跳过举例部分就可以了。</p>
+<p><strong>一、主分支Master</strong></p>
+<p>首先，代码库应该有一个、且仅有一个主分支。所有提供给用户使用的正式版本，都在这个主分支上发布。</p>
+<p><img src="../images/clip_image018.png" alt="http://www.ruanyifeng.com/blogimg/asset/201207/bg2012070503.png"></p>
+<p>Git主分支的名字，默认叫做Master。它是自动建立的，版本库初始化以后，默认就是在主分支在进行开发。</p>
+<p><strong>二、开发分支Develop</strong></p>
+<p>主分支只用来分布重大版本，日常开发应该在另一条分支上完成。我们把开发用的分支，叫做Develop。</p>
+<p><img src="../images/clip_image019.png" alt="http://www.ruanyifeng.com/blogimg/asset/201207/bg2012070504.png"></p>
+<p>这个分支可以用来生成代码的最新隔夜版本（nightly）。如果想正式对外发布，就在Master分支上，对Develop分支进行”合并”（merge）。</p>
+<p>Git创建Develop分支的命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b develop master</span><br></pre></td></tr></table></figure>
+
+<p>将Develop分支发布到Master分支的命令：</p>
+<p>　　### 切换到Master分支</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout master</span><br></pre></td></tr></table></figure>
+
+
+
+<p>　　### 对Develop分支进行合并</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge --no-ff develop</span><br></pre></td></tr></table></figure>
+
+<p>这里稍微解释一下，上一条命令的–no-ff参数是什么意思。默认情况下，Git执行”快进式合并”（fast-farward merge），会直接将Master分支指向Develop分支。</p>
+<p><img src="../images/clip_image020.png" alt="http://www.ruanyifeng.com/blogimg/asset/201207/bg2012070505.png"></p>
+<p>使用–no-ff参数后，会执行正常合并，在Master分支上生成一个新节点。为了保证版本演进的清晰，我们希望采用这种做法。关于合并的更多解释，请参考Benjamin Sandofsky的<a target="_blank" rel="noopener" href="http://sandofsky.com/blog/git-workflow.html">《Understanding the Git Workflow》</a>。</p>
+<p><img src="../images/clip_image021.png" alt="http://www.ruanyifeng.com/blogimg/asset/201207/bg2012070506.png"></p>
+<p><strong>三、临时性分支</strong></p>
+<p>前面讲到版本库的两条主要分支：Master和Develop。前者用于正式发布，后者用于日常开发。其实，常设分支只需要这两条就够了，不需要其他了。</p>
+<p>但是，除了常设分支以外，还有一些临时性分支，用于应对一些特定目的的版本开发。临时性分支主要有三种：</p>
+<p>　　* 功能（feature）分支</p>
+<p>　　* 预发布（release）分支</p>
+<p>　　* 修补bug（fixbug）分支</p>
+<p>这三种分支都属于临时性需要，使用完以后，应该删除，使得代码库的常设分支始终只有Master和Develop。</p>
+<p><strong>四、 功能分支</strong></p>
+<p>接下来，一个个来看这三种”临时性分支”。</p>
+<p>第一种是功能分支，它是为了开发某种特定功能，从Develop分支上面分出来的。开发完成后，要再并入Develop。</p>
+<p><img src="../images/clip_image022.png" alt="http://www.ruanyifeng.com/blogimg/asset/201207/bg2012070507.png"></p>
+<p>功能分支的名字，可以采用feature-*的形式命名。</p>
+<p>创建一个功能分支：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b feature-x develop</span><br></pre></td></tr></table></figure>
+
+<p>开发完成后，将功能分支合并到develop分支：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git checkout develop</span><br><span class="line"></span><br><span class="line">git merge --no-ff feature-x</span><br></pre></td></tr></table></figure>
+
+<p>删除feature分支：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -d feature-x</span><br></pre></td></tr></table></figure>
+
+<p><strong>五、预发布分支</strong></p>
+<p>第二种是预发布分支，它是指发布正式版本之前（即合并到Master分支之前），我们可能需要有一个预发布的版本进行测试。</p>
+<p>预发布分支是从Develop分支上面分出来的，预发布结束以后，必须合并进Develop和Master分支。它的命名，可以采用release-*的形式。</p>
+<p>创建一个预发布分支：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b release-1.2 develop</span><br></pre></td></tr></table></figure>
+
+<p>确认没有问题后，合并到master分支：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git checkout master</span><br><span class="line"></span><br><span class="line">git merge --no-ff release-1.2</span><br></pre></td></tr></table></figure>
+
+
+
+<p>对合并生成的新节点，做一个标签</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag -a 1.2</span><br></pre></td></tr></table></figure>
+
+<p>再合并到develop分支：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git checkout develop</span><br><span class="line"></span><br><span class="line">git merge --no-ff release-1.2</span><br></pre></td></tr></table></figure>
+
+<p>最后，删除预发布分支：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -d release-1.2</span><br></pre></td></tr></table></figure>
+
+<p><strong>六、修补bug分支</strong></p>
+<p>最后一种是修补bug分支。软件正式发布以后，难免会出现bug。这时就需要创建一个分支，进行bug修补。</p>
+<p>修补bug分支是从Master分支上面分出来的。修补结束以后，再合并进Master和Develop分支。它的命名，可以采用fixbug-*的形式。</p>
+<p><img src="../images/clip_image023.png" alt="http://www.ruanyifeng.com/blogimg/asset/201207/bg2012070508.png"></p>
+<p>创建一个修补bug分支：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b fixbug-0.1 master</span><br></pre></td></tr></table></figure>
+
+<p>修补结束后，合并到master分支：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git checkout master</span><br><span class="line"></span><br><span class="line">git merge --no-ff fixbug-0.1</span><br><span class="line"></span><br><span class="line">git tag -a 0.1.1</span><br></pre></td></tr></table></figure>
+
+<p>再合并到develop分支：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git checkout develop</span><br><span class="line"></span><br><span class="line">git merge --no-ff fixbug-0.1</span><br></pre></td></tr></table></figure>
+
+<p>最后，删除”修补bug分支”：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -d fixbug-0.1</span><br></pre></td></tr></table></figure>
+
+<h3 id="3、常用-Git-命令清单"><a href="#3、常用-Git-命令清单" class="headerlink" title="3、常用 Git 命令清单"></a>3、常用 Git 命令清单</h3><p>我每天使用 Git ，但是很多命令记不住。</p>
+<p>一般来说，日常使用只要记住下图6个命令，就可以了。但是熟练使用，恐怕要记住60～100个命令。</p>
+<p><img src="../images/clip_image025.png" alt="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015120901.png"></p>
+<p>下面是我整理的常用 Git 命令清单。几个专用名词的译名如下。</p>
+<ul>
+<li>Workspace：工作区</li>
+<li>Index / Stage：暂存区</li>
+<li>Repository：仓库区（或本地仓库）</li>
+<li>Remote：远程仓库</li>
+</ul>
+<h4 id="一、新建代码库"><a href="#一、新建代码库" class="headerlink" title="一、新建代码库"></a>一、新建代码库</h4><p>在当前目录新建一个Git代码库</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
+
+<p>新建一个目录，将其初始化为Git代码库</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init [project-name]</span><br></pre></td></tr></table></figure>
+
+<p>下载一个项目和它的整个代码历史</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone [url]</span><br></pre></td></tr></table></figure>
+
+<h4 id="二、配置"><a href="#二、配置" class="headerlink" title="二、配置"></a>二、配置</h4><p>Git的设置文件为.gitconfig，它可以在用户主目录下（全局配置），也可以在项目目录下（项目配置）。</p>
+<p>显示当前的Git配置</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --list</span><br></pre></td></tr></table></figure>
+
+<p>编辑Git配置文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config -e [--global]</span><br></pre></td></tr></table></figure>
+
+<p>设置提交代码时的用户信息</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git config [--global] user.name &quot;[name]&quot;</span><br><span class="line"></span><br><span class="line">git config [--global] user.email &quot;[email address]&quot;</span><br></pre></td></tr></table></figure>
+
+<h4 id="三、增加-删除文件"><a href="#三、增加-删除文件" class="headerlink" title="三、增加/删除文件"></a>三、增加/删除文件</h4><p>添加指定文件到暂存区</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add [file1] [file2] ...</span><br></pre></td></tr></table></figure>
+
+<p>添加指定目录到暂存区，包括子目录</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add [dir]</span><br></pre></td></tr></table></figure>
+
+<p>添加当前目录的所有文件到暂存区</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></table></figure>
+
+<p>添加每个变化前，都会要求确认</p>
+<p>对于同一个文件的多处变化，可以实现分次提交</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add -p</span><br></pre></td></tr></table></figure>
+
+<p>删除工作区文件，并且将这次删除放入暂存区</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rm [file1] [file2] ...</span><br></pre></td></tr></table></figure>
+
+<p>停止追踪指定文件，但该文件会保留在工作区</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rm --cached [file]</span><br></pre></td></tr></table></figure>
+
+<p>改名文件，并且将这个改名放入暂存区</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git mv [file-original] [file-renamed]</span><br></pre></td></tr></table></figure>
+
+<h4 id="四、代码提交"><a href="#四、代码提交" class="headerlink" title="四、代码提交"></a>四、代码提交</h4><p>提交暂存区到仓库区</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m [message]</span><br></pre></td></tr></table></figure>
+
+<p>提交暂存区的指定文件到仓库区</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit [file1] [file2] ... -m [message]</span><br></pre></td></tr></table></figure>
+
+<p>提交工作区自上次commit之后的变化，直接到仓库区</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -a</span><br></pre></td></tr></table></figure>
+
+<p>提交时显示所有diff信息</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -v</span><br></pre></td></tr></table></figure>
+
+<p>使用一次新的commit，替代上一次提交</p>
+<p>如果代码没有任何新变化，则用来改写上一次commit的提交信息</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit --amend -m [message]</span><br></pre></td></tr></table></figure>
+
+<p>重做上一次commit，并包括指定文件的新变化</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit --amend [file1] [file2] ...</span><br></pre></td></tr></table></figure>
+
+<h4 id="五、分支"><a href="#五、分支" class="headerlink" title="五、分支"></a>五、分支</h4><p>列出所有本地分支</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch</span><br></pre></td></tr></table></figure>
+
+<p>列出所有远程分支</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -r</span><br></pre></td></tr></table></figure>
+
+<p>列出所有本地分支和远程分支</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -a</span><br></pre></td></tr></table></figure>
+
+<p>新建一个分支，但依然停留在当前分支</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch [branch-name]</span><br></pre></td></tr></table></figure>
+
+<p>新建一个分支，并切换到该分支</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b [branch]</span><br></pre></td></tr></table></figure>
+
+<p>新建一个分支，指向指定commit</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch [branch] [commit]</span><br></pre></td></tr></table></figure>
+
+<p>新建一个分支，与指定的远程分支建立追踪关系</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch --track [branch] [remote-branch]</span><br></pre></td></tr></table></figure>
+
+<p>切换到指定分支，并更新工作区</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout [branch-name]</span><br></pre></td></tr></table></figure>
+
+<p>切换到上一个分支</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -</span><br></pre></td></tr></table></figure>
+
+<p>建立追踪关系，在现有分支与指定的远程分支之间</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch --set-upstream [branch] [remote-branch]</span><br></pre></td></tr></table></figure>
+
+<p>合并指定分支到当前分支</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge [branch]</span><br></pre></td></tr></table></figure>
+
+<p>选择一个commit，合并进当前分支</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git cherry-pick [commit]</span><br></pre></td></tr></table></figure>
+
+<p>删除分支</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -d [branch-name]</span><br></pre></td></tr></table></figure>
+
+<p>删除远程分支</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git push origin --delete [branch-name]</span><br><span class="line"></span><br><span class="line">git branch -dr [remote/branch]</span><br></pre></td></tr></table></figure>
+
+<h4 id="六、标签"><a href="#六、标签" class="headerlink" title="六、标签"></a>六、标签</h4><p>列出所有tag</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag</span><br></pre></td></tr></table></figure>
+
+<p>新建一个tag在当前commit</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag [tag]</span><br></pre></td></tr></table></figure>
+
+<p>新建一个tag在指定commit</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag [tag] [commit]</span><br></pre></td></tr></table></figure>
+
+<p>删除本地tag</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag -d [tag]</span><br></pre></td></tr></table></figure>
+
+<p>删除远程tag</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin :refs/tags/[tagName]</span><br></pre></td></tr></table></figure>
+
+<p>查看tag信息</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git show [tag]</span><br></pre></td></tr></table></figure>
+
+<p>提交指定tag</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push [remote] [tag]</span><br></pre></td></tr></table></figure>
+
+<p>提交所有tag</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push [remote] --tags</span><br></pre></td></tr></table></figure>
+
+<p>新建一个分支，指向某个tag</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b [branch] [tag]</span><br></pre></td></tr></table></figure>
+
+<h4 id="七、查看信息"><a href="#七、查看信息" class="headerlink" title="七、查看信息"></a>七、查看信息</h4><p>显示有变更的文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure>
+
+<p>显示当前分支的版本历史</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log</span><br></pre></td></tr></table></figure>
+
+<p>显示commit历史，以及每次commit发生变更的文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log --stat</span><br></pre></td></tr></table></figure>
+
+<p>搜索提交历史，根据关键词</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log -S [keyword]</span><br></pre></td></tr></table></figure>
+
+<p>显示某个commit之后的所有变动，每个commit占据一行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log [tag] HEAD --pretty=format:%s</span><br></pre></td></tr></table></figure>
+
+<p>显示某个commit之后的所有变动，其”提交说明”必须符合搜索条件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log [tag] HEAD --grep feature</span><br></pre></td></tr></table></figure>
+
+<p>显示某个文件的版本历史，包括文件改名</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git log --follow [file]</span><br><span class="line"></span><br><span class="line">git whatchanged [file]</span><br></pre></td></tr></table></figure>
+
+<p>显示指定文件相关的每一次diff</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log -p [file]</span><br></pre></td></tr></table></figure>
+
+<p>显示过去5次提交</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log -5 --pretty --oneline</span><br></pre></td></tr></table></figure>
+
+<p>显示所有提交过的用户，按提交次数排序</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git shortlog -sn</span><br></pre></td></tr></table></figure>
+
+<p>显示指定文件是什么人在什么时间修改过</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git blame [file]</span><br></pre></td></tr></table></figure>
+
+<p>显示暂存区和工作区的差异</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff</span><br></pre></td></tr></table></figure>
+
+<p>显示暂存区和上一个commit的差异</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff --cached [file]</span><br></pre></td></tr></table></figure>
+
+<p>显示工作区与当前分支最新commit之间的差异</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff HEAD</span><br></pre></td></tr></table></figure>
+
+<p>显示两次提交之间的差异</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff [first-branch]...[second-branch]</span><br></pre></td></tr></table></figure>
+
+<p>显示今天你写了多少行代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff --shortstat &quot;@&#123;0 day ago&#125;&quot;</span><br></pre></td></tr></table></figure>
+
+<p>显示某次提交的元数据和内容变化</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git show [commit]</span><br></pre></td></tr></table></figure>
+
+<p>显示某次提交发生变化的文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git show --name-only [commit]</span><br></pre></td></tr></table></figure>
+
+<p>显示某次提交时，某个文件的内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git show [commit]:[filename]</span><br></pre></td></tr></table></figure>
+
+<p>显示当前分支的最近几次提交</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reflog</span><br></pre></td></tr></table></figure>
+
+<h4 id="八、远程同步"><a href="#八、远程同步" class="headerlink" title="八、远程同步"></a>八、远程同步</h4><p>下载远程仓库的所有变动</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git fetch [remote]</span><br></pre></td></tr></table></figure>
+
+<p>显示所有远程仓库</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote -v</span><br></pre></td></tr></table></figure>
+
+<p>显示某个远程仓库的信息</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote show [remote]</span><br></pre></td></tr></table></figure>
+
+<p>增加一个新的远程仓库，并命名</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add [shortname] [url]</span><br></pre></td></tr></table></figure>
+
+<p>取回远程仓库的变化，并与本地分支合并</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull [remote] [branch]</span><br></pre></td></tr></table></figure>
+
+<p>上传本地指定分支到远程仓库</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push [remote] [branch]</span><br></pre></td></tr></table></figure>
+
+<p>强行推送当前分支到远程仓库，即使有冲突</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push [remote] --force</span><br></pre></td></tr></table></figure>
+
+<p>推送所有分支到远程仓库</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push [remote] --all</span><br></pre></td></tr></table></figure>
+
+<h4 id="九、撤销"><a href="#九、撤销" class="headerlink" title="九、撤销"></a>九、撤销</h4><p>恢复暂存区的指定文件到工作区</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout [file]</span><br></pre></td></tr></table></figure>
+
+<p>恢复某个commit的指定文件到暂存区和工作区</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout [commit] [file]</span><br></pre></td></tr></table></figure>
+
+<p>恢复暂存区的所有文件到工作区</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout .</span><br></pre></td></tr></table></figure>
+
+<p>重置暂存区的指定文件，与上一次commit保持一致，但工作区不变</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset [file]</span><br></pre></td></tr></table></figure>
+
+<p>重置暂存区与工作区，与上一次commit保持一致</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard</span><br></pre></td></tr></table></figure>
+
+<p>重置当前分支的指针为指定commit，同时重置暂存区，但工作区不变</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset [commit]</span><br></pre></td></tr></table></figure>
+
+<p>重置当前分支的HEAD为指定commit，同时重置暂存区和工作区，与指定commit一致</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard [commit]</span><br></pre></td></tr></table></figure>
+
+<p>重置当前HEAD为指定commit，但保持暂存区和工作区不变</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --keep [commit]</span><br></pre></td></tr></table></figure>
+
+<p>新建一个commit，用来撤销指定commit</p>
+<p>后者的所有变化都将被前者抵消，并且应用到当前分支</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git revert [commit]</span><br></pre></td></tr></table></figure>
+
+<p>暂时将未提交的变化移除，稍后再移入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git stash</span><br><span class="line"></span><br><span class="line">git stash pop</span><br></pre></td></tr></table></figure>
+
+<h4 id="十、其他"><a href="#十、其他" class="headerlink" title="十、其他"></a>十、其他</h4><p>生成一个可供发布的压缩包</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git archive</span><br></pre></td></tr></table></figure>
+
+<h3 id="4、Git-使用规范流程"><a href="#4、Git-使用规范流程" class="headerlink" title="4、Git 使用规范流程"></a>4、Git 使用规范流程</h3><p>团队开发中，遵循一个合理、清晰的Git使用流程，是非常重要的。</p>
+<p>否则，每个人都提交一堆杂乱无章的commit，项目很快就会变得难以协调和维护。</p>
+<p>下面是<a target="_blank" rel="noopener" href="https://github.com/thoughtbot/guides/tree/master/protocol/git">ThoughtBot</a> 的Git使用规范流程。我从中学到了很多，推荐你也这样使用Git。</p>
+<p><img src="../images/clip_image027.png" alt="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015080501.png"></p>
+<p>第一步：新建分支</p>
+<p>首先，每次开发新功能，都应该新建一个单独的分支（这方面可以参考<a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2012/07/git.html">《Git分支管理策略》</a>）。</p>
+<p>获取主干最新代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git checkout master</span><br><span class="line"></span><br><span class="line">git pull</span><br></pre></td></tr></table></figure>
+
+<p>新建一个开发分支myfeature</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b myfeature</span><br></pre></td></tr></table></figure>
+
+<p>第二步：提交分支commit</p>
+<p>分支修改后，就可以提交commit了。 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git add --all</span><br><span class="line"></span><br><span class="line">git status</span><br><span class="line"></span><br><span class="line">git commit --verbose</span><br></pre></td></tr></table></figure>
+
+<p>git add 命令的all参数，表示保存所有变化（包括新建、修改和删除）。从Git 2.0开始，all是 git add 的默认参数，所以也可以用 git add . 代替。</p>
+<p>git status 命令，用来查看发生变动的文件。</p>
+<p>git commit 命令的verbose参数，会列出 <a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2012/08/how_to_read_diff.html">diff</a> 的结果。</p>
+<p>第三步：撰写提交信息</p>
+<p>提交commit时，必须给出完整扼要的提交信息，下面是一个范本。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Present-tense summary under 50 characters</span><br><span class="line"></span><br><span class="line">* More information about commit (under 72 characters).</span><br><span class="line"></span><br><span class="line">* More information about commit (under 72 characters).</span><br><span class="line"></span><br><span class="line">http://project.management-system.com/ticket/123</span><br></pre></td></tr></table></figure>
+
+<p>第一行是不超过50个字的提要，然后空一行，罗列出改动原因、主要变动、以及需要注意的问题。最后，提供对应的网址（比如Bug ticket）。</p>
+<p>第四步：与主干同步</p>
+<p>分支的开发过程中，要经常与主干保持同步。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git fetch origin</span><br><span class="line"></span><br><span class="line">git rebase origin/master</span><br></pre></td></tr></table></figure>
+
+<p>第五步：合并commit</p>
+<p>分支开发完成后，很可能有一堆commit，但是合并到主干的时候，往往希望只有一个（或最多两三个）commit，这样不仅清晰，也容易管理。</p>
+<p>那么，怎样才能将多个commit合并呢？这就要用到 git rebase 命令。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase -i origin/master</span><br></pre></td></tr></table></figure>
+
+<p>git rebase命令的i参数表示互动（interactive），这时git会打开一个互动界面，进行下一步操作。</p>
+<p>下面采用<a target="_blank" rel="noopener" href="https://robots.thoughtbot.com/git-interactive-rebase-squash-amend-rewriting-history">Tute Costa</a>的例子，来解释怎么合并commit。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">pick 07c5abd Introduce OpenPGP and teach basic usage</span><br><span class="line"></span><br><span class="line">pick de9b1eb Fix PostChecker::Post#urls</span><br><span class="line"></span><br><span class="line">pick 3e7ee36 Hey kids, stop all the highlighting</span><br><span class="line"></span><br><span class="line">pick fa20af3 git interactive rebase, squash, amend</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">Rebase 8db7e8b..fa20af3 onto 8db7e8b</span><br><span class="line"></span><br><span class="line">\#</span><br><span class="line"></span><br><span class="line">Commands:</span><br><span class="line"></span><br><span class="line">p, pick = use commit</span><br><span class="line"></span><br><span class="line">r, reword = use commit, but edit the commit message</span><br><span class="line"></span><br><span class="line">e, edit = use commit, but stop for amending</span><br><span class="line"></span><br><span class="line">s, squash = use commit, but meld into previous commit</span><br><span class="line"></span><br><span class="line">f, fixup = like &quot;squash&quot;, but discard this commit&#x27;s log message</span><br><span class="line"></span><br><span class="line">x, exec = run command (the rest of the line) using shell</span><br><span class="line"></span><br><span class="line">\#</span><br><span class="line"></span><br><span class="line">These lines can be re-ordered; they are executed from top to bottom.</span><br><span class="line"></span><br><span class="line">\#</span><br><span class="line"></span><br><span class="line">If you remove a line here THAT COMMIT WILL BE LOST.</span><br><span class="line"></span><br><span class="line">\#</span><br><span class="line"></span><br><span class="line">However, if you remove everything, the rebase will be aborted.</span><br><span class="line"></span><br><span class="line">\#</span><br><span class="line"></span><br><span class="line">Note that empty commits are commented out</span><br></pre></td></tr></table></figure>
+
+<p>上面的互动界面，先列出当前分支最新的4个commit（越下面越新）。每个commit前面有一个操作命令，默认是pick，表示该行commit被选中，要进行rebase操作。</p>
+<p>4个commit的下面是一大堆注释，列出可以使用的命令。</p>
+<ul>
+<li>pick：正常选中</li>
+<li>reword：选中，并且修改提交信息；</li>
+<li>edit：选中，rebase时会暂停，允许你修改这个commit（参考<a target="_blank" rel="noopener" href="https://schacon.github.io/gitbook/4_interactive_rebasing.html">这里</a>）</li>
+<li>squash：选中，会将当前commit与上一个commit合并</li>
+<li>fixup：与squash相同，但不会保存当前commit的提交信息</li>
+<li>exec：执行其他shell命令</li>
+</ul>
+<p>上面这6个命令当中，squash和fixup可以用来合并commit。先把需要合并的commit前面的动词，改成squash（或者s）。</p>
+<p>pick 07c5abd Introduce OpenPGP and teach basic usage</p>
+<p>s de9b1eb Fix PostChecker::Post#urls</p>
+<p>s 3e7ee36 Hey kids, stop all the highlighting</p>
+<p>pick fa20af3 git interactive rebase, squash, amend</p>
+<p>这样一改，执行后，当前分支只会剩下两个commit。第二行和第三行的commit，都会合并到第一行的commit。提交信息会同时包含，这三个commit的提交信息。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">This is a combination of 3 commits.</span><br><span class="line"></span><br><span class="line">The first commit&#x27;s message is:</span><br><span class="line"></span><br><span class="line">Introduce OpenPGP and teach basic usage</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">This is the 2nd commit message:</span><br><span class="line"></span><br><span class="line">Fix PostChecker::Post#urls</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">This is the 3rd commit message:</span><br><span class="line"></span><br><span class="line">Hey kids, stop all the highlighting</span><br><span class="line"></span><br><span class="line">如果将第三行的squash命令改成fixup命令。</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">pick 07c5abd Introduce OpenPGP and teach basic usage</span><br><span class="line"></span><br><span class="line">s de9b1eb Fix PostChecker::Post#urls</span><br><span class="line"></span><br><span class="line">f 3e7ee36 Hey kids, stop all the highlighting</span><br><span class="line"></span><br><span class="line">pick fa20af3 git interactive rebase, squash, amend</span><br></pre></td></tr></table></figure>
+
+<p>运行结果相同，还是会生成两个commit，第二行和第三行的commit，都合并到第一行的commit。但是，新的提交信息里面，第三行commit的提交信息，会被注释掉。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">This is a combination of 3 commits.</span><br><span class="line"></span><br><span class="line">The first commit&#x27;s message is:</span><br><span class="line"></span><br><span class="line">Introduce OpenPGP and teach basic usage</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">This is the 2nd commit message:</span><br><span class="line"></span><br><span class="line">Fix PostChecker::Post#urls</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">This is the 3rd commit message:</span><br><span class="line"></span><br><span class="line">Hey kids, stop all the highlighting</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="http://ponyfoo.com/articles/git-github-hacks">Pony Foo</a>提出另外一种合并commit的简便方法，就是先撤销过去5个commit，然后再建一个新的。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">git reset HEAD~5</span><br><span class="line"></span><br><span class="line">git add .</span><br><span class="line"></span><br><span class="line">git commit -am &quot;Here&#x27;s the bug fix that closes #28&quot;</span><br><span class="line"></span><br><span class="line">git push --force</span><br><span class="line"></span><br><span class="line">squash和fixup命令，还可以当作命令行参数使用，自动合并commit。</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">git commit --fixup </span><br><span class="line"></span><br><span class="line">git rebase -i --autosquash </span><br></pre></td></tr></table></figure>
+
+<p>这个用法请参考<a target="_blank" rel="noopener" href="http://fle.github.io/git-tip-keep-your-branch-clean-with-fixup-and-autosquash.html">这篇文章</a>，这里就不解释了。</p>
+<h4 id="第六步：推送到远程仓库"><a href="#第六步：推送到远程仓库" class="headerlink" title="第六步：推送到远程仓库"></a>第六步：推送到远程仓库</h4><p>合并commit后，就可以推送当前分支到远程仓库了。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push --force origin myfeature</span><br></pre></td></tr></table></figure>
+
+<p>git push命令要加上force参数，因为rebase以后，分支历史改变了，跟远程分支不一定兼容，有可能要强行推送（参见<a target="_blank" rel="noopener" href="http://willi.am/blog/2014/08/12/the-dark-side-of-the-force-push/">这里</a>）。</p>
+<h4 id="第七步：发出Pull-Request"><a href="#第七步：发出Pull-Request" class="headerlink" title="第七步：发出Pull Request"></a>第七步：发出Pull Request</h4><p>提交到远程仓库以后，就可以发出 Pull Request 到master分支，然后请求别人进行代码review，确认可以合并到master。</p>
+<h3 id="5、Git远程操作详解"><a href="#5、Git远程操作详解" class="headerlink" title="5、Git远程操作详解"></a>5、Git远程操作详解</h3><p><a target="_blank" rel="noopener" href="http://zh.wikipedia.org/wiki/Git">Git</a>是目前最流行的<a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2008/12/a_visual_guide_to_version_control.html">版本管理系统</a>，学会Git几乎成了开发者的必备技能。</p>
+<p>Git有很多优势，其中之一就是远程操作非常简便。本文详细介绍5个Git命令，它们的概念和用法，理解了这些内容，你就会完全掌握Git远程操作。</p>
+<ul>
+<li>git clone</li>
+<li>git remote</li>
+<li>git fetch</li>
+<li>git pull</li>
+<li>git push</li>
+</ul>
+<p>本文针对初级用户，从最简单的讲起，但是需要读者对Git的基本用法有所了解。同时，本文覆盖了上面5个命令的几乎所有的常用用法，所以对于熟练用户也有参考价值。</p>
+<p><img src="../images/clip_image029.jpg" alt="git"></p>
+<h4 id="一、git-clone"><a href="#一、git-clone" class="headerlink" title="一、git clone"></a>一、git clone</h4><p>远程操作的第一步，通常是从远程主机克隆一个版本库，这时就要用到git clone命令。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone &lt;版本库的网址&gt;</span><br></pre></td></tr></table></figure>
+
+<p>比如，克隆jQuery的版本库。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/jquery/jquery.git</span><br></pre></td></tr></table></figure>
+
+<p>该命令会在本地主机生成一个目录，与远程主机的版本库同名。如果要指定不同的目录名，可以将目录名作为git clone命令的第二个参数。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone &lt;版本库的网址&gt;&lt;本地目录名&gt;</span><br></pre></td></tr></table></figure>
+
+<p>git clone支持多种协议，除了HTTP(s)以外，还支持SSH、Git、本地文件协议等，下面是一些例子。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">git clone http[s]://example.com/path/to/repo.git/</span><br><span class="line"></span><br><span class="line">git clone ssh://example.com/path/to/repo.git/</span><br><span class="line"></span><br><span class="line">git clone git://example.com/path/to/repo.git/</span><br><span class="line"></span><br><span class="line">git clone /opt/git/project.git </span><br><span class="line"></span><br><span class="line">git clone file:///opt/git/project.git</span><br><span class="line"></span><br><span class="line">git clone ftp[s]://example.com/path/to/repo.git/</span><br><span class="line"></span><br><span class="line">git clone rsync://example.com/path/to/repo.git/</span><br></pre></td></tr></table></figure>
+
+<p>SSH协议还有另一种写法。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone [user@]example.com:path/to/repo.git/</span><br></pre></td></tr></table></figure>
+
+<p>通常来说，Git协议下载速度最快，SSH协议用于需要用户认证的场合。各种协议优劣的详细讨论请参考<a target="_blank" rel="noopener" href="http://git-scm.com/book/en/Git-on-the-Server-The-Protocols">官方文档</a>。</p>
+<h4 id="二、git-remote"><a href="#二、git-remote" class="headerlink" title="二、git remote"></a>二、git remote</h4><p>为了便于管理，Git要求每个远程主机都必须指定一个主机名。git remote命令就用于管理主机名。</p>
+<p>不带选项的时候，git remote命令列出所有远程主机。 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git remote</span><br><span class="line"></span><br><span class="line">origin</span><br></pre></td></tr></table></figure>
+
+<p>使用-v选项，可以参看远程主机的网址。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git remote -v</span><br><span class="line"></span><br><span class="line">origin [git@github](mailto:git@github).com:jquery/jquery.git (fetch)</span><br><span class="line"></span><br><span class="line">origin [git@github](mailto:git@github).com:jquery/jquery.git (push)</span><br></pre></td></tr></table></figure>
+
+<p>上面命令表示，当前只有一台远程主机，叫做origin，以及它的网址。</p>
+<p>克隆版本库的时候，所使用的远程主机自动被Git命名为origin。如果想用其他的主机名，需要用git clone命令的-o选项指定。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git clone -o jQuery https://github.com/jquery/jquery.git</span><br><span class="line"></span><br><span class="line">git remote</span><br><span class="line"></span><br><span class="line">jQuery</span><br></pre></td></tr></table></figure>
+
+<p>上面命令表示，克隆的时候，指定远程主机叫做jQuery。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">git remote show命令加上主机名，可以查看该主机的详细信息。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">git remote show &lt;主机名&gt;</span><br><span class="line">git remote add命令用于添加远程主机。</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">git remote add &lt;主机名&gt;&lt;网址&gt;</span><br><span class="line">git remote rm命令用于删除远程主机。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">git remote rm &lt;主机名&gt;</span><br><span class="line">git remote rename命令用于远程主机的改名。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">git remote rename &lt;原主机名&gt;&lt;新主机名&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="三、git-fetch"><a href="#三、git-fetch" class="headerlink" title="三、git fetch"></a>三、git fetch</h4><p>一旦远程主机的版本库有了更新（Git术语叫做commit），需要将这些更新取回本地，这时就要用到git fetch命令。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git fetch &lt;远程主机名&gt;</span><br></pre></td></tr></table></figure>
+
+<p>上面命令将某个远程主机的更新，全部取回本地。</p>
+<p>git fetch命令通常用来查看其他人的进程，因为它取回的代码对你本地的开发代码没有影响。</p>
+<p>默认情况下，git fetch取回所有分支（branch）的更新。如果只想取回特定分支的更新，可以指定分支名。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git fetch &lt;远程主机名&gt;&lt;分支名&gt;</span><br></pre></td></tr></table></figure>
+
+<p>比如，取回origin主机的master分支。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git fetch origin master</span><br></pre></td></tr></table></figure>
+
+<p>所取回的更新，在本地主机上要用”远程主机名/分支名”的形式读取。比如origin主机的master，就要用origin/master读取。</p>
+<p>git branch命令的-r选项，可以用来查看远程分支，-a选项查看所有分支。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">git branch -r</span><br><span class="line"></span><br><span class="line">origin/master</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">git branch -a</span><br><span class="line"></span><br><span class="line">*master</span><br><span class="line"></span><br><span class="line">remotes/origin/master</span><br></pre></td></tr></table></figure>
+
+<p>上面命令表示，本地主机的当前分支是master，远程分支是origin/master。</p>
+<p>取回远程主机的更新以后，可以在它的基础上，使用git checkout命令创建一个新的分支。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b newBrach origin/master</span><br></pre></td></tr></table></figure>
+
+<p>上面命令表示，在origin/master的基础上，创建一个新分支。</p>
+<p>此外，也可以使用git merge命令或者git rebase命令，在本地分支上合并远程分支。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge origin/master</span><br></pre></td></tr></table></figure>
+
+<p>或者</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase origin/master</span><br></pre></td></tr></table></figure>
+
+<p>上面命令表示在当前分支上，合并origin/master。</p>
+<h4 id="四、git-pull"><a href="#四、git-pull" class="headerlink" title="四、git pull"></a>四、git pull</h4><p>git pull命令的作用是，取回远程主机某个分支的更新，再与本地的指定分支合并。它的完整格式稍稍有点复杂。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull &lt;远程主机名&gt;&lt;远程分支名&gt;:&lt;本地分支名&gt;</span><br></pre></td></tr></table></figure>
+
+<p>比如，取回origin主机的next分支，与本地的master分支合并，需要写成下面这样。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull origin next:master</span><br></pre></td></tr></table></figure>
+
+<p>如果远程分支是与当前分支合并，则冒号后面的部分可以省略。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull origin next</span><br></pre></td></tr></table></figure>
+
+<p>上面命令表示，取回origin/next分支，再与当前分支合并。实质上，这等同于先做git fetch，再做git merge。 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git fetch origin</span><br><span class="line"></span><br><span class="line">git merge origin/next</span><br></pre></td></tr></table></figure>
+
+<p>在某些场合，Git会自动在本地分支与远程分支之间，建立一种追踪关系（tracking）。比如，在git clone的时候，所有本地分支默认与远程主机的同名分支，建立追踪关系，也就是说，本地的master分支自动”追踪”origin/master分支。</p>
+<p>Git也允许手动建立追踪关系。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch --set-upstream master origin/next</span><br></pre></td></tr></table></figure>
+
+<p>上面命令指定master分支追踪origin/next分支。</p>
+<p>如果当前分支与远程分支存在追踪关系，git pull就可以省略远程分支名。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull origin</span><br></pre></td></tr></table></figure>
+
+<p>上面命令表示，本地的当前分支自动与对应的origin主机”追踪分支”（remote-tracking branch）进行合并。</p>
+<p>如果当前分支只有一个追踪分支，连远程主机名都可以省略。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull</span><br></pre></td></tr></table></figure>
+
+<p>上面命令表示，当前分支自动与唯一一个追踪分支进行合并。</p>
+<p>如果合并需要采用rebase模式，可以使用–rebase选项。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull --rebase &lt;远程主机名&gt;&lt;远程分支名&gt;:&lt;本地分支名&gt;</span><br></pre></td></tr></table></figure>
+
+<p>如果远程主机删除了某个分支，默认情况下，git pull 不会在拉取远程分支的时候，删除对应的本地分支。这是为了防止，由于其他人操作了远程主机，导致git pull不知不觉删除了本地分支。</p>
+<p>但是，你可以改变这个行为，加上参数 -p 就会在本地删除远程已经删除的分支。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull -p</span><br></pre></td></tr></table></figure>
+
+<p>等同于下面的命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git fetch --prune origin </span><br><span class="line"></span><br><span class="line">git fetch -p</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="五、git-push"><a href="#五、git-push" class="headerlink" title="五、git push"></a>五、git push</h4><p>git push命令用于将本地分支的更新，推送到远程主机。它的格式与git pull命令相仿。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push &lt;远程主机名&gt;&lt;本地分支名&gt;:&lt;远程分支名&gt;</span><br></pre></td></tr></table></figure>
+
+<p>注意，分支推送顺序的写法是&lt;来源地&gt;:&lt;目的地&gt;，所以git pull是&lt;远程分支&gt;:&lt;本地分支&gt;，而git push是&lt;本地分支&gt;:&lt;远程分支&gt;。</p>
+<p>如果省略远程分支名，则表示将本地分支推送与之存在”追踪关系”的远程分支（通常两者同名），如果该远程分支不存在，则会被新建。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
+
+<p>上面命令表示，将本地的master分支推送到origin主机的master分支。如果后者不存在，则会被新建。</p>
+<p>如果省略本地分支名，则表示删除指定的远程分支，因为这等同于推送一个空的本地分支到远程分支。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin :master</span><br></pre></td></tr></table></figure>
+
+<p>等同于</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin --delete master</span><br></pre></td></tr></table></figure>
+
+<p>上面命令表示删除origin主机的master分支。</p>
+<p>如果当前分支与远程分支之间存在追踪关系，则本地分支和远程分支都可以省略。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin</span><br></pre></td></tr></table></figure>
+
+<p>上面命令表示，将当前分支推送到origin主机的对应分支。</p>
+<p>如果当前分支只有一个追踪分支，那么主机名都可以省略。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push</span><br></pre></td></tr></table></figure>
+
+<p>如果当前分支与多个主机存在追踪关系，则可以使用-u选项指定一个默认主机，这样后面就可以不加任何参数使用git push。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
+
+<p>上面命令将本地的master分支推送到origin主机，同时指定origin为默认主机，后面就可以不加任何参数使用git push了。</p>
+<p>不带任何参数的git push，默认只推送当前分支，这叫做simple方式。此外，还有一种matching方式，会推送所有有对应的远程分支的本地分支。Git 2.0版本之前，默认采用matching方法，现在改为默认采用simple方式。如果要修改这个设置，可以采用git config命令。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global push.default matching</span><br></pre></td></tr></table></figure>
+
+<p>或者</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global push.default simple</span><br></pre></td></tr></table></figure>
+
+<p>还有一种情况，就是不管是否存在对应的远程分支，将本地的所有分支都推送到远程主机，这时需要使用–all选项。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push --all origin</span><br></pre></td></tr></table></figure>
+
+<p>上面命令表示，将所有本地分支都推送到origin主机。</p>
+<p>如果远程主机的版本比本地版本更新，推送时Git会报错，要求先在本地做git pull合并差异，然后再推送到远程主机。这时，如果你一定要推送，可以使用–force选项。 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push --force origin </span><br></pre></td></tr></table></figure>
+
+<p>上面命令使用–force选项，结果导致远程主机上更新的版本被覆盖。除非你很确定要这样做，否则应该尽量避免使用–force选项。</p>
+<p>最后，git push不会推送标签（tag），除非使用–tags选项。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin --tags</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/19/Github-Git%E5%91%BD%E4%BB%A4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -807,152 +1537,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/21/%E5%BC%82%E6%AD%A5%E5%A4%84%E7%90%86-%E7%AC%94%E8%AE%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="winney">
-      <meta itemprop="description" content="Doing is better than saying.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="winney">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/01/21/%E5%BC%82%E6%AD%A5%E5%A4%84%E7%90%86-%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">异步处理-笔记</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-01-21 10:53:32" itemprop="dateCreated datePublished" datetime="2021-01-21T10:53:32+08:00">2021-01-21</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-10-30 13:18:11" itemprop="dateModified" datetime="2024-10-30T13:18:11+08:00">2024-10-30</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/Ajax/" itemprop="url" rel="index"><span itemprop="name">Ajax</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><a target="_blank" rel="noopener" href="https://www.icode9.com/content-4-1302901.html">接口测试工具Apifox 基础篇：配置环境</a></p>
-<table>
-<thead>
-<tr>
-<th><a target="_blank" rel="noopener" href="https://api.jquery.com/jquery.ajax/">jQuery.ajax</a></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody><tr>
-<td><a target="_blank" rel="noopener" href="https://www.runoob.com/ajax/ajax-tutorial.html">AJAX教程</a></td>
-<td><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/ajax/index.asp">W3school</a></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">    url:&quot;&quot;,</span><br><span class="line">    timeout:8000,</span><br><span class="line">    type:&quot;POST&quot;,</span><br><span class="line">    dataType:&quot;json&quot;,</span><br><span class="line">    data:&#123;name:&quot;大名&quot;,age:&quot;23&quot;&#125;,</span><br><span class="line">    success:function(data,status,xhr)&#123;</span><br><span class="line"></span><br><span class="line">    &#125;,</span><br><span class="line">    error:function(xhr,status,error)&#123;</span><br><span class="line">        $(&quot;.success&quot;).hide();</span><br><span class="line">        $(&quot;.maskBg&quot;).hide();      </span><br><span class="line">        if(xhr.status === 0)&#123;</span><br><span class="line">            if(status === &quot;timeout&quot;)&#123;</span><br><span class="line">                app.alert(&quot;网络不给力，请检查网络设置&quot;); </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;else if(xhr.status.toString().charAt(0) === &quot;4&quot;)&#123;</span><br><span class="line">            app.alert(&quot;客户端出错，请重新操作：&quot; + xhr.status);   </span><br><span class="line">        &#125;else if(xhr.status.toString().charAt(0) == &quot;5&quot;)&#123;</span><br><span class="line">            app.alert(&quot;服务端出错，请联系网站管理员！错误代码：&quot;  + xhr.status);  </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<h4 id="axios-的简单封装"><a href="#axios-的简单封装" class="headerlink" title="axios 的简单封装"></a>axios 的简单封装</h4><p><a target="_blank" rel="noopener" href="http://www.axios-js.com/zh-cn/docs/">axios中文文档|axios中文网</a></p>
-<p>axios：基于promise的http库</p>
-<p>1.首先引入 axios</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> axios <span class="keyword">from</span> <span class="string">&#x27;axios&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<p>2.创建一个实例</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> api = axios.create(&#123;</span><br><span class="line">    baseURL: <span class="string">&#x27;&#x27;</span>, <span class="comment">// 所有请求的公共地址部分</span></span><br><span class="line">    timeout: 　<span class="number">3000</span> <span class="comment">// 请求超时时间 这里的意思是当请求时间超过5秒还未取得结果时 提示用户请求超时</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<p>3.request拦截器</p>
-<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 请求相关处理 请求拦截 在请求拦截中可以补充请求相关的配置</span></span><br><span class="line"><span class="comment">// interceptors axios的拦截器对象</span></span><br><span class="line">api.<span class="property">interceptors</span>.<span class="property">request</span>.<span class="title function_">use</span>(<span class="function"><span class="params">config</span> =&gt;</span> &#123;</span><br><span class="line">     <span class="comment">// config 请求的所有信息</span></span><br><span class="line">    <span class="comment">// console.log(config);</span></span><br><span class="line">    <span class="keyword">return</span> config <span class="comment">// 将配置完成的config对象返回出去 如果不返回 请求讲不会进行</span></span><br><span class="line">&#125;, <span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 请求发生错误时的相关处理 抛出错误</span></span><br><span class="line">   <span class="title class_">Promise</span>.<span class="title function_">reject</span>(err)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<p>4.response拦截器</p>
-<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">api.<span class="property">interceptors</span>.<span class="property">response</span>.<span class="title function_">use</span>(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 我们一般在这里处理，请求成功后的错误状态码 例如状态码是500，404，403</span></span><br><span class="line">    <span class="comment">// res 是所有相应的信息</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(res)</span><br><span class="line">   <span class="keyword">return</span> <span class="title class_">Promise</span>.<span class="title function_">resolve</span>(res)</span><br><span class="line">&#125;, <span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 服务器响应发生错误时的处理</span></span><br><span class="line">    <span class="title class_">Promise</span>.<span class="title function_">reject</span>(err)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<p>7.暴漏出去</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> api</span><br></pre></td></tr></table></figure>
-
-<h3 id="封装接口"><a href="#封装接口" class="headerlink" title="封装接口"></a>封装接口</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> api <span class="keyword">from</span> <span class="string">&#x27;../index.js&#x27;</span>;</span><br><span class="line"></span><br><span class="line">下面是简写的形式</span><br><span class="line"><span class="comment">// getXXX 自定义的接口名字</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title function_">getXXX</span> = (<span class="params">params</span>) =&gt; api.<span class="title function_">get</span>(<span class="string">`/apigb/v1/component`</span>, &#123; params&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title function_">postXXX</span> = (<span class="params">params</span>) =&gt; api.<span class="title function_">post</span>(<span class="string">`/apigb/v1/component/update-info`</span>, params)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 下面是详细的写法</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title function_">xxxx</span> = (<span class="params">params</span>) =&gt; <span class="title function_">api</span>(&#123;</span><br><span class="line">        <span class="attr">url</span>: <span class="string">&#x27;&#x27;</span>, <span class="comment">// 请求地址</span></span><br><span class="line">        <span class="attr">method</span>: <span class="string">&#x27;post&#x27;</span>, <span class="comment">// 请求方式</span></span><br><span class="line">        <span class="comment">// data: params, // (一般post请求，我们习惯使用 data属性来传参)</span></span><br><span class="line">        <span class="attr">params</span>: params <span class="comment">//(一般get请求，我们习惯使用params属性来传参）</span></span><br><span class="line">        <span class="comment">// 注意：data，和 params 两个属性传参使用，并不是固定的，也可以调换使用。</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-
-
-<ol>
-<li>同步和异步</li>
-<li>XMLHttpRequest对象创建</li>
-<li>HTTP请求</li>
-<li>XMLHttpRequest发送请求</li>
-<li>XMLHttpRequest取得响应</li>
-</ol>
-<h4 id="Fetch-API"><a href="#Fetch-API" class="headerlink" title="Fetch API"></a><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API">Fetch API</a></h4><p>fetch返回promise对象</p>
-<h4 id="async和await"><a href="#async和await" class="headerlink" title="async和await"></a>async和await</h4><p>作用：简化promise对象的使用：不用再使用then()来指定成功/失败的回调函数，以同步编码(没有回调函数)方式实现异步流程</p>
-<h5 id="哪里写await"><a href="#哪里写await" class="headerlink" title="哪里写await?"></a>哪里写await?</h5><p>在返回promise的表达式左侧写await：不想要promise，想要promise异步执行的成功的value数据</p>
-<h5 id="哪里写async"><a href="#哪里写async" class="headerlink" title="哪里写async?"></a>哪里写async?</h5><p>await所在函数(最近的)定义的左侧写async</p>
-<h4 id="跨域-代理"><a href="#跨域-代理" class="headerlink" title="跨域-代理"></a>跨域-代理</h4><p>配置跨域的方式：</p>
-<p>服务端最常用的两种：</p>
-<ol>
-<li>cors配置跨域</li>
-<li>nginx反向代理处理跨域</li>
-</ol>
-<p><code>前端的代理，只能本地调试使用</code></p>
-<blockquote>
-<p>Vite搭建的Vue项目，在本地使用代理解决了跨域问题，打包到线上的跨域问题怎么解决？ </p>
-<p>跨域的地址不属于自己服务器的连接，是别人服务器的连接</p>
-<p>——服务器要配置地址（需要服务端来处理）</p>
-</blockquote>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/14/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><span class="page-number current">15</span><a class="page-number" href="/page/16/">16</a><span class="space">&hellip;</span><a class="page-number" href="/page/38/">38</a><a class="extend next" rel="next" href="/page/16/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/14/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><span class="page-number current">15</span><a class="page-number" href="/page/16/">16</a><span class="space">&hellip;</span><a class="page-number" href="/page/39/">39</a><a class="extend next" rel="next" href="/page/16/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1020,7 +1608,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">114</span>
+          <span class="site-state-item-count">115</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

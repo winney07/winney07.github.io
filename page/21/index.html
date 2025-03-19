@@ -193,6 +193,137 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/08/22/CSS%E5%AE%9E%E7%8E%B0%E6%B0%B4%E5%B9%B3%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="winney">
+      <meta itemprop="description" content="Doing is better than saying.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="winney">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/08/22/CSS%E5%AE%9E%E7%8E%B0%E6%B0%B4%E5%B9%B3%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD/" class="post-title-link" itemprop="url">CSS实现水平垂直居中</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-08-22 11:12:23" itemprop="dateCreated datePublished" datetime="2020-08-22T11:12:23+08:00">2020-08-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-10-30 13:18:11" itemprop="dateModified" datetime="2024-10-30T13:18:11+08:00">2024-10-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CSS/" itemprop="url" rel="index"><span itemprop="name">CSS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="方法一：父元素：-display-flex-子元素：margin-auto"><a href="#方法一：父元素：-display-flex-子元素：margin-auto" class="headerlink" title="方法一：父元素： display: flex; + 子元素：margin: auto;"></a>方法一：父元素：<code> display: flex;</code> + 子元素：<code>margin: auto;</code></h4><ol>
+<li><p>适用于有宽高的盒子</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;big-box&quot;&gt;</span><br><span class="line">    &lt;div class=&quot;inner-box&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">.big-box &#123;</span><br><span class="line">    width: 400px;</span><br><span class="line">    height: 400px;</span><br><span class="line">    background-color: darkseagreen;</span><br><span class="line">    display: flex;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.inner-box &#123;</span><br><span class="line">    width: 200px;</span><br><span class="line">    height: 200px;</span><br><span class="line">    background-color: rgb(243, 236, 132);</span><br><span class="line">    margin: auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/CSS%E5%AE%9E%E7%8E%B0%E6%B0%B4%E5%B9%B3%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD/0.png" alt="垂直水平居中"></p>
+<ol start="2">
+<li><p>适用于<code>文字内容所在的元素没有宽高</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">.inner-box &#123;</span><br><span class="line">    width: 200px;</span><br><span class="line">    height: 200px;</span><br><span class="line">    background-color: rgb(243, 236, 132);</span><br><span class="line">    margin: auto;</span><br><span class="line">    display: flex;</span><br><span class="line">&#125;</span><br><span class="line">p &#123;</span><br><span class="line">    color: #333;</span><br><span class="line">    margin: auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/CSS%E5%AE%9E%E7%8E%B0%E6%B0%B4%E5%B9%B3%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD/1.png" alt="垂直水平居中"></p>
+<blockquote>
+<p>如果给文字内容所在p元素设置宽高，使用这个方法，文字就不居中了</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">.inner-box &#123;</span><br><span class="line">    width: 200px;</span><br><span class="line">    height: 200px;</span><br><span class="line">    background-color: rgb(243, 236, 132);</span><br><span class="line">    margin: auto;</span><br><span class="line">    display: flex;</span><br><span class="line">&#125;</span><br><span class="line">p &#123;</span><br><span class="line">    color: #333;</span><br><span class="line">    margin: auto;</span><br><span class="line">    width: 200px;</span><br><span class="line">    height: 100px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>inner-box</code> 有宽高,显示如下图:</p>
+<p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/CSS%E5%AE%9E%E7%8E%B0%E6%B0%B4%E5%B9%B3%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD/1_2.png" alt="垂直水平居中"></p>
+<blockquote>
+<p>如果给文字内容所在p元素设置宽高，使用这个方法，文字就不居中了</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">.inner-box &#123;</span><br><span class="line">    /* width: 200px;</span><br><span class="line">    height: 200px; */</span><br><span class="line">    background-color: rgb(243, 236, 132);</span><br><span class="line">    margin: auto;</span><br><span class="line">    display: flex;</span><br><span class="line">&#125;</span><br><span class="line"> p &#123;</span><br><span class="line">    color: #333;</span><br><span class="line">    margin: auto;</span><br><span class="line">    width: 200px;</span><br><span class="line">    height: 200px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>inner-box</code> 没有宽高,显示如下图:</p>
+<p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/CSS%E5%AE%9E%E7%8E%B0%E6%B0%B4%E5%B9%B3%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD/1_3.png" alt="垂直水平居中"></p>
+<h4 id="方法二：使用Flexbox（弹性布局）"><a href="#方法二：使用Flexbox（弹性布局）" class="headerlink" title="方法二：使用Flexbox（弹性布局）"></a>方法二：使用<code>Flexbox</code>（弹性布局）</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;big-box&quot;&gt;</span><br><span class="line">    &lt;div class=&quot;inner-box&quot;&gt;</span><br><span class="line">        你好</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">.container &#123;</span><br><span class="line">    height: 400px;</span><br><span class="line">    background-color: #bfc;</span><br><span class="line">    display: flex;</span><br><span class="line">    justify-content: center; /* 水平居中 */</span><br><span class="line">    align-items: center; /* 垂直居中 */</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/CSS%E5%AE%9E%E7%8E%B0%E6%B0%B4%E5%B9%B3%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD/2.png" alt="垂直水平居中"></p>
+<h4 id="方法三：父元素：text-align-center-和line-height"><a href="#方法三：父元素：text-align-center-和line-height" class="headerlink" title="方法三：父元素：text-align: center;和line-height: *;"></a>方法三：父元素：<code>text-align: center;</code>和<code>line-height: *;</code></h4><blockquote>
+<p>适用于内联元素，如文本或行内块元素。(文字内容所在盒子没有设置宽高的情况下。)</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;big-box&quot;&gt;</span><br><span class="line">    &lt;div class=&quot;inner-box&quot;&gt;</span><br><span class="line">        你好</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">.big-box &#123;</span><br><span class="line">    width: 400px;</span><br><span class="line">    height: 400px;</span><br><span class="line">    background-color: #bfc;</span><br><span class="line">    text-align: center;</span><br><span class="line">    line-height: 400px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>如果文字内容所在盒子有宽高，则不水平居中对齐。</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.inner-box &#123;</span><br><span class="line">    width: 100px;</span><br><span class="line">    height: 100px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/CSS%E5%AE%9E%E7%8E%B0%E6%B0%B4%E5%B9%B3%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD/3.png" alt="垂直水平居中"></p>
+<h4 id="方法四：使用Grid（网格布局）"><a href="#方法四：使用Grid（网格布局）" class="headerlink" title="方法四：使用Grid（网格布局）"></a>方法四：使用Grid（网格布局）</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">.big-box  &#123;</span><br><span class="line">    display: grid;</span><br><span class="line">    place-items: center; /* 同时实现水平和垂直居中 */</span><br><span class="line">    width: 400px;</span><br><span class="line">    height: 400px;</span><br><span class="line">    background-color: #bfc;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="方法五：使用绝对定位"><a href="#方法五：使用绝对定位" class="headerlink" title="方法五：使用绝对定位"></a>方法五：使用绝对定位</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">.big-box  &#123;</span><br><span class="line">    position: relative;</span><br><span class="line">    width: 400px;</span><br><span class="line">    height: 400px;</span><br><span class="line">    background-color: #bfc;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.inner-box &#123;</span><br><span class="line">    position: absolute;</span><br><span class="line">    top: 50%;</span><br><span class="line">    left: 50%;</span><br><span class="line">    transform: translate(-50%, -50%); /* 负的50%来实现水平和垂直居中 */</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="方法六：使用表格布局"><a href="#方法六：使用表格布局" class="headerlink" title="方法六：使用表格布局"></a>方法六：使用表格布局</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">.big-box &#123;</span><br><span class="line">    display: table;</span><br><span class="line">    width: 400px;</span><br><span class="line">    height: 400px;</span><br><span class="line">    background-color: #bfc;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.inner-box &#123;</span><br><span class="line">    display: table-cell;</span><br><span class="line">    text-align: center; /* 水平居中 */</span><br><span class="line">    vertical-align: middle; /* 垂直居中 */</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2020/08/22/MongoDB%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -385,139 +516,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/08/22/VScode%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="winney">
-      <meta itemprop="description" content="Doing is better than saying.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="winney">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/08/22/VScode%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">VScode相关笔记</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-08-22 11:12:23" itemprop="dateCreated datePublished" datetime="2020-08-22T11:12:23+08:00">2020-08-22</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-10-30 13:18:11" itemprop="dateModified" datetime="2024-10-30T13:18:11+08:00">2024-10-30</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/VScode/" itemprop="url" rel="index"><span itemprop="name">VScode</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><a target="_blank" rel="noopener" href="https://lzw.me/a/vscode-visual-studio-code-shortcut.html">常用快捷键</a> <a target="_blank" rel="noopener" href="https://www.awesomes.cn/">大牛在用</a></p>
-<h4 id="格式化代码"><a href="#格式化代码" class="headerlink" title="格式化代码"></a>格式化代码</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Shift + Alt + F</span><br></pre></td></tr></table></figure>
-
-<p>代码缩进</p>
-<p>选中代码段之后</p>
-<p>1、向左</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shift + TAB </span><br></pre></td></tr></table></figure>
-
-<p>2、向右：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TAB</span><br></pre></td></tr></table></figure>
-
-<h4 id="更换主题"><a href="#更换主题" class="headerlink" title="更换主题"></a>更换主题</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Ctrl + K + T</span><br></pre></td></tr></table></figure>
-
-<h4 id="VSCode搜索指定某个目录下查找文件"><a href="#VSCode搜索指定某个目录下查找文件" class="headerlink" title="VSCode搜索指定某个目录下查找文件"></a><code>VSCode</code>搜索指定某个目录下查找文件</h4><ol>
-<li>先点击选中这个要查找的目录。</li>
-<li>右键点击后，点击里面的「Find in Folder」即 在文件夹中查找…..</li>
-</ol>
-<p><a target="_blank" rel="noopener" href="https://jingyan.baidu.com/article/7e44095377c9d12fc1e2ef5b.html">将VSCode设置成中文语言环境</a></p>
-<h5 id="快速在浏览器中打开"><a href="#快速在浏览器中打开" class="headerlink" title="快速在浏览器中打开"></a>快速在浏览器中打开</h5><ol>
-<li>安装open in browser插件</li>
-<li>重新启动<code>VSCode</code></li>
-<li>快捷键：Alt + B</li>
-</ol>
-<h5 id="使用sublime快捷键"><a href="#使用sublime快捷键" class="headerlink" title="使用sublime快捷键"></a>使用sublime快捷键</h5><p>安装插件：Sublime Text Keymap and Settings Importer</p>
-<h5 id="自动换行"><a href="#自动换行" class="headerlink" title="自动换行"></a>自动换行</h5><p><a target="_blank" rel="noopener" href="https://jingyan.baidu.com/article/6f2f55a14ba6e3b5b93e6cd6.html">https://jingyan.baidu.com/article/6f2f55a14ba6e3b5b93e6cd6.html</a></p>
-<p><a target="_blank" rel="noopener" href="https://jingyan.baidu.com/article/6dad5075383c3fa123e36ec3.html">https://jingyan.baidu.com/article/6dad5075383c3fa123e36ec3.html</a></p>
-<h5 id="VSCode编辑器字体大小设置"><a href="#VSCode编辑器字体大小设置" class="headerlink" title="VSCode编辑器字体大小设置"></a><code>VSCode</code>编辑器字体大小设置</h5><p>“settings”——“文本编辑器”——常用设置——<code>Editor：Font Size</code>（这里设置为20）</p>
-<h4 id="VSCode如何用浏览器预览运行html文件"><a href="#VSCode如何用浏览器预览运行html文件" class="headerlink" title="VSCode如何用浏览器预览运行html文件"></a><code>VSCode</code>如何用浏览器预览运行html文件</h4><p>在”扩展“中搜索”view in browser“——右键点击html文件，选择View In Browser</p>
-<p><code>view in browser</code>已废弃， 换成”open in browser”</p>
-<h4 id="VSCode-编写Vue项目安装Vetur插件实现-代码高亮"><a href="#VSCode-编写Vue项目安装Vetur插件实现-代码高亮" class="headerlink" title="VSCode 编写Vue项目安装Vetur插件实现 代码高亮"></a>VSCode 编写Vue项目安装Vetur插件实现 代码高亮</h4><h4 id="VSCode中配置Vue3-TS-的用户代码片段"><a href="#VSCode中配置Vue3-TS-的用户代码片段" class="headerlink" title="VSCode中配置Vue3 + TS 的用户代码片段"></a>VSCode中配置Vue3 + TS 的用户代码片段</h4><p>设置——配置用户代码片段——新建代码片段——代码片段文件名（输入该快捷键生成代码片段–例如：vue3）</p>
-<p>输入以下内容：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	&quot;vue-template&quot;: &#123;</span><br><span class="line">		&quot;prefix&quot;: &quot;vue3&quot;,</span><br><span class="line">		&quot;body&quot;: [</span><br><span class="line">		&quot;&lt;template&gt;&quot;,</span><br><span class="line">		&quot;&quot;,</span><br><span class="line">		&quot;&lt;/template&gt;&quot;,</span><br><span class="line">		&quot;&quot;,</span><br><span class="line">		&quot;&lt;script setup lang=&#x27;ts&#x27;&gt;&quot;,</span><br><span class="line">		&quot;&quot;,</span><br><span class="line">		&quot;&lt;/script&gt;&quot;,</span><br><span class="line">		&quot;&quot;,</span><br><span class="line">		&quot;&lt;style lang=&#x27;less&#x27; scoped&gt;&quot;,</span><br><span class="line">		&quot;&quot;,</span><br><span class="line">		&quot;&lt;/style&gt;&quot;,</span><br><span class="line">		],</span><br><span class="line">		&quot;description&quot;: &quot;my vue3 template&quot;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h5 id="使用方法："><a href="#使用方法：" class="headerlink" title="使用方法："></a>使用方法：</h5><p>在新建的.vue文件中，输入’vue3‘，即可快速生成以下代码：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line"></span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script setup lang=&#x27;ts&#x27;&gt;</span><br><span class="line"></span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style lang=&#x27;less&#x27; scoped&gt;</span><br><span class="line"></span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h3><ul>
-<li><p>open in browser：在默认浏览器打开</p>
-</li>
-<li><p>CodeGeeX</p>
-</li>
-<li><p>Vetur插件</p>
-</li>
-</ul>
-<h3 id="AI自动代码补全插件"><a href="#AI自动代码补全插件" class="headerlink" title="AI自动代码补全插件"></a>AI自动代码补全插件</h3><h4 id="Tabnine"><a href="#Tabnine" class="headerlink" title="Tabnine"></a>Tabnine</h4><p><a target="_blank" rel="noopener" href="https://www.tabnine.com/">tabnine官网</a></p>
-<p><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=TabNine.tabnine-vscode">Tabnine AI Autocomplete</a></p>
-<p><a target="_blank" rel="noopener" href="https://github.com/codota/TabNine">TabNine-GitHub</a></p>
-<h2 id="WebStorm10"><a href="#WebStorm10" class="headerlink" title="WebStorm10"></a>WebStorm10</h2><p>WebStorm是最专业的前端IDE开发工具</p>
-<p>WebStorm配置和快捷键</p>
-<h2 id="Atom-工具使用"><a href="#Atom-工具使用" class="headerlink" title="Atom_工具使用"></a>Atom_工具使用</h2><p>由github发布的前端开发工具</p>
-<p>非常强大和非常开发的开发工具平台</p>
-<ul>
-<li>官网地址: <a target="_blank" rel="noopener" href="https://atom.io/">https://atom.io/</a></li>
-<li>百度网盘下载地址：<a target="_blank" rel="noopener" href="http://pan.baidu.com/s/1ntszCgT">http://pan.baidu.com/s/1ntszCgT</a></li>
-</ul>
-<p>Atom的插件和主题安装和配置</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/20/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><span class="page-number current">21</span><a class="page-number" href="/page/22/">22</a><span class="space">&hellip;</span><a class="page-number" href="/page/38/">38</a><a class="extend next" rel="next" href="/page/22/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/20/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><span class="page-number current">21</span><a class="page-number" href="/page/22/">22</a><span class="space">&hellip;</span><a class="page-number" href="/page/39/">39</a><a class="extend next" rel="next" href="/page/22/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -585,7 +587,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">114</span>
+          <span class="site-state-item-count">115</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

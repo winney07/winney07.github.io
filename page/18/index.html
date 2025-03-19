@@ -193,6 +193,418 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/14/Git-%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="winney">
+      <meta itemprop="description" content="Doing is better than saying.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="winney">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/01/14/Git-%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">Git-笔记</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-01-14 14:47:55" itemprop="dateCreated datePublished" datetime="2021-01-14T14:47:55+08:00">2021-01-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-10-30 13:18:11" itemprop="dateModified" datetime="2024-10-30T13:18:11+08:00">2024-10-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">版本控制系统</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E7%B3%BB%E7%BB%9F/Git/" itemprop="url" rel="index"><span itemprop="name">Git</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>在Git安装目录下，可以查看相关命令的使用（help）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Git/mingw64/share/doc/git-doc/</span><br></pre></td></tr></table></figure>
+
+<p>正确的github工作流</p>
+<h4 id="提交到远程仓库报错"><a href="#提交到远程仓库报错" class="headerlink" title="提交到远程仓库报错"></a>提交到远程仓库报错</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">OpenSSL SSL_connect: Connection was reset in connection to github.com:443</span><br><span class="line"> </span><br><span class="line"> 或</span><br><span class="line"> </span><br><span class="line">OpenSSL SSL_connect: Connection was reset in connection to github.com:403</span><br></pre></td></tr></table></figure>
+
+<p>解决方法，将.git/config：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[remote &quot;origin&quot;]</span><br><span class="line">	url = https://github.com/winney07/winney07.github.io.git</span><br></pre></td></tr></table></figure>
+
+<p>改为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[remote &quot;origin&quot;]</span><br><span class="line">	url = git@github.com:winney07/winney07.github.io.git</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="Github创建仓库"><a href="#Github创建仓库" class="headerlink" title="Github创建仓库"></a>Github创建仓库</h4><p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/Git-%E7%AC%94%E8%AE%B0/create.png" alt="Github创建仓库"></p>
+<h3 id="Git常用命令速查表"><a href="#Git常用命令速查表" class="headerlink" title="Git常用命令速查表"></a>Git常用命令速查表</h3><h4 id="创建版本库"><a href="#创建版本库" class="headerlink" title="创建版本库"></a>创建版本库</h4><ol>
+<li><p>克隆远程版本库</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone &lt;url&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>初始化本地版本库</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h4 id="修改和提交"><a href="#修改和提交" class="headerlink" title="修改和提交"></a>修改和提交</h4><ol>
+<li><p>查看状态</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看变更内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>跟踪所有改动过的文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>跟踪指定的文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add &lt;file&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>文件改名</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git mv &lt;old&gt; &lt;new&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rm &lt;file&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>停止跟踪文件但不删除</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rm --cached &lt;file&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>提交所有更新过的文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m &quot;commit message&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改最后一次提交</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit --amend</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<h4 id="查看提交历史"><a href="#查看提交历史" class="headerlink" title="查看提交历史"></a>查看提交历史</h4><ol>
+<li><p>查看提交历史</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看指定文件的提交历史</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log -p &lt;file&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>以列表方式查看指定文件的提交历史</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git blame &lt;file&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<h4 id="撤销"><a href="#撤销" class="headerlink" title="撤销"></a>撤销</h4><ol>
+<li><p>撤销工作目录中所有未提交文件的修改内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard HEAD</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>撤销指定的未提交文件的修改内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout HEAD &lt;file&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>撤销指定的提交</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git revert &lt;commit&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<h4 id="分支与标签"><a href="#分支与标签" class="headerlink" title="分支与标签"></a>分支与标签</h4><ol>
+<li><p>显示所有本地分支</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>切换到指定分支或标签</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout &lt;branch/tag&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建新分支</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch &lt;new-branch&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除本地分支</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -d &lt;branch&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>列出所有本地标签</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>给予最新提交创建标签</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag &lt;tagname&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除标签</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag -d &lt;tagname&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<h4 id="合并与衍合"><a href="#合并与衍合" class="headerlink" title="合并与衍合"></a>合并与衍合</h4><ol>
+<li><p>合并指定分支到当前分支</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge &lt;branch&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>衍合指定分支到当前分支</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase &lt;branch&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<h4 id="远程操作"><a href="#远程操作" class="headerlink" title="远程操作"></a>远程操作</h4><ol>
+<li><p>查看远程版本库信息</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote -v</span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>查看指定远程版本库信息</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote show &lt;remote&gt;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>添加远程版本库</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add &lt;remote&gt; &lt;url&gt;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>从远程库获取代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git fetch &lt;remote&gt;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>下载代码及快速合并</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull &lt;remote&gt; &lt;branch&gt;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>上传代码及快速合并</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push &lt;remote&gt; &lt;branch&gt;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>删除远程分支或标签</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull &lt;remote&gt; : &lt;branch/tag-name&gt;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>上传所有标签</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push --tags</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<h3 id="管理分支"><a href="#管理分支" class="headerlink" title="管理分支"></a>管理分支</h3><h4 id="1、查看本地分支"><a href="#1、查看本地分支" class="headerlink" title="1、查看本地分支"></a>1、查看本地分支</h4><p>使用 git branch命令，如下：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>git branch</span><br><span class="line">* master</span><br></pre></td></tr></table></figure>
+
+<p>*<strong>标识的是你当前所在的分支。</strong></p>
+<h4 id="2、查看远程分支"><a href="#2、查看远程分支" class="headerlink" title="2、查看远程分支"></a>2、查看远程分支</h4><p>命令如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -r</span><br></pre></td></tr></table></figure>
+
+<h4 id="3、查看所有分支"><a href="#3、查看所有分支" class="headerlink" title="3、查看所有分支"></a>3、查看所有分支</h4><p>命令如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -a</span><br></pre></td></tr></table></figure>
+
+<h4 id="2、本地创建新的分支"><a href="#2、本地创建新的分支" class="headerlink" title="2、本地创建新的分支"></a>2、本地创建新的分支</h4><p>命令如下：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch <span class="selector-attr">[branch name]</span></span><br></pre></td></tr></table></figure>
+
+<p>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch save</span><br></pre></td></tr></table></figure>
+
+<h4 id="3、切换到新的分支"><a href="#3、切换到新的分支" class="headerlink" title="3、切换到新的分支"></a>3、切换到新的分支</h4><p>命令如下：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout <span class="selector-attr">[branch name]</span></span><br></pre></td></tr></table></figure>
+
+<p>例如：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>git checkout save</span><br></pre></td></tr></table></figure>
+
+<h4 id="4、创建-切换分支"><a href="#4、创建-切换分支" class="headerlink" title="4、创建+切换分支"></a>4、创建+切换分支</h4><p>创建分支的同时切换到该分支上，命令如下：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -<span class="selector-tag">b</span> <span class="selector-attr">[branch name]</span></span><br></pre></td></tr></table></figure>
+
+<p>git checkout -b [branch name] 的效果相当于以下两步操作：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git branch <span class="selector-attr">[branch name]</span></span><br><span class="line">git checkout <span class="selector-attr">[branch name]</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="5、将新分支推送到github"><a href="#5、将新分支推送到github" class="headerlink" title="5、将新分支推送到github"></a>5、将新分支推送到github</h4><p>命令如下：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin <span class="selector-attr">[branch name]</span></span><br></pre></td></tr></table></figure>
+
+<p>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin save</span><br></pre></td></tr></table></figure>
+
+<h4 id="6、删除本地分支"><a href="#6、删除本地分支" class="headerlink" title="6、删除本地分支"></a>6、删除本地分支</h4><p>命令如下：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -d <span class="selector-attr">[branch name]</span></span><br></pre></td></tr></table></figure>
+
+<p>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -d save</span><br></pre></td></tr></table></figure>
+
+<h4 id="7、删除github远程分支"><a href="#7、删除github远程分支" class="headerlink" title="7、删除github远程分支"></a>7、删除github远程分支</h4><p>命令如下：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin :[branch name]</span><br></pre></td></tr></table></figure>
+
+<p>分支名前的冒号代表删除。<br> 例如：</p>
+<p>git push origin :save</p>
+<h4 id="查看配置信息"><a href="#查看配置信息" class="headerlink" title="查看配置信息"></a>查看配置信息</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --list</span><br></pre></td></tr></table></figure>
+
+<h4 id="查看状态"><a href="#查看状态" class="headerlink" title="查看状态"></a>查看状态</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure>
+
+<h4 id="提交工作区文件到暂存区"><a href="#提交工作区文件到暂存区" class="headerlink" title="提交工作区文件到暂存区"></a>提交工作区文件到暂存区</h4><ol>
+<li><p>提交工作区中所有文件到暂存区</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>提交工作区中指定文件到暂存区</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add &lt;file1&gt; &lt;file2&gt; </span><br></pre></td></tr></table></figure>
+</li>
+<li><p>提交工作区中某个文件夹中所有文件到暂存区</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add [dir]</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h4 id="提交到本地仓库"><a href="#提交到本地仓库" class="headerlink" title="提交到本地仓库"></a>提交到本地仓库</h4><ol>
+<li><p>将暂存区中的文件提交到本地仓库中，即打上新版本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m &quot;commit_info&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将所有已经使用git管理过的文件暂存后一并提交，跳过add到暂存区的过程</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -a -m “commit_info”</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>提交文件时，发现漏掉几个文件，或者注释写错了，可以撤销上一次提交</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit --amend</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h4 id="查看本地仓库关联的远程仓库"><a href="#查看本地仓库关联的远程仓库" class="headerlink" title="查看本地仓库关联的远程仓库"></a>查看本地仓库关联的远程仓库</h4><ol>
+<li><p>查看本地仓库关联的远程仓库</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看远程仓库的url地址</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote -v</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<h4 id="解决git-pull后本地写的代码没了的问题"><a href="#解决git-pull后本地写的代码没了的问题" class="headerlink" title="解决git pull后本地写的代码没了的问题"></a>解决git pull后本地写的代码没了的问题</h4><p>第一步：git reflog</p>
+<p>第二步：git reset –hard HEAD@{n}   (HEAD:为版本号，就前面那一串数字，n是你要回退到的引用位置)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard 84ef223</span><br></pre></td></tr></table></figure>
+
+<h4 id="创建分支，回退到某个版本"><a href="#创建分支，回退到某个版本" class="headerlink" title="创建分支，回退到某个版本"></a>创建分支，回退到某个版本</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git branch pagination 96ba9b3</span><br><span class="line">git branch 分支名称 版本号</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>如果为了测试原来的代码，将它回退到某个版本，但是为了不影响当前分支里面的内容，创建一个新的分支。  如果git branch 分支名称，不加版本号，会在当前版本下创建分支。   如果需要回退到某个版本，需要在创建分支的时候加上版本号。</p>
+</blockquote>
+<p>如果要切换回原来的分支(master)，要先对新创建的分支(pagination)的内容提交，这个提交只会提交到pagination分支里面，不会影响到master分支</p>
+<p>提交：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m &quot;复习&quot;</span><br></pre></td></tr></table></figure>
+
+<p>切换：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout master</span><br></pre></td></tr></table></figure>
+
+<h4 id="解决pre-commit-hook-failed-add-–no-verify-的问题"><a href="#解决pre-commit-hook-failed-add-–no-verify-的问题" class="headerlink" title="解决pre -commit hook failed (add –no-verify)的问题"></a><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/aac394600727">解决pre -commit hook failed (add –no-verify)的问题</a></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd .git</span><br><span class="line"></span><br><span class="line">rm hooks/pre-commit</span><br></pre></td></tr></table></figure>
+
+
+
+<p>git commit 不单保存了当前的版本号还保存了他的父版本号</p>
+<h4 id="查看命令："><a href="#查看命令：" class="headerlink" title="查看命令："></a>查看命令：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git / git help</span><br></pre></td></tr></table></figure>
+
+<h4 id="查看所有命令："><a href="#查看所有命令：" class="headerlink" title="查看所有命令："></a>查看所有命令：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git help -a</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>向下翻页：F；向上翻页：B；退出：Q</p>
+</blockquote>
+<h4 id="查看使用手册："><a href="#查看使用手册：" class="headerlink" title="查看使用手册："></a>查看使用手册：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git help -g</span><br></pre></td></tr></table></figure>
+
+<h4 id="查看某个命令的详细使用："><a href="#查看某个命令的详细使用：" class="headerlink" title="查看某个命令的详细使用："></a>查看某个命令的详细使用：</h4><p>如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git help add</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>按Q可以退出</p>
+</blockquote>
+<p><code>.git</code>是做版本控制的，如果想去除，直接删了这个目录。</p>
+<p>是隐藏文件，在mac 用<code>open .git</code>打开（在.git的上层目录）</p>
+<h4 id="config"><a href="#config" class="headerlink" title="config"></a>config</h4><blockquote>
+<p>这些提交会包含在git提交里面</p>
+</blockquote>
+<h5 id="查看config信息"><a href="#查看config信息" class="headerlink" title="查看config信息"></a>查看config信息</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --list</span><br></pre></td></tr></table></figure>
+
+<h5 id="配置name和email"><a href="#配置name和email" class="headerlink" title="配置name和email"></a>配置name和email</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &#x27;winney&#x27;</span><br><span class="line">git config --global user.email &#x27;...@..&#x27;</span><br></pre></td></tr></table></figure>
+
+<h5 id="重置"><a href="#重置" class="headerlink" title="重置"></a>重置</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --unset --global user.name</span><br></pre></td></tr></table></figure>
+
+<h5 id="重新设置"><a href="#重新设置" class="headerlink" title="重新设置"></a>重新设置</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &#x27;winney&#x27;</span><br></pre></td></tr></table></figure>
+
+<h5 id="设置ui"><a href="#设置ui" class="headerlink" title="设置ui"></a>设置ui</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global color.ui true</span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>这些配置会保存到一个.gitconfig文件里</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat ~/.gitconfig      // ~：代表当前用户的主目录</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="项目版本管理"><a href="#项目版本管理" class="headerlink" title="项目版本管理"></a>项目版本管理</h4><h5 id="初始化项目"><a href="#初始化项目" class="headerlink" title="初始化项目"></a>初始化项目</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir 目录名</span><br><span class="line">cd 目录名</span><br><span class="line">git init   // 生成.git目录   用于版本控制  git需要或生成的东西都会放这里面   进行跟踪</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>如果不想用git跟踪这个项目，可以把.git目录删除掉</p>
+</blockquote>
+<p>查看<code>.git</code>目录</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd .git</span><br><span class="line">ls</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>config目录：存储项目配置的信息</p>
+</blockquote>
+<p>Mac系统，视图中查看.git目录</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">open .git     //  回到项目的根目录，执行这句</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>因在Mac系统中，看不到隐藏的目录</p>
+</blockquote>
+<h4 id="提交"><a href="#提交" class="headerlink" title="提交"></a>提交</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m &#x27;备注信息&#x27;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log       //  查看提交记录</span><br></pre></td></tr></table></figure>
+
+
+
+<p>Git基本工作流程</p>
+<p>Git初始化及仓库创建和操作</p>
+<p>Git管理远程仓库</p>
+<p>Github Pages搭建网站</p>
+<h4 id="客户端提交软件"><a href="#客户端提交软件" class="headerlink" title="客户端提交软件"></a>客户端提交软件</h4><h5 id="Sourcetree"><a href="#Sourcetree" class="headerlink" title="Sourcetree"></a>Sourcetree</h5>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/14/Hexo%E5%8D%9A%E6%96%87%E7%BD%AE%E9%A1%B6%EF%BC%88%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%92%E5%BA%8F%EF%BC%89/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -489,189 +901,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/14/vue%E9%A1%B9%E7%9B%AE%E5%A4%84%E7%90%86%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="winney">
-      <meta itemprop="description" content="Doing is better than saying.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="winney">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/12/14/vue%E9%A1%B9%E7%9B%AE%E5%A4%84%E7%90%86%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82/" class="post-title-link" itemprop="url">Vue项目处理跨域请求</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-12-14 11:42:51" itemprop="dateCreated datePublished" datetime="2020-12-14T11:42:51+08:00">2020-12-14</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-10-30 13:18:11" itemprop="dateModified" datetime="2024-10-30T13:18:11+08:00">2024-10-30</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6/" itemprop="url" rel="index"><span itemprop="name">前端开发框架</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6/Vue-js/" itemprop="url" rel="index"><span itemprop="name">Vue.js</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="1、设置配置文件"><a href="#1、设置配置文件" class="headerlink" title="1、设置配置文件"></a>1、设置配置文件</h4><ul>
-<li>方法一：在根目录中新建vue.config.js文件</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">module.exports = &#123;</span><br><span class="line">    runtimeCompiler: true,</span><br><span class="line">    devServer: &#123;</span><br><span class="line">        proxy: &#123;</span><br><span class="line">            // 匹配请求路径中的字符，</span><br><span class="line">            // 如果符合就用这个代理对象代理本次请求，路径为target的网址，</span><br><span class="line">            // changeOrigin为是否跨域，</span><br><span class="line">            // 如果不想始终传递这个前缀，可以重写路径</span><br><span class="line">            // pathRewrite为是否将指定字符串转换一个再发过去。</span><br><span class="line">            &#x27;/api&#x27;: &#123;</span><br><span class="line">              target: &#x27;http://ttapi.research.itcast.cn/&#x27;,</span><br><span class="line">                ws: true,</span><br><span class="line">                changeOrigin: true,</span><br><span class="line">                pathRewrite: &#123;</span><br><span class="line">                    &#x27;^/api&#x27;: &#x27;&#x27;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<ul>
-<li>方法二：在根目录中，新建config&gt;index.js文件</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">module.exports = &#123;</span><br><span class="line">    dev: &#123;</span><br><span class="line">        proxyTable: &#123;</span><br><span class="line">            &#x27;/api&#x27;: &#123;</span><br><span class="line">              target: &#x27;http://ttapi.research.itcast.cn/&#x27;, // 接口的域名</span><br><span class="line">              secure: false, // 如果是https接口，需要配置这个参数</span><br><span class="line">              changeOrigin: true, // 如果接口跨域，需要进行这个参数配置</span><br><span class="line">              pathRewrite: &#123;</span><br><span class="line">                &#x27;^/api&#x27;: &#x27;&#x27; // &#x27;/api/a/user&#x27; ==&#x27;localhost:8080/user&#x27;</span><br><span class="line">              &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h4 id="2、axios请求方法的写法："><a href="#2、axios请求方法的写法：" class="headerlink" title="2、axios请求方法的写法："></a>2、axios请求方法的写法：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">axios.get(&#x27;http://ttapi.research.itcast.cn/app/v1_0/comments&#x27;, &#123;</span><br><span class="line">    params: &#123;</span><br><span class="line">        type: &#x27;a&#x27;,</span><br><span class="line">        source: this.source,</span><br><span class="line">        offset: this.offset,</span><br><span class="line">        limit: this.limit</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line">.then(function (response) &#123;</span><br><span class="line">    console.log(&#x27;response&#x27;)</span><br><span class="line">    console.log(response)</span><br><span class="line">&#125;)</span><br><span class="line">.catch(function (error) &#123;</span><br><span class="line">    console.log(error)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<h4 id="name属性是父组件传过来的，除了数组，对象，其他都不允许修改"><a href="#name属性是父组件传过来的，除了数组，对象，其他都不允许修改" class="headerlink" title="name属性是父组件传过来的，除了数组，对象，其他都不允许修改"></a>name属性是父组件传过来的，除了数组，对象，其他都不允许修改</h4><blockquote>
-<p> props里面的数据，除了数组，对象，其他都不允许修改，所以不能用于页面元素的v-model属性中，因为v-model是双向绑定的</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;van-field</span><br><span class="line">   v-model=&quot;localName&quot;</span><br><span class="line">   ...</span><br><span class="line">/&gt;</span><br><span class="line"> props: &#123;</span><br><span class="line">     name: &#123;</span><br><span class="line">         type: String,</span><br><span class="line">         required: true</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;,</span><br><span class="line"> </span><br><span class="line">data () &#123;</span><br><span class="line">  return &#123;</span><br><span class="line">      localName: this.name</span><br><span class="line">  &#125;</span><br><span class="line"> &#125;,</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="当传递给子组件的数据既要使用又要修改，这种情况下我们可以使用v-model简写："><a href="#当传递给子组件的数据既要使用又要修改，这种情况下我们可以使用v-model简写：" class="headerlink" title="当传递给子组件的数据既要使用又要修改，这种情况下我们可以使用v-model简写："></a>当传递给子组件的数据既要使用又要修改，这种情况下我们可以使用v-model简写：</h4><p>例如：父组件的name</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">:name=&quot;user.name&quot;</span><br><span class="line">@update-name=&quot;user.name=$event&quot;</span><br></pre></td></tr></table></figure>
-
-<p>修改为：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">v-model=&quot;user.name&quot;</span><br></pre></td></tr></table></figure>
-
-<p>子组件也要跟着修改：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">props: &#123;</span><br><span class="line">    value: &#123;</span><br><span class="line">        type: String,</span><br><span class="line">        required: true</span><br><span class="line">    &#125;</span><br><span class="line">&#125;,</span><br><span class="line"></span><br><span class="line">this.$emit(&#x27;input&#x27;, this.localName)</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>v-model=”user.name”</p>
-<p>默认传递一个名字叫value的数据：    ：value=”user.name”</p>
-<p>默认监听input事件:      @input=”user.name=$event”</p>
-<p>v-model的本质还是父子组件通信，它仅仅是简化了父组件的使用，子组件还是按照原来那样使用</p>
-</blockquote>
-<p>注：在同一个子组件传递中，v-model只能使用一次</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">这样是错误的：</span><br><span class="line">&lt;update-name</span><br><span class="line">    v-model=&quot;user.name&quot;</span><br><span class="line">    v-model=&quot;user.photo&quot;</span><br><span class="line">/&gt;</span><br></pre></td></tr></table></figure>
-
-<h5 id="在同一个子组件传递中，v-model只能使用一次，如果有多个数据需要保持同步，使用-sync修饰符"><a href="#在同一个子组件传递中，v-model只能使用一次，如果有多个数据需要保持同步，使用-sync修饰符" class="headerlink" title="在同一个子组件传递中，v-model只能使用一次，如果有多个数据需要保持同步，使用.sync修饰符"></a>在同一个子组件传递中，v-model只能使用一次，如果有多个数据需要保持同步，使用.sync修饰符</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;update-name</span><br><span class="line">    v-model=&quot;user.name&quot;</span><br><span class="line">    :gender.sync=&quot;user.photo&quot;</span><br><span class="line">/&gt;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>注：我们一般把最常用的数据设计为v-model绑定，把不太常用的数据设计为.sync</p>
-</blockquote>
-<h4 id="销毁组件的一种方法："><a href="#销毁组件的一种方法：" class="headerlink" title="销毁组件的一种方法："></a>销毁组件的一种方法：</h4><p>1、加上v-if来控制渲染</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;update-name</span><br><span class="line">    v-if=&quot;isEditNameShow&quot;</span><br><span class="line">    v-model=&quot;user.name&quot;</span><br><span class="line">    @close=&quot;isEditNameShow=false&quot;</span><br><span class="line">/&gt;</span><br></pre></td></tr></table></figure>
-
-<h4 id="在Vue中操作DOM，要给该元素添加ref属性"><a href="#在Vue中操作DOM，要给该元素添加ref属性" class="headerlink" title="在Vue中操作DOM，要给该元素添加ref属性"></a>在Vue中操作DOM，要给该元素添加ref属性</h4><p>例如：点击头像，选择图片来修改头像</p>
-<p>1、给input  file添加ref属性</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;file&quot; hidden ref=&quot;file&quot;&gt;</span><br><span class="line">&lt;van-cell title=&quot;头像&quot; is-link center @click=&quot;$refs.file.click()&quot;&gt;</span><br><span class="line">    &lt;van-image</span><br><span class="line">        width=&quot;30&quot;</span><br><span class="line">        height=&quot;30&quot;</span><br><span class="line">        round fit=&quot;cover&quot;</span><br><span class="line">        :src=&quot;user.photo&quot;</span><br><span class="line">    /&gt;</span><br><span class="line">&lt;/van-cell&gt;</span><br></pre></td></tr></table></figure>
-
-<p>2、控制选择的文件类型：accept属性</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;file&quot; hidden ref=&quot;file&quot; accept=&quot;image/*&quot;&gt;</span><br></pre></td></tr></table></figure>
-
-<p>3、监听文件的change事件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;input</span><br><span class="line">    type=&quot;file&quot;</span><br><span class="line">    hidden</span><br><span class="line">    ref=&quot;file&quot;</span><br><span class="line">    accept=&quot;image/*&quot;</span><br><span class="line">    @change=&quot;onFileChange&quot;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-
-<p>4、解决选择相同文件不触发change事件,手动清空file的value值</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">onFileChange() &#123;</span><br><span class="line">    ....</span><br><span class="line">    </span><br><span class="line">     // 手动清空file的value值</span><br><span class="line">     this.$refs.file.value = &#x27;&#x27;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>5、展示弹出层，在弹出层预览图片</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">onFileChange() &#123;</span><br><span class="line">     // 展示弹出层</span><br><span class="line">     this.isEditPhotoShow = true</span><br><span class="line"></span><br><span class="line">    //  在弹出层预览选择的图片</span><br><span class="line">    const blod = window.URL.createObjectURL(this.$refs.file.files[0])</span><br><span class="line">    this.previewImage = blod</span><br><span class="line"></span><br><span class="line">     // 手动清空file的value值</span><br><span class="line">     this.$refs.file.value = &#x27;&#x27;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-
-<p>6、父传，子收。并展示预览图片</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">父传：</span><br><span class="line">&lt;update-photo</span><br><span class="line">    :image=&quot;previewImage&quot;</span><br><span class="line">/&gt;</span><br><span class="line">子收：</span><br><span class="line"> props: &#123;</span><br><span class="line">     image: &#123;</span><br><span class="line">         type: String,</span><br><span class="line">         required: true</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;,</span><br><span class="line"> </span><br><span class="line">&lt;div class=&quot;update-photo&quot;&gt;</span><br><span class="line">     &lt;img :src=&quot;image&quot;&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
-
-<p>7、修改父子组件传值的文件格式</p>
-<blockquote>
-<p>如果Content-Type  要求是 multipart/form-data，则一定要提交FormData数据对象，专门用于文件上传的，不能提交{}对象，没用</p>
-</blockquote>
-<p>所以要修改父组件传过来子组件的文件格式，保留原来的文件格式：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">父组件：</span><br><span class="line">onFileChange() &#123;</span><br><span class="line">    ....</span><br><span class="line">    const blod = this.$refs.file.files[0]</span><br><span class="line">    this.previewImage = blod</span><br><span class="line">	....</span><br><span class="line"> &#125;</span><br><span class="line"> </span><br><span class="line">&lt;update-photo</span><br><span class="line">    :file=&quot;previewImage&quot;</span><br><span class="line">    @close=&quot;isEditPhotoShow=false&quot;</span><br><span class="line">/&gt;</span><br><span class="line">子组件：</span><br><span class="line"> props: &#123;</span><br><span class="line">     file: &#123;</span><br><span class="line">        //  type: String,</span><br><span class="line">         required: true</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;,</span><br><span class="line"> data () &#123;</span><br><span class="line">  return &#123;</span><br><span class="line">      image: window.URL.createObjectURL(this.file)</span><br><span class="line">  &#125;</span><br><span class="line"> &#125;,</span><br></pre></td></tr></table></figure>
-
-<p>8、处理接口传参</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 文件格式处理</span><br><span class="line"> const fd = new FormData()</span><br><span class="line"> fd.append(&#x27;photo&#x27;, this.file)</span><br><span class="line"> // photo为参数名，this.file为参数值</span><br><span class="line"></span><br><span class="line"> await updateUserPhoto(fd)</span><br></pre></td></tr></table></figure>
-
-<p>9、处理图片裁切，使用 <a target="_blank" rel="noopener" href="https://github.com/fengyuanchen/cropperjs">cropperjs</a>  这个跟vue没有关系，其他项目也可以使用） 也可以在<a target="_blank" rel="noopener" href="https://github.com/vuejs/awesome-vue">Awesome</a> 中搜crop找裁切工具</p>
-<ul>
-<li>1、安装</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install cropperjs</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>2、引入</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import &#x27;cropperjs/dist/cropper.css&#x27;</span><br><span class="line">import Cropper from &#x27;cropperjs&#x27;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>3、使用：放在mounted里面</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;img :src=&quot;image&quot; ref=&quot;image&quot;&gt;</span><br><span class="line"></span><br><span class="line">mounted() &#123;</span><br><span class="line">    const image = this.$refs.image</span><br><span class="line">    const cropper = new Cropper(image, &#123;</span><br><span class="line">        viewMode: 1,</span><br><span class="line">        dragMode: &#x27;move&#x27;,</span><br><span class="line">        aspectRatio: 1,</span><br><span class="line">        // autoCropArea: 1,</span><br><span class="line">        cropBoxMovable: false,</span><br><span class="line">        cropBoxResizable: false,</span><br><span class="line">        background: false,</span><br><span class="line">        movable: true</span><br><span class="line">    &#125;)</span><br><span class="line">    console.log(cropper)</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>4、让裁切区居中显示</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">.update-photo&#123;</span><br><span class="line">    position: absolute;</span><br><span class="line">    top: 50%;</span><br><span class="line">    margin-top: -185px;</span><br><span class="line">    margin-left: -185px;</span><br><span class="line">    height: 370px;</span><br><span class="line">    left: 50%;</span><br><span class="line">    width:370px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>5、获取裁切结果，getCroppedCanvas()</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"> data () &#123;</span><br><span class="line">  return &#123;</span><br><span class="line">      image: window.URL.createObjectURL(this.file),</span><br><span class="line">      cropper: null</span><br><span class="line">  &#125;</span><br><span class="line"> &#125;,</span><br><span class="line"></span><br><span class="line">使用Promise返回一个裁切对象，用于async</span><br><span class="line"> getCroppedCanvas() &#123;</span><br><span class="line">     return new Promise(resolve =&gt; &#123;</span><br><span class="line">     // 因为cropper定义在mounted中，在这里无法使用，</span><br><span class="line">     	为了能够在这里能调用cropper，将cropper放在data中</span><br><span class="line">          this.cropper.getCroppedCanvas().toBlob((file) =&gt; &#123;</span><br><span class="line">            resolve(file)</span><br><span class="line">        &#125;)</span><br><span class="line">     &#125;)</span><br><span class="line"> &#125;,</span><br><span class="line"> </span><br><span class="line">getCroppedCanvas返回的Promise对象，在这里面使用：</span><br><span class="line">async onConfirm() &#123;</span><br><span class="line">     .....</span><br><span class="line">     const file = await this.getCroppedCanvas()</span><br><span class="line">     const img = window.URL.createObjectURL(file)</span><br><span class="line"></span><br><span class="line">    // 文件格式处理</span><br><span class="line">     const fd = new FormData()</span><br><span class="line">     fd.append(&#x27;photo&#x27;, file)</span><br><span class="line">     </span><br><span class="line">     await updateUserPhoto(fd)</span><br><span class="line"></span><br><span class="line">     this.$emit(&#x27;close&#x27;)</span><br><span class="line">     this.$emit(&#x27;update-photo&#x27;, img)</span><br><span class="line"></span><br><span class="line">     this.$toast.success(&#x27;保存成功&#x27;)</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/17/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><span class="page-number current">18</span><a class="page-number" href="/page/19/">19</a><span class="space">&hellip;</span><a class="page-number" href="/page/38/">38</a><a class="extend next" rel="next" href="/page/19/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/17/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><span class="page-number current">18</span><a class="page-number" href="/page/19/">19</a><span class="space">&hellip;</span><a class="page-number" href="/page/39/">39</a><a class="extend next" rel="next" href="/page/19/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -739,7 +972,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">114</span>
+          <span class="site-state-item-count">115</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

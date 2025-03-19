@@ -193,6 +193,111 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/10/%E4%BC%98%E5%8C%96JS%E4%BB%A3%E7%A0%81%E7%9A%8434%E7%A7%8D%E6%96%B9%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="winney">
+      <meta itemprop="description" content="Doing is better than saying.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="winney">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/09/10/%E4%BC%98%E5%8C%96JS%E4%BB%A3%E7%A0%81%E7%9A%8434%E7%A7%8D%E6%96%B9%E6%B3%95/" class="post-title-link" itemprop="url">优化JS代码的34种方法</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-09-10 11:23:20" itemprop="dateCreated datePublished" datetime="2021-09-10T11:23:20+08:00">2021-09-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-10-30 13:18:11" itemprop="dateModified" datetime="2024-10-30T13:18:11+08:00">2024-10-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="优化JS代码的34种方法"><a href="#优化JS代码的34种方法" class="headerlink" title="优化JS代码的34种方法"></a>优化JS代码的34种方法</h3><h4 id="1-含有多个条件的if语句"><a href="#1-含有多个条件的if语句" class="headerlink" title="1. 含有多个条件的if语句"></a>1. 含有多个条件的if语句</h4><p>我们可以在数组中存储多个值，也可以使用数据的includes方法。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// longhand</span><br><span class="line">if (x=== &#x27;abc&#x27; || x === &#x27;def&#x27; || x === &#x27;ghi&#x27; || x ===jkl&#x27;) &#123;</span><br><span class="line">	// logic</span><br><span class="line">&#125;</span><br><span class="line">// shorthand</span><br><span class="line">if ([ &#x27;abc &#x27;, &#x27;def&#x27;, &#x27;ghi&#x27;, &#x27;jkl&#x27; ].includes (x)) &#123;</span><br><span class="line">    // logic</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-If-…-else的缩写法"><a href="#2-If-…-else的缩写法" class="headerlink" title="2. If … else的缩写法"></a>2. If … else的缩写法</h4><p>当我们在if-else条件下的逻辑比较简单时，我们可以使用三元条件运算符。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">// Longhand</span><br><span class="line">let test: boolean;</span><br><span class="line"></span><br><span class="line">if(x &gt; 100)&#123;</span><br><span class="line">	test = true;</span><br><span class="line">&#125;else &#123;</span><br><span class="line">    test = false;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// shorthand</span><br><span class="line">let test = (x &gt; 10) ? true : false;</span><br><span class="line"></span><br><span class="line">// or we can use directly</span><br><span class="line">let test = x &gt; 10;</span><br><span class="line"></span><br><span class="line">console.log (test) ;</span><br></pre></td></tr></table></figure>
+
+<p>如果包含嵌套条件，也可以使用这种方法。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let x = 300,</span><br><span class="line">test2 = (x &gt; 100) ? &#x27;greater 100&#x27; : (x&lt;50) ? &#x27;less 50&#x27; : &#x27;between50 and 100&#x27;;</span><br><span class="line"></span><br><span class="line">console.log (test2);    // &quot;greater than 100&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="3-定义变量"><a href="#3-定义变量" class="headerlink" title="3. 定义变量"></a>3. 定义变量</h4><p>当我们想要定义两个变量，并且这两个变量拥有相同的值或者类型的话，我们可以运用此种简略的表达方式。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// Longhand</span><br><span class="line">let testl;</span><br><span class="line">let test2 = 1;</span><br><span class="line"></span><br><span class="line">// Shorthand</span><br><span class="line">let test1, test2 = 1;</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-关于Null-undefined的检查"><a href="#4-关于Null-undefined的检查" class="headerlink" title="4. 关于Null, undefined的检查"></a>4. 关于Null, undefined的检查</h4><p>当我们创建新的变量时，有时候需要检查我们引用变量的值是否为null或是undefined，js本身就有一种缩写法能实现这个功能</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// Longhand</span><br><span class="line">if (testl !== null || test1 !== undefined || test1 !== &#x27;&#x27;) &#123;</span><br><span class="line">	let test2 - test1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// shorthand</span><br><span class="line">let test2 = test1 || &#x27;&#x27;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-Null值检查与指定默认赋值"><a href="#5-Null值检查与指定默认赋值" class="headerlink" title="5. Null值检查与指定默认赋值"></a>5. Null值检查与指定默认赋值</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let test1 = null,</span><br><span class="line">	test2 = test1 || &#x27;&#x27;;</span><br><span class="line">	</span><br><span class="line">console.log (&quot;null check&quot;, test2); // output will be &quot;&quot;</span><br></pre></td></tr></table></figure>
+
+<h4 id="6-Undefined值检查与默认赋值"><a href="#6-Undefined值检查与默认赋值" class="headerlink" title="6. Undefined值检查与默认赋值"></a>6. Undefined值检查与默认赋值</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let testl = undefined,</span><br><span class="line">	test2 = testl l| &#x27;&#x27;;</span><br><span class="line">	</span><br><span class="line">console.log (&quot;undefined check&quot;, test2); // output will be &quot;&quot;</span><br></pre></td></tr></table></figure>
+
+<p>正常值检查</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let test1 = &#x27;test&#x27;,</span><br><span class="line">    test2 = test1 || &#x27;&#x27;;</span><br><span class="line">    </span><br><span class="line">console.log(test2);  // output: &#x27;test&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>（现在我们可以在4、5、6条中使用 ?? 运算符了）</p>
+<h4 id="7-聚合运算符"><a href="#7-聚合运算符" class="headerlink" title="7. 聚合运算符"></a>7. 聚合运算符</h4><p>**??**是聚合运算符，如果左值为null或undefined，就返回右值。默认返回左值。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const test= null ?? &#x27;default&#x27;;</span><br><span class="line">console.log(test);</span><br><span class="line">// expected output: &quot;default&quot;const test1 =0 ?? 2;</span><br><span class="line">console.log(test1);</span><br><span class="line">// expected output: 0</span><br></pre></td></tr></table></figure>
+
+<h4 id="8-为多个变量赋值"><a href="#8-为多个变量赋值" class="headerlink" title="8. 为多个变量赋值"></a>8. 为多个变量赋值</h4><p>当我们处理多个变量，想为不同的变量赋不同的值时，就会真正发现这种简略的表达方式的实用之处了。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// Longhand</span><br><span class="line">let test1, test2, test3;</span><br><span class="line">test1 = 1;</span><br><span class="line">test2 = 2;</span><br><span class="line">test3 = 3;</span><br><span class="line"></span><br><span class="line">// Shorthand</span><br><span class="line">let [testl, test2, test3] = [1，2，3];</span><br></pre></td></tr></table></figure>
+
+<h4 id="9-赋值运算符简略的表达方式"><a href="#9-赋值运算符简略的表达方式" class="headerlink" title="9. 赋值运算符简略的表达方式"></a>9. 赋值运算符简略的表达方式</h4><p>通常，我们会在程序中处理大量的算术运算符。而对于JavaScript变量的赋值运算符来说，这是其中一个实用的技巧。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// Longhand</span><br><span class="line">testl = testl + l;</span><br><span class="line">test2 = test2 - 1;</span><br><span class="line">test3 = test3 *20;</span><br><span class="line"></span><br><span class="line">// Shorthand</span><br><span class="line">test1++;</span><br><span class="line">test2--;</span><br><span class="line">test3 *= 20;</span><br></pre></td></tr></table></figure>
+
+<h4 id="10-判断变量是否存在的缩写法"><a href="#10-判断变量是否存在的缩写法" class="headerlink" title="10. 判断变量是否存在的缩写法"></a>10. 判断变量是否存在的缩写法</h4>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/08/25/HTML%E9%A1%B5%E9%9D%A2%E4%B9%8B%E9%97%B4%E4%BC%A0%E5%8F%82-iframe%E7%88%B6%E5%AD%90%E9%A1%B5%E9%9D%A2%E4%BC%A0%E5%8F%82/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -399,236 +504,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/08/22/%E5%B8%B8%E7%94%A8%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="winney">
-      <meta itemprop="description" content="Doing is better than saying.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="winney">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/08/22/%E5%B8%B8%E7%94%A8%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="post-title-link" itemprop="url">常用正则表达式</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-08-22 11:12:23" itemprop="dateCreated datePublished" datetime="2021-08-22T11:12:23+08:00">2021-08-22</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-10-30 13:18:11" itemprop="dateModified" datetime="2024-10-30T13:18:11+08:00">2024-10-30</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><a target="_blank" rel="noopener" href="https://www.w3cschool.cn/regexp/m2ez1pqk.html">常用正则表达式大全_w3cschool</a></p>
-<p><a target="_blank" rel="noopener" href="https://c.runoob.com/front-end/854/"> 正则表达式在线测试</a></p>
-<p><a target="_blank" rel="noopener" href="https://c.runoob.com/front-end/854/">正则表达式示例</a></p>
-<p><a target="_blank" rel="noopener" href="https://tool.chinaz.com/Tools/regexgenerate">常用正则表达式</a></p>
-<p><a target="_blank" rel="noopener" href="https://tool.chinaz.com/regex">正则测试</a></p>
-<p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/note1.png" alt="正则表达式-思维导图"></p>
-<h4 id="最全的常用正则表达式大全-校验数字-字符-号码等"><a href="#最全的常用正则表达式大全-校验数字-字符-号码等" class="headerlink" title="最全的常用正则表达式大全(校验数字,字符,号码等)"></a><a target="_blank" rel="noopener" href="https://www.cnblogs.com/yoyowin/p/12208917.html">最全的常用正则表达式大全(校验数字,字符,号码等)</a></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var reg = /^[\u4e00-\u9fffa-zA-Z]&#123;1,15&#125;$/;</span><br><span class="line">if(!reg.test(value)) &#123;</span><br><span class="line">  callback(new Error(&#x27;请输入15个以内的字符&#x27;));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>大于0的所有数，小数点后保留两位小数：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/^0\.([1-9]|\d[1-9])$|^[1-9]\d&#123;0,8&#125;\.\d&#123;0,2&#125;$|^[1-9]\d&#123;0,8&#125;$/</span><br></pre></td></tr></table></figure>
-
-<p>正整数(不包括0)</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/^\+?[1-9][0-9]*$/</span><br></pre></td></tr></table></figure>
-
-<p>正整数(包括0)</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/^\d+$/</span><br></pre></td></tr></table></figure>
-
-<p>大于0的整数—使用这个</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/^[1-9]\d*$/      // 表示所有大于等于1的整数(整数第一位不为0，后面的随意)</span><br></pre></td></tr></table></figure>
-
-<h4 id="用户名、密码等15个常用的js正则表达式"><a href="#用户名、密码等15个常用的js正则表达式" class="headerlink" title="用户名、密码等15个常用的js正则表达式"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41465646/article/details/108105076">用户名、密码等15个常用的js正则表达式</a></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 用户名正则，4到16位（字母，数字，下划线，减号）  </span><br><span class="line">var uPattern = /^[a-zA-Z0-9_-]&#123;4,16&#125;$/;  </span><br><span class="line">//输出 true  </span><br><span class="line">console.log(uPattern.test(&quot;iFat3&quot;)); </span><br><span class="line">if(!/^[A-Za-z0-9@*_-\u4E00-\u9FA5]&#123;1,20&#125;$/.test(params.name)) &#123;</span><br><span class="line">    layer.msg(&#x27;姓名请输入20位字符以内的中英文或数字或@*_-&#x27;, &#123;time: 1000&#125;);</span><br><span class="line">    return false;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h3><p>date（日期格式不正确）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/^(\d&#123;4&#125;)[-\/](\d&#123;1&#125;|0\d&#123;1&#125;|1[0-2])([-\/](\d&#123;1&#125;|0\d&#123;1&#125;|[1-2][0-9]|3[0-1]))*$/</span><br></pre></td></tr></table></figure>
-
-<p>email（邮箱格式不正确）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]&#123;2,4&#125;)+$/</span><br></pre></td></tr></table></figure>
-
-<p>identity（请输入正确的身份证号）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/(^\d&#123;15&#125;$)|(^\d&#123;17&#125;(x|X|\d)$)/</span><br></pre></td></tr></table></figure>
-
-<p>phone（请输入正确的手机号）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/^1\d&#123;10&#125;$/</span><br></pre></td></tr></table></figure>
-
-<p>required（必填项不能为空）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/[\S]+/</span><br></pre></td></tr></table></figure>
-
-<p>url（链接格式不正确）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/(^#)|(^http(s*):\/\/[^\s]+\.[^\s]+)/</span><br></pre></td></tr></table></figure>
-
-<p>请输入数字/小数点</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>最多只能输入两位小数</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>判断是否为数字</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">isNaN(Number(money))</span><br></pre></td></tr></table></figure>
-
-<p>只能输入百分比正则（数字+%）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>判断是否是非数字值</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">isNaN()</span><br><span class="line"></span><br><span class="line">例如：isNaN(Number(money))</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>如果参数值为 NaN 或字符串、对象、undefined等非数字值则返回 true, 否则返回 false。</p>
-</blockquote>
-<p>正浮点数正则表达式</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/^(\d+)(\.\d+)?$/.test()</span><br><span class="line"></span><br><span class="line">例如：/^(\d+)(\.\d+)?$/.test(money)</span><br></pre></td></tr></table></figure>
-
-<p>url正则表达式</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/^http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w-.\/?%&amp;=]*)?$/</span><br><span class="line"></span><br><span class="line">/^((ht|f)tps?):\/\/[\w\-]+(\.[\w\-]+)+([\w\-\.,@?^=%&amp;:\/~\+#]*[\w\-\@?^=%&amp;\/~\+#])?$/</span><br></pre></td></tr></table></figure>
-
-<p>0-100的正整数</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/^(?:0|[1-9][0-9]?|100)$/</span><br></pre></td></tr></table></figure>
-
-<p>数字/小大写字母/（30个字以内）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/^[A-Za-z0-9]&#123;1,30&#125;$/</span><br></pre></td></tr></table></figure>
-
-<p>只能输入汉字（30个字以内）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/^[\u4e00-\u9fa5]&#123;1,30&#125;$/</span><br></pre></td></tr></table></figure>
-
-<p>2-6位汉字</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/^[\u4E00-\u9FA5]&#123;2,6&#125;$/</span><br></pre></td></tr></table></figure>
-
-<p>不能输入汉字</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">/^[^\u4e00-\u9fa5]&#123;0,&#125;$/</span><br><span class="line">中文字符：[\u4e00-\u9fa5]</span><br><span class="line">双字节字符：[^\x00-\xff]</span><br><span class="line">空白行：\s</span><br><span class="line">Email地址：\w[-\w.+]*@([A-Za-z0-9][-A-Za-z0-9]+\.)+[A-Za-z]&#123;2,14&#125;</span><br><span class="line">网址URL：^((https|http|ftp|rtsp|mms)?:\/\/)[^\s]+</span><br><span class="line">手机（国内）：0?(13|14|15|17|18|19)[0-9]&#123;9&#125;</span><br><span class="line">电话号码（国内）：[0-9-()（）]&#123;7,18&#125;</span><br><span class="line">负浮点数：-([1-9]\d*.\d*|0.\d*[1-9]\d*)</span><br><span class="line">匹配整数：-?[1-9]\d*</span><br><span class="line">正浮点数：[1-9]\d*.\d*|0.\d*[1-9]\d*</span><br><span class="line">腾讯QQ号：[1-9]([0-9]&#123;5,11&#125;)</span><br><span class="line">邮政编码：\d&#123;6&#125;</span><br><span class="line">IP：(25[0-5]|2[0-4]\d|[0-1]\d&#123;2&#125;|[1-9]?\d)\.(25[0-5]|2[0-4]\d|[0-1]\d&#123;2&#125;|[1-9]?\d)\.(25[0-5]|2[0-4]\d|[0-1]\d&#123;2&#125;|[1-9]?\d)\.(25[0-5]|2[0-4]\d|[0-1]\d&#123;2&#125;|[1-9]?\d)</span><br><span class="line">身份证号：\d&#123;17&#125;[\d|x]|\d&#123;15&#125;</span><br><span class="line">格式日期：\d&#123;4&#125;(\-|\/|.)\d&#123;1,2&#125;\1\d&#123;1,2&#125;</span><br><span class="line">正整数：[1-9]\d*</span><br><span class="line">负整数：-[1-9]\d*</span><br><span class="line">用户名：[A-Za-z0-9_\-\u4e00-\u9fa5]+</span><br></pre></td></tr></table></figure>
-
-<p>JavaScript代码：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var pattern = /[\u4e00-\u9fa5]/,</span><br><span class="line">	str = &#x27;&#x27;;</span><br><span class="line">console.log(pattern.test(str));</span><br></pre></td></tr></table></figure>
-
-<p>用户名—3-12位字符（大小写字母或数字）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/^[A-Za-z0-9_]&#123;3,12&#125;$/</span><br></pre></td></tr></table></figure>
-
-<p>用户密码—6-16位</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/^[A-Za-z0-9!@#$%^&amp;*()&lt;&gt;,.?-_+=`~]&#123;6,16&#125;$/</span><br></pre></td></tr></table></figure>
-
-<p>昵称</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/^[a-zA-Z\u4e00-\u9fa5]&#123;1,10&#125;$/</span><br></pre></td></tr></table></figure>
-
-<p>身份证</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/^[1-9]\d&#123;5&#125;(19|20)\d&#123;2&#125;[01]\d[0123]\d\d&#123;3&#125;[xX\d]$/</span><br></pre></td></tr></table></figure>
-
-<p>身份证号码</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/^[1-9]\d&#123;5&#125;[1-9]\d&#123;3&#125;((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d&#123;3&#125;([0-9]|X)$/</span><br></pre></td></tr></table></figure>
-
-<p>匹配0到100之间的正整数的正则表达式</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/^(?:0|[1-9][0-9]?|100)$/</span><br></pre></td></tr></table></figure>
-
-<p>匹配1到100之间的正整数的正则表达式</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/^(?:1|[1-9][0-9]?|100)$/</span><br></pre></td></tr></table></figure>
-
-<p>QQ</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/^[1-9]\d&#123;4,10&#125;$/</span><br></pre></td></tr></table></figure>
-
-<p>手机号</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/^(13[0-9]|14[57]|15[0-9]|18[0-9])\d&#123;8&#125;$/</span><br></pre></td></tr></table></figure>
-
-<p>邮件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/^\w+([+-.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/</span><br></pre></td></tr></table></figure>
-
-<p>电话</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/^0\d&#123;2,3&#125;-\d&#123;7,8&#125;$/</span><br></pre></td></tr></table></figure>
-
-<p>name/姓名/用户名</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/^[\u4e00-\u9fa5]&#123;2,&#125;$/</span><br></pre></td></tr></table></figure>
-
-<p>密码强度</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">inp1.onkeyup = function () &#123;</span><br><span class="line">    var level = 0;</span><br><span class="line">    if (/[a-z]/.test(this.value)) &#123;</span><br><span class="line">        level++;</span><br><span class="line">    &#125;</span><br><span class="line">    if (/[0-9]/.test(this.value)) &#123;</span><br><span class="line">        level++;</span><br><span class="line">    &#125;</span><br><span class="line">    if (/[^a-z0-9]/.test(this.value)) &#123;</span><br><span class="line">        level++;</span><br><span class="line">    &#125;</span><br><span class="line">    if (this.value.length &lt; 6) &#123;</span><br><span class="line">        level = 0;</span><br><span class="line">    &#125;</span><br><span class="line">    if (level &gt; 3) &#123;</span><br><span class="line">        level = 3;</span><br><span class="line">    &#125;</span><br><span class="line">    strength.innerHTML = array[level];</span><br><span class="line">    strengthLevel.className = &#x27;strengthLv&#x27; + level;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h4 id="regular-config-js"><a href="#regular-config-js" class="headerlink" title="regular.config.js"></a><code>regular.config.js</code></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">export const regExpConfig = &#123;</span><br><span class="line">IDcard: /^[1-9]\d&#123;7&#125;((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d&#123;3&#125;$|^[1-9]\d&#123;5&#125;[1-9]\d&#123;3&#125;((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d&#123;3&#125;([0-9]|X)$/, // 身份证</span><br><span class="line">mobile: /^1([3|4|5|7|8|])\d&#123;9&#125;$/, // 手机号码</span><br><span class="line">telephone: /^(\(\d&#123;3,4&#125;\)|\d&#123;3,4&#125;-|\s)?\d&#123;7,14&#125;$/, // 固定电话</span><br><span class="line">num: /^[0-9]*$/, // 数字</span><br><span class="line">phoneNo: /(^1([3|4|5|7|8|])\d&#123;9&#125;$)|(^(\(\d&#123;3,4&#125;\)|\d&#123;3,4&#125;-|\s)?\d&#123;7,14&#125;$)/, // 电话或者手机</span><br><span class="line">policeNo: /^[0-9A-Za-z]&#123;4,10&#125;$/, // 账号4-10位数字或字母组成</span><br><span class="line">pwd: /^[0-9A-Za-z]&#123;6,16&#125;$/, // 密码由6-16位数字或者字母组成</span><br><span class="line">isNumAlpha: /^[0-9A-Za-z]*$/, // 字母或数字</span><br><span class="line">isAlpha: /^[a-zA-Z]*$/, // 是否字母</span><br><span class="line">isNumAlphaCn: /^[0-9a-zA-Z\u4E00-\uFA29]*$/, // 是否数字或字母或汉字</span><br><span class="line">isPostCode: /^[\d-]*$/i, // 是否邮编</span><br><span class="line">isNumAlphaUline: /^[0-9a-zA-Z_]*$/, // 是否数字、字母或下划线</span><br><span class="line">isNumAndThanZero: /^([1-9]\d*(\.\d+)?|0)$/, // 是否为整数且大于0/^[1-9]\d*(\.\d+)?$/</span><br><span class="line">isNormalEncode: /^(\w||[\u4e00-\u9fa5])&#123;0,&#125;$/, // 是否为非特殊字符（包括数字字母下划线中文）</span><br><span class="line">isTableName: /^[a-zA-Z][A-Za-z0-9#$_-]&#123;0,29&#125;$/, // 表名</span><br><span class="line">isInt: /^-?\d+$/, // 整数</span><br><span class="line">isTableOtherName: /^[\u4e00-\u9fa5]&#123;0,20&#125;$/, // 别名</span><br><span class="line">// isText_30: /^(\W|\w&#123;1,2&#125;)&#123;0,15&#125;$/, // 正则</span><br><span class="line">// isText_20: /^(\W|\w&#123;1,2&#125;)&#123;0,10&#125;$/, // 正则</span><br><span class="line">isText_30: /^(\W|\w&#123;1&#125;)&#123;0,30&#125;$/, // 匹配30个字符，字符可以使字母、数字、下划线、非字母，一个汉字算1个字符</span><br><span class="line">isText_50: /^(\W|\w&#123;1&#125;)&#123;0,50&#125;$/, // 匹配50个字符，字符可以使字母、数字、下划线、非字母，一个汉字算1个字符</span><br><span class="line">isText_20: /^(\W|\w&#123;1&#125;)&#123;0,20&#125;$/, // 匹配20个字符，字符可以使字母、数字、下划线、非字母，一个汉字算1个字符</span><br><span class="line">isText_100: /^(\W|\w&#123;1&#125;)&#123;0,100&#125;$/, // 匹配100个字符，字符可以使字母、数字、下划线、非字母，一个汉字算1个字符</span><br><span class="line">isText_250: /^(\W|\w&#123;1&#125;)&#123;0,250&#125;$/, // 匹配250个字符，字符可以使字母、数字、下划线、非字母，一个汉字算1个字符</span><br><span class="line">isNotChina: /^[^\u4e00-\u9fa5]&#123;0,&#125;$/, // 不为中文  IDcard: /^[1-9]\d&#123;7&#125;((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d&#123;3&#125;$|^[1-9]\d&#123;5&#125;[1-9]\d&#123;3&#125;((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d&#123;3&#125;([0-9]|X)$/, // 身份证</span><br><span class="line">IDcardAndAdmin: /^(([1-9]\d&#123;7&#125;((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d&#123;3&#125;$|^[1-9]\d&#123;5&#125;[1-9]\d&#123;3&#125;((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d&#123;3&#125;([0-9]|X))|(admin))$/, // 身份证或者是admin账号</span><br><span class="line">IDcardTrim: /^\s*(([1-9]\d&#123;7&#125;((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d&#123;3&#125;)|([1-9]\d&#123;5&#125;[1-9]\d&#123;3&#125;((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d&#123;3&#125;([0-9]|X))|(admin))\s*$/, // 身份证</span><br><span class="line">num1: /^[1-9]*$/, // 数字</span><br><span class="line">companyNO: /^qqb_[0-9a-zA-Z_]&#123;1,&#125;$/, // 公司人员账号</span><br><span class="line">imgType: /image\/(png|jpg|jpeg|gif)$/, // 上传图片类型</span><br><span class="line">isChina: /^[\u4e00-\u9fa5]&#123;2,8&#125;$/,</span><br><span class="line">isNozeroNumber: /^\+?[1-9]\d*$/, // 大于零的正整数</span><br><span class="line">float: /^\d+(\.?|(\.\d+)?)$/, // 匹配正整数或者小数 或者0.这个特殊值</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>split ：切割字符串的方法，我们通常传递字符或者字符串来切割字符串，此时我们通常传递的参数是能看到的摸得着，是比较具体的，</li>
-<li>search：用来寻找字符或者字符串在父字符串中的位置，我们可以传递字符，也可以传递字符串。</li>
-<li>match：在父字符串中寻找匹配字符串</li>
-<li>replace</li>
-<li>regexp</li>
-<li>exec：在字符串中寻找匹都字符串，该方法比其他正则方法或字符串方法支持的更复杂</li>
-<li>test</li>
-<li>char</li>
-<li>special char</li>
-<li>集合</li>
-<li>边界</li>
-<li>手机号验证</li>
-<li>分组</li>
-</ul>
-<p><code>0-10</code>，支持一位小数，包括<code>10.0</code></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^(10(\.0)?|[0-9](\.[0-9])?)$</span><br></pre></td></tr></table></figure>
-
-<p>大于等于0小于等于100正数的正则表达式（0≤x≤100）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">可以有小数：^100$|^(\d|[1-9]\d)(\.\d+)*$</span><br><span class="line">不可以有小数：^100$|^(\d|[1-9]\d)$</span><br></pre></td></tr></table></figure>
-
-<p>20位字符以内的中英文或数字</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/^[A-Za-z0-9_\x&#123;4e00&#125;-\x&#123;9fa5&#125;]+$/u</span><br></pre></td></tr></table></figure>
-
-<p>15位字符以内的大小写字母或数字</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/^[A-Za-z0-9]&#123;1,15&#125;$/</span><br></pre></td></tr></table></figure>
-
-<p>6-18位至少包含数字、大小字母中的两种</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/^(?![A-Z]+$)(?![a-z]+$)(?!\d+$)\S+$/</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/9/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/38/">38</a><a class="extend next" rel="next" href="/page/11/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/9/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/39/">39</a><a class="extend next" rel="next" href="/page/11/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -696,7 +575,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">114</span>
+          <span class="site-state-item-count">115</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

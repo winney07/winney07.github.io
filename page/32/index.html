@@ -193,6 +193,206 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2019/08/09/JS%E4%B8%AD%E5%AF%B9%E8%B1%A1%E6%95%B0%E7%BB%84%E7%9A%84%E6%93%8D%E4%BD%9C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="winney">
+      <meta itemprop="description" content="Doing is better than saying.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="winney">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/08/09/JS%E4%B8%AD%E5%AF%B9%E8%B1%A1%E6%95%B0%E7%BB%84%E7%9A%84%E6%93%8D%E4%BD%9C/" class="post-title-link" itemprop="url">JS中对象数组的操作</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-08-09 11:47:26" itemprop="dateCreated datePublished" datetime="2019-08-09T11:47:26+08:00">2019-08-09</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-10-30 13:18:11" itemprop="dateModified" datetime="2024-10-30T13:18:11+08:00">2024-10-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="判断一个对象数组的某个对象是否具体某个属性，如果没有就追加对象"><a href="#判断一个对象数组的某个对象是否具体某个属性，如果没有就追加对象" class="headerlink" title="判断一个对象数组的某个对象是否具体某个属性，如果没有就追加对象"></a>判断一个对象数组的某个对象是否具体某个属性，如果没有就追加对象</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// records是对象数组</span><br><span class="line">if (!records.some(obj =&gt; obj.username === value.username)) &#123;</span><br><span class="line">    records.push(value);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="js高效修改对象数组里的对象属性名"><a href="#js高效修改对象数组里的对象属性名" class="headerlink" title="js高效修改对象数组里的对象属性名"></a>js高效修改对象数组里的对象属性名</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">appList: [</span><br><span class="line">    &#123;</span><br><span class="line">        list:[</span><br><span class="line">            &#123;id: 118, name: &quot;测试1&quot;, group_id: 4, os: 2&#125;</span><br><span class="line">            &#123;id: 120, name: &quot;测试11&quot;, group_id: 4, os: 2&#125;</span><br><span class="line">            &#123;id: 123, name: &quot;测试111&quot;, group_id: 4, os: 1&#125;</span><br><span class="line">        ]</span><br><span class="line">        name: &quot;测试1111&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        list:[</span><br><span class="line">            &#123;id: 118, name: &quot;测试2&quot;, group_id: 4, os: 2&#125;</span><br><span class="line">            &#123;id: 120, name: &quot;测试22&quot;, group_id: 4, os: 2&#125;</span><br><span class="line">            &#123;id: 123, name: &quot;测试222&quot;, group_id: 4, os: 1&#125;</span><br><span class="line">        ]</span><br><span class="line">        name: &quot;测试2222&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<p>（因为插件的要求）改为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">productArr: [</span><br><span class="line">    &#123;</span><br><span class="line">        children:[</span><br><span class="line">            &#123;value: 118, name: &quot;测试1&quot;, group_value: 4, os: 2&#125;</span><br><span class="line">            &#123;value: 120, name: &quot;测试11&quot;, group_value: 4, os: 2&#125;</span><br><span class="line">            &#123;value: 123, name: &quot;测试111&quot;, group_value: 4, os: 1&#125;</span><br><span class="line">        ]</span><br><span class="line">        name: &quot;测试1111&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        children:[</span><br><span class="line">            &#123;value: 118, name: &quot;测试2&quot;, group_value: 4, os: 2&#125;</span><br><span class="line">            &#123;value: 120, name: &quot;测试22&quot;, group_value: 4, os: 2&#125;</span><br><span class="line">            &#123;value: 123, name: &quot;测试222&quot;, group_value: 4, os: 1&#125;</span><br><span class="line">        ]</span><br><span class="line">        name: &quot;测试2222&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<p>代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var productArr = JSON.parse(JSON.stringify(appList).replace(/list/g, &#x27;children&#x27;));</span><br><span class="line">productArr = JSON.parse(JSON.stringify(productArr).replace(/id/g, &#x27;value&#x27;));</span><br></pre></td></tr></table></figure>
+
+<h6 id="【参考】：-js高效修改对象数组里的对象属性名"><a href="#【参考】：-js高效修改对象数组里的对象属性名" class="headerlink" title="【参考】： js高效修改对象数组里的对象属性名"></a>【参考】： <a target="_blank" rel="noopener" href="https://blog.csdn.net/Mr_JavaScript/article/details/85236957">js高效修改对象数组里的对象属性名</a></h6>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2019/08/09/JS%E4%B8%AD%E6%93%8D%E4%BD%9CURL%E7%9A%84%E7%9B%B8%E5%85%B3%E6%96%B9%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="winney">
+      <meta itemprop="description" content="Doing is better than saying.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="winney">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/08/09/JS%E4%B8%AD%E6%93%8D%E4%BD%9CURL%E7%9A%84%E7%9B%B8%E5%85%B3%E6%96%B9%E6%B3%95/" class="post-title-link" itemprop="url">JS中操作URL的相关方法</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-08-09 11:47:26" itemprop="dateCreated datePublished" datetime="2019-08-09T11:47:26+08:00">2019-08-09</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-10-30 13:18:11" itemprop="dateModified" datetime="2024-10-30T13:18:11+08:00">2024-10-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="获取URL中的参数："><a href="#获取URL中的参数：" class="headerlink" title="获取URL中的参数："></a>获取URL中的参数：</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line">** @param name&#123;string&#125;    // 参数名</span><br><span class="line">*/</span><br><span class="line">function getURLParam(name) &#123;</span><br><span class="line">    // 获取完整的查询参数字符串</span><br><span class="line">    const queryString = window.location.search;</span><br><span class="line"></span><br><span class="line">    // 创建URLSearchParams对象来解析查询参数</span><br><span class="line">    const params = new URLSearchParams(queryString);</span><br><span class="line"></span><br><span class="line">    // 使用get方法获取指定名称的参数值</span><br><span class="line">    return params.get(name);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>http://127.0.0.1:5500/URL.html?username=test&amp;age=18</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const username = getURLParam(&#x27;username&#x27;);</span><br><span class="line">console.log(username); // &quot;test&quot;</span><br><span class="line"></span><br><span class="line">const age = getURLParam(&#x27;age&#x27;);</span><br><span class="line">console.log(age); // &quot;18&quot;</span><br></pre></td></tr></table></figure>
+
+<h3 id="解析URL"><a href="#解析URL" class="headerlink" title="解析URL"></a>解析URL</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">const urlString = &#x27;https://www.test.com:8080/path/url.html?username=test&amp;age=18&#x27;;</span><br><span class="line">const url = new URL(urlString);</span><br><span class="line"></span><br><span class="line">console.log(url.protocol);  // &quot;https:&quot;</span><br><span class="line">console.log(url.host);      // &quot;www.test.com:8080&quot;</span><br><span class="line">console.log(url.pathname);  // &quot;/path/url.html&quot;</span><br><span class="line">console.log(url.search);    // &quot;?username=test&amp;age=18&quot;</span><br><span class="line">console.log(url.hostname);  // www.test.com</span><br><span class="line">console.log(url.href);      // https://www.test.com:8080/path/url.html?username=test&amp;age=18</span><br><span class="line">console.log(url.origin);    // https://www.test.com:8080</span><br><span class="line">console.log(url.port);      // 8080</span><br><span class="line"></span><br><span class="line">// 解析查询参数</span><br><span class="line">const searchParams = new URLSearchParams(url.search);</span><br><span class="line">console.log(searchParams.get(&#x27;username&#x27;)); // &quot;test&quot;</span><br><span class="line">console.log(searchParams.get(&#x27;age&#x27;)); // &quot;18&quot;</span><br></pre></td></tr></table></figure>
+
+<h3 id="构建URL"><a href="#构建URL" class="headerlink" title="构建URL"></a>构建URL</h3><blockquote>
+<p>在页面之间传参，不想手动把参数使用<code>&amp;</code>符号一个一个拼起来时</p>
+</blockquote>
+<ol>
+<li><p>使用URL构造函数构建URL</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const url = new URL(&#x27;https://www.test.com&#x27;);</span><br><span class="line">url.pathname = &#x27;/path&#x27;;</span><br><span class="line">url.searchParams.set(&#x27;username&#x27;, &#x27;test&#x27;);</span><br><span class="line">url.searchParams.set(&#x27;age&#x27;, &#x27;18&#x27;);</span><br><span class="line">console.log(url.toString()); // &quot;https://www.test.com/path?username=test&amp;age=18&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用字符串拼接构建URL</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const baseUrl = &#x27;https://www.test.com&#x27;;</span><br><span class="line">const path = &#x27;/path&#x27;;</span><br><span class="line">const params = new URLSearchParams(&#123; username: &#x27;test&#x27;, age: &#x27;18&#x27; &#125;);</span><br><span class="line">const constructedUrl = `$&#123;baseUrl&#125;$&#123;path&#125;?$&#123;params.toString()&#125;`;</span><br><span class="line">console.log(constructedUrl); // &quot;https://www.test.com/path?username=test&amp;age=18&quot;</span><br></pre></td></tr></table></figure>
+
+
+
+
+</li>
+</ol>
+<h4 id="参数对应的值带-号"><a href="#参数对应的值带-号" class="headerlink" title="参数对应的值带=号"></a>参数对应的值带<code>=</code>号</h4><p>如果动态传参时，参数对应的值含有<code>=</code>号，避免浏览器自动处理等号，使用<code>encodeURIComponent</code>方法</p>
+<p>发送端：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const key = &quot;BANXB1cAPFcEAGwFZgk=&quot;;</span><br><span class="line">const encodedValue = encodeURIComponent(key);</span><br><span class="line">const url = `edit.html?key=$&#123;encodedValue&#125;`;</span><br><span class="line">window.location.href = url;</span><br></pre></td></tr></table></figure>
+
+<p>接收端：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const queryString = window.location.search;</span><br><span class="line">const urlParams = new URLSearchParams(queryString);</span><br><span class="line">const encodedValue = urlParams.get(&quot;key&quot;);</span><br><span class="line">const decodedValue = decodeURIComponent(encodedValue);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>因在项目中使用<code>$.form.href(&quot;&#123;:url(&#39;xy/test/group&#39;)&#125;&quot; + &quot;?id=&quot; + id + &#39;&amp;key=&#39;+key);</code>这样跳转到页面2。其中<code>key</code>的值最后可能带有<code>=</code>号，跳转到页面2的时候，在页面2中获取到的key参数少了最后的<code>=</code>号</p>
+</blockquote>
+<blockquote>
+<p>如果大家使用<code>window.location.href</code>进行页面跳转时，在链接上传参，没有问题，可以忽略这个问题。</p>
+</blockquote>
+<h3 id="将网址url中的参数转化为JSON格式的两种方法"><a href="#将网址url中的参数转化为JSON格式的两种方法" class="headerlink" title="将网址url中的参数转化为JSON格式的两种方法"></a><a target="_blank" rel="noopener" href="https://www.cnblogs.com/wangshucheng/p/11203097.html">将网址url中的参数转化为JSON格式的两种方法</a></h3><h4 id="第一种：-for-循环方式"><a href="#第一种：-for-循环方式" class="headerlink" title="第一种： for 循环方式"></a>第一种： for 循环方式</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">// 第一种： for循环</span><br><span class="line">var GetQueryJson1 = function () &#123;</span><br><span class="line">  let url = location.href; // 获取当前浏览器的URL</span><br><span class="line">  let arr = []; // 存储参数的数组</span><br><span class="line">  let res = &#123;&#125;; // 存储最终JSON结果对象</span><br><span class="line">  arr = url.split(&#x27;?&#x27;)[1].split(&#x27;&amp;&#x27;); // 获取浏览器地址栏中的参数</span><br><span class="line">   </span><br><span class="line">  for (let i = 0; i &lt; arr.length; i++) &#123; // 遍历参数</span><br><span class="line">    if (arr[i].indexOf(&#x27;=&#x27;) != -1)&#123; // 如果参数中有值</span><br><span class="line">      let str = arr[i].split(&#x27;=&#x27;);</span><br><span class="line">      res[str[0]] = str[1];</span><br><span class="line">    &#125; else &#123; // 如果参数中无值</span><br><span class="line">      res[arr[i]] = &#x27;&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return res;</span><br><span class="line">&#125;</span><br><span class="line">console.log(GetQueryJson1());</span><br></pre></td></tr></table></figure>
+
+<h4 id="第二种：正则表达式方式"><a href="#第二种：正则表达式方式" class="headerlink" title="第二种：正则表达式方式"></a>第二种：正则表达式方式</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">// 第二种：正则表达式</span><br><span class="line">var GetQueryJson2 = function () &#123;</span><br><span class="line">  let url = location.href; // 获取当前浏览器的URL</span><br><span class="line">  let param = &#123;&#125;; // 存储最终JSON结果对象</span><br><span class="line">  url.replace(/([^?&amp;]+)=([^?&amp;]+)/g, function(s, v, k) &#123;</span><br><span class="line">    param[v] = decodeURIComponent(k);//解析字符为中文</span><br><span class="line">    return k + &#x27;=&#x27; +  v;</span><br><span class="line">  &#125;);</span><br><span class="line">  return param;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">console.log(GetQueryJson2());</span><br></pre></td></tr></table></figure>
+
+<h4 id="URL参数改为json格式"><a href="#URL参数改为json格式" class="headerlink" title="URL参数改为json格式"></a>URL参数改为json格式</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var data = $(formEl).serialize()                // 表单数据（筛选条件)</span><br><span class="line">    ,arr = decodeURIComponent(data).split(&quot;&amp;&quot;)  // 对数据拆分处理</span><br><span class="line">    ,formData = &#123;&#125;                              // 需要缓存的数据对象</span><br><span class="line">// 转为JSON对象</span><br><span class="line">arr.map(function(item) &#123;</span><br><span class="line">    formData[item.split(&#x27;=&#x27;)[0]] =  item.split(&#x27;=&#x27;)[1];</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="修改url参数"><a href="#修改url参数" class="headerlink" title="修改url参数"></a>修改url参数</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">function changeURLArg(url,arg,arg_val)&#123; </span><br><span class="line">    var pattern=arg+&#x27;=([^&amp;]*)&#x27;; </span><br><span class="line">    var replaceText=arg+&#x27;=&#x27;+arg_val; </span><br><span class="line">    if(url.match(pattern))&#123; </span><br><span class="line">        var tmp=&#x27;/(&#x27;+ arg+&#x27;=)([^&amp;]*)/gi&#x27;; </span><br><span class="line">        tmp=url.replace(eval(tmp),replaceText); </span><br><span class="line">        return tmp; </span><br><span class="line">    &#125;else&#123; </span><br><span class="line">        if(url.match(&#x27;[\?]&#x27;))&#123; </span><br><span class="line">            return url+&#x27;&amp;&#x27;+replaceText; </span><br><span class="line">        &#125;else&#123; </span><br><span class="line">            return url+&#x27;?&#x27;+replaceText; </span><br><span class="line">        &#125; </span><br><span class="line">    &#125; </span><br><span class="line">    return url+&#x27;\n&#x27;+arg+&#x27;\n&#x27;+arg_val; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="改变hash值"><a href="#改变hash值" class="headerlink" title="改变hash值"></a>改变hash值</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//改变hash值</span><br><span class="line">function changeHash(key, val) &#123;</span><br><span class="line">    location.hash= location.hash.match(key+&quot;=([^&amp;]*)&quot;) ? location.hash.replace(eval(&#x27;/(&#x27;+ key+&#x27;=)([^&amp;]*)/gi&#x27;), key+&quot;=&quot;+val) : location.hash + &quot;&amp;&quot;+key+&quot;=&quot;+val</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2019/08/09/JS%E4%B8%AD%E6%95%B0%E7%BB%84%E7%9A%84%E6%93%8D%E4%BD%9C/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -332,308 +532,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2019/08/09/JS%E4%B8%AD%E6%93%8D%E4%BD%9CURL%E7%9A%84%E7%9B%B8%E5%85%B3%E6%96%B9%E6%B3%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="winney">
-      <meta itemprop="description" content="Doing is better than saying.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="winney">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/08/09/JS%E4%B8%AD%E6%93%8D%E4%BD%9CURL%E7%9A%84%E7%9B%B8%E5%85%B3%E6%96%B9%E6%B3%95/" class="post-title-link" itemprop="url">JS中操作URL的相关方法</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-08-09 11:47:26" itemprop="dateCreated datePublished" datetime="2019-08-09T11:47:26+08:00">2019-08-09</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-10-30 13:18:11" itemprop="dateModified" datetime="2024-10-30T13:18:11+08:00">2024-10-30</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="获取URL中的参数："><a href="#获取URL中的参数：" class="headerlink" title="获取URL中的参数："></a>获取URL中的参数：</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line">** @param name&#123;string&#125;    // 参数名</span><br><span class="line">*/</span><br><span class="line">function getURLParam(name) &#123;</span><br><span class="line">    // 获取完整的查询参数字符串</span><br><span class="line">    const queryString = window.location.search;</span><br><span class="line"></span><br><span class="line">    // 创建URLSearchParams对象来解析查询参数</span><br><span class="line">    const params = new URLSearchParams(queryString);</span><br><span class="line"></span><br><span class="line">    // 使用get方法获取指定名称的参数值</span><br><span class="line">    return params.get(name);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><code>http://127.0.0.1:5500/URL.html?username=test&amp;age=18</code></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const username = getURLParam(&#x27;username&#x27;);</span><br><span class="line">console.log(username); // &quot;test&quot;</span><br><span class="line"></span><br><span class="line">const age = getURLParam(&#x27;age&#x27;);</span><br><span class="line">console.log(age); // &quot;18&quot;</span><br></pre></td></tr></table></figure>
-
-<h3 id="解析URL"><a href="#解析URL" class="headerlink" title="解析URL"></a>解析URL</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">const urlString = &#x27;https://www.test.com:8080/path/url.html?username=test&amp;age=18&#x27;;</span><br><span class="line">const url = new URL(urlString);</span><br><span class="line"></span><br><span class="line">console.log(url.protocol);  // &quot;https:&quot;</span><br><span class="line">console.log(url.host);      // &quot;www.test.com:8080&quot;</span><br><span class="line">console.log(url.pathname);  // &quot;/path/url.html&quot;</span><br><span class="line">console.log(url.search);    // &quot;?username=test&amp;age=18&quot;</span><br><span class="line">console.log(url.hostname);  // www.test.com</span><br><span class="line">console.log(url.href);      // https://www.test.com:8080/path/url.html?username=test&amp;age=18</span><br><span class="line">console.log(url.origin);    // https://www.test.com:8080</span><br><span class="line">console.log(url.port);      // 8080</span><br><span class="line"></span><br><span class="line">// 解析查询参数</span><br><span class="line">const searchParams = new URLSearchParams(url.search);</span><br><span class="line">console.log(searchParams.get(&#x27;username&#x27;)); // &quot;test&quot;</span><br><span class="line">console.log(searchParams.get(&#x27;age&#x27;)); // &quot;18&quot;</span><br></pre></td></tr></table></figure>
-
-<h3 id="构建URL"><a href="#构建URL" class="headerlink" title="构建URL"></a>构建URL</h3><blockquote>
-<p>在页面之间传参，不想手动把参数使用<code>&amp;</code>符号一个一个拼起来时</p>
-</blockquote>
-<ol>
-<li><p>使用URL构造函数构建URL</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const url = new URL(&#x27;https://www.test.com&#x27;);</span><br><span class="line">url.pathname = &#x27;/path&#x27;;</span><br><span class="line">url.searchParams.set(&#x27;username&#x27;, &#x27;test&#x27;);</span><br><span class="line">url.searchParams.set(&#x27;age&#x27;, &#x27;18&#x27;);</span><br><span class="line">console.log(url.toString()); // &quot;https://www.test.com/path?username=test&amp;age=18&quot;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>使用字符串拼接构建URL</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const baseUrl = &#x27;https://www.test.com&#x27;;</span><br><span class="line">const path = &#x27;/path&#x27;;</span><br><span class="line">const params = new URLSearchParams(&#123; username: &#x27;test&#x27;, age: &#x27;18&#x27; &#125;);</span><br><span class="line">const constructedUrl = `$&#123;baseUrl&#125;$&#123;path&#125;?$&#123;params.toString()&#125;`;</span><br><span class="line">console.log(constructedUrl); // &quot;https://www.test.com/path?username=test&amp;age=18&quot;</span><br></pre></td></tr></table></figure>
-
-
-
-
-</li>
-</ol>
-<h4 id="参数对应的值带-号"><a href="#参数对应的值带-号" class="headerlink" title="参数对应的值带=号"></a>参数对应的值带<code>=</code>号</h4><p>如果动态传参时，参数对应的值含有<code>=</code>号，避免浏览器自动处理等号，使用<code>encodeURIComponent</code>方法</p>
-<p>发送端：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const key = &quot;BANXB1cAPFcEAGwFZgk=&quot;;</span><br><span class="line">const encodedValue = encodeURIComponent(key);</span><br><span class="line">const url = `edit.html?key=$&#123;encodedValue&#125;`;</span><br><span class="line">window.location.href = url;</span><br></pre></td></tr></table></figure>
-
-<p>接收端：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const queryString = window.location.search;</span><br><span class="line">const urlParams = new URLSearchParams(queryString);</span><br><span class="line">const encodedValue = urlParams.get(&quot;key&quot;);</span><br><span class="line">const decodedValue = decodeURIComponent(encodedValue);</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>因在项目中使用<code>$.form.href(&quot;&#123;:url(&#39;xy/test/group&#39;)&#125;&quot; + &quot;?id=&quot; + id + &#39;&amp;key=&#39;+key);</code>这样跳转到页面2。其中<code>key</code>的值最后可能带有<code>=</code>号，跳转到页面2的时候，在页面2中获取到的key参数少了最后的<code>=</code>号</p>
-</blockquote>
-<blockquote>
-<p>如果大家使用<code>window.location.href</code>进行页面跳转时，在链接上传参，没有问题，可以忽略这个问题。</p>
-</blockquote>
-<h3 id="将网址url中的参数转化为JSON格式的两种方法"><a href="#将网址url中的参数转化为JSON格式的两种方法" class="headerlink" title="将网址url中的参数转化为JSON格式的两种方法"></a><a target="_blank" rel="noopener" href="https://www.cnblogs.com/wangshucheng/p/11203097.html">将网址url中的参数转化为JSON格式的两种方法</a></h3><h4 id="第一种：-for-循环方式"><a href="#第一种：-for-循环方式" class="headerlink" title="第一种： for 循环方式"></a>第一种： for 循环方式</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">// 第一种： for循环</span><br><span class="line">var GetQueryJson1 = function () &#123;</span><br><span class="line">  let url = location.href; // 获取当前浏览器的URL</span><br><span class="line">  let arr = []; // 存储参数的数组</span><br><span class="line">  let res = &#123;&#125;; // 存储最终JSON结果对象</span><br><span class="line">  arr = url.split(&#x27;?&#x27;)[1].split(&#x27;&amp;&#x27;); // 获取浏览器地址栏中的参数</span><br><span class="line">   </span><br><span class="line">  for (let i = 0; i &lt; arr.length; i++) &#123; // 遍历参数</span><br><span class="line">    if (arr[i].indexOf(&#x27;=&#x27;) != -1)&#123; // 如果参数中有值</span><br><span class="line">      let str = arr[i].split(&#x27;=&#x27;);</span><br><span class="line">      res[str[0]] = str[1];</span><br><span class="line">    &#125; else &#123; // 如果参数中无值</span><br><span class="line">      res[arr[i]] = &#x27;&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return res;</span><br><span class="line">&#125;</span><br><span class="line">console.log(GetQueryJson1());</span><br></pre></td></tr></table></figure>
-
-<h4 id="第二种：正则表达式方式"><a href="#第二种：正则表达式方式" class="headerlink" title="第二种：正则表达式方式"></a>第二种：正则表达式方式</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">// 第二种：正则表达式</span><br><span class="line">var GetQueryJson2 = function () &#123;</span><br><span class="line">  let url = location.href; // 获取当前浏览器的URL</span><br><span class="line">  let param = &#123;&#125;; // 存储最终JSON结果对象</span><br><span class="line">  url.replace(/([^?&amp;]+)=([^?&amp;]+)/g, function(s, v, k) &#123;</span><br><span class="line">    param[v] = decodeURIComponent(k);//解析字符为中文</span><br><span class="line">    return k + &#x27;=&#x27; +  v;</span><br><span class="line">  &#125;);</span><br><span class="line">  return param;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">console.log(GetQueryJson2());</span><br></pre></td></tr></table></figure>
-
-<h4 id="URL参数改为json格式"><a href="#URL参数改为json格式" class="headerlink" title="URL参数改为json格式"></a>URL参数改为json格式</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var data = $(formEl).serialize()                // 表单数据（筛选条件)</span><br><span class="line">    ,arr = decodeURIComponent(data).split(&quot;&amp;&quot;)  // 对数据拆分处理</span><br><span class="line">    ,formData = &#123;&#125;                              // 需要缓存的数据对象</span><br><span class="line">// 转为JSON对象</span><br><span class="line">arr.map(function(item) &#123;</span><br><span class="line">    formData[item.split(&#x27;=&#x27;)[0]] =  item.split(&#x27;=&#x27;)[1];</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<h4 id="修改url参数"><a href="#修改url参数" class="headerlink" title="修改url参数"></a>修改url参数</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">function changeURLArg(url,arg,arg_val)&#123; </span><br><span class="line">    var pattern=arg+&#x27;=([^&amp;]*)&#x27;; </span><br><span class="line">    var replaceText=arg+&#x27;=&#x27;+arg_val; </span><br><span class="line">    if(url.match(pattern))&#123; </span><br><span class="line">        var tmp=&#x27;/(&#x27;+ arg+&#x27;=)([^&amp;]*)/gi&#x27;; </span><br><span class="line">        tmp=url.replace(eval(tmp),replaceText); </span><br><span class="line">        return tmp; </span><br><span class="line">    &#125;else&#123; </span><br><span class="line">        if(url.match(&#x27;[\?]&#x27;))&#123; </span><br><span class="line">            return url+&#x27;&amp;&#x27;+replaceText; </span><br><span class="line">        &#125;else&#123; </span><br><span class="line">            return url+&#x27;?&#x27;+replaceText; </span><br><span class="line">        &#125; </span><br><span class="line">    &#125; </span><br><span class="line">    return url+&#x27;\n&#x27;+arg+&#x27;\n&#x27;+arg_val; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="改变hash值"><a href="#改变hash值" class="headerlink" title="改变hash值"></a>改变hash值</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//改变hash值</span><br><span class="line">function changeHash(key, val) &#123;</span><br><span class="line">    location.hash= location.hash.match(key+&quot;=([^&amp;]*)&quot;) ? location.hash.replace(eval(&#x27;/(&#x27;+ key+&#x27;=)([^&amp;]*)/gi&#x27;), key+&quot;=&quot;+val) : location.hash + &quot;&amp;&quot;+key+&quot;=&quot;+val</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2019/07/29/SVG%E5%9B%BE%E7%89%87%E7%9A%84%E4%BD%BF%E7%94%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="winney">
-      <meta itemprop="description" content="Doing is better than saying.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="winney">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/07/29/SVG%E5%9B%BE%E7%89%87%E7%9A%84%E4%BD%BF%E7%94%A8/" class="post-title-link" itemprop="url">SVG图片的使用</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-07-29 11:25:24" itemprop="dateCreated datePublished" datetime="2019-07-29T11:25:24+08:00">2019-07-29</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-10-30 13:18:11" itemprop="dateModified" datetime="2024-10-30T13:18:11+08:00">2024-10-30</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CSS/" itemprop="url" rel="index"><span itemprop="name">CSS</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>CSS也可以使用SVG文件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.logo&#123;</span><br><span class="line">    background: url(icon.svg);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>SVG文件还可以转为BASE64编码，然后作为Data URL写入网页。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=&quot;data:image/svg+xml; base64, [data]&quot;&gt;</span><br></pre></td></tr></table></figure>
-
-<h4 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h4><p>2.1<code>&lt;svg&gt;</code>标签<br>SVG代码都放在顶层标签<code>&lt;svg&gt;</code>之中。下面是一个例子。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;svg width=&quot;&quot;1O0%&quot; height=&quot;&quot;100%&quot;&gt;</span><br><span class="line">    &lt;circle id=&quot;mycircle&quot; cx=&quot;50&quot; cy=&quot;50&quot; r=&quot;50&quot;/&gt;</span><br><span class="line">&lt;/svg&gt;</span><br></pre></td></tr></table></figure>
-
-<p>width属性和height属性，制定了SVG图像在HTML元素中所占据的宽度和高度。除了相对单位，也可以采用绝对单位（单位︰像素)。如果不指定这两个属性，SVG图像默认大小是300像素（宽）*150像素（高)。<br>如果只想展示SG图像的一部分，就要指定viewBox属性。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;svg width=&quot;100&quot; height=&quot;100&quot; viewBox=&quot;50 50 50 50&quot;&gt;</span><br><span class="line">	&lt;circle id=&quot;mycircle&quot; cx=&quot;50&quot; cy=&quot;50&quot; r=&quot;50&quot;/&gt;</span><br><span class="line">&lt;/svg&gt;</span><br></pre></td></tr></table></figure>
-
-<p>viewBox属性的值有四个数字，分别是左上角的横坐标和纵坐标、视口的高度和宽度。上面代码中，SVG图像是<code>100像素宽*100像素高</code>，viewBox属性指定视口从（ 50，50 )这个点开始。所以，实际看到的是右下角的四分之一圆。<br>注意，视口必须适配所在的空间。上面代码中，视口的大小是<code>50*50</code>，由于SVG图像的大小是<code>100*100</code>，所以视口会放大去适配SVG图像的大小，即放大了四倍。</p>
-<p>如果不指定width属性和height属性，只指定viewBox属性，则相当于只给到定SVG图像的长宽比。这时，SVG图像的默认大小将等于所在的HTML元素的大小。</p>
-<p>2.2<code>&lt;circle&gt;</code>标签<br><code>&lt;circle&gt;</code>标签代表圆形。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;svg width=&quot;300&quot;&quot; height=&quot;&quot;180&quot;&gt;</span><br><span class="line">    &lt;circle cx=&quot;30&quot; cy=&quot;50&quot; r=&quot;25&quot;/&gt;</span><br><span class="line">    &lt;circle cx=&quot;90&quot; cy=&quot;50&quot; r=&quot;25&quot; c1ass=&quot;red&quot;/&gt;</span><br><span class="line">    &lt;circle cx=&quot;150&quot; cy=&quot;50&quot; r=&quot;25&quot; class=&quot;fancy&quot;/&gt;</span><br><span class="line">&lt;/svg&gt;</span><br></pre></td></tr></table></figure>
-
-<p>上面的代码定义了三个园。<code>&lt;circle&gt;</code>标签的cx、cy、r属性分别为横坐标、纵坐标和半径，单位为像素。坐标都是相对于<code>&lt;svg&gt;</code>画布的左上角原点。<br>class属性用来指定对应的CSS类。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.red &#123;</span><br><span class="line">    fill: red;</span><br><span class="line">&#125;</span><br><span class="line">.fancy &#123;</span><br><span class="line">    fill: none;</span><br><span class="line">    stroke: black;</span><br><span class="line">    stroke-width:3pt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>SVG的CSS属性与网页元素有所不同。</p>
-<ul>
-<li>fill：填充色</li>
-<li>stroke：描边色</li>
-<li>stroke-width：边框宽度</li>
-</ul>
-<p>2.3<code>&lt;line&gt;</code>标签<br><code>&lt;line&gt;</code>标签用来绘制直线。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;svg width=&quot;300&quot; height=&quot;180&quot;&gt;</span><br><span class="line">	&lt;line x1=&quot;0&quot; y1=&quot;0&quot; x2=&quot;200&quot; y2=&quot;0&quot; style=&quot;stroke:rgb(0,0,0);stroke-width:5;&quot;/&gt;</span><br><span class="line">&lt;/svg&gt;</span><br></pre></td></tr></table></figure>
-
-<p>上面代码中，<code>&lt;line&gt;</code>标签的×1属性和y1属性，表示线段起点的横坐标和纵坐标;x2属性和y2属性，表示线段终点的横坐标和纵坐标; style属性表示线段的样式。</p>
-<p>2.4<code> &lt;polyline&gt;</code>标签<br><code>&lt;polyline&gt;</code>标签用于绘制—根折线。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;svg width=&quot;300&quot;&quot; height=&quot;&quot;180&quot;&gt;</span><br><span class="line">	&lt;polyline points=&quot;3,3 30,28 3,53&quot; fill=&quot;none&quot; stroke=&quot;black&quot;/&gt;</span><br><span class="line">&lt;/svg&gt;</span><br></pre></td></tr></table></figure>
-
-<p><code>&lt;polyline&gt;</code>的points属性指定了每个端点的坐标，横坐标与纵坐标之间与逗号分隔，点与点之间用空格分隔。</p>
-<p>2.5<code>&lt;rect&gt;</code>标签</p>
-<p><code>&lt;rect&gt;</code>标签用于绘制矩形</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;svg width=&quot;300&quot;&quot; height=&quot;&quot;180&quot;&gt;</span><br><span class="line">	&lt;rect x=&quot;0&quot; y=&quot;0&quot; height=&quot;100&quot; width=&quot;200&quot; style=&quot;stroke:#70d5dd; fill: #dd524b&quot;/&gt;</span><br><span class="line">&lt;/svg&gt;</span><br></pre></td></tr></table></figure>
-
-<p><code>&lt;rect&gt;</code>的x属性和y属性，指定了矩形左上角端点的横坐标和纵坐标；width属性和height属性指定了矩形的宽度和高度（单位像素)。</p>
-<p>2.6<code>&lt;ellipse&gt;</code>标签</p>
-<p><code>&lt;ellipse&gt;</code>标签用于绘制椭圆</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;svg width=&quot;300&quot;&quot; height=&quot;&quot;180&quot;&gt;</span><br><span class="line">	&lt;ellipse cx=&quot;60&quot; cy=&quot;60&quot; rx=&quot;40&quot; ry=&quot;20&quot; stroke=&quot;black&quot; stroke-width=&quot;5&quot; fill=&quot;silver&quot;/&gt;</span><br><span class="line">&lt;/svg&gt;</span><br></pre></td></tr></table></figure>
-
-<p><code>&lt;ellipse&gt;</code>的cx属性和cy属性，指定了椭圆中心的横坐标和纵坐标（单位像素）; rx属性和ry属性，指定了椭圆横向轴和纵向轴的半径（单位像素）。</p>
-<p>2.7<code>&lt;polygon&gt;</code>标签</p>
-<p><code>&lt;polygon&gt;</code>标签用于绘制多边形</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;svg width=&quot;300&quot;&quot; height=&quot;&quot;180&quot;&gt;</span><br><span class="line">	&lt;polygon fill: &quot;green&quot; stroke=&quot;orange&quot; stroke-width=&quot;1&quot; points=&quot;0,0 100,0 100,100 0,100 0,0&quot;/&gt;</span><br><span class="line">&lt;/svg&gt;</span><br></pre></td></tr></table></figure>
-
-<p><code>&lt;polygon&gt;</code>的points属性指定了每个端点的坐标，横坐标与纵坐标之间与逗号分隔，点与点之间用空格分隔。</p>
-<p>2.8<code>&lt;path&gt;</code>标签</p>
-<p><code>&lt;path&gt;</code>标签用于制路径</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;svg width=&quot;300&quot; height=&quot;180&quot;&gt;</span><br><span class="line">	&lt;path d=&quot;</span><br><span class="line">		M 18,3</span><br><span class="line">		L 46,3</span><br><span class="line">		L 46,40</span><br><span class="line">		L 61,40</span><br><span class="line">		L 32,68</span><br><span class="line">		L 3,40</span><br><span class="line">		L 18,40</span><br><span class="line">		Z</span><br><span class="line">    &quot;&gt;&lt;/path&gt;</span><br><span class="line">&lt;/svg&gt;</span><br></pre></td></tr></table></figure>
-
-<p><code>&lt;path&gt;</code>的d属性表示绘制顺序，它的值是一个长字符串，每个字母表示一个绘制动作，后面跟着坐标。</p>
-<ul>
-<li>M：移动到( moveto )</li>
-<li>L：画直线到( lineto )</li>
-<li>Z：闭合路径</li>
-</ul>
-<p>2.9<code>&lt;text&gt;</code>标签</p>
-<p><code>&lt;text&gt;</code>标签用于绘制文本</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;svg width=&quot;300&quot;&quot; height=&quot;&quot;180&quot;&gt;</span><br><span class="line">	&lt;text x=&quot;50&quot; y=&quot;25&quot;&gt;He11o world&lt;/text&gt;</span><br><span class="line">&lt;/svg&gt;</span><br></pre></td></tr></table></figure>
-
-<p>2.10<code>&lt;use&gt;</code>标签</p>
-<p><code>&lt;use&gt;</code>标签用于复制一个形状</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;svg viewBox=&quot;0 0 30 10&quot; xm7ns=&quot;http://www.w3.org/2000/svg&quot;&gt;</span><br><span class="line">    &lt;circle id=&quot;mycircle&quot; cx=&quot;5&quot; cy=&quot;5&quot; r=&quot;4&quot;/&gt;</span><br><span class="line"></span><br><span class="line">    &lt;use href=&quot;#myCircle&quot; x=&quot;10&quot; y=&quot;0&quot; fill=&quot;blue&quot;/&gt;</span><br><span class="line">    &lt;use href=&quot;#myCircle&quot; x=&quot;20&quot;y=&quot;0&quot; fill=&quot;white&quot; stroke=&quot;blue&quot;/&gt;</span><br><span class="line">&lt;/svg&gt;</span><br></pre></td></tr></table></figure>
-
-<p><code>&lt;use&gt;</code>的href属性指定所要复制的节点，x属性和y属性是左上角的坐标。 另外，还可以指定width和height坐标。</p>
-<p>2.11<code>&lt;g&gt;</code>标签</p>
-<p><code>&lt;g&gt;</code>标签用于将多个形状组成一个组( group ) ，方便复用。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;svg width=&quot;300&quot; height=&quot;100&quot;&gt;</span><br><span class="line">    &lt;g id=&quot;mycircle&quot;&gt;</span><br><span class="line">        &lt;text x=&quot;25&quot; y=&quot;20&quot;&gt;圆形&lt;/text&gt;</span><br><span class="line">        &lt;circle cx=&quot;50&quot; cy=&quot;50&quot; r=&quot;20&quot; /&gt;</span><br><span class="line">    &lt;/g&gt;</span><br><span class="line"></span><br><span class="line">    &lt;use href=&quot;#myCircle&quot; x=&quot;100&quot; y=&quot;0&quot; fill=&quot;b1ue&quot;/&gt;</span><br><span class="line">    &lt;use href=&quot;#myCircle&quot; x=&quot;200&quot; y=&quot;0&quot; fill=&quot;white&quot; stroke=&quot;blue&quot;/&gt;</span><br><span class="line">&lt;/svg&gt;</span><br></pre></td></tr></table></figure>
-
-<p>2.12<code>&lt;defs&gt;</code>标签</p>
-<p><code>&lt;defs&gt;</code>标签用于自定义形状，它内部的代码不会显示，仅供引用。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;svg width=&quot;300&quot; height=&quot;100&quot;&gt;</span><br><span class="line">    &lt;defs&gt;</span><br><span class="line">        &lt;g id=&quot;mycircle&quot;&gt;</span><br><span class="line">            &lt;text x=&quot;25&quot; y=&quot;20&quot;&gt;圆形&lt;/text&gt;</span><br><span class="line">            &lt;circle cx=&quot;50&quot; cy=&quot;50&quot; r=&quot;20&quot; /&gt;</span><br><span class="line">        &lt;/g&gt;</span><br><span class="line">    &lt;/defs&gt;</span><br><span class="line">    </span><br><span class="line">    &lt;use href=&quot;#myCircle&quot; x=&quot;0&quot; y=&quot;0&quot;/&gt;</span><br><span class="line">    &lt;use href=&quot;#myCircle&quot; x=&quot;100&quot; y=&quot;0&quot; fill=&quot;blue&quot;/&gt;</span><br><span class="line">    &lt;use href=&quot;#myCircle&quot; x=&quot;200&quot; y=&quot;0&quot; fill=&quot;white&quot; stroke=&quot;blue&#x27;/&gt;</span><br><span class="line">&lt;/svg&gt;</span><br></pre></td></tr></table></figure>
-
-<p>2.13<code>&lt;pattern&gt;</code>标签</p>
-<p><code>&lt;pattern&gt;</code>标签用于自定义一个形状，该形状可以被引用来平铺一个区域。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;svg width=&quot;500&quot; height=&quot;500&quot;&gt;</span><br><span class="line">    &lt;defs&gt;</span><br><span class="line">        &lt;pattern id=&quot;dots&quot; x=&quot;0&quot; y=&quot;0&quot; width=&quot;100&quot; height=&quot;100&quot; patternunits=&quot;userspaceonuse&quot;&gt;</span><br><span class="line">            &lt;circle fill=&quot;#bee9e8&quot; cx=&quot;50&quot; cy=&quot;50&quot; r=&quot;35&quot;/&gt;</span><br><span class="line">        &lt;/pattern&gt;</span><br><span class="line">    &lt;/defs&gt;</span><br><span class="line">    &lt;rect x=&quot;0&quot; y=&quot;0&quot; width=&quot;100%&quot; height=&quot;100%&quot; fill=&quot;ur1(#dots)&quot;/&gt;</span><br><span class="line">&lt;/svg&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>上面代码中，<code>&lt;pattern&gt;</code>标签将一个圆形定义为dots模式。<code>patternunits=&quot;userspaceonuse&quot;</code>表示<code>&lt;pattern&gt;</code></p>
-<p>的宽度和长度是实际的像素值。然后，指定这个模式去填充下面的矩形。</p>
-<p>2.14<code>&lt;image&gt;</code>标签</p>
-<p><code>&lt;image&gt;</code>标签用于插入图片文件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;svg viewBox=&quot;0 0 100 100&quot; width=&quot;100&quot; height=&quot;100&quot;&gt;</span><br><span class="line">    &lt;image xlink:href=&quot;path/to/image.jpg&quot; width=&quot;50%&quot; height=&quot;50%&quot; /&gt;</span><br><span class="line">&lt;/svg&gt;</span><br></pre></td></tr></table></figure>
-
-<p>上面代码中，<code>&lt;image&gt;</code>的<code>xlink:href</code>属性表示图像的来源。</p>
-<p>2.15<code>&lt;animate&gt;</code>标签</p>
-<p><code>&lt;animate&gt;</code>标签用于产生动画效果</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;svg width=&quot;500px&quot; height=&quot;500px&quot;&gt;</span><br><span class="line">    &lt;rect x=&quot;0&quot; y=&quot;0&quot; width=&quot;100&quot; height=&quot;100&quot; fill=&quot;#feac5e&quot;&gt;</span><br><span class="line">        &lt;animate attributeName=&quot;x&quot; from=&quot;0&quot; to=&quot;500&quot; dur=&quot;2s&quot; repeatCount=&quot;indefinite&quot;/&gt;</span><br><span class="line">    &lt;/rect&gt;</span><br><span class="line">&lt;/svg&gt;</span><br></pre></td></tr></table></figure>
-
-<p>上面代码中，矩形会不断移动，产生动画效果。</p>
-<p><code>&lt;animate&gt;</code>的属性含义如下：</p>
-<p>attributeName ：发生动画效果的属性名。</p>
-<p>from：单次动画的初始值。</p>
-<p>to：单次动画的结束值。</p>
-<p>dur：单次动画的持续时间。</p>
-<p>repeatCount：动画的循环模式。</p>
-<p>可以在多个属性上面定义动画。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;animate attributeName=&quot;x&quot; from=&quot;0&quot; to=&quot;500&quot; dur=&quot;2s&quot; repeatcount=&quot;indefinite&quot;/&gt;</span><br><span class="line">&lt;animate attributeName=&quot;width&quot; to=&quot;500&quot; dur=&quot;2s&quot; repeatCount=&quot;indefinite&quot;/&gt;</span><br></pre></td></tr></table></figure>
-
-<p>2.16<code>&lt;animateTransform&gt;</code>标签</p>
-<p><code>&lt;animateTransform&gt;</code>标签对CSS的transform属性不起作用，如果需要变形，就要使用<code>&lt;animateTransform&gt;</code>标签。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;svg width=&quot;500px&quot; height=&quot;500px&quot;&gt;</span><br><span class="line">    &lt;rect x=&quot;250&quot; y=&quot;250&quot; width=&quot;50&quot; height=&quot;50&quot; fill=&quot;#4bcOc8&quot;&gt;</span><br><span class="line">        &lt;animateTransform attributeName=&quot;transform&quot; type=&quot;rotate&quot; begin=&quot;0s&quot; dur=&quot;10s&quot;</span><br><span class="line">     from=&quot;0 200 200&quot; to=&quot;360 400 400&quot; repeatcount=&quot;indefinite&quot;/&gt;</span><br><span class="line">     &lt;/rect&gt;</span><br><span class="line">&lt;/svg&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>上面代码中，<code>&lt;animateTransform&gt;</code>的效果为旋转( rotate )，这时from和to属性值有三个数字，第一个数字是</p>
-<p>角度值，第二个值和第三个值是旋转中心的坐标。<code>from=&quot;0 200 200&quot;</code>表示开始时，角度为0，围绕(200,200)开始</p>
-<p>旋转；<code>to=&quot;360 400 400&quot;</code>表示结束时，角度为360，围绕(400，400)旋转。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/31/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/31/">31</a><span class="page-number current">32</span><a class="page-number" href="/page/33/">33</a><span class="space">&hellip;</span><a class="page-number" href="/page/38/">38</a><a class="extend next" rel="next" href="/page/33/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/31/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/31/">31</a><span class="page-number current">32</span><a class="page-number" href="/page/33/">33</a><span class="space">&hellip;</span><a class="page-number" href="/page/39/">39</a><a class="extend next" rel="next" href="/page/33/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -701,7 +603,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">114</span>
+          <span class="site-state-item-count">115</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

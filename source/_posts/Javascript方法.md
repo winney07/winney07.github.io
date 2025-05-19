@@ -2097,3 +2097,20 @@ var cols = getIndexs()
 返回一个索引和另一个索引之间的数据(不改变原数组),slice(start,end)有两个参数(start必需,end选填),都是索引,返回值不包括end
 
 [js截取数组slice(),splice()两种方法](https://blog.csdn.net/qq_43627981/article/details/99625825/)
+
+
+
+#### `str.charAt`与`str.charCodeAt`
+
+```
+var str = 'whatever';
+console.log(str.charAt(2));
+console.log(str.charCodeAt(2));
+```
+
+```
+输出：
+a
+97
+```
+

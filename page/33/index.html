@@ -193,6 +193,149 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2019/08/09/JS%E4%B8%AD%E6%95%B0%E7%BB%84%E7%9A%84%E6%93%8D%E4%BD%9C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="winney">
+      <meta itemprop="description" content="Doing is better than saying.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="winney">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/08/09/JS%E4%B8%AD%E6%95%B0%E7%BB%84%E7%9A%84%E6%93%8D%E4%BD%9C/" class="post-title-link" itemprop="url">JS中数组的操作</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-08-09 11:47:26" itemprop="dateCreated datePublished" datetime="2019-08-09T11:47:26+08:00">2019-08-09</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-10-30 13:18:11" itemprop="dateModified" datetime="2024-10-30T13:18:11+08:00">2024-10-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="js中数组常用方法总结"><a href="#js中数组常用方法总结" class="headerlink" title="js中数组常用方法总结"></a><a target="_blank" rel="noopener" href="https://www.cnblogs.com/jinzhou/p/9072614.html">js中数组常用方法总结</a></h4><h4 id="数组增删元素"><a href="#数组增删元素" class="headerlink" title="数组增删元素"></a>数组增删元素</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">// 数组添加或删除元素</span><br><span class="line">function filterArr(arr, item) &#123;</span><br><span class="line">    var _index;  //是否含有该选项</span><br><span class="line">    var html = &quot;&quot;;</span><br><span class="line">    _index = arr.indexOf(item);</span><br><span class="line">    if(_index &gt; -1) &#123;</span><br><span class="line">        arr.splice(_index, 1);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        arr.push(item);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 数组转字符串</span><br><span class="line">    html = arr.join(&#x27;,&#x27;);</span><br><span class="line"></span><br><span class="line">    return html;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="forEach"><a href="#forEach" class="headerlink" title="forEach()"></a><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach">forEach()</a></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">var arr = [1, 2, 3, 4, 5];</span><br><span class="line"></span><br><span class="line">arr.forEach(function (item) &#123;</span><br><span class="line">    if (item === 3) &#123;</span><br><span class="line">        return;		// ----&gt;3的元素跳过</span><br><span class="line">    &#125;</span><br><span class="line">    console.log(item);</span><br><span class="line">&#125;);</span><br><span class="line">// 输出结果：</span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td></tr></table></figure>
+
+<h4 id="判断某变量的值是否等于某数组中的一个元素"><a href="#判断某变量的值是否等于某数组中的一个元素" class="headerlink" title="判断某变量的值是否等于某数组中的一个元素"></a>判断某变量的值是否等于某数组中的一个元素</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">示例：</span><br><span class="line"></span><br><span class="line">function IsInArray(arr,val)&#123;</span><br><span class="line">var testStr=&#x27;,&#x27;+arr.join(&quot;,&quot;)+&quot;,&quot;;</span><br><span class="line">return testStr.indexOf(&quot;,&quot;+val+&quot;,&quot;)!=-1;</span><br><span class="line">&#125;</span><br><span class="line">var test=[&#x27;a&#x27;,23,-1];</span><br><span class="line">alert(IsInArray(test,&#x27;a&#x27;));//true</span><br><span class="line">alert(IsInArray(test,2));//false</span><br><span class="line">alert(IsInArray(test,-1));//true</span><br></pre></td></tr></table></figure>
+
+<p>需求：</p>
+<p>在后台的某些模块中，不显示表头的游戏下拉筛选框：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">// 当前页URL</span><br><span class="line">var page = window.location.hash.split(&quot;?&quot;)[0];</span><br><span class="line">// 当前模块值</span><br><span class="line">var this_module = page.split(&quot;/&quot;)[2];</span><br><span class="line">（判断连接中是否是这几个模块下的链接）</span><br><span class="line">// 需要去掉游戏选择下拉框的模块</span><br><span class="line">var moduleArr = [&quot;app&quot;,&quot;channel&quot;,&quot;agent&quot;,&quot;config&quot;,&quot;white_list&quot;,&quot;account&quot;];</span><br><span class="line"></span><br><span class="line">// 判断模块值是否等于数组中的其中一个</span><br><span class="line">function IsInArray(arr,val)&#123;</span><br><span class="line">    var str=&#x27;,&#x27;+arr.join(&quot;,&quot;)+&quot;,&quot;;</span><br><span class="line">    return str.indexOf(&quot;,&quot;+val+&quot;,&quot;)!=-1;</span><br><span class="line">&#125;</span><br><span class="line">//是否在模块组中</span><br><span class="line">var flag = IsInArray(moduleArr, this_module);</span><br><span class="line">if(flag)&#123;</span><br><span class="line">    $(&quot;.product-select&quot;).hide();</span><br><span class="line">&#125; else &#123;</span><br><span class="line">    $(&quot;.product-select&quot;).show();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="【参考】：-js-判断某变量的值是否等于某数组中的一个元素"><a href="#【参考】：-js-判断某变量的值是否等于某数组中的一个元素" class="headerlink" title="【参考】： js:判断某变量的值是否等于某数组中的一个元素"></a>【参考】： <a target="_blank" rel="noopener" href="http://www.imooc.com/wenda/detail/476679">js:判断某变量的值是否等于某数组中的一个元素</a></h6><h4 id="js高效修改对象数组里的对象属性名"><a href="#js高效修改对象数组里的对象属性名" class="headerlink" title="js高效修改对象数组里的对象属性名"></a>js高效修改对象数组里的对象属性名</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">appList: [</span><br><span class="line">    &#123;</span><br><span class="line">        list:[</span><br><span class="line">            &#123;id: 118, name: &quot;测试1&quot;, group_id: 4, os: 2&#125;</span><br><span class="line">            &#123;id: 120, name: &quot;测试11&quot;, group_id: 4, os: 2&#125;</span><br><span class="line">            &#123;id: 123, name: &quot;测试111&quot;, group_id: 4, os: 1&#125;</span><br><span class="line">        ]</span><br><span class="line">        name: &quot;测试1111&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        list:[</span><br><span class="line">            &#123;id: 118, name: &quot;测试2&quot;, group_id: 4, os: 2&#125;</span><br><span class="line">            &#123;id: 120, name: &quot;测试22&quot;, group_id: 4, os: 2&#125;</span><br><span class="line">            &#123;id: 123, name: &quot;测试222&quot;, group_id: 4, os: 1&#125;</span><br><span class="line">        ]</span><br><span class="line">        name: &quot;测试2222&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<p>（因为插件的要求）改为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">productArr: [</span><br><span class="line">    &#123;</span><br><span class="line">        children:[</span><br><span class="line">            &#123;value: 118, name: &quot;测试1&quot;, group_value: 4, os: 2&#125;</span><br><span class="line">            &#123;value: 120, name: &quot;测试11&quot;, group_value: 4, os: 2&#125;</span><br><span class="line">            &#123;value: 123, name: &quot;测试111&quot;, group_value: 4, os: 1&#125;</span><br><span class="line">        ]</span><br><span class="line">        name: &quot;测试1111&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        children:[</span><br><span class="line">            &#123;value: 118, name: &quot;测试2&quot;, group_value: 4, os: 2&#125;</span><br><span class="line">            &#123;value: 120, name: &quot;测试22&quot;, group_value: 4, os: 2&#125;</span><br><span class="line">            &#123;value: 123, name: &quot;测试222&quot;, group_value: 4, os: 1&#125;</span><br><span class="line">        ]</span><br><span class="line">        name: &quot;测试2222&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<p>代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var productArr = JSON.parse(JSON.stringify(appList).replace(/list/g, &#x27;children&#x27;));</span><br><span class="line">productArr = JSON.parse(JSON.stringify(productArr).replace(/id/g, &#x27;value&#x27;));</span><br></pre></td></tr></table></figure>
+
+<h6 id="【参考】：-js高效修改对象数组里的对象属性名"><a href="#【参考】：-js高效修改对象数组里的对象属性名" class="headerlink" title="【参考】： js高效修改对象数组里的对象属性名"></a>【参考】： <a target="_blank" rel="noopener" href="https://blog.csdn.net/Mr_JavaScript/article/details/85236957">js高效修改对象数组里的对象属性名</a></h6><h4 id="用js实现模糊查询的几种方法"><a href="#用js实现模糊查询的几种方法" class="headerlink" title="用js实现模糊查询的几种方法"></a><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/4cd4f74a0b20">用js实现模糊查询的几种方法</a></h4><h5 id="1-indexof-方法"><a href="#1-indexof-方法" class="headerlink" title="1. indexof 方法"></a>1. indexof 方法</h5><blockquote>
+<p>语法：stringObject.indexOf(searchvalue, fromindex)</p>
+</blockquote>
+<blockquote>
+<p>参数：searchvalue 必需。规定需检索的字符串值。 fromindex<br>可选的整数参数。规定在字符串中开始检索的位置。它的合法取值是 0 到 stringObject.length - 1。如省略该参数，则将从字符串的首字符开始检索。</p>
+</blockquote>
+<blockquote>
+<p>说明：该方法将从头到尾地检索字符串 stringObject，看它是否含有子串 searchvalue。开始检索的位置在字符串的 fromindex 处或字符串的开头（没有指定 fromindex 时）。如果找到一个 searchvalue，则返回 searchvalue 的第一次出现的位置。stringObject 中的字符位置是从 0 开始的。如果没有找到，将返回 -1。</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 使用indexof方法实现模糊查询</span><br><span class="line"> * @param  &#123;Array&#125;  list     进行查询的数组</span><br><span class="line"> * @param  &#123;String&#125; keyWord  查询的关键词</span><br><span class="line"> * @return &#123;Array&#125;           查询的结果</span><br><span class="line"> */</span><br><span class="line">function fuzzyQuery(list, keyWord) &#123;</span><br><span class="line">  var arr = [];</span><br><span class="line">  for (var i = 0; i &lt; list.length; i++) &#123;</span><br><span class="line">    if (list[i].indexOf(keyWord) &gt;= 0) &#123;</span><br><span class="line">      arr.push(list[i]);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return arr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="2-split-方法"><a href="#2-split-方法" class="headerlink" title="2. split 方法"></a>2. split 方法</h5><blockquote>
+<p>语法：stringObject.split(separator, howmany)</p>
+</blockquote>
+<blockquote>
+<p>参数：separator 必需。字符串或正则表达式，从该参数指定的地方分割 stringObject。howmany 可选。该参数可指定返回的数组的最大长度。如果设置了该参数，返回的子串不会多于这个参数指定的数组。如果没有设置该参数，整个字符串都会被分割，不考虑它的长度。</p>
+</blockquote>
+<blockquote>
+<p>说明：该方法通过在 separator 指定的边界处将字符串 stringObject 分割成子串并返回子串数组。返回的数组中的字串不包括 separator 自身。如果 stringObject 中不存在 separator，将返回一个只包含stringObject的数组。故可以根据返回数组的长度来判断是否存在子字符串 separator 。</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 使用spilt方法实现模糊查询</span><br><span class="line"> * @param  &#123;Array&#125;  list     进行查询的数组</span><br><span class="line"> * @param  &#123;String&#125; keyWord  查询的关键词</span><br><span class="line"> * @return &#123;Array&#125;           查询的结果</span><br><span class="line"> */</span><br><span class="line">function fuzzyQuery(list, keyWord) &#123;</span><br><span class="line">  var arr = [];</span><br><span class="line">  for (var i = 0; i &lt; list.length; i++) &#123;</span><br><span class="line">    if (list[i].split(keyWord).length &gt; 1) &#123;</span><br><span class="line">      arr.push(list[i]);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return arr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="3-match-方法"><a href="#3-match-方法" class="headerlink" title="3. match 方法"></a>3. match 方法</h5><blockquote>
+<p>语法：stringObject.match(searchvalue) 或 stringObject.match(regexp)</p>
+</blockquote>
+<blockquote>
+<p>参数：searchvalue 必需。规定要检索的字符串值。regexp 必需。规定要匹配的模式的 RegExp 对象。如果该参数不是 RegExp 对象，则需要首先把它传递给 RegExp 构造函数，将其转换为 RegExp 对象。</p>
+</blockquote>
+<blockquote>
+<p>说明：该方法将在字符串 stringObject 内检索指定的值，或找到一个或多个正则表达式的匹配。如果没有找到任何匹配的文本，将返回 null 。否则，它将返回一个数组，其中存放了与它找到的匹配文本有关的信息。</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 使用match方法实现模糊查询</span><br><span class="line"> * @param  &#123;Array&#125;  list     进行查询的数组</span><br><span class="line"> * @param  &#123;String&#125; keyWord  查询的关键词</span><br><span class="line"> * @return &#123;Array&#125;           查询的结果</span><br><span class="line"> */</span><br><span class="line">function fuzzyQuery(list, keyWord) &#123;</span><br><span class="line">  var arr = [];</span><br><span class="line">  for (var i = 0; i &lt; list.length; i++) &#123;</span><br><span class="line">    if (list[i].match(keyWord) != null) &#123;</span><br><span class="line">      arr.push(list[i]);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return arr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="4-test方法（正则匹配）"><a href="#4-test方法（正则匹配）" class="headerlink" title="4. test方法（正则匹配）"></a>4. test方法（正则匹配）</h5><blockquote>
+<p>语法：RegExpObject.test(string)</p>
+</blockquote>
+<blockquote>
+<p>参数：string 必需。要检测的字符串。</p>
+</blockquote>
+<blockquote>
+<p>说明：该方法用于检测一个字符串是否匹配某个模式。如果字符串 string 中含有与 RegExpObject 匹配的文本，则返回 true，否则返回 false。</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">   * 使用test方法实现模糊查询</span><br><span class="line">   * @param  &#123;Array&#125;  list     原数组</span><br><span class="line">   * @param  &#123;String&#125; keyWord  查询的关键词</span><br><span class="line">   * @return &#123;Array&#125;           查询的结果</span><br><span class="line">   */</span><br><span class="line">  function fuzzyQuery(list, keyWord) &#123;</span><br><span class="line">    var reg =  new RegExp(keyWord);</span><br><span class="line">    var arr = [];</span><br><span class="line">    for (var i = 0; i &lt; list.length; i++) &#123;</span><br><span class="line">      if (reg.test(list[i])) &#123;</span><br><span class="line">        arr.push(list[i]);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return arr;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="性能测试"><a href="#性能测试" class="headerlink" title="性能测试"></a>性能测试</h4><blockquote>
+<p>测试条件：一个长度为100的数组，每个方法测试50次，取平均值。<br>indexof 方法耗费时间： 0.048ms<br>split 方法耗费时间： 0.037ms<br>match 方法耗费时间： 0.178ms<br>test 方法耗费时间： 0.039ms</p>
+</blockquote>
+<h4 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h4><ol>
+<li>从上面测试结果可以看出在几百几千甚至几万条数据量的情况下，前端去处理都是没问题的，相比发送一个 ajax 请求去后台来说，前端还是具有很大优势的，能节省不少时间。</li>
+<li>相比其他方法，match 方法性能最差，消耗的时间差不多是其他方法的3-4倍，虽说这一点点时间相比发送ajax来说，也算提高了很多既然我们在一开始就是为了提高用户体验，那么我们也应该追求极致啦，所以 match 选手落败。</li>
+<li>除了 match 方法，其他三个方法在性能上差不多。不过在这里有一点需要提出的就是， test 方法因为使用到了正则表达式，所以能够实现的功能会比较强大，写出来的代码也更加简洁。打个比方，在不区分大小写的模糊搜索条件下， test 方法只需在正则表达式中添加修饰符 i 即可实现不区分大小写，而 indexof 方法和 split 方法则要通过多次的方法调用和逻辑运算符才能实现效果。</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2019/07/29/SVG%E5%9B%BE%E7%89%87%E7%9A%84%E4%BD%BF%E7%94%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -487,82 +630,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2019/07/11/%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="winney">
-      <meta itemprop="description" content="Doing is better than saying.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="winney">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/07/11/%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/" class="post-title-link" itemprop="url">注意事项</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-07-11 16:58:38" itemprop="dateCreated datePublished" datetime="2019-07-11T16:58:38+08:00">2019-07-11</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-10-30 13:18:11" itemprop="dateModified" datetime="2024-10-30T13:18:11+08:00">2024-10-30</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/WEB%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">WEB前端</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h4><p><code>&#123;与//之间要有空格</code></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">if(os === 1)&#123;	// iOS</span><br><span class="line">	// iOS</span><br><span class="line">&#125; else if(os === 2) &#123; // 安卓</span><br><span class="line">	// 安卓</span><br><span class="line">&#125; else if(os === 3) &#123;// H5小游戏        // 这样写会影响后面的代码执行  &#123;与//之间要有空格</span><br><span class="line">	// H5小游戏</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -634,20 +701,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">115</span>
+          <span class="site-state-item-count">116</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">56</span>
+        <span class="site-state-item-count">57</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">52</span>
+        <span class="site-state-item-count">53</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

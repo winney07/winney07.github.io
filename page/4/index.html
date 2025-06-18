@@ -193,6 +193,146 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/10/22/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8-%E6%9E%84%E5%BB%BA%E8%BF%9E%E6%8E%A5mongodb%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%8E%A5%E5%8F%A3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="winney">
+      <meta itemprop="description" content="Doing is better than saying.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="winney">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/10/22/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8-%E6%9E%84%E5%BB%BA%E8%BF%9E%E6%8E%A5mongodb%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%8E%A5%E5%8F%A3/" class="post-title-link" itemprop="url">云服务器-构建连接mongodb数据库的接口</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-10-22 11:12:23" itemprop="dateCreated datePublished" datetime="2022-10-22T11:12:23+08:00">2022-10-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-10-30 13:18:11" itemprop="dateModified" datetime="2024-10-30T13:18:11+08:00">2024-10-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/" itemprop="url" rel="index"><span itemprop="name">云服务器</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="云服务器数据库"><a href="#云服务器数据库" class="headerlink" title="云服务器数据库"></a>云服务器数据库</h3><ol>
+<li><p>进入<code>mongo</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongo</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看已有数据库</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt; show dbs</span><br><span class="line">admin      0.078GB</span><br><span class="line">local      0.078GB</span><br><span class="line">myFirstDB  0.078GB</span><br><span class="line">shopping   0.078GB</span><br><span class="line">test       0.078GB</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看当前数据库</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; db</span><br><span class="line">test</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看当前数据库的所有集合</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; show collections</span><br><span class="line">system.indexes</span><br><span class="line">users</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查找某个集合的所有数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; db.users.find()</span><br><span class="line">&#123; &quot;_id&quot; : ObjectId(&quot;64255dec03b14a5ae59ad213&quot;), &quot;name&quot; : &quot;zhangsan&quot;, &quot;age&quot; : 20 &#125;</span><br><span class="line">&#123; &quot;_id&quot; : ObjectId(&quot;642650ee5d48a1118feb04d1&quot;), &quot;name&quot; : &quot;张三AAAAAA&quot;, &quot;age&quot; : 18, &quot;sex&quot; : &quot;男&quot;, &quot;__v&quot; : 0 &#125;</span><br><span class="line">&#123; &quot;_id&quot; : ObjectId(&quot;6426aa7de101e51497b40037&quot;), &quot;name&quot; : &quot;张三BBBBBB&quot;, &quot;age&quot; : 26, &quot;sex&quot; : &quot;女&quot;, &quot;__v&quot; : 0 &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建数据库</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; use wedding</span><br><span class="line">switched to db wedding</span><br><span class="line">&gt; db</span><br><span class="line">wedding</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建集合</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; db.createCollection(&#x27;blessing&#x27;)</span><br><span class="line">&#123; &quot;ok&quot; : 1 &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>向集合中插入文档</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; db.blessing.insert(&#123;&quot;name&quot;:&quot;张三&quot;, &quot;bless&quot;: &quot;快乐快乐快乐快乐&quot;&#125;)</span><br><span class="line">WriteResult(&#123; &quot;nInserted&quot; : 1 &#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看集合中插入的文档：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; db.blessing.find()</span><br><span class="line">&#123; &quot;_id&quot; : ObjectId(&quot;64dc9dcfc7acd67531cafb17&quot;), &quot;name&quot; : &quot;张三&quot;, &quot;bless&quot; : &quot;快乐快乐快乐快乐&quot; &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+</li>
+</ol>
+<h3 id="express接口搭建"><a href="#express接口搭建" class="headerlink" title="express接口搭建"></a>express接口搭建</h3><p>接口所在目录：<code>/usr/local/src/webCode/wx</code></p>
+<p>接口文件所在位置：<code>/usr/local/src/webCode/wx/server/wedding/blessing.js</code></p>
+<h5 id="node命令使用之前"><a href="#node命令使用之前" class="headerlink" title="node命令使用之前"></a>node命令使用之前</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvm  use 16.13.0</span><br></pre></td></tr></table></figure>
+
+<h4 id="运行接口"><a href="#运行接口" class="headerlink" title="运行接口"></a>运行接口</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node api.js</span><br></pre></td></tr></table></figure>
+
+<h4 id="解决跨域问题"><a href="#解决跨域问题" class="headerlink" title="解决跨域问题"></a>解决跨域问题</h4><p><code>Access to XMLHttpRequest at &#39;https://www.winney07.cn:8080/wedding/blessing/getBlessingList&#39; from origin &#39;http://192.168.1.15:5500&#39; has been blocked by CORS policy: Response to preflight request doesn&#39;t pass access control check: No &#39;Access-Control-Allow-Origin&#39; header is present on the requested resource.</code></p>
+<p>使用的是<code>https</code>协议，在微信开发者中，请求<code>https://www.winney07.cn:8080/wedding/blessing/getBlessingList</code>接口，是可以得到数据的。</p>
+<h4 id="解决方法："><a href="#解决方法：" class="headerlink" title="解决方法："></a>解决方法：</h4><ol>
+<li>服务端——接口响应前加上</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">res.header(&quot;Access-Control-Allow-Origin&quot;, &quot;*&quot;);              	// 允许任意外源访问</span><br><span class="line">res.header(&quot;Access-Control-Allow-Headers&quot;, &quot;Content-Type&quot;);		// 自定义请求首部字段</span><br><span class="line">res.header(&quot;Access-Control-Allow-Methods&quot;, &quot;*&quot;);    		 	// 允许所有请求方法</span><br><span class="line">res.header(&quot;Content-Type&quot;, &quot;application/json;charset=utf-8&quot;);	// 设置数据返回类型为json，字符集为utf8</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>前端——使用Fetch请求</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">fetch(&quot;https://www.winney07.cn:8080/wedding/blessing/getBlessingList&quot;,&#123;</span><br><span class="line">   method:&#x27;GET&#x27;</span><br><span class="line">&#125;).then(response =&gt; &#123;</span><br><span class="line">    if (!response.ok) &#123;</span><br><span class="line">        throw new Error(&#x27;Network response was not ok&#x27;);</span><br><span class="line">    &#125;</span><br><span class="line">    return response.json(); // 解析响应数据为 JSON 格式</span><br><span class="line">&#125;)</span><br><span class="line">.then(data =&gt; &#123;</span><br><span class="line">    console.log(&#x27;Response data:&#x27;, data);</span><br><span class="line">    // 在这里处理获取到的响应数据</span><br><span class="line">&#125;)</span><br><span class="line">.catch(error =&gt; &#123;</span><br><span class="line">    console.error(&#x27;Fetch error:&#x27;, error);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>fetch</code> 规范主要在三个方面与 <code>jQuery.ajax()</code> 不同：</p>
+<ul>
+<li>从 <code>fetch()</code> 返回的 Promise <strong>不会因 HTTP 的错误状态而被拒绝</strong>，即使响应是 HTTP <code>404</code> 或 <code>500</code>。相反，它将正常兑现（<code>ok</code> 状态会被设置为 <code>false</code>），并且只有在网络故障或者有任何阻止请求完成时，才拒绝。</li>
+</ul>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API">Fetch API</a></p>
+<h4 id="接口一直保持运行状态"><a href="#接口一直保持运行状态" class="headerlink" title="接口一直保持运行状态"></a>接口一直保持运行状态</h4><p>要保持云服务器上的 Express 接口一直运行，使其在服务器启动后保持运行状态，而不需要手动运行 <code>node api.js</code>。</p>
+<p><strong>使用进程管理工具</strong></p>
+<p>在服务器上安装 <code>pm2</code>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g pm2</span><br></pre></td></tr></table></figure>
+
+<p>然后，在项目文件夹中运行：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pm2 start api.js</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/25/Vue3-x%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -386,124 +526,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/10/layui%E8%A1%A8%E6%A0%BC%E5%AE%9E%E7%8E%B0%E5%85%A8%E9%80%89%E6%89%80%E6%9C%89%E9%A1%B5%E9%9D%A2%E6%95%B0%E6%8D%AE%E7%9A%84%E5%8A%9F%E8%83%BD/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="winney">
-      <meta itemprop="description" content="Doing is better than saying.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="winney">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/08/10/layui%E8%A1%A8%E6%A0%BC%E5%AE%9E%E7%8E%B0%E5%85%A8%E9%80%89%E6%89%80%E6%9C%89%E9%A1%B5%E9%9D%A2%E6%95%B0%E6%8D%AE%E7%9A%84%E5%8A%9F%E8%83%BD/" class="post-title-link" itemprop="url">layui表格实现全选所有页面数据的功能</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-08-10 11:21:22" itemprop="dateCreated datePublished" datetime="2022-08-10T11:21:22+08:00">2022-08-10</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-10-30 13:18:11" itemprop="dateModified" datetime="2024-10-30T13:18:11+08:00">2024-10-30</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/layui/" itemprop="url" rel="index"><span itemprop="name">layui</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="layui表格中的复选框"><a href="#layui表格中的复选框" class="headerlink" title="layui表格中的复选框"></a>layui表格中的复选框</h3><p>在实现全选所有页面的数据之前，先看一下layui表格中的复选框能实现的功能。</p>
-<p>HTML：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;table id=&quot;testTable&quot; lay-filter=&quot;testTable&quot;&gt;&lt;/table&gt;</span><br></pre></td></tr></table></figure>
-
-<p>JavaScript：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">layui.use([&#x27;table&#x27;, &#x27;jquery&#x27;, &#x27;form&#x27;], function () &#123;</span><br><span class="line">    var table = layui.table</span><br><span class="line">        , form = layui.form</span><br><span class="line">        , $ = layui.jquery</span><br><span class="line">        , list = []</span><br><span class="line">        , selectedIds = [];     // 存放已选中行的id数组</span><br><span class="line"></span><br><span class="line">    function getRandomName() &#123;</span><br><span class="line">        var letters = &#x27;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz&#x27;;</span><br><span class="line">        var name = &#x27;&#x27;;</span><br><span class="line">        for (var i = 0; i &lt; 5; i++) &#123;</span><br><span class="line">            name += letters.charAt(Math.floor(Math.random() * letters.length));</span><br><span class="line">        &#125;</span><br><span class="line">        return name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    for (var i = 1; i &lt;= 100; i++) &#123;</span><br><span class="line">        list.push(&#123; id: i, name: getRandomName(), score: Math.floor(Math.random() * 1000) + 1 &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    table.render(&#123;</span><br><span class="line">        elem: &#x27;#testTable&#x27;</span><br><span class="line">        , data: list</span><br><span class="line">        , page: true    // 开启分页</span><br><span class="line">        , limit: 10</span><br><span class="line">        , cols: [[</span><br><span class="line">            // &#123; checkbox: true &#125;</span><br><span class="line">            &#123; type:&#x27;checkbox&#x27; &#125;</span><br><span class="line">            , &#123; field: &#x27;id&#x27;, title: &#x27;ID&#x27; &#125;</span><br><span class="line">            , &#123; field: &#x27;name&#x27;, title: &#x27;用户名&#x27; &#125;</span><br><span class="line">            , &#123; field: &#x27;score&#x27;, title: &#x27;评分&#x27; &#125;</span><br><span class="line">        ]]</span><br><span class="line">        , done: function (res) &#123;</span><br><span class="line">            // console.log(res);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    // 监听table复选框的选择事件</span><br><span class="line">    table.on(&#x27;checkbox(testTable)&#x27;, function (obj) &#123;</span><br><span class="line">        // console.log(obj);           // 当前行的一些常用操作集合</span><br><span class="line">        // console.log(obj.checked);   // 当前是否选中状态</span><br><span class="line">        // console.log(obj.data);      // 选中行的相关数据</span><br><span class="line">        // console.log(obj.type);      // 如果触发的是全选，则为：all，如果触发的是单选，则为：one</span><br><span class="line"></span><br><span class="line">        // var selectedData;   // 选中行的相关数据</span><br><span class="line">        // selectedData = table.checkStatus(&#x27;testTable&#x27;).data;</span><br><span class="line">        // selectedIds = selectedData.map(item =&gt; item.id);</span><br><span class="line">        // // 进行排序</span><br><span class="line">        // selectedIds.sort(function (a, b) &#123;</span><br><span class="line">        //     return a - b;</span><br><span class="line">        // &#125;);</span><br><span class="line"></span><br><span class="line">        selectedIds = table.checkStatus(&#x27;testTable&#x27;).data.map(item =&gt; item.id).sort(function (a, b) &#123;</span><br><span class="line">            return a - b;</span><br><span class="line">        &#125;);   </span><br><span class="line"></span><br><span class="line">        console.log(&#x27;selectedIds&#x27;);</span><br><span class="line">        console.log(selectedIds);</span><br><span class="line"></span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>在表格中，添加复选框：在<code>cols</code>中添加<code>&#123; checkbox: true &#125;</code>或<code>&#123; type:&#39;checkbox&#39; &#125;</code></p>
-<p>获取选中行的数据：<code>table.checkStatus(&#39;testTable&#39;).data;</code></p>
-<blockquote>
-<p>这里使用sort，是为了方便看数据，如果没有这个要求，可以不加。</p>
-</blockquote>
-<p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/layui-%E7%AC%94%E8%AE%B0/layui-table-checkbox1.png" alt="layui-table-checkbox1.png (1216×508) (raw.githubusercontent.com)"></p>
-<p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/layui-%E7%AC%94%E8%AE%B0/layui-table-checkbox2.png" alt="layui-table-checkbox2.png (1117×506) (raw.githubusercontent.com)"></p>
-<blockquote>
-<p>如果需求中，按表头的复选框进行全选的时候需要获取到所有页面的数据。根据上面的展示，layui表格中默认的复选框的全选，获取不到所有页面的数据。</p>
-</blockquote>
-<h3 id="layui表格中表头的复选框实现全选所有页面的数据-多次操作"><a href="#layui表格中表头的复选框实现全选所有页面的数据-多次操作" class="headerlink" title="layui表格中表头的复选框实现全选所有页面的数据-多次操作"></a>layui表格中表头的复选框实现全选所有页面的数据-多次操作</h3><p>完整代码：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line">layui.use([&#x27;table&#x27;, &#x27;jquery&#x27;, &#x27;form&#x27;], function () &#123;</span><br><span class="line">    var table = layui.table</span><br><span class="line">        , form = layui.form</span><br><span class="line">        , $ = layui.jquery</span><br><span class="line">        , list = []</span><br><span class="line">        , temp = []     // 当前页的数据</span><br><span class="line">        , selectedIds = [];     // 存放已选中行的id数组</span><br><span class="line"></span><br><span class="line">    function getRandomName() &#123;</span><br><span class="line">        var letters = &#x27;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz&#x27;;</span><br><span class="line">        var name = &#x27;&#x27;;</span><br><span class="line">        for (var i = 0; i &lt; 5; i++) &#123;</span><br><span class="line">            name += letters.charAt(Math.floor(Math.random() * letters.length));</span><br><span class="line">        &#125;</span><br><span class="line">        return name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    for (var i = 1; i &lt;= 100; i++) &#123;</span><br><span class="line">        list.push(&#123; id: i, name: getRandomName(), score: Math.floor(Math.random() * 1000) + 1 &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    table.render(&#123;</span><br><span class="line">        elem: &#x27;#testTable&#x27;</span><br><span class="line">        , data: list</span><br><span class="line">        , page: true //开启分页</span><br><span class="line">        , limit: 10</span><br><span class="line">        , cols: [[</span><br><span class="line">            &#123; checkbox: true &#125;</span><br><span class="line">            , &#123; field: &#x27;id&#x27;, title: &#x27;ID&#x27; &#125;</span><br><span class="line">            , &#123; field: &#x27;name&#x27;, title: &#x27;用户名&#x27; &#125;</span><br><span class="line">            , &#123; field: &#x27;score&#x27;, title: &#x27;评分&#x27; &#125;</span><br><span class="line">        ]]</span><br><span class="line">        , done: function (res) &#123;</span><br><span class="line">            // 切换页面时，获取当前页的数据</span><br><span class="line">            temp = res.data.map(function (item) &#123;</span><br><span class="line">                return item.id;</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    // 监听table复选框的选择事件</span><br><span class="line">    table.on(&#x27;checkbox(testTable)&#x27;, function (obj) &#123;</span><br><span class="line">        if (obj.type === &#x27;all&#x27;) &#123;	// 表头的全选复选框</span><br><span class="line">            if (obj.checked) &#123;	// 选中状态</span><br><span class="line">                for (var i = 0; i &lt; temp.length; i++) &#123;</span><br><span class="line">                    var valueToAdd = temp[i];</span><br><span class="line">                    // 检查 arr 数组是否已经包含当前值，如果没有则追加</span><br><span class="line">                    if (!selectedIds.includes(valueToAdd)) &#123;</span><br><span class="line">                        // 追加</span><br><span class="line">                        selectedIds.push(valueToAdd);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; else &#123;	// 未选中状态</span><br><span class="line">                // 减去</span><br><span class="line">                selectedIds = selectedIds.filter(function (item) &#123;</span><br><span class="line">                    return !temp.includes(item);</span><br><span class="line">                &#125;);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125; else &#123;	// 每行上的复选框</span><br><span class="line">            if (obj.checked) &#123;	// 选中状态</span><br><span class="line">                // 追加</span><br><span class="line">                selectedIds.push(obj.data.id);</span><br><span class="line">            &#125; else &#123;	// 未选中状态</span><br><span class="line">                // 减去</span><br><span class="line">                var index = selectedIds.indexOf(obj.data.id);</span><br><span class="line">                selectedIds.splice(index, 1);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        // 进行排序</span><br><span class="line">        selectedIds.sort(function (a, b) &#123;</span><br><span class="line">            return a - b;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p><code>这里代码没有进行优化和封装，是为了大家更方便地看清它的逻辑</code></p>
-<p><code>难点</code>：</p>
-<p>全选时，怎么去记住不同页面中的数据，如何实现追加数据和减去数据的过程。</p>
-<p>刚好在<code>done</code>中可以获取到渲染当前页的数据。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">done: function (res) &#123;</span><br><span class="line">    // 切换页面时，获取当前页的数据</span><br><span class="line">    temp = res.data.map(function (item) &#123;</span><br><span class="line">        return item.id;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><code>缺点与不足</code>:需要每页都要点一次表头的全选复选框，不能一步到位。</p>
-<h3 id="layui表格中表头的复选框实现全选所有页面的数据-一次全选"><a href="#layui表格中表头的复选框实现全选所有页面的数据-一次全选" class="headerlink" title="layui表格中表头的复选框实现全选所有页面的数据-一次全选"></a>layui表格中表头的复选框实现全选所有页面的数据-一次全选</h3><p>使用渲染表格时的<code>templet</code>和<code>title</code>，手动创建复选框，不使用table默认添加复选框的方法<code>（&#123; type:&#39;checkbox&#39; &#125;）</code>添加复选框。</p>
-<p>完整代码：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br></pre></td><td class="code"><pre><span class="line">layui.use([&#x27;table&#x27;, &#x27;jquery&#x27;, &#x27;form&#x27;], function () &#123;</span><br><span class="line">    var table = layui.table</span><br><span class="line">        , form = layui.form</span><br><span class="line">        , $ = layui.jquery</span><br><span class="line">        , list = []</span><br><span class="line">        , selectedIds = [];     // 存放已选中行的id数组</span><br><span class="line"></span><br><span class="line">    function getRandomName() &#123;</span><br><span class="line">        var letters = &#x27;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz&#x27;;</span><br><span class="line">        var name = &#x27;&#x27;;</span><br><span class="line">        for (var i = 0; i &lt; 5; i++) &#123;</span><br><span class="line">            name += letters.charAt(Math.floor(Math.random() * letters.length));</span><br><span class="line">        &#125;</span><br><span class="line">        return name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    for (var i = 1; i &lt;= 100; i++) &#123;</span><br><span class="line">        list.push(&#123; id: i, name: getRandomName(), score: Math.floor(Math.random() * 1000) + 1 &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    var adTable = &#123;</span><br><span class="line">        /* </span><br><span class="line">        * 获取表格当前页码</span><br><span class="line">        * @param key：缓存中pages的key值</span><br><span class="line">        * @param data：填充表格的数据数组</span><br><span class="line">        * @param limit：每页显示条数</span><br><span class="line">        */</span><br><span class="line">        getPageCur: function(key, data, limit) &#123;</span><br><span class="line">            var cur,    // 当前页码</span><br><span class="line">                obj = JSON.parse(localStorage.getItem(&quot;pages&quot;)),    // 缓存中的pages对象</span><br><span class="line">                totalPage = Math.ceil(data.length/limit);   // 总页数</span><br><span class="line">            // 存在缓存变量pages</span><br><span class="line">            if(obj) &#123;</span><br><span class="line">                // 缓存中是否有当前表格的页码记录（没有该页码记录，重置为1）</span><br><span class="line">                cur = obj[key] ? obj[key] : 1;</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                // 不存在缓存变量pages</span><br><span class="line">                cur = 1;</span><br><span class="line">            &#125;</span><br><span class="line">            // 总页数小于当前页码（解决表格删除最后一页最后一条数据)</span><br><span class="line">            if(totalPage &lt; cur) &#123;</span><br><span class="line">                cur = 1;</span><br><span class="line">            &#125;</span><br><span class="line">            return cur;</span><br><span class="line">        &#125;</span><br><span class="line">        /*</span><br><span class="line">        * 设置当前表格页码</span><br><span class="line">        * @param key：key值</span><br><span class="line">        * @param val：value值</span><br><span class="line">        */</span><br><span class="line">        , setPageCur: function(key, val) &#123;</span><br><span class="line">            // 使用对象缓存，是因为有些页面有多层页面，记住多个页面的页码</span><br><span class="line">            var pages = JSON.parse(localStorage.getItem(&quot;pages&quot;)) || &#123;&#125;;  // 缓存中pages对象</span><br><span class="line">            pages[key] = val;   // 设置页码</span><br><span class="line">            pages = JSON.stringify(pages);  </span><br><span class="line">            localStorage.setItem(&quot;pages&quot;, pages);     // 重新放到缓存中</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    var page_curr = adTable.getPageCur(&quot;testTable&quot;, list, 10);   // 10是分页的limit值</span><br><span class="line">    table.render(&#123;</span><br><span class="line">        elem: &#x27;#testTable&#x27;</span><br><span class="line">        , data: list</span><br><span class="line">        , page: &#123;</span><br><span class="line">            curr: page_curr</span><br><span class="line">            , limit: 10</span><br><span class="line">        &#125;</span><br><span class="line">        , cols: [[</span><br><span class="line">            &#123;</span><br><span class="line">                field: &#x27;checkbox&#x27;, title: &#x27;&lt;input type=&quot;checkbox&quot; id=&quot;checkAll&quot; lay-filter=&quot;checkAll&quot; lay-skin=&quot;primary&quot;&gt;&#x27;, width: 66, templet: function (res) &#123;</span><br><span class="line">                    return &#x27;&lt;input type=&quot;checkbox&quot; class=&quot;rowCheck&quot; data-id=&quot;&#x27; + res.id + &#x27;&quot; lay-filter=&quot;rowCheck&quot; lay-skin=&quot;primary&quot;&gt;&#x27;;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            , &#123; field: &#x27;id&#x27;, title: &#x27;ID&#x27; &#125;</span><br><span class="line">            , &#123; field: &#x27;name&#x27;, title: &#x27;用户名&#x27; &#125;</span><br><span class="line">            , &#123; field: &#x27;score&#x27;, title: &#x27;评分&#x27; &#125;</span><br><span class="line"></span><br><span class="line">        ]]</span><br><span class="line">        , done: function (res, curr, count) &#123;</span><br><span class="line">            // 重置表格的样式</span><br><span class="line">            if(selectedIds.length &gt; 0) &#123;</span><br><span class="line">                // 根据已选selectedIds集合，修改复选框的样式（表头的复选框针对所有行数据，layui框架的全选只针对当前页）</span><br><span class="line">                selectedIds.map(function(item) &#123;</span><br><span class="line">                    $(&#x27;.layui-table input[data-id=&quot;&#x27;+ item +&#x27;&quot;]&#x27;).prop(&#x27;checked&#x27;, true);</span><br><span class="line">                &#125;)</span><br><span class="line">                // 重新渲染</span><br><span class="line">                form.render(&#x27;checkbox&#x27;);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            // 记录当前页面</span><br><span class="line">            adTable.setPageCur(&quot;testTable&quot;, curr);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    // 监听表格中表头全选复选框的选择事件</span><br><span class="line">    form.on(&#x27;checkbox(checkAll)&#x27;, function (data) &#123;</span><br><span class="line">        if (!list.length) &#123;</span><br><span class="line">            $(&#x27;input[lay-filter=&quot;checkAll&quot;]&#x27;).prop(&#x27;checked&#x27;, false);</span><br><span class="line">        &#125;</span><br><span class="line">        // 是否全选</span><br><span class="line">        var isAllChecked = data.elem.checked ? true : false;</span><br><span class="line"></span><br><span class="line">        // 是否被选中</span><br><span class="line">        if (isAllChecked) &#123;</span><br><span class="line">            selectedIds = list.map(function (item) &#123;</span><br><span class="line">                return item.id;</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            selectedIds = [];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        console.log(selectedIds);</span><br><span class="line"></span><br><span class="line">        // 更新表格中的复选框样式</span><br><span class="line">        $(&#x27;.rowCheck&#x27;).prop(&#x27;checked&#x27;, isAllChecked);</span><br><span class="line">        form.render(&#x27;checkbox&#x27;);</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    // 监听表格中的复选框</span><br><span class="line">    form.on(&#x27;checkbox(rowCheck)&#x27;, function (data) &#123;</span><br><span class="line">        var isChecked = data.elem.checked	// 是否被选中</span><br><span class="line">            , isAllChecked = false		// 是否全选</span><br><span class="line">            , _id = $(data.elem).data(&quot;id&quot;);// 当前项的id</span><br><span class="line"></span><br><span class="line">        if (isChecked) &#123;</span><br><span class="line">            // 追加</span><br><span class="line">            selectedIds.push(_id);</span><br><span class="line">            isAllChecked = (selectedIds.length == list.length) ? true : false;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            // 减去</span><br><span class="line">            var index = selectedIds.indexOf(_id);</span><br><span class="line">            selectedIds.splice(index, 1);</span><br><span class="line"></span><br><span class="line">            isAllChecked = false;</span><br><span class="line">        &#125;</span><br><span class="line">        // 进行排序</span><br><span class="line">        selectedIds.sort(function (a, b) &#123;</span><br><span class="line">            return a - b;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        console.log(&#x27;selectedIds&#x27;);</span><br><span class="line">        console.log(selectedIds);</span><br><span class="line"></span><br><span class="line">        // 更新全选复选框的样式</span><br><span class="line">        $(&#x27;#checkAll&#x27;).prop(&#x27;checked&#x27;, isAllChecked);</span><br><span class="line">        form.render(&#x27;checkbox&#x27;);</span><br><span class="line"></span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p><code>说明</code>：</p>
-<ol>
-<li><p>获取页面当前页码的方法<code>adTable.getPageCur</code>，大家可以根据自己的实际情况来实现。因为这里有多个表格，所以我放在pages对象中，不同的表格，根据表格名称来缓存对应的页码。</p>
-</li>
-<li><p>难点和关键代码：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    field: &#x27;checkbox&#x27;, title: &#x27;&lt;input type=&quot;checkbox&quot; id=&quot;checkAll&quot; lay-filter=&quot;checkAll&quot; lay-skin=&quot;primary&quot;&gt;&#x27;, width: 66, templet: function (res) &#123;</span><br><span class="line">        return &#x27;&lt;input type=&quot;checkbox&quot; class=&quot;rowCheck&quot; data-id=&quot;&#x27; + res.id + &#x27;&quot; lay-filter=&quot;rowCheck&quot; lay-skin=&quot;primary&quot;&gt;&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ol>
-<li><code>title</code>属性一定要配置。</li>
-<li><code>.rowCheck</code>一定要记得配置对应的id：<code> data-id=&quot;&#39; + res.id + &#39;&quot;</code></li>
-</ol>
-</li>
-</ol>
-<p><code>如果有问题，可以留言联系。</code></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -575,20 +597,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">115</span>
+          <span class="site-state-item-count">116</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">56</span>
+        <span class="site-state-item-count">57</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">52</span>
+        <span class="site-state-item-count">53</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

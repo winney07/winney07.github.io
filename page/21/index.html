@@ -193,6 +193,195 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/08/24/Node-js%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="winney">
+      <meta itemprop="description" content="Doing is better than saying.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="winney">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/08/24/Node-js%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">Node.js相关笔记</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-08-24 12:18:15" itemprop="dateCreated datePublished" datetime="2020-08-24T12:18:15+08:00">2020-08-24</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-10-30 13:18:11" itemprop="dateModified" datetime="2024-10-30T13:18:11+08:00">2024-10-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/node-js/" itemprop="url" rel="index"><span itemprop="name">node.js</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a target="_blank" rel="noopener" href="https://nodejs.org/zh-cn/">Node.js官网</a></p>
+<p><a target="_blank" rel="noopener" href="https://cnodejs.org/">Cnode社区</a></p>
+<p><a target="_blank" rel="noopener" href="http://nodejs.cn/">Node.js中文网</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.nodeapp.cn/">Node.js 中文文档 | Node.js 中文网</a></p>
+<p><a target="_blank" rel="noopener" href="https://npm.taobao.org/">淘宝NPM镜像</a></p>
+<p>Node.js&amp;HTML5论坛</p>
+<p><a target="_blank" rel="noopener" href="https://npmmirror.com/">npmmirror 镜像站</a>   或 npm.taobao.org</p>
+<p><strong>后端处理分页数据的接口</strong>   <a target="_blank" rel="noopener" href="https://www.cnblogs.com/fm060/p/8144758.html">参考博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.axis-studio.org/2017/12/29/element-express-mongoose%E5%AE%9E%E7%8E%B0%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2/index.html">element+express+mongoose实现分页查询</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.mongodb.com/languages/mongodb-with-nodejs">MongoDB With Node.js | MongoDB</a></p>
+<h4 id="后端接口代码："><a href="#后端接口代码：" class="headerlink" title="后端接口代码："></a>后端接口代码：</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">app.<span class="title function_">get</span>(<span class="string">&#x27;/api/getSources&#x27;</span>,<span class="title function_">async</span>(req, res)=&gt;&#123;</span><br><span class="line">    <span class="keyword">let</span> currentPage = <span class="built_in">parseInt</span>(req.<span class="property">query</span>.<span class="property">currentPage</span>) <span class="comment">// 转换前端传入当前页码</span></span><br><span class="line">    <span class="keyword">let</span> pageSize = <span class="built_in">parseInt</span>(req.<span class="property">query</span>.<span class="property">pageSize</span>) <span class="comment">// 转换前端传入的每页大小</span></span><br><span class="line">    <span class="keyword">let</span> skip = (currentPage-<span class="number">1</span>)*pageSize <span class="comment">// 实现分割查询的skip</span></span><br><span class="line">    <span class="keyword">let</span> params = &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 所有数据</span></span><br><span class="line">    <span class="keyword">var</span> allSources = <span class="keyword">await</span> <span class="title class_">Sources</span>.<span class="title function_">find</span>();</span><br><span class="line">    <span class="keyword">var</span> allCount = allSources.<span class="property">length</span>;</span><br><span class="line">    <span class="keyword">var</span> allPage = <span class="title class_">Math</span>.<span class="title function_">ceil</span>(allCount/pageSize);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 根据页码和每页显示条数筛选数据</span></span><br><span class="line">    <span class="keyword">const</span> sources = <span class="keyword">await</span> <span class="title class_">Sources</span>.<span class="title function_">find</span>(params).<span class="title function_">skip</span>(skip).<span class="title function_">limit</span>(pageSize)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> object =&#123;</span><br><span class="line">        <span class="attr">allCount</span>: allCount,</span><br><span class="line">        <span class="attr">allPage</span>: allPage,</span><br><span class="line">        <span class="attr">page</span>: currentPage,</span><br><span class="line">        <span class="attr">data</span>: sources</span><br><span class="line">    &#125;</span><br><span class="line">    res.<span class="title function_">send</span>(object)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="前端请求接口代码："><a href="#前端请求接口代码：" class="headerlink" title="前端请求接口代码："></a>前端请求接口代码：</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 获取素材列表</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title function_">getSources</span> = (<span class="params">param</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="title function_">request</span>(&#123;</span><br><span class="line">    <span class="attr">method</span>: <span class="string">&#x27;GET&#x27;</span>,</span><br><span class="line">    <span class="attr">url</span>: <span class="string">&#x27;/getSources&#x27;</span>,</span><br><span class="line">    <span class="attr">params</span>: param</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>.vue页面：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">&lt;el-pagination</span><br><span class="line">  @size-change=<span class="string">&quot;handleSizeChange&quot;</span></span><br><span class="line">  @current-change=<span class="string">&quot;handleCurrentChange&quot;</span></span><br><span class="line">  :current-page=<span class="string">&quot;currentPage&quot;</span></span><br><span class="line">  :page-sizes=<span class="string">&quot;[10, 15, 20, 25, 30]&quot;</span></span><br><span class="line">  :page-size=<span class="string">&quot;pageSize&quot;</span></span><br><span class="line">  layout=<span class="string">&quot;total, sizes, prev, pager, next, jumper&quot;</span></span><br><span class="line">  :total=<span class="string">&quot;allCount&quot;</span>&gt;</span><br><span class="line">&lt;/el-pagination&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="attr">sourceList</span>: [],</span><br><span class="line"><span class="attr">allCount</span>: <span class="number">0</span>,</span><br><span class="line"><span class="attr">pageSize</span>: <span class="number">10</span>,</span><br><span class="line"><span class="attr">currentPage</span>: <span class="number">1</span>,</span><br><span class="line">  </span><br><span class="line">created () &#123;</span><br><span class="line">  <span class="comment">// 渲染第一页的数据</span></span><br><span class="line">  <span class="variable language_">this</span>.<span class="title function_">initData</span>(<span class="variable language_">this</span>.<span class="property">currentPage</span>)</span><br><span class="line">&#125;,</span><br><span class="line">  </span><br><span class="line">initData (thisPage) &#123;</span><br><span class="line">  <span class="keyword">let</span> param = &#123;</span><br><span class="line">    <span class="attr">currentPage</span>: thisPage,</span><br><span class="line">    <span class="attr">pageSize</span>: <span class="variable language_">this</span>.<span class="property">pageSize</span>,</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="title function_">getSources</span>(param).<span class="title function_">then</span>(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(res)</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">sourceList</span> = res.<span class="property">data</span>.<span class="property">data</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">allCount</span> = res.<span class="property">data</span>.<span class="property">allCount</span></span><br><span class="line">  &#125;)</span><br><span class="line">&#125;,</span><br><span class="line">  </span><br><span class="line"><span class="title function_">handleCurrentChange</span>(<span class="params">val</span>) &#123;</span><br><span class="line">  <span class="comment">// console.log(`当前页: $&#123;val&#125;`);  </span></span><br><span class="line">  <span class="comment">// 渲染相应页码的数据</span></span><br><span class="line">  <span class="variable language_">this</span>.<span class="title function_">initData</span>(val)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="创建package-json："><a href="#创建package-json：" class="headerlink" title="创建package.json："></a>创建package.json：</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm init</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="http://javascript.ruanyifeng.com/nodejs/npm.html">npm模块管理器</a></p>
+<p><a target="_blank" rel="noopener" href="https://jingyan.baidu.com/article/91f5db1b3e1f991c7f05e395.html">我们安装了Nodejs是安装了什么</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/nimoc/gulp-book/blob/master/chapter1.md">安装 Node 和 gulp</a></p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p><a target="_blank" rel="noopener" href="https://nodejs.org/zh-cn/download/">node安装包下载地址</a></p>
+<ol>
+<li>下载.msi文件</li>
+<li>按”下一步”，”下一步”装好</li>
+<li>双击安装好的目录里面的”node.exe”，文件，输入node  （这一步好像不需要）</li>
+<li>创建一个app.js文件</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">&quot;http&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> hostname = <span class="string">&quot;127.0.0.1&quot;</span>;</span><br><span class="line"><span class="keyword">const</span> port = <span class="number">3000</span>;</span><br><span class="line"><span class="keyword">const</span> server = http.<span class="title function_">createServer</span>(<span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">  res.<span class="property">statusCode</span> = <span class="number">200</span>;</span><br><span class="line">  res.<span class="title function_">setHeader</span>(<span class="string">&#x27;Content-Type&#x27;</span>, <span class="string">&#x27;text/plain&#x27;</span>);</span><br><span class="line">  res.<span class="title function_">end</span>(<span class="string">&#x27;He1lo world\n&#x27;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">server.<span class="title function_">listen</span>(port, hostname, <span class="function">()=&gt;</span> &#123;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`Server running at http://<span class="subst">$&#123;hostname&#125;</span>:<span class="subst">$&#123;port&#125;</span>/`</span>)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>运行app.js：</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node app.<span class="property">js</span></span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>在浏览器中预览</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">http</span>:<span class="comment">//localhost:3000/ </span></span><br><span class="line">或者</span><br><span class="line"><span class="attr">http</span>:<span class="comment">//127.0.0.1:3000/</span></span><br></pre></td></tr></table></figure>
+
+<p>使用淘宝NPM镜像</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g cnpm --registry=<span class="attr">https</span>:<span class="comment">//registry.npm.taobao.org</span></span><br></pre></td></tr></table></figure>
+
+<p>清屏命令（清掉历史操作记录）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cls</span><br></pre></td></tr></table></figure>
+
+<p>取消命令继续执行</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Ctrl</span> +  C </span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_36423639/article/details/70230571">window下通过nvm-windows来安装多版本node</a></p>
+<p>[全栈最后一公里 - Scott 带你学习 Node.js 线上服务器部署与发布](<a target="_blank" rel="noopener" href="http://www.imooc.com/article/17554">http://www.imooc.com/article/17554</a> Scott)</p>
+<p><a target="_blank" rel="noopener" href="http://nqdeng.github.io/7-days-nodejs/">七天学会NodeJS</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.handlebarsjs.cn/">Handlebars-轻量的语义化模板</a></p>
+<p><strong>什么是异步I/O？</strong></p>
+<p>就是我们读取/写入文件或者操作数据库的时候，此时应该是异步的读取。CPU命令磁盘驱动器读取文件，CPU此时不能死等磁盘返回结果，如果死等CPU自己就被阻塞了，性能是极大的浪费。比如：PHP读取文件，性能就不高，因为被阻塞了。</p>
+<h3 id="Node-js创建第一个应用"><a href="#Node-js创建第一个应用" class="headerlink" title="Node.js创建第一个应用"></a>Node.js创建第一个应用</h3><p>如果我们使用PHP来编写后端的代码时，需要Apache 或者Nginx 的 HTTP服务器，来处理客户端的请求相应。不过对Node.js 来说，概念完全不一样了。使用 Node.js时，我们不仅仅在实现一个应用，同时还实现了整个HTTP服务器。</p>
+<ol>
+<li>引入http模块</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http= <span class="built_in">require</span>(<span class="string">&quot;http&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>创建服务器</li>
+</ol>
+<p>接下来我们使用http.createServer()方法创建服务器，并使用listen方法绑定8888端口。函数通过request, response参数来接收和响应数据。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">&#x27;http&#x27;</span>);</span><br><span class="line"></span><br><span class="line">http.<span class="title function_">createServer</span>(functio (request, response)&#123;</span><br><span class="line">	<span class="comment">// 发送HTTP头部</span></span><br><span class="line">	<span class="comment">// HTTP状态值: 200 : oK</span></span><br><span class="line">  <span class="comment">// 设置HTTP头部，状态码是200，文件类型是html，字符集是utf8</span></span><br><span class="line">  response.<span class="title function_">writeHead</span>(<span class="number">200</span>,&#123;<span class="string">&quot;Content-Type&quot;</span>:<span class="string">&quot;text/html;charset=UTF-8&quot;</span>&#125;);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 发送响应数据“Hello World&quot;</span></span><br><span class="line">  res.<span class="title function_">end</span>(<span class="string">&quot;哈哈哈哈，我买了一个iPhone&quot;</span> +(<span class="number">1</span>+<span class="number">2</span>+<span class="number">3</span>)+<span class="string">&quot;s&quot;</span><span class="string">&quot;);</span></span><br><span class="line"><span class="string">          </span></span><br><span class="line"><span class="string">&#125;).listen(8888);</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">// 终端打印如下信息</span></span><br><span class="line"><span class="string">console.log(&quot;</span><span class="title class_">Server</span> running at <span class="attr">http</span>:<span class="comment">//127.0.0.1:8888/&quot;);</span></span><br></pre></td></tr></table></figure>
+
+<p>结束响应：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">res.<span class="title function_">end</span>();</span><br></pre></td></tr></table></figure>
+
+<h3 id="node-js查询数据，倒序排序：sort-‘-字段名’"><a href="#node-js查询数据，倒序排序：sort-‘-字段名’" class="headerlink" title="node.js查询数据，倒序排序：sort(‘-字段名’)"></a>node.js查询数据，倒序排序：sort(‘-字段名’)</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">let currentPage = parseInt(req.query.currentPage) // 转换前端传入当前页码</span><br><span class="line">let pageSize = parseInt(req.query.pageSize) // 转换前端传入的每页大小</span><br><span class="line">let skip = (currentPage-1)*pageSize // 实现分割查询的skip</span><br><span class="line">let params = &#123;&#x27;delete_time&#x27;: &quot;0&quot;&#125;;</span><br><span class="line"></span><br><span class="line">// 根据页码和每页显示条数筛选数据</span><br><span class="line">const sources = await Sources.find(params).sort(&#x27;-create_time&#x27;).skip(skip).limit(pageSize)</span><br></pre></td></tr></table></figure>
+
+<h4 id="常用的Nodejs开发工具"><a href="#常用的Nodejs开发工具" class="headerlink" title="常用的Nodejs开发工具"></a><a target="_blank" rel="noopener" href="http://www.bjpowernode.com/hot/2981.html">常用的Nodejs开发工具</a></h4><ul>
+<li>Express.js</li>
+<li>Socket.io</li>
+<li>Meteor</li>
+<li>Keystone</li>
+<li>Koa.js</li>
+<li>PM2.5</li>
+<li>Electrode.js</li>
+<li>Babel</li>
+<li>Broccoli</li>
+<li>Webpack</li>
+</ul>
+<h4 id="JSON-Server——模拟服务端接口数据"><a href="#JSON-Server——模拟服务端接口数据" class="headerlink" title="JSON Server——模拟服务端接口数据"></a><a target="_blank" rel="noopener" href="https://www.npmjs.com/package/json-server">JSON Server</a>——模拟服务端接口数据</h4><blockquote>
+<p>一般用在前后端分离后，前端人员可以不依赖 <code>API</code>开发，而在本地搭建一个 <code>JSON</code>服务，自己产生测试数据。</p>
+</blockquote>
+<blockquote>
+<p>一个在本地运行，可以存储 <code>json</code>数据的 <code>server</code>。</p>
+</blockquote>
+<ol>
+<li><p>安装</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g json-server</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>通过查看版本号，来测试是否安装成功</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">json-server -v</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建json数据 –<code> db.json</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;posts&quot;: [</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;title&quot;: &quot;title&quot;,</span><br><span class="line">      &quot;id&quot;: 1</span><br><span class="line">    &#125;,</span><br><span class="line">  ],</span><br><span class="line">  &quot;comments&quot;: [</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;id&quot;: 1,</span><br><span class="line">      &quot;body&quot;: &quot;some comment&quot;,</span><br><span class="line">      &quot;postId&quot;: 1</span><br><span class="line">    &#125;</span><br><span class="line">  ],</span><br><span class="line">  &quot;profile&quot;: &#123;</span><br><span class="line">    &quot;name&quot;: &quot;typicode&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>开始服务——进入到<code> db.json</code>文件所在的目录，执行以下代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">json-server --watch db.json</span><br></pre></td></tr></table></figure>
+
+<p><code>json-server </code>默认是 3000端口，我们也可以自己指定端口，指令如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">json-server --watch db.json --port 5000(端口号)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看接口返回数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://localhost:5000/posts</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>增删改查相关操作，<a target="_blank" rel="noopener" href="https://www.yuque.com/winney07/vp9xtm/ppi9zu#d8Beu">看语雀中的笔记</a></p>
+</li>
+</ol>
+<h4 id="截屏保存图片插件"><a href="#截屏保存图片插件" class="headerlink" title="截屏保存图片插件"></a>截屏保存图片插件</h4><p><a target="_blank" rel="noopener" href="https://www.npmjs.com/package/casperjs">casperjs</a></p>
+<p>phantomjs</p>
+<p><a target="_blank" rel="noopener" href="https://www.npmjs.com/package/capture-phantomjs">capture-phantomjs</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2020/08/22/CSS%E5%AE%9E%E7%8E%B0%E6%B0%B4%E5%B9%B3%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -393,129 +582,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/08/22/Node.js%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="winney">
-      <meta itemprop="description" content="Doing is better than saying.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="winney">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/08/22/Node.js%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">Node.js相关笔记</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-08-22 11:12:23" itemprop="dateCreated datePublished" datetime="2020-08-22T11:12:23+08:00">2020-08-22</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-10-30 13:18:11" itemprop="dateModified" datetime="2024-10-30T13:18:11+08:00">2024-10-30</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/node-js/" itemprop="url" rel="index"><span itemprop="name">node.js</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><a target="_blank" rel="noopener" href="https://blog.poetries.top/node-learning-notes/notes/base/01-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA.html#%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA">认识 Node.js | Node.js学习指南 (poetries.top)</a></p>
-<h2 id="认识-Node-js"><a href="#认识-Node-js" class="headerlink" title="认识 Node.js"></a>认识 Node.js</h2><ul>
-<li>Node 是一个服务器端 JavaScript 解释器</li>
-<li>Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行环境</li>
-<li>Node.js 使用了一个事件驱动、非阻塞式 I/O 的模型，使其轻量又高效</li>
-<li>Node.js 的包管理器 npm，是全球最大的开源库生态系统</li>
-<li>Node.js 是一门动态语言，运行在服务端的 Javascript</li>
-</ul>
-<h3 id="NVM"><a href="#NVM" class="headerlink" title="NVM"></a>NVM</h3><blockquote>
-<p>Node.js Version Manager（简称 NVM）是一个用于管理 Node.js 版本的命令行工具。Node.js 是一个流行的服务器端 JavaScript 运行时环境，用于构建 Web 应用程序和服务。NVM 允许您在同一台计算机上安装多个 Node.js 版本，并轻松在它们之间切换，以确保您的应用程序与特定的 Node.js 版本兼容。</p>
-</blockquote>
-<ul>
-<li><code>nvm install &lt;version&gt;</code>：安装指定版本的 Node.js。</li>
-<li><code>nvm use &lt;version&gt;</code>：切换到指定版本的 Node.js。</li>
-<li><code>nvm ls</code>：列出已安装的 Node.js 版本。</li>
-<li><code>nvm alias &lt;name&gt; &lt;version&gt;</code>：创建 Node.js 版本别名。</li>
-</ul>
-<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>使用git bash工具</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.25.2/install.sh | bash</span><br></pre></td></tr></table></figure>
-
-<p><code>这些命令可以在 macOS 和 Linux 上使用。请注意，NVM 不支持 Windows，但您可以使用类似的工具，如 nvm-windows 或 nvmw。</code></p>
-<p><strong>nvm-windows 的安装和使用</strong>:</p>
-<ol>
-<li><p>下载 <code>nvm-setup.zip</code> 安装文件。您可以在 <a target="_blank" rel="noopener" href="https://github.com/coreybutler/nvm/releases">nvm-windows GitHub Releases 页面</a> 下载最新版本的 <code>nvm-setup.zip</code>。</p>
-</li>
-<li><p>解压缩 <code>nvm-setup.zip</code> 文件，并运行 <code>nvm-setup.exe</code> 安装程序。按照安装程序的指示进行安装。</p>
-</li>
-<li><p>安装完成后，<code>打开一个新的命令提示符窗口（cmd.exe）或 PowerShell 窗口</code>。</p>
-</li>
-<li><p>使用以下命令来查看所有可用的 Node.js 版本并安装其中一个：</p>
-<ul>
-<li><p>列出可用版本：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bashCopy code</span><br><span class="line">nvm list available</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>安装特定版本，例如 14.17.5：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bashCopy code</span><br><span class="line">nvm install 14.17.5</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>使用以下命令来选择已安装的 Node.js 版本：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bashCopy code</span><br><span class="line">nvm use 14.17.5</span><br></pre></td></tr></table></figure>
-
-<p>这将设置当前的 Node.js 版本为 14.17.5。</p>
-</li>
-<li><p>验证 Node.js 版本是否正确切换：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bashCopy code</span><br><span class="line">node -v</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>您还可以使用其他 nvm-windows 命令来管理 Node.js 版本，如 <code>nvm list</code>、<code>nvm uninstall</code> 等。</p>
-</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -587,20 +653,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">115</span>
+          <span class="site-state-item-count">116</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">56</span>
+        <span class="site-state-item-count">57</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">52</span>
+        <span class="site-state-item-count">53</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

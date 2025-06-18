@@ -193,6 +193,129 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/08/22/Node.js%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="winney">
+      <meta itemprop="description" content="Doing is better than saying.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="winney">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/08/22/Node.js%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">Node.js相关笔记</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-08-22 11:12:23" itemprop="dateCreated datePublished" datetime="2020-08-22T11:12:23+08:00">2020-08-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-10-30 13:18:11" itemprop="dateModified" datetime="2024-10-30T13:18:11+08:00">2024-10-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/node-js/" itemprop="url" rel="index"><span itemprop="name">node.js</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a target="_blank" rel="noopener" href="https://blog.poetries.top/node-learning-notes/notes/base/01-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA.html#%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA">认识 Node.js | Node.js学习指南 (poetries.top)</a></p>
+<h2 id="认识-Node-js"><a href="#认识-Node-js" class="headerlink" title="认识 Node.js"></a>认识 Node.js</h2><ul>
+<li>Node 是一个服务器端 JavaScript 解释器</li>
+<li>Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行环境</li>
+<li>Node.js 使用了一个事件驱动、非阻塞式 I/O 的模型，使其轻量又高效</li>
+<li>Node.js 的包管理器 npm，是全球最大的开源库生态系统</li>
+<li>Node.js 是一门动态语言，运行在服务端的 Javascript</li>
+</ul>
+<h3 id="NVM"><a href="#NVM" class="headerlink" title="NVM"></a>NVM</h3><blockquote>
+<p>Node.js Version Manager（简称 NVM）是一个用于管理 Node.js 版本的命令行工具。Node.js 是一个流行的服务器端 JavaScript 运行时环境，用于构建 Web 应用程序和服务。NVM 允许您在同一台计算机上安装多个 Node.js 版本，并轻松在它们之间切换，以确保您的应用程序与特定的 Node.js 版本兼容。</p>
+</blockquote>
+<ul>
+<li><code>nvm install &lt;version&gt;</code>：安装指定版本的 Node.js。</li>
+<li><code>nvm use &lt;version&gt;</code>：切换到指定版本的 Node.js。</li>
+<li><code>nvm ls</code>：列出已安装的 Node.js 版本。</li>
+<li><code>nvm alias &lt;name&gt; &lt;version&gt;</code>：创建 Node.js 版本别名。</li>
+</ul>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>使用git bash工具</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.25.2/install.sh | bash</span><br></pre></td></tr></table></figure>
+
+<p><code>这些命令可以在 macOS 和 Linux 上使用。请注意，NVM 不支持 Windows，但您可以使用类似的工具，如 nvm-windows 或 nvmw。</code></p>
+<p><strong>nvm-windows 的安装和使用</strong>:</p>
+<ol>
+<li><p>下载 <code>nvm-setup.zip</code> 安装文件。您可以在 <a target="_blank" rel="noopener" href="https://github.com/coreybutler/nvm/releases">nvm-windows GitHub Releases 页面</a> 下载最新版本的 <code>nvm-setup.zip</code>。</p>
+</li>
+<li><p>解压缩 <code>nvm-setup.zip</code> 文件，并运行 <code>nvm-setup.exe</code> 安装程序。按照安装程序的指示进行安装。</p>
+</li>
+<li><p>安装完成后，<code>打开一个新的命令提示符窗口（cmd.exe）或 PowerShell 窗口</code>。</p>
+</li>
+<li><p>使用以下命令来查看所有可用的 Node.js 版本并安装其中一个：</p>
+<ul>
+<li><p>列出可用版本：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bashCopy code</span><br><span class="line">nvm list available</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装特定版本，例如 14.17.5：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bashCopy code</span><br><span class="line">nvm install 14.17.5</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>使用以下命令来选择已安装的 Node.js 版本：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bashCopy code</span><br><span class="line">nvm use 14.17.5</span><br></pre></td></tr></table></figure>
+
+<p>这将设置当前的 Node.js 版本为 14.17.5。</p>
+</li>
+<li><p>验证 Node.js 版本是否正确切换：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bashCopy code</span><br><span class="line">node -v</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>您还可以使用其他 nvm-windows 命令来管理 Node.js 版本，如 <code>nvm list</code>、<code>nvm uninstall</code> 等。</p>
+</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2020/08/22/VScode%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -450,86 +573,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/08/22/%E5%AF%BC%E5%87%BA%E8%A1%A8%E6%A0%BC%E5%8A%9F%E8%83%BD/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="winney">
-      <meta itemprop="description" content="Doing is better than saying.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="winney">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/08/22/%E5%AF%BC%E5%87%BA%E8%A1%A8%E6%A0%BC%E5%8A%9F%E8%83%BD/" class="post-title-link" itemprop="url">导出表格功能</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-08-22 11:12:23" itemprop="dateCreated datePublished" datetime="2020-08-22T11:12:23+08:00">2020-08-22</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-10-30 13:18:11" itemprop="dateModified" datetime="2024-10-30T13:18:11+08:00">2024-10-30</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="使用window-open-url-‘-self’-导出表格"><a href="#使用window-open-url-‘-self’-导出表格" class="headerlink" title="使用window.open(url, ‘_self’)导出表格"></a>使用<code>window.open(url, ‘_self’)</code>导出表格</h3><p>使用<code>window.open(url, ‘_self’)</code>导出表格后，页面会刷新，本来存放的<code>localStorage</code>会被清（因为刷新页面做了清空表格筛选条件和页码）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 监听手动刷新页面事件(按浏览器的刷新按钮||使用js方法刷新页面)</span><br><span class="line">window.onbeforeunload = function(event)&#123;</span><br><span class="line">    // 清空表格缓存的页码数据</span><br><span class="line">    removeItem(&quot;pages&quot;);</span><br><span class="line">    // 清空表格筛选条件缓存数据</span><br><span class="line">    removeItem(&quot;formData&quot;);</span><br><span class="line">    console.log(&#x27;刷新了页面&#x27;)</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>解决方法：使用<code>sessionStorage</code>临时缓存一份</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// 在导出表格前，先临时拷贝localStorage缓存数据到sessionStorage</span><br><span class="line">// 使用window.open导出表格，会将localStorage中的formData清空</span><br><span class="line">sessionStorage.setItem(&#x27;formData&#x27;, JSON.stringify(getItem(&#x27;formData&#x27;)));</span><br><span class="line">sessionStorage.setItem(&#x27;pages&#x27;, JSON.stringify(getItem(&#x27;pages&#x27;)));</span><br><span class="line">// 导出表格后，从sessionStorage中拷贝数据再次缓存到locaStorage</span><br><span class="line">setItem(&#x27;formData&#x27;, sessionStorage.getItem(&#x27;formData&#x27;));</span><br><span class="line">setItem(&#x27;pages&#x27;, sessionStorage.getItem(&#x27;pages&#x27;));</span><br></pre></td></tr></table></figure>
-
-<h4 id="通过url导出服务器端文件"><a href="#通过url导出服务器端文件" class="headerlink" title="通过url导出服务器端文件"></a>通过<code>url</code>导出服务器端文件</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">// window.location.href= url;</span><br><span class="line">// 或</span><br><span class="line">window.open(url, &#x27;_self&#x27;)</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -601,20 +644,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">115</span>
+          <span class="site-state-item-count">116</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">56</span>
+        <span class="site-state-item-count">57</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">52</span>
+        <span class="site-state-item-count">53</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

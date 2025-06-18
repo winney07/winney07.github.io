@@ -193,6 +193,94 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/27/qrcode%E7%94%9F%E6%88%90%E4%BA%8C%E7%BB%B4%E7%A0%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="winney">
+      <meta itemprop="description" content="Doing is better than saying.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="winney">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/01/27/qrcode%E7%94%9F%E6%88%90%E4%BA%8C%E7%BB%B4%E7%A0%81/" class="post-title-link" itemprop="url">qrcode生成二维码</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-01-27 11:09:11" itemprop="dateCreated datePublished" datetime="2021-01-27T11:09:11+08:00">2021-01-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-10-30 13:18:11" itemprop="dateModified" datetime="2024-10-30T13:18:11+08:00">2024-10-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index"><span itemprop="name">工具</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="qrcode生成二维码"><a href="#qrcode生成二维码" class="headerlink" title="qrcode生成二维码"></a>qrcode生成二维码</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;jquery.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;qrcode.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;input id=&quot;text&quot; type=&quot;text&quot; value=&quot;https://www.baidu.com/&quot; style=&quot;width:80%&quot; /&gt;&lt;br /&gt;</span><br><span class="line">&lt;div id=&quot;qrcode&quot; style=&quot;width:100px; height:100px; margin-top:15px;&quot;&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">    var qrcode = new QRCode(document.getElementById(&quot;qrcode&quot;), &#123;</span><br><span class="line">        width : 100,</span><br><span class="line">        height : 100</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    function makeCode () &#123;		</span><br><span class="line">        var elText = document.getElementById(&quot;text&quot;);</span><br><span class="line"></span><br><span class="line">        if (!elText.value) &#123;</span><br><span class="line">            alert(&quot;Input a text&quot;);</span><br><span class="line">            elText.focus();</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        qrcode.makeCode(elText.value);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    makeCode();</span><br><span class="line"></span><br><span class="line">    $(&quot;#text&quot;).on(&quot;blur&quot;, function () &#123;</span><br><span class="line">        makeCode();</span><br><span class="line">    &#125;).on(&quot;keydown&quot;, function (e) &#123;</span><br><span class="line">        if (e.keyCode == 13) &#123;</span><br><span class="line">            makeCode();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="微信二维码电子名片生成系统"><a href="#微信二维码电子名片生成系统" class="headerlink" title="微信二维码电子名片生成系统"></a>微信二维码电子名片生成系统</h4><p><a target="_blank" rel="noopener" href="https://gitee.com/winney/work/blob/master/Plugs/qrcode/code.png">【示意图】</a></p>
+<p>清空二维码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">qrcode.clear(); // clear the code.</span><br></pre></td></tr></table></figure>
+
+<p>加上中文内容会报错：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">qrcode.min.js:1 Uncaught Error: code length overflow. (3452&gt;1440)</span><br></pre></td></tr></table></figure>
+
+<p>解决方案：</p>
+<p> <a target="_blank" rel="noopener" href="https://github.com/KeeeX/qrcodejs">Keeex/qrcode</a>，用这里的js替换原来的js，但生成的内容格式跟原来的是不一样的。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/21/%E5%BC%82%E6%AD%A5%E5%A4%84%E7%90%86-%E7%AC%94%E8%AE%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -436,103 +524,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/19/CMS-%E7%AC%94%E8%AE%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="winney">
-      <meta itemprop="description" content="Doing is better than saying.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="winney">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/01/19/CMS-%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">CMS-笔记</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-01-19 16:49:48" itemprop="dateCreated datePublished" datetime="2021-01-19T16:49:48+08:00">2021-01-19</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-10-30 13:18:11" itemprop="dateModified" datetime="2024-10-30T13:18:11+08:00">2024-10-30</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">工作笔记</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/CMS/" itemprop="url" rel="index"><span itemprop="name">CMS</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><a target="_blank" rel="noopener" href="http://www.phome.net/">帝国cms官网</a></p>
-<p><a target="_blank" rel="noopener" href="http://phome.net/doc/ecmsedu/template/ecmsinfo.html">万能标签</a></p>
-<p><a target="_blank" rel="noopener" href="http://www.phome.net/doc/manual/">帝国网站管理系统(EmpireCMS)使用教程手册</a></p>
-<p><a target="_blank" rel="noopener" href="http://www.phome.net/doc/manual/install/">帝国网站管理系统(EmpireCMS)－安装手册</a></p>
-<h4 id="帝国CMS模板的策划"><a href="#帝国CMS模板的策划" class="headerlink" title="帝国CMS模板的策划"></a>帝国CMS模板的策划</h4><p>1、 确定网站的栏目</p>
-<p>2、 添加自定义字段</p>
-<p>3、 定制系统模型</p>
-<p><a target="_blank" rel="noopener" href="http://www.phome.net/doc/manual/install/">帝国网站管理系统(EmpireCMS)－安装手册</a></p>
-<h5 id="采集教程"><a href="#采集教程" class="headerlink" title="采集教程"></a>采集教程</h5><p><a target="_blank" rel="noopener" href="https://www.jb51.net/cms/44793_2.html">帝国cms采集图文教程(上,中,下)全集</a></p>
-<p><a target="_blank" rel="noopener" href="http://www.baiwanzhan.com/site/t125853/?tdsourcetag=s_pctim_aiomsg">百万站官网资料-帝国cms采集图文教程（上）</a></p>
-<p>采集思路:</p>
-<p>1.先确定你的服务器是否支持采集</p>
-<p>2.寻找响应速度快的目标网站,当然首先要看准目标网站是否防采集的</p>
-<p>3.查看源文件,写正则</p>
-<p>4.正则写好,先预览,预览正常后再采集</p>
-<p>影响采集速度:</p>
-<p>1.本身空间的质量与速度</p>
-<p>2.本身网站的数据大小,即数据库的使用情况.</p>
-<p>3.目标网站的速度及代码结构</p>
-<h4 id="URL地址栏-新闻自动生成的目录修改"><a href="#URL地址栏-新闻自动生成的目录修改" class="headerlink" title="URL地址栏-新闻自动生成的目录修改"></a>URL地址栏-新闻自动生成的目录修改</h4><p><img src="https://raw.githubusercontent.com/winney07/Images/main/winney07.github.io/CMS-%E7%AC%94%E8%AE%B0/CMS1.png" alt="cms"></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -604,20 +595,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">115</span>
+          <span class="site-state-item-count">116</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">56</span>
+        <span class="site-state-item-count">57</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">52</span>
+        <span class="site-state-item-count">53</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
